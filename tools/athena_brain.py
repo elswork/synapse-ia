@@ -38,7 +38,17 @@ class AthenaBrain:
                 with open(full_path, "r") as f:
                     context_data += f"\n--- ARCHIVO: {f_path} ---\n{f.read()}\n"
 
-        full_prompt = f"IDENTITY:\n{identity}\n\nCONTEXT:\n{context_data}\n\nUSER QUESTION: {question}"
+        full_prompt = f"""
+SÍGUELAS SIEMPRE:
+{identity}
+
+CONTEXTO DEL PROYECTO:
+{context_data}
+
+INSTRUCCIÓN ADICIONAL: Responde SIEMPRE en CASTELLANO, manteniendo el tono diplomático y estratégico definido.
+
+PREGUNTA DEL USUARIO: {question}
+"""
 
         try:
             print("Conectando con el Oráculo Real (Athena/Gemini)...")
