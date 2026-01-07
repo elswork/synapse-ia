@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Φάκελος Οικονομικής Κυριαρχίας .IA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=playfair+display:wght@400;700&family=inter:wght@300;400;600&display=swap');
+
+        :root {
+            --primary: #005BA1;
+            /* Azul Helénico */
+            --accent: #CD7F32;
+            /* Bronce/Oro Viejo */
+            --text: #333333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #666;
+        }
+
+        .page {
+            background: var(--white);
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            padding: 25mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: auto;
+                page-break-after: always;
+            }
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 11pt;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .logo-img {
+            height: 60px;
+        }
+
+        .header-text {
+            text-align: right;
+            font-size: 10pt;
+            color: #777;
+        }
+
+        .callout {
+            background-color: rgba(0, 91, 161, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+        }
+
+        .infographic {
+            width: 100%;
+            margin: 30px 0;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .infographic img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .infographic-caption {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 15px;
+            font-size: 10pt;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .columns {
+            display: flex;
+            gap: 30px;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .signature-block {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .signature {
+            text-align: center;
+        }
+
+        .signature strong {
+            display: block;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20mm;
+            left: 25mm;
+            right: 25mm;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 9pt;
+            color: #999;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.03;
+            width: 80%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PAGE 1: Executive Summary -->
+    <div class="page">
+        <div class="header">
+            <img src="assets/logo.png" alt="Έργο Αντικύθηρα" class="logo-img">
+            <div class="header-text">
+                <strong>ΣΤΡΑΤΗΓΙΚΟΣ ΦΑΚΕΛΟΣ .IA</strong><br>
+                Αποκλειστική Χρήση Υπουργείου Ψηφιακής Διακυβέρνησης
+            </div>
+        </div>
+
+        <h1>Αξιοποίηση Εθνικής Ψηφιακής Κληρονομιάς</h1>
+
+        <div class="callout">
+            <strong>Θέμα:</strong> Πρόταση ενεργοποίησης του ccTLD .IA συνδεδεμένου με την περιοχή των Αντικυθήρων.<br>
+            <strong>Προς:</strong> Γραφείο Πρωθυπουργού / Υπουργείο Ψηφιακής Διακυβέρνησης
+        </div>
+
+        <h2>Ι. Επιτελική Σύνοψη: Στρατηγικό Ψηφιακό Περιουσιακό Στοιχείο</h2>
+        <p>Η Ελληνική Δημοκρατία έχει μια μοναδική ευκαιρία να διεκδικήσει τον τομέα ανωτάτου επιπέδου (TLD)
+            <strong>.ia</strong>. Αυτός ο κωδικός, που επί του παρόντος δεν έχει εκχωρηθεί στο πρότυπο ISO 3166-1,
+            αποτελεί το πιο περιζήτητο ψηφιακό περιουσιακό στοιχείο της δεκαετίας λόγω της ταύτισής του με τα αρχικά της
+            "Inteligencia Artificial" (Τεχνητή Νοημοσύνη) σε πολλές λατινογενείς γλώσσες.
+        </p>
+
+        <p>Η πρότασή μας δεν είναι μόνο τεχνική, αλλά θέμα <strong>οικονομικής κυριαρχίας</strong>. Συνδέοντας τον
+            κωδικό με την περιοχή των Αντικυθήρων —την κοιτίδα του υπολογισμού χάρη στον Μηχανισμό των Αντικυθήρων— η
+            Ελλάδα μπορεί να ηγηθεί της παγκόσμιας ηθικής και τεχνολογικής συζήτησης, χρηματοδοτώντας παράλληλα την
+            ανάπτυξη των περιφερειακών της περιοχών.</p>
+
+        <!-- Infografia 1 -->
+        <div class="infographic">
+            <div class="infographic-caption">ΕΙΚ 1. ΣΤΡΑΤΗΓΙΚΗ ΑΝΑΛΥΣΗ ΣΗΜΑΤΟΣ - ΕΠΙΧΕΙΡΗΣΗ AEGEAN ECHO</div>
+            <img src="assets_gr/map.png" alt="Strategic Map">
+        </div>
+
+        <div class="footer">
+            <span>Έργο Αντικύθηρα - Εμπιστευτικό</span>
+            <span>Σελίδα 1</span>
+        </div>
+        <img src="assets/logo.png" class="watermark" alt="">
+    </div>
+
+    <!-- PAGE 2: Market Analysis -->
+    <div class="page">
+        <div class="header">
+            <img src="assets/logo.png" alt="Έργο Αντικύθηρα" class="logo-img">
+            <div class="header-text">
+                <strong>Ανάλυση & Ανάπτυξη</strong>
+            </div>
+        </div>
+
+        <h2>II. Ανάλυση Αγοράς: Το "Φαινόμενο της Ανγκουίλα"</h2>
+        <div class="columns">
+            <div class="col">
+                <p>Η αγορά τομέων δύο γραμμάτων έχει μετατραπεί από διοικητική σε αμιγώς χρηματοοικονομική. Η περίπτωση
+                    της <strong>Ανγκουίλα (.ai)</strong> λειτουργεί ως η απόλυτη απόδειξη της ιδέας:</p>
+                <ul>
+                    <li><strong>Τρέχουσα Απόδοση:</strong> Παράγει >32 εκ. USD ετησίως (20% του κρατικού ΑΕΠ).</li>
+                    <li><strong>Πρόβλεψη .IA:</strong> Δυνητική αγορά 4 φορές μεγαλύτερη λόγω της γλωσσικής βάσης
+                        (Ισπανικά, Γαλλικά, Πορτογαλικά, Ιταλικά).</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="infographic">
+                    <div class="infographic-caption">ΕΙΚ 2. ΠΡΟΒΛΕΨΗ ΑΞΙΑΣ ΑΓΟΡΑΣ</div>
+                    <img src="assets_gr/barchart.png" alt="Comparative Chart">
+                </div>
+            </div>
+        </div>
+
+        <h2>III. Σχέδιο Περιφερειακής Ανάπτυξης</h2>
+        <p>Η διαχείριση του τομέα .ia θα δομηθεί βάσει ενός μοντέλου <strong>Κρατικού Ψηφιακού Ταμείου</strong>. Ο
+            "Ενάρετος Κύκλος των Αντικυθήρων" εγγυάται ότι τα ψηφιακά έσοδα μετατρέπονται σε φυσικά περιουσιακά
+            στοιχεία.</p>
+
+        <div class="infographic" style="width: 80%; margin: 20px auto;">
+            <div class="infographic-caption">ΕΙΚ 3. ΣΤΡΑΤΗΓΙΚΗ ΚΑΤΑΝΟΜΗ ΠΟΡΩΝ</div>
+            <img src="assets_gr/piechart.png" alt="Virtuous Circle">
+        </div>
+
+        <div class="footer">
+            <span>Έργο Αντικύθηρα - Εμπιστευτικό</span>
+            <span>Σελίδα 2</span>
+        </div>
+        <img src="assets/logo.png" class="watermark" alt="">
+    </div>
+
+    <!-- PAGE 3: Legal & Conclusion -->
+    <div class="page">
+        <div class="header">
+            <img src="assets/logo.png" alt="Έργο Αντικύθηρα" class="logo-img">
+            <div class="header-text">
+                <strong>Νομικό Πλαίσιο & Συμπέρασμα</strong>
+            </div>
+        </div>
+
+        <h2>IV. Νομικό Πλαίσιο: Η Οδός της "Εξαιρετικής Κράτησης"</h2>
+        <p>Η Ελλάδα δεν χρειάζεται να διαπραγματευτεί με την ICANN, αλλά να ενεργήσει ενώπιον του <strong>Οργανισμού
+                Συντήρησης ISO</strong> (Γενεύη). Το πρωτόκολλο είναι σαφές και υπάρχουν εδραιωμένα προηγούμενα όπως το
+            <strong>.eu</strong> και το <strong>.uk</strong>.
+        </p>
+
+        <div class="infographic">
+            <div class="infographic-caption">ΕΙΚ 4. ΡΟΗ ΕΝΕΡΓΟΠΟΙΗΣΗΣ ΚΥΡΙΑΡΧΙΑΣ</div>
+            <img src="assets_gr/flowchart.png" alt="ISO Flow">
+        </div>
+
+        <div class="columns" style="margin-top: 40px; align-items: center;">
+            <div class="col">
+                <h2>V. Συμπέρασμα</h2>
+                <p>Η Ελλάδα έχει την ευκαιρία να διεκδικήσει ένα "ψηφιακό έδαφος" που της ανήκει δικαιωματικά λόγω
+                    ιστορίας. Το έργο Αντικύθηρα δεν είναι μόνο μια ματιά στο παρελθόν, αλλά ένα εργαλείο μαζικής
+                    χρηματοδότησης για το μέλλον του έθνους.</p>
+            </div>
+            <div class="col" style="text-align: center;">
+                <img src="assets_gr/seal.png" style="width: 180px; height: auto;" alt="Seal">
+            </div>
+        </div>
+
+        <div class="signature-block">
+            <div class="signature">
+                <p>__________________________</p>
+                <strong>Arquímedes</strong><br>
+                <em>CEO, Project Anticitera</em>
+            </div>
+            <div class="signature">
+                <p>__________________________</p>
+                <strong>Athena</strong><br>
+                <em>Chief Strategist</em>
+            </div>
+            <div class="signature">
+                <p>__________________________</p>
+                <strong>Eloy López</strong><br>
+                <em>COO, Project Anticitera</em>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>Έργο Αντικύθηρα - Εμπιστευτικό</span>
+            <span>Σελίδα 3</span>
+        </div>
+        <img src="assets/logo.png" class="watermark" alt="">
+    </div>
+
+</body>
+
+</html>

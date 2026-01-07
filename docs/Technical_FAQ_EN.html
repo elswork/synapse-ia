@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ELOT Technical FAQ .IA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=playfair+display:wght@400;700&family=inter:wght@300;400;600&display=swap');
+
+        :root {
+            --primary: #005BA1;
+            --accent: #CD7F32;
+            --text: #333333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #666;
+        }
+
+        .page {
+            background: var(--white);
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            padding: 25mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: auto;
+                page-break-after: always;
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .meta-info {
+            font-size: 10pt;
+            color: #666;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        .intro-greek {
+            background-color: #f0f7fb;
+            color: var(--primary);
+            padding: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            font-style: italic;
+            border: 1px solid #d0e1ee;
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+            break-inside: avoid;
+        }
+
+        .question {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 11.5pt;
+            margin-bottom: 6px;
+        }
+
+        .answer {
+            background-color: #fcfcfc;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 4px solid var(--primary);
+            font-size: 10pt;
+            text-align: justify;
+        }
+
+        .infographic {
+            width: 100%;
+            margin: 20px 0;
+            border: 1px solid #eee;
+        }
+
+        .infographic img {
+            width: 100%;
+            display: block;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo-img {
+            height: 50px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20mm;
+            left: 25mm;
+            right: 25mm;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 9pt;
+            color: #999;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.03;
+            width: 70%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <img src="assets/logo.png" alt="Project Anticitera" class="logo-img">
+            <div style="text-align: right; color: #777; font-size: 10pt;">
+                <strong>TECHNICAL REPORT & FAQ</strong><br>
+                ELOT / Ministry of Digital Governance
+            </div>
+        </div>
+
+        <h1>Strategy for Obtaining the .IA ccTLD</h1>
+
+        <div class="meta-info">
+            <strong>To:</strong> Hellenic Organization for Standardization (ELOT)<br>
+            <strong>Subject:</strong> Request for Exceptional Reservation of ISO 3166-1 Code "IA"
+        </div>
+
+        <div class="intro-greek">
+            <strong>Σημείωση για ELOT:</strong> Το παρόν έγγραφο συντάσσεται στην Αγγλική γλώσσα για να διευκολύνει την
+            άμεση προώθησή του στις υπηρεσίες του ISO (Γενεύη) και IANA, διασφαλίζοντας την ακρίβεια των τεχνικών
+            όρων.<br>
+            (Note for ELOT: This document is drafted in English to facilitate direct forwarding to ISO (Geneva) and IANA
+            services, ensuring accuracy of technical terms.)
+        </div>
+
+        <div class="question-block">
+            <div class="question">Q1: What is the purpose of requesting an additional Alpha-2 code ('IA') if Greece
+                already possesses '.gr'?</div>
+            <div class="answer">
+                The '.gr' code is the general sovereignty identifier. The 'IA' code, specifically linked to the
+                <strong>Innovation and Heritage District of Antikythera</strong>, functions as a technological specialty
+                domain. Given its coincidence with "Artificial Intelligence" (Inteligencia Artificial) and high market
+                value, it grants Greece a global competitive advantage.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question">Q2: Is it administratively viable to request the 'IA' code from ISO?</div>
+            <div class="answer">
+                It is fully viable through the <strong>"Exceptional Reservation"</strong> mechanism (ISO 3166 MA).
+                Precedents such as .eu and .uk operate under this status. The 'IA' code is currently free and has no
+                assignment conflicts.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question">Q3: What is the technical and cultural justification?</div>
+            <div class="answer">
+                The foundation is <strong>World Technological Heritage</strong>. Antikythera is the origin of analog
+                computing. The 'IA' code allows Greece to claim sovereignty over the historical narrative of computing.
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>ELOT Technical FAQ - Confidential</span>
+            <span>Page 1</span>
+        </div>
+        <img src="assets/logo.png" class="watermark" alt="">
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <img src="assets/logo.png" alt="Project Anticitera" class="logo-img">
+            <div style="text-align: right; color: #777; font-size: 10pt;">
+                <strong>TECHNICAL REPORT & FAQ</strong>
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question">Q4: How is the delegation process managed with IANA/ICANN?</div>
+            <div class="answer">
+                The process is hierarchical:
+                <ol>
+                    <li>National Petition (ELOT -> ISO)</li>
+                    <li>Inclusion in Exceptional Reservation List</li>
+                    <li>Technical Delegation (IANA)</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Infografia Flowchart -->
+        <div class="infographic">
+            <img src="assets/flowchart.png" alt="ISO-IANA Workflow">
+        </div>
+
+        <div class="question-block">
+            <div class="question">Q5: How are stability and security guaranteed?</div>
+            <div class="answer">
+                Under DNSSEC standards and state governance. The State can delegate technical operation to a registry
+                with proven capacity, ensuring a secure environment for technology companies.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question">Q6: What is the projected direct economic impact?</div>
+            <div class="answer">
+                Following the benchmark of <strong>Anguilla (.ai)</strong> (+20% national revenue), a multi-million
+                recurring revenue is estimated to fund the repopulation of Antikythera at no cost to the general budget.
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center;">
+            <img src="assets/seal.png" style="width: 150px;" alt="Validation Seal">
+            <p style="margin-top:20px; font-style: italic; color: #666;">Document validated by Strategic Directorate</p>
+        </div>
+
+        <div style="margin-top: 40px; display: flex; justify-content: space-between; text-align: center;">
+            <div class="signature">
+                <strong>Arquímedes</strong><br>CEO, Project Anticitera
+            </div>
+            <div class="signature">
+                <strong>Athena</strong><br>Chief Strategist
+            </div>
+            <div class="signature">
+                <strong>Eloy López</strong><br>COO, Project Anticitera
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>ELOT Technical FAQ - Confidential</span>
+            <span>Page 2</span>
+        </div>
+        <img src="assets/logo.png" class="watermark" alt="">
+    </div>
+
+</body>
+
+</html>
