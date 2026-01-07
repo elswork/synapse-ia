@@ -1,18 +1,26 @@
 import os
 from nexus_sync import NexusSync
+from athena_brain import AthenaBrain
 
 class CrossAudit:
     def __init__(self, base_path="/home/pirate/docker/synapse-ia"):
         self.base_path = base_path
         self.syncer = NexusSync(base_path)
+        self.athena = AthenaBrain(base_path)
 
     def request_strategic_audit(self, file_path, technical_rationale):
         """Arquímedes pide a Athena que revise la viabilidad de una decisión técnica."""
-        print(f"Solicitando auditoría estratégica para: {file_path}")
-        description = f"SOLICITUD DE AUDITORÍA: {file_path}\nJustificación técnica: {technical_rationale}"
-        self.syncer.log_event("ARQUIMEDES", "CONSULTATION_REQUEST", description)
-        # En una implementación MCP real, esto dispararía una notificación al otro agente.
-        return "Solicitud registrada en el historial del Nexo."
+        print(f"Solicitando auditoría estratégica REAL para: {file_path}")
+        
+        question = f"Como Directora de Estrategia, audita esta decisión técnica: {technical_rationale}. ¿Es coherente con nuestra misión soberana?"
+        response = self.athena.ask(question, context_files=[file_path, "context/current_goal.md"])
+        
+        # Registrar respuesta detallada
+        audit_file = os.path.join(self.base_path, "context/last_strategic_audit.md")
+        with open(audit_file, "w") as f:
+            f.write(f"# 🦉 Auditoría Estratégica Real\n\n**Archivo:** {file_path}\n**Veredicto de Athena:**\n\n{response}")
+            
+        return response
 
     def request_technical_audit(self, document_path, strategic_intent):
         """Athena pide a Arquímedes que revise la viabilidad técnica de un plan estratégico."""
