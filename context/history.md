@@ -41,3 +41,8 @@
 * **Agente**: ARQUIMEDES
 * **Descripción**: SOLICITUD DE AUDITORÍA: docs/Technical_FAQ_EN.html
 Justificación técnica: Uso de 'Exceptional Reservation' como término central.
+
+## [2026-01-07 22:13:59] - CONSULTATION_REQUEST
+* **Agente**: ARQUIMEDES
+* **Descripción**: SOLICITUD DE AUDITORÍA: docs/Technical_FAQ_EN.html
+Justificación técnica: Uso de 'Exceptional Reservation' como término central.
