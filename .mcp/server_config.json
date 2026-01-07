@@ -1,0 +1,44 @@
+{
+    "mcpServers": {
+        "archimedes_technical": {
+            "command": "python",
+            "args": [
+                "-m",
+                "synapse_ia.archimedes"
+            ],
+            "capabilities": [
+                "file_management",
+                "dns_tools",
+                "git_operations"
+            ],
+            "context_access": [
+                "/docs",
+                "/context"
+            ]
+        },
+        "athena_strategic": {
+            "command": "python",
+            "args": [
+                "-m",
+                "synapse_ia.athena"
+            ],
+            "capabilities": [
+                "risk_analysis",
+                "document_audit",
+                "strategic_planning"
+            ],
+            "context_access": [
+                "/docs",
+                "/context",
+                "/prompts"
+            ]
+        }
+    },
+    "shared_memory": {
+        "location": "/context",
+        "priority_files": [
+            "current_goal.md",
+            "glossary.md"
+        ]
+    }
+}
