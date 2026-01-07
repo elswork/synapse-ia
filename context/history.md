@@ -36,3 +36,8 @@
 - Definición de Capa 3 del Roadmap
 - Aprobación de flujo de trabajo
 
+
+## [2026-01-07 22:07:41] - CONSULTATION_REQUEST
+* **Agente**: ARQUIMEDES
+* **Descripción**: SOLICITUD DE AUDITORÍA: docs/Technical_FAQ_EN.html
+Justificación técnica: Uso de 'Exceptional Reservation' como término central.
