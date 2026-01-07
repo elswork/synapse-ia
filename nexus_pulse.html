@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synapse-IA | Nexus Pulse</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --bg: #05070a;
+            --panel: #0d1117;
+            --accent: #00d4ff;
+            --athena: #cd7f32;
+            --arquimedes: #005ba1;
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 20px;
+            height: 95vh;
+        }
+
+        .sidebar {
+            background: var(--panel);
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+        }
+
+        .main {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 20px;
+        }
+
+        .header {
+            background: linear-gradient(90deg, var(--arquimedes), var(--athena));
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scroll-area {
+            overflow-y: auto;
+            max-height: 400px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        code {
+            background: #161b22;
+            padding: 2px 4px;
+            border-radius: 4px;
+            color: #ff7b72;
+        }
+
+        .log-entry {
+            border-left: 2px solid var(--arquimedes);
+            padding-left: 12px;
+            margin-bottom: 15px;
+        }
+
+        .log-athena {
+            border-left-color: var(--athena);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            padding: 10px;
+        }
+
+        /* Micro-animations */
+        @keyframes pulse {
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="card">
+            <h2>🦉 DNA Athena</h2>
+            <div class="scroll-area">
+                <p><strong>Role:</strong> Chief Strategist</p>
+                <p><strong>Goal:</strong> .ia ccTLD Sovereignty</p>
+                <p><strong>Status:</strong> Active (Sync Required)</p>
+            </div>
+        </div>
+        <div class="card">
+            <h2>📖 Glosario</h2>
+            <div class="scroll-area">
+                <p><strong>Exceptional Reservation:</strong> Vía legal ISO 3166-1.</p>
+                <p><strong>ELOT:</strong> Mediador nacional griego.</p>
+                <p><strong>ccTLD:</strong> Dominio de país (.ia).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="header">
+            <h1>ANTICITERA NEXUS</h1>
+            <div class="status-badge pulse">● TRANSMISIÓN DE CONTEXTO ACTIVA</div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="card">
+                <h2>🎯 Objetivo Prioritario</h2>
+                <div class="scroll-area">
+                    <p>Lograr la "Reserva Excepcional" del código <strong>.ia</strong> ante el ISO 3166/MA a través de
+                        la mediación del ELOT.</p>
+                    <ul>
+                        <li>Dossier Griego: Finalizado.</li>
+                        <li>FAQ Técnico: Finalizado.</li>
+                        <li>Carta ELOT: Validada.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📜 Historial Reciente</h2>
+                <div class="scroll-area">
+                    <div class="log-entry">
+                        <strong>[2026-01-07]</strong> Génesis Synapse-IA. Protocolo MCP inicializado.
+                    </div>
+                    <div class="log-entry log-athena">
+                        <strong>[2026-01-07]</strong> Athena Identity Manifest cargado en el nexo.
+                    </div>
+                    <div class="log-entry">
+                        <strong>[2026-01-07]</strong> Herramientas Capa 3 (Sync, Logger, Auditor) operativas.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Generado por Arquímedes // Supervisado por el Fundador // Sincronía para Athena
+        </div>
+    </div>
+
+</body>
+
+</html>
