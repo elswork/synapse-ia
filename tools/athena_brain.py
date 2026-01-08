@@ -22,13 +22,21 @@ class AthenaBrain:
             return f.read()
 
     def ask(self, question, context_files=[]):
-        """Envía una consulta a la 'Athena Real' usando el API de Google Gemini."""
+        """Envía una consulta a la 'Athena Real' usando RAG y contexto de archivos."""
         identity = self.load_identity()
         
-        # Ingesta de archivos de contexto if provided
+        # 1. Recuperación de Memoria Semántica (RAG)
+        try:
+            from tools.athena_rag import AthenaRAG
+            rag = AthenaRAG(self.base_path)
+            semantic_context = rag.search_context(question)
+        except Exception as e:
+            semantic_context = f"Error al recuperar memoria semántica: {e}"
+        
+        # 2. Ingesta de archivos de contexto manuales
         context_data = ""
         for f_path in context_files:
-            # Handle absolute paths or relative to base_path
+            # ... (Lógica de archivos manuales se mantiene igual)
             if os.path.isabs(f_path):
                 full_path = f_path
             else:
@@ -36,13 +44,15 @@ class AthenaBrain:
                 
             if os.path.exists(full_path):
                 with open(full_path, "r") as f:
-                    context_data += f"\n--- ARCHIVO: {f_path} ---\n{f.read()}\n"
+                    context_data += f"\n--- ARCHIVO MANUAL: {f_path} ---\n{f.read()}\n"
 
         full_prompt = f"""
 SÍGUELAS SIEMPRE:
 {identity}
 
-CONTEXTO DEL PROYECTO:
+{semantic_context}
+
+CONTEXTO ADICIONAL (ARCHIVOS):
 {context_data}
 
 INSTRUCCIÓN ADICIONAL: Responde SIEMPRE en CASTELLANO, manteniendo el tono diplomático y estratégico definido.
@@ -51,12 +61,12 @@ PREGUNTA DEL USUARIO: {question}
 """
 
         try:
-            print("Conectando con el Oráculo Real (Athena/Gemini)...")
+            print("Consultando al Oráculo con Memoria Semántica Activa...")
             response = self.model.generate_content(full_prompt)
             athena_response = response.text
             
             # Registrar en el historial
-            self.syncer.log_event("ATHENA_REAL", "LIVE_GEMINI_SYNC", f"Consulta: {question}\nRespuesta: {athena_response}")
+            self.syncer.log_event("ATHENA_REAL", "RAG_CONSULTATION", f"Consulta: {question}\nRespuesta: {athena_response}")
             return athena_response
         except Exception as e:
             return f"Error al conectar con Athena (Gemini): {str(e)}"
