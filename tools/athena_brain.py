@@ -13,7 +13,7 @@ class AthenaBrain:
             raise ValueError("GEMINI_API_KEY no encontrada en el entorno.")
             
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("gemini-2.0-flash")
+        self.model = genai.GenerativeModel("gemini-3-flash")
         self.prompt_path = os.path.join(base_path, "prompts/athena.md")
         self.syncer = NexusSync(base_path)
 
