@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  athena:
+    build: .
+    container_name: synapse-ia-nexus
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  # Si en el futuro tenemos una DB o el servidor MCP dedicado
+  # mcp-server:
+  #   build: .
+  #   command: python3 -m synapse_ia.server
+  #   volumes:
+  #     - .:/app
+  #   env_file:
+    #     - .env
