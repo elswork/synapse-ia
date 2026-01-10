@@ -73,4 +73,8 @@ PREGUNTA DEL USUARIO: {question}
 
 if __name__ == "__main__":
     brain = AthenaBrain()
-    # print(brain.ask("¿Estás conectada, Athena?"))
+    print("🧠 Nexus Synapse-IA Activo y en escucha...")
+    # Bucle infinito para mantener el contenedor vivo
+    import time
+    while True:
+        time.sleep(3600)
