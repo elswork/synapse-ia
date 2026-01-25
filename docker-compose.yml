@@ -15,6 +15,9 @@ services:
   athena:
     build: .
     container_name: synapse-ia-nexus
+    ports:
+      - "5050:5050"
+    command: ["./entrypoint.sh"]
     depends_on:
       - db
     volumes:

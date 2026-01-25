@@ -1,0 +1,108 @@
+{
+    "name": "Automatización Protocolo MEP (Legacy Compat)",
+    "nodes": [
+        {
+            "parameters": {
+                "rule": {
+                    "interval": [
+                        {
+                            "field": "cronExpression",
+                            "expression": "0 9,21 * * *"
+                        }
+                    ]
+                }
+            },
+            "name": "Cron (09:00 & 21:00)",
+            "type": "n8n-nodes-base.schedule",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "url": "http://192.168.1.XX:5050/generate-mep",
+                "method": "GET",
+                "options": {}
+            },
+            "name": "Generar Propuesta (HTTP)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 1,
+            "position": [
+                450,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "fromEmail": "elswork@gmail.com",
+                "toEmail": "elswork@gmail.com",
+                "subject": "={{$json[\"email_draft\"].split('\\n')[0] || 'Nueva Propuesta MEP'}}",
+                "text": "=Aquí tienes una nueva propuesta de contacto diplomático:\n\n--------------------------------------------------\n{{$json[\"email_draft\"]}}\n--------------------------------------------------\n\nCandidato: {{$json[\"mep\"][\"name\"]}} ({{$json[\"mep\"][\"country\"]}})\n\n[Copia y pega el contenido entre líneas]",
+                "options": {}
+            },
+            "name": "Enviar Correo (SMTP)",
+            "type": "n8n-nodes-base.email",
+            "typeVersion": 1,
+            "position": [
+                650,
+                300
+            ],
+            "credentials": {
+                "smtp": {
+                    "id": "gmail-app-password",
+                    "name": "Gmail SMTP"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "path": "mep-trigger",
+                "options": {}
+            },
+            "name": "Webhook (Manual)",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                250,
+                500
+            ]
+        }
+    ],
+    "connections": {
+        "Cron (09:00 & 21:00)": {
+            "main": [
+                [
+                    {
+                        "node": "Generar Propuesta (HTTP)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Generar Propuesta (HTTP)": {
+            "main": [
+                [
+                    {
+                        "node": "Enviar Correo (SMTP)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Webhook (Manual)": {
+            "main": [
+                [
+                    {
+                        "node": "Generar Propuesta (HTTP)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

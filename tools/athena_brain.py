@@ -14,8 +14,8 @@ class AthenaBrain:
             
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel("gemini-3-flash-preview")
-        self.prompt_path = os.path.join(base_path, "prompts/athena.md")
-        self.syncer = NexusSync(base_path)
+        self.prompt_path = os.path.join(self.base_path, "prompts/athena.md")
+        self.syncer = NexusSync(self.base_path)
 
     def load_identity(self):
         with open(self.prompt_path, "r") as f:

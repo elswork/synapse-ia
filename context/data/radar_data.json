@@ -1,0 +1,102 @@
+{
+    "metadata": {
+        "last_update": "2026-01-25 11:45:00",
+        "total_meps": 719
+    },
+    "arcontes": [
+        {
+            "id": "256820",
+            "name": "Georgios AFTIAS",
+            "country": "Grecia",
+            "status": "contacted",
+            "last_contact": "2026-01-22 15:16:52",
+            "notes": "Seleccionado para contacto - Nodo Griego",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/256820"
+        },
+        {
+            "id": "197403",
+            "name": "Alex AGIUS SALIBA",
+            "country": "Malta",
+            "status": "contacted",
+            "last_contact": "2026-01-19 23:41:18",
+            "notes": "Seleccionado por su trabajo en el Escudo de Democracia Europeo y algoritmos.",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/197403"
+        },
+        {
+            "id": "197448",
+            "name": "Rasmus ANDRESEN",
+            "country": "Alemania",
+            "status": "contacted",
+            "last_contact": "2026-01-21 19:27:50",
+            "notes": "Seleccionado por Arquímedes - Nodo Alemán",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/197448"
+        },
+        {
+            "id": "204332",
+            "name": "Barry ANDREWS",
+            "country": "Irlanda",
+            "status": "contacted",
+            "last_contact": "2026-01-23 18:38:12",
+            "notes": "Selected for Ireland recruitment - High priority",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/204332"
+        },
+        {
+            "id": "197701",
+            "name": "Konstantinos ARVANITIS",
+            "country": "Grecia",
+            "status": "contacted",
+            "last_contact": "2026-01-21 10:24:21",
+            "notes": "Seleccionado para outreach diplomático por su origen griego.",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/197701"
+        },
+        {
+            "id": "197433",
+            "name": "Katarina BARLEY",
+            "country": "Alemania",
+            "status": "contacted",
+            "last_contact": "2026-01-22 20:30:59",
+            "notes": "Seleccionada por perfil legal y de justicia (VP-EP). Carta redactada.",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/197433"
+        },
+        {
+            "id": "124867",
+            "name": "Brando BENIFEI",
+            "country": "Italia",
+            "status": "contacted",
+            "last_contact": "2026-01-24 18:50:01",
+            "notes": "Seleccionado por su papel crucial como co-ponente de la Ley de IA (AI Act) y para abrir el Nodo Italiano.",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/124867"
+        },
+        {
+            "id": "188096",
+            "name": "Jüri RATAS",
+            "country": "Estonia",
+            "status": "contacted",
+            "last_contact": "2026-01-23 10:54:49",
+            "notes": "Seleccionado como Arconte de alto nivel por su experiencia como ex Primer Ministro de Estonia y líder digital.",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/188096"
+        },
+        {
+            "id": "197475",
+            "name": "Saskia BRICMONT",
+            "country": "Bélgica",
+            "status": "contacted",
+            "last_contact": "2026-01-25 11:45:00",
+            "notes": "Elegida por su perfil en defensa de derechos digitales (LIBE) y para consolidar el Nodo Belga en el corazón de la UE.",
+            "profile_url": "https://www.europarl.europa.eu/meps/es/197475"
+        }
+    ],
+    "stats": {
+        "countries_covered": [
+            "Bélgica",
+            "Italia",
+            "Grecia",
+            "Irlanda",
+            "Alemania",
+            "Estonia",
+            "Malta"
+        ],
+        "total_contacted": 9,
+        "num_countries": 7
+    }
+}
