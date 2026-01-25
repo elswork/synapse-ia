@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "alias": "Eloy",
+        "role": "Arconte / COO",
+        "access_level": 10,
+        "joined_at": "2026-01-08 13:37:46"
+    },
+    {
+        "id": 2,
+        "alias": "Arqu\u00edmedes",
+        "role": "Arconte / CEO",
+        "access_level": 9,
+        "joined_at": "2026-01-08 13:37:46"
+    },
+    {
+        "id": 3,
+        "alias": "Athena",
+        "role": "Arconte / Strategist",
+        "access_level": 9,
+        "joined_at": "2026-01-08 13:37:46"
+    }
+]

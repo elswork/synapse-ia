@@ -3,11 +3,11 @@ import sqlite3
 from tools.embeddings_manager import EmbeddingsManager
 
 class AthenaRAG:
-    def __init__(self, base_path="/home/pirate/docker/synapse-ia"):
-        self.base_path = base_path
-        self.manager = EmbeddingsManager(base_path)
-        self.db_path = os.path.join(base_path, "context/synapse_memory.db")
-        self.history_path = os.path.join(base_path, "context/history.md")
+    def __init__(self, base_path=None):
+        self.base_path = base_path or os.environ.get("BASE_PATH", "/app")
+        self.manager = EmbeddingsManager(self.base_path)
+        self.db_path = os.path.join(self.base_path, "context/synapse_memory.db")
+        self.history_path = os.path.join(self.base_path, "context/history.md")
 
     def sync_index(self):
         """Indexa tanto el history.md como la base de datos de eventos."""
@@ -25,19 +25,25 @@ class AthenaRAG:
                             "content": f"## {sec.strip()}"
                         })
 
-        # 2. Leer Eventos de SQLite
-        if os.path.exists(self.db_path):
-            conn = sqlite3.connect(self.db_path)
-            cursor = conn.cursor()
-            cursor.execute("SELECT agent, event_type, description, timestamp FROM events")
-            rows = cursor.fetchall()
-            for row in rows:
-                documents.append({
-                    "source": "sqlite_events",
-                    "content": f"Agente: {row[0]} | Tipo: {row[1]} | Desc: {row[2]}",
-                    "timestamp": row[3]
-                })
-            conn.close()
+        # 2. Leer Eventos de PostgreSQL
+        db_url = os.environ.get("DATABASE_URL")
+        if db_url:
+            try:
+                import psycopg2
+                conn = psycopg2.connect(db_url)
+                cursor = conn.cursor()
+                cursor.execute("SELECT agent, event_type, description, timestamp FROM events")
+                rows = cursor.fetchall()
+                for row in rows:
+                    documents.append({
+                        "source": "postgres_events",
+                        "content": f"Agente: {row[0]} | Tipo: {row[1]} | Desc: {row[2]}",
+                        "timestamp": str(row[3])
+                    })
+                cursor.close()
+                conn.close()
+            except Exception as e:
+                print(f"Error al leer de PostgreSQL para RAG: {e}")
 
         if documents:
             print(f"Sincronizando índice vectorial con {len(documents)} fragmentos...")
@@ -54,5 +60,5 @@ class AthenaRAG:
 
 if __name__ == "__main__":
     rag = AthenaRAG()
-    # rag.sync_index()
-    # print(rag.search_context("¿Qué se dijo sobre la IANA?"))
+    rag.sync_index()
+    print(rag.search_context("¿Qué se dijo sobre la IANA?"))

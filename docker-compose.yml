@@ -1,22 +1,32 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:15-alpine
+    container_name: synapse-ia-db
+    environment:
+      POSTGRES_DB: synapse_ia
+      POSTGRES_USER: arconte
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
   athena:
     build: .
     container_name: synapse-ia-nexus
+    depends_on:
+      - db
     volumes:
       - .:/app
-      - ./context/synapse_memory.db:/app/context/synapse_memory.db
+    environment:
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@db:5432/synapse_ia
     env_file:
       - .env
     stdin_open: true
     tty: true
     restart: unless-stopped
-    # Si en el futuro tenemos una DB o el servidor MCP dedicado
-    # mcp-server:
-    #   build: .
-    #   command: python3 -m synapse_ia.server
-    #   volumes:
-    #     - .:/app
-    #   env_file:
-    #     - .env
+
+volumes:
+  postgres_data:

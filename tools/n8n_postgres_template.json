@@ -1,0 +1,50 @@
+{
+    "name": "Insertar en Radar (PostgreSQL)",
+    "nodes": [
+        {
+            "parameters": {
+                "operation": "insert",
+                "schema": {
+                    "__rl": true,
+                    "value": "public",
+                    "mode": "list"
+                },
+                "table": {
+                    "__rl": true,
+                    "value": "events",
+                    "mode": "list"
+                },
+                "columns": [
+                    "agent",
+                    "event_type",
+                    "description",
+                    "metadata"
+                ],
+                "valuesSend": "itunes",
+                "mappingMode": "defineBelow",
+                "valueToInsert": [
+                    {
+                        "agent": "N8N_RADAR",
+                        "event_type": "DIPLOMATIC_ALERT",
+                        "description": "={{$json[\"content\"]}}",
+                        "metadata": "={{JSON.stringify($json)}}"
+                    }
+                ]
+            },
+            "name": "Postgres Insert",
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 1,
+            "position": [
+                800,
+                300
+            ],
+            "credentials": {
+                "postgres": {
+                    "id": "anticitera-db-creds",
+                    "name": "Anticitera PostgreSQL"
+                }
+            }
+        }
+    ],
+    "connections": {}
+}

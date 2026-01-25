@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 from nexus_sync import NexusSync
 
 class AthenaBrain:
-    def __init__(self, base_path="/home/pirate/docker/synapse-ia"):
-        self.base_path = base_path
-        load_dotenv(os.path.join(base_path, ".env"))
+    def __init__(self, base_path=None):
+        self.base_path = base_path or os.environ.get("BASE_PATH", "/app")
+        load_dotenv(os.path.join(self.base_path, ".env"))
         
         api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
