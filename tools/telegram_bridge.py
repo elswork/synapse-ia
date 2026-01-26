@@ -30,7 +30,8 @@ print("🏛️ Puente de Arquímedes activado. Esperando órdenes del COO...")
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
-        bot.reply_to(message, "🚫 Acceso denegado. No eres el COO de esta Nación Digital.")
+        print(f"🚫 Acceso denegado para el ID: {message.from_user.id}")
+        bot.reply_to(message, f"🚫 Acceso denegado. No eres el COO de esta Nación Digital. (Tu ID: {message.from_user.id})")
         return
     
     welcome_text = (
@@ -52,6 +53,7 @@ def status_check(message):
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
     if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        print(f"🚫 Intento de mensaje no autorizado de ID: {message.from_user.id}")
         return
 
     # Si es una mención técnica o comando no reconocido, respondemos como Arquímedes
