@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  archimedes-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.bridge
+    container_name: archimedes-telegram-bridge
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10mb"
+        max-file: "3"
