@@ -8,7 +8,7 @@ load_dotenv()
 
 # Configuración
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID") # Para seguridad, solo el COO puede hablarle
+ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID", "").strip() # Para seguridad, solo el COO puede hablarle
 
 if not BOT_TOKEN:
     print("❌ Error: TELEGRAM_BOT_TOKEN no configurado en el .env")
@@ -19,9 +19,10 @@ bot = telebot.TeleBot(BOT_TOKEN)
 # Inicializar el cerebro de Arquímedes
 # Por defecto usaremos el prompt de archimedes.md
 class ArchimedesBrain(AthenaBrain):
-    def __init__(self, base_path="/home/pirate/docker/synapse-ia"):
+    def __init__(self, base_path=None):
+        base_path = base_path or os.environ.get("BASE_PATH", "/app")
         super().__init__(base_path)
-        self.prompt_path = os.path.join(base_path, "prompts/archimedes.md")
+        self.prompt_path = os.path.join(self.base_path, "prompts/archimedes.md")
 
 brain = ArchimedesBrain()
 
@@ -29,9 +30,10 @@ print("🏛️ Puente de Arquímedes activado. Esperando órdenes del COO...")
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
-        print(f"🚫 Acceso denegado para el ID: {message.from_user.id}")
-        bot.reply_to(message, f"🚫 Acceso denegado. No eres el COO de esta Nación Digital. (Tu ID: {message.from_user.id})")
+    current_id = str(message.from_user.id)
+    if ALLOWED_USER_ID and current_id != ALLOWED_USER_ID:
+        print(f"🚫 Acceso denegado para el ID: {current_id}")
+        bot.reply_to(message, "🚫 Acceso denegado. No eres el COO de esta Nación Digital.")
         return
     
     welcome_text = (
