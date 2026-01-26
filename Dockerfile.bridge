@@ -3,6 +3,7 @@ FROM python:3.10-slim
 # Evitar que Python genere archivos .pyc y use el buffer de salida
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
 WORKDIR /app
 
