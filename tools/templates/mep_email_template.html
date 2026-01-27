@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+        .header {
+            background-color: #1a2a40;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .mep-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #1a2a40;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+        .mep-info p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .mep-info span {
+            font-weight: normal;
+            color: #555;
+        }
+        .proposal-body {
+            line-height: 1.6;
+            white-space: pre-wrap;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px dashed #ced4da;
+            color: #2c3e50;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+        .action-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #1a2a40;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ Propuesta Diplomática MEP</h1>
+        </div>
+        <div class="content">
+            <div class="mep-info">
+                <p>Candidato: <span>{{mep_name}}</span></p>
+                <p>País: <span>{{mep_country}}</span></p>
+                <p>E-mail MEP: <span>{{mep_email}}</span></p>
+                <p>Asunto sugerido: <span>{{subject}}</span></p>
+            </div>
+            
+            <h3>Cuerpo del Mensaje (Listo para copiar):</h3>
+            <div class="proposal-body">{{body_text}}</div>
+            
+            <p style="margin-top: 20px; font-size: 14px; color: #555;">
+                Este correo ha sido generado siguiendo el <strong>Protocolo Arquímedes</strong>. 
+                Los enlaces al website oficial y al dossier técnico ya están incluidos en el cuerpo del mensaje.
+            </p>
+        </div>
+        <div class="footer">
+            Generado por el Nexo Anticitera - 2026<br>
+            Soberanía Digital y Gobernanza Ética
+        </div>
+    </div>
+</body>
+</html>
