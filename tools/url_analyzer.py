@@ -1,4 +1,5 @@
 import trafilatura
+import requests
 import os
 import json
 import sys
@@ -11,14 +12,24 @@ class URLAnalyzer:
     def __init__(self, base_path=None):
         self.base_path = base_path or os.environ.get("BASE_PATH", "/app")
         self.brain = AthenaBrain(self.base_path)
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
+        }
 
     def extract_content(self, url):
-        """Extrae el texto limpio de una URL."""
-        downloaded = trafilatura.fetch_url(url)
-        if downloaded:
-            content = trafilatura.extract(downloaded)
+        """Extrae el texto limpio de una URL usando requests + trafilatura."""
+        try:
+            response = requests.get(url, headers=self.headers, timeout=15)
+            response.raise_for_status()
+            
+            # Usar trafilatura sobre el HTML descargado
+            content = trafilatura.extract(response.text)
             return content
-        return None
+        except Exception as e:
+            print(f"Error al extraer contenido: {e}")
+            return None
 
     def analyze_strategic_impact(self, url, content):
         """Envía el contenido a Athena para un análisis estratégico."""
