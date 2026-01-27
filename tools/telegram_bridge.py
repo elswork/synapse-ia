@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from tools.athena_brain import AthenaBrain
 from tools.select_mep_proposal import MEPSelector
 from tools.email_sender import EmailSender
+from tools.url_analyzer import URLAnalyzer
 
 # Cargar variables de entorno
 load_dotenv()
@@ -110,6 +111,40 @@ def pasar_mep(message):
 
     except Exception as e:
         bot.reply_to(message, f"❌ Error crítico en la forja: {str(e)}")
+
+@bot.message_handler(commands=['auditar'])
+def auditar_url(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    # Extraer URL
+    args = message.text.split(maxsplit=1)
+    if len(args) < 2:
+        bot.reply_to(message, "📝 **Protocolo de Auditoría:** Por favor, proporciona una URL después del comando.\nEj: `/auditar https://noticia.eu/ia-act`", parse_mode='Markdown')
+        return
+
+    url = args[1].strip()
+    bot.send_message(message.chat.id, f"🔍 **Arquímedes en observación:** Analizando impacto estratégico de `{url}`...", parse_mode='Markdown')
+    bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        analyzer = URLAnalyzer()
+        content = analyzer.extract_content(url)
+        
+        if not content:
+            bot.reply_to(message, "❌ No he podido extraer el conocimiento de esa fuente. ¿Es una URL válida?")
+            return
+
+        analysis = analyzer.analyze_strategic_impact(url, content)
+        
+        # Enviar respuesta (manejar límites de Telegram si es necesario)
+        if len(analysis) > 4000:
+            analysis = analysis[:4000] + "\n\n*(Truncado por longitud)*"
+            
+        bot.reply_to(message, analysis, parse_mode='Markdown')
+
+    except Exception as e:
+        bot.reply_to(message, f"❌ El Oráculo ha sufrido una interferencia: {str(e)}")
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):

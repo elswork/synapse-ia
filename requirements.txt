@@ -5,4 +5,6 @@ scikit-learn
 requests
 psycopg2-binary
 pyTelegramBotAPI
+trafilatura
+lxml_html_clean
 
