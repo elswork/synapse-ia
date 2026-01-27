@@ -60,10 +60,9 @@ class MEPSelector:
 
         mep_id, mep_data = selection
         
-        # Enlaces estratégicos corregidos
-        web_url = "https://anticitera.deft.work/"
-        dossier_url = "https://anticitera.deft.work/agora/diplomacy/ICE/Anexo_I_ISO_IA_Justificacion.md"
-        blog_url = "https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/"
+        # Enlaces estratégicos corregidos y verificados
+        web_url = "https://anticitera.deft.work/en/"
+        dossier_url = "https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/"
 
         # Generar correo con Athena
         prompt = f"""
@@ -84,8 +83,7 @@ class MEPSelector:
         - No se pide dinero, solo apoyo institucional y validación ética.
         - Enlaces que DEBES incluir en el cuerpo del correo de forma elegante (NO inventes otros enlaces):
             1. Official Website: {web_url}
-            2. Technical & Legal Dossier (ECI): {dossier_url}
-            3. Call for Digital Sovereignty: {blog_url}
+            2. Strategic Framework & Technical Briefing: {dossier_url}
         
         FORMATO DE SALIDA (JSON PURO):
         Debes responder ÚNICAMENTE con un bloque de código JSON válido. No añadas texto fuera del JSON.
