@@ -5,6 +5,7 @@ from tools.athena_brain import AthenaBrain
 from tools.select_mep_proposal import MEPSelector
 from tools.email_sender import EmailSender
 from tools.url_analyzer import URLAnalyzer
+from tools.news_sentinel import NewsSentinel
 
 # Cargar variables de entorno
 load_dotenv()
@@ -145,6 +146,20 @@ def auditar_url(message):
 
     except Exception as e:
         bot.reply_to(message, f"❌ El Oráculo ha sufrido una interferencia: {str(e)}")
+
+@bot.message_handler(commands=['vigilar'])
+def vigilar_noticias(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    bot.reply_to(message, "👀 **Centinela Activado:** Iniciando ronda de vigilancia en los diarios europeos y tecnológicos. Te informaré si detecto algo con alta sinergia...")
+    
+    try:
+        sentinel = NewsSentinel()
+        sentinel.run()
+        bot.send_message(message.chat.id, "✅ **Ronda completada.** Todas las fuentes han sido escrutadas.")
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error en el Centinela: {str(e)}")
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
