@@ -1,5 +1,7 @@
 import os
 import telebot
+import threading
+import time
 from dotenv import load_dotenv
 from tools.athena_brain import AthenaBrain
 from tools.select_mep_proposal import MEPSelector
@@ -48,7 +50,9 @@ def send_welcome(message):
         "/status - Verificar estado del Nexo\n"
         "/radar - Informe rápido del Radar Diplomático\n"
         "/athena [pregunta] - Consulta directa a la Athena Real\n"
-        "/pasar_mep [nombre] - Generar y enviarme una propuesta MEP"
+        "/pasar_mep [nombre] - Generar y enviarme una propuesta MEP\n"
+        "/auditar [url] - Análisis estratégico de una noticia\n"
+        "/vigilar - Activar ronda de vigilancia manual"
     )
     bot.reply_to(message, welcome_text, parse_mode='Markdown')
 
@@ -179,5 +183,23 @@ def handle_message(message):
     except Exception as e:
         bot.reply_to(message, f"❌ Error en la matriz de pensamiento: {str(e)}")
 
+def background_sentinel():
+    """Ejecuta el centinela periódicamente."""
+    print("🛰️ Centinela en segundo plano iniciado.")
+    while True:
+        try:
+            # Esperar una hora antes de la primera ronda para asegurar que el sistema esté estable
+            time.sleep(3600)
+            sentinel = NewsSentinel()
+            sentinel.run()
+        except Exception as e:
+            print(f"Error en el centinela de segundo plano: {e}")
+        
+        # Esperar 2 horas (7200 segundos) entre rondas
+        time.sleep(7200)
+
 if __name__ == "__main__":
+    # Iniciar hilo del centinela
+    threading.Thread(target=background_sentinel, daemon=True).start()
+    
     bot.infinity_polling()
