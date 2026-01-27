@@ -103,7 +103,7 @@ class NewsSentinel:
                     continue
                 
                 analysis = self.analyze_synergy(entry.title, content)
-                if analysis and analysis.get('synergy_score', 0) >= 7:
+                if analysis and analysis.get('synergy_score', 0) >= 8:
                     print(f"🔥 ALTA SINERGIA detectada ({analysis['synergy_score']}/10)")
                     
                     news_data = {
