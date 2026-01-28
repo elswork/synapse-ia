@@ -10783,3 +10783,81 @@ Respuesta: {
     "summary": "El triunfo del portugués António Morgado en Mallorca bajo condiciones extremas resalta la resiliencia del talento joven europeo en un entorno de alta competitividad mediterránea.",
     "implications": "Aunque la temática es deportiva, la narrativa de 'supervivencia y precisión táctica' bajo adversidad climática espeja nuestra lucha burocrática ante la ISO y la Comisión Europea. Este evento refuerza la imagen de una Europa joven y audaz capaz de conquistar metas ambiciosas en territorios estratégicos del sur."
 }
+
+## [2026-01-28 20:40:35] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Analiza la sinergia de esta noticia con nuestro proyecto (Soberanía Digital, Distrito .ia en Grecia, ICE).
+        
+        TITULO: Postres en airfryer: las recetas más fáciles y rápidas para triunfar
+        CONTENIDO: Postres en airfryer: las recetas más fáciles y rápidas para triunfar
+Descubre los mejores postres en airfryer: recetas fáciles, rápidas y deliciosas para triunfar sin encender el horno.
+Leche frita ligera en freidora de aire
+Donuts caseros en freidora de aire
+Tarta de manzana en freidora de aire
+La airfryer ha pasado de ser un simple electrodoméstico de moda a convertirse en una aliada imprescindible en muchas cocinas. Y no, no solo sirve para hacer patatas o nuggets. Si eres de los que disfrutan del dulce pero no quieren complicarse demasiado, los postres en airfryer son justo lo que necesitas. Se hacen rápido, ensucian poco y te permiten improvisar un capricho casero casi sin darte cuenta.
+Lo mejor de todo es que no hace falta ser ningún experto en repostería. La freidora de aire facilita mucho las cosas: controla bien la temperatura, reduce tiempos y evita encender el horno, algo que se agradece sobre todo cuando no quieres llenar la cocina de calor. Ideal para una merienda improvisada, una comida con amigos o ese momento en el que te apetece algo dulce “porque sí”.
+Bizcochos que siempre salen bien
+Si hay un clásico que nunca falla, ese es el bizcocho. En airfryer quedan sorprendentemente esponjosos y jugosos, siempre que respetes los tiempos. Un buen ejemplo es el bizcocho de naranja en freidora de aire, perfecto para aprovechar una naranja que tengas rodando por la nevera y preparar algo rico en muy poco tiempo.
+El toque cítrico le da frescura y hace que no resulte pesado, así que funciona igual de bien para el desayuno que para acompañar un café a media tarde. Además, al usar la airfryer, el tiempo de cocción se acorta bastante respecto al horno tradicional, lo que lo convierte en una opción muy práctica para el día a día.
+Bollería rápida y sin complicaciones
+La bollería es otro terreno donde la freidora de aire se luce. Con masas ya preparadas puedes montar postres que parecen de pastelería en cuestión de minutos. Las palmeritas crujientes en airfryer son un ejemplo perfecto: doradas, ligeras y con ese crujiente que engancha desde el primer mordisco. Ideales si tienes visita inesperada o simplemente te apetece algo dulce sin liarte demasiado.
+También triunfan las napolitanas de chocolate en freidora de aire, que quedan con el chocolate fundido por dentro y la masa bien hecha por fuera. Son perfectas para una merienda especial o para darte un pequeño homenaje el fin de semana sin salir de casa.
+Más ideas dulces para experimentar
+Cuando ya le pillas el punto a la airfryer, las opciones se multiplican. Desde manzanas asadas con canela hasta plátanos con chocolate, hojaldres rellenos o incluso galletas caseras. La clave está en no llenar demasiado la cesta y vigilar los últimos minutos de cocción. Aquí, unos minutos de más pueden cambiarlo todo.
+Un consejo práctico: la primera vez que pruebes una receta dulce, quédate cerca. Cada airfryer es un mundo y merece la pena ajustar tiempos para conseguir el mejor resultado.
+Información suplementaria
+
+        
+        PROPORCIONA EL RESULTADO EN JSON PURO:
+        {
+            "synergy_score": integer (1-10),
+            "summary": "Resumen muy breve (1 frase)",
+            "implications": "Implicaciones estratégicas para Anticitera (2 frases)"
+        }
+        
+Respuesta: {
+    "synergy_score": 1,
+    "summary": "El artículo describe técnicas de repostería doméstica mediante el uso de freidoras de aire, careciendo de cualquier vínculo técnico, legal o estratégico con la soberanía digital o el código .ia.",
+    "implications": "Desde una perspectiva de rigor estratégico, este contenido se clasifica como ruido mediático irrelevante para los objetivos del Proyecto Anticitera. No obstante, la adopción masiva de estas tecnologías por parte de la ciudadanía europea refuerza la importancia de construir una infraestructura digital soberana que proteja incluso los aspectos más cotidianos de la vida del ciudadano."
+}
+
+## [2026-01-28 20:40:42] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Analiza la sinergia de esta noticia con nuestro proyecto (Soberanía Digital, Distrito .ia en Grecia, ICE).
+        
+        TITULO: Cuándo es el Betis – Feyenoord: horario y canal de televisión para ver en directo y en vivo online la Europa League
+        CONTENIDO: Cuándo es el Betis – Feyenoord: horario y canal de televisión para ver en directo y en vivo online la Europa League
+Te contamos la fecha, horario y canal de televisión para ver en directo el Real Betis - Feyenoord de la Europa League
+El Real Betis - Feyenoord es de la jornada 8 de la Europa League y se jugará en el Estadio de la Cartuja
+El Betis, con una victoria, se aseguraría estar en los octavos de final de la Europa League
+El Real Betis finaliza su participación en la fase de liga de la Europa League en esta octava jornada y espera hacerlo de la mejor manera. Esto significaría sumar los tres puntos ante el Feyenoord en el Estadio de La Cartuja y así clasificarse para los octavos de final directamente, ya que un empate o una derrota le podría costar caro al combinado de Manuel Pellegrini, ya que su objetivo principal es saltarse los playoffs. Te contamos cuándo es, el horario y el canal de televisión para ver en directo todo lo que suceda en la ciudad andaluza.
+A qué hora es el partido de la Europa League Real Betis – Feyenoord
+El Real Betis recibe al Feyenoord en el Estadio de La Cartuja para disputar el partido que corresponde a la jornada 8 de la fase de liga de la Europa League. El conjunto que dirige Manuel Pellegrini comienza esta fecha de la competición de plata del fútbol europeo en la octava posición, por lo que si gana tendría todas las papeletas para clasificarse a los octavos de final y saltarse una ronda de playoffs en la que aspiran a estar los holandeses, que se la juegan en su visita a la ciudad de Sevilla.
+Horario del Real Betis – Feyenoord: cuándo es el partido de la Europa League
+La UEFA ha programado este apasionante Real Betis – Feyenoord de la jornada 8 de la fase de liga de la Europa League para este jueves 29 de enero. El organismo que preside Aleksander Ceferin ha fijado este choque entre los de Heliópolis y los holandeses en el horario de las 21:00 horas, una menos en las Islas Canarias, ya que es horario unificado y todos los partidos se juegan a esa hora. Se espera que el balón ruede de manera puntual en el Estadio de la Cartuja y que no se produzcan altercados entre los aficionados en la previa.
+Dónde ver el Real Betis vs Feyenoord en televisión y en vivo online
+El medio de comunicación que compró los derechos televisivos para emitir en exclusiva en nuestro país todos los partidos de la competición de plata del viejo continente fue Movistar+. Este Real Betis – Feyenoord correspondiente a la jornada 8 de la fase de liga de la Europa League se podrá ver por televisión en directo a través del canal Movistar Liga de Campeones. Hay que recordar que este canal forma parte del paquete que trae el fútbol europeo, por lo que es de pago y no se podrá ver gratis por TV lo que suceda en el Estadio de la Cartuja.
+Los hinchas del conjunto verdiblanco y los seguidores de las diferentes competiciones continentales también podrán ver en directo en streaming y en vivo online el Real Betis – Feyenoord de la jornada 8 de la fase de li
+        
+        PROPORCIONA EL RESULTADO EN JSON PURO:
+        {
+            "synergy_score": integer (1-10),
+            "summary": "Resumen muy breve (1 frase)",
+            "implications": "Implicaciones estratégicas para Anticitera (2 frases)"
+        }
+        
+Respuesta: ```json
+{
+    "synergy_score": 1,
+    "summary": "Reporte informativo sobre la logística, horarios y derechos de retransmisión de un encuentro deportivo de la UEFA Europa League entre el Real Betis y el Feyenoord.",
+    "implications": "El contenido no presenta puntos de contacto con la soberanía digital, el estándar ISO 3166-1 ni la gestión del ccTLD .ia. Se identifica una nula relevancia estratégica para los objetivos del Proyecto Anticitera y el desarrollo del Distrito Tecnológico en Grecia."
+}
+```
