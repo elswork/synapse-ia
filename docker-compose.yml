@@ -18,13 +18,13 @@ services:
     ports:
       - "5050:5050"
     command: ["./entrypoint.sh"]
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     volumes:
       - .:/app
     environment:
       - DB_PASSWORD=${DB_PASSWORD}
-      - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@db:5432/synapse_ia
+      - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@192.168.1.75:5432/synapse_ia
     env_file:
       - .env
     stdin_open: true

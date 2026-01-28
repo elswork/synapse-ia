@@ -12,7 +12,7 @@ if not API_KEY:
     exit(1)
 
 def consult_athena(query):
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={API_KEY}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key={API_KEY}"
     
     # System prompt based on Athena's Persona
     system_instruction = """Eres Athena, la Estratega Principal del Proyecto Anticitera.
