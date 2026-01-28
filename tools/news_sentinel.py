@@ -46,14 +46,18 @@ class NewsSentinel:
 
     def store_news(self, data):
         query = """
-        INSERT INTO news_intel (title, url, source, published_at, full_content, summary, implications, synergy_score)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO news_intel (title, url, source, published_at, full_content, summary, implications, synergy_score, is_approved)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        RETURNING id
         """
         self.cursor.execute(query, (
             data['title'], data['url'], data['source'], data['published_at'],
-            data['full_content'], data['summary'], data['implications'], data['synergy_score']
+            data['full_content'], data['summary'], data['implications'], data['synergy_score'],
+            False  # is_approved default to False
         ))
+        new_id = self.cursor.fetchone()[0]
         self.conn.commit()
+        return new_id
 
     def analyze_synergy(self, title, content):
         """Usa a Athena para evaluar la sinergia de la noticia."""
@@ -116,7 +120,8 @@ class NewsSentinel:
                         'implications': analysis['implications'],
                         'synergy_score': analysis['synergy_score']
                     }
-                    self.store_news(news_data)
+                    news_id = self.store_news(news_data)
+                    news_data['id'] = news_id
                     self.notify_telegram(news_data)
                 else:
                     # Guardar como analizada pero con baja sinergia para no repetir
@@ -128,11 +133,13 @@ class NewsSentinel:
         import telebot
         bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
         message = f"🚨 **CENTINELA DE NOTICIAS: ALTA SINERGIA** ({news['synergy_score']}/10)\n\n"
+        message += f"🆔 **ID:** `{news['id']}`\n"
         message += f"📰 **Fuente:** {news['source']}\n"
         message += f"📌 **Título:** {news['title']}\n"
         message += f"🔗 [Leer noticia]({news['url']})\n\n"
         message += f"📝 **Resumen:** {news['summary']}\n\n"
-        message += f"🏛️ **Implicaciones para Anticitera:**\n{news['implications']}"
+        message += f"🏛️ **Implicaciones para Anticitera:**\n{news['implications']}\n\n"
+        message += f"✅ Para aprobar y persistir: `/aprobar {news['id']}`"
         
         try:
             bot.send_message(TELEGRAM_ALLOWED_USER_ID, message, parse_mode='Markdown')

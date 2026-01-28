@@ -52,7 +52,8 @@ def send_welcome(message):
         "/athena [pregunta] - Consulta directa a la Athena Real\n"
         "/pasar_mep [nombre] - Generar y enviarme una propuesta MEP\n"
         "/auditar [url] - Análisis estratégico de una noticia\n"
-        "/vigilar - Activar ronda de vigilancia manual"
+        "/vigilar - Activar ronda de vigilancia manual\n"
+        "/aprobar [id] - Aprobar una noticia para su persistencia final"
     )
     bot.reply_to(message, welcome_text, parse_mode='Markdown')
 
@@ -165,6 +166,38 @@ def vigilar_noticias(message):
     except Exception as e:
         bot.reply_to(message, f"❌ Error en el Centinela: {str(e)}")
 
+@bot.message_handler(commands=['aprobar'])
+def aprobar_noticia(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    args = message.text.split()
+    if len(args) < 2:
+        bot.reply_to(message, "❌ **Uso:** `/aprobar [ID]`")
+        return
+
+    news_id = args[1]
+    bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        import psycopg2
+        DB_PASSWORD = os.environ.get("DB_PASSWORD")
+        DATABASE_URL = os.environ.get("DATABASE_URL", f"postgresql://arconte:{DB_PASSWORD}@db:5432/synapse_ia")
+        conn = psycopg2.connect(DATABASE_URL)
+        cursor = conn.cursor()
+        
+        cursor.execute("UPDATE news_intel SET is_approved = True WHERE id = %s", (news_id,))
+        if cursor.rowcount > 0:
+            bot.reply_to(message, f"✅ **Noticia {news_id} aprobada.** Ahora es parte oficial de la memoria de Anticitera.")
+        else:
+            bot.reply_to(message, f"❌ No he encontrado ninguna noticia con el ID `{news_id}`.")
+        
+        conn.commit()
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error al acceder a la base de datos: {str(e)}")
+
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
     if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
@@ -189,16 +222,25 @@ def background_sentinel():
     while True:
         try:
             # Esperar una hora antes de la primera ronda para asegurar que el sistema esté estable
-            time.sleep(3600)
+            # time.sleep(3600) # Comentado para permitir ejecución más rápida en reinicio si es necesario
             sentinel = NewsSentinel()
             sentinel.run()
         except Exception as e:
             print(f"Error en el centinela de segundo plano: {e}")
         
-        # Esperar 2 horas (7200 segundos) entre rondas
-        time.sleep(7200)
+        # Esperar 4 horas (14400 segundos) entre rondas
+        time.sleep(14400)
 
 if __name__ == "__main__":
+    # Ejecutar migración/limpieza inicial solicitada por el COO
+    try:
+        print("🔧 Ejecutando migración de base de datos...")
+        # Importar y ejecutar la lógica de migrate_news.py
+        from tools.migrate_news import run_migration
+        run_migration()
+    except Exception as e:
+        print(f"⚠️ Error en migración automática: {e}")
+
     # Iniciar hilo del centinela
     threading.Thread(target=background_sentinel, daemon=True).start()
     
