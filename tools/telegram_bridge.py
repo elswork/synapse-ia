@@ -8,6 +8,8 @@ from tools.select_mep_proposal import MEPSelector
 from tools.email_sender import EmailSender
 from tools.url_analyzer import URLAnalyzer
 from tools.news_sentinel import NewsSentinel
+import psutil
+import subprocess
 
 # Cargar variables de entorno
 load_dotenv()
@@ -60,6 +62,52 @@ def send_welcome(message):
 @bot.message_handler(commands=['status'])
 def status_check(message):
     bot.reply_to(message, "✅ Todos los sistemas operativos en el Nodo M2. Nexo sincronizado.")
+
+@bot.message_handler(commands=['telemetria'])
+def telemetria(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    bot.send_chat_action(message.chat.id, 'typing')
+    
+    # 1. Telemetría M2 (Local)
+    try:
+        cpu_m2 = psutil.cpu_percent(interval=1)
+        ram_m2 = psutil.virtual_memory().percent
+    except Exception:
+        try:
+            # Fallback a comandos de sistema si psutil falla (ej. en entornos restringidos)
+            cpu_m2 = subprocess.check_output("top -bn1 | grep 'Cpu(s)' | awk '{print $2 + $4}'", shell=True, text=True).strip()
+            ram_m2 = subprocess.check_output("free | grep Mem | awk '{print $3/$2 * 100.0}'", shell=True, text=True).strip()
+            cpu_m2 = f"{float(cpu_m2):.1f}"
+            ram_m2 = f"{float(ram_m2):.1f}"
+        except Exception:
+            cpu_m2 = "N/A"
+            ram_m2 = "N/A"
+    
+    # 2. Telemetría HC1 (Remoto vía SSH)
+    try:
+        # Intentamos obtener carga y RAM de HC1
+        ssh_cmd = "ssh -o ConnectTimeout=3 192.168.1.27 \"top -bn1 | grep 'Cpu(s)' | awk '{print \\$2 + \\$4}' && free | grep Mem | awk '{print \\$3/\\$2 * 100.0}'\""
+        output = subprocess.check_output(ssh_cmd, shell=True, text=True).splitlines()
+        cpu_hc1 = float(output[0]) if len(output) > 0 else "N/A"
+        ram_hc1 = float(output[1]) if len(output) > 1 else "N/A"
+        status_hc1 = "🟢 Online"
+    except Exception as e:
+        cpu_hc1 = "N/A"
+        ram_hc1 = "N/A"
+        status_hc1 = "🔴 Offline"
+
+    telemetry_text = (
+        "🏛️ **Informe de Telemetría Anticitera**\n\n"
+        "**[Nodo M2] - Arquitecto (Maestro)**\n"
+        f"⚡ CPU: `{cpu_m2}%` | 🧠 RAM: `{ram_m2}%` | 🟢 Online\n\n"
+        "**[Nodo HC1] - Gatekeeper (Puente)**\n"
+        f"⚡ CPU: `{cpu_hc1}%` | 🧠 RAM: `{ram_hc1}%` | {status_hc1}\n\n"
+        "--- \n*Soberanía certificada por el Nexo.*"
+    )
+    
+    bot.reply_to(message, telemetry_text, parse_mode='Markdown')
 
 @bot.message_handler(commands=['pasar_mep'])
 def pasar_mep(message):
