@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Disable Screensaver
+Comment=Prevent screen from turning off (Power Management)
+Exec=bash -c "gsettings set org.gnome.desktop.session idle-delay 0; gsettings set org.gnome.desktop.screensaver lock-enabled false; gsettings set org.gnome.desktop.screensaver idle-activation-enabled false; xset s off -dpms"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true

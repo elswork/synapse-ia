@@ -28,9 +28,74 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-90deg);
+            transform: translate(-50%, -50%) rotate(90deg);
             display: flex;
             flex-direction: column;
+        }
+
+        /* Screensaver styles */
+        /* Screensaver styles */
+        #screensaver {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        #screensaver.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #saver_time {
+            font-size: 14rem;
+            /* Masivo */
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+            line-height: 0.9;
+        }
+
+        #saver_date {
+            font-size: 4rem;
+            /* Mucho más grande */
+            color: #888;
+            margin-top: 20px;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        #saver_weather {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        #saver_temp {
+            font-size: 7rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        #saver_icon {
+            font-size: 7rem;
+        }
+
+        #saver_loc {
+            font-size: 2rem;
+            color: #555;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         .header {
@@ -132,6 +197,17 @@
 </head>
 
 <body>
+    <!-- Screensaver Overlay -->
+    <div id="screensaver" onclick="dismissScreensaver()">
+        <div id="saver_time">--:--</div>
+        <div id="saver_date">-- -- --</div>
+        <div id="saver_weather">
+            <div id="saver_icon">🌤️</div>
+            <div id="saver_temp">--°</div>
+        </div>
+        <div id="saver_loc">Alcorcón, ES</div>
+    </div>
+
     <div class="header">
         <h1>ANTICITERA NEXUS M2</h1>
         <div id="clock" style="font-size: 2rem; font-weight: 600;"></div>
@@ -165,10 +241,80 @@
 
     <div class="footer">
         <button class="btn" onclick="fetchStats()">ACTUALIZAR</button>
-        <button class="btn" style="background:#555; color:#fff;" onclick="window.history.back()">VOLVER</button>
+        <button class="btn" style="background:#555; color:#fff;" onclick="activateScreensaver()">REPOSO</button>
     </div>
 
     <script>
+        let idleTime = 0;
+        const screensaver = document.getElementById('screensaver');
+
+        // Configurar interacción
+        function dismissScreensaver() {
+            screensaver.classList.add('hidden');
+            idleTime = 0;
+        }
+
+        function activateScreensaver() {
+            screensaver.classList.remove('hidden');
+            fetchWeather(); // Actualizar tiempo al activar
+        }
+
+        // Detector de inactividad (30 segundos)
+        setInterval(() => {
+            idleTime++;
+            if (idleTime >= 30) {
+                if (screensaver.classList.contains('hidden')) {
+                    activateScreensaver();
+                }
+            }
+        }, 1000);
+
+        // Reset inactividad con cualquier toque
+        document.body.addEventListener('click', () => { idleTime = 0; });
+        document.body.addEventListener('touchstart', () => { idleTime = 0; });
+
+        // Reloj y Fecha del Screensaver
+        function updateTime() {
+            const now = new Date();
+            // Reloj Dashboard
+            document.getElementById('clock').innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+            // Reloj Screensaver
+            document.getElementById('saver_time').innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateStr = now.toLocaleDateString('es-ES', options);
+            document.getElementById('saver_date').innerText = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+        }
+
+        // Clima (Open-Meteo)
+        async function fetchWeather() {
+            try {
+                // Alcorcón coords: 40.3458, -3.8249
+                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=40.3458&longitude=-3.8249&current=temperature_2m,weather_code&timezone=Europe%2FMadrid');
+                const data = await res.json();
+
+                const temp = Math.round(data.current.temperature_2m);
+                const code = data.current.weather_code;
+
+                // Mapeo simple de códigos WMO a emojis
+                let icon = '❓';
+                if (code === 0) icon = '☀️';
+                else if (code >= 1 && code <= 3) icon = '⛅';
+                else if (code >= 45 && code <= 48) icon = '🌫️';
+                else if (code >= 51 && code <= 67) icon = '🌧️';
+                else if (code >= 71 && code <= 77) icon = '❄️';
+                else if (code >= 80 && code <= 82) icon = '🌦️';
+                else if (code >= 95) icon = '⚡';
+
+                document.getElementById('saver_temp').innerText = temp + '°C';
+                document.getElementById('saver_icon').innerText = icon;
+
+            } catch (e) {
+                console.error("Weather error:", e);
+            }
+        }
+
         async function fetchStats() {
             try {
                 // Ahora consultamos la API que corre en el HOST
@@ -181,11 +327,15 @@
                 console.error("Error fetching stats:", e);
                 document.getElementById('cpu_val').style.color = 'var(--danger)';
             }
-            document.getElementById('clock').innerText = new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         }
 
+        setInterval(updateTime, 1000);
         setInterval(fetchStats, 2000);
+        setInterval(fetchWeather, 600000); // Clima cada 10 mins
+
+        updateTime();
         fetchStats();
+        fetchWeather();
     </script>
 </body>
 
