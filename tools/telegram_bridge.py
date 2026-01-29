@@ -58,7 +58,7 @@ def send_welcome(message):
         "/auditar [url] - Análisis de impacto estratégico\n"
         "/vigilar - Ronda de vigilancia de noticias\n\n"
         "🏛️ **Diplomacia**\n"
-        "/pasar_mep [filtro] - Forjar propuesta para MEP\n"
+        "/pasar\_mep [filtro] - Forjar propuesta para MEP\n"
         "/aprobar [id] - Validar noticia para la memoria"
     )
     bot.reply_to(message, help_text, parse_mode='Markdown')
