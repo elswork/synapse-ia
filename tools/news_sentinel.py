@@ -60,32 +60,59 @@ class NewsSentinel:
         return new_id
 
     def analyze_synergy(self, title, content):
-        """Usa a Athena para evaluar la sinergia de la noticia."""
+        """Usa a Athena para evaluar la sinergia de la noticia con una matriz multidimensional."""
         prompt = f"""
         Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
         
         TAREA:
-        Analiza la sinergia de esta noticia con nuestro proyecto (Soberanía Digital, Distrito .ia en Grecia, ICE).
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
         
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
         TITULO: {title}
         CONTENIDO: {content[:3000]}
         
-        PROPORCIONA EL RESULTADO EN JSON PURO:
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
         {{
-            "synergy_score": integer (1-10),
-            "summary": "Resumen muy breve (1 frase)",
-            "implications": "Implicaciones estratégicas para Anticitera (2 frases)"
+            "scores": {{
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            }},
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
         }}
         """
         try:
             response = self.brain.ask(prompt)
-            # Extraer JSON del bloque de código si Athena lo rodea
+            # Limpieza de la respuesta para asegurar JSON válido
             if "```json" in response:
                 response = response.split("```json")[1].split("```")[0].strip()
             elif "```" in response:
                 response = response.split("```")[1].split("```")[0].strip()
             
-            return json.loads(response)
+            data = json.loads(response)
+            # Asegurar que el veredicto se basa en un umbral estricto (media >= 8.5 o algún eje == 10)
+            avg = data.get('average_score', 0)
+            max_score = max(data.get('scores', {}).values()) if data.get('scores') else 0
+            
+            if avg >= 8.5 or max_score == 10:
+                data['verdict'] = "APROBADO"
+            else:
+                data['verdict'] = "RECHAZADO"
+            
+            return data
         except Exception as e:
             print(f"Error analizando sinergia: {e}")
             return None
@@ -107,8 +134,8 @@ class NewsSentinel:
                     continue
                 
                 analysis = self.analyze_synergy(entry.title, content)
-                if analysis and analysis.get('synergy_score', 0) >= 8:
-                    print(f"🔥 ALTA SINERGIA detectada ({analysis['synergy_score']}/10)")
+                if analysis and analysis.get('verdict') == "APROBADO":
+                    print(f"🔥 ALTA SINERGIA detectada (Media: {analysis['average_score']}/10)")
                     
                     news_data = {
                         'title': entry.title,
@@ -118,21 +145,27 @@ class NewsSentinel:
                         'full_content': content,
                         'summary': analysis['summary'],
                         'implications': analysis['implications'],
-                        'synergy_score': analysis['synergy_score']
+                        'synergy_score': analysis['average_score']
                     }
                     news_id = self.store_news(news_data)
                     news_data['id'] = news_id
+                    news_data['detailed_scores'] = analysis['scores']
                     self.notify_telegram(news_data)
                 else:
                     # Guardar como analizada pero con baja sinergia para no repetir
+                    score = analysis.get('average_score', 0) if analysis else 0
                     self.cursor.execute("INSERT INTO news_intel (title, url, source, synergy_score) VALUES (%s, %s, %s, %s)", 
-                                       (entry.title, url, source_name, analysis.get('synergy_score', 0) if analysis else 0))
+                                       (entry.title, url, source_name, score))
                     self.conn.commit()
 
     def notify_telegram(self, news):
         import telebot
         bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
-        message = f"🚨 **CENTINELA DE NOTICIAS: ALTA SINERGIA** ({news['synergy_score']}/10)\n\n"
+        scores = news.get('detailed_scores', {})
+        
+        message = f"🚨 **CENTINELA DE HIERRO: ALTA SINERGIA**\n\n"
+        message += f"📊 **Puntuación Media:** `{news['synergy_score']}/10`\n"
+        message += f"🔹 ISO: `{scores.get('iso_sovereignty', 0)}` | 🔹 EU: `{scores.get('eu_digital_rights', 0)}` | 🔹 Geo: `{scores.get('geopolitical_intel', 0)}`\n\n"
         message += f"🆔 **ID:** `{news['id']}`\n"
         message += f"📰 **Fuente:** {news['source']}\n"
         message += f"📌 **Título:** {news['title']}\n"
