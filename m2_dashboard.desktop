@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=firefox --kiosk /home/pirate/docker/synapse-ia/monitor_m2.html
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[es_ES]=M2 Dashboard
+Name=M2 Dashboard
+Comment[es_ES]=Lanzar monitor de Anticitera en pantalla completa
+Comment=Lanzar monitor de Anticitera en pantalla completa
