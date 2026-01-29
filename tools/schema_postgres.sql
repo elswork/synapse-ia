@@ -28,6 +28,15 @@ CREATE TABLE IF NOT EXISTS citizens (
     joined_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Tabla de TODOs (Tareas Plan X)
+CREATE TABLE IF NOT EXISTS todos (
+    id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    description TEXT NOT NULL,
+    analysis TEXT,
+    status TEXT DEFAULT 'pending'
+);
+
 -- Inserción de Arcontes iniciales
 INSERT INTO citizens (alias, role, access_level) VALUES 
 ('Eloy', 'Arconte / COO', 10),

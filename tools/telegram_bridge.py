@@ -36,7 +36,7 @@ brain = ArchimedesBrain()
 
 print("🏛️ Puente de Arquímedes activado. Esperando órdenes del COO...")
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start', 'help', 'ayuda'])
 def send_welcome(message):
     current_id = str(message.from_user.id)
     if ALLOWED_USER_ID and current_id != ALLOWED_USER_ID:
@@ -44,20 +44,24 @@ def send_welcome(message):
         bot.reply_to(message, "🚫 Acceso denegado. No eres el COO de esta Nación Digital.")
         return
     
-    welcome_text = (
-        "🏛️ **Protocolo Arquímedes Activo**\n\n"
-        "Saludos, COO. He establecido este puente en el M2 para mantener una línea de mando 24/7.\n"
-        "Estoy listo para procesar tus directivas estratégicas y consultas al Oráculo.\n\n"
-        "Comandos disponibles:\n"
-        "/status - Verificar estado del Nexo\n"
-        "/radar - Informe rápido del Radar Diplomático\n"
-        "/athena [pregunta] - Consulta directa a la Athena Real\n"
-        "/pasar_mep [nombre] - Generar y enviarme una propuesta MEP\n"
-        "/auditar [url] - Análisis estratégico de una noticia\n"
-        "/vigilar - Activar ronda de vigilancia manual\n"
-        "/aprobar [id] - Aprobar una noticia para su persistencia final"
+    help_text = (
+        "🏛️ **Centro de Mando Anticitera**\n\n"
+        "Saludos, COO. Utiliza estos comandos para dirigir la Nación Digital:\n\n"
+        "🛰️ **Infraestructura**\n"
+        "/status - Estado de los sistemas operativos\n"
+        "/telemetria - Signos vitales de M2 y HC1\n\n"
+        "📜 **Gobernanza y Tareas**\n"
+        "/todo [tarea] - Registrar nueva directiva con análisis de Arquímedes\n"
+        "/radar - Informe del Radar Diplomático\n\n"
+        "🦉 **Inteligencia (Athena)**\n"
+        "/athena [pregunta] - Consulta al Oráculo\n"
+        "/auditar [url] - Análisis de impacto estratégico\n"
+        "/vigilar - Ronda de vigilancia de noticias\n\n"
+        "🏛️ **Diplomacia**\n"
+        "/pasar_mep [filtro] - Forjar propuesta para MEP\n"
+        "/aprobar [id] - Validar noticia para la memoria"
     )
-    bot.reply_to(message, welcome_text, parse_mode='Markdown')
+    bot.reply_to(message, help_text, parse_mode='Markdown')
 
 @bot.message_handler(commands=['status'])
 def status_check(message):
@@ -245,6 +249,54 @@ def aprobar_noticia(message):
         conn.close()
     except Exception as e:
         bot.reply_to(message, f"❌ Error al acceder a la base de datos: {str(e)}")
+
+@bot.message_handler(commands=['todo'])
+def add_todo(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    args = message.text.split(maxsplit=1)
+    if len(args) < 2:
+        bot.reply_to(message, "📝 **Protocolo de Tareas:** Proporciona una descripción.\nEj: `/todo Configurar firewall en HC1`", parse_mode='Markdown')
+        return
+
+    description = args[1].strip()
+    bot.send_message(message.chat.id, "🧠 **Arquímedes analizando...** Evaluando impacto y prioridades para la directiva.", parse_mode='Markdown')
+    bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        # Análisis de Arquímedes
+        analysis_query = f"Analiza esta tarea para el Proyecto Anticitera y da tus conclusiones breves: {description}"
+        analysis = brain.ask(analysis_query)
+
+        # Persistencia en PostgreSQL (M2)
+        import psycopg2
+        DB_PASSWORD = os.environ.get("DB_PASSWORD")
+        # Por defecto apuntamos al maestro M2 si estamos fuera del docker network
+        DATABASE_URL = os.environ.get("DATABASE_URL", f"postgresql://arconte:{DB_PASSWORD}@192.168.1.75:5432/synapse_ia")
+        
+        conn = psycopg2.connect(DATABASE_URL)
+        cursor = conn.cursor()
+        
+        cursor.execute(
+            "INSERT INTO todos (description, analysis) VALUES (%s, %s) RETURNING id",
+            (description, analysis)
+        )
+        todo_id = cursor.fetchone()[0]
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        response_text = (
+            f"✅ **Tarea Registrada (ID: {todo_id})**\n\n"
+            f"**Descripción:** {description}\n\n"
+            f"📜 **Análisis de Arquímedes:**\n{analysis}\n\n"
+            "--- \n*Directiva almacenada en el Maestro M2.*"
+        )
+        bot.reply_to(message, response_text, parse_mode='Markdown')
+
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error en el registro de la directiva: {str(e)}")
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):

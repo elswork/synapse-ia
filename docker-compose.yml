@@ -17,7 +17,7 @@ services:
     container_name: synapse-ia-nexus
     ports:
       - "5050:5050"
-    command: ["./entrypoint.sh"]
+    command: [ "./entrypoint.sh" ]
     # depends_on:
     #   - db
     volumes:
@@ -33,3 +33,5 @@ services:
 
 volumes:
   postgres_data:
+    external: true
+    name: synapse-ia_postgres_data
