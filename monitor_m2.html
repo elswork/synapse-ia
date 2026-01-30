@@ -246,23 +246,45 @@
 
     <script>
         let idleTime = 0;
+        const IDLE_LIMIT = 300; // 5 minutos (300 segundos)
+        let isDimmed = false;
         const screensaver = document.getElementById('screensaver');
+
+        async function setBrightness(percent) {
+            try {
+                await fetch('http://localhost:5051/brightness', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ percent })
+                });
+            } catch (e) {
+                console.error("Error ajustando brillo:", e);
+            }
+        }
 
         // Configurar interacción
         function dismissScreensaver() {
             screensaver.classList.add('hidden');
             idleTime = 0;
+            if (isDimmed) {
+                setBrightness(100);
+                isDimmed = false;
+            }
         }
 
         function activateScreensaver() {
             screensaver.classList.remove('hidden');
             fetchWeather(); // Actualizar tiempo al activar
+            if (!isDimmed) {
+                setBrightness(25);
+                isDimmed = true;
+            }
         }
 
-        // Detector de inactividad (30 segundos)
+        // Detector de inactividad
         setInterval(() => {
             idleTime++;
-            if (idleTime >= 30) {
+            if (idleTime >= IDLE_LIMIT) {
                 if (screensaver.classList.contains('hidden')) {
                     activateScreensaver();
                 }
@@ -270,8 +292,8 @@
         }, 1000);
 
         // Reset inactividad con cualquier toque
-        document.body.addEventListener('click', () => { idleTime = 0; });
-        document.body.addEventListener('touchstart', () => { idleTime = 0; });
+        document.body.addEventListener('click', () => { dismissScreensaver(); });
+        document.body.addEventListener('touchstart', () => { dismissScreensaver(); });
 
         // Reloj y Fecha del Screensaver
         function updateTime() {

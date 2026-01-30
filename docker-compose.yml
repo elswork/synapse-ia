@@ -18,8 +18,6 @@ services:
     ports:
       - "5050:5050"
     command: [ "./entrypoint.sh" ]
-    # depends_on:
-    #   - db
     volumes:
       - .:/app
     environment:
@@ -29,6 +27,40 @@ services:
       - .env
     stdin_open: true
     tty: true
+    restart: unless-stopped
+
+  archimedes-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.bridge
+    container_name: archimedes-telegram-bridge
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@192.168.1.75:5432/synapse_ia
+    restart: always
+
+  m2-api:
+    image: python:3.9-slim
+    container_name: m2-status-api
+    network_mode: host
+    volumes:
+      - ./tools:/app/tools
+      - /sys:/sys
+      - /proc:/proc
+    working_dir: /app
+    command: sh -c "pip install flask flask-cors psutil && python3 tools/m2_status_api.py"
+    restart: unless-stopped
+
+  adminer:
+    image: adminer
+    container_name: synapse-ia-adminer
+    ports:
+      - "8080:8080"
     restart: unless-stopped
 
 volumes:

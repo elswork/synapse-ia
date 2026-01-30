@@ -2,6 +2,7 @@ import os
 import telebot
 import threading
 import time
+import html
 from dotenv import load_dotenv
 from tools.athena_brain import AthenaBrain
 from tools.select_mep_proposal import MEPSelector
@@ -45,23 +46,24 @@ def send_welcome(message):
         return
     
     help_text = (
-        "🏛️ **Centro de Mando Anticitera**\n\n"
+        "🏛️ <b>Centro de Mando Anticitera</b>\n\n"
         "Saludos, COO. Utiliza estos comandos para dirigir la Nación Digital:\n\n"
-        "🛰️ **Infraestructura**\n"
+        "🛰️ <b>Infraestructura</b>\n"
         "/status - Estado de los sistemas operativos\n"
         "/telemetria - Signos vitales de M2 y HC1\n\n"
-        "📜 **Gobernanza y Tareas**\n"
+        "📜 <b>Gobernanza y Tareas</b>\n"
         "/todo [tarea] - Registrar nueva directiva con análisis de Arquímedes\n"
         "/radar - Informe del Radar Diplomático\n\n"
-        "🦉 **Inteligencia (Athena)**\n"
+        "🦉 <b>Inteligencia (Athena)</b>\n"
         "/athena [pregunta] - Consulta al Oráculo\n"
         "/auditar [url] - Análisis de impacto estratégico\n"
         "/vigilar - Ronda de vigilancia de noticias\n\n"
-        "🏛️ **Diplomacia**\n"
-        "/pasar\_mep [filtro] - Forjar propuesta para MEP\n"
-        "/aprobar [id] - Validar noticia para la memoria"
+        "🏛️ <b>Diplomacia</b>\n"
+        "/pasar_mep [filtro] - Forjar propuesta para MEP\n"
+        "/aprobar [id] - Validar noticia para la memoria\n"
+        "/todos - Listar tareas pendientes"
     )
-    bot.reply_to(message, help_text, parse_mode='Markdown')
+    bot.reply_to(message, help_text, parse_mode='HTML')
 
 @bot.message_handler(commands=['status'])
 def status_check(message):
@@ -158,11 +160,11 @@ def pasar_mep(message):
         if success:
             saved_path = selector.save_proposal(proposal)
             bot.reply_to(message, 
-                f"✅ **Propuesta enviada a elswork@gmail.com**\n\n"
-                f"**Candidato:** {mep['name']} ({mep['country']})\n"
-                f"**Email:** `{mep['email']}`\n\n"
-                f"Revisa tu bandeja de entrada. He guardado el borrador en:\n`{saved_path}`",
-                parse_mode='Markdown'
+                f"✅ <b>Propuesta enviada a elswork@gmail.com</b>\n\n"
+                f"<b>Candidato:</b> {html.escape(mep['name'])} ({html.escape(mep['country'])})\n"
+                f"<b>Email:</b> <code>{html.escape(mep['email'])}</code>\n\n"
+                f"Revisa tu bandeja de entrada. He guardado el borrador en:\n<code>{html.escape(saved_path)}</code>",
+                parse_mode='HTML'
             )
         else:
             bot.reply_to(message, "❌ Error al enviar el correo. Revisa los logs del sistema.")
@@ -196,10 +198,8 @@ def auditar_url(message):
         analysis = analyzer.analyze_strategic_impact(url, content)
         
         # Enviar respuesta (manejar límites de Telegram si es necesario)
-        if len(analysis) > 4000:
-            analysis = analysis[:4000] + "\n\n*(Truncado por longitud)*"
-            
-        bot.reply_to(message, analysis, parse_mode='Markdown')
+        # Enviar respuesta como preformateada si es muy técnica, o simplemente HTML escapado
+        bot.reply_to(message, f"📜 <b>Análisis de Impacto:</b>\n\n{html.escape(analysis)}", parse_mode='HTML')
 
     except Exception as e:
         bot.reply_to(message, f"❌ El Oráculo ha sufrido una interferencia: {str(e)}")
@@ -288,15 +288,51 @@ def add_todo(message):
         conn.close()
 
         response_text = (
-            f"✅ **Tarea Registrada (ID: {todo_id})**\n\n"
-            f"**Descripción:** {description}\n\n"
-            f"📜 **Análisis de Arquímedes:**\n{analysis}\n\n"
-            "--- \n*Directiva almacenada en el Maestro M2.*"
+            f"✅ <b>Tarea Registrada (ID: {todo_id})</b>\n\n"
+            f"<b>Descripción:</b> {html.escape(description)}\n\n"
+            f"📜 <b>Análisis de Arquímedes:</b>\n{html.escape(analysis)}\n\n"
+            "--- \n<i>Directiva almacenada en el Maestro M2.</i>"
         )
-        bot.reply_to(message, response_text, parse_mode='Markdown')
+        bot.reply_to(message, response_text, parse_mode='HTML')
 
     except Exception as e:
         bot.reply_to(message, f"❌ Error en el registro de la directiva: {str(e)}")
+
+@bot.message_handler(commands=['todos'])
+def list_todos(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        import psycopg2
+        DB_PASSWORD = os.environ.get("DB_PASSWORD")
+        # Por defecto apuntamos al maestro M2 si estamos fuera del docker network
+        DATABASE_URL = os.environ.get("DATABASE_URL", f"postgresql://arconte:{DB_PASSWORD}@192.168.1.75:5432/synapse_ia")
+        
+        conn = psycopg2.connect(DATABASE_URL)
+        cursor = conn.cursor()
+        
+        cursor.execute("SELECT id, description, status FROM todos WHERE status = 'pending' ORDER BY id ASC")
+        tasks = cursor.fetchall()
+        
+        if not tasks:
+            bot.reply_to(message, "📜 <b>No hay tareas pendientes en la memoria.</b>", parse_mode='HTML')
+            return
+
+        response_text = "🏛️ <b>Lista de Tareas Pendientes:</b>\n\n"
+        for t in tasks:
+            response_text += f"🔹 <b>ID {t[0]}:</b> {html.escape(t[1])}\n"
+        
+        response_text += "\n--- \n<i>Consulta realizada al Maestro M2.</i>"
+        bot.reply_to(message, response_text, parse_mode='HTML')
+        
+        cursor.close()
+        conn.close()
+
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error al consultar la lista de tareas: {str(e)}")
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
