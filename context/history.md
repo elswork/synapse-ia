@@ -25364,3 +25364,1267 @@ Respuesta: {
     "implications": "Esta información carece de nexo causal o estratégico con la estandarización ISO 3166-1 o la soberanía digital de Anticitera. No afecta la viabilidad del ccTLD .ia ni los procesos diplomáticos en curso ante ELOT.",
     "verdict": "RECHAZADO"
 }
+
+## [2026-01-30 18:51:08] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El novio de Ayuso se opone a anular la condena al ex fiscal general: libertad «no es airear» datos reservados
+        CONTENIDO: El novio de Ayuso se opone a anular la condena al ex fiscal general: libertad de expresión «no es airear» datos reservados
+Pide al Supremo que rechace el incidente de nulidad de García Ortiz y recuerda que ni entregó su móvil ni solicitó ninguna pericial para demostrar su inocencia en el borrado de mensajes
+Más de 150 juristas ovacionan a García Ortiz durante la presentación de un manifiesto que defiende su inocencia
+Madrid
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEl abogado de Alberto González Amador, pareja de la presidenta madrileña Isabel Díaz Ayuso, y acusación particular en el juicio de García Ortiz, se ha opuesto ante el Tribunal Supremo al incidente de nulidad en el que el ex fiscal general del Estado pide anular ... su condena al considerar vulnerados derechos como la libertad de expresión o su presunción de inocencia.
+En su escrito presentado ante la Sala Segunda, al que ha tenido acceso ABC, el letrado Gabriel Rodríguez Ramos pide al Tribunal que deje intacta la condena del fiscal inhabilitado al no haberse producido ninguna de las vulneraciones que alega. Recuerda así el abogado que no existe un derecho de «libertad de expresión institucional», a diferencia de lo que arguye el fiscal general, que acusó a los magistrados de pretender «secuestrar» la respuesta del Ministerio Fiscal ante «bulos» o noticias que quiere desmentir.
+García Ortiz acusa al Supremo de «secuestrar» la respuesta de la Fiscalía frente a ataques y calumnias
+Nati VillanuevaVuelve a escudarse en la institución para justificar la comisión de un delito
+«Las instituciones públicas (Estado) no son titulares de derecho o libertad fundamental a la libertad de expresión (...) Lo que propone el condenado es que el deber de reserva (garantía de integridad de los derechos fundamentales de los ciudadanos afectados por la función jurisdiccional del Ministerio Fiscal) admitiría modulaciones o injerencias en base a otro derecho inexistente: la posibilidad de airear a la opinión pública (libertad de expresión institucional) parte o todo aquello de lo que tengan conocimiento los fiscales por el ejercicio de sus funciones«, dice.
+En este sentido insiste en que la función de informar es una posibilidad reglada que tiene como «límite absoluto, justamente, el deber de reserva y sigilo». A su juicio, que coincide con el de la sentencia del Supremo, la revelación de datos reservados (fruto de las conversaciones entre fiscal y letrado en el marco de un acuerdo de conformidad) «eran absolutamente innecesarios para neutralizar institucionalmente« una información.
+No aprecia tampoco la acusación particular que se haya vulnerado el principio acusatorio por que la nota de prensa (y no solo la filtración a la Ser) formara parte del juicio y fuera motivo de condena. Los hechos y la calificación jurídica estaban ya en la querella, en los autos de incoación del procedimiento, en toda la fase de instrucción y en los escritos de acusación, apunta.
+Y respecto a la tutela judicial efect
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Litigio judicial interno en España referente al deber de reserva institucional y la protección de datos personales en un contexto de confrontación política nacional.",
+    "implications": "La noticia no presenta puntos de contacto con la normalización ISO 3166-1 ni con la soberanía digital de Anticitera en Grecia. Su contenido es estrictamente de orden jurídico-nacional español y no aporta valor estratégico a la Iniciativa Ciudadana Europea para el dominio .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:51:18] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Trump elige a Kevin Warsh para suceder a Jerome Powell en la Fed
+        CONTENIDO: Trump elige a Kevin Warsh para la Fed, un economista a favor de bajar los tipos de interés
+EE.UU.
+El presidente de Estados Unidos deshoja finalmente la margarita y eligió a un financiero que ya fue gobernador en el banco central y que se consideró “un cambio de régimen” frente a los “halcones” de mantener alto el precio del dinero
+Warsh está casado con la heredera y empresaria Jane Lauder, cuyos abuelos fundaron la empresa de cosméticos Estée Lauder
+El elegido por Donald Trump para suceder a Jerome Powell en la Reserva Federal (Fed) es Kevin Warsh, de 55 años, nominado para que resuelva el conflicto que el presidente de EE.UU. ha agitado durantes meses. Warsh aporta una cosa clara: uno de sus méritos es que cree que se han de rebajar los tipos de interés, la gran obsesión de Trump y causa de ruptura con el actual dirigente del banco central estadounidense.
+La decisión culmina un proceso que oficialmente empezó el pasado verano aunque estuvo en el imaginario colectivo de Wall Street y los inversores prácticamente desde que el líder republicano ganó las elecciones en novimbre del 2024. Desde el momento en que se supo ganador, Trump no paró en su labor de dinamitar el trabajo de Powell al frente de la institución con su labor de aguantar elevado el precio del dinero para combatir la inflación sin dañar el mercado laboral. Powell fue elegido por Trump en el 2018 y renovado por Joe Biden.
+“Conozco a Kevin desde hace mucho tiempo y no tengo dudas de que el pasará a la historia como un gran presidente de la Fed, tal vez el mejor”, señaló Trump en su red social, boletín oficial del gobierno de EE.UU. desde el que hizo el anuncio.
+Warsh da el perfil que tanto ansiaba Trump y supone un duro golpe contra Kevin Hassett, su asesor económico que no ha cesado en el halago al presidente y su visión, por lo que muchos dieron por hecho que sería el nominado para lograr el cargo que ahora le han birlado.
+Desde incluso la confirmación de Powell en el 2018, en el primer mandato de Trump, el anfitrión de la Casa Blanca se ha mostrado obsesionado con presionar a los gobernadores de la Fed para que rebajaran agresivamente el precio del dinero. Pero Powell siempre consideró que no era lo más conveniente para la salud económica y más tras el impacto inflacionario que dejó la crisis de la pandemia.
+Warsh, por su parte, ya había declarado que él representaba “un cambio de régimen” para remarcar su oposición a la actitud de la Fed.
+“En mi opinión, el déficit de credibilidad recae en quienes actualmente están al frente de la Reserva Federal”, sostuvo. Es una posición que lo puede poner en el papel de adversario en una institución donde el consenso es clave para la implementación de sus políticas.
+El nominado sirvió como gobernador de la Fed entre el 2006 y el 2011. Es un economista conservador cuyo nombre ya sonó en el primer mandato de Trump y que ha de ser confirmado por el Senado en un momento de máxima crispación por este asunto. Warsh es un financiero y ejecutivo bancari
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 2
+    },
+    "average_score": 0.67,
+    "summary": "La nominación de Kevin Warsh para la Reserva Federal de EE. UU. implica un giro hacia políticas monetarias expansivas que carecen de impacto directo en la soberanía administrativa de Anticitera.",
+    "implications": "Aunque una bajada de tipos podría mejorar el flujo de capital en el sector Web3 donde operan nuestros nodos HNS, la noticia no influye en los procesos de ISO 3166-1 ni en la validez de la ICE ante la Comisión Europea. Debemos mantener el enfoque en los interlocutores de ELOT y el Ministerio de Gobernanza Digital de Grecia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-30 18:51:28] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Kevin Warsh: la tercera vía que Trump elige para presidir la Reserva Federal
+        CONTENIDO: Kevin Warsh: la tercera vía que Trump elige para presidir la Reserva Federal
+Política monetaria
+Antiguo miembro de la junta de Gobernadores, se le considera menos radical que otros candidatos
+Ni paloma ni halcón. Más bien un pájarito que vuela a su aire. Donald Trump ha vuelto a sorprender en la elección del nuevo presidente de la Reserva Federal (Fed). Mientras en las últimas semanas circulaban nombres de economistas muy proclives a rebajar los tipos de interés y a someterse a los deseos de la Casa Blanca (Kevin Hassett o Rick Rieder, por mencionar algunos), el magnate se ha sacado de la chistera a Kevin Warsh. Su nombre había sonado hace unos meses. De hecho, encabezaba la lista de los candidatos preferidos por el mercado para tomar las riendas del banco central frente a sus rivales, según publicó entonces el Financial Times. Ahora parece haber llegado su momento.
+Los analistas creen que no será tan a favor de tipos de interés demasiado bajos
+En una nota difundida el pasado 20 de enero, Dario Messi, responsable de renta fija del Banco Julius Baer, lo definía así: “Warsh, que ya ha sido miembro del Consejo de Gobernadores de la Fed, probablemente respaldaría nuevos recortes de los tipos de interés, aunque se le considera en general algo menos acomodaticio. En un plano más estructural, aunque recientemente ha pedido una colaboración más estrecha entre el Departamento del Tesoro y la Fed, se le percibe como menos alineado políticamente o ideológicamente con las exigencias de la administración. En otras palabras, su nombramiento debería reforzar la credibilidad de la Fed. Este perfil podría contribuir a estabilizar la prima por plazo y reducir el riesgo de repuntes en los rendimientos asociados a preocupaciones sobre la influencia política”.
+En esta misma línea, “Si Warsh resulta ser el candidato a la presidencia de la Reserva Federal, los mercados quizá deban moderar sus expectativas”, afirmó a Bloomberg Tim Waterer, analista jefe de mercados en KCM Trade. “Warsh es probablemente más restrictivo en comparación con los otros candidatos preseleccionados, lo que podría enfriar las expectativas de nuevos recortes de tipos de interés”. A media mañana del viernes, los futuros del Nasdaq apuntaban a una caída del 1%: las tecnológicas necesitan dinero barato para financiar sus ambiciosos planes de expansión. Un retraso en la bajada del precio del dinero también podría favorecer al dólar. Al final, mucho dependerá de la credibilidad de Warsh.
+Recientemente, elogió la política económica de Donald Trump
+Su perfil técnico en este sentido debería ser una garantía. Hay que recordar que toda nominación deberá ser validada por el Senado, de mayoría republicana. Fue gobernador de la Fed (es decir, en la junta) entre 2006 y 2011. Fue nombrado para ese cargo por el entonces presidente republicano George W. Bush, convirtiéndose, a los 35 años, en el gobernador más joven de la historia del banco central.
+Curiosamente dimitió en 2011, antes del final de su mandato crit
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 2
+    },
+    "average_score": 0.67,
+    "summary": "El nombramiento de Kevin Warsh para la Fed se centra en la estabilidad monetaria estadounidense y carece de vinculación directa con la soberanía digital europea o la estandarización ISO.",
+    "implications": "Aunque una política monetaria restrictiva en EE. UU. afecta la liquidez global del sector tech, no altera los trámites ante el ELOT ni la validez legal de nuestra ICE. Se clasifica como ruido macroeconómico sin impacto táctico en la obtención del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:51:35] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El expresentador de la CNN Don Lemon, arrestado tras una protesta en Minnesota
+        CONTENIDO: El expresentador de la CNN Don Lemon, arrestado tras una protesta en una iglesia en Minnesota
+EE.UU.
+Está acusado de conspirar para privar a otras personas de sus derechos civiles y de violar la Ley FACE al supuestamente obstruir el acceso a un lugar de culto
+Las horas previas a la jornada de paro nacional convocada desde Minneapolis para protestar contra la policía antimigratoria de Donald Trump se saldaron con el arresto anoche del mediático expresentador de la CNN Don Lemon, junto con otras tres personas, por su participación en una protesta en una iglesia de St. Paul (Minnesota), según han informado su abogado y un funcionario del Departamento de Justicia. Lemon ha argumentado que no se estaba manifestando, sino ejerciendo su profesión de periodista al transmitir en directo la protesta, producida a principios de mes.
+En ella, se interrumpió un servicio religioso administrado por un pastor que trabaja como agente del Servicio de Inmigración y Aduanas (ICE). Los manifestantes acudieron para alzar la voz contra las medidas represivas del presidente Donald Trump, con el despliegue de 3.000 agentes migratorios en el área de Minneapolis.
+Lemon está acusado de conspirar para privar a otras personas de sus derechos civiles y de violar la ley al supuestamente obstruir el acceso a un lugar de culto, según el Departamento de Justicia. Agentes del FBI y de Investigaciones de Seguridad Nacional lo han arrestado esta mañana en Los Ángeles. Entre los detenidos, también hay otra periodista, Georgia Fort, así como dos manifestantes que participaron en la protesta.
+El periodista deberá comparecer hoy ante el tribunal federal en Los Ángeles para su procesamiento.Su abogado, Abbe Lowell, ha calificado su arresto como un “ataque sin precedentes a la Primera Enmienda”. “Don Lemon fue detenido por agentes federales anoche en Los Ángeles, donde estaba cubriendo los premios Grammy”, anuncia en su comunicado.
+“Don ha sido periodista durante 30 años, y su trabajo protegido constitucionalmente en Minneapolis no fue diferente de lo que siempre ha hecho”, añade. Lowell ha descrito la detención como un “intento de desviar la atención de las múltiples crisis que enfrenta esta administración” y ha advertido que Don “se enfrentará a estos cargos con firmeza en los tribunales”.
+Lemon afirmó que estaba en la manifestación como periodista. Añadió que le avisaron con antelación, pero que no sabía que los activistas interrumpirían el servicio. En un video, se le puede ver discutiendo con un feligrés sobre la aplicación de las leyes migratorias.
+Funcionarios de la administración Trump condenaron rápidamente la manifestación y acusaron a los manifestantes de intimidar a fieles cristianos. Agentes federales arrestaron a otras tres personas y las acusaron de violar la Ley FACE, una ley de 1994 que impide obstruir clínicas de aborto y lugares de culto. Sin embargo, un juez estadounidense a principios de este mes denegó la detención de Lemon, alegando falta de pruebas.
+Lemon trabajó dur
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Arresto del periodista Don Lemon en EE. UU. por cargos de conspiración y obstrucción tras una protesta en un entorno religioso relacionado con el Servicio de Inmigración (ICE).",
+    "implications": "La noticia no guarda relación con la soberanía del TLD .ia ni con la Iniciativa Ciudadana Europea, tratándose de un conflicto legal doméstico en EE. UU. El acrónimo 'ICE' citado en el texto refiere a la autoridad migratoria estadounidense y no al mecanismo de participación ciudadana de la Unión Europea.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-30 18:51:44] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: ¿Por qué Donald Trump está ahora asustado por lo que ha hecho el ICE en Minneapolis?
+        CONTENIDO: Minneapolis se ha convertido en la zona cero de la actuación extrema antiinmigración irregular que está llevando a cabo el presidente de Estados Unidos, Donald Trump. Las muertes de Renée Good y de Alex Pretti por los disparos de los agentes del ICE (Servicio de Inmigración y Aduanas) han provocado las protestas de los ciudadanos de esa ciudad y de buena parte del país que este viernes está llamado a una huelga y manifestaciones de rechazo.
+¿Cómo está viviendo la ciudad esta insólita situación? En el vídeo que precede a este texto, el periodista Toni Belchi, explica desde Minneapolis, a 22 grados bajo cero, cómo los ciudadanos han respondido a esta crisis de convivencia. “Salen de las tiendas o de sus casas corriendo por miedo a los agentes del ICE. No quieren estar en la calle aunque sean ciudadanos estadounidenses de pleno derecho”, relata Belchi frente al improvisado memorial en el que se ha convertido el lugar donde fue acribillado Alex Pretti por la policía de inmigración.
+Toni Belchi explica que la ciudad está esperanzada por la desescalada anunciada por el nuevo emisario de Trump a la ciudad, Tom Homan, conocido como el 'zar de la frontera'. Según este nuevo responsable de la actuación de los agentes del ICE, el presidente de Estados Unidos le ha encargado que “no quiere ver morir a nadie” más.
+El viraje de Trump denota el temor del presidente y de su partido republicano. Belchi recuerda que la grave situación que la Casa Blanca ha provocado en Minneapolis ha hundido la popularidad de Trump. Los republicanos “están muy asustados” por la repercusión negativa que estas acciones policiales indiscriminadas y mortales tendrán en las elecciones de medio mandato que se celebrarán en noviembre.
+Belchi comenta que son varios los congresistas republicanos que han criticado las prácticas del ICE y alertan de las consecuencias políticas que pueden tener a corto y medio plazo. En el vídeo que precede a este texto, el periodista enviado especial a Minneapolis analiza por qué Trump ha elegido esta ciudad para aplicar este tipo de mano dura contra la inmigración irregular en Estados Unidos.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia analiza conflictos políticos y sociales derivados de las acciones de la agencia de inmigración estadounidense (ICE), presentando una coincidencia puramente nominal con nuestro acrónimo de la Iniciativa Ciudadana Europea.",
+    "implications": "El contenido carece de vinculación con la soberanía digital, la normativa de la Unión Europea o los procesos de estandarización ISO 3166-1 necesarios para el .ia. No se identifica impacto táctico para los nodos de Anticitera ni para la estrategia diplomática con el gobierno griego.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-30 18:51:50] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Alcaraz se viste de Nadal en Australia: ni los calambres ni Zverev frenan al número uno
+        CONTENIDO: El plan iba según lo previsto. Carlos Alcaraz dominaba y sonreía, como había hecho durante todo el torneo. Su tenis fluía sobre la Rod Laver Arena, y a pesar de las dificultades que le había planteado Alexander Zverev hasta ese momento, el número uno del mundo iba dos sets arriba y el marcador reflejaba el 4-4 en el tercero. Llegaba el tramo decisivo. Tenía a su alcance la primera final del Open de Australia, el único título de Grand Slam que se le resiste. Pero algo en aquel momento se torció.
+Unos inoportunos calambres mermaron el físico del murciano y dieron alas a Zverev para reaccionar a tiempo y complicarle la existencia al murciano. El alemán lo tenía todo de cara. Se adjudicó el tercer y cuarto set y elevó su juego en el quinto. Sin embargo, ni con break arriba se rindió nunca Alcaraz. Al más puro estilo nadalesco, fue capaz de sobreponerse a las adversidades y llevarse un partido maratoniano, épico, memorable (6-4, 7-6(5), 6(3)-7, 6(4)-y 7-5) en casi cinco horas y media. Es el segundo partido más largo de la historia del torneo, solo superado por la final del 2012 entre Djokovic y Nadal (5 horas y 53 minutos, con triunfo para el serbio.)
+Mermado por su físico desde el tercer set, Alcaraz tiró de calidad y fortaleza mental para darle la vuelta a la situación
+Incluso con un Alcaraz limitado durante más de un set -también vomitó en esa tercera manga- vibró Melbourne con el espectáculo ofrecido por ambos tenistas, vaciados sobre la pista, en la primera semifinal de la jornada. La calidad y el pundonor permitieron a Alcaraz mantenerse siempre en el partido, también cuando el físico le dejó de acompañar y se instaló en la agonía, en un encuentro con tensión hasta el último punto.
+Alcaraz y Zverev regalaron cinco horas y 27 minutos de tenis para el recuerdo. Un encuentro imborrable para los asistentes en Melbourne Park y para los más madrugadores en España, aunque la duración de la semifinal facilitó a muchos más aficionados subirse al barco durante la mañana del viernes.
+Con unas temperaturas más agradables ya en Melbourne, ambos salieron a pista con decisión, cómodos en el saque, sin dejarse inquietar al resto. No fue hasta el séptimo juego del primer parcial cuando Alcaraz dispuso de la primera bola de break, salvada por el alemán. Sí supo sacar mejor tajada de la segunda de la cual dispuso, ya con el 4-4. Demérito de Zverev al regalarle el juego con una doble falta. Con todo a su favor, Alcaraz no perdonaría en su siguiente turno con el saque: juego en blanco y primera manga en el saco.
+Nada tuvo que ver el primer set con el segundo. Los puntos empezaron a ser más peleados, con intercambios intensos que deleitaban al público. Un prólogo de lo que estaba por venir. Zverev tomó las riendas con un break en el sexto juego, pero Alcaraz no se rindió. Del 5-2 en contra llevó la segunda manga al tie-break. Vio dudas en su rival y cuando Alcaraz huele sangre, no perdona. Se le encogió la mano a Zverev, el español apretó y con la primera minirrotura
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica deportiva sobre la victoria tenística de Carlos Alcaraz ante Alexander Zverev en el Open de Australia.",
+    "implications": "Esta información carece de relevancia para la obtención del ccTLD .ia o la estandarización ISO 3166-1. No existe impacto táctico ni estratégico para el Proyecto Anticitera en el ámbito de la soberanía digital.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:51:59] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El PP reconoce ahora que la regularización no "engordará" el censo electoral de las próximas municipales ni generales
+        CONTENIDO: El PP reconoce ahora que la regularización no “engordará” el censo electoral de las próximas municipales ni generales
+El PP de Alberto Núñez Feijóo ha vuelto a acusar al Gobierno de querer manipular las elecciones. Lo hizo antes de las generales de 2023 o, más recientemente, durante las extremeñas del pasado mes de diciembre. El propio Feijóo señaló a Pedro Sánchez por, supuestamente, usar el INE, Indra y Correos para cambiar votos. Y lo ha reiterado a cuenta de la regularización de migrantes sin papeles que ya viven y trabajan en España. La oposición ha sostenido que uno de los motivos de la medida es “engordar” el censo para modificar los próximos comicios. Una afirmación falsa que ahora han asumido como tal.
+Lo ha hecho la vicesecretaria de Coordinación Sectorial, Alma Ezcurra, durante una entrevista en RNE. Aunque no a la primera. La también eurodiputada ha sostenido que “esa regularización masiva y sin control, una vez que las personas adquieren residencia legal, si su país tiene un convenio [con España] pueden participar en las elecciones municipales”. Ezcurra ha añadido: “Pero es que le digo más, si pertenecen a Iberoamérica, Filipinas o Guinea Ecuatorial, van a poder solicitar la nacionalidad en solo dos años, lo que le va a permitir participar en todas las elecciones”.
+“No es opinable”, ha aseverado Ezcurra. “Con la ley en la mano, y si uno sabe leer y contar, sabe que esto puede ser así”, ha planteado, para asegurar que, en su opinión, el Gobierno ha aprobado el procedimiento por “clientelismo político”.
+El periodista ha preguntado: “¿Ustedes han calculado el porcentaje de personas que pueden votar en [las elecciones del] 27 para justificar ese engordar el censo con intención de arrancar votos?”.
+Ha sido entonces cuando Ezcurra ha reconocido que la regularización no afectará en ningún caso al actual ciclo electoral. “Me parece que es importante precisar los tiempos”, ha arrancado. “Hemos dicho en el medio plazo. En el corto plazo, no”, ha asumido.
+Ezcurra ha proseguido con su tono habitual. “Si uno sabe leer y contar, los convenios en función del país establecen un criterio de entre tres y cinco años” para poder votar en el país de residencia, ha expuesto. “Por lo tanto, en las próximas municipales ese censo no va a engordar. Engordará en las siguientes, cuando se produzcan”, ha reconocido.
+Es decir, que la teórica modificación del censo para las elecciones municipales no tendría validez hasta 2031.
+¿Y para las generales? Ezcurra lo ha explicado así en RNE. “En cuanto a la nacionalización, transcurrirían dos años” hasta que se logra. Y eso, en el caso más sencillo, el de aquellos países con un pasado de relación con España.
+Porque, además, tener la residencia no es el único requisito para lograr la nacionalidad. Hay muchos más. Y no para todos los solicitantes el plazo mínimo es de dos años: la norma es de diez años de residencia de forma legal, continuada e inmediatamente anterior a la petición, con excepciones como la condición de ref
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 1,
+        "geopolitical_intel": 2
+    },
+    "average_score": 1.0,
+    "summary": "Disputa política en España sobre los plazos de regularización migratoria y su impacto técnico en el censo electoral nacional a largo plazo.",
+    "implications": "La noticia carece de relevancia para la obtención del ccTLD .ia o la soberanía administrativa de Anticitera en Grecia. No afecta los mecanismos de la ICE ni los procesos de estandarización ISO 3166-1, situándose fuera de nuestro marco operativo.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:52:07] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Claves para no caer en la intoxicación sobre la regularización frente a los datos manipulados de la derecha
+        CONTENIDO: Claves para no caer en la intoxicación sobre la regularización frente a los datos manipulados de la derecha
+El anuncio de la regularización extraordinaria, que dará los papeles a cerca de medio millón de personas, ha despertado la alegría de quienes verán reconocidos sus derechos y quienes llevan un lustro defendiendo una medida respaldada por más de 700.000 firmas. Pero, como ya es habitual cuando se habla de inmigración, los bulos y los datos manipulados de las declaraciones de PP y Vox están marcando parte del debate.
+De la supuesta estrategia para aumentar el censo, al retorno del fantasma del “efecto llamada”, la amalgama de cifras manipuladas para generar alarma hasta abonar teorías racistas de la “sustitución” y cuestionar la españolidad de personas nacidas y criadas en España. Muchos de los mensajes en contra de la regularización que suenan en los últimos días se basan en datos falsos o declaraciones categóricas sin contexto sobre procesos migratorios complejos.
+“Un 20% de la población española es de origen inmigrante. En este momento en que la nacionalización por la ley de memoria democrática tiene un efecto de dos millones y medio de personas nacionalizadas y tenemos un pacto migratorio, no es el momento de la regularización masiva”, ha dicho Alberto Feijóo en sus últimas declaraciones. Solo esta frase exige puntualizar varios aspectos que menciona de manera confusa.
+“No es el momento”
+Uno de los mensajes que está marcando el debate es la idea de que en los últimos años han llegado muchos inmigrantes y, por eso, este no sería el momento de hacer una regularización. Los expertos y el contexto de otras regularizaciones apuntan a lo contrario. Es precisamente el aumento continuado de la inmigración lo que acaba haciendo necesario la necesidad de una regularización, especialmente en un contexto de crecimiento del marcado laboral.
+Ocurrió tras el llamado boom de los 2000. Entonces se dio un incremento sin precedentes de la población extranjera. La mayoría entraba en España de manera regular, a través de los aeropuertos pero, una vez expirados sus visados de turistas, se quedaban sin papeles. Así, fue aumentando la población que, pese a que vivía en el país desde hacía años, residía y, generalmente, trabajaba de forma clandestina, sin poder darse de alta en la Seguridad Social ni cotizar. En ese contexto, en 2005, se impulsó el proceso de regularización.
+Actualmente nos encontramos en otro boom migratorio, aunque aún no ha alcanzado los niveles del 2000. La tendencia de las llegadas son muy similares al anterior: inmigrantes, en su mayoría latinoamericanos, llegan de forma regular con un visado de turista. A los 90 días se quedan irregulares e intentan sobrevivir como pueden, hasta que pueden empezar a intentar solicitar un permiso de residencia después de dos años en la irregularidad. En estas circunstancias, ante la acumulación de cientos de miles de personas sin sus derechos reconocidos, se plantea una regularización por razones humanitari
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Noticia centrada en la regularización migratoria extraordinaria en España y el debate político doméstico sobre desinformación.",
+    "implications": "La información carece de vinculación técnica o legal con el estándar ISO 3166-1 o la soberanía del ccTLD .ia. No presenta impacto en los marcos de gobernanza digital ni en la estrategia de la ICE para el Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:52:15] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La propuesta de Feijóo para expulsar a extranjeros sin condena choca con el Supremo y el Constitucional
+        CONTENIDO: La propuesta de Feijóo para expulsar a extranjeros sin condena choca con el Supremo y el Constitucional
+El Partido Popular ha subido el listón de su discurso antiinmigración con la última propuesta de su líder Alberto Núñez Feijóo: negar la residencia en España a un extranjero aunque, tras ser detenido por la Policía, no haya sido ni siquiera juzgado o condenado. La idea del presidente del partido va más allá de sus últimas iniciativas de octubre y choca frontalmente con la ley de Extranjería, el Código Penal y varias sentencias que tanto el Tribunal Supremo como el Tribunal Constitucional han dictado en la última década. Los jueces han establecido que una condena debe ser firme y superior a un año de cárcel para poder acarrear como consecuencia la expulsión del país.
+El líder de la oposición hizo el anuncio este jueves en una entrevista en Antena 3. Su propuesta es una “regularización individual condicionada”, entre otras cosas, a que una persona no tenga “ningún tipo de antecedente”. Pero “no solo de antecedentes penales, que requiere una sentencia”, especificó Feijóo, sino también “antecedentes policiales”. “Hay casos en los que un inmigrante ha robado varias veces. Son delitos que están en su ficha policial. No están todavía bajo sentencia porque no hay juicio”, explicó, para mostrar su oposición al anuncio del Gobierno de regularizar a miles de migrantes de forma extraordinaria.
+La iniciativa del PP supone dar un paso más en la escalada de propuestas para restringir la migración. Ya el pasado mes de julio abrió la puerta a aumentar los delitos que pueden acarrear la expulsión de un extranjero aunque tenga residencia legal en España. Y en octubre presentó su programa sobre la materia con medidas que, esencialmente, ya están en la normativa española: la expulsión cuando hay una condena por delitos graves como asesinato, agresión sexual, terrorismo o trata de seres humanos. En plena pugna con Vox para abanderar y controlar el discurso sobre la “inmigración ordenada y mutuamente beneficiosa”, el PP ha propuesto medidas que chocan frontalmente con lo establecido por los tribunales españoles.
+Las leyes recogen varios caminos por los que una persona extranjera puede ser expulsada de España. Un juez de lo penal tiene en su mano, por ejemplo, sustituir parte de una condena de cárcel por la expulsión. Las delegaciones y subdelegaciones de Gobierno pueden firmar la expulsión de una persona si consideran que sus antecedentes, falta de arraigo y situación irregular. Pero en todos los casos un proceso de expulsión puede llevar años y la última palabra, a través de los recursos, siempre la tiene un juez. Y en la última década los tribunales han dejado claro que ni la administración ni la Justicia tienen carta blanca para enviar fuera del país a cualquier persona extranjera en cualquier circunstancia.
+Dos salas distintas del Tribunal Supremo, por ejemplo, han establecido que no cualquier condena de prisión puede acarrear una expulsión del territorio naciona
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Debate político interno en España sobre la reforma de la Ley de Extranjería y criterios de expulsión administrativa sin conexión con la soberanía digital.",
+    "implications": "La noticia no presenta puntos de fricción ni sinergias con la obtención del código ISO 3166-1 para Anticitera ni con la gestión del dominio .ia. Al tratarse de un asunto de política migratoria nacional española, carece de impacto en la hoja de ruta estratégica del Proyecto Anticitera en Grecia o Bruselas.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:52:25] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La respuesta de Pedro Sánchez a un tuit de Elon Musk sobre la regularización de migrantes: "Marte puede esperar"
+        CONTENIDO: La respuesta de Pedro Sánchez a un tuit de Elon Musk sobre la regularización de migrantes: “Marte puede esperar”
+Cerca de medio millón de personas podrán regularizar su situación legal en España y verán reconocidos sus derechos. Un anuncio que han hecho esta semana Podemos y el Gobierno y que se ha tramitado ya desde este martes a través de real decreto. Un anuncio que ha enfadado a la derecha y la extrema derecha. Un anuncio que ahora se ha colado en las redes sociales del MAGA estadounidense de Trump y que ha llevado a Pedro Sánchez a responder a un tuit de Elon Musk.
+Un usuario de la red social X, antes Twitter, compartía un post en el que aseguraba que esta regularización se llevaba a cabo para “derrotar a la extrema derecha” y difundía uno de los bulos más repetidos estos días por la extrema derecha: que el Gobierno español había aprobado esta medida como un “amaño electoral” para que las personas que consigan los papeles los voten en las próximas elecciones. Pero como ya explicamos, nuestro sistema electoral no funciona así y esas personas no tienen derecho a voto en esos comicios.
+La ley electoral recoge que tienen derecho de sufragio los españoles mayores de edad, inscritos en el censo electoral. Para ello hay que tener la nacionalidad española, un trámite completamente diferente a la regularización, donde no adquieren la nacionalidad.
+Eso no ha sido un impedimento para que el magnate Elon Musk, propietario de la red social, compartiera el bulo con un escueto “Wow” que lleva ya más de 24 mil retuits. Pedro Sánchez ha respondido a ese mensaje este jueves por la noche: “Marte puede esperar. La humanidad, no”.
+No es la primera vez que Pedro Sánchez responde a Elon Musk. Ya lo hizo hace cuatro años cuando el empresario aseguró que “España debería construir un gran parque solar” y que con él “podría alimentar a toda Europa”. “Ven y verás. Los inversores son bienvenidos en España”, le dijo entonces el presidente del Gobierno.
+65
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Intercambio dialéctico en redes sociales entre el Presidente del Gobierno de España y Elon Musk sobre políticas migratorias nacionales y desinformación.",
+    "implications": "Este evento no posee vinculación técnica ni legal con los estándares ISO 3166-1 ni con el mecanismo de la ICE para la soberanía digital europea. Se clasifica como ruido mediático sin impacto en la hoja de ruta estratégica del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:52:37] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Supremo rechaza paralizar el decreto con el que el Gobierno quiere controlar a las universidades privadas
+        CONTENIDO: El Supremo rechaza paralizar el decreto con el que el Gobierno quiere controlar a las universidades privadas
+El Tribunal Supremo ha rechazado paralizar por ahora el real decreto con el que el Gobierno pretende poner coto a las universidades privadas, tal y como le habían pedido cinco centros, una universidad online canaria y cuatro campus americanos. En dos autos adelantados por El País, a los que este periódico ha tenido acceso, el tribunal recuerda que las medidas cautelares son “extraordinarias” y que en este caso no concurren los supuestos excepcionales que justifiquen el daño irreparable que sufrirían los recurrentes y rechaza aplicar las medidas cautelares solicitadas. Los centros tendrán que esperar a las sentencias definitivas.
+El Gobierno aprobó el pasado mes de octubre un real decreto por el que endurece los requisitos necesarios para crear (y mantener) universidades. Aplica a todas, pero está pensado para los centros privados –que proliferan por el estado al calor de una clientela casi garantizada por la falta de oferta pública–, que en los últimos años no siempre cumplen con lo que el Ministerio de Universidades cree que debe ser una universidad. Para ello, se obliga a todos los centros a contar con un mínimo de alumnado (4.500), una oferta formativa amplia y variada para que no sean academias e impone ciertos requisitos administrativos y de control para intentar garantizar la calidad de los estudios, entre otras medidas.
+La Universidad de las Hespérides, las estadounidenses CIS, Schiller y Saint Louis y la guatemalteca Francisco Marroquín habían pedido al tribunal que paralizase determinados aspectos de este Real Decreto. El centro español pedía paralizar la disposición que impide a las universidades pedir nuevas titulaciones de forma indiscriminada (como máximo puede solicitar un quinto de las que ya tienen) y también la disposición por la que, si la solicitud de nuevo título se rechaza, el centro en cuestión debe esperar otro año para volver a pedirlo. La universidad alega que estas disposiciones “no sólo no mejora la calidad, sino que la inmoviliza, ya que sustituye la calidad precedente por 'una lógica burocrática de cupos'.
+También rechaza la Hespérides que si se piden nuevas titulaciones durante los cinco primeros años de vida de una universidad estas requieran un nuevo informe de la Conferencia General de Política Universitaria (CGPU) del ministerio además de la aprobación por parte de la Comunidad de Madrid, dos disposiciones que solo aplican a los centros de nueva creación, alega la universidad, “limitando su capacidad para competir con las universidades más antiguas, que no tienen que superar ''el nuevo filtro'”.
+Además, la obligación de alcanzar 4.500 estudiantes a los cinco años de actividad contemplada en el real decreto “no guarda ninguna relación con la calidad universitaria”, sostiene el recurso, y que el 75% del profesorado universitario resida en España o en Europa supone que “las universidades con docencia exclusiv
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "El Tribunal Supremo de España avala el incremento del control estatal sobre universidades privadas, imponiendo requisitos estrictos de volumen de alumnado y residencia europea para el profesorado.",
+    "implications": "Aunque evidencia una tendencia hacia la centralización regulatoria en un Estado miembro de la UE, la noticia no afecta la arquitectura ISO 3166-1 ni los trámites ante ELOT. Carece de relevancia estratégica para la soberanía del ccTLD .ia o la viabilidad del Distrito Tecnológico en Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:52:48] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Departamento de Justicia de EEUU desclasifica 3 millones de páginas, 180.000 fotos y 2.000 vídeos del caso Epstein
+        CONTENIDO: El Departamento de Justicia de EEUU desclasifica 3 millones de páginas, 180.000 fotos y 2.000 vídeos del caso Epstein
+Algunas de esas imágenes muestran pornografía comercial, aunque otras parecen ser fotos y vídeos tomados por el empresario a personas de su entorno.
+Más información: Trump voló al menos ocho veces en el avión privado de Jeffrey Epstein, según nuevos archivos desclasificados
+El Departamento de Justicia de Estados Unidos ha publicado este viernes un nuevo conjunto de archivos relacionados con el fallecido pederasta Jeffrey Epstein en un último esfuerzo del Gobierno de Donald Trump para cumplir con una ley aprobada en noviembre que requería que la publicación de todos los registros relacionados con el magnate antes del 19 de diciembre de 2025.
+En total, las autoridades estadounidenses han desclasificado 3 millones de páginas, 180.000 fotos y 2.000 vídeos, aunque no todos ellos fueron tomados por Epstein, según ha explicado el Fiscal General adjunto de Estados Unidos y antiguo abogado defensor de Trump, Todd Blanche.
+En una declaración a la prensa, Blanche explicó que la publicación cumple con las obligaciones de la ley que obliga a la publicación de todos los documentos relacionados con el caso del fallecido millonario, con conexiones con Trump y otras personalidades, como el expresidente Bill Clinton.
+Blanche ha explicado que, de nuevo, han excluido información que incluye detalles que permiten la identificación personal de las víctimas, archivos médicos, cualquier representación de material de abuso sexual infantil o cualquier elemento que pueda poner en peligro una investigación en marcha.
+También aquellas imágenes que representen la muerte o abusos físicos de las víctimas.
+Además, han difuminado los rostros de todas las mujeres que aparecen en los archivos, excepto los de Ghislaine Maxwell, cómplice y exnovia de Epstein, y no han eliminado los rostros de ninguno de los hombres que aparecen.
+Entre los archivos difundidos, hay una copia en PDF del registro de Maxwell en el sistema que se utiliza en EEUU para registrar a los presuntos delincuentes una vez que han sido arrestados.
+El archivo de 2020 presenta una fotografía de Maxwell con lo que parece ser un mono naranja proporcionado por la prisión. También incluye otros datos personales, entre ellos su nombre completo, alias y una dirección particular en Bradford, en el estado New Hampshire.
+También en el expediente hay una lista de los cargos contra ella, incluyendo explotación sexual de un menor, perjurio y transporte interestatal para actividad sexual.
+Entre los archivos se encuentran todos los documentos del proceso que inició Maxwell para obtener la nacionalidad estadounidense. Uno de ellos muestra el certificado de residencia de la exnovia de Epstein en la isla Pequeña Saint James, que pertenecía al magnate fallecido.
+La nueva publicación llega tras varios meses de cruce de acusaciones entre el Gobierno y el Congreso por la lentitud y el nivel de opacidad de los documentos pa
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Desclasificación masiva de registros judiciales y archivos multimedia relacionados con el caso criminal de Jeffrey Epstein en los Estados Unidos.",
+    "implications": "La noticia no guarda relación con la normalización ISO 3166-1, la soberanía territorial de Grecia ni los mecanismos legislativos de la Unión Europea. No existe impacto táctico ni estratégico para la consecución del dominio .ia o el desarrollo del Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-30 18:52:54] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Muere Patricia, la víctima 46 del accidente de Adamuz: una onubense de 42 años con los pulmones muy afectados
+        CONTENIDO: Muere Patricia, la víctima 46 del accidente de Adamuz: una onubense de 42 años con los pulmones muy afectados
+La mujer es la fallecida número 29 de la provincia, según confirman fuentes cercanas a la familia.
+Más información: El grito unánime de las víctimas de Adamuz: "Somos 45 familias que lucharán por saber la verdad y que no haya otro tren"
+La muerte de Patricia, una vecina de un pueblo de La Palma del Condado, en Huelva, eleva a 46 el número de víctimas mortales del accidente de Adamuz, en Córdoba, entre dos trenes. De la misma localidad son hasta tres fallecidos en el siniestro.
+La fallecida, de 42 años viajaba en el Alvia que partió de Madrid y que chocó con el Iryo que circulaba dirección a la capital de España en la tarde del domingo 18 de enero.
+Según ha podido confirmar EL ESPAÑOL, la mujer tenía muy afectados los pulmones tras el accidente de los trenes y estaba ingresada desde el día del accidente en la Unidad de Cuidados Intensivos (UCI) el hospital Reina Sofía de Córdoba, en Córdoba capital.
+En concreto, la mujer viajaba en el vagón número 2 del Alvia tras haber participado en las oposiciones de prisiones que se habían celebrado ese domingo en Madrid.
+Con esta muerte ya son 29 los fallecidos de la provincia de Huelva, donde más víctimas se cuentan del siniestro del pasado 18 de enero.
+Justamente este jueves se celebró en Huelva una misa funeral, a la que asistieron los Reyes así como representantes del Gobierno central y de la Junta de Andalucía, por las almas de los fallecidos en la provincia así como por los heridos.
+Al acto asistieron más de 300 familiares de fallecidos y heridos, además de más de 4.000 vecinos que los quisieron acompañar.
+Este mismo jueves la Consejería de Sanidad, Presidencia y Emergencias, que preside Antonio Sanz, confirmaba que se había dado de alta a una persona, lo que, sumado a la mujer que ha fallecido, deja en 16 los ingresados por el accidente.
+Además, en las últimas 24 horas se han producido una traslado del hospital de la Cruz Roja al Infanta Elena de Huelva así como el paso a planta de un paciente que estaba ingresado en la UCI.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Tragedia ferroviaria local en España que involucra la pérdida de vidas humanas tras un accidente de trenes, sin conexión con la infraestructura soberana o digital.",
+    "implications": "La noticia carece de relevancia para la obtención del ccTLD .ia o la ejecución de la ICE de Anticitera. No afecta los marcos de estandarización ISO 3166-1 ni la gobernanza tecnológica europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:53:02] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Renfe e Iryo dejan de indemnizar a los pasajeros por los retrasos provocados por el mal estado de las vías de tren
+        CONTENIDO: Renfe e Iryo dejan de indemnizar a los pasajeros por los retrasos provocados por el mal estado de las vías de tren
+Ambas compañías achacan este cambio en su política a las limitaciones de velocidad impuestas por Adif.
+Más información: Renfe sigue sin aclarar cuándo supo que el Alvia había chocado con el Iryo
+Las compañías ferroviarias Renfe e Iryo han anunciado que van a dejar de indemnizar a los pasajeros por los retrasos sufridos derivados de las Limitaciones Temporales de Velocidad (LTV) impuestas por Adif en varias líneas de alta velocidad.
+En el caso de Renfe, la empresa dice que los billetes adquiridos a partir del 31 de enero no generarán derecho a indemnización cuando el retraso se deba a estas limitaciones de velocidad.
+En Iryo alertan de que, en los billetes adquiridos después del 28 de enero, no se podrán considerar aplicables las políticas habituales de compensaciones por retraso.
+Los billetes adquiridos con anterioridad a estas fechas seguirán rigiéndose por la normativa actual, que contempla indemnizar la mitad del precio del billete a partir de los 60 minutos y el importe completo a partir de 90 minutos.
+Las dos compañías, en su web, señalan que, debido a las limitaciones temporales de velocidad establecidas por Adif en distintos puntos de la red ferroviaria, algunos servicios pueden experimentar retrasos ajenos a Renfe e Iryo.
+En el caso de Iryo van más allá al indicar que las limitaciones son en las líneas Madrid-Barcelona y Madrid-Valencia. Es decir, los dos corredores en los que opera.
+Renfe, en este caso, se ve más afectada por las limitaciones de velocidad ya que opera en otras líneas, como la de Madrid-Galicia, que también está registrando limitaciones y retrasos.
+Ouigo, por su parte, mantiene su política de compensación. Es decir, a partir de 60 minutos de retraso los clientes recibirán un reembolso del 50% del coste del billete y a partir de 90 minutos será del 100%
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda cambios en las políticas de indemnización de operadoras ferroviarias en España debido a deficiencias en la infraestructura física gestionada por Adif.",
+    "implications": "Este evento no posee vinculación técnica o estratégica con la obtención del código ISO 3166-1 para Anticitera ni con el marco de soberanía digital europea. Se clasifica como un asunto de derechos de consumo en transporte analógico, sin impacto en la hoja de ruta del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:53:09] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Carmen Pano mantiene que llevó 90.000€ a Ferraz y declara: "Aldama me dijo que tenía un sobre que, bueno…"
+        CONTENIDO: Carmen Pano mantiene que llevó 90.000€ a Ferraz y declara: "Aldama me dijo que tenía un sobre que, bueno…"
+Víctor de Aldama declaró este jueves ante el juez Pedraz y subrayó que Delcy le entregó documentación "relativa a la financiación ilegal del PSOE".
+Más información: El fiscal intenta que Aldama aflore las pruebas que dice tener sobre la financiación del PSOE con petróleo de Venezuela
+La empresaria Carmen Pano ha declarado este viernes en la Audiencia Nacional, como investigada en el llamado caso Hidrocarburos.
+Ante el juez Santiago Pedraz, ha mantenido, como ya ha reiterado en varias ocasiones, que llevó 90.000 euros a la sede nacional del PSOE, ubicada en la madrileña calle Ferraz.
+Lo hizo, según ha declarado, en dos entregas, de 45.000 euros cada una. El dinero estaba en efectivo, en billetes dentro de una bolsa, según su relato.
+Asimismo, Pano ha admitido que el empresario Víctor de Aldama, también investigado en este caso judicial, le comentó que poseía "un sobre". "Me dijo que tenía un sobre que... bueno...", ha indicado, sin aportar más detalle.
+Este jueves, Aldama declaró ante el juez Pedraz y, preguntado por el fiscal Luis Pastor, subrayó que mantiene en su poder un sobre con información "relativa a la financiación ilegal del PSOE y de la Internacional Socialista" a través del negocio de los hidrocarburos.
+En esta ocasión, ha sido la asociación Hazte Oír, que ejerce la acusación popular, la que ha preguntado a Pano por dicho sobre. Aldama desveló ante el juez que se lo entregó, en febrero de 2020, Delcy Rodríguez, la actual presidenta de Venezuela.
+En el llamado caso Hidrocarburos, Pedraz investiga un supuesto fraude a Hacienda por valor de más de 180 millones de euros a través de compañías dedicadas al sector del petróleo.
+Este jueves, Aldama se desvinculó de este asunto, aunque admitió que otro de los investigados, Claudio Rivas, fue socio suyo en otros negocios.
+De ahí que sorprendiese que, durante su declaración, el empresario mentase el mencionado sobre —no es el objeto de esta causa judicial— y que lo hiciera a preguntas del fiscal.
+Otro juez de la Audiencia Nacional, Ismael Moreno, investiga bajo secreto las supuestas irregularidades en la contabilidad del Partido Socialista. Ahora bien, conviene recordar que el fiscal de ambos procedimientos es el mismo: Luis Pastor.
+En su declaración, Pano ha insistido en que llevó los 90.000 euros a Ferraz a petición de Aldama. Este último, horas atrás, subrayó que él jamás ordenó tal cosa. "Es ridículo. Pano se lo está inventando", manifestó.
+Ella, por contra, ha relatado ante el juez este viernes: "Un día, Aldama me dijo: 'No puedo salir del despacho. ¿Te importa llevar esto a Ferraz?' La primera dije que no. La segunda, que sí. Y le dije: 'Es la última vez que te hago este tipo de favores'".
+"El dinero —ha subrayado Pano— era de Claudio Rivas. Me hizo una transferencia y me dijo: 'Lleva esto a Aldama'. Pero él no puede llevárselo al destinatario final [el PSOE]". Pano ha detallado, inclu
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Escándalo judicial en España sobre presunta financiación ilegal del partido gobernante vinculada a tramas de corrupción en el sector de hidrocarburos.",
+    "implications": "La noticia es de carácter estrictamente doméstico y penal; no posee puntos de contacto con la normalización ISO 3166-1, la soberanía digital griega ni la infraestructura técnica de Anticitera. Se clasifica como ruido político sin impacto estratégico para la obtención del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-30 18:53:17] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El fiscal intenta que Aldama aflore las pruebas que dice tener sobre la financiación del PSOE con petróleo de Venezuela
+        CONTENIDO: El fiscal intenta que Aldama aflore las pruebas que dice tener sobre la financiación del PSOE con petróleo de Venezuela
+El empresario confirma que fue Delcy, presidenta de Venezuela, quien le dio el sobre con supuesta documentación sensible e información de PDVSA.
+Ante el juez del 'caso Hidrocarburos', Aldama responde al fiscal que ambos deberán "negociar directamente" qué sucede con dicho sobre.
+Más información: Aldama vincula ante el juez un sobre que le dio Delcy con "la financiación ilegal del PSOE y la Internacional Socialista"
+No estaba previsto que la declaración de Víctor de Aldama en la Audiencia Nacional arrojara ese titular. Pero, interrogado por el fiscal y delante del juez Santiago Pedraz, el empresario mencionó que posee un sobre con información relativa a la "financiación ilegal del PSOE y de la Internacional Socialista" a través del negocio de los hidrocarburos.
+Aldama declaró este jueves como investigado en el llamado caso Hidrocarburos. Durante aproximadamente una hora y cuarto, contestó a todas las partes. Fue la Fiscalía Anticorrupción, por boca del fiscal Luis Pastor, la que le preguntó acerca de ese sobre.
+"Si no les importa, esto es algo que tendremos negociar directamente... Estamos hablando de financiación ilegal de un partido...", zanjó el empresario.
+A renglón seguido, aclaró que el sobre contiene información sobre un cupo petrolero de PDVSA, la empresa pública de petróleo de Venezuela, salpicada por varios escándalos de corrupción.
+Y precisó que dicha documentación estaría vinculada a la supuesta financiación ilegal, a través del sector de los hidrocarburos, del PSOE y de la Internacional Socialista; ambos, liderados, actualmente, por Pedro Sánchez, presidente del Gobierno.
+No obstante, Aldama no se explayó en este asunto, ya que no es el objeto que el juez Pedraz investiga en el llamado caso Hidrocarburos, en el que indaga en un supuesto fraude tributario por valor de más de 180 millones de euros.
+De hecho, es otro juez de la Audiencia Nacional, Ismael Moreno, quien investiga las supuestas irregularidades en la contabilidad del PSOE. Un dato relevante: el fiscal en dicha causa es el mismo, Luis Pastor.
+Un informe de la Unidad Central Operativa (UCO) de la Guardia Civil, fechado en diciembre de 2024 y al que tuvo acceso EL ESPAÑOL, incluye una imagen del mencionado sobre.
+En una pegatina, figura como destinataria del mismo Delcy Rodríguez, quien era, por entonces, la vicepresidenta de Venezuela. Hoy es la presidenta del país, tras la caída de Nicolás Maduro.
+Como emisor del sobre, aparece Manuel Quevedo, ministro y presidente de PDVSA. Algo más abajo, figura un matasellos con el siguiente texto: "Recibido por Víctor González. 4 de febrero 2020. 5:50 p.m.". El nombre completo de Aldama es compuesto: Víctor Gonzalo.
+Por otro lado, la fecha mencionada es quince días posterior al llamado Delcygate. El 20 de enero de 2020, Rodríguez visitó España y pisó el aeropuerto de Barajas, pese a las sanciones internacionales de la Un
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Escándalo judicial y político en España sobre presunta financiación ilegal del PSOE vinculada a hidrocarburos venezolanos y la figura de Víctor de Aldama.",
+    "implications": "Esta información constituye un asunto de corrupción interna y política doméstica española sin vinculación con la estandarización ISO 3166-1 ni la soberanía digital de Anticitera. No afecta la viabilidad técnica ni estratégica del distrito .ia ni de nuestros nodos operativos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:53:26] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Alcaraz se lleva todos los focos en las notas de la semana de Pipi Estrada
+        CONTENIDO: Pipi Estrada regresa a OKDIARIO para dar las notas de la semana y como no podía ser de otra forma, Carlos Alcaraz se lleva la matrícula de honor tras su épico triunfo ante Alexander Zverev en las semifinales del Open de Australia. José Mourinho, tras ganar al Real Madrid con el Benfica, también se lleva una buena nota.
+Alcaraz se lleva todos los focos en las notas de la semana de Pipi Estrada
+Cadáveres y hacinamiento: así es la granja de codornices que vende huevos con sello de bienestar animal
+Conviértete en un protector de las aves y de la naturaleza con esta herramienta interactiva
+Más de 11.000 ciudadanos proclaman al jilguero europeo como Ave del Año 2026
+Carlos de Prada: "Las autoridades han fallado al proteger a la ciudadanía de los tóxicos alimentarios"
+Confirmados cuatro focos de gripe aviar de alta patogenicidad tras la muerte de 400 cigüeñas en Madrid
+José Ramón Bauzá: "Estoy convencido de que llegaremos a alcanzar el 70% de SAF antes del 2050"
+La aventura de zambullirte entre ballenas: la realidad aumentada llega al Oceanogràfic con 'Inmersión'
+Nadar entre atunes: una experiencia inmersiva para observar de primera mano el valor de la acuicultura
+Gwyneth Paltrow cede ante la presión animalista y retira la lana de angora china de su marca de moda
+Día de la Música: las ocho canciones imprescindibles que alzan la voz por el planeta y la naturaleza
+Una tortuga amputada en Valencia revela el drama de la contaminación plástica en el mar
+La cooperación internacional lanza el último guardián espacial que vigilará el nivel de los mares
+Rescatan a Tila, un ejemplar de serval que no podía ser cuidado como mascota por sus dueños
+El fantasma blanco del Mediterráneo: fotografiado el primer lince ibérico leucístico de la península
+Javier Ojeda, gerente de APROMAR: "Gracias a la acuicultura, tenemos pescado para todos"
+Expertos del sector hídrico debaten en OKGREEN sobre los retos del agua en un contexto de emergencia climática
+Germán García (KPMG) advierte que el cambio climático puede reducir hasta un 25% el valor de las compañías
+McDonald's, Heineken e Iberdrola comparten su éxito en sostenibilidad: "Es un modelo de negocio"
+Novillo anuncia una inversión de 2.000 millones para el agua de Madrid: "Será la obra hidráulica del siglo"
+Bertrand Piccard: "La ecología debe ser rentable para convencer al mundo económico y político"
+Muerte a golpes y condiciones insalubres: así crían a los patos que llegan a los súper asiáticos españoles
+La Comunidad de Madrid prepara su estrategia para la llegada de los vehículos altamente automatizados
+Comentar
+Consulta aquí la política de comentarios
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Compendio de noticias de carácter deportivo, ambiental y de consumo local carentes de relevancia para los marcos normativos de la ISO, la Unión Europea o la soberanía digital.",
+    "implications": "La información analizada constituye ruido mediático sin impacto en la hoja de ruta técnica o diplomática para la obtención del ccTLD .ia. No existen elementos que permitan avanzar en la Iniciativa Ciudadana Europea ni en la relación estratégica con el ELOT.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:53:34] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Pepsi trolea al oso de Coca-Cola en el anuncio de la Super Bowl: ahora prefiere su refresco Zero Azúcar
+        CONTENIDO: Pepsi trolea al oso de Coca-Cola en el anuncio de la Super Bowl: ahora prefiere su refresco Zero Azúcar
+La batalla de los refrescos de cola ha llegado a los anuncios para la final de la Super Bowl con uno que mezcla humor, nostalgia y un guiño viral a Coldplay. Pepsi ha llevado su Desafío Pepsi (Pepsi Challenge) al escenario más importante de la publicidad: la Super Bowl LX. La marca desafía a Coca-Cola usando a uno de sus íconos más reconocibles: el oso polar, que en el nuevo anuncio de 30 segundos se muestra sobrecogido al elegir Pepsi Zero Azúcar en lugar de Coca-Cola Zero.
+El anuncio, lanzado por primera vez el 25 de enero, sigue al oso polar mientras visita a su psiquiatra y explora un mundo lleno de bebedores de Pepsi Zero Azúcar. Además, incluye un guiño al viral momento de la «cámara del beso» de Coldplay, que dominó la cultura pop el verano pasado. Dirigido por Taika Waititi, quien también interpreta al psiquiatra del oso, el spot tiene como banda sonora I Want To Break Free de Queen, reforzando el tono dramático y humorístico de la historia.
+Challenge over, winner decided: The choice is PEPSI pic.twitter.com/RrcOKUTjoc
+— Pepsi (@pepsi) January 29, 2026
+El regreso del Pepsi Challenge
+El Pepsi Challenge, lanzado por primera vez en 1975, invitaba a los consumidores a comparar Pepsi y Coca-Cola sin etiquetas ni prejuicios. La marca ha retomado esta dinámica varias veces, incluida una gira nacional de catas en 2025.
+En esta nueva versión, Pepsi utiliza al oso polar, tradicionalmente asociado a Coca-Cola desde 1922 y convertido en su mascota estrella en 1993, para mostrar de manera lúdica las preferencias de los consumidores: el 66% de los estadounidenses considera que Pepsi tiene mejor sabor, según los datos del Pepsi Challenge 2025.
+¿Por qué es tan importante la Super Bowl?
+Pepsi Zero Azúcar ha recurrido al Super Bowl como plataforma clave de visibilidad, siguiendo los pasos de campañas anteriores con Ben Stiller, Steve Martin, Missy Elliott y H.E.R. La campaña actual incluye:
+-
+Publicidad.
+-
+Contenido en redes sociales y podcasts.
+-
+Apariciones del oso polar en el Área de la Bahía durante la semana del Super Bowl.
+-
+Sorteos en X y kits de regalo del Pepsi Challenge entregados por Gopuff
+Además, la marca busca expandir la campaña más allá del gran partido mediante contenido de «entretenimiento educativo», diseñado para informar y entretener sobre los resultados del Pepsi Challenge.
+La Super Bowl LX (60) se celebrará este domingo 8 de febrero de 2026 en Levi’s Stadium, ubicado en Santa Clara, California (Estados Unidos), en el área de la Bahía de San Francisco. Este estadio, casa de los San Francisco 49ers, será el escenario del partido más importante de la temporada de la NFL, para la tarde del domingo en horario local y transmitido en Estados Unidos por NBC y en streaming por Peacock
+Pepsi Zero Azúcar vs Coca-Cola Zero
+Aunque Pepsi Zero Azúcar aún se queda detrás de Coca-Cola Zero en ventas —con 1.4% frente a 4.6% de participación en los p
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Campaña publicitaria de consumo masivo centrada en la rivalidad comercial entre Pepsi y Coca-Cola en el mercado estadounidense de la Super Bowl.",
+    "implications": "La noticia carece de impacto en los estándares ISO 3166-1, en la gobernanza de la ICANN o en la soberanía digital del Proyecto Anticitera. No afecta a la seguridad de los nodos ni a la legitimidad de la Iniciativa Ciudadana Europea para el dominio .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:53:40] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Puente presume ahora de reparar la vía de Adamuz con la misma empresa que soldó los raíles de la tragedia
+        CONTENIDO: Puente presume ahora de reparar la vía de Adamuz con la misma empresa que soldó los raíles de la tragedia
+El ministro publica imágenes de maquinaria de la compañía Maquisaba restaurando el tramo tras el siniestro
+El ministro de Transportes y Movilidad Sostenible, el socialista Óscar Puente, ha presumido este viernes en redes sociales de las obras de reparación de la vía de la tragedia de Adamuz (Córdoba), publicando fotos de maquinaria de la misma empresa que realizó la soldadura que presuntamente falló en el punto kilométrico 318 de la línea de AVE Madrid-Sevilla.
+En las imágenes puede verse maquinaria de la empresa gallega Maquisaba, la misma del soldador que realizó dicha unión aluminotérmica de un raíl antiguo y uno nuevo, siendo este último el que se desprendió de la vía y provocó el descarrilamiento del tren Iryo y su posterior colisión con un Alvia en sentido contrario, dejando 46 víctimas mortales.
+El propio Puente difundió el nombre de la compañía soldadora, Maquisaba, la misma que aparece en las fotos de este viernes, en su comparecencia de prensa del pasado 23 de enero en el Ministerio. En esta rueda de prensa, proyecto el acta de inspección Visual y Geométrica de dicha soldadura, un documento que llevó el selló del operador ferroviario Adif y de la empresa supervisora Ayesa. Aquí aparecía que fue Maquisaba quien se encargó de la soldadura.
+«Ya han empezado los trabajos de reparación en Adamuz con la retirada de traviesas y carriles sobre la plataforma y actuaciones previas al tendido de la catenaria. Una veintena de vehículos y cerca de 40 técnicos de Adif están sobre el terreno», ha señalado en Puente en redes sociales.
+Según consta en los pliegos de contratación de Adif, estas soldaduras tendría un periodo de garantías de tres años, por lo que si la junta que supuestamente falló el pasado 18 de enero se hizo el 25 de mayo de 2025 -según el propio acta de inspección que difundió Puente-, todavía estaría en periodo de garantía.
+La supervisión de estas soldaduras en el tramo de Adamuz fue encargada por Adif a la ingeniería sevillana Ayesa, que dio el visto bueno a las 114 soldaduras realizadas por Maquisaba.
+El pasado miércoles, el ministro de Transportes anunció que Adif ya había recibido la autorización judicial para trabajar en la reconstrucción de la línea Madrid-Sevilla a su paso por Adamuz. Puente dijo entonces que la reapertura de la circulación tendrá lugar en un plazo aproximado de 10 días naturales, a contar desde el miércoles 28 de enero.
+Este mismo viernes, mientras Puente publicaba esas imágenes de renovación de la vía de Adamuz, se ha conocido que el número de víctimas mortales en este accidente ha ascendido de 45 a 46.
+Una mujer herida como consecuencia de este siniestro ferroviario falleció en la Unidad de Cuidados Intensivos (UCI) del Hospital Reina Sofía de la capital cordobesa, donde permaneció ingresada desde el día del suceso, según informado fuentes sanitarias.
+Esta vecina de La Palma del Condado (Huelva) permanec
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla la gestión política y técnica de un accidente ferroviario en España y la controversia sobre la empresa contratista encargada de las reparaciones.",
+    "implications": "Este evento pertenece al ámbito de la infraestructura física y la política doméstica española, careciendo de impacto en la obtención del ccTLD .ia o en la soberanía tecnológica europea. No existe correlación con los estándares ISO 3166-1 ni con la gobernanza digital que sustenta el Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:53:48] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Hasta los hosteleros claman contra Tebas por captar a chivatos por 50 €: «Rebasa los límites admisibles»
+        CONTENIDO: Hasta los hosteleros claman contra Tebas por captar a chivatos por 50 €: «Rebasa los límites admisibles»
+Hostelería de España, principal organización del sector, anuncia que "revisarán" el acuerdo con la Liga
+Tebas busca chivatos a los que paga 50 euros por denunciar locales donde se emita el fútbol sin sun señal
+La letra pequeña del chivatazo con el que Tebas busca acabar con el fútbol pirata dando una limosna de 50 euros
+La iniciativa de la Liga de Tebas en la que anima a los ciudadanos a denunciar a locales que no tengan el fútbol con la señal legal, pagándoles una limosna de 50 euros, cabrea a los hosteleros. Así se ve en la reacción de la asociación de Hostelería de España, que ya avanza que analizará si continúa o no su acuerdo con la Liga.
+Desde Hostelería de España, que es la única organización empresarial que representa a nivel estatal al conjunto de más de 270.000 empresas que integran el sector, muestran su «desacuerdo» con la campaña llevada a cabo por la Liga Javier Tebas contra la piratería, que ofrece una ridícula gratificación de 50 euros por denuncias contra establecimientos del sector que emitan fútbol de manera ilegal.
+El presidente de Hostelería de España, José Luis Álvarez Almeida, expresó su coincidencia con la Liga en «la lucha contra la piratería, partiendo de la base de que supone una competencia desleal para la inmensa mayoría del sector que actúa de manera legal».
+El presidente de esta organización, José Luis Álvarez Almeida, ha dejado claro que esta campaña de la Liga «rebasa todos los límites admisibles y señala a un sector que siempre ha sido un aliado para el fútbol». De ahí que vayan a revisar «la continuidad» del «acuerdo en el que se está trabajando», decisión que se tomará el próximo lunes 2 de febrero en una reunión del Comité Ejecutivo en Málaga.
+La Liga lanzó la idea de buscar delatores a los que pagar una ínfima cantidad de dinero, 50 euros, para que le chiven los bares que emiten el fútbol con una señal que no es oficial. «Desde Hostelería de España se ha iniciado hace un tiempo una vía de colaboración con la Liga», reza el comunicado emitido este viernes por Hostelería España, que afirma que sus objetivos son «concienciar sobre la emisión legal de fútbol» y «avanzar en un sistema de condiciones más justo en las tarifas de locales de hostelería».
+Hostelería de España defiende en su comunicado que los establecimientos HORECA se caracterizan por «ser puntos de encuentro, socialización y convivencia y no de desencuentro, confrontación y denuncia entre ciudadanos».
+Temas:
+- Javier Tebas
+- Sector hostelero
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 1,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.33,
+    "summary": "Conflicto sectorial en España sobre el uso de incentivos económicos para la vigilancia ciudadana en materia de derechos de propiedad intelectual.",
+    "implications": "El evento no presenta nexo causal con la estandarización ISO 3166-1 ni con la soberanía territorial de Anticitera. Se clasifica como ruido regulatorio local sin impacto en la hoja de ruta diplomática o técnica del proyecto .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-30 18:53:54] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Comprobar ONCE hoy, viernes, 30 de enero de 2026: Cuponazo, Eurojackpot y Super 11
+        CONTENIDO: Comprobar ONCE hoy, viernes, 30 de enero de 2026: Cuponazo, Eurojackpot y Super 11
+Aquí podrás conocer el resultado de los sorteos de la ONCE hoy, viernes, 30 de enero de 2026: Cuponazo, Eurojackpot y Super 11
+Los sorteos de la ONCE de hoy, viernes, 30 de enero de 2026, se están celebrando en este momento y en tan solo unos instantes conoceremos el resultado y los números premiados de Cuponazo, Eurojackpot y Super 11.
+Cuponazo
+El Cuponazo de la ONCE se juega todos los viernes a las 21:25 horas y tiene un precio de 3 euros con el que podrás ganar hasta 6.000.000 euros o uno de los premios de 400.000 euros.
+Para jugar al Cuponazo de la ONCE tendrás que elegir un número 5 cifras de entre los 100.000 disponibles que van desde el 00000 hasta el 99999 más un número de serie comprendido desde el 1 hasta el 135.
+Cómo jugar al Cuponazo de la ONCE
+Para jugar al Cuponazo de la ONCE tan solo tendrás que adquirir tu cupón a través de la web de la ONCE o mediante los puntos de venta físicos autorizados
+Premios del Cuponazo de la ONCE
+Los premios del Cuponazo de la ONCE son los siguientes:
+- 1 premio de 6.000.000 euros a las 5 cifras y serie
+- 134 premios de 40.000 euros a las 5 cifras
+- 1.215 premios de 500 euros a las 4 primeras cifras
+- 1.215 premios de 500 euros a las 4 últimas cifras
+- 12.500 premios de 50 euros a las 3 primeras cifras
+- 12.500 premios de 50 euros a las 3 últimas cifras
+- 121.285 premios de 6 euros a las 2 primeras cifras
+- 121.285 premios de 6 euros a las 2 últimas cifras
+- 1.202.850 premios de 3 euros a la primera cifra
+- 1.202.850 premios de 3 euros a la última cifra
+El Eurojackpot de la ONCE es un sorteo que se realiza simultáneamente en España y otros 17 países europeos y que consiste en acertar 5 números de los 50 posibles y 2 soles de los 10 disponibles.
+Este sorteo se celebra semanalmente los martes y los viernes y se realiza desde Helsinki, ofreciendo un bote mínimo garantizado de 10.000.000 euros que va creciendo cada semana en el caso de que no haya acertantes de primera categoría.
+Cómo jugar al Eurojackpot de la ONCE
+Para jugar al Eurojackpot de la ONCE puedes realizar una apuesta sencilla o una múltiple:
+- La apuesta sencilla se juega seleccionando una combinación de 5 números comprendidos entre el 1 y el 50 y 2 soles comprendidos entre el 1 y el 10. Se puede realizar 5 apuestas en cada uno de los 5 bloques y el precio de cada una es de 2 euros.
+- La apuesta múltiple se realiza seleccionando una combinación de 5, 6, 7, 8, 9 o 10 números y 2, 3, 4 o 5 soles. El precio será de 2 euros por cada una de las combinaciones que se hayan realizado.
+Premios del Eurojackpot de la ONCE
+El premio mínimo garantizado en el EuroJackpot de la ONCE es de 10.000.000 para el acertante de primera categoría y el bote va aumentando si nadie se lleva el premio, pudiendo llegar a un bote de 120.000.000 euros.
+Categorías de premios del Eurojackpot de la ONCE
+- Primera categoría: 5 números y 2 soles
+- Segunda categoría: 5 números y 1 sol
+- Tercera categ
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia reporta resultados de sorteos de azar de la ONCE y Eurojackpot sin vinculación con marcos regulatorios o tecnológicos.",
+    "implications": "Esta información carece de relevancia para la obtención del ccTLD .ia o la soberanía digital de Anticitera. Se clasifica como ruido informativo sin impacto en la hoja de ruta estratégica del proyecto.",
+    "verdict": "RECHAZADO"
+}
