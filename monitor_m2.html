@@ -327,7 +327,8 @@
                 else if (code >= 51 && code <= 67) icon = '🌧️';
                 else if (code >= 71 && code <= 77) icon = '❄️';
                 else if (code >= 80 && code <= 82) icon = '🌦️';
-                else if (code >= 95) icon = '⚡';
+                else if (code >= 95 && code <= 99) icon = '⛈️';
+                else icon = '☁️';
 
                 document.getElementById('saver_temp').innerText = temp + '°C';
                 document.getElementById('saver_icon').innerText = icon;

@@ -273,7 +273,7 @@ def add_todo(message):
         import psycopg2
         DB_PASSWORD = os.environ.get("DB_PASSWORD")
         # Por defecto apuntamos al maestro M2 si estamos fuera del docker network
-        DATABASE_URL = os.environ.get("DATABASE_URL", f"postgresql://arconte:{DB_PASSWORD}@192.168.1.75:5432/synapse_ia")
+        DATABASE_URL = os.environ.get("DATABASE_URL", f"postgresql://arconte:{DB_PASSWORD}@synapse-ia-db:5432/synapse_ia")
         
         conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()
@@ -309,7 +309,7 @@ def list_todos(message):
         import psycopg2
         DB_PASSWORD = os.environ.get("DB_PASSWORD")
         # Por defecto apuntamos al maestro M2 si estamos fuera del docker network
-        DATABASE_URL = os.environ.get("DATABASE_URL", f"postgresql://arconte:{DB_PASSWORD}@192.168.1.75:5432/synapse_ia")
+        DATABASE_URL = os.environ.get("DATABASE_URL", f"postgresql://arconte:{DB_PASSWORD}@synapse-ia-db:5432/synapse_ia")
         
         conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()

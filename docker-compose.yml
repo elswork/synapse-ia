@@ -10,6 +10,8 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     restart: unless-stopped
 
   athena:
@@ -22,7 +24,7 @@ services:
       - .:/app
     environment:
       - DB_PASSWORD=${DB_PASSWORD}
-      - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@192.168.1.75:5432/synapse_ia
+      - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@synapse-ia-db:5432/synapse_ia
     env_file:
       - .env
     stdin_open: true
@@ -41,7 +43,7 @@ services:
     environment:
       - PYTHONPATH=/app
       - DB_PASSWORD=${DB_PASSWORD}
-      - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@192.168.1.75:5432/synapse_ia
+      - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@synapse-ia-db:5432/synapse_ia
     restart: always
 
   m2-api:
