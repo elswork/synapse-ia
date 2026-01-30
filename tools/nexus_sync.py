@@ -3,10 +3,10 @@ import json
 from datetime import datetime
 
 class NexusSync:
-    def __init__(self, base_path="/home/pirate/docker/synapse-ia"):
-        self.base_path = base_path
-        self.history_path = os.path.join(base_path, "context/history.md")
-        self.goal_path = os.path.join(base_path, "context/current_goal.md")
+    def __init__(self, base_path=None):
+        self.base_path = base_path or os.environ.get("BASE_PATH", "/app")
+        self.history_path = os.path.join(self.base_path, "context/history.md")
+        self.goal_path = os.path.join(self.base_path, "context/current_goal.md")
 
     def log_event(self, agent, event_type, description, metadata=None):
         """Registra un evento en el historial (MD) y en la DB (PostgreSQL)."""
