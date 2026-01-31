@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M2 Touch Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
 
@@ -33,7 +34,6 @@
             flex-direction: column;
         }
 
-        /* Screensaver styles */
         /* Screensaver styles */
         #screensaver {
             position: absolute;
@@ -78,6 +78,8 @@
             display: flex;
             align-items: center;
             gap: 40px;
+            cursor: pointer;
+            /* Clickable */
         }
 
         #saver_temp {
@@ -96,6 +98,36 @@
             margin-top: 15px;
             text-transform: uppercase;
             letter-spacing: 3px;
+        }
+
+        /* Weather Modal */
+        #weather_modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 80%;
+            background: rgba(13, 17, 23, 0.95);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #weather_modal.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #chart_container {
+            flex: 1;
+            position: relative;
         }
 
         .header {
@@ -176,6 +208,19 @@
             cursor: pointer;
         }
 
+        .btn-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
         .pulse {
             animation: pulse-animation 2s infinite;
         }
@@ -198,14 +243,23 @@
 
 <body>
     <!-- Screensaver Overlay -->
-    <div id="screensaver" onclick="dismissScreensaver()">
+    <div id="screensaver" onclick="dismissScreensaver(event)">
         <div id="saver_time">--:--</div>
         <div id="saver_date">-- -- --</div>
-        <div id="saver_weather">
+        <div id="saver_weather" onclick="showWeatherGraph(event)">
             <div id="saver_icon">🌤️</div>
             <div id="saver_temp">--°</div>
+            <div style="font-size:1.5rem; color:#888;">(Ver Gráfica)</div>
         </div>
         <div id="saver_loc">Alcorcón, ES</div>
+    </div>
+
+    <!-- Weather Graph Modal -->
+    <div id="weather_modal">
+        <button class="btn-close" onclick="closeWeatherGraph(event)">Cerrar</button>
+        <div id="chart_container">
+            <canvas id="weatherChart"></canvas>
+        </div>
     </div>
 
     <div class="header">
@@ -249,6 +303,8 @@
         const IDLE_LIMIT = 300; // 5 minutos (300 segundos)
         let isDimmed = false;
         const screensaver = document.getElementById('screensaver');
+        const weatherModal = document.getElementById('weather_modal');
+        let weatherChartInstance = null;
 
         async function setBrightness(percent) {
             try {
@@ -263,8 +319,12 @@
         }
 
         // Configurar interacción
-        function dismissScreensaver() {
+        function dismissScreensaver(event) {
+            // No cerrar si se clickea en el modal o el botón de gráfica
+            if (event && (event.target.closest('#weather_modal') || event.target.closest('#saver_weather'))) return;
+
             screensaver.classList.add('hidden');
+            closeWeatherGraph(); // Asegurar cierre de modal
             idleTime = 0;
             if (isDimmed) {
                 setBrightness(100);
@@ -291,9 +351,11 @@
             }
         }, 1000);
 
-        // Reset inactividad con cualquier toque
-        document.body.addEventListener('click', () => { dismissScreensaver(); });
-        document.body.addEventListener('touchstart', () => { dismissScreensaver(); });
+        // Reset inactividad
+        document.body.addEventListener('click', (e) => {
+            // Ignorar clicks dentro del modal para el reset de inactividad
+            if (!e.target.closest('#weather_modal')) idleTime = 0;
+        });
 
         // Reloj y Fecha del Screensaver
         function updateTime() {
@@ -310,23 +372,36 @@
         }
 
         // Clima (Open-Meteo)
+        let hourlyData = null;
+
         async function fetchWeather() {
             try {
                 // Alcorcón coords: 40.3458, -3.8249
-                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=40.3458&longitude=-3.8249&current=temperature_2m,weather_code&timezone=Europe%2FMadrid');
+                // Añadido is_day y hourly data
+                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=40.3458&longitude=-3.8249&current=temperature_2m,weather_code,is_day&hourly=temperature_2m,precipitation&timezone=Europe%2FMadrid&forecast_days=1');
                 const data = await res.json();
+
+                hourlyData = data.hourly;
 
                 const temp = Math.round(data.current.temperature_2m);
                 const code = data.current.weather_code;
+                const isDay = data.current.is_day; // 1 = Día, 0 = Noche
 
-                // Mapeo simple de códigos WMO a emojis
+                // Mapeo simple de códigos WMO a emojis con soporte Noche
                 let icon = '❓';
-                if (code === 0) icon = '☀️';
-                else if (code >= 1 && code <= 3) icon = '⛅';
+                // Code 0: Clear sky
+                if (code === 0) icon = isDay ? '☀️' : '🌙';
+                // Code 1-3: Partly cloudy
+                else if (code >= 1 && code <= 3) icon = isDay ? '⛅' : '☁️';
+                // Code 45, 48: Fog
                 else if (code >= 45 && code <= 48) icon = '🌫️';
+                // Code 51-67: Drizzle / Rain
                 else if (code >= 51 && code <= 67) icon = '🌧️';
+                // Code 71-77: Snow
                 else if (code >= 71 && code <= 77) icon = '❄️';
+                // Code 80-82: Showers
                 else if (code >= 80 && code <= 82) icon = '🌦️';
+                // Code 95-99: Thunderstorm
                 else if (code >= 95 && code <= 99) icon = '⛈️';
                 else icon = '☁️';
 
@@ -336,6 +411,89 @@
             } catch (e) {
                 console.error("Weather error:", e);
             }
+        }
+
+        function showWeatherGraph(event) {
+            if (event) event.stopPropagation();
+            if (!hourlyData) return;
+
+            weatherModal.classList.add('visible');
+
+            const ctx = document.getElementById('weatherChart').getContext('2d');
+
+            // Destruir grafico anterior si existe
+            if (weatherChartInstance) {
+                weatherChartInstance.destroy();
+            }
+
+            // Preparar datos (próximas 24h o lo que haya)
+            // Cortamos labels para que sean legibles (ej. "14:00")
+            const labels = hourlyData.time.map(t => t.split('T')[1]);
+            const temps = hourlyData.temperature_2m;
+            const prec = hourlyData.precipitation;
+
+            weatherChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Temperatura (°C)',
+                            data: temps,
+                            type: 'line',
+                            borderColor: '#00d4ff', // accent
+                            backgroundColor: 'rgba(0, 212, 255, 0.2)',
+                            tension: 0.4,
+                            yAxisID: 'y',
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Precipitación (mm)',
+                            data: prec,
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#888', maxTicksLimit: 8 }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            ticks: { color: '#00d4ff' },
+                            title: { display: true, text: 'Temp (°C)', color: '#00d4ff' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            ticks: { color: '#36a2eb' },
+                            title: { display: true, text: 'Lluvia (mm)', color: '#36a2eb' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function closeWeatherGraph(event) {
+            if (event) event.stopPropagation();
+            weatherModal.classList.remove('visible');
         }
 
         async function fetchStats() {
