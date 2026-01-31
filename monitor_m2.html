@@ -15,6 +15,7 @@
             --accent: #00d4ff;
             --text: #e6edf3;
             --danger: #ff4444;
+            --success: #2ea043;
         }
 
         body {
@@ -180,6 +181,142 @@
             opacity: 0.8;
         }
 
+        /* Music Modal */
+        #music_modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0d1117;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            box-sizing: border-box;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #music_modal.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            flex: 1;
+            margin-top: 20px;
+        }
+
+        .genre-card {
+            background: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .genre-card:active {
+            transform: scale(0.95);
+            background: #21262d;
+            border-color: var(--accent);
+        }
+
+        .genre-icon {
+            font-size: 5rem;
+            margin-bottom: 15px;
+        }
+
+        .genre-name {
+            font-size: 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .station-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            display: none;
+            /* Hidden by default */
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .station-item {
+            background: #161b22;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            border: 1px solid #30363d;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .station-item:active,
+        .station-item.playing {
+            background: #1f242c;
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        /* Player Controls */
+        #now_playing {
+            background: #161b22;
+            padding: 20px;
+            border-top: 2px solid var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        #now_playing.visible {
+            transform: translateY(0);
+        }
+
+        .np-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .np-controls {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: black;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -245,6 +382,8 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            position: relative;
+            /* For z-index context */
         }
 
         .btn {
@@ -256,6 +395,20 @@
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
+        }
+
+        .btn-music {
+            background: #238636;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-close {
@@ -332,6 +485,54 @@
         </div>
     </div>
 
+    <!-- Music Modal -->
+    <div id="music_modal">
+        <button class="btn-close" style="background: rgba(255,0,0,0.3);" onclick="closeMusicModal()">✕</button>
+        <h2 style="font-size: 3rem; margin-top:0;">Música & Radio</h2>
+
+        <!-- Genre View -->
+        <div class="music-grid" id="genre_view">
+            <div class="genre-card" onclick="showStations('jazz')">
+                <div class="genre-icon">🎷</div>
+                <div class="genre-name">Jazz</div>
+            </div>
+            <div class="genre-card" onclick="showStations('lofi')">
+                <div class="genre-icon">☕</div>
+                <div class="genre-name">Lo-Fi</div>
+            </div>
+            <div class="genre-card" onclick="showStations('classical')">
+                <div class="genre-icon">🎻</div>
+                <div class="genre-name">Clásica</div>
+            </div>
+            <div class="genre-card" onclick="showStations('info')">
+                <div class="genre-icon">🌍</div>
+                <div class="genre-name">Noticias</div>
+            </div>
+        </div>
+
+        <!-- Station View -->
+        <div class="station-list" id="station_view">
+            <button class="btn" style="align-self: flex-start; margin-bottom: 20px;" onclick="showGenres()">←
+                Volver</button>
+            <div id="stations_container" style="display:flex; flex-direction:column; gap:10px;"></div>
+        </div>
+    </div>
+
+    <!-- Info Bar / Now Playing -->
+    <div id="now_playing">
+        <div class="np-info">
+            <div style="font-size: 2rem;">🎵</div>
+            <div>
+                <div style="color: var(--accent); font-size: 0.9rem;">REPRODUCIENDO</div>
+                <div id="np_name" style="font-weight: 600; font-size: 1.2rem;">Nada sonando</div>
+            </div>
+        </div>
+        <div class="np-controls">
+            <button class="btn-circle" onclick="togglePlay()" id="play_btn">▶</button>
+            <button class="btn-circle" style="background: #333; color: white;" onclick="stopMusic()">⏹</button>
+        </div>
+    </div>
+
     <div class="header">
         <h1>ANTICITERA NEXUS M2</h1>
         <div id="clock" style="font-size: 2rem; font-weight: 600;"></div>
@@ -364,9 +565,13 @@
     </div>
 
     <div class="footer">
+        <button class="btn-music" onclick="openMusicModal()">🎵 MÚSICA</button>
         <button class="btn" onclick="fetchStats()">ACTUALIZAR</button>
         <button class="btn" style="background:#555; color:#fff;" onclick="activateScreensaver()">REPOSO</button>
     </div>
+
+    <!-- Audio Element -->
+    <audio id="audio_player" preload="none"></audio>
 
     <script>
         let idleTime = 0;
@@ -374,6 +579,8 @@
         let isDimmed = false;
         const screensaver = document.getElementById('screensaver');
         const weatherModal = document.getElementById('weather_modal');
+        const musicModal = document.getElementById('music_modal');
+        const audioPlayer = document.getElementById('audio_player');
 
         let weatherData = null;
 
@@ -389,11 +596,11 @@
 
         // Configurar interacción
         function dismissScreensaver(event) {
-            // No cerrar si se clickea en el modal o el area del tiempo
-            if (event && (event.target.closest('#weather_modal') || event.target.closest('#saver_weather'))) return;
+            if (event && (event.target.closest('#weather_modal') || event.target.closest('#saver_weather') || event.target.closest('#music_modal'))) return;
 
             screensaver.classList.add('hidden');
             closeWeatherModal();
+            // closeMusicModal(); // Optional: keep music open? Better close modal but keep playing
             idleTime = 0;
             if (isDimmed) {
                 setBrightness(100);
@@ -404,6 +611,7 @@
         function activateScreensaver() {
             screensaver.classList.remove('hidden');
             fetchWeather();
+            closeMusicModal(); // Close UI but keep playing
             if (!isDimmed) {
                 setBrightness(25);
                 isDimmed = true;
@@ -421,7 +629,7 @@
         }, 1000);
 
         document.body.addEventListener('click', (e) => {
-            if (!e.target.closest('#weather_modal')) idleTime = 0;
+            if (!e.target.closest('#weather_modal') && !e.target.closest('#music_modal')) idleTime = 0;
         });
 
         // Reloj
@@ -545,6 +753,81 @@
             } catch (e) {
                 document.getElementById('cpu_val').style.color = 'var(--danger)';
             }
+        }
+
+        // --- Music Logic ---
+        const STATIONS = {
+            jazz: [
+                { name: "Radio Swiss Jazz", url: "https://stream.srg-ssr.ch/m/rsj/mp3_128" },
+                { name: "Jazz FM", url: "https://tx.sharp-stream.com/icecast.php?mount=jazzfm.mp3" }
+            ],
+            lofi: [
+                { name: "Chillhop", url: "http://stream.zeno.fm/f3wvbbqmdg8uv" }, // Example URL
+                { name: "Lofi Girl (Flux)", url: "http://play.sas-media.ru/play_256" } // Placeholder
+            ],
+            classical: [
+                { name: "Radio Classique", url: "https://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3" },
+                { name: "BBC Radio 3", url: "http://stream.live.vc.bbcmedia.co.uk/bbc_radio_three" }
+            ],
+            info: [
+                { name: "BBC World Service", url: "http://stream.live.vc.bbcmedia.co.uk/bbc_world_service" },
+                { name: "RNE Radio 5", url: "https://rne.rtveradio.cires21.com/rne_radio5_todo_noticias/mp3/icecast.audio" }
+            ]
+        };
+
+        function openMusicModal() {
+            musicModal.classList.add('visible');
+            showGenres();
+        }
+
+        function closeMusicModal() {
+            musicModal.classList.remove('visible');
+        }
+
+        function showGenres() {
+            document.getElementById('genre_view').style.display = 'grid';
+            document.getElementById('station_view').style.display = 'none';
+        }
+
+        function showStations(genre) {
+            document.getElementById('genre_view').style.display = 'none';
+            document.getElementById('station_view').style.display = 'flex';
+
+            const cont = document.getElementById('stations_container');
+            cont.innerHTML = '';
+
+            const list = STATIONS[genre] || [];
+            list.forEach(st => {
+                const div = document.createElement('div');
+                div.className = 'station-item';
+                div.innerText = st.name;
+                div.onclick = () => playStation(st.name, st.url);
+                cont.appendChild(div);
+            });
+        }
+
+        function playStation(name, url) {
+            document.getElementById('np_name').innerText = name;
+            audioPlayer.src = url;
+            audioPlayer.play();
+            document.getElementById('now_playing').classList.add('visible');
+            document.getElementById('play_btn').innerText = '⏸';
+        }
+
+        function togglePlay() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                document.getElementById('play_btn').innerText = '⏸';
+            } else {
+                audioPlayer.pause();
+                document.getElementById('play_btn').innerText = '▶';
+            }
+        }
+
+        function stopMusic() {
+            audioPlayer.pause();
+            audioPlayer.src = '';
+            document.getElementById('now_playing').classList.remove('visible');
         }
 
         setInterval(updateTime, 1000);
