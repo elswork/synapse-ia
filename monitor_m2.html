@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M2 Touch Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js removed -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
 
@@ -79,7 +79,6 @@
             align-items: center;
             gap: 40px;
             cursor: pointer;
-            /* Clickable */
         }
 
         #saver_temp {
@@ -100,24 +99,23 @@
             letter-spacing: 3px;
         }
 
-        /* Weather Modal */
+        /* Smart Weather Modal */
         #weather_modal {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            height: 80%;
-            background: rgba(13, 17, 23, 0.95);
-            border: 2px solid var(--accent);
-            border-radius: 20px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             z-index: 2000;
             display: flex;
             flex-direction: column;
-            padding: 20px;
+            padding: 60px;
+            box-sizing: border-box;
+            color: white;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
         #weather_modal.visible {
@@ -125,9 +123,61 @@
             pointer-events: auto;
         }
 
-        #chart_container {
-            flex: 1;
-            position: relative;
+        .weather-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: auto;
+        }
+
+        .weather-info h2 {
+            font-size: 4rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .weather-meta {
+            font-size: 2rem;
+            margin-top: 20px;
+            opacity: 0.9;
+            display: flex;
+            gap: 40px;
+        }
+
+        .weather-current-temp {
+            font-size: 12rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .hourly-container {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hourly-slot {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hourly-temp {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .hourly-icon {
+            font-size: 4rem;
+        }
+
+        .hourly-time {
+            font-size: 1.5rem;
+            opacity: 0.8;
         }
 
         .header {
@@ -210,15 +260,20 @@
 
         .btn-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--danger);
+            top: 40px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            font-size: 2rem;
+            border-radius: 50%;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
         }
 
         .pulse {
@@ -246,19 +301,34 @@
     <div id="screensaver" onclick="dismissScreensaver(event)">
         <div id="saver_time">--:--</div>
         <div id="saver_date">-- -- --</div>
-        <div id="saver_weather" onclick="showWeatherGraph(event)">
+        <div id="saver_weather" onclick="showWeatherModal(event)">
             <div id="saver_icon">🌤️</div>
             <div id="saver_temp">--°</div>
-            <div style="font-size:1.5rem; color:#888;">(Ver Gráfica)</div>
+            <div style="font-size:1.5rem; color:#888;">(Detalles)</div>
         </div>
         <div id="saver_loc">Alcorcón, ES</div>
     </div>
 
-    <!-- Weather Graph Modal -->
-    <div id="weather_modal">
-        <button class="btn-close" onclick="closeWeatherGraph(event)">Cerrar</button>
-        <div id="chart_container">
-            <canvas id="weatherChart"></canvas>
+    <!-- Smart Weather Modal -->
+    <div id="weather_modal" onclick="closeWeatherModal(event)">
+        <button class="btn-close" onclick="closeWeatherModal(event)">✕</button>
+
+        <!-- Top Section -->
+        <div class="weather-main">
+            <div class="weather-info">
+                <h2 id="w_desc">Cargando...</h2>
+                <div class="weather-meta">
+                    <span>Alcorcón</span>
+                    <span id="w_hl">↑ --° ↓ --°</span>
+                    <span id="w_rain">☔ --%</span>
+                </div>
+            </div>
+            <div class="weather-current-temp" id="w_current">--°</div>
+        </div>
+
+        <!-- Hourly Forecast -->
+        <div class="hourly-container" id="hourly_strip">
+            <!-- Slots injected by JS -->
         </div>
     </div>
 
@@ -300,11 +370,12 @@
 
     <script>
         let idleTime = 0;
-        const IDLE_LIMIT = 300; // 5 minutos (300 segundos)
+        const IDLE_LIMIT = 300;
         let isDimmed = false;
         const screensaver = document.getElementById('screensaver');
         const weatherModal = document.getElementById('weather_modal');
-        let weatherChartInstance = null;
+
+        let weatherData = null;
 
         async function setBrightness(percent) {
             try {
@@ -313,18 +384,16 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ percent })
                 });
-            } catch (e) {
-                console.error("Error ajustando brillo:", e);
-            }
+            } catch (e) { console.error(e); }
         }
 
         // Configurar interacción
         function dismissScreensaver(event) {
-            // No cerrar si se clickea en el modal o el botón de gráfica
+            // No cerrar si se clickea en el modal o el area del tiempo
             if (event && (event.target.closest('#weather_modal') || event.target.closest('#saver_weather'))) return;
 
             screensaver.classList.add('hidden');
-            closeWeatherGraph(); // Asegurar cierre de modal
+            closeWeatherModal();
             idleTime = 0;
             if (isDimmed) {
                 setBrightness(100);
@@ -334,7 +403,7 @@
 
         function activateScreensaver() {
             screensaver.classList.remove('hidden');
-            fetchWeather(); // Actualizar tiempo al activar
+            fetchWeather();
             if (!isDimmed) {
                 setBrightness(25);
                 isDimmed = true;
@@ -351,19 +420,14 @@
             }
         }, 1000);
 
-        // Reset inactividad
         document.body.addEventListener('click', (e) => {
-            // Ignorar clicks dentro del modal para el reset de inactividad
             if (!e.target.closest('#weather_modal')) idleTime = 0;
         });
 
-        // Reloj y Fecha del Screensaver
+        // Reloj
         function updateTime() {
             const now = new Date();
-            // Reloj Dashboard
             document.getElementById('clock').innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
-            // Reloj Screensaver
             document.getElementById('saver_time').innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
 
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -371,148 +435,121 @@
             document.getElementById('saver_date').innerText = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
         }
 
-        // Clima (Open-Meteo)
-        let hourlyData = null;
+        // --- Weather Logic ---
+
+        function getWMOIcon(code, isDay) {
+            // Mapeo simple
+            if (code === 0) return isDay ? '☀️' : '🌙';
+            if (code >= 1 && code <= 3) return isDay ? '⛅' : '☁️';
+            if (code >= 45 && code <= 48) return '🌫️';
+            if (code >= 51 && code <= 67) return '🌧️';
+            if (code >= 71 && code <= 77) return '❄️';
+            if (code >= 80 && code <= 82) return '🌦️';
+            if (code >= 95 && code <= 99) return '⛈️';
+            return '☁️';
+        }
+
+        function getWMODesc(code) {
+            const codes = {
+                0: "Despejado", 1: "Mayormente despejado", 2: "Parcialmente nublado", 3: "Nublado",
+                45: "Niebla", 48: "Niebla escarchada", 51: "Llovizna ligera", 53: "Llovizna moderada",
+                55: "Llovizna intensa", 61: "Lluvia ligera", 63: "Lluvia moderada", 65: "Lluvia intensa",
+                71: "Nieve ligera", 73: "Nieve moderada", 75: "Nieve intensa", 95: "Tormenta"
+            };
+            return codes[code] || "Desconocido";
+        }
 
         async function fetchWeather() {
             try {
-                // Alcorcón coords: 40.3458, -3.8249
-                // Añadido is_day y hourly data
-                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=40.3458&longitude=-3.8249&current=temperature_2m,weather_code,is_day&hourly=temperature_2m,precipitation&timezone=Europe%2FMadrid&forecast_days=1');
-                const data = await res.json();
+                // Fetch current + hourly + daily
+                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=40.3458&longitude=-3.8249&current=temperature_2m,weather_code,is_day&hourly=temperature_2m,weather_code,is_day&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid&forecast_days=1');
+                weatherData = await res.json();
 
-                hourlyData = data.hourly;
+                const current = weatherData.current;
 
-                const temp = Math.round(data.current.temperature_2m);
-                const code = data.current.weather_code;
-                const isDay = data.current.is_day; // 1 = Día, 0 = Noche
+                // Update Screensaver
+                document.getElementById('saver_temp').innerText = Math.round(current.temperature_2m) + '°C';
+                document.getElementById('saver_icon').innerText = getWMOIcon(current.weather_code, current.is_day);
 
-                // Mapeo simple de códigos WMO a emojis con soporte Noche
-                let icon = '❓';
-                // Code 0: Clear sky
-                if (code === 0) icon = isDay ? '☀️' : '🌙';
-                // Code 1-3: Partly cloudy
-                else if (code >= 1 && code <= 3) icon = isDay ? '⛅' : '☁️';
-                // Code 45, 48: Fog
-                else if (code >= 45 && code <= 48) icon = '🌫️';
-                // Code 51-67: Drizzle / Rain
-                else if (code >= 51 && code <= 67) icon = '🌧️';
-                // Code 71-77: Snow
-                else if (code >= 71 && code <= 77) icon = '❄️';
-                // Code 80-82: Showers
-                else if (code >= 80 && code <= 82) icon = '🌦️';
-                // Code 95-99: Thunderstorm
-                else if (code >= 95 && code <= 99) icon = '⛈️';
-                else icon = '☁️';
+                // Update Modal Data
+                document.getElementById('w_desc').innerText = getWMODesc(current.weather_code);
+                document.getElementById('w_current').innerText = Math.round(current.temperature_2m) + '°';
 
-                document.getElementById('saver_temp').innerText = temp + '°C';
-                document.getElementById('saver_icon').innerText = icon;
+                const daily = weatherData.daily;
+                const max = Math.round(daily.temperature_2m_max[0]);
+                const min = Math.round(daily.temperature_2m_min[0]);
+                const rain = daily.precipitation_probability_max[0];
+
+                document.getElementById('w_hl').innerText = `↑ ${max}° ↓ ${min}°`;
+                document.getElementById('w_rain').innerText = `☔ ${rain}%`;
 
             } catch (e) {
                 console.error("Weather error:", e);
             }
         }
 
-        function showWeatherGraph(event) {
+        function showWeatherModal(event) {
             if (event) event.stopPropagation();
-            if (!hourlyData) return;
+            if (!weatherData) return;
 
-            weatherModal.classList.add('visible');
+            // Build Hourly Strip
+            const strip = document.getElementById('hourly_strip');
+            strip.innerHTML = '';
 
-            const ctx = document.getElementById('weatherChart').getContext('2d');
+            const hourly = weatherData.hourly;
+            const now = new Date();
+            const currentHour = now.getHours();
 
-            // Destruir grafico anterior si existe
-            if (weatherChartInstance) {
-                weatherChartInstance.destroy();
+            // Show next 6 hours (skipping current if we want, but usually show current too)
+            let count = 0;
+            for (let i = 0; i < hourly.time.length; i++) {
+                if (count >= 6) break;
+
+                const timeStr = hourly.time[i]; // ISO string
+                const date = new Date(timeStr);
+                const hour = date.getHours();
+
+                // Show from current hour onwards
+                if (hour >= currentHour) {
+                    const temp = Math.round(hourly.temperature_2m[i]);
+                    const code = hourly.weather_code[i];
+                    const isDay = hourly.is_day[i];
+
+                    const slot = document.createElement('div');
+                    slot.className = 'hourly-slot';
+                    slot.innerHTML = `
+                        <span class="hourly-temp">${temp}°</span>
+                        <span class="hourly-icon">${getWMOIcon(code, isDay)}</span>
+                        <span class="hourly-time">${hour === currentHour ? 'Ahora' : hour + ':00'}</span>
+                    `;
+                    strip.appendChild(slot);
+                    count++;
+                }
             }
 
-            // Preparar datos (próximas 24h o lo que haya)
-            // Cortamos labels para que sean legibles (ej. "14:00")
-            const labels = hourlyData.time.map(t => t.split('T')[1]);
-            const temps = hourlyData.temperature_2m;
-            const prec = hourlyData.precipitation;
-
-            weatherChartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Temperatura (°C)',
-                            data: temps,
-                            type: 'line',
-                            borderColor: '#00d4ff', // accent
-                            backgroundColor: 'rgba(0, 212, 255, 0.2)',
-                            tension: 0.4,
-                            yAxisID: 'y',
-                            pointRadius: 0
-                        },
-                        {
-                            label: 'Precipitación (mm)',
-                            data: prec,
-                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                            yAxisID: 'y1'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
-                    plugins: {
-                        legend: {
-                            labels: { color: 'white' }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            ticks: { color: '#888', maxTicksLimit: 8 }
-                        },
-                        y: {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            ticks: { color: '#00d4ff' },
-                            title: { display: true, text: 'Temp (°C)', color: '#00d4ff' }
-                        },
-                        y1: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            grid: { drawOnChartArea: false },
-                            ticks: { color: '#36a2eb' },
-                            title: { display: true, text: 'Lluvia (mm)', color: '#36a2eb' }
-                        }
-                    }
-                }
-            });
+            weatherModal.classList.add('visible');
         }
 
-        function closeWeatherGraph(event) {
+        function closeWeatherModal(event) {
             if (event) event.stopPropagation();
             weatherModal.classList.remove('visible');
         }
 
         async function fetchStats() {
             try {
-                // Ahora consultamos la API que corre en el HOST
                 const response = await fetch('http://localhost:5051/stats');
                 const data = await response.json();
                 document.getElementById('cpu_val').innerText = Math.round(data.cpu) + '%';
                 document.getElementById('ram_val').innerText = Math.round(data.ram) + '%';
                 document.getElementById('cpu_val').style.color = 'var(--text)';
             } catch (e) {
-                console.error("Error fetching stats:", e);
                 document.getElementById('cpu_val').style.color = 'var(--danger)';
             }
         }
 
         setInterval(updateTime, 1000);
         setInterval(fetchStats, 2000);
-        setInterval(fetchWeather, 600000); // Clima cada 10 mins
+        setInterval(fetchWeather, 600000);
 
         updateTime();
         fetchStats();
