@@ -551,9 +551,17 @@
     </div>
 
     <div class="header">
-        <div id="header_left" style="flex: 1.5; overflow: hidden; display: flex; align-items: center;">
+        <div id="header_left" style="flex: 1.5; overflow: hidden; display: flex; align-items: center; gap: 20px;">
             <h1 id="header_title">ANTICITERA NEXUS BOARD</h1>
-            <div id="header_np" class="header-np">
+
+            <!-- Grouped Playback Info + Controls -->
+            <div id="header_np" class="header-np" style="display: none; align-items: center; gap: 20px;">
+                <div id="np_controls_header"
+                    style="display: flex; gap: 10px; align-items: center; border-right: 1px solid #333; padding-right: 20px;">
+                    <button class="btn-circle-small" onclick="togglePlay()" id="play_btn_header">▶</button>
+                    <button class="btn-circle-small" style="background: #2a2a2a; color: white;"
+                        onclick="stopMusic()">⏹</button>
+                </div>
                 <div class="np-icon-large">🎵</div>
                 <div class="np-text-stack">
                     <span class="np-label">REPRODUCIENDO</span>
@@ -568,14 +576,7 @@
             <button class="btn" style="background:#444; color:#fff;" onclick="activateScreensaver()">REPOSO</button>
         </div>
 
-        <div id="header_right"
-            style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 20px;">
-            <div id="np_controls_header"
-                style="display: none; gap: 12px; align-items: center; margin-right: 20px; border-right: 1px solid #333; padding-right: 20px;">
-                <button class="btn-circle-small" onclick="togglePlay()" id="play_btn_header">▶</button>
-                <button class="btn-circle-small" style="background: #2a2a2a; color: white;"
-                    onclick="stopMusic()">⏹</button>
-            </div>
+        <div id="header_right" style="flex: 1; display: flex; align-items: center; justify-content: flex-end;">
             <div id="clock"
                 style="font-size: 2.2rem; font-weight: 700; color: #fff; min-width: 140px; text-align: right;"></div>
         </div>
@@ -843,7 +844,6 @@
             // Toggle Header Visibility
             document.getElementById('header_title').style.display = 'none';
             document.getElementById('header_np').style.display = 'flex';
-            document.getElementById('np_controls_header').style.display = 'flex';
             document.getElementById('play_btn_header').innerText = '⏸';
         }
         function togglePlay() {
@@ -863,7 +863,6 @@
             // Revert Header
             document.getElementById('header_title').style.display = 'block';
             document.getElementById('header_np').style.display = 'none';
-            document.getElementById('np_controls_header').style.display = 'none';
         }
 
         // --- WEATHER ---
