@@ -279,12 +279,14 @@
             justify-content: space-between;
             align-items: center;
             position: absolute;
-            bottom: 90px;
+            bottom: 0;
+            /* Reset to absolute bottom */
             left: 0;
             width: 100%;
             box-sizing: border-box;
-            transform: translateY(150%);
-            transition: transform 0.3s;
+            transform: translateY(100%);
+            /* Hidden below screen */
+            transition: transform 0.3s ease-in-out;
             z-index: 3000;
         }
 
@@ -322,16 +324,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background: rgba(13, 17, 23, 0.8);
+            padding: 10px 40px;
+            background: rgba(13, 17, 23, 0.9);
             border-bottom: 2px solid var(--accent);
+            height: 100px;
+            box-sizing: border-box;
         }
 
         .header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin: 0;
             color: var(--accent);
+            flex: 1;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            flex: 2;
+            justify-content: center;
         }
 
         .main {
@@ -543,12 +555,12 @@
 
     <div class="header">
         <h1>ANTICITERA NEXUS BOARD</h1>
-        <div style="display: flex; gap: 15px;">
+        <div class="header-controls">
             <button class="btn-music" onclick="openMusicModal()">🎵 MÚSICA</button>
             <button class="btn" onclick="updateAllNodes()">ACTUALIZAR</button>
             <button class="btn" style="background:#555; color:#fff;" onclick="activateScreensaver()">REPOSO</button>
         </div>
-        <div id="clock" style="font-size: 2rem; font-weight: 600;"></div>
+        <div id="clock" style="font-size: 2rem; font-weight: 600; flex: 1; text-align: right;"></div>
     </div>
 
     <!-- MAIN GRID: 4 Nodes -->
