@@ -59,7 +59,7 @@ def get_stats():
         "node": platform.node(),
         "cpu": cpu,
         "ram": ram,
-        "uptime": time.index_time() if hasattr(time, 'index_time') else time.time() - psutil.boot_time(),
+        "uptime": time.time() - psutil.boot_time(),
         "is_wsl": IS_WSL,
         "timestamp": time.time()
     })
