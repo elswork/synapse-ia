@@ -59,10 +59,24 @@ def get_stats():
         "node": platform.node(),
         "cpu": cpu,
         "ram": ram,
-        "uptime": time.time() - psutil.boot_time(),
+        "uptime": time.index_time() if hasattr(time, 'index_time') else time.time() - psutil.boot_time(),
         "is_wsl": IS_WSL,
         "timestamp": time.time()
     })
+
+@app.route('/system/reboot', methods=['POST'])
+def system_reboot():
+    if IS_WSL:
+        return jsonify({"status": "error", "message": "Cannot reboot Windows Host from WSL via this agent yet"}), 400
+    os.system("sudo reboot")
+    return jsonify({"status": "ok", "message": "Rebooting..."})
+
+@app.route('/system/shutdown', methods=['POST'])
+def system_shutdown():
+    if IS_WSL:
+        return jsonify({"status": "error", "message": "Cannot shutdown Windows Host from WSL via this agent yet"}), 400
+    os.system("sudo shutdown -h now")
+    return jsonify({"status": "ok", "message": "Shutting down..."})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5051)

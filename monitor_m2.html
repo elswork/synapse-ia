@@ -364,10 +364,10 @@
         /* Views */
         .launcher-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(3, 1fr);
-            gap: 30px;
-            padding: 40px;
+            gap: 25px;
+            padding: 30px 40px;
             flex: 1;
             box-sizing: border-box;
             overflow: hidden;
@@ -393,11 +393,57 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .launcher-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.2);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .launcher-icon {
+            font-size: 3.2rem;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+        }
+
+        .launcher-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .btn-system {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .btn-system:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #fff;
+        }
+
+        .btn-system.danger:hover {
+            background: rgba(255, 70, 70, 0.3);
+            border-color: #ff4646;
+            color: #ff4646;
         }
 
         .launcher-card:hover {
@@ -631,13 +677,19 @@
             <button class="btn" style="background:#444; color:#fff;" onclick="activateScreensaver()">REPOSO</button>
         </div>
 
-        <div id="header_right" style="flex: 1; display: flex; align-items: center; justify-content: flex-end;">
+        <div id="header_right"
+            style="flex: 1.5; display: flex; align-items: center; justify-content: flex-end; gap: 15px;">
+            <!-- Rotation & System Controls -->
+            <button class="btn-system" onclick="rotateScreen()" title="Rotar Pantalla">🔄</button>
+            <button class="btn-system danger" onclick="showSystemMenu()" title="Apagar/Reiniciar">⏻</button>
+
             <div id="clock"
-                style="font-size: 2.2rem; font-weight: 700; color: #fff; min-width: 140px; text-align: right;"></div>
+                style="font-size: 2.2rem; font-weight: 700; color: #fff; min-width: 140px; text-align: right; margin-left: 10px;">
+            </div>
         </div>
     </div>
 
-    <!-- LAUNCHER GRID: 9 App Modules -->
+    <!-- LAUNCHER GRID: 12 App Modules (3x4) -->
     <div id="launcher_grid" class="launcher-grid">
         <div class="launcher-card" onclick="showTelemetry()">
             <div class="launcher-icon">📊</div>
@@ -655,6 +707,11 @@
             <div class="launcher-icon">🧠</div>
             <div class="launcher-name">Athena</div>
         </div>
+
+        <div class="launcher-card" onclick="openCameras()">
+            <div class="launcher-icon">🎥</div>
+            <div class="launcher-name">Cámaras</div>
+        </div>
         <div class="launcher-card" onclick="openAutomation()">
             <div class="launcher-icon">🏠</div>
             <div class="launcher-name">Domótica</div>
@@ -663,6 +720,11 @@
             <div class="launcher-icon">🌐</div>
             <div class="launcher-name">Diplomacia</div>
         </div>
+        <div class="launcher-card" onclick="openMessages()">
+            <div class="launcher-icon">📩</div>
+            <div class="launcher-name">Mensajes</div>
+        </div>
+
         <div class="launcher-card" onclick="openArchive()">
             <div class="launcher-icon">📁</div>
             <div class="launcher-name">Archivo</div>
@@ -670,6 +732,10 @@
         <div class="launcher-card" onclick="openSystem()">
             <div class="launcher-icon">⚙️</div>
             <div class="launcher-name">Sistema</div>
+        </div>
+        <div class="launcher-card" onclick="openPower()">
+            <div class="launcher-icon">🔋</div>
+            <div class="launcher-name">Energía</div>
         </div>
         <div class="launcher-card" onclick="openSecurity()">
             <div class="launcher-icon">🛡️</div>
@@ -971,19 +1037,46 @@
         document.getElementById('header_title').style.cursor = 'pointer';
         document.getElementById('header_title').onclick = showLauncher;
 
+        // System & Display Logic
+        let rotationDegrees = 90; // Starting from 90 as per initial CSS
+        function rotateScreen() {
+            rotationDegrees = (rotationDegrees - 90) % 360;
+            document.body.style.transform = `translate(-50%, -50%) rotate(${rotationDegrees}deg)`;
+        }
+
+        async function showSystemMenu() {
+            const action = prompt("SISTEMA ANTICITERA:\nEscribe 'apagar' para apagar el nodo M2\nEscribe 'reiniciar' para reiniciar");
+            if (!action) return;
+
+            const confirmed = confirm(`¿Estás seguro de que deseas ${action.toUpperCase()} el sistema?`);
+            if (!confirmed) return;
+
+            try {
+                const endpoint = action === 'reiniciar' ? '/system/reboot' : '/system/shutdown';
+                const res = await fetch(`http://192.168.1.75:5051${endpoint}`, { method: 'POST' });
+                const data = await res.json();
+                alert(data.message);
+            } catch (err) {
+                alert("Error al comunicar con el agente.");
+            }
+        }
+
         // Placeholders for new modules
         function openWeatherModal() {
             weatherModal.classList.add('visible');
-            showLauncher(); // Ensure grid is ready if needed, but modal is over everything
+            showLauncher();
         }
         function closeWeatherModal() { weatherModal.classList.remove('visible'); }
 
-        function openAthena() { alert("Accediendo a Athena Brain..."); }
-        function openAutomation() { alert("Accediendo a Domótica..."); }
-        function openDiplomacy() { alert("Accediendo a Diplomacia..."); }
-        function openArchive() { alert("Accediendo a Archivo..."); }
-        function openSystem() { alert("Accediendo a Sistema..."); }
-        function openSecurity() { alert("Accediendo a Seguridad..."); }
+        function openAthena() { alert("Consultando Athena Brain..."); }
+        function openAutomation() { alert("Control de Domótica Nexus..."); }
+        function openDiplomacy() { alert("Estado de Diplomacia .ia..."); }
+        function openArchive() { alert("Accediendo a Archivos Históricos..."); }
+        function openSystem() { alert("Configuración de Nodos Anticitera..."); }
+        function openSecurity() { alert("Sentinel Firewall: Operativo"); }
+        function openCameras() { alert("Accediendo a stream de cámaras..."); }
+        function openMessages() { alert("Buffer de Mensajes Synapse..."); }
+        function openPower() { alert("Estado de Energía y UPS..."); }
 
         // --- WEATHER UTILS ---
         function getWMOIcon(code, isDay) {
@@ -1028,7 +1121,6 @@
             });
             weatherModal.classList.add('visible');
         }
-        function closeWeatherModal(event) { if (event) event.stopPropagation(); weatherModal.classList.remove('visible'); }
 
         // --- INIT ---
         setInterval(updateTime, 1000);
