@@ -21,7 +21,7 @@ class AthenaBrain:
         with open(self.prompt_path, "r") as f:
             return f.read()
 
-    def ask(self, question, context_files=[]):
+    def ask(self, question, context_files=[], log_to_history=True):
         """Envía una consulta a la 'Athena Real' usando RAG y contexto de archivos."""
         identity = self.load_identity()
         
@@ -65,8 +65,8 @@ PREGUNTA DEL USUARIO: {question}
             response = self.model.generate_content(full_prompt)
             athena_response = response.text
             
-            # Registrar en el historial
-            self.syncer.log_event("ATHENA_REAL", "RAG_CONSULTATION", f"Consulta: {question}\nRespuesta: {athena_response}")
+            # Registrar en el historial (opcional)
+            self.syncer.log_event("ATHENA_REAL", "RAG_CONSULTATION", f"Consulta: {question}\nRespuesta: {athena_response}", log_to_md=log_to_history)
             return athena_response
         except Exception as e:
             return f"Error al conectar con Athena (Gemini): {str(e)}"

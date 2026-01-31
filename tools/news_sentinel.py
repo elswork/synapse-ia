@@ -95,7 +95,8 @@ class NewsSentinel:
         }}
         """
         try:
-            response = self.brain.ask(prompt)
+            # Desactivamos el log en history.md para el análisis de sinergia para evitar bloat
+            response = self.brain.ask(prompt, log_to_history=False)
             # Limpieza de la respuesta para asegurar JSON válido
             if "```json" in response:
                 response = response.split("```json")[1].split("```")[0].strip()
