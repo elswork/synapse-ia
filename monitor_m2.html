@@ -618,6 +618,9 @@
 
     <div class="header">
         <div id="header_left" style="flex: 1.5; overflow: hidden; display: flex; align-items: center; gap: 20px;">
+            <button id="btn_back" class="btn-circle-small"
+                style="background: rgba(255,255,255,0.1); color: white; display: none;"
+                onclick="showLauncher()">←</button>
             <h1 id="header_title">ANTICITERA NEXUS BOARD</h1>
 
             <!-- Grouped Playback Info + Controls -->
@@ -967,11 +970,13 @@
         function showTelemetry() {
             document.getElementById('launcher_grid').style.display = 'none';
             document.getElementById('telemetry_view').style.display = 'grid';
+            document.getElementById('btn_back').style.display = 'flex';
         }
 
         function showLauncher() {
             document.getElementById('launcher_grid').style.display = 'grid';
             document.getElementById('telemetry_view').style.display = 'none';
+            document.getElementById('btn_back').style.display = 'none';
             closeMusicModal();
             closeWeatherModal();
         }
