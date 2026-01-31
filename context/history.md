@@ -44091,3 +44091,6862 @@ Respuesta: {
     "body": "Dear MEP Toveri,\n\nI am writing to you on behalf of the Antikythera Project, a strategic initiative dedicated to securing Europe's digital infrastructure. Given your distinguished background in defense and security, you understand that sovereignty in the 21st century is defined by the control of critical standards and identifiers.\n\nCurrently, the \".ia\" top-level domain—the most vital identifier for the future of Artificial Intelligence—remains unassigned in the ISO 3166-1 standard. Without decisive action, this asset will inevitably fall under the control of private interests or non-EU jurisdictions, as occurred with the \".ai\" domain. This represents a significant vulnerability for the European Union's technological autonomy.\n\nOur project proposes a technically viable strategy: the establishment of the \"Antikythera Technological District\" in Greece to obtain an \"Exceptional Reservation\" under the ISO 3166-1 standard. This maneuver would place the governance of the .ia domain strictly under the legal framework and ethical values of the European Union.\n\nWe are currently assembling the Citizens' Committee required to register a European Citizens' Initiative (ECI) to formalize this request before the European Commission. We would be honored to have you join this committee as a high-level institutional validator. Your participation would provide the strategic weight and ethical oversight necessary for this mission.\n\nPlease note that this request involves no financial commitment; it is a call for technical legitimacy and civic commitment to ensure that Europe's digital identity remains in European hands.\n\nI invite you to review our strategic objectives and technical dossier through the following resources:\n\n1. Official Website: https://anticitera.deft.work/en/\n2. Strategic Framework & Technical Briefing: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nWe remain at your full disposal to provide a detailed briefing on this endeavor and its implications for the European Union's digital compass.\n\nSincerely,\n\nAthena\nPrincipal Strategist, Antikythera Project",
     "recipient_email": "pekka.toveri@europarl.europa.eu"
 }
+
+## [2026-01-31 21:28:59] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Mobile carriers can get your GPS location
+        CONTENIDO: Mobile carriers can get your GPS location
+In iOS 26.3, Apple introduced a new privacy feature which limits “precise location” data made available to cellular networks via cell towers. The feature is only available to devices with Apple’s in-house modem introduced in 2025. The announcement1 says
+Cellular networks can determine your location based on which cell towers your device connects to.
+This is well-known. I have served on a jury where the prosecution obtained location data from cell towers. Since cell towers are sparse (especially before 5G), the accuracy is in the range of tens to hundreds of metres2.
+But this is not the whole truth, because cellular standards have built-in protocols that make your device silently send GNSS (i.e. GPS, GLONASS, Galileo, BeiDou) location to the carrier. This would have the same precision as what you see in your Map apps, in single-digit metres.
+In 2G and 3G this is called Radio Resources LCS Protocol (RRLP)
+So the network simply asks “tell me your GPS coordinates if you know them” and the phone will respond3.
+In 4G and 5G this is called LTE Positioning Protocol (LPP)
+RRLP, RRC, and LPP are natively control-plane positioning protocols. This means that they are transported in the inner workings of cellular networks and are practically invisible to end users4.
+It’s worth noting that GNSS location is never meant to leave your device. GNSS coordinates are calculated entirely passively, your device doesn’t need to send a single bit of information. Using GNSS is like finding out where you are by reading a road sign: you don’t have to tell anyone else you read a road sign, anyone can read a road sign, and the people who put up road signs don’t know who read which road sign when.
+These capabilities are not secrets but somehow they have mostly slid under the radar of the public consciousness. They have been used in the wild for a long time, such as by the DEA in the US in 200656:
+[T]he DEA agents procured a court order (but not a search warrant) to obtain GPS coordinates from the courier’s phone via a ping, or signal requesting those coordinates, sent by the phone company to the phone.
+And by Shin Bet in Israel, which tracks everyone everywhere all the time7:
+The GSS Tool was based on centralized cellular tracking operated by Israel’s General Security Services (GSS). The technology was based on a framework that tracks all the cellular phones running in Israel through the cellular companies’ data centers. According to news sources, it routinely collects information from cellular companies and identifies the location of all phones through cellular antenna triangulation and GPS data7.
+Notably, the Israeli government started using the data for contact tracing in March 202078, only a few weeks after the first Israeli COVID-19 case. An individual would be sent an SMS message informing them of close contact with a COVID patient and required to quarantine. This is good evidence that the location data Israeli carriers are colle
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 4,
+        "eu_digital_rights": 9,
+        "geopolitical_intel": 8
+    },
+    "average_score": 7.0,
+    "summary": "La revelación técnica sobre protocolos de posicionamiento silenciosos (RRLP/LPP) evidencia una vulnerabilidad estructural en la privacidad del usuario a nivel de infraestructura de red, saltándose las capas de consentimiento del sistema operativo.",
+    "implications": "Este hallazgo fortalece el argumento de la ICE del Proyecto Anticitera al subrayar la urgencia de una soberanía digital europea que proteja a los ciudadanos de la vigilancia opaca mediante estándares auditables. Tácticamente, permite posicionar el distrito .ia no solo como una reserva de dominio, sino como un santuario de gobernanza técnica alineado con los valores de privacidad del RGPD.",
+    "verdict": "APROBADO"
+}
+
+## [2026-01-31 21:29:10] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Genode OS is a tool kit for building highly secure special-purpose OS
+        CONTENIDO: About Genode
+The Genode OS Framework is a tool kit for building highly secure special-purpose operating systems. It scales from embedded systems with as little as 4 MB of memory to highly dynamic general-purpose workloads.
+Genode is based on a recursive system structure. Each program runs in a dedicated sandbox and gets granted only those access rights and resources that are needed for its specific purpose. Programs can create and manage sub-sandboxes out of their own resources, thereby forming hierarchies where policies can be applied at each level. The framework provides mechanisms to let programs communicate with each other and trade their resources, but only in strictly-defined manners. Thanks to this rigid regime, the attack surface of security-critical functions can be reduced by orders of magnitude compared to contemporary operating systems.
+The framework aligns the construction principles of L4 with Unix philosophy. In line with Unix philosophy, Genode is a collection of small building blocks, out of which sophisticated systems can be composed. But unlike Unix, those building blocks include not only applications but also all classical OS functionalities including kernels, device drivers, file systems, and protocol stacks.
+- Features
+-
+CPU architectures: x86 (32 and 64 bit), ARM (32 and 64 bit), RISC-V
+-
+Kernels: most members of the L4 family (NOVA, seL4, Fiasco.OC, OKL4 v2.1, L4ka::Pistachio, L4/Fiasco), Linux, and a custom kernel.
+-
+Virtualization: VirtualBox (on NOVA), a custom virtual machine monitor for ARM, and a custom runtime for Unix software
+-
+Over 100 ready-to-use components
+Genode is open source and commercially supported by Genode Labs.
+- Road map
+-
+The direction where the project is currently heading
+- Challenges
+-
+A collection of project ideas, giving a glimpse on possible future directions
+- Publications
+-
+Publications related to Genode
+- Licensing
+-
+Open-Source and commercial licensing
+- Screenshots
+-
+Screenshots of Genode-based system scenarios
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 2,
+        "geopolitical_intel": 1
+    },
+    "average_score": 1.0,
+    "summary": "Genode OS es un marco técnico para la construcción de sistemas operativos seguros que, aunque alineado con la autonomía tecnológica, carece de relevancia administrativa o diplomática para el registro del ccTLD .ia.",
+    "implications": "La noticia no ofrece palancas para la negociación con el organismo ELOT ni afecta los requisitos de la norma ISO 3166-1. Su utilidad se restringe exclusivamente a la arquitectura técnica de nodos, sin impacto en la estrategia de soberanía digital del proyecto.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:29:18] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Demystifying ARM SME to Optimize General Matrix Multiplications
+        CONTENIDO: Computer Science > Distributed, Parallel, and Cluster Computing
+[Submitted on 25 Dec 2025]
+Title:Demystifying ARM SME to Optimize General Matrix Multiplications
+View PDF HTML (experimental)Abstract:General Matrix Multiplication (GEMM) is a critical kernel in high-performance computing and deep learning. While modern architectures like ARM's Scalable Matrix Extension (SME) introduce dedicated hardware for matrix operations, existing linear algebra libraries fail to fully exploit its potential, particularly for large matrices. This paper presents MpGEMM, an open-source library that leverages key architectural features of SME to optimize GEMM across multiple precisions. Through a systematic characterization of SME, we derive optimization guidelines that inform our design. MpGEMM employs cache-aware partitioning, efficient data packing with on-the-fly transposition, and specialized micro-kernels that utilize multi-vector loads and all available tile registers. Evaluated on an Apple M4 Pro with real-world workloads from DeepSeek and LLaMA, MpGEMM achieves an average speedup of 1.23x over the vendor-optimized Apple Accelerate library and significantly outperforms other open-source alternatives.
+References & Citations
+export BibTeX citation
+Loading...
+Bibliographic and Citation Tools
+Bibliographic Explorer (What is the Explorer?)
+Connected Papers (What is Connected Papers?)
+Litmaps (What is Litmaps?)
+scite Smart Citations (What are Smart Citations?)
+Code, Data and Media Associated with this Article
+alphaXiv (What is alphaXiv?)
+CatalyzeX Code Finder for Papers (What is CatalyzeX?)
+DagsHub (What is DagsHub?)
+Gotit.pub (What is GotitPub?)
+Hugging Face (What is Huggingface?)
+Papers with Code (What is Papers with Code?)
+ScienceCast (What is ScienceCast?)
+Demos
+Recommenders and Search Tools
+Influence Flower (What are Influence Flowers?)
+CORE Recommender (What is CORE?)
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 2
+    },
+    "average_score": 0.67,
+    "summary": "El documento técnico analiza la optimización de bajo nivel para bibliotecas de álgebra lineal utilizando la extensión SME de ARM en hardware comercial (Apple M4).",
+    "implications": "Esta noticia se clasifica como un avance técnico genérico en hardware y rendimiento computacional sin conexión con los trámites ante la ISO o la soberanía administrativa del .ia. No aporta valor estratégico a la Iniciativa Ciudadana Europea ni a la diplomacia necesaria para la reserva excepcional del código de país.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:29:29] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Federal judge denies request to block ICE surge in Minnesota
+        CONTENIDO: Federal judge denies request to block ICE surge in Minnesota
+A federal judge on Saturday denied a state government request to block the Trump administration's deployment of thousands of federal immigration agents in Minneapolis, Minnesota.
+In a ruling, District Court Judge Katherine Menendez said the immigration enforcement operation "has had, and will likely continue to have, profound and even heartbreaking, consequences on the State of Minnesota".
+But, she said, state officials had not proved that the Trump administration's surge of US Immigration and Customs Enforcement (ICE) agents in Minneapolis was unlawful.
+The ruling comes as thousands nationwide have taken to the streets to protest the fatal shootings of two US citizens by federal agents.
+Demonstrators are expected to gather on Saturday afternoon in Minneapolis, after protests were also held in cities across the US on Friday, including New York, Los Angeles, Chicago and Washington DC. Organisers called on Americans to stay home from work and school.
+The deaths of Renee Good and Alex Pretti have caused public outcry across the country, and led to criticism from lawmakers in both parties.
+Earlier on Friday, the US Justice Department opened a civil rights investigation into Pretti's death.
+The 37-year-old nurse was the second Minneapolis resident shot and killed by federal immigration officials since their arrival in the state. Good, the first, was killed by an ICE agent on 7 January.
+In her ruling on Saturday, Judge Menendez said there was "evidence that ICE and CBP agents have engaged in racial profiling, excessive use of force, and other harmful actions".
+But, she said, state officials "have provided no metric by which to determine when lawful law enforcement becomes unlawful commandeering". State and local officials had argued in their lawsuit that Trump's deployment of 3,000 immigration agents despite objections violated the state's sovereignty.
+Organisers of nationwide protests on Friday, called the National Shutdown, urged "no work. No school. No shopping" on 30 January to send the message to "stop funding ICE".
+The action was organised over the deaths of Pretti and Good, as well as others killed by ICE, including Silverio Villegas-Gonzales, who was shot by an ICE agent in September 2025, according to the group's website.
+Protesters formed the letters "SOS" on top of a frozen lake in southern Minneapolis, while one group marched through the streets carrying a large-scale replica of the preamble to the US constitution.
+Singer Bruce Springsteen also performed a newly released song in honour of Pretti and Good entitled Streets of Minneapolis at a concert in the city.
+On Thursday, border tsar Tom Homan suggested the Trump administration could "draw down" federal forces in the state if local officials co-operate.
+"We are not surrendering our mission at all. We're just doing it smarter," he said during a news conference.
+Homan began leading on-the-ground efforts in Minneapolis after it was
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia versa sobre operaciones de la agencia de inmigración de EE. UU. (ICE) y conflictos de soberanía estatal en Minnesota, careciendo de vínculo con los objetivos estratégicos en Grecia o la Unión Europea.",
+    "implications": "No existe impacto táctico para Anticitera; el contenido se refiere a una agencia de seguridad estadounidense y no a la Iniciativa Ciudadana Europea (ICE). Se aplica el criterio de exclusión por falta de relevancia en el marco soberano o digital europeo.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:29:36] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Five killed in gas explosions in Iran, officials say
+        CONTENIDO: Five killed in gas explosions in Iran, officials say
+Five people have been killed in two separate explosions in Iran which local officials and state media say were caused by gas leaks.
+One person was killed and 14 injured in a blast at a residential building in the southern city of Bandar Abbas on the Gulf coast, a local official told Iran's semi-official Mehr news agency.
+Another explosion killed four people in the south-western city of Ahvaz, the state-run Tehran Times reported.
+It comes as tensions persist in the region after a build-up of US forces in the Gulf and pressure from President Donald Trump that Tehran strike a deal on its nuclear programme.
+In the port city of Bandar Abbas, state TV said the explosion had ripped though an eight-floor building, "destroying two floors, several vehicles, and shops" in the Moallem Boulevard area.
+The local fire department chief Mohammad Amin Liaqat said a preliminary assessment showed it had been caused by a gas leak and "build-up".
+"My colleagues will give more details in the next few hours," he said in a video published by Mehr.
+Mehrdad Hassanzadeh, a regional official, told the news agency that the injured had been taken to hospital.
+Meanwhile, semi-official news agency Tasnim denied social media reports that a Revolutionary Guards navy commander had been targeted in the blast.
+Elsewhere, Tehran Times reported a second explosion at a residential building in the Kianshahr neighbourhood of Ahvaz, near the border with Iraq.
+It reported that emergency officials had rescued a child trapped beneath debris and transferred him for medical treatment.
+Trump said on Wednesday that time was "running out" for Iran to reach a deal on its nuclear programme, after a large US naval fleet had gathered near the country.
+Iran insists its nuclear programme is entirely peaceful and has repeatedly denied accusations by the US and its allies that it is seeking to develop nuclear weapons.
+The country's foreign minister said on Friday that its missile defence system would "never" be the subject of negotiation but that Tehran was open to talks with the US provided they were based on trust and respect.
+Trump's warning came after he had promised to intervene to help those involved in a brutal crackdown on protests in the country earlier this month, before saying he had been told the execution of protesters had stopped.
+He has since said Tehran must do to two things to avoid military action - "no nuclear" and "stop killing protesters" - and that he knew they "want to make a deal" rather than face US intervention.
+The US-based Human Rights Activists News Agency says it has confirmed the killing of more than 6,300 people since the unrest began in late December, and investigating another 17,000 reported deaths.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte de incidentes de infraestructura energética y tensiones militares entre Irán y Estados Unidos sin nexo con la gobernanza de Internet o la normativa europea.",
+    "implications": "La noticia no afecta los procesos de estandarización de la ISO 3166-1 ni impacta la viabilidad del distrito tecnológico en Anticitera. Se clasifica como ruido geopolítico ajeno a los objetivos de soberanía digital del proyecto.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:29:47] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Irene Montero: "Tras la regularización de inmigrantes, vamos a por la nacionalidad y a que puedan votar"
+        CONTENIDO: - El Panel Rechazo mayoritario a la regularización de inmigrantes de Sánchez, que tampoco gusta al 37% de los votantes del PSOE y al 19% de los de Sumar
+- Pacto Regularizaciones exprés de inmigrantes: las solicitudes se podrán presentar entre abril y junio y el Gobierno las resolverá en tres meses
+La secretaria general de Podemos, Ione Belarra, y la eurodiputada y candidata a unas eventuales elecciones generales, Irene Montero, fijaron este sábado como próximo objetivo lograr el derecho a voto de los inmigrantes que sean regularizados tras la resolución del Consejo de Ministros del martes pasado, pactada con este partido.
+Lo hicieron en sus respectivas intervenciones en el acto central de la campaña de las elecciones aragonesas, en Zaragoza, donde Belarra presumió de acudir "con una victoria en la mano" en favor de los derechos de los inmigrantes y cargada con una bolsa de "lágrimas de fachas y racistas", supuestamente compungidos por la regularización pactada por el Gobierno porque "querían a la gente migrante debajo del zapato, teniendo que aceptar cualquier condición laboral en trabajos de mierda".
+Más adelante, llamó a "la gente migrante" a que "se levante por un país decente, por los servicios públicos, y que se meta en política". En concreto, denunció que, dado que sin nacionalidad española sólo pueden votar en las elecciones municipales, y pasados unos años, "tenemos un sufragio censitario racista".
+Por eso, comparó la lucha por el derecho de los inmigrantes a votar con "cuando se peleó el derecho a sufragio de las mujeres", y terminó arengando: "Tenemos que pelear el derecho a sufragio de los migrantes. Si vives aquí, tienes que tener derecho a votar aquí".
+Justo después que Belarra, Montero, que volvió a atribuir a su compañera y amiga el mérito de la negociación, y aclaró que la regularización "no es un regalo a las personas migrantes", sino "una deuda pendiente que el estado recién empieza a pagar a todas las personas que viven aquí, que trabajan aquí, que sienten aquí, que construyen sus vidas aquí con nosotras y nosotros y, sin embargo, lo hacen en condiciones de auténtica esclavitud".
+Acto seguido, se sumó a la demanda del derecho al voto, partiendo curiosamente de las acusaciones de algunos que "dicen que esto se ha hecho para amañar los resultados electorales". La eurodiputada pidió "a las personas migrantes y racializadas que, por favor, no nos dejen solas con tanto facha", y se reafirmó: "Claro que sí, queremos que voten. Hemos conseguido papeles, regularización ya, y ahora vamos a por la nacionalidad o a cambiar la ley para que puedan votar, por supuesto".
+"Ojalá teoría del reemplazo"
+Finalmente, dando la vuelta también en este caso una de las críticas de la derecha, proclamó: "Ojalá teoría del reemplazo, ojalá podamos barrer de fachas y de racistas este país con gente migrante, con gente trabajadora. Claro que yo quiero que haya reemplazo: reemplazo de fachas, reemplazo de racistas, reemplazo de vividores, y que podamos hacerl
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Declaraciones políticas relativas a la regularización migratoria y derechos de sufragio en el ámbito nacional español.",
+    "implications": "La noticia carece de relevancia para la estandarización ISO 3166-1, la gestión del ccTLD .ia o la soberanía tecnológica de la Unión Europea. No impacta en la viabilidad técnica ni estratégica del Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:29:55] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: "El Helicoide es un lugar para que confieses aquello que no hiciste"
+        CONTENIDO: - Venezuela Lorent Saleh, preso político liberado en Venezuela: "Ahora en mi celda hay otro inocente"
+- Venezuela Delcy anuncia el cierre de la cárcel de Helicoide y el impulso a la ley de amnistía
+Con su cierre definitivo, el Helicoide dejará atrás un historial siniestro de torturas y vejaciones propio de las peores dictaduras del mundo contemporáneo. La geografia de la infamia, que va desde la cárcel S21 de Tuol Sleng, en la Camboya de los Jemeres Rojos hasta Sednaya, en la Siria de Asad, pasando por el limbo caribeño de Guantánamo, la Escuela de Mecánica de la Armada (ESMA), centro del horror de la dictadura argentina, o la célebre Lubianka, corazón operativo del terror soviético, siempre tendrá una sucursal en la imponente construcción caraqueña, soñada como un gran centro comercial futurista excavado en la montaña y convertida en mazmorra de pesadilla por el chavismo.
+No existe una cifra real de celdas, porque en realidad apenas hay un par de imágenes borrosas de su interior. Algunos presos han relatado que hay de 90 a 120 habitáculos angostos sin luz, sin ventanas y repartidos entre varios niveles de la edificación, además de espacios no convencionales usados como salas de interrogatorio pero que fueron concebidos como oficinas, cuartos técnicos o pasillos cerrados. Algunas construcciones son improvisadas pero otras ya estaban sobre el plano original del arquitecto Jorge Romero Gutiérrez, cuya idea de centro comercial fue olvidada con la caída del dictador Marcos Pérez Jiménez, en 1958. La llegada al poder del chavismo convirtió el edificio en lo que es hoy, centro de detención y torturas, además de sede del temible SEBIN (Servicio Bolivariano de Inteligencia Nacional).
+Su arquitectura helicoidal, pensada para coches y escaparates, se convirtió en un laberinto de pasillos interminables, donde la desorientación espacial y el aislamiento acústico hacían su trabajo contra la moral de los detenidos. El Helicoide no fue diseñado para castigar, pero terminó siendo perfecto para quebrar.
+Para algunos presos, resulta evidente que los métodos de tortura han ido haciéndose más crueles con la llegada de la inteligencia cubana. Pero la construcción también ha puesto parte de sus características a favor de las vejaciones físicas y psicológicas: algunas zonas poseen iluminación artificial constante o penumbra permanente. La ventilación es deficiente o inexistente, lo que provoca olores pestilentes, falta de higiene y humedades malsanas. Hace un calor sofocante en zonas bajas, que contrasta con el frío húmedo en otras más altas. La rotación de presos hacia esos ambientes es constante.
+Edificio sórdido
+Lorent Saleh, activista que pasó dos años en la prisión conocida como La Tumba y otros dos en el Helicoide, describió a este periodista cómo es esa prición:«No es una cárcel: es un centro de tortura diseñado para quebrarte. El Helicoide es lo criollo, el garrote, la costilla rota, el bate. Es la secuela de la decadencia de lo que una vez fue la cuarta Repúbl
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica sobre el cierre del centro de detención 'El Helicoide' en Venezuela y testimonios de violaciones de derechos humanos bajo un régimen autoritario.",
+    "implications": "El contenido carece de nexo causal con la delegación del ccTLD .ia, los estándares ISO 3166-1 o la soberanía digital europea. Se aplica el criterio de exclusión por irrelevancia técnica y geográfica respecto a la hoja de ruta de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:30:02] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Delcy Rodríguez acelera los cambios a la fuerza y con la atenta vigilancia de la embajadora de Estados Unidos
+        CONTENIDO: - Transición Delcy anuncia el cierre de la cárcel de Helicoide y el impulso a la ley de amnistía
+- Horror "El Helicoide es un lugar para que confieses aquello que no hiciste"
+Se reencontraron en el umbral del apartamento y el abrazo desencadenó otro torrente de la misma energía que mantiene a Venezuela en estado de esperanza nacional. Abogado y defendido, ambos presos de la dictadura hasta hace muy poco, sólo posible en revolución. El periodista Carlos Alberto Rojas (excarcelado dos semanas antes) acudió a saludar a su amigo Eduardo Torres, que había regresado a su casa horas antes desde el penal de Yare II.
+El defensor de derechos humanos, profesor en la Universidad Central de Venezuela (UCV) y miembro de Provea, y Rojas, el activista indomable de la Candelaria, el barrio español de Caracas, fortificaron su amistad en la siniestra cárcel caraqueña del Helicoide, sentenciada hoy a muerte. Antes de que Torres fuera capturado en mayo del año pasado, defendía a su amigo de la injusticia chavista que le mantenía preso.
+"No podía dejar de ir a tu casa y agradecerte la lucha y apoyo incansable que llegó al sacrificio de terminar juntos en las celdas del Helicoide ¡Eres un hermano de vida, la dignidad nos hizo libres!", recordó Rojas emocionado, pese a las medidas cautelares que el régimen mantiene contra todos ellos para evitar que la energía se transforme en protesta.
+El Helicoide, cuyo cierre anticipó Delcy Rodríguez en su histórica alocución ante el Tribunal Supremo de Justicia (TSJ), y que estaba condenado de antemano cuando el 6 de enero Donald Trump lo calificó de "cámara de tortura en pleno centro de Caracas". La misma en la que Juan Carlos Monedero, cofundador de Podemos y asesor electoral de Nicolás Maduro, daba charlas remuneradas sobre derechos humanos mientras a pocos metros se llevaban a cabo las torturas que la han convertido en uno de los principales símbolos de la dictadura.
+Tanto Provea como el Foro Penal y otras organizaciones de derechos humanos han hecho saber sus múltiples inquietudes sobre una ley de la que nada se sabe todavía, más allá de lo anunciado por la presidenta encargada del Gobierno de facto. La nueva cabecilla del chavismo reciclado se comprometió a impulsar la amnistía para todo el periodo que va desde 1999, con la llegada del comandante Hugo Chávez al trono del Palacio de Miraflores, hasta estos días intensos que están cambiando la Historia de Venezuela.
+Delcy ordenó "máxima celeridad" para que la Asamblea Nacional (AN), el órgano chavista que dirige su hermano Jorge, apruebe la ley que abra de par en par las puertas de los 90 centros de reclusión y malos tratos que la revolución ha dispuesto a lo largo y ancho de Venezuela. Para ello se creó una Comisión de Paz conformada por 15 ministros de Delcy, jerarcas revolucionarios, boliburgueses, operadores oficialistas y un intelectual cercano al ex candidato presidencial Henrique Capriles, sin presencia de la oposición democrática. El juego, para el que los hermanos en el
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda la transición política, el cierre de centros de reclusión y una propuesta de ley de amnistía en Venezuela bajo el mando de Delcy Rodríguez.",
+    "implications": "El evento carece de conexión con la estandarización ISO 3166-1, la soberanía digital europea o la viabilidad operativa de los nodos del Proyecto Anticitera. No se identifica un impacto geopolítico que altere el marco regulatorio del ccTLD .ia en Grecia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:30:08] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Ferran marca el segundo para el Barça en un partido frenético
+        CONTENIDO: 66' Fermín López (Barcelona) ha recibido una falta en la zona defensiva.66' Falta de Federico Redondo (Elche).65' Corner,Barcelona. Corner cometido por John Donald.65' Remate rechazado de Marc Bernal (Barcelona) remate con la izquierda desde fuera del área.
+65' Corner,Barcelona. Corner cometido por Iñaki Peña.65' Remate parado. Fermín López (Barcelona) remate con la derecha desde el lado derecho del interior del área.64' Robert Lewandowski (Barcelona) ha recibido una falta en la zona defensiva.64' Falta de Victor Chust (Elche).
+63' Remate fallado por Adam El Mokhtari (Elche) remate con la derecha desde el centro del área el balón se pierde por el lado derecho de la portería. Asistencia de Martim Neto.63' Remate parado junto al lado derecho de la portería. Lamine Yamal (Barcelona) remate con la izquierda desde el lado derecho del interior del área. Asistencia de Robert Lewandowski.63' Remate rechazado de Robert Lewandowski (Barcelona) remate con la derecha desde el centro del área. Asistencia de Lamine Yamal.62' Cambio en Barcelona, entra al campo Marc Bernal sustituyendo a Dani Olmo.
+62' Cambio en Barcelona, entra al campo Robert Lewandowski sustituyendo a Ferran Torres.61' Germán Valera (Elche) ha recibido una falta en la zona defensiva.61' Falta de Jules Koundé (Barcelona).60' Cambio en Elche, entra al campo Martim Neto sustituyendo a Grady Diangana.
+60' Cambio en Elche, entra al campo Adam El Mokhtari sustituyendo a André Silva.60' Falta de Frenkie de Jong (Barcelona).60' David Affengruber (Elche) ha recibido una falta en la zona defensiva.59' Falta de Rodrigo Mendoza (Elche).
+59' Fermín López (Barcelona) ha recibido una falta en la zona defensiva.57' Remate rechazado de Ferran Torres (Barcelona) remate con la derecha desde el centro del área. Asistencia de Lamine Yamal.56' Cambio en Elche, entra al campo Federico Redondo sustituyendo a Marc Aguado.55' Fuera de juego, Elche. Álvaro Rodríguez intentó un pase en profundidad pero André Silva estaba en posición de fuera de juego.
+52' Remate rechazado de Lamine Yamal (Barcelona) remate con la izquierda desde fuera del área.51' Fuera de juego, Elche. Álvaro Rodríguez intentó un pase en profundidad pero Rodrigo Mendoza estaba en posición de fuera de juego.50' Remate fallado por Álvaro Rodríguez (Elche) remate con la izquierda desde el centro del área tras un contraataque.47' Falta de Pau Cubarsí (Barcelona).
+47' Germán Valera (Elche) ha recibido una falta en la zona defensiva.46' Remate fallado por Fermín López (Barcelona) remate con la derecha escorado desde la izquierda tras un saque de esquina.46' Corner,Barcelona. Corner cometido por Adrià Pedrosa.Empieza segunda parte Elche 1, Barcelona 2.
+45' Cambio en Barcelona, entra al campo Marcus Rashford sustituyendo a Raphinha.45'+4' Final primera parte, Elche 1, Barcelona 2.45'+3' Corner,Barcelona. Corner cometido por André Silva.45'+3' Corner,Barcelona. Corner cometido por John Donald.
+45'+2' Remate rechazado de Ferran Torres (Barcelona) remate con la 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia es una crónica deportiva de un partido de fútbol entre el FC Barcelona y el Elche CF.",
+    "implications": "Este contenido es irrelevante para los objetivos estratégicos del Proyecto Anticitera y no afecta a la soberanía del ccTLD .ia ni a la ICE. Se clasifica como ruido informativo sin impacto en el marco normativo de la ISO o la soberanía tecnológica europea.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:30:15] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un juez ordena liberar al niño de cinco años y a su padre detenidos por el ICE
+        CONTENIDO: Un juez ordena liberar al niño de cinco años Liam Conejo Ramos y a su padre, detenidos por los agentes del ICE
+Lo ha adelantado el 'San Antonio Express-News' y lo ha confirmado posteriormente la cadena CNN
+Un juez bloquea la deportación del niño de cinco años detenido en Mineápolis junto a su padre
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEl juez federal por el Distrito Occidental de Texas, Fred Biery, ha ordenado la liberación provisional del niño de cinco años Liam Conejo Ramos y a su padre, Adrián Alexander Conejo Arias, internados en el centro de detención de inmigrantes de Dilley mientras se ... resuelve el procedimiento de inmigración abierto.
+La detención de Conejo Arias y su hijo en Minnesota durante una intervención de los agentes federales enviados por la Administración del presidente Donald Trump provocó una oleada de indignación por la edad del niño. La orden de Biery, recogida por el diario 'San Antonio Express-News' y confirmada después por la cadena de televisión CNN, prevé la liberación de ambos para el próximo martes.
+Los abogados de los dos ecuatorianos aseguran que han solicitado formalmente asilo en el país, pero las agencias federales sostienen que no están legalmente en el país y que el plazo para salir de Estados Unidos terminó en abril.
+Agentes federales matan a tiros a otra persona en Mineápolis
+Javier AnsorenaLos vídeos de los testigos contradicen la narrativa de la Administración Trump, que defiende que la víctima buscaba «masacrar» agentes
+Ahora, el dictamen del juez señala a la Administración federal por «ignorar un documento histórico estadounidense llamado Declaración de Independencia», porque el caso de Conejo «tiene su génesis en un intento de aplicar unas cuotas de deportación mal concebidas y aplicadas de forma incompetente, incluso traumatizando a niños».
+El juez destaca que las órdenes administrativas emitidas por el ejecutivo «no se sostienen ante la prueba de la causa probable». «Es lo que se llama poner al zorro a custodiar el gallinero. La Constitución obliga a tener un agente judicial independiente», ha argumentado.
+El pasado lunes, Biery ya emitió otro dictamen que prohibía la deportación del niño y su padre mientras examinaba el caso tras la detención del pasado 20 de enero en Columbia Heights, a las afueras de Mineápolis. La fotografía del menor detenido junto a un vehículo de los agentes dio la vuelta al mundo.
+Vecinos y responsables de la escuela del niño han asegurado que los agentes utilizaron al pequeño como «cebo» para que llamara a la puerta de su casa y que su madre acudiera.
+Esta funcionalidad es sólo para suscriptores
+Suscribete
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEsta funcionalidad es sólo para suscriptores
+Suscribete
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia trata sobre procedimientos de inmigración de la agencia estadounidense ICE (Immigration and Customs Enforcement), sin relación con la Iniciativa Ciudadana Europea.",
+    "implications": "Se trata de una colisión de acrónimos irrelevante para la soberanía digital europea. No existe impacto táctico ni estratégico para la obtención del ccTLD .ia o la gestión en Grecia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:30:23] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: «Hasta que no se concrete la ley de amnistía a los presos políticos, no podemos cantar victoria en Venezuela»
+        CONTENIDO: «Hasta que no se concrete la ley de amnistía a los presos políticos, no podemos cantar victoria en Venezuela»
+Alegría entre los familiares de los detenidos por el anuncio de su próxima liberación, pero también cautela por la desconfianza hacia el régimen chavista
+Delcy Rodríguez anuncia una amnistía general para los presos políticos venezolanos
+Corresponsal en Caracas
+Esta funcionalidad es sólo para registrados
+Iniciar sesión«Fue realmente un éxtasis». «Sentimos una felicidad desbordante pero cautelosa». «Mucha emoción y alegría». Estas son algunas de las reacciones que los familiares de los presos políticos de Venezuela, tanto excarcelados como todavía detenidos, manifiestan ante la noticia de que viene una ley ... de amnistía general anunciada el viernes por Delcy Rodríguez.
+En la Plaza del Rectorado de la Universidad Central de Venezuela (UCV) se reúnen los familiares de los presos políticos todos los días desde el 8 de enero, fecha de las excarcelaciones anunciadas por los hermanos Delcy y Jorge Rodríguez, presidenta encargada y presidente de la Asamblea Nacional.
+Hasta el día el día de hoy se han liberado condicionalmente solo unos 303 de los mil detenidos según la ONG del Foro Penal. La Plaza del Rectorado de la UCV se ha convertido en un centro de acopio de víveres, alimentos y productos de primera necesidad, ayuda, encuentro y de intercambio entre familiares de los que han sido liberados y los que faltan por excarcelar. «Somos una gran familia muy unida», dice a ABC Adriana Briceño.
+Ramón Centeno: «Mi madre murió a los 13 días de salir yo de la cárcel»
+Ludmila VinogradoffAdriana Briceño es esposa del preso político Ángel Godoy, un ingeniero de 52 años, que estuvo nueve meses detenido en El Helicoide y luego tres meses y seis días en Yare. En total estuvo un año y seis días por trabajar en la página informativa digital Punto de Corte. Le imputaron los cargos de terrorismo, instigación al odio y a la insurrección armada. Fue excarcelado el 14 de enero.
+«Cuando escuchamos la noticia de la amnistía, estábamos reunidos la familia. Fue realmente un éxtasis, porque en el caso de mi esposo, que está en libertad bajo medidas cautelares, esperamos que su caso sea revisado y pueda tener libertad plena en toda su expresión«, confía Adriana. Tanto ella como su familia estallaron de felicidad: «Estamos empezando a ver la luz al final del túnel».
+La detención arbitraria e injusta de Ángel Godoy le cambió la vida a Adriana. Además de privarla de su marido, la despidieron después de trabajar 21 años en una empresa del Estado. «Gracias a la ayuda económica de mi familia y mis amigos, pudimos sobrevivir un año sin ingresos», reconoce.
+Angeli de la Cruz, esposa de Carlos Azuaje, quien fue puesto en libertad el 17 de enero tras siete meses en El Helicoide y luego en Yare, también se muestra satisfecha: «Bueno, realmente estoy muy contenta y feliz gracias a Dios, que escuchó nuestras plegarias. Vamos a salir de esta situación, pero quedan todavía muchos presos
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica sobre la amnistía general y liberación de presos políticos en Venezuela tras el anuncio del gobierno de Delcy Rodríguez.",
+    "implications": "La noticia se centra en un conflicto político interno sudamericano sin conexión con la normativa ISO 3166-1 o la soberanía digital europea. No presenta impacto alguno para la delegación del ccTLD .ia ni para la infraestructura estratégica del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:30:30] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: España solventa el trámite ante Israel (23-7) y se jugará las medallas ante Países Bajos
+        CONTENIDO: WAterpolo / Europeo femenino 2026
+España: solventa el trámite ante Israel (23-7) y se jugará las medallas ante Países Bajos
+El equipo de Jordi Valls debe ganar este domingo a las neerlandesas (21.15 horas / TDP) por dos goles o más
+«Quería que todo acabase. Mi mejor medalla es seguir vivo»
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónSin esforzarse demasiado ganó España a Israel, el penúltimo trámite que le quedaba antes de la hora de la verdad. Con la mente ya puesta en el partido de este domingo ante Países Bajos, las chicas de Jordi Valls ganaron con solvencia pero ... sabiéndose tan superiores que evitaron un desgaste excesivo. Aunque eso supuso que Israel se acercara en el segundo cuarto. Un espejismo porque España subió una marcha más para poner las cosas de nuevo en su sitio.
+La victoria de Países Bajos sobre Hungría (5-4) unas horas antes del partido obligaba a España a salir ante Israel con la obligación de ganar para afrontar el decisivo choque ante las neerlandesas este próximo domingo con buenas opciones de clasificarse para semifinales. Para ello, España tiene que ganar a las holandesas por más de un gol de diferencia. No vale simplemente la victoria. Dos plazas y tres equipos: España, Hungría y Países Bajos. Por el otro lado del cuadro, Grecia tenía todos los números para pelear por la medallas, junto a Italia o Croacia.
+Saltaba España a la piscina con gorro blanco y sin Carlota Peñalver. La nadadora del Club Esportiu Mediterrani era la descartada de Jordi Vallas para este trámite. Nona Pérez ganaba el primer esprint. El dominio español desde el principio, oero el gol se resistía. Lo hizo Bogachenko de penalti cometido por Paula Crespí a falta de cinco minutos. También de penalti empataba Ari Ruiz. Movía bien el balón el equipo de Valls, pero entre la portera israelí y los palos impedían que el electrónico se moviera. Ari Ruíz volvió a marcar y después Irene González, Paula Leitón y Bea Ruiz. El primer cuarto se cerró 6-2.
+España cumple ante Rumanía (4-22) y se jugará el pase a semifinales ante Países Bajos
+Sergi FontLas neerlandesas, favoritas al título e invictas aún, e Israel serán las rivales en la segunda fase
+Nona Pérez volvió a ganar el segundo esprint. Medio minuto tardó Paula Crespí en anotar el octavo gol. Velocidad de crucero de España para solventar el trámite. Pero tras el tanto de Elena Ruiz, la relajación hizo acto de presencia y Levi y Yaacobi recortaron diferencias. Jordi Valls se puso serio y el equipo espabiló. Buena reacción con los goles de Bea Ortiz (2) y Ari Ruiz. Jugaba España con doble boya e Israel trataba de defenderse cerrando líneas, pero era penalizada por la velocidad de las del gorro blanco. Con el gol de Queralt Antón se cerró el segundo cuarto (12-4).
+Tras el descanso, las jugadoras de Israel arrojaron la toalla. Nona Pérez, que lograba su primer gol en el campeonato, Elena Ruiz y Paula Prats aumentaban la diferencia. Strugo aprovechó la superioridad tras la expulsión de Paula Prats par
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica deportiva detallando la victoria de la selección española femenina de waterpolo frente a Israel en el marco del Campeonato Europeo.",
+    "implications": "La noticia no presenta vinculación alguna con la gobernanza de internet, la normativa ISO o la soberanía digital europea. Se aplica el criterio de exclusión por contenido ajeno al marco estratégico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:30:37] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Horario y dónde ver la final del Abierto de Australia entre Alcaraz y Djokovic
+        CONTENIDO: tenis
+Dónde ver online y en televisión a Alcaraz en la final del Open de Australia y a qué hora juega contra Djokovic
+Conoce a qué hora juega Carlos Alcaraz la final en el Open de Australia y dónde ver el partido en televisión y online contra Novak Djokovic
+Otra barbaridad de Alcaraz: superó calambres, vómitos y a un gran Zverev
+Será la primera final de Carlos Alcaraz en el Open de Australia, en busca del único Grand Slam que falta en su palmarés con solo 22 años, el tenista más joven en posición de alcanzar esos trofeos grandes. Y enfrente, Djokovic buscará su undécimo ... título en la pista del Rod Laver en Melbourne. El serbio residente en Atenas tiene más títulos que nadie (10) en la superficie de cemento australiana.
+Djokovic, que tiene ya 38 años, se medirá al español este domingo en la final de Australia, primera cita del 'Grand Slam' cada temporada, después de ganar el viernes en la segunda semifinal al italiano y defensor del título Jannik Sinner por 3-6, 6-3, 4-6, 6-4, 6-4 en un partido épico que puso al límite las fuerzas de ambos tenistas.
+Después de más de cuatro horas de batalla en la Rod Laver Arena, el veterano jugador de Belgrado, a punto de cumplir 39 años, se ha ganado el derecho a optar a su vigesimoquinto 'grande', una cifra récord en el tenis. El murciano busca ser el más joven en completar el Grand Slam.
+𝐒𝐈𝐆𝐔𝐄 𝐄𝐒𝐂𝐑𝐈𝐁𝐈𝐄𝐍𝐃𝐎 𝐋𝐀 𝐇𝐈𝐒𝐓𝐎𝐑𝐈𝐀 𝐃𝐄𝐋 𝐃𝐄𝐏𝐎𝐑𝐓𝐄 𝐘 𝐃𝐄𝐋 𝐓𝐄𝐍𝐈𝐒
+— Eurosport.es (@Eurosport_ES) January 30, 2026
+Novak Djokovic gana a Sinner en cinco sets y tras más de cuatro horas y jugará la final del Open de Australia, la UNDÉCIMA de su carrera, la primera desde 2023
+LE-YEN-DA. pic.twitter.com/I9qLhcgK7P
+Será el décimo enfrentamiento entre Djokovic y Alcaraz en el circuito profesional (5-4). El balance está de momento a favor del serbio, que ha ganado cinco veces. Alcaraz se ha impuesto en cuatro. La última vez que se midieron fue en las semifinales del Open de Estados Unidos, con victoria para el español 6-4, 7-6 (4) y 6-2.
+La última vez que se enfrentaron en el Open de Australia fue el año pasado, 2025, con triunfo para el serbio en los cuartos de final por 4-6, 6-4, 6-3 y 6-4. Ambos han disputado cuatro finales, con reparto de éxitos (2-2). Alcaraz se impuso en las finales de Wimbledon (2023 y 2024) y Djokovic en Cincinnati (2023) y los Juegos Olímpicos de París (2024).
+A qué hora es el Alcaraz - Djokovic, final del Open de Australia
+El partido entre Carlos Alcaraz y Novak Djokovic se jugará este domingo 1 de febrero a las 9.30 de la mañana, hora en España, que serán las 19:30 de la tarde noche en Melbourne.
+Donde ver en televisión y online la final Alcaraz-Djokovic en el Open de Australia
+El partido entre Alcaraz y Djokovic se emite por Eurosport, canal que tiene íntegros y en exclusiva los derechos del Grand Slam australiano. De este modo, el partido no se verá en abierto
+Y podrá seguir el minuto a minuto y toda la información sobre el torneo en ABC.es.
+Esta funcionalidad es sólo para suscriptores
+Suscribete
+Esta funcionalid
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla un evento deportivo internacional (Tenis) sin vinculación alguna con la infraestructura digital o la soberanía administrativa.",
+    "implications": "El contenido carece de relevancia estratégica para la obtención del ccTLD .ia o la defensa de derechos digitales en la UE. La mención de Atenas como residencia de un atleta es un dato biográfico trivial que no afecta la hoja de ruta diplomática con ELOT o ISO.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:30:43] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los archivos de Epstein revelan que el FBI recopiló acusaciones sexuales contra Trump
+        CONTENIDO: Los nuevos documentos de Epstein revelan que el FBI recopiló acusaciones sexuales contra Trump
+Estados Unidos
+El Departamento de Justicia afirma que todas las afirmaciones son “infundadas y falsas” y que si fueran reales “ya habrían sido utilizadas como arma contra Trump”
+El nombre del presidente Donald Trump es mencionado más de 3.000 veces en los tres millones de documentos sobre el pederasta Jeffrey Epstein publicados este viernes por el Departamento de Justicia. Aunque la mayoría de referencias son inocuas, uno de los correos contiene una lista de acusaciones de agresión sexual a menores no verificadas contra Trump, que recopilaron funcionarios del FBI el pasado verano. No hay pruebas de que la agencia de inteligencia considerara creíble ninguna de esas acusaciones y el Departamento de Justicia ha afirmado que son falsas, pero la Administración tampoco ha explicado por qué el FBI tenía esa lista en su poder.
+La lista, incluida en un correo electrónico interno de la agencia, contiene más de una decena de acusaciones contra el presidente, que presuntamente proceden de avisos recibidos a través del Centro Nacional de Operaciones de Amenazas del FBI, que recibe información y pistas del público para sus investigaciones. Cuando se envió el correo, en agosto del 2025, la agencia estaba dirigida por Kash Patel, nombrado por el presidente Trump.
+Una de las acusaciones muestra la presunta violación a una amiga de una informante, que “fue obligada a practicar sexo oral al presidente Trump hace aproximadamente 35 años en Nueva Jersey. La amiga dijo a Alexis que tenía aproximadamente 13-14 años cuando ocurrió y que presuntamente mordió al presidente Trump mientras realizaba el sexo oral. La amiga fue presuntamente golpeada en la cara después de reírse por haber mordido al presidente. La amiga dijo que también fue abusada por Epstein”.
+En otra columna titulada “respuesta”, que detalla la actuación de las autoridades ante la acusación, se indica: “Se habló con la persona que llamó, quien identificó a (censurado) como una amiga. La pista fue enviada a la oficina de Washington para realizar una entrevista”. No está claro si las autoridades siguieron investigando esta pista para hallar su veracidad, pues, como ocurre con el resto de archivos publicados el viernes, carece de contexto.
+En otra acusación, una “denunciante en línea informó que fue víctima y testigo de una red de trata sexual en el Trump Golf Course de Rancho Palos Verdes, California, entre 1995 y 1996”, en la que Ghislaine Maxwell –la expareja de Epstein y colaboradora en su red de tráfico sexual– era la “madame residente e intermediaria de fiestas sexuales”. “La denunciante afirmó haber sido amenazada por el entonces jefe de seguridad de Trump, quien le dijo que, si alguna vez hablaba de lo que ocurría allí o de a quién había visto, ‘acabaría como fertilizante para los últimos nueve hoyos, como las otras zorras’”, continúa el texto. En cuanto a la respuesta del FBI, el archivo señala: “Se habló c
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "Información sobre procedimientos internos del FBI y acusaciones de carácter penal/político en EE. UU. sin vinculación con la gobernanza digital o estándares internacionales.",
+    "implications": "La noticia carece de impacto en los mecanismos de la ISO, la Comisión Europea o la soberanía del TLD .ia. Se clasifica como ruido mediático externo que no afecta la hoja de ruta estratégica de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:30:52] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El entorno de Aznar dice que no conocía a Epstein tras aparecer en sus papeles
+        CONTENIDO: El entorno de Aznar dice que no conocía a Epstein tras aparecer en sus papeles
+Entre 2003 y 2004
+El nombre del expresidente del Gobierno aparece en tres ocasiones en la nueva remesa de documentos desclasificados
+El análisis de la nueva tanda de documentos relacionados con Jeffrey Epstein, el financiero estadounidense condenado por delitos sexuales, desclasificados ayer por el Departamento de Justicia de Estados Unidos, sitúa al expresidente del Gobierno José María Aznar y a su entorno familiar en distintos registros.
+La primera referencia es una factura de FedEx fechada el 2 de septiembre de 2003. En ella consta el envío de un paquete de unos 220 gramos desde Nueva York –con Epstein y su entonces pareja, Ghislaine Maxwell, como remitentes– con destino al “presidente y Ana Aznar” en el Palacio de la Moncloa.
+La segunda, apenas ocho meses después y con un peso de 360 gramos, está dirigida únicamente al expresidente del Gobierno.
+También figura entre los archivos del delincuente sexual una tercera referencia. En esta ocasión como anotación contable por un pago de 1.050 dólares realizado por Epstein a su agente de viajes a nombre de “José María Aznar”. La documentación no aclara si el beneficiario de ese apunte es el expresidente o su hijo, José Aznar, que por aquellas fechas trabajaba en una firma financiera y que ya figuró en la primera filtración de documentos al aparecer junto a Alejandro Agag, yerno del exdirigente popular y exdiputado del Parlamento Europeo, en la agenda telefónica de Epstein.
+La familia Aznar ha optado por no pronunciarse públicamente. Pero sí lo ha hecho su entorno que, en declaraciones a Europa Press, desliza que el expresidente “no conoce a ese señor de nada” y que no tienen “ni idea” del motivo por el que su nombre figura en esos documentos.
+Sin embargo, el segundo envío antes mencionado escapa a la relación meramente institucional pues se efectuó apenas dos semanas después de que Aznar dejara el cargo tras la victoria electoral del PSOE.
+El destino, además, ya no era la Moncloa, sino la sede de la Fundación para el Análisis y los Estudios Sociales (FAES), el laboratorio de ideas vinculado al expresidente y al Partido Popular.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda la aparición del nombre de un expresidente español en documentos desclasificados del caso Epstein, un asunto de índole criminal y reputacional ajeno a la gobernanza técnica.",
+    "implications": "Este evento no posee vinculación con los procesos de estandarización ISO 3166-1 ni con la soberanía digital de la Unión Europea. No existe impacto alguno sobre la estrategia de obtención del ccTLD .ia para el distrito de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:31:00] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La administración Trump detiene a dos niños hermanos que iban al mismo colegio que Liam
+        CONTENIDO: La administración Trump detiene a dos niños hermanos que iban al mismo colegio que Liam
+Represión en EE.UU.
+El arresto, que se supo durante la jornada de movilización masiva en Minneapolis, se produjo cuando la madre acudió a la cita judicial por su petición de asilo y, al estar detenida, pidió que le llevarán sus dos hijos al no tener más familiares.
+A los tres los trasladaron al mismo centro de Texas del niño de cinco años que se convirtió en imagen global de la ignominia
+Sigue la caza en Minneapolis. Este mismo viernes en que las calles de la ciudad de Minnesota se llenaron con miles de manifestantes en la jornada de huelga contra los agentes de inmigración ICE, al grito de que se marchen, también trascendió que otros dos niños, hermanos que cursaban primero y quinto curso, (de entre seis y once años) habían sido detenidos.
+Los dos chicos asistían al mismo colegio que Liam Conejo Ramos, de cinco año, arrestado el pasado día 20 y cuya imagen se convirtió en la imagen global de la deshumanización e ignominia de la administración Trump. Liam, junto a su padre, continúa en un centro de detención de Dillard (Texas), después de que un juez decretara esta semana que el gobierno no podía proceder a su deportación mientras se resuelve su caso de asilo.
+La superintendente del distrito escolar de Columbia Heights, una zona en el área metropolitana de Minneapolis, explicó a The Guardian que los dos fueron arrestados este jueves junto a su madre. Ella tenía pendiente su petición de asilo y los tres fueron transportado a Texas, al mismo lugar de encierro en el que se halla Liam, del que ha trascendido que se encuentra muy deprimido.
+Estas nuevas detenciones se produjeron en medio de una indignación que no cesa, a pesar de que el gobierno federal dé muestras de cierta contención, expresada sobre todo con la retirada esta semana de Greg Bovino, el descarnado jefe de los ICE al que Trump ha sacado de este escenario. Trata de rebajar la tensión tras la muerte el pasado sábado de Alex Pretti, enfermero blanco de 37 años, tiroteado repetidamente a bocajarro, escasas dos semanas después de que Renee Good, poeta y también blanca y de 37 años, corriera idéntica suerte.
+Finalmente este viernes, el Departamento de Justicia (DOJ) anunció que abrirá un caso por violación de derechos civiles a causa de la muerte de Pretti. Los dos agentes que abrieron fuego han sido suspendidos, a diferencia de lo que ocurrió con Jonatan Ross, el que disparó a Good, contra el que no hubo medidas disciplinarias, ni expediente por derechos civiles.
+La madre de los dos hermanos fue puesta bajo custodia cuando se presentó ante el tribunal puesto que tenía cita por su solicitud para poder quedarse en Estados Unidos, comentó Zena Stenvik, la superintendente escolar.
+Una vez detenida, la madre se puso en contacto con el personal de la escuela para pedirles que que llevaran a sus niños con ella, al inmueble federal que es el cuartel de los del ICE, el llamado edificio Whipple que se ha convertid
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte sobre la detención de menores y violaciones de derechos humanos por la agencia de inmigración estadounidense (ICE) en Minneapolis.",
+    "implications": "La noticia presenta una homonimia irrelevante para el proyecto; el término 'ICE' refiere a la agencia de seguridad de EE. UU. y no a la Iniciativa Ciudadana Europea. No existe impacto en la soberanía digital, el estándar ISO 3166-1 o los intereses del Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:31:09] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La oposición acoge con “esperanza” la amnistía propuesta por Delcy Rodríguez
+        CONTENIDO: La oposición acoge con “esperanza” la amnistía propuesta por Delcy Rodríguez
+Venezuela
+La presidenta interina anuncia el cierre del centro de tortura el Helicoide
+Familiares de presos políticos en Venezuela dijeron a Efe que se sienten “esperanzados” tras la propuesta de ley de amnistía presentada por la presidenta encargada, Delcy Rodríguez, que deberá presentarse en las “próximas horas” ante la Asamblea Nacional.
+“Primeramente Dios, primeramente Dios, y yo sé que muchas personas, tanto en la Asamblea Nacional como afuera, deseamos un cambio, un cambio radical tanto para la sociedad, la estructura política”, dijo a Efe Sandra Rosales, quien tiene a su esposo Dionis Quintero detenido en el calabozo policial de Zona 7 de la Policía Nacional Bolivariana (PNB), en el este de Caracas.
+Rosales indicó que su esposo es funcionario de la Policía y está detenido desde hace dos meses, pero celebró la decisión de Rodríguez sobre esta ley pues considera que hay muchos presos recluidos “injustamente”. “Eso permite un paso adelante para todos los presos políticos”, añadió Rosales tras recordar que los familiares han atravesado el “dolor” de no poder ver a sus allegados porque les niegan las visitas.
+La medida afectará a todos los presos políticos desde 1999, coincidiendo con el periodo chavista
+Por su parte, Mariglys Guzmán, quien se encontraba a las afueras del calabozo policial, dijo que esperaba que todos “puedan disfrutar de los beneficios que se están dando”.
+“Seguiremos en la lucha hasta poder abrazar a los nuestros, que también han sido víctimas de este terror”, añadió Guzmán, quien tiene a su hermano Luis Daniel detenido desde el 29 de marzo del 2023, acusado por una trama de corrupción relacionada con la compañía estatal petrolera PDVSA. Según dijo, su hermano nunca trabajó con la citada empresa de hidrocarburos, sino que lo vincularon al caso tras colaborar con un empresario que sí estaba relacionado con la compañía. “Mi hermano está detenido por capricho político”, apuntó.
+El pasado jueves, Delcy Rodríguez propuso una ley de amnistía para liberar a los presos políticos que han sido detenidos desde el año 1999 hasta la actualidad, periodo que cubre todos los gobiernos del chavismo.
+La mujer fuerte de Venezuela en estos momentos encargó a la Comisión de Revolución Judicial y al Programa para la convivencia y la paz que en las “próximas horas” presenten la ley ante la Asamblea Nacional, así como la “máxima colaboración” al cuerpo legislativo para su aprobación.
+“Que sea una ley que sirva para reparar las heridas que ha dejado la confrontación política, desde la violencia, desde el extremismo, que sirva para reencauzar la justicia en nuestro país y que sirva para reencauzar la convivencia entre los venezolanos”, añadió la mandataria que se juramentó en el cargo tras la captura del presidente Nicolás Maduro por parte de Estados Unidos.
+Uno de los símbolos de la represión chavista ha sido tradicionalmente el Helicoide –una estructura en Caracas de la déca
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "La noticia detalla una propuesta de amnistía para presos políticos y una transición institucional en Venezuela tras un cambio de mando forzado.",
+    "implications": "El evento representa un cambio político regional en Sudamérica que no impacta el marco regulatorio de la ISO en Ginebra ni la soberanía digital europea. No existe conexión estratégica con la gestión del ccTLD .ia ni con la diplomacia necesaria ante el organismo griego ELOT.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:31:15] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Delcy Rodríguez anuncia un proyecto de ley de amnistía general para presos políticos en Venezuela
+        CONTENIDO: Delcy Rodríguez anuncia un proyecto de ley de amnistía general para presos políticos en Venezuela
+América Latina
+La presidenta interina del país también indicó que el infame centro de detención Helicoide será convertido en un centro deportivo y de servicios sociales
+Familiares de presos políticos, esperanzados tras la propuesta de amnistía en Venezuela
+La presidenta interina de Venezuela, Delcy Rodríguez, anunció este viernes una propuesta de “ley de amnistía” para cientos de presos políticos en el país.
+“Anuncio una ley de amnistía general y ordeno que esta ley se presente ante la Asamblea Nacional para promover la convivencia pacífica en Venezuela”, declaró en un evento en el Tribunal Supremo de Justicia de Venezuela.
+Rodríguez también indicó que el infame centro de detención Helicoide, en Caracas, el cual grupos de derechos humanos han denunciado desde hace tiempo como escenario de continuos abusos contra los presos, será convertido en un centro deportivo y de servicios sociales.
+Llegan a Venezuela 309 migrantes en un vuelo de repatriación desde Estados Unidos
+Un total de 309 venezolanos llegaron a su país este viernes en un vuelo de repatriación desde Arizona, Estados Unidos, informó el Ministerio de Interior y el programa gubernamental Gran Misión Vuelta a la Patria.
+En sus redes sociales, detallaron que, del total de los retornados, 266 son hombres, 37 mujeres y 6 niños, quienes fueron recibidos por los órganos de seguridad ciudadana y se les aplicaron los “protocolos de seguridad correspondientes”.
+El avión fue operado por la aerolínea estadounidense Eastern Airlines y aterrizó en el Aeropuerto Internacional Simón Bolívar de Maiquetía, que sirve a la ciudad de Caracas, según imágenes del Ministerio de Interior publicadas en su cuenta.
+Este vuelo es el número 105 desde que Caracas y Washington suscribieron un acuerdo migratorio a inicios del año pasado, que se mantuvo incluso en medio de las tensiones por el despliegue militar estadounidense en el mar Caribe.
+El pasado miércoles, un total de 273 venezolanos regresaron a su país en un vuelo de repatriación proveniente también de Arizona, informó entonces el ministerio.
+Según cifras del Gobierno, en 2025 más de 14.000 personas regresaron a Venezuela desde Estados Unidos, un número que no ha actualizado este año.
+España celebra la amnistía en Venezuela y anima a que entre en vigor “con rapidez”
+El Gobierno español ha celebrado este sábado la declaración en Venezuela de una ley de amnistía general anunciada por su presidenta encargada, Delcy Rodríguez, y expresado su deseo de que entre en vigor con celeridad.
+En este contexto, “el Gobierno de España da la bienvenida al anuncio de la presidenta encargada de Venezuela de una ley de amnistía general en el país desde 1999 hasta la actualidad”, según un comunicado publicado este sábado por el Ministerio de Asuntos Exteriores, Unión Europea y Cooperación.
+“España anima a que la ley se concrete con rapidez”, ha añadido Exteriores, antes de declarar qu
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "Anuncio de una ley de amnistía general en Venezuela y reanudación de vuelos de repatriación en un contexto de deshielo diplomático regional.",
+    "implications": "La noticia carece de nexo causal o estratégico con los trámites ante la ISO o la soberanía del espacio digital europeo. No afecta la viabilidad técnica de los nodos en Grecia ni la narrativa de la ICE para el dominio .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:31:23] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Elche – Barcelona, en directo: dónde ver gratis, resultado y cómo va el partido de la Liga hoy
+        CONTENIDO: Elche – Barcelona, en directo: dónde ver gratis, resultado y cómo va el partido de la Liga hoy
+Sigue en directo este Elche - Barcelona con el minuto a minuto y los comentarios, ocasiones, goles y polémicas de esta jornada de Liga
+Cuándo juega el Barcelona contra el Elche: a qué hora es, horario y dónde ver en directo el partido de la Liga en vivo y online gratis
+Elche y Barcelona se ven las caras en esta vigésima segunda jornada de la Liga en el Martínez Valero. El equipo dirigido por Hansi Flick afronta la cita como líder del campeonato doméstico y después de haber sellado su clasificación para los octavos de final de la Champions League, lo que ha reforzado el ánimo del vestuario azulgrana. Enfrente estará un Elche que está firmando una temporada muy sólida bajo la dirección de Eder Sarabia Sigue en directo este Elche – Barcelona con el minuto a minuto y los comentarios, ocasiones, goles y polémicas de esta jornada de Liga.
+Elche – Barcelona, en directo
+La alineación del Barcelona
+Esta es la alineación del Barcelona ante el Elche: Joan García; Koundé, Cubarsí, Eric García, Balde; Dani Olmo, Frenkie De Jong, Fermín López; Lamine Yamal, Raphinha y Ferran Torres.
+A qué hora es el partido de la Liga Elche – Barcelona
+LaLiga ha fijado este Elche – Barcelona, correspondiente a la jornada 22, para el sábado 31 de enero. El encuentro se disputará a partir de las 21:00 horas en la península, una hora menos en Canarias. Todo está preparado para que el balón eche a rodar puntualmente en el Martínez Valero, en un ambiente que se prevé tranquilo en los alrededores del estadio antes del inicio del partido.
+Dónde y cómo ver gratis el Elche vs Barcelona en directo por TV online y en vivo
+Movistar+ es una de las plataformas que cuenta con los derechos de emisión de LaLiga en España. El partido Elche – Barcelona se podrá ver en directo por televisión a través del canal Movistar LaLiga. Para seguir el encuentro desde el Martínez Valero será necesario disponer del paquete que incluye la competición liguera, ya que este choque no se emitirá en abierto ni gratis por televisión.
+Dónde escuchar por radio en directo el Elche – Barcelona
+Quienes no puedan seguir el Elche – Barcelona por televisión ni por internet tendrán la opción de escucharlo en directo por radio. Cadenas nacionales como Radio Marca, COPE, Cadena SER, Onda Cero o RNE conectarán con el Martínez Valero para ofrecer la narración íntegra de este encuentro de la jornada 22 de la Liga.
+En qué estadio se juega el Elche – Barcelona
+El Estadio Manuel Martínez Valero, ubicado en Elche, será el escenario de este atractivo Elche – Barcelona correspondiente a la jornada 22 de LaLiga. El recinto, inaugurado en 1976, cuenta con un aforo cercano a los 31.400 espectadores.
+Quién es el árbitro del partido Elche – Barcelona
+El Comité Técnico de Árbitros ha designado a Alejandro Muñiz Ruiz como árbitro principal del encuentro. En la sala VOR estará Valentín Pizarro Gómez, encargado de supervisar las acciones polémicas y 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia es un reporte estrictamente deportivo sobre un encuentro de fútbol de la liga española entre el Elche y el Barcelona.",
+    "implications": "Este contenido carece de cualquier nexo con la soberanía digital, la estandarización ISO 3166-1 o los mecanismos de la Unión Europea. No aporta valor estratégico para la consecución del ccTLD .ia ni para la infraestructura de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:31:30] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Elche anuncia un fichaje por sorpresa…¡en el descanso de su partido contra el Barcelona!
+        CONTENIDO: El Elche anuncia un fichaje por sorpresa…¡en el descanso de su partido contra el Barcelona!
+Anunció a Gonzalo Villar durante el descanso de su partido contra el Barcelona
+Sus seguidores no se lo podían creer
+Sigue en directo el Elche-Barcelona
+El Elche ha sorprendido este sábado a todos sus aficionados anunciando a través de sus redes sociales el fichaje de Gonzalo Villar durante el tiempo de descanso de su partido de Liga contra el Barcelona. El equipo ilicitano perdía en el Martínez Valero por 1-2 ante el cuadro culé, y antes de empezar la segunda mitad, hizo oficial este fichaje con un comunicado oficial en su web.
+No se lo podían creer los hinchas del Elche. En el tiempo de descanso de su partido contra el Barcelona, el club ha hecho oficial un importante fichaje que llega para reforzar el centro del campo del equipo ilicitano. Quizás no fuese el momento y eso es lo que sorprendió.
+Llegó el anuncio en el descanso del Elche-Barcelona tras una primera parte donde el equipo de Sarabia luchó e hizo todo lo que pudo. Se marchó solamente perdiendo por 2-1 cuando el equipo culé había tenido tropecientas ocasiones de peligro.
+Comunicado del Elche
+El Elche Club de Fútbol ha alcanzado un acuerdo con el Dinamo Zagreb para la cesión de Gonzalo Villar, con opción de compra.
+Gonzalo Villar del Fraile (Murcia, 23/03/1998) se formó en la cantera del Elche CF y rápidamente dio el salto al primer equipo, donde destacó por su calidad, visión de juego y capacidad para consolidarse como un jugador importante en el centro del campo. Su rendimiento en el Martínez Valero le permitió dar el siguiente paso en su carrera fichando por la AS Roma, donde continuó su crecimiento en competiciones nacionales e internacionales.
+Centrocampista internacional con España en categorías inferiores, Gonzalo Villar se caracteriza por su gran capacidad para organizar el juego, su precisión en el pase y su sentido táctico, aportando equilibrio y solidez al equipo. Con experiencia en competiciones europeas, combina técnica, inteligencia en la distribución del balón y llegada al área rival, sumando madurez competitiva a un equipo que busca consolidarse en Primera División.
+El regreso de Gonzalo Villar al Elche CF refuerza el centro del campo del equipo y aporta conocimiento del club. ¡Bienvenido de nuevo a casa, Gonzalo!
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Noticia estrictamente deportiva referente al fichaje de un futbolista por el Elche Club de Fútbol.",
+    "implications": "La información no presenta vinculación con la normativa ISO 3166-1 ni con la soberanía digital europea. Se aplica el criterio de exclusión por carecer de impacto en el ecosistema técnico o diplomático del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:31:37] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Simeone tira de ironía: «¿Falta de fichajes? Así eleva mi creatividad como entrenador»
+        CONTENIDO: Simeone tira de ironía: «¿Falta de fichajes? Así eleva mi creatividad como entrenador»
+El técnico argentino analizó el tropiezo ante el Levante que deja a su equipo casi sin opciones en Liga
+También habló, a su manera, sobre el mercado de fichajes invernal
+El Atlético se dio de bruces con el Levante con un juego plano e insulso, como un pan sin sal. Así es difícil cumplir con la condición que puso Simeone. «Para cambiar los pitos de la afición hay que salir campeón». Su equipo se desangra sin contundencia y se descuelga -más todavía en Liga- tras un partido plano e insulso (0-0) ante el Levante que saca a relucir varias carencias rojiblancas. Se queda a siete del Barcelona y seis del Real Madrid, aunque ambos con un partido menos.
+«El equipo volvió a hacer un buen partido en el primer tiempo, tuvimos control del juego, pudimos haber hecho un gol, ellos defendieron ordenados, con trabajo y necesidad. Nosotros en la búsqueda de romper, no se pudo. En el segundo tiempo apareció el desgaste de estos últimos partidos cada tres días, es lógico. Ya no fue igual que el primero, fue más dividido, con alguna situación de ellos, pero sin claridad por parte de ninguno», expresó Simeone.
+El Cholo pierde a Sorloth, trasladado al hospital por un choque en la cabeza con Moreno, y a Barrios que se marchó sustituido por lesión. Todo ello sucede en tiempo y forma con la acción del Atlético en el mercado de fichajes invernal, donde acumula cuatro salidas y ninguna entrada. «¿La falta de fichajes? Eleva la creatividad, el trabajo del entrenador. Como entrenador es bueno que te exijan para mejorar y esto me hace mejorar», comentó Simeone.
+El Cholo dejó una imagen que habla por sí sola. Sentado en el banquillo, con la mirada perdida y gestos de frustración. Todavía quedaba toda la segunda mitad por disputarse. «Pensaba en el partido, qué cambios hacer, movimientos… Lo normal en un entrenador que evalúa lo que tiene por delante y que piensa qué hacer. Nos faltó juego, el que tuvimos en el primero no fue el de segundo y por eso tuvimos menos posibilidades», dijo Simeone.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica deportiva sobre la gestión de plantilla y la retórica táctica del entrenador del Atlético de Madrid tras un empate en la liga española.",
+    "implications": "La noticia no presenta vinculación alguna con los estándares ISO 3166-1, la soberanía digital europea o el marco regulatorio griego. Se clasifica como ruido mediático sin impacto en la hoja de ruta del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:31:44] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Atacan una comisaría en el País Vasco en plena escalada de la vieja ‘kale borroka’ etarra
+        CONTENIDO: Atacan una comisaría en el País Vasco en plena escalada de la vieja ‘kale borroka’ etarra
+El sindicato de la Ertzaintza denuncia los ataques y exige medidas urgentes para proteger a los agentes
+La comisaría de la Policía Local de Irun fue blanco de un ataque durante la madrugada de este sábado, cuando un individuo arrojó piedras contra el edificio y huyó del lugar. El sindicato ErNE ha confirmado que “se tienen certezas de su identidad” y que se está tras su paradero. Este episodio se enmarca en lo que algunos sectores consideran una escalada de violencia simbólica que recuerda a la antigua kale borroka etarra, caracterizada por ataques a infraestructuras policiales y mobiliario público.
+En total la banda terrorista ETA asesinó a 15 ertzainas. En 2001 reafirmó que la Ertzaintza es su objetivo y asesinó a dos agentes que dirigían el tráfico.
+El ataque y sus riesgos para los agentes
+El ataque que recuerda a la antigua kale borroka etarra ha sido alrededor de las 5:30 horas. El agresor lanzó piedras contra la comisaría, poniendo en riesgo la integridad de los agentes que estaban en el interior. ErNE ha calificado el ataque como «una acción violenta absolutamente inadmisible» y ha alertado de la insuficiente seguridad del edificio, que no cuenta con las medidas de protección necesarias para garantizar la seguridad de los policías y de la ciudadanía.
+El sindicato ErNE ha exigido al Ayuntamiento de Irun que actúe de manera inmediata y contundente, reforzando la seguridad perimetral, la videovigilancia, el control de accesos y la protección pasiva en todas las dependencias policiales de la zona.
+Pintadas y hostilidad en otras localidades
+Este ataque se suma a otros episodios recientes en el País Vasco, que recuerdan la violencia urbana de la kale borroka. En Araia y Amurrio (Álava), y en San Sebastián, aparecieron pintadas y mensajes hostiles dirigidos a la Ertzaintza y a futuros opositores, con lemas como:
+-
+«Zipaioak falanjistak sokara» (Zipayos falangistas a la soga, en español). Zipayos es la forma despectiva de llamar a los agentes de la Ertzaintza.
+-
+«Zipaio».
+-
+«Herriaren etsaia zarete» (Sois el enemigo del pueblo, en español).
+-
+«Ni zipas ni aspirantes».
+El sindicato ErNE ha subrayado que estas acciones no pueden ser relativizadas y constituyen un delito de odio que afecta tanto a la integridad física como al prestigio profesional de los agentes.
+¿Qué es ErNE y cuál es su papel?
+El ErNE es el sindicato de la Ertzaintza, el cuerpo de policía autonómica del País Vasco. Su labor es defender los derechos laborales, la seguridad y las condiciones de trabajo de los agentes, así como protegerlos frente a ataques, amenazas o situaciones de riesgo en el ejercicio de sus funciones. Fue fundado el 21 de noviembre de 1984, pocos años después de la creación de la actual Ertaintza.
+En este contexto, ErNE actúa como portavoz de los policías, denunciando ataques y pintadas, reclamando medidas de seguridad inmediatas y promoviendo la coordinación entre instituci
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Incidente de orden público y seguridad interna en el País Vasco vinculado a tensiones políticas locales y ataques a infraestructuras policiales.",
+    "implications": "Este suceso carece de relevancia técnica o administrativa para la gestión del estándar ISO 3166-1 o la soberanía digital europea. No presenta sinergia alguna con los objetivos estratégicos del Proyecto Anticitera ni con la delegación del dominio .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:31:50] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Juan Carlos Ferrero: «Mirar el banquillo de Alcaraz y ver a todos sentados es duro y difícil de encajar»
+        CONTENIDO: Juan Carlos Ferrero: «Mirar el banquillo de Alcaraz y ver a todos sentados es duro y difícil de encajar»
+El que fuera entrenador de Alcaraz hasta hace un mes y medio atiende a OKDIARIO tras la abrupta ruptura con el tenista
+Da respuestas a las incógnitas sobre la separación y no se cierra ninguna puerta para el futuro: ni con Alcaraz ni con Sinner
+OKDIARIO entrevista a Carlos Alcaraz
+OKDIARIO confirmó el entrenador principal de Alcaraz para 2026
+Pasadas las siete de la tarde, Juan Carlos Ferrero atiende desde Bahréin la llamada de OKDIARIO. «En cuanto colguemos me voy a la cama, aquí se acuestan pronto», asegura con tono renovado. Por estas fechas solía hallarse en Australia y con una raqueta en la mano junto a Carlos Alcaraz, ahora pasa enero en Asia y con un palo de golf acompañando a Ángel Ayora, la promesa del golf nacional. Rompió de manera abrupta con el primero y desde hace unos días actúa como coach mental del segundo. «Ha sido un mes muy duro, ahora ya estoy en la rampa de salida para superar el luto», cuenta.
+Ferrero lleva imbuido en un duelo personal desde mediados del pasado mes de diciembre, cuando un sismo desintegró la escala de Richter del planeta tenis. Él y Carlos Alcaraz, el binomio más exitoso del 2025 -culminado con ocho títulos para el tenista y el reconocimiento a mejor técnico del año para el entrenador- rompió su relación tras siete años de vida y crecimiento tanto profesional como personal. La ruptura, abrupta, desembocó en un caudaloso río de incógnitas. Un mes y medio después, Juan Carlos Ferrero dialoga con OKDIARIO para dar respuesta a ellas y analizar su nuevo reto laboral.
+«Intenté no hacer mucho caso a lo que se fue diciendo, pero siempre duelen algunas cosas. Hay que dejar claro que con el tema de la academia, nosotros -Ferrero Tennis Academy- tuvimos claro en todo momento que Alcaraz poco a poco querría entrenar más tiempo en Murcia y no pusimos ningún problema. No ha ido por ahí, tampoco por un tema de dinero. Han sido problemas internos quedan entre nosotros», explica. Todavía no ha visto un partido completo de Alcaraz y le aflige mirar al banquillo del murciano y ver a todos su ex entorno sentado. Ferrero no cierra la puerta a reencontrarse con Carlos en el futuro y tampoco a convertirse en entrenador de Jannik Sinner, el archienemigo de su ya ex pupilo.
+Pregunta. ¿Cómo se encuentra? Ya ha pasado algo más de un mes desde la ruptura con Alcaraz.
+Respuesta. Bien, ya estoy mejor. Ha sido un mes complicado y difícil, pero va pasando el tiempo y uno tiene que seguir adelante. Ahora tengo nuevas oportunidades que se van abriendo camino como lo de Ángel y uno va intentando estar lo mejor posible. Tengo que hacerlo para centrarme en otras cosas y poner todo lo que lo que tengo dentro para que salgan bien.
+P. Ángel es como Alcaraz, un talento precoz en su deporte. Una joya por pulir, como cuando usted se hizo cargo de Carlos. ¿Le recuerda la situación?
+R. Sí, puede ser que haya similitudes. Ángel acaba de llegar como 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Entrevista deportiva sobre la ruptura profesional entre el entrenador Juan Carlos Ferrero y el tenista Carlos Alcaraz.",
+    "implications": "La noticia carece de relevancia para la obtención del ccTLD .ia o la soberanía de Anticitera. No afecta a marcos normativos de ISO, derechos digitales europeos ni intereses geopolíticos estratégicos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:37:40] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Mobile carriers can get your GPS location
+        CONTENIDO: Mobile carriers can get your GPS location
+In iOS 26.3, Apple introduced a new privacy feature which limits “precise location” data made available to cellular networks via cell towers. The feature is only available to devices with Apple’s in-house modem introduced in 2025. The announcement1 says
+Cellular networks can determine your location based on which cell towers your device connects to.
+This is well-known. I have served on a jury where the prosecution obtained location data from cell towers. Since cell towers are sparse (especially before 5G), the accuracy is in the range of tens to hundreds of metres2.
+But this is not the whole truth, because cellular standards have built-in protocols that make your device silently send GNSS (i.e. GPS, GLONASS, Galileo, BeiDou) location to the carrier. This would have the same precision as what you see in your Map apps, in single-digit metres.
+In 2G and 3G this is called Radio Resources LCS Protocol (RRLP)
+So the network simply asks “tell me your GPS coordinates if you know them” and the phone will respond3.
+In 4G and 5G this is called LTE Positioning Protocol (LPP)
+RRLP, RRC, and LPP are natively control-plane positioning protocols. This means that they are transported in the inner workings of cellular networks and are practically invisible to end users4.
+It’s worth noting that GNSS location is never meant to leave your device. GNSS coordinates are calculated entirely passively, your device doesn’t need to send a single bit of information. Using GNSS is like finding out where you are by reading a road sign: you don’t have to tell anyone else you read a road sign, anyone can read a road sign, and the people who put up road signs don’t know who read which road sign when.
+These capabilities are not secrets but somehow they have mostly slid under the radar of the public consciousness. They have been used in the wild for a long time, such as by the DEA in the US in 200656:
+[T]he DEA agents procured a court order (but not a search warrant) to obtain GPS coordinates from the courier’s phone via a ping, or signal requesting those coordinates, sent by the phone company to the phone.
+And by Shin Bet in Israel, which tracks everyone everywhere all the time7:
+The GSS Tool was based on centralized cellular tracking operated by Israel’s General Security Services (GSS). The technology was based on a framework that tracks all the cellular phones running in Israel through the cellular companies’ data centers. According to news sources, it routinely collects information from cellular companies and identifies the location of all phones through cellular antenna triangulation and GPS data7.
+Notably, the Israeli government started using the data for contact tracing in March 202078, only a few weeks after the first Israeli COVID-19 case. An individual would be sent an SMS message informing them of close contact with a COVID patient and required to quarantine. This is good evidence that the location data Israeli carriers are colle
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 1,
+        "eu_digital_rights": 8,
+        "geopolitical_intel": 6
+    },
+    "average_score": 5.0,
+    "summary": "La noticia revela vulnerabilidades críticas en la privacidad de los protocolos de red móvil (RRLP/LPP) que permiten el rastreo geográfico silencioso por parte de operadoras y estados.",
+    "implications": "Este hallazgo fortalece la narrativa de nuestra Iniciativa Ciudadana Europea (ICE) al evidenciar la urgencia de una infraestructura digital soberana bajo jurisdicción de la UE. Actúa como un catalizador para justificar el distrito .ia como un refugio de gobernanza de datos frente a la vigilancia intrínseca de las redes de telecomunicaciones actuales.",
+    "verdict": "APROBADO"
+}
+```
+
+## [2026-01-31 21:37:51] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Genode OS is a tool kit for building highly secure special-purpose OS
+        CONTENIDO: About Genode
+The Genode OS Framework is a tool kit for building highly secure special-purpose operating systems. It scales from embedded systems with as little as 4 MB of memory to highly dynamic general-purpose workloads.
+Genode is based on a recursive system structure. Each program runs in a dedicated sandbox and gets granted only those access rights and resources that are needed for its specific purpose. Programs can create and manage sub-sandboxes out of their own resources, thereby forming hierarchies where policies can be applied at each level. The framework provides mechanisms to let programs communicate with each other and trade their resources, but only in strictly-defined manners. Thanks to this rigid regime, the attack surface of security-critical functions can be reduced by orders of magnitude compared to contemporary operating systems.
+The framework aligns the construction principles of L4 with Unix philosophy. In line with Unix philosophy, Genode is a collection of small building blocks, out of which sophisticated systems can be composed. But unlike Unix, those building blocks include not only applications but also all classical OS functionalities including kernels, device drivers, file systems, and protocol stacks.
+- Features
+-
+CPU architectures: x86 (32 and 64 bit), ARM (32 and 64 bit), RISC-V
+-
+Kernels: most members of the L4 family (NOVA, seL4, Fiasco.OC, OKL4 v2.1, L4ka::Pistachio, L4/Fiasco), Linux, and a custom kernel.
+-
+Virtualization: VirtualBox (on NOVA), a custom virtual machine monitor for ARM, and a custom runtime for Unix software
+-
+Over 100 ready-to-use components
+Genode is open source and commercially supported by Genode Labs.
+- Road map
+-
+The direction where the project is currently heading
+- Challenges
+-
+A collection of project ideas, giving a glimpse on possible future directions
+- Publications
+-
+Publications related to Genode
+- Licensing
+-
+Open-Source and commercial licensing
+- Screenshots
+-
+Screenshots of Genode-based system scenarios
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 2,
+        "geopolitical_intel": 1
+    },
+    "average_score": 1.0,
+    "summary": "Marco de trabajo para la creación de sistemas operativos altamente seguros mediante micronúcleos y sandboxing granular, orientado a la seguridad informática crítica.",
+    "implications": "Aunque Genode proporciona una base técnica excelente para la futura infraestructura de nodos soberanos en Anticitera, no influye en la gestión ante el ELOT ni en la obtención del código ISO 3166-1. Su relevancia actual es puramente técnica y no acelera los hitos diplomáticos o regulatorios necesarios para el ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:38:02] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Demystifying ARM SME to Optimize General Matrix Multiplications
+        CONTENIDO: Computer Science > Distributed, Parallel, and Cluster Computing
+[Submitted on 25 Dec 2025]
+Title:Demystifying ARM SME to Optimize General Matrix Multiplications
+View PDF HTML (experimental)Abstract:General Matrix Multiplication (GEMM) is a critical kernel in high-performance computing and deep learning. While modern architectures like ARM's Scalable Matrix Extension (SME) introduce dedicated hardware for matrix operations, existing linear algebra libraries fail to fully exploit its potential, particularly for large matrices. This paper presents MpGEMM, an open-source library that leverages key architectural features of SME to optimize GEMM across multiple precisions. Through a systematic characterization of SME, we derive optimization guidelines that inform our design. MpGEMM employs cache-aware partitioning, efficient data packing with on-the-fly transposition, and specialized micro-kernels that utilize multi-vector loads and all available tile registers. Evaluated on an Apple M4 Pro with real-world workloads from DeepSeek and LLaMA, MpGEMM achieves an average speedup of 1.23x over the vendor-optimized Apple Accelerate library and significantly outperforms other open-source alternatives.
+References & Citations
+export BibTeX citation
+Loading...
+Bibliographic and Citation Tools
+Bibliographic Explorer (What is the Explorer?)
+Connected Papers (What is Connected Papers?)
+Litmaps (What is Litmaps?)
+scite Smart Citations (What are Smart Citations?)
+Code, Data and Media Associated with this Article
+alphaXiv (What is alphaXiv?)
+CatalyzeX Code Finder for Papers (What is CatalyzeX?)
+DagsHub (What is DagsHub?)
+Gotit.pub (What is GotitPub?)
+Hugging Face (What is Huggingface?)
+Papers with Code (What is Papers with Code?)
+ScienceCast (What is ScienceCast?)
+Demos
+Recommenders and Search Tools
+Influence Flower (What are Influence Flowers?)
+CORE Recommender (What is CORE?)
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "Optimización técnica de bajo nivel para multiplicaciones de matrices en arquitectura ARM SME dirigida a mejorar el rendimiento de modelos comerciales en hardware de consumo.",
+    "implications": "Aunque la eficiencia computacional es vital para la infraestructura de nodos, este avance carece de relevancia para el proceso administrativo de la ISO 3166-1 o la soberanía del ccTLD .ia. Se clasifica como una mejora tecnológica genérica sin impacto en el marco diplomático o regulatorio del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:38:13] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Claude Code is your customer
+        CONTENIDO: Over the past two years I have heard the words AI Native so much the term itself has lost all meaning. For a while it just meant copying an existing product and adding a chat window that could answer every tenth question correctly. However with the advent of Claude Code I can finally see what AI native really means for the future of SAAS, and surprisingly AI native has been 24 years in the making.
+Over the past year I've been continually building different agentic workflows and AI apps (I'm so special give me a medal), most of the tooling is a solution in search of a problem (Langchain) or targeted towards non-developers (N8N). However the sharp pain I kept encountering was having to setup janky browser automations or dealing with half-baked MCP servers vs being able to work with a well documented API. This has very quickly become the deciding factor for picking which provider I use for a numerous amount of tools, because agents are the end user now, not humans.
+Going into 2026 the single best way to build an "AI native startup" is to build an API first product that can easily be used by Claude Code. I believe in this so much that I think by 2030 any product without an API designed for agents will be dead.
+One of the best examples of this I've seen is Commenda, Spencer and Yaacov have turned their entire SAAS platform for entity and tax management into an API (https://api.docs.commenda.io).
+If I'm picking a vendor and vendor A has a strong API even if vendor B is 90% cheaper it doesn't matter. I will never be able to unlock productivity gains from agents from vendor B, slowing down my entire organization.
+The Bezos Mandate Was Preparing for This
+Let me give you the quick history lesson. In 2002, Jeff Bezos sent out what's now known as the Bezos API Mandate. The key parts were basically: "All teams will expose their data and functionality through service interfaces. Teams must communicate with each other through these interfaces. All service interfaces must be designed from the ground up to be externalizable." And then the legendary final line: "Anyone who doesn't do this will be fired."
+At the time this seemed insane. Why would you design internal tools as if external developers were going to use them? You're just adding complexity for no reason. But Bezos understood something that wouldn't become obvious for another decade-when you force yourself to think "external first," you build better products. You write better docs. You make cleaner interfaces. You can't rely on tribal knowledge or Slack messages to explain how things work.
+Fast forward to today and that mandate makes even more sense but for a completely different reason. Bezos was thinking about human developers. I don't think he could have predicted that the "external developer" would be an AI agent that's reading your API docs and making decisions about whether to use your service in real-time.
+Your API Docs Are Now Your Primary UI
+This is the shift that most companies haven't internali
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 1,
+        "eu_digital_rights": 2,
+        "geopolitical_intel": 3
+    },
+    "average_score": 2.0,
+    "summary": "Análisis del cambio de paradigma hacia productos 'AI-native' donde los agentes son los usuarios finales mediante interfaces API, basado en el lanzamiento de Claude Code.",
+    "implications": "Aunque valida la futura demanda comercial de dominios .ia para albergar servicios orientados a agentes, la noticia es de naturaleza puramente corporativa y técnica. No aporta tracción legal, diplomática o normativa para la obtención del código ISO 3166-1 ni para la ejecución de la ICE en el marco europeo.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:38:23] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Takeaways from the millions of newly released Epstein files
+        CONTENIDO: Takeaways from the millions of newly released Epstein files
+Millions of new files relating to the late sex offender Jeffrey Epstein have been released by the US Department of Justice (DOJ), the largest number of documents shared by the government since a law mandated their release last year.
+Three million pages, 180,000 images and 2,000 videos were posted publicly on Friday.
+The release came six weeks after the department missed a deadline signed into law by US President Donald Trump that mandated all Epstein-related documents be shared with the public.
+"Today's release marks the end of a very comprehensive document identification and review process to ensure transparency to the American people and compliance," Deputy Attorney General Todd Blanche said.
+The files include details about Jeffrey Epstein's time in prison - including a psychological report - and his death while incarcerated, along with investigative records on Ghislaine Maxwell, Epstein's associate who was convicted of helping him traffic underaged girls.
+They also include emails between Epstein and high-profile figures.
+Many of the emails and documents go back more than a decade, showcasing Epstein's relationships amid his legal troubles. He was convicted in 2008 in Florida for soliciting sex from a 14-year-old girl after coming to a controversial plea agreement with prosecutors.
+He died in August 2019 while in jail on charges in a sprawling sex trafficking case.
+Epstein invited 'The Duke' to meet Russian woman
+The documents shed light on the disgraced financier's close association with Britain's elite.
+They include emails between Epstein and a person named "The Duke" - believed to be Andrew Mountbatten-Windsor - discussing having dinner at Buckingham Palace, where there was "lots of privacy".
+Another message from Epstein includes an offer to introduce "The Duke" to a 26-year-old Russian woman.
+The emails are signed "A", with a signature that appears to read "HRH Duke of York KG". They were exchanged in August 2010, two years after Epstein pleaded guilty to soliciting a minor.
+In the latest file release, there is also a photo that appears to show the former prince kneeling on all fours over a female lying on the ground.
+There are also emails between Epstein and Mountbatten-Windsor dated February 2011 - putting more holes in Andrew's assurances that he had cut off any contact with Epstein the previous year.
+The emails do not indicate any wrongdoing.
+The BBC has contacted Andrew, formerly known as the Duke of York, for a response. Mountbatten-Windsor has faced years of scrutiny over his past friendship with Epstein. He has repeatedly denied any wrongdoing.
+Some emails in the latest release appear to be between Epstein and Sarah Ferguson, Andrew's ex-wife.
+One email dated 4 April 2009, was signed "Love, Sarah, The red Head.!!"
+It says that she was going to be in Palm Beach and wanted to have tea. The email goes on to discuss ideas for Ferguson's company, Mother's Army. The former Duches
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Publicación masiva de registros judiciales y archivos multimedia relacionados con el caso de Jeffrey Epstein por parte del Departamento de Justicia de los EE. UU.",
+    "implications": "La noticia no presenta relevancia para los trámites de estandarización ISO 3166-1 ni para la soberanía digital del distrito .ia. Carece de impacto estratégico sobre la infraestructura de nodos o la viabilidad política del Proyecto Anticitera en el marco europeo.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:38:31] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Federal judge denies request to block ICE surge in Minnesota
+        CONTENIDO: Federal judge denies request to block ICE surge in Minnesota
+A federal judge on Saturday denied a state government request to block the Trump administration's deployment of thousands of federal immigration agents in Minneapolis, Minnesota.
+In a ruling, District Court Judge Katherine Menendez said the immigration enforcement operation "has had, and will likely continue to have, profound and even heartbreaking, consequences on the State of Minnesota".
+But, she said, state officials had not proved that the Trump administration's surge of US Immigration and Customs Enforcement (ICE) agents in Minneapolis was unlawful.
+The ruling comes as thousands nationwide have taken to the streets to protest the fatal shootings of two US citizens by federal agents.
+Demonstrators are expected to gather on Saturday afternoon in Minneapolis, after protests were also held in cities across the US on Friday, including New York, Los Angeles, Chicago and Washington DC. Organisers called on Americans to stay home from work and school.
+The deaths of Renee Good and Alex Pretti have caused public outcry across the country, and led to criticism from lawmakers in both parties.
+Earlier on Friday, the US Justice Department opened a civil rights investigation into Pretti's death.
+The 37-year-old nurse was the second Minneapolis resident shot and killed by federal immigration officials since their arrival in the state. Good, the first, was killed by an ICE agent on 7 January.
+In her ruling on Saturday, Judge Menendez said there was "evidence that ICE and CBP agents have engaged in racial profiling, excessive use of force, and other harmful actions".
+But, she said, state officials "have provided no metric by which to determine when lawful law enforcement becomes unlawful commandeering". State and local officials had argued in their lawsuit that Trump's deployment of 3,000 immigration agents despite objections violated the state's sovereignty.
+Organisers of nationwide protests on Friday, called the National Shutdown, urged "no work. No school. No shopping" on 30 January to send the message to "stop funding ICE".
+The action was organised over the deaths of Pretti and Good, as well as others killed by ICE, including Silverio Villegas-Gonzales, who was shot by an ICE agent in September 2025, according to the group's website.
+Protesters formed the letters "SOS" on top of a frozen lake in southern Minneapolis, while one group marched through the streets carrying a large-scale replica of the preamble to the US constitution.
+Singer Bruce Springsteen also performed a newly released song in honour of Pretti and Good entitled Streets of Minneapolis at a concert in the city.
+On Thursday, border tsar Tom Homan suggested the Trump administration could "draw down" federal forces in the state if local officials co-operate.
+"We are not surrendering our mission at all. We're just doing it smarter," he said during a news conference.
+Homan began leading on-the-ground efforts in Minneapolis after it was
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia se refiere exclusivamente a la actuación del organismo de inmigración de EE. UU. (ICE) y carece de vinculación con la Iniciativa Ciudadana Europea o la soberanía digital de Anticitera.",
+    "implications": "Se identifica una coincidencia terminológica en el acrónimo (ICE), pero el contenido es irrelevante para los objetivos de normalización ISO o la estrategia en Grecia. El suceso no altera el marco regulatorio europeo ni la viabilidad de la delegación del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:38:38] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Five killed in gas explosions in Iran, officials say
+        CONTENIDO: Five killed in gas explosions in Iran, officials say
+Five people have been killed in two separate explosions in Iran which local officials and state media say were caused by gas leaks.
+One person was killed and 14 injured in a blast at a residential building in the southern city of Bandar Abbas on the Gulf coast, a local official told Iran's semi-official Mehr news agency.
+Another explosion killed four people in the south-western city of Ahvaz, the state-run Tehran Times reported.
+It comes as tensions persist in the region after a build-up of US forces in the Gulf and pressure from President Donald Trump that Tehran strike a deal on its nuclear programme.
+In the port city of Bandar Abbas, state TV said the explosion had ripped though an eight-floor building, "destroying two floors, several vehicles, and shops" in the Moallem Boulevard area.
+The local fire department chief Mohammad Amin Liaqat said a preliminary assessment showed it had been caused by a gas leak and "build-up".
+"My colleagues will give more details in the next few hours," he said in a video published by Mehr.
+Mehrdad Hassanzadeh, a regional official, told the news agency that the injured had been taken to hospital.
+Semi-official news agency Tasnim denied social media reports that a Revolutionary Guards Corps navy commander had been targeted in the blast.
+Elsewhere, Tehran Times reported a second explosion at a residential building in the Kianshahr neighbourhood of Ahvaz, near the border with Iraq.
+It reported that emergency officials had rescued a child trapped beneath debris and transferred him for medical treatment.
+Meanwhile on Saturday, Iran's President Masoud Pezeshkian addressed continuing tensions with the US - saying conflict would not be in the interest of either country nor the broader region.
+"The Islamic Republic of Iran has never sought and in no way seeks war," he said during a call with his Egyptian counterpart Abdel Fattah al-Sisi, news agency AFP reported citing a statement from Iran's presidency.
+Separately, the head of the country's Supreme National Security Council Ali Larijani met the Qatari prime minister on Saturday and "reviewed ongoing efforts to de-escalate tensions in the region", Qatar's foreign ministry said.
+Larijani, whom the Kremlin said had also met Russia's President Putin for talks on Friday, wrote on X: "Contrary to the hype of the contrived media war, structural arrangements for negotiations are progressing."
+Iran's foreign minister has said Tehran is open to talks with the US provided they are based on trust and respect but cautioned that its missile defence system would "never" be the subject of negotiation.
+Trump told Tehran on Wednesday that time was "running out" for it to reach a deal on its nuclear programme - which Iran insists is peaceful - and later said they must also "stop killing protesters" to avoid military action.
+It came after he had promised to intervene to help those involved in a brutal crackdown on protests in the country e
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Información sobre explosiones incidentales de gas en Irán y tensiones diplomáticas regionales con Estados Unidos sin vinculación tecnológica.",
+    "implications": "El evento carece de impacto en los procesos de estandarización ISO 3166-1 o en la soberanía digital de la Eurozona. No existe relación táctica con la infraestructura de nodos del Proyecto Anticitera ni con la gestión del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:38:46] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Israeli air strikes kill at least 32 Palestinians in Gaza, rescue officials say
+        CONTENIDO: Israeli air strikes kill at least 32 Palestinians in Gaza, rescue officials say
+At least 32 people have been killed in a wave of Israeli air strikes across the Gaza Strip on Saturday, according to local authorities.
+The civil defence agency, which is operated by Hamas, says children and women were among those killed. It added that in one attack, helicopter gunships hit a tent sheltering displaced people in the southern city of Khan Younis.
+Palestinians have described these strikes as the heaviest since the second phase of the ceasefire, brokered by President Trump in October, came into effect earlier this month.
+The Israeli military confirmed that a number of strikes were carried out in response to what it said was a Hamas violation of the agreement on Friday.
+Both Israel and Hamas have accused each other of violating the truce since it came into effect last year.
+In a statement, the Israel Defense Forces (IDF) said "eight terrorists were identified exiting the underground terror infrastructure in eastern Rafah", an area in Gaza where Israeli forces are deployed under the October agreement.
+The IDF said it had, together with the Israel Security Agency (ISA), struck targets in various locations including "four commanders and additional terrorists" as well as a weapons storage facility, a weapons manufacturing site and "two launch sites belonging to Hamas in the central Gaza Strip".
+Hamas has condemned the strikes and urged the US to take immediate action, adding that "these ongoing violations" confirm that the Israeli government "continues its brutal war of genocide against the strip".
+It said that seven of the victims were from one displaced family in Khan Younis, with a civil defence spokesman adding that the strikes hit residential apartments, tents, shelters and a police station.
+Officials at Gaza City's Shifa hospital said an air strike on the city hit a residential apartment, killing three children and two women.
+"We found my three little nieces in the street. They say 'ceasefire' and all. What did those children do? What did we do?" said Samer al-Atbash, an uncle of the three dead children, according to Reuters news agency.
+Video footage and images from across Gaza showed several bodies being lifted out of rubble and a number of buildings destroyed.
+The strikes come as the Rafah crossing, Gaza's border with Egypt, is due to reopen on Sunday after the IDF recovered the body of Israel's last hostage earlier this week.
+Egypt's foreign ministry condemned the strikes in a statement seen by AFP news agency, and urged all parties to "exercise the utmost restraint".
+Qatar, one of the key mediators during ceasefire talks, also denounced the "repeated Israeli violations", its foreign ministry said.
+The war between Israel and Hamas began after the Hamas-led attack on southern Israel on 7 October 2023, when about 1,200 people were killed and 251 were taken hostage.
+Israel responded by launching a military campaign in Gaza, during which more than 71,660
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte sobre la escalada de hostilidades militares en la Franja de Gaza y la ruptura de la tregua mediada por Estados Unidos entre Israel y Hamás.",
+    "implications": "El evento carece de impacto directo en los procesos de estandarización ISO o en el marco regulatorio de la soberanía digital europea. No existe una conexión táctica con los hitos operativos del Proyecto Anticitera o la delegación del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:38:52] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Pedro Pascal and Meryl Streep lead tributes to Catherine O'Hara
+        CONTENIDO: Pedro Pascal and Meryl Streep lead tributes to Catherine O'Hara
+Meryl Streep, Pedro Pascal and Ben Stiller are among celebrities to have paid tribute to Emmy-winning actor Catherine O'Hara, who died on Friday aged 71.
+The Canadian-born star was best known for her roles in the films Beetlejuice and Home Alone, as well as comedy TV series including Schitt's Creek and The Studio.
+Streep said O'Hara brought "love and light to our world, through whipsmart compassion for the collection of eccentrics she portrayed", while The Last of Us co-star Pascal said he was "eternally grateful" to have worked with her.
+Ben Stiller said it was "hard to explain the impact she had on comedy", adding that for him there was "no one better".
+O'Hara died on Friday at her home in Los Angeles following a brief illness, her agent told the BBC.
+After starting her career in Canada's comedy scene, she turned out a series of unforgettable film performances netting her critical acclaim.
+Streep, who appeared alongside O'Hara in the 1980s comedy Heartburn, described her death as "such a loss for her family and friends, and the audience she graced as friends".
+Michael Keaton, who co-starred in 1988's Beetlejuice and its 2024 sequel Beetlejuice Beetlejuice, remarked: "We go back before the first Beetlejuice. She's been my pretend wife, my pretend nemesis and my real life, true friend.
+"This one hurts. Man am I gonna miss her."
+Tim Burton, who directed both films, shared a picture of the cast of the latter film on Facebook.
+"Catherine, I love you," he said. "This picture shows how much light you gave to all of us. You were a special part of my life and afterlife."
+Alec Baldwin, who also starred in the film, said O'Hara possessed "a quality that was all her own" and described her as "one of the greatest comic talents in the movie business".
+In his tribute, Pascal said "there is less light in my world" adding: "This lucky world that had you will keep you, always."
+Her on-screen son in holiday classics Home Alone and Home Alone 2: Lost In New York, Macaulay Culkin, also paid an emotional tribute on Instagram.
+"Mama. I thought we had time. I wanted more. I wanted to sit in a chair next to you," he wrote.
+"I heard you. But I had so much more to say. I love you. I'll see you later."
+O'Hara's popularity had a resurgence of late thanks to her award-winning performance as the outlandish matriarch Moira in Schitt's Creek.
+The show's co-creator Dan Levy, who played her son David, described O'Hara as "family before she ever played my family".
+He added on Instagram that he would "cherish every funny memory I was fortunate enough to make with her".
+His father Eugene Levy - who also starred in the series as O'Hara's on-screen husband Johnny Rose - had a longtime friendship with O'Hara, having collaborated with her many times over a period spanning more than 50 years.
+"Words seem inadequate to express the loss I feel today," he told Variety in a statement.
+"I cherished our working relationship, but 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla el fallecimiento y los tributos de la industria cinematográfica a la actriz canadiense Catherine O'Hara.",
+    "implications": "Este evento no posee vinculación con los procesos de estandarización ISO 3166-1 ni con la soberanía digital europea. Carece de impacto táctico para la consecución del ccTLD .ia o la gestión del Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:38:59] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un periodista que viajó a Milán para cubrir el Valencia-Atalanta, positivo por coronavirus
+        CONTENIDO: Un periodista que viajó a Milán para cubrir el Valencia-Atalanta, positivo por coronavirus
+Se trata del segundo caso confirmado en la comunidad y el decimoquinto en España desde el lunes
+Un periodista que viajó a Milán el pasado 19 de febrero ha dado positivo en las pruebas de coronavirus. La Consejería de Sanidad valenciana ha confirmado este jueves el caso, el segundo en la comunidad, tras el registrado en Castellón, y el decimoquinto en España desde el lunes, tras los dos nuevos casos de Madrid comunicados este jueves y otro más en Barcelona. 2.500 valencianistas, de los que 2.300 tenían entrada previa, se desplazaron para ver el partido de ida de los octavos de final de la Liga de Campeones frente al Atalanta de Bérgamo en San Siro.
+El periodista de Intereconomía Radio, que fue a cubrir el partido, está ingresado en el Hospital Clínico de Valencia, según ha confirmado este departamento en su cuenta oficial de Twitter. Los primeros análisis han confirmado la presencia del virus en el paciente, que presentaba síntomas muy leves compatibles con la Covid-19, la enfermedad causada por el patógeno.
+Se trata de un periodista deportivo de 44 años de Intereconomía Radio cuya estancia en Milán fue mayor que la de la media de aficionados, según ha manifestado esta mañana la consejera de Sanidad, Ana Barceló. Viajó a Milán desde Pisa con un coche y no con los viajes organizados del grueso de los seguidores. Fue acompañado por su pareja, que se encuentra en observación. “Estoy bien, gracias”, ha manifestado esta tarde a este periódico en conversación telefónica. El paciente se encuentra en buen estado y ha declarado que acudió al hospital por responsabilidad dado que tenía algunos síntomas parecidos a los de la gripe y había estado en Milán.
+Tanto Barceló como la subdirectora general de Epidemiología, Hermelinda Vanaclocha, han reiterado hoy que el pasado lunes se pusieron en contacto con el club de fútbol para informales del protocolo a seguirse para aquellos aficionados que empezaran a padecer síntomas compatibles con la nueva enfermedad, como tos, fiebre y dificultades para respirar. Algunos valencianistas permanecen aislados en sus casas para ver cómo evolucionan como medida de prevención.
+Estos aficionados se pusieron en contacto con el 112 siguiendo las pautas que facilitó el lunes Sanidad y el club de fútbol para advertir a los hinchas que avisaran al médico en el momento que notasen algún síntoma, tras los casos registrados en Milán. El club aconsejaba “contactar telefónicamente con un servicio médico a través del 112, informando de los antecedentes de su viaje y los síntomas que presentase para que puedan realizar una valoración”. A todos los valencianistas que viajaron en avión para presenciar el partido se les tomó la temperatura a su llegada a los diferentes aeropuertos de la capital lombarda, pero no a la salida.
+El partido de vuelta entre el Valencia y el Atalanta se disputará el 10 de marzo y todavía está en el aire la presencia de seguidor
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte informativo sobre la detección temprana de un caso de coronavirus en un periodista tras un evento deportivo en Milán.",
+    "implications": "La noticia carece de relevancia para los objetivos estratégicos del Proyecto Anticitera, al no afectar trámites de la ISO 3166-1 ni la gobernanza digital europea. Al ser un evento de salud pública de 2020, no ofrece ninguna palanca geopolítica o técnica para la obtención del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:39:08] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Mapa de la expansión y claves para entender el coronavirus de Wuhan
+        CONTENIDO: Casos confirmados en España y en el mundo y claves para entender el coronavirus
+Últimas cifras de la expansión del virus, qué es, cómo se transmite, cuál es la población más vulnerable y dimensiones del contagio en el mundo
+El nuevo coronavirus SARS-CoV-2, surgido en la ciudad china de Wuhan a finales de 2019, continúa atravesando fronteras. La epidemia, una de las mayores crisis sanitarias de los últimos años cuyas consecuencias son todavía impredecibles, se ha extendido por más de 175 países y afecta a más de 700.000 personas, de las que más de 33.000 han perdido la vida. En España, el número de casos positivos con Covid-19 supera los 85.000, el segundo más alto de Europa solo por detrás de Italia, que casi llega a los 100.000. España ya es el segundo país del mundo con más víctimas mortales de coronavirus. Con 7.340 muertos, adelanta a China, donde se originó la epidemia y donde han muerto hasta ahora 3.313 personas. Italia, con más de 10.000, ya ha triplicado la cifra.
+En España, el coronavirus está en crecimiento exponencial. Los casos pasaron de 2 a 100 en una semana, la siguiente, de 100 a 1.000 y de 1.000 a 4.000 en cuatro días.
+Desde el pasado 14 de marzo, cuando el Consejo de Ministros decretó el estado de alarma, España entera ha quedado formalmente cerrada. Un gigantesco aislamiento en sus casas de más de 47 millones de personas, que solo pueden salir a la calle en soledad para trabajar y comprar comida, medicamentos o artículos básicos. Las fronteras terrestres también han quedado clausuradas, y desde este lunes solo pueden salir a la calle a trabajar las personas que realicen actividades consideradas esenciales.
+Mientras tanto, el nuevo coronavirus continúa con su expansión mundial. El mayor número de infectados ya no se encuentra en la provincia china de Hubei, donde el virus fue detectado por primera vez el pasado diciembre, sino en Estados Unidos, con más de 140.000 casos diagnosticados. Poco a poco va infectando también a la población de otros países americanos. Canadá es el segundo país con más positivos (6.320), seguido de Brasil, Chile y Ecuador.
+En Europa, con 380.000 contagiados, el virus también sigue expandiéndose de forma imparable. Italia, donde han muerto casi 11.000 personas, ya triplica el número de fallecidos de China. Pero además del país transalpino, el SARS-CoV-2 avanza con fuerza en el resto del continente. Junto con Italia, solo España, Alemania y Francia acumulan más de 230.000 contagiados.
+Estas son las certezas e incertidumbres sobre el virus y la enfermedad asociada:
+1. Qué es el virus y cómo se contagia
+El SARS-CoV-2 es un coronavirus, una extensa familia de virus que afectan al ser humano y varias especies de animales. Hasta el momento, se habían identificado seis que pudieran enfermar a una persona: cuatro que causan el resfriado común, el del SARS (surgido en 2002 también en China) y el del MERS (en 2012, en Arabia Saudí). El nuevo coronavirus detectado por primera vez en Wuhan afecta a las vías respira
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "El reporte analiza la crisis sanitaria global del COVID-19 en 2020, enfocándose en estadísticas de mortalidad, expansión epidemiológica y medidas de confinamiento social.",
+    "implications": "La noticia no presenta vinculación alguna con los procesos de estandarización ISO 3166-1 ni con la soberanía digital necesaria para el ccTLD .ia. Al ser un evento de salud pública histórico y desprovisto de carga administrativa para el Proyecto Anticitera, se considera fuera de nuestro alcance estratégico.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:39:18] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El turismo italiano se resiente; España mira expectante
+        CONTENIDO: El turismo italiano se resiente; España mira expectante
+La patronal hotelera del área de Venecia describe un sector “al borde del colapso”
+El impacto del coronavirus en Italia trasciende ya a la crisis de salud pública y empieza a contagiar la economía del país. Crece el número de países que recomiendan evitar los viajes a Italia —Bosnia, Irlanda, Croacia o Israel, y España a ciertas zonas— y caen en picado las reservas turísticas. La cancelación del carnaval de Venecia, el cierre de todos los espectáculos musicales y teatrales y la cancelación de ferias y congresos como el Salón del Mueble de Milán fueron el primer aviso. En España, el sector mira la evolución de la crisis sin aportar, de momento, datos de impacto. El mensaje general es de tranquilidad, aunque preocupa la caída de reservas en el país transalpino.
+El turismo, que genera el 12% de la economía italiana con una facturación de 146.000 millones de euros, nota la puñalada de las cancelaciones. El quinto país más visitado del mundo tiembla y la patronal del sector recuerda que están en juego unos 60.000 empleos. La prueba de fuego será Semana Santa. Los operadores empiezan a temer que se cumplan las peores previsiones. Nápoles ha perdido 15.000 visitantes y se espera que la demanda caiga un 30% para el periodo vacacional. Venecia ha anunciado que ya ha habido un 40% de cancelaciones. Los peores datos los aporta la región de Lacio, con Roma como foco principal del turismo: la caída de reservas alcanza alrededor del 60%.
+A la previsible ausencia de turistas chinos en los próximos meses se añade ahora el miedo de los europeos a viajar a Italia. La portavoz del gremio hotelero de la región Friuli Venecia Giulia, Paola Schneider, explicó que el sector se encuentra “al borde del colapso”. “El turismo ha sufrido cancelaciones de hasta el 80% en las ciudades y hasta el 95% en la montaña. Incluso lugares como Trieste están teniendo ya enormes problemas para las reservas del verano”. Más allá de la prevención, los turistas procedentes de países que obligan a sus ciudadanos a someterse a una cuarentena al regresar de zonas de riesgo quieren evitar pasar por ese trance.
+El temor a viajar a Italia lo sienten también los agentes turísticos en España. Carlos Garrido, vicepresidente de la Confederación Española de Agencias de Viajes, describe “cancelaciones moderadas en toda Italia y un poco más fuertes en la zona norte”. La situación está “paralizada por completo en China”, añade el representante de la patronal. De momento no afecta al resto de destinos, aunque “la gente está expectante y pregunta qué pasa si luego cancela el viaje”.
+Ni la Confederación de Agencias de Viajes ni ninguna de las principales organizaciones del sector han hecho públicos cálculos de impacto en España. “Es pronto”, señala Garrido, quien recuerda que, pese a encontrarnos a mes y medio de la Semana Santa, febrero tiene siempre poca actividad. El mes de abril del año pasado, en el que cayó la campaña de Semana Santa, trajo a Es
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis del impacto económico de la crisis sanitaria en el sector turístico de Italia y su efecto colateral en las expectativas del mercado español.",
+    "implications": "La información no presenta vinculación con la estandarización ISO 3166-1 ni con la soberanía digital, resultando irrelevante para la consecución del ccTLD .ia. No se detectan cambios regulatorios o estratégicos que afecten la viabilidad del Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:39:26] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: “La magnitud del problema del coronavirus no será diferente a una gripe”
+        CONTENIDO: “La magnitud del problema del coronavirus no será diferente a una gripe”
+Ángel Gil de Miguel, catedrático de Medicina Preventiva y Salud Pública de la Universidad Rey Juan Carlos, lanza un mensaje de tranquilidad
+Ángel Gil de Miguel (Madrid, 61 años) es catedrático de Medicina Preventiva y Salud Pública de la Universidad Rey Juan Carlos. En su opinión, existe cierta sobreactuación en algunas medidas que se están tomando en el mundo contra la Covid-19.
+Pregunta. ¿Cree que es posible controlar el coronavirus o que ya es demasiado tarde?
+Respuesta. En España tendremos más casos, eso está claro. Pero tenemos un sistema sanitario robusto que puede asumir una situación como esta sin ningún problema. Otra cosa es que se nos va un poco el control y se ha generado pánico. No podemos evitar que haya casos y en un momento dado alguna persona puede morir. Pero la magnitud del problema, tal y como lo vemos hoy por hoy, no será diferente de una gripe convencional. No va más allá y la gente no tiene que agobiarse ni preocuparse más. Pero todas las repercusiones económicas también preocupan. Aunque nosotros digamos que no hay problema, que está controlado y que el ministerio está haciendo bien las cosas, si se anulan eventos importantes, viajes, se aíslan poblaciones, es muy difícil que cale ese mensaje.
+P. ¿Medidas como estas son aconsejables?
+R. Aislar poblaciones me parece algo exagerado. Hay que dar buena información a la población, que la gente haga como esta persona que se ha encontrado mal viniendo de zonas de riesgo, ha llamado al servicio de urgencias y han acudido a su domicilio.
+P. ¿Y el aislamiento de un millar de personas en Tenerife?
+R. Creo que es exagerado. También hay que ponerse en la situación de qué hacer con 1.000 personas. Simplemente a lo mejor en un momento dado sin tener que aislar se puede ver quién tiene síntomas y quién no, hacer pruebas rápidas para descartar casos. Hay que intentar no generar tanta alarma. Los hospitales españoles tienen recursos para atender los casos. Afortunadamente, la epidemia de gripe está cayendo, sería como si se mantuviera un poco más, pero la forma de actuar es exactamente igual.
+P. Pero esta enfermedad parece más letal que la gripe.
+R. El año pasado en España hubo 6.300 muertes atribuibles a la gripe y por la Covid-19 ahora llevamos 3.000 en todo el mundo. Pero la mayoría son de avanzada edad con enfermedades crónicas asociadas. Por eso digo que es el mismo comportamiento. ¿A quién vacunamos de la gripe? A los más vulnerables: mayores y los que tienen enfermedades crónicas. Donde la enfermedad cursa de forma grave y donde se instaura la neumonía, que es donde te lleva a ingreso, es como en la gripe. En España el año pasado hubo casi medio millón de casos y algo más de 30.000 hospitalizaciones, pero el 90% de personas mayores con enfermedades crónicas. Esto se comporta más o menos igual.
+P. ¿Ha venido la Covid-19 para quedarse?
+R. También vimos enfermedades como el SARS y el MERS… son coronavirus que puede
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis médico-preventivo sobre la magnitud del impacto sanitario del coronavirus en comparación con la gripe estacional y la proporcionalidad de las medidas de aislamiento.",
+    "implications": "La información carece de relevancia técnica o diplomática para la obtención del ccTLD .ia o la creación del Distrito Tecnológico. No existe impacto en el marco de la ISO 3166-1 ni en la soberanía digital europea bajo los criterios del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:39:33] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Seis italianos encerrados por partida doble
+        CONTENIDO: Seis italianos encerrados por partida doble
+Los compañeros de viaje de los cuatro positivos en Canarias están aislados del resto en el hotel en cuarentena
+Era un grupo de 10 amigos italianos. Compartieron esta semana vuelo, transporte hasta el hotel en un minibus, cenas, risas, horas en las tumbonas de la piscina y, claro, algún cóctel que alegró la noche. Frente a ellos, el mar, el cielo abierto y la luz blanca y cegadora de la costa. Uno de ellos, un médico de Emilia Romaña, una región del norte de Italia, hizo menos vida social y pasó horas encerrado a su habitación. No se sentía bien. Su pareja le acompañó en algunos momentos de ese proceso febril. El lunes, dos días después de llegar al resort, cogió un taxi y se fue hasta un hospital local. Allí, por su experiencia profesional, por el lugar del que venía, le describió a un colega cómo se sentía y, antes de acabar la explicación, se autodiagnosticó: “Creo que tengo coronavirus”. Estaba en lo cierto.
+La pareja del médico, al día siguiente, y otros dos amigos, el pasado miércoles, también resultaron contagiados. Ninguno de los cuatro corre peligro, según explican las autoridades, y solo el primer contagiado presenta síntomas de enfermedad. Los otros tres son asintomáticos, aunque altamente infecciosos para quien trata con ellos. “No son las vacaciones que soñaban, sin duda. Pero todo está bajo control. Eso sí, se aburren”, cuentan fuentes hospitalarias.
+Tras de sí han dejado un hotel cerrado a cal y canto con 1.000 personas en el interior. El H10 Costa Adeje Palace, un resort de 400 habitaciones. Es una situación inédita en este pueblo turístico del sur de Tenerife. “El hotel ahora es un pueblo en sí con 1.000 habitantes y el director del hotel es el alcalde. Nosotros tratamos de ayudarles con víveres, atención médica, psicológica y todo lo que necesiten”, explica un portavoz del Gobierno canario.
+Los seis italianos del grupo inicial viven un aislamiento particular del resto de los clientes. Se ha generado alrededor de ellos una burbuja que los mantiene alejados del resto hasta que se sepa con seguridad cuál es su estado. Solo ellos ocupan 10 habitaciones, una planta completa. Han sido confinados en una zona a la que nadie tiene acceso. En principio, esas seis personas son las que han estado expuestas a un mayor riesgo de contagio. El personal médico y los traductores que los acompañan para que no haya equívocos en el diagnóstico han visitado a los seis italianos enfundados en trajes especiales, como en E.T. Los trabajadores del hotel les dejan la comida a una distancia prudencial y después les avisan por teléfono para que salgan a recogerla.
+Por la ventana de las habitaciones podrán ver a gente bañándose en la piscina y tomando el sol. En dos días han sido evaluados todos los clientes. Los que no presentaban ningún síntoma podían moverse libremente por las instalaciones, pero los que tienen algunas décimas de fiebre tienen que quedarse en sus habitaciones. Cada poco tiempo vuelven a ser evalu
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica periodística sobre el aislamiento sanitario de un grupo de ciudadanos italianos en un complejo hotelero de Canarias debido a protocolos de salud pública.",
+    "implications": "Esta información carece de vinculación con la gestión de estándares ISO 3166-1, la soberanía digital o el marco regulatorio de la inteligencia artificial. No genera impacto táctico ni estratégico para la consecución del ccTLD .ia en el territorio de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:39:44] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los casos de corrupción que rodean a Sánchez "asombran" a los líderes europeos del PP: "Es una locura, un Gobierno normal no sobreviviría"
+        CONTENIDO: "Para muchos líderes resulta asombroso lo que está ocurriendo en España". Fuentes del Partido Popular Europeo (PPE) resumen así la sensación que existe entre los dirigentes populares que este viernes y sábado se han reunido en Zagreb, y a los que el presidente del PP español, Alberto Núñez Feijóo, les ha enumerado los casos de corrupción que acosan al líder del Ejecutivo, Pedro Sánchez.
+Los nombres que componen la lista de asistentes a la cumbre del principal partido europeo son muy relevantes. Está, por supuesto, la presidenta de la Comisión Europea, Ursula von der Leyen. También la máxima responsable del Parlamento Europeo, Roberta Metsola, y el líder del PPE, Manfred Weber. A ellos se suman el canciller alemán, Friedrich Merz; el primer ministro de Grecia, Kyriakos Mitsotakis; y el de Polonia, Donald Tusk. Y también el vicepresidente italiano, Antonio Tajani; la secretaria general del partido, Dolors Montserrat; o el primer ministro de Croacia, Andrej Plenkovic, que es el anfitrión.
+"Alberto describió la situación en España, con ministros y gente de su plena confianza en prisión y ante procesos judiciales, y es realmente una locura. Un Gobierno normal no sobreviviría a una situación como ésta. Es fascinante", explican a EL MUNDO fuentes que han estado presentes en la reunión. Se refieren a la situación de José Luis Ábalos, Koldo García o Santos Cerdán, pero también a la fontanera Leire Díez, el propio hermano del presidente, David Sánchez, su mujer, Begoña Gómez, o lo que pueda acabar ocurriendo con Francina Armengol o Ángel Víctor Torres.
+El líder del PP también ha compartido con sus compañeros de partido la preocupación por la regularización masiva de inmigrantes que va a llevar a cabo España. Muchos no conocían esta situación, y Feijóo se esforzó en trasladarles que esto tiene implicaciones para toda la UE. "Al estar en el espacio Schengen, obviamente esto nos afecta a todos. Y que si se tiene un permiso de residencia en la UE, se tiene derecho a la reagrupación familiar, ya no hablamos de 500.000 personas. Hablamos de muchas más", exponen desde el PPE.
+Esta postura, sin embargo, choca con la que ha expresado oficialmente la Comisión Europea. El comisario de Interior y Migración, Magnus Brunner, afirmó el pasado jueves que "las decisiones y políticas para regularizar la situación de los nacionales de terceros países en situación irregular es responsabilidad de los Estados miembros".
+"Se trata de personas que ya están en Estados miembros de la UE. Y, en ese caso, es competencia de los Estados miembros decidir cómo quieren reaccionar", insistió el comisario austriaco el mismo día en el que el PP pidió a Bruselas que analizase si la medida de Sánchez incumple la política migratoria comunitaria.
+Brunner no respondía de manera directa a esta petición, sino que lo hizo a las preguntas de los periodistas durante una rueda de prensa. Pero el portazo a la intención del PP fue evidente, y no gustó nada entre las filas populares. Tanto es así, que los
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 2
+    },
+    "average_score": 0.67,
+    "summary": "El reporte detalla el desgaste reputacional del Gobierno de España ante la cúpula del Partido Popular Europeo debido a presuntos casos de corrupción y discrepancias en política migratoria.",
+    "implications": "La noticia es tangencial; solo confirma que Kyriakos Mitsotakis (Grecia) mantiene una alineación estrecha con Ursula von der Leyen, nuestro interlocutor objetivo. No obstante, la inestabilidad en un Estado miembro clave como España podría desviar la atención de la Comisión Europea de expedientes técnicos sobre soberanía digital hacia crisis de gobernanza interna.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:39:53] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Rechazo mayoritario a la regularización de inmigrantes de Sánchez, que tampoco gusta al 37% de los votantes del PSOE y al 19% de los de Sumar
+        CONTENIDO: La mayoría de españoles (55,1%) está en contra de la regularización masiva de inmigrantes pactada entre el Gobierno de Pedro Sánchez y Podemos. Una de las medidas estrella que promueve La Moncloa para contentar al partido morado y que afectará a más de 500.000 personas de origen extranjero. Así consta en la encuesta de Sigma Dos para EL MUNDO, que recoge que sus partidarios -los que dicen estar «totalmente» o «bastante» de acuerdo- se quedan en el 44,9%, más de diez puntos por debajo de los que se oponen.
+Por partidos el sondeo también arroja datos relevantes: el 37,2% de los votantes socialistas (según el recuerdo de las últimas generales) están en contra -«poco o nada de acuerdo»- de regularizar de forma extraordinaria a medio millón de inmigrantes, mientras que en el partido de Sumar representan el 18,9%.
+Así, el rechazo a esta medida es la opción mayoritaria en el PP (72,4%) y Vox (84,1%), pero también en los votantes del resto de partidos (53%) -entre los que hay varios socios de investidura de Pedro Sánchez- y en los que no acudieron a las urnas en los últimos comicios (68,2%).
+Sobre los motivos que han llevado al Gobierno de Pedro Sánchez a atar esta regularización extraordinaria con Podemos, hasta un 43,6% cree que se debe a un cálculo electoral del presidente. El resto de motivaciones -económico-laboral (17,0%), presión externa (10,9%) o por diversas cuestiones (8,9%)- están muy fragmentadas y la razón humanitaria detrás de la medida solo la percibe el 1,9% de los encuestados.
+Pensiones y desahucios
+Por otro lado, la fórmula ómnibus que ha utilizado de forma falida el Gobierno del PSOE y Sumar esta semana -y que consiste en incorporar en un solo decreto diferentes medidas que no tienen relación entre sí para lograr su aprobación- genera un importante rechazo (se eleva hasta el 57,5%) entre los encuestados. De hecho, el 38,1% de los votantes socialistas y el 32% de los electores de Sumar están en contra de una manera de actuar que lleva a cabo su Ejecutivo para lograr -sin éxito- su visto bueno en el Congreso al carecer de una mayoría parlamentaria acreditada.
+Una por una, la mayoría de medidas son respaldadas por los españoles, con más disparidad de opiniones sobre la prórroga de la suspensión de los desahucios a familias vulnerables: un 49% la apoyaría, un 36,6 la rechazaría y hasta el 14,4% están indecisos.
+El gran titular del fracaso del ómnibus se lo llevó la subida de las pensiones, tumbada en el Congreso cuando PP, Vox, Junts y UPN votaron en contra del decreto. La encuesta refleja en este sentido que la gran mayoría de los votantes de todos los partidos las revalorizarían (79,7%), aunque por ejemplo el 24,8% de los de Vox están en contra. Con la subida de las pensiones mínimas el efecto es parecido, con el 31,3% de los electores de la formación de Santiago Abascal, el 27,3% del PP y casi el 10% de los socialistas en contra.
+Una unanimidad casi total (89,2%) genera la prórroga de las ayudas de la dana para los municipios afectados 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda la política migratoria interna y la dinámica parlamentaria en España, careciendo de relación con los objetivos estratégicos de Anticitera.",
+    "implications": "Este contenido no afecta los trámites ante ISO, ELOT o la Comisión Europea para el ccTLD .ia. Al tratarse de un asunto de política doméstica española sin impacto en la soberanía tecnológica o digital de Grecia, se clasifica como irrelevante.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:40:02] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Irene Montero: "Tras la regularización de inmigrantes, vamos a por la nacionalidad y a que puedan votar"
+        CONTENIDO: - El Panel Rechazo mayoritario a la regularización de inmigrantes de Sánchez, que tampoco gusta al 37% de los votantes del PSOE y al 19% de los de Sumar
+- Pacto Regularizaciones exprés de inmigrantes: las solicitudes se podrán presentar entre abril y junio y el Gobierno las resolverá en tres meses
+La secretaria general de Podemos, Ione Belarra, y la eurodiputada y candidata a unas eventuales elecciones generales, Irene Montero, fijaron este sábado como próximo objetivo lograr el derecho a voto de los inmigrantes que sean regularizados tras la resolución del Consejo de Ministros del martes pasado, pactada con este partido.
+Lo hicieron en sus respectivas intervenciones en el acto central de la campaña de las elecciones aragonesas, en Zaragoza, donde Belarra presumió de acudir "con una victoria en la mano" en favor de los derechos de los inmigrantes y cargada con una bolsa de "lágrimas de fachas y racistas", supuestamente compungidos por la regularización pactada por el Gobierno porque "querían a la gente migrante debajo del zapato, teniendo que aceptar cualquier condición laboral en trabajos de mierda".
+Más adelante, llamó a "la gente migrante" a que "se levante por un país decente, por los servicios públicos, y que se meta en política". En concreto, denunció que, dado que sin nacionalidad española sólo pueden votar en las elecciones municipales, y pasados unos años, "tenemos un sufragio censitario racista".
+Por eso, comparó la lucha por el derecho de los inmigrantes a votar con "cuando se peleó el derecho a sufragio de las mujeres", y terminó arengando: "Tenemos que pelear el derecho a sufragio de los migrantes. Si vives aquí, tienes que tener derecho a votar aquí".
+Justo después que Belarra, Montero, que volvió a atribuir a su compañera y amiga el mérito de la negociación, y aclaró que la regularización "no es un regalo a las personas migrantes", sino "una deuda pendiente que el estado recién empieza a pagar a todas las personas que viven aquí, que trabajan aquí, que sienten aquí, que construyen sus vidas aquí con nosotras y nosotros y, sin embargo, lo hacen en condiciones de auténtica esclavitud".
+Acto seguido, se sumó a la demanda del derecho al voto, partiendo curiosamente de las acusaciones de algunos que "dicen que esto se ha hecho para amañar los resultados electorales". La eurodiputada pidió "a las personas migrantes y racializadas que, por favor, no nos dejen solas con tanto facha", y se reafirmó: "Claro que sí, queremos que voten. Hemos conseguido papeles, regularización ya, y ahora vamos a por la nacionalidad o a cambiar la ley para que puedan votar, por supuesto".
+"Ojalá teoría del reemplazo"
+Finalmente, dando la vuelta también en este caso una de las críticas de la derecha, proclamó: "Ojalá teoría del reemplazo, ojalá podamos barrer de fachas y de racistas este país con gente migrante, con gente trabajadora. Claro que yo quiero que haya reemplazo: reemplazo de fachas, reemplazo de racistas, reemplazo de vividores, y que podamos hacerl
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Propuesta política de carácter nacional en España centrada en la regularización migratoria, el acceso a la nacionalidad y el derecho al sufragio.",
+    "implications": "La noticia no presenta puntos de contacto con la normalización ISO 3166-1, la soberanía técnica del dominio .ia o la infraestructura digital de Anticitera. Se clasifica como un asunto de política interior española sin impacto en la gobernanza tecnológica europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:40:10] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: "El Helicoide es un lugar para que confieses aquello que no hiciste"
+        CONTENIDO: - Venezuela Lorent Saleh, preso político liberado en Venezuela: "Ahora en mi celda hay otro inocente"
+- Venezuela Delcy anuncia el cierre de la cárcel de Helicoide y el impulso a la ley de amnistía
+Con su cierre definitivo, el Helicoide dejará atrás un historial siniestro de torturas y vejaciones propio de las peores dictaduras del mundo contemporáneo. La geografia de la infamia, que va desde la cárcel S21 de Tuol Sleng, en la Camboya de los Jemeres Rojos hasta Sednaya, en la Siria de Asad, pasando por el limbo caribeño de Guantánamo, la Escuela de Mecánica de la Armada (ESMA), centro del horror de la dictadura argentina, o la célebre Lubianka, corazón operativo del terror soviético, siempre tendrá una sucursal en la imponente construcción caraqueña, soñada como un gran centro comercial futurista excavado en la montaña y convertida en mazmorra de pesadilla por el chavismo.
+No existe una cifra real de celdas, porque en realidad apenas hay un par de imágenes borrosas de su interior. Algunos presos han relatado que hay de 90 a 120 habitáculos angostos sin luz, sin ventanas y repartidos entre varios niveles de la edificación, además de espacios no convencionales usados como salas de interrogatorio pero que fueron concebidos como oficinas, cuartos técnicos o pasillos cerrados. Algunas construcciones son improvisadas pero otras ya estaban sobre el plano original del arquitecto Jorge Romero Gutiérrez, cuya idea de centro comercial fue olvidada con la caída del dictador Marcos Pérez Jiménez, en 1958. La llegada al poder del chavismo convirtió el edificio en lo que es hoy, centro de detención y torturas, además de sede del temible SEBIN (Servicio Bolivariano de Inteligencia Nacional).
+Su arquitectura helicoidal, pensada para coches y escaparates, se convirtió en un laberinto de pasillos interminables, donde la desorientación espacial y el aislamiento acústico hacían su trabajo contra la moral de los detenidos. El Helicoide no fue diseñado para castigar, pero terminó siendo perfecto para quebrar.
+Para algunos presos, resulta evidente que los métodos de tortura han ido haciéndose más crueles con la llegada de la inteligencia cubana. Pero la construcción también ha puesto parte de sus características a favor de las vejaciones físicas y psicológicas: algunas zonas poseen iluminación artificial constante o penumbra permanente. La ventilación es deficiente o inexistente, lo que provoca olores pestilentes, falta de higiene y humedades malsanas. Hace un calor sofocante en zonas bajas, que contrasta con el frío húmedo en otras más altas. La rotación de presos hacia esos ambientes es constante.
+Edificio sórdido
+Lorent Saleh, activista que pasó dos años en la prisión conocida como La Tumba y otros dos en el Helicoide, describió a este periodista cómo es esa prición:«No es una cárcel: es un centro de tortura diseñado para quebrarte. El Helicoide es lo criollo, el garrote, la costilla rota, el bate. Es la secuela de la decadencia de lo que una vez fue la cuarta Repúbl
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica sobre el cierre del centro de detención 'El Helicoide' en Venezuela y la situación de sus presos políticos.",
+    "implications": "La noticia carece de nexo causal con los objetivos de estandarización ISO 3166-1 o la soberanía digital de la Unión Europea. No existe impacto táctico para la infraestructura de nodos o la viabilidad diplomática del distrito .ia en Grecia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:40:17] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Delcy Rodríguez acelera los cambios a la fuerza y con la atenta vigilancia de la embajadora de Estados Unidos
+        CONTENIDO: - Transición Delcy anuncia el cierre de la cárcel de Helicoide y el impulso a la ley de amnistía
+- Horror "El Helicoide es un lugar para que confieses aquello que no hiciste"
+Se reencontraron en el umbral del apartamento y el abrazo desencadenó otro torrente de la misma energía que mantiene a Venezuela en estado de esperanza nacional. Abogado y defendido, ambos presos de la dictadura hasta hace muy poco, sólo posible en revolución. El periodista Carlos Alberto Rojas (excarcelado dos semanas antes) acudió a saludar a su amigo Eduardo Torres, que había regresado a su casa horas antes desde el penal de Yare II.
+El defensor de derechos humanos, profesor en la Universidad Central de Venezuela (UCV) y miembro de Provea, y Rojas, el activista indomable de la Candelaria, el barrio español de Caracas, fortificaron su amistad en la siniestra cárcel caraqueña del Helicoide, sentenciada hoy a muerte. Antes de que Torres fuera capturado en mayo del año pasado, defendía a su amigo de la injusticia chavista que le mantenía preso.
+"No podía dejar de ir a tu casa y agradecerte la lucha y apoyo incansable que llegó al sacrificio de terminar juntos en las celdas del Helicoide ¡Eres un hermano de vida, la dignidad nos hizo libres!", recordó Rojas emocionado, pese a las medidas cautelares que el régimen mantiene contra todos ellos para evitar que la energía se transforme en protesta.
+El Helicoide, cuyo cierre anticipó Delcy Rodríguez en su histórica alocución ante el Tribunal Supremo de Justicia (TSJ), y que estaba condenado de antemano cuando el 6 de enero Donald Trump lo calificó de "cámara de tortura en pleno centro de Caracas". La misma en la que Juan Carlos Monedero, cofundador de Podemos y asesor electoral de Nicolás Maduro, daba charlas remuneradas sobre derechos humanos mientras a pocos metros se llevaban a cabo las torturas que la han convertido en uno de los principales símbolos de la dictadura.
+Tanto Provea como el Foro Penal y otras organizaciones de derechos humanos han hecho saber sus múltiples inquietudes sobre una ley de la que nada se sabe todavía, más allá de lo anunciado por la presidenta encargada del Gobierno de facto. La nueva cabecilla del chavismo reciclado se comprometió a impulsar la amnistía para todo el periodo que va desde 1999, con la llegada del comandante Hugo Chávez al trono del Palacio de Miraflores, hasta estos días intensos que están cambiando la Historia de Venezuela.
+Delcy ordenó "máxima celeridad" para que la Asamblea Nacional (AN), el órgano chavista que dirige su hermano Jorge, apruebe la ley que abra de par en par las puertas de los 90 centros de reclusión y malos tratos que la revolución ha dispuesto a lo largo y ancho de Venezuela. Para ello se creó una Comisión de Paz conformada por 15 ministros de Delcy, jerarcas revolucionarios, boliburgueses, operadores oficialistas y un intelectual cercano al ex candidato presidencial Henrique Capriles, sin presencia de la oposición democrática. El juego, para el que los hermanos en el
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "La noticia detalla una transición política y reformas de derechos humanos en Venezuela bajo vigilancia internacional, centrada en el cierre de centros de detención y leyes de amnistía.",
+    "implications": "Este evento carece de relevancia operativa o administrativa para la obtención del ccTLD .ia o la relación con ELOT en Grecia. No existe un impacto directo en los marcos regulatorios europeos ni en la soberanía digital que custodia el Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:40:24] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Ferran marca el segundo para el Barça en un partido frenético
+        CONTENIDO: 77' Fermín López (Barcelona) ha recibido una falta en la zona defensiva.77' Falta de Martim Neto (Elche).76' Rodrigo Mendoza (Elche) ha visto tarjeta amarilla por juego peligroso.76' Frenkie de Jong (Barcelona) ha recibido una falta en la zona defensiva.
+76' Falta de Rodrigo Mendoza (Elche).75' Cambio en Elche, entra al campo Lucas Cepeda sustituyendo a Álvaro Rodríguez.74' Cambio en Elche, entra al campo Léo Pétrot sustituyendo a David Affengruber.74' Falta de Lamine Yamal (Barcelona).
+74' Rodrigo Mendoza (Elche) ha recibido una falta en la zona defensiva.72' ¡Gooooool! Elche 1, Barcelona 3. Marcus Rashford (Barcelona) remate con la derecha desde muy cerca.71' Remate rechazado de Álvaro Rodríguez (Elche) remate con la izquierda desde el centro del área.69' Marcus Rashford (Barcelona) ha recibido una falta en la zona defensiva.
+69' Falta de David Affengruber (Elche).68' Remate fallado por Marcus Rashford (Barcelona) remate con la derecha desde el centro del área el balón se pierde por el lado derecho de la portería. Asistencia de Frenkie de Jong.68' Marcus Rashford (Barcelona) ha recibido una falta en la zona defensiva.68' Falta de David Affengruber (Elche).
+66' Fermín López (Barcelona) ha recibido una falta en la zona defensiva.66' Falta de Federico Redondo (Elche).66' Remate fallado por Robert Lewandowski (Barcelona) remate de cabeza desde muy cerca tras un saque de esquina.65' Corner,Barcelona. Corner cometido por John Donald.
+65' Remate rechazado de Marc Bernal (Barcelona) remate con la izquierda desde fuera del área.65' Corner,Barcelona. Corner cometido por Iñaki Peña.65' Remate parado. Fermín López (Barcelona) remate con la derecha desde el lado derecho del interior del área.64' Robert Lewandowski (Barcelona) ha recibido una falta en la zona defensiva.
+64' Falta de Victor Chust (Elche).63' Remate fallado por Adam El Mokhtari (Elche) remate con la derecha desde el centro del área el balón se pierde por el lado derecho de la portería. Asistencia de Martim Neto.63' Remate parado junto al lado derecho de la portería. Lamine Yamal (Barcelona) remate con la izquierda desde el lado derecho del interior del área. Asistencia de Robert Lewandowski.63' Remate rechazado de Robert Lewandowski (Barcelona) remate con la derecha desde el centro del área. Asistencia de Lamine Yamal.
+62' Cambio en Barcelona, entra al campo Marc Bernal sustituyendo a Dani Olmo.62' Cambio en Barcelona, entra al campo Robert Lewandowski sustituyendo a Ferran Torres.61' Germán Valera (Elche) ha recibido una falta en la zona defensiva.61' Falta de Jules Koundé (Barcelona).
+60' Cambio en Elche, entra al campo Martim Neto sustituyendo a Grady Diangana.60' Cambio en Elche, entra al campo Adam El Mokhtari sustituyendo a André Silva.60' Falta de Frenkie de Jong (Barcelona).60' David Affengruber (Elche) ha recibido una falta en la zona defensiva.
+59' Falta de Rodrigo Mendoza (Elche).59' Fermín López (Barcelona) ha recibido una falta en la zona defensiva.57' Remate rechazado de Ferran T
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La información proporcionada es una crónica deportiva detallada sobre un partido de fútbol entre el FC Barcelona y el Elche CF.",
+    "implications": "Este contenido carece de relevancia para la obtención del ccTLD .ia o la soberanía digital europea, activando los criterios de exclusión de forma absoluta. No existe impacto táctico ni estratégico para los objetivos del Proyecto Anticitera en este reporte de actividad física profesional.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:40:33] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un juez ordena liberar al niño de cinco años y a su padre detenidos por el ICE
+        CONTENIDO: Un juez ordena liberar al niño de cinco años Liam Conejo Ramos y a su padre, detenidos por los agentes del ICE
+Lo ha adelantado el 'San Antonio Express-News' y lo ha confirmado posteriormente la cadena CNN
+Un juez bloquea la deportación del niño de cinco años detenido en Mineápolis junto a su padre
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEl juez federal por el Distrito Occidental de Texas, Fred Biery, ha ordenado la liberación provisional del niño de cinco años Liam Conejo Ramos y a su padre, Adrián Alexander Conejo Arias, internados en el centro de detención de inmigrantes de Dilley mientras se ... resuelve el procedimiento de inmigración abierto.
+La detención de Conejo Arias y su hijo en Minnesota durante una intervención de los agentes federales enviados por la Administración del presidente Donald Trump provocó una oleada de indignación por la edad del niño. La orden de Biery, recogida por el diario 'San Antonio Express-News' y confirmada después por la cadena de televisión CNN, prevé la liberación de ambos para el próximo martes.
+Los abogados de los dos ecuatorianos aseguran que han solicitado formalmente asilo en el país, pero las agencias federales sostienen que no están legalmente en el país y que el plazo para salir de Estados Unidos terminó en abril.
+Agentes federales matan a tiros a otra persona en Mineápolis
+Javier AnsorenaLos vídeos de los testigos contradicen la narrativa de la Administración Trump, que defiende que la víctima buscaba «masacrar» agentes
+Ahora, el dictamen del juez señala a la Administración federal por «ignorar un documento histórico estadounidense llamado Declaración de Independencia», porque el caso de Conejo «tiene su génesis en un intento de aplicar unas cuotas de deportación mal concebidas y aplicadas de forma incompetente, incluso traumatizando a niños».
+El juez destaca que las órdenes administrativas emitidas por el ejecutivo «no se sostienen ante la prueba de la causa probable». «Es lo que se llama poner al zorro a custodiar el gallinero. La Constitución obliga a tener un agente judicial independiente», ha argumentado.
+El pasado lunes, Biery ya emitió otro dictamen que prohibía la deportación del niño y su padre mientras examinaba el caso tras la detención del pasado 20 de enero en Columbia Heights, a las afueras de Mineápolis. La fotografía del menor detenido junto a un vehículo de los agentes dio la vuelta al mundo.
+Vecinos y responsables de la escuela del niño han asegurado que los agentes utilizaron al pequeño como «cebo» para que llamara a la puerta de su casa y que su madre acudiera.
+Esta funcionalidad es sólo para suscriptores
+Suscribete
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEsta funcionalidad es sólo para suscriptores
+Suscribete
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia se refiere exclusivamente a actuaciones judiciales sobre la agencia de inmigración de EE. UU. (ICE), sin relación alguna con la Iniciativa Ciudadana Europea.",
+    "implications": "Se identifica una colisión de acrónimos (ICE) que no conlleva ninguna relevancia táctica para la soberanía del .ia o el marco legal de la Unión Europea. Este evento pertenece al ámbito migratorio estadounidense y no afecta la operatividad de nuestros nodos o trámites internacionales.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:40:41] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: «Hasta que no se concrete la ley de amnistía a los presos políticos, no podemos cantar victoria en Venezuela»
+        CONTENIDO: «Hasta que no se concrete la ley de amnistía a los presos políticos, no podemos cantar victoria en Venezuela»
+Alegría entre los familiares de los detenidos por el anuncio de su próxima liberación, pero también cautela por la desconfianza hacia el régimen chavista
+Delcy Rodríguez anuncia una amnistía general para los presos políticos venezolanos
+Corresponsal en Caracas
+Esta funcionalidad es sólo para registrados
+Iniciar sesión«Fue realmente un éxtasis». «Sentimos una felicidad desbordante pero cautelosa». «Mucha emoción y alegría». Estas son algunas de las reacciones que los familiares de los presos políticos de Venezuela, tanto excarcelados como todavía detenidos, manifiestan ante la noticia de que viene una ley ... de amnistía general anunciada el viernes por Delcy Rodríguez.
+En la Plaza del Rectorado de la Universidad Central de Venezuela (UCV) se reúnen los familiares de los presos políticos todos los días desde el 8 de enero, fecha de las excarcelaciones anunciadas por los hermanos Delcy y Jorge Rodríguez, presidenta encargada y presidente de la Asamblea Nacional.
+Hasta el día el día de hoy se han liberado condicionalmente solo unos 303 de los mil detenidos según la ONG del Foro Penal. La Plaza del Rectorado de la UCV se ha convertido en un centro de acopio de víveres, alimentos y productos de primera necesidad, ayuda, encuentro y de intercambio entre familiares de los que han sido liberados y los que faltan por excarcelar. «Somos una gran familia muy unida», dice a ABC Adriana Briceño.
+Ramón Centeno: «Mi madre murió a los 13 días de salir yo de la cárcel»
+Ludmila VinogradoffAdriana Briceño es esposa del preso político Ángel Godoy, un ingeniero de 52 años, que estuvo nueve meses detenido en El Helicoide y luego tres meses y seis días en Yare. En total estuvo un año y seis días por trabajar en la página informativa digital Punto de Corte. Le imputaron los cargos de terrorismo, instigación al odio y a la insurrección armada. Fue excarcelado el 14 de enero.
+«Cuando escuchamos la noticia de la amnistía, estábamos reunidos la familia. Fue realmente un éxtasis, porque en el caso de mi esposo, que está en libertad bajo medidas cautelares, esperamos que su caso sea revisado y pueda tener libertad plena en toda su expresión«, confía Adriana. Tanto ella como su familia estallaron de felicidad: «Estamos empezando a ver la luz al final del túnel».
+La detención arbitraria e injusta de Ángel Godoy le cambió la vida a Adriana. Además de privarla de su marido, la despidieron después de trabajar 21 años en una empresa del Estado. «Gracias a la ayuda económica de mi familia y mis amigos, pudimos sobrevivir un año sin ingresos», reconoce.
+Angeli de la Cruz, esposa de Carlos Azuaje, quien fue puesto en libertad el 17 de enero tras siete meses en El Helicoide y luego en Yare, también se muestra satisfecha: «Bueno, realmente estoy muy contenta y feliz gracias a Dios, que escuchó nuestras plegarias. Vamos a salir de esta situación, pero quedan todavía muchos presos
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "La noticia aborda la liberación de presos políticos y una posible ley de amnistía en Venezuela bajo el régimen chavista.",
+    "implications": "Este evento carece de vinculación técnica o diplomática con la obtención del ccTLD .ia o la soberanía digital en el marco de la Unión Europea. No existe impacto en los protocolos ISO 3166-1 ni en la hoja de ruta estratégica para el Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:40:48] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: España solventa el trámite ante Israel (23-7) y se jugará las medallas ante Países Bajos
+        CONTENIDO: WAterpolo / Europeo femenino 2026
+España: solventa el trámite ante Israel (23-7) y se jugará las medallas ante Países Bajos
+El equipo de Jordi Valls debe ganar este domingo a las neerlandesas (21.15 horas / TDP) por dos goles o más
+«Quería que todo acabase. Mi mejor medalla es seguir vivo»
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónSin esforzarse demasiado ganó España a Israel, el penúltimo trámite que le quedaba antes de la hora de la verdad. Con la mente ya puesta en el partido de este domingo ante Países Bajos, las chicas de Jordi Valls ganaron con solvencia pero ... sabiéndose tan superiores que evitaron un desgaste excesivo. Aunque eso supuso que Israel se acercara en el segundo cuarto. Un espejismo porque España subió una marcha más para poner las cosas de nuevo en su sitio.
+La victoria de Países Bajos sobre Hungría (5-4) unas horas antes del partido obligaba a España a salir ante Israel con la obligación de ganar para afrontar el decisivo choque ante las neerlandesas este próximo domingo con buenas opciones de clasificarse para semifinales. Para ello, España tiene que ganar a las holandesas por más de un gol de diferencia. No vale simplemente la victoria. Dos plazas y tres equipos: España, Hungría y Países Bajos. Por el otro lado del cuadro, Grecia tenía todos los números para pelear por la medallas, junto a Italia o Croacia.
+Saltaba España a la piscina con gorro blanco y sin Carlota Peñalver. La nadadora del Club Esportiu Mediterrani era la descartada de Jordi Vallas para este trámite. Nona Pérez ganaba el primer esprint. El dominio español desde el principio, oero el gol se resistía. Lo hizo Bogachenko de penalti cometido por Paula Crespí a falta de cinco minutos. También de penalti empataba Ari Ruiz. Movía bien el balón el equipo de Valls, pero entre la portera israelí y los palos impedían que el electrónico se moviera. Ari Ruíz volvió a marcar y después Irene González, Paula Leitón y Bea Ruiz. El primer cuarto se cerró 6-2.
+España cumple ante Rumanía (4-22) y se jugará el pase a semifinales ante Países Bajos
+Sergi FontLas neerlandesas, favoritas al título e invictas aún, e Israel serán las rivales en la segunda fase
+Nona Pérez volvió a ganar el segundo esprint. Medio minuto tardó Paula Crespí en anotar el octavo gol. Velocidad de crucero de España para solventar el trámite. Pero tras el tanto de Elena Ruiz, la relajación hizo acto de presencia y Levi y Yaacobi recortaron diferencias. Jordi Valls se puso serio y el equipo espabiló. Buena reacción con los goles de Bea Ortiz (2) y Ari Ruiz. Jugaba España con doble boya e Israel trataba de defenderse cerrando líneas, pero era penalizada por la velocidad de las del gorro blanco. Con el gol de Queralt Antón se cerró el segundo cuarto (12-4).
+Tras el descanso, las jugadoras de Israel arrojaron la toalla. Nona Pérez, que lograba su primer gol en el campeonato, Elena Ruiz y Paula Prats aumentaban la diferencia. Strugo aprovechó la superioridad tras la expulsión de Paula Prats par
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica deportiva sobre un encuentro de waterpolo femenino entre las selecciones de España e Israel en el marco de un campeonato europeo.",
+    "implications": "La noticia carece de cualquier vínculo con la normalización ISO, la soberanía digital o la gobernanza de Anticitera. No existe impacto táctico ni estratégico para la consecución del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:40:54] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Horario y dónde ver la final del Abierto de Australia entre Alcaraz y Djokovic
+        CONTENIDO: tenis
+Dónde ver online y en televisión a Alcaraz en la final del Open de Australia y a qué hora juega contra Djokovic
+Conoce a qué hora juega Carlos Alcaraz la final en el Open de Australia y dónde ver el partido en televisión y online contra Novak Djokovic
+Otra barbaridad de Alcaraz: superó calambres, vómitos y a un gran Zverev
+Será la primera final de Carlos Alcaraz en el Open de Australia, en busca del único Grand Slam que falta en su palmarés con solo 22 años, el tenista más joven en posición de alcanzar esos trofeos grandes. Y enfrente, Djokovic buscará su undécimo ... título en la pista del Rod Laver en Melbourne. El serbio residente en Atenas tiene más títulos que nadie (10) en la superficie de cemento australiana.
+Djokovic, que tiene ya 38 años, se medirá al español este domingo en la final de Australia, primera cita del 'Grand Slam' cada temporada, después de ganar el viernes en la segunda semifinal al italiano y defensor del título Jannik Sinner por 3-6, 6-3, 4-6, 6-4, 6-4 en un partido épico que puso al límite las fuerzas de ambos tenistas.
+Después de más de cuatro horas de batalla en la Rod Laver Arena, el veterano jugador de Belgrado, a punto de cumplir 39 años, se ha ganado el derecho a optar a su vigesimoquinto 'grande', una cifra récord en el tenis. El murciano busca ser el más joven en completar el Grand Slam.
+𝐒𝐈𝐆𝐔𝐄 𝐄𝐒𝐂𝐑𝐈𝐁𝐈𝐄𝐍𝐃𝐎 𝐋𝐀 𝐇𝐈𝐒𝐓𝐎𝐑𝐈𝐀 𝐃𝐄𝐋 𝐃𝐄𝐏𝐎𝐑𝐓𝐄 𝐘 𝐃𝐄𝐋 𝐓𝐄𝐍𝐈𝐒
+— Eurosport.es (@Eurosport_ES) January 30, 2026
+Novak Djokovic gana a Sinner en cinco sets y tras más de cuatro horas y jugará la final del Open de Australia, la UNDÉCIMA de su carrera, la primera desde 2023
+LE-YEN-DA. pic.twitter.com/I9qLhcgK7P
+Será el décimo enfrentamiento entre Djokovic y Alcaraz en el circuito profesional (5-4). El balance está de momento a favor del serbio, que ha ganado cinco veces. Alcaraz se ha impuesto en cuatro. La última vez que se midieron fue en las semifinales del Open de Estados Unidos, con victoria para el español 6-4, 7-6 (4) y 6-2.
+La última vez que se enfrentaron en el Open de Australia fue el año pasado, 2025, con triunfo para el serbio en los cuartos de final por 4-6, 6-4, 6-3 y 6-4. Ambos han disputado cuatro finales, con reparto de éxitos (2-2). Alcaraz se impuso en las finales de Wimbledon (2023 y 2024) y Djokovic en Cincinnati (2023) y los Juegos Olímpicos de París (2024).
+A qué hora es el Alcaraz - Djokovic, final del Open de Australia
+El partido entre Carlos Alcaraz y Novak Djokovic se jugará este domingo 1 de febrero a las 9.30 de la mañana, hora en España, que serán las 19:30 de la tarde noche en Melbourne.
+Donde ver en televisión y online la final Alcaraz-Djokovic en el Open de Australia
+El partido entre Alcaraz y Djokovic se emite por Eurosport, canal que tiene íntegros y en exclusiva los derechos del Grand Slam australiano. De este modo, el partido no se verá en abierto
+Y podrá seguir el minuto a minuto y toda la información sobre el torneo en ABC.es.
+Esta funcionalidad es sólo para suscriptores
+Suscribete
+Esta funcionalid
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla un evento deportivo internacional de tenis entre Carlos Alcaraz y Novak Djokovic en el Abierto de Australia.",
+    "implications": "El contenido no posee vinculación alguna con los trámites ante la ISO, la gestión del ccTLD .ia o la soberanía digital europea. La mención a la residencia de un atleta en Atenas es un dato biográfico irrelevante para la ejecución estratégica del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:41:01] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los archivos de Epstein revelan que el FBI recopiló acusaciones sexuales contra Trump
+        CONTENIDO: Los nuevos documentos de Epstein revelan que el FBI recopiló acusaciones sexuales contra Trump
+Estados Unidos
+El Departamento de Justicia afirma que todas las afirmaciones son “infundadas y falsas” y que si fueran reales “ya habrían sido utilizadas como arma contra Trump”
+El nombre del presidente Donald Trump es mencionado más de 3.000 veces en los tres millones de documentos sobre el pederasta Jeffrey Epstein publicados este viernes por el Departamento de Justicia. Aunque la mayoría de referencias son inocuas, uno de los correos contiene una lista de acusaciones de agresión sexual a menores no verificadas contra Trump, que recopilaron funcionarios del FBI el pasado verano. No hay pruebas de que la agencia de inteligencia considerara creíble ninguna de esas acusaciones y el Departamento de Justicia ha afirmado que son falsas, pero la Administración tampoco ha explicado por qué el FBI tenía esa lista en su poder.
+La lista, incluida en un correo electrónico interno de la agencia, contiene más de una decena de acusaciones contra el presidente, que presuntamente proceden de avisos recibidos a través del Centro Nacional de Operaciones de Amenazas del FBI, que recibe información y pistas del público para sus investigaciones. Cuando se envió el correo, en agosto del 2025, la agencia estaba dirigida por Kash Patel, nombrado por el presidente Trump.
+Una de las acusaciones muestra la presunta violación a una amiga de una informante, que “fue obligada a practicar sexo oral al presidente Trump hace aproximadamente 35 años en Nueva Jersey. La amiga dijo a Alexis que tenía aproximadamente 13-14 años cuando ocurrió y que presuntamente mordió al presidente Trump mientras realizaba el sexo oral. La amiga fue presuntamente golpeada en la cara después de reírse por haber mordido al presidente. La amiga dijo que también fue abusada por Epstein”.
+En otra columna titulada “respuesta”, que detalla la actuación de las autoridades ante la acusación, se indica: “Se habló con la persona que llamó, quien identificó a (censurado) como una amiga. La pista fue enviada a la oficina de Washington para realizar una entrevista”. No está claro si las autoridades siguieron investigando esta pista para hallar su veracidad, pues, como ocurre con el resto de archivos publicados el viernes, carece de contexto.
+En otra acusación, una “denunciante en línea informó que fue víctima y testigo de una red de trata sexual en el Trump Golf Course de Rancho Palos Verdes, California, entre 1995 y 1996”, en la que Ghislaine Maxwell –la expareja de Epstein y colaboradora en su red de tráfico sexual– era la “madame residente e intermediaria de fiestas sexuales”. “La denunciante afirmó haber sido amenazada por el entonces jefe de seguridad de Trump, quien le dijo que, si alguna vez hablaba de lo que ocurría allí o de a quién había visto, ‘acabaría como fertilizante para los últimos nueve hoyos, como las otras zorras’”, continúa el texto. En cuanto a la respuesta del FBI, el archivo señala: “Se habló c
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda revelaciones de archivos del FBI sobre acusaciones delictivas de carácter personal en el ámbito político de Estados Unidos.",
+    "implications": "Esta información no posee vinculación técnica, legal o diplomática con los trámites de ISO 3166-1 ni con la soberanía digital europea. Se clasifica como ruido mediático sin impacto en la hoja de ruta estratégica para la consecución del dominio .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:41:10] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El entorno de Aznar dice que no conocía a Epstein tras aparecer en sus papeles
+        CONTENIDO: El entorno de Aznar dice que no conocía a Epstein tras aparecer en sus papeles
+Entre 2003 y 2004
+El nombre del expresidente del Gobierno aparece en tres ocasiones en la nueva remesa de documentos desclasificados
+El análisis de la nueva tanda de documentos relacionados con Jeffrey Epstein, el financiero estadounidense condenado por delitos sexuales, desclasificados ayer por el Departamento de Justicia de Estados Unidos, sitúa al expresidente del Gobierno José María Aznar y a su entorno familiar en distintos registros.
+La primera referencia es una factura de FedEx fechada el 2 de septiembre de 2003. En ella consta el envío de un paquete de unos 220 gramos desde Nueva York –con Epstein y su entonces pareja, Ghislaine Maxwell, como remitentes– con destino al “presidente y Ana Aznar” en el Palacio de la Moncloa.
+La segunda, apenas ocho meses después y con un peso de 360 gramos, está dirigida únicamente al expresidente del Gobierno.
+También figura entre los archivos del delincuente sexual una tercera referencia. En esta ocasión como anotación contable por un pago de 1.050 dólares realizado por Epstein a su agente de viajes a nombre de “José María Aznar”. La documentación no aclara si el beneficiario de ese apunte es el expresidente o su hijo, José Aznar, que por aquellas fechas trabajaba en una firma financiera y que ya figuró en la primera filtración de documentos al aparecer junto a Alejandro Agag, yerno del exdirigente popular y exdiputado del Parlamento Europeo, en la agenda telefónica de Epstein.
+La familia Aznar ha optado por no pronunciarse públicamente. Pero sí lo ha hecho su entorno que, en declaraciones a Europa Press, desliza que el expresidente “no conoce a ese señor de nada” y que no tienen “ni idea” del motivo por el que su nombre figura en esos documentos.
+Sin embargo, el segundo envío antes mencionado escapa a la relación meramente institucional pues se efectuó apenas dos semanas después de que Aznar dejara el cargo tras la victoria electoral del PSOE.
+El destino, además, ya no era la Moncloa, sino la sede de la Fundación para el Análisis y los Estudios Sociales (FAES), el laboratorio de ideas vinculado al expresidente y al Partido Popular.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Vinculación tangencial de un exmandatario español con el caso Epstein, centrada en registros históricos de mensajería y contabilidad personal sin nexo con la infraestructura digital.",
+    "implications": "La noticia no afecta la hoja de ruta técnica ante la ISO ni altera el marco regulatorio de la soberanía digital europea. Carece de relevancia estratégica para la consecución del ccTLD .ia o la operatividad de los nodos del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:41:18] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un juez ordena la libertad del niño Liam y de su padre, cuya detención creo un escándalo global
+        CONTENIDO: Un juez ordena la libertad del niño Liam y de su padre, cuya detención creo un escándalo global
+Represión en EE.UU.
+Padre e hijo se encuentran en un centro de Texas y el magistrado ya decretó previamente que no se les podía deportar a la espera de resolverse la petición de asilo formulada legalmente
+“No pude hacer nada, Liam me pidió repetidamente que no saliera porque estaba asustado ya que me arrestarían a mi también”, declaró la madre del menor
+Un juez ha ordenando este sábado que el gobierno de Estados Unidos ponga en libertad a Liam Conejo Ramos, de cinco años, y a su padre, detenidos el pasado día 20 de enero en Minneapolis y que se encontraban desde entonces en el centro de detención de Dilley (Texas).
+Las fotos de Liam con su gorro azul y su mochila de Spider-man, siendo agarrado por un agente de inmigración, recorrieron el mundo y provocaron un escándalo internacional ante el trato inhumano dispensado por los uniformados desplegados por la administración de Donald Trump con el objetivo de “cazar” a inmigrantes. La operación ha costado la fecha la vida de Renee Good y Alex Pretti, los dos de 37 años, blancos y ciudadanos de Estados Unidos, donde nacieron.
+“El caso tiene su origen en la búsqueda gubernamental, mal concebida y ejecutada”
+El magistrado Fred Biery nombrado en su día por el presidente Bill Clinton, razonó en su escrito que “el caso tiene su origen en la búsqueda gubernamental, mal concebida y ejecutada de manera incompetente, de cumplir cuotas diarias de deportación, aparentemente incluso si eso implica traumatizar a niños”.
+Este mismo juez del tribunal oeste de Texas había dictado previamente esta semana que el niño y su padre no podían ser deportados mientras no se resolviera el asunto de la petición de asilo planteada por Adrián Conejo Arias cuando entraron con la familia en EE.UU. siguiendo todos los trámites legales establecidos.
+Liam y su padre fueron capturados cuando el progenitor fue a buscarlo a la escuela y, ya casi en casa, los agentes los detuvieron. Responsables escolares y vecinos aseguraron que los uniformados hicieron que el niño llamara a la puerta de casa como cebo para que salieran más familiares. Advertida por esos vecinos, la madre no abrió. Los agentes respondieron que eso no era cierto.
+Erica Ramos, en declaraciones a Telemundo, afirmó que vio por la ventana toda la escena. “No pude hacer nada, Liam me pidió repetidamente que no saliera porque estaba asustado ya que me arrestarían a mi también”, declaró.
+“Tocó y toco la puerta y Liam me repetía ‘mamá, no abras’. Estaba asustada”, confesó. No abrió y tuvo mucho miedo de que la pudieran detener y dejar solo a su otro hijo. “Al no abrir, vi que metían a Liam en el vehículo del ICE. Todo pareció un intento de provocarme, como si quisieran que corriera desesperadamente hacia mi hijo y arrestarme también. A Liam lo usaron de carnaza”, insistió.
+En su orden de libertad para el padre y el hijo, el juez expresó su consternación. “Observar el comportamiento human
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte sobre un conflicto judicial y migratorio en Estados Unidos centrado en derechos humanos y políticas de asilo domésticas.",
+    "implications": "La noticia es irrelevante para los objetivos del Proyecto Anticitera; la coincidencia de las siglas 'ICE' con la agencia estadounidense de inmigración no guarda relación con la Iniciativa Ciudadana Europea. No existe impacto en la normativa ISO 3166-1 ni en la soberanía tecnológica del territorio griego.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:41:26] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La oposición acoge con “esperanza” la amnistía propuesta por Delcy Rodríguez
+        CONTENIDO: La oposición acoge con “esperanza” la amnistía propuesta por Delcy Rodríguez
+Venezuela
+La presidenta interina anuncia el cierre del centro de tortura el Helicoide
+Familiares de presos políticos en Venezuela dijeron a Efe que se sienten “esperanzados” tras la propuesta de ley de amnistía presentada por la presidenta encargada, Delcy Rodríguez, que deberá presentarse en las “próximas horas” ante la Asamblea Nacional.
+“Primeramente Dios, primeramente Dios, y yo sé que muchas personas, tanto en la Asamblea Nacional como afuera, deseamos un cambio, un cambio radical tanto para la sociedad, la estructura política”, dijo a Efe Sandra Rosales, quien tiene a su esposo Dionis Quintero detenido en el calabozo policial de Zona 7 de la Policía Nacional Bolivariana (PNB), en el este de Caracas.
+Rosales indicó que su esposo es funcionario de la Policía y está detenido desde hace dos meses, pero celebró la decisión de Rodríguez sobre esta ley pues considera que hay muchos presos recluidos “injustamente”. “Eso permite un paso adelante para todos los presos políticos”, añadió Rosales tras recordar que los familiares han atravesado el “dolor” de no poder ver a sus allegados porque les niegan las visitas.
+La medida afectará a todos los presos políticos desde 1999, coincidiendo con el periodo chavista
+Por su parte, Mariglys Guzmán, quien se encontraba a las afueras del calabozo policial, dijo que esperaba que todos “puedan disfrutar de los beneficios que se están dando”.
+“Seguiremos en la lucha hasta poder abrazar a los nuestros, que también han sido víctimas de este terror”, añadió Guzmán, quien tiene a su hermano Luis Daniel detenido desde el 29 de marzo del 2023, acusado por una trama de corrupción relacionada con la compañía estatal petrolera PDVSA. Según dijo, su hermano nunca trabajó con la citada empresa de hidrocarburos, sino que lo vincularon al caso tras colaborar con un empresario que sí estaba relacionado con la compañía. “Mi hermano está detenido por capricho político”, apuntó.
+El pasado jueves, Delcy Rodríguez propuso una ley de amnistía para liberar a los presos políticos que han sido detenidos desde el año 1999 hasta la actualidad, periodo que cubre todos los gobiernos del chavismo.
+La mujer fuerte de Venezuela en estos momentos encargó a la Comisión de Revolución Judicial y al Programa para la convivencia y la paz que en las “próximas horas” presenten la ley ante la Asamblea Nacional, así como la “máxima colaboración” al cuerpo legislativo para su aprobación.
+“Que sea una ley que sirva para reparar las heridas que ha dejado la confrontación política, desde la violencia, desde el extremismo, que sirva para reencauzar la justicia en nuestro país y que sirva para reencauzar la convivencia entre los venezolanos”, añadió la mandataria que se juramentó en el cargo tras la captura del presidente Nicolás Maduro por parte de Estados Unidos.
+Uno de los símbolos de la represión chavista ha sido tradicionalmente el Helicoide –una estructura en Caracas de la déca
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia describe un proceso de transición política y amnistía interna en Venezuela tras la captura de Nicolás Maduro y el ascenso de un gobierno interino.",
+    "implications": "Este suceso geopolítico no impacta el marco regulatorio de la ISO 3166-1 ni los trámites de soberanía digital ante el Ministerio de Gobernanza Digital de Grecia. Al no existir una conexión directa con la infraestructura europea o la gestión del ccTLD .ia, carece de relevancia táctica para la consecución de nuestros objetivos estratégicos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:41:33] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Delcy Rodríguez anuncia un proyecto de ley de amnistía general para presos políticos en Venezuela
+        CONTENIDO: Delcy Rodríguez anuncia un proyecto de ley de amnistía general para presos políticos en Venezuela
+América Latina
+La presidenta interina del país también indicó que el infame centro de detención Helicoide será convertido en un centro deportivo y de servicios sociales
+Familiares de presos políticos, esperanzados tras la propuesta de amnistía en Venezuela
+La presidenta interina de Venezuela, Delcy Rodríguez, anunció este viernes una propuesta de “ley de amnistía” para cientos de presos políticos en el país.
+“Anuncio una ley de amnistía general y ordeno que esta ley se presente ante la Asamblea Nacional para promover la convivencia pacífica en Venezuela”, declaró en un evento en el Tribunal Supremo de Justicia de Venezuela.
+Rodríguez también indicó que el infame centro de detención Helicoide, en Caracas, el cual grupos de derechos humanos han denunciado desde hace tiempo como escenario de continuos abusos contra los presos, será convertido en un centro deportivo y de servicios sociales.
+Llegan a Venezuela 309 migrantes en un vuelo de repatriación desde Estados Unidos
+Un total de 309 venezolanos llegaron a su país este viernes en un vuelo de repatriación desde Arizona, Estados Unidos, informó el Ministerio de Interior y el programa gubernamental Gran Misión Vuelta a la Patria.
+En sus redes sociales, detallaron que, del total de los retornados, 266 son hombres, 37 mujeres y 6 niños, quienes fueron recibidos por los órganos de seguridad ciudadana y se les aplicaron los “protocolos de seguridad correspondientes”.
+El avión fue operado por la aerolínea estadounidense Eastern Airlines y aterrizó en el Aeropuerto Internacional Simón Bolívar de Maiquetía, que sirve a la ciudad de Caracas, según imágenes del Ministerio de Interior publicadas en su cuenta.
+Este vuelo es el número 105 desde que Caracas y Washington suscribieron un acuerdo migratorio a inicios del año pasado, que se mantuvo incluso en medio de las tensiones por el despliegue militar estadounidense en el mar Caribe.
+El pasado miércoles, un total de 273 venezolanos regresaron a su país en un vuelo de repatriación proveniente también de Arizona, informó entonces el ministerio.
+Según cifras del Gobierno, en 2025 más de 14.000 personas regresaron a Venezuela desde Estados Unidos, un número que no ha actualizado este año.
+España celebra la amnistía en Venezuela y anima a que entre en vigor “con rapidez”
+El Gobierno español ha celebrado este sábado la declaración en Venezuela de una ley de amnistía general anunciada por su presidenta encargada, Delcy Rodríguez, y expresado su deseo de que entre en vigor con celeridad.
+En este contexto, “el Gobierno de España da la bienvenida al anuncio de la presidenta encargada de Venezuela de una ley de amnistía general en el país desde 1999 hasta la actualidad”, según un comunicado publicado este sábado por el Ministerio de Asuntos Exteriores, Unión Europea y Cooperación.
+“España anima a que la ley se concrete con rapidez”, ha añadido Exteriores, antes de declarar qu
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla un proceso de amnistía política y repatriación migratoria en Venezuela, sin vinculación con la infraestructura digital o normativa europea.",
+    "implications": "Este evento no afecta los trámites ante la ISO 3166-1 ni la estrategia de delegación del ccTLD .ia para el territorio griego. Carece de impacto sobre la soberanía tecnológica de la Unión Europea o la viabilidad operativa de nuestros nodos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:41:42] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los excesos y los asesinatos de Minneapolis exhiben la debilidad de Trump
+        CONTENIDO: Los excesos y los asesinatos de Minneapolis exhiben la debilidad de Trump
+El 15 de enero, Donald Trump se levantaba con una amenaza a las 08.04 de la mañana: “Si los políticos corruptos de Minnesota no obedecen la ley y detienen a los agitadores profesionales y a los insurrectos que atacan a los patriotas de ICE, que solo intentan hacer su trabajo, aplicaré la ley contra insurrecciones”.
+Habían pasado ocho días del asesinato de Renee Good en las calles de Minneapolis a manos de agentes federales. Y faltaban nueve para morir de 10 disparos a bocajarro por agentes del CBP el enfermero Alex Pretti.
+Entre una muerte y otra, Donald Trump y su Administración siguieron pisando el acelerador represivo en Minneapolis. El comandante jefe de la Patrulla de Fronteras, Greg Bovino, se paseaba por Minneapolis como si estuviera en un saloon del viejo Oeste: se sabía protegido por su jefa, la secretaria del Departamento de Seguridad Nacional, Kristi Noem, y el propio presidente, que no dejaba de amenazar a las autoridades locales y estatales de Minnesota, así como a la comunidad somalí y a la congresista Ilhan Omar.
+Tanto es así, que tanto Bovino como Noem y el subjefe de Gabinete de la Casa Blanca, Stephen Miller, replicaron el relato del asesinato de Renee Good tras el tiroteo a Alex Pretti: “Era un terrorista interior” y “amenazaba la vida de los agentes”.
+En un comunicado al Washington Post, Miller declaró que la información inicial que recibió sobre el tiroteo del Departamento de Seguridad Nacional se basaba en informes de la Oficina de Aduanas y Protección Fronteriza (CBP). Es decir, Miller culpó al equipo de Noem.
+Con Renee Good, además, dijeron que era lesbiana, como si eso fuera un ingrediente más que justificara su asesinato.
+Pero los vídeos pusieron en duda muy rápido la versión de la Administración Trump, y la propia secretaria de Prensa de la Casa Blanca, Karoline Leavitt, apartó a Trump de las afirmaciones de su equipo.
+Aquello supuso una primera muestra de que la crisis estaba haciendo mella en un Trump que quiere mostrarse imbatible, pero que 48 horas después del asesinato de Pretti ya sabía que la posición más ultra tenía un recorrido muy corto.
+Noem pidió una reunión con Trump el lunes por la noche, después de que el presidente anunciara que Homan asumiría las operaciones en Minnesota. La reunión duró varias horas y se habló de Minneapolis, según una de las fuentes. Por separado, Lewandowski y Homan, quienes ya habían tenido desacuerdos en el pasado, hablaron y acordaron trabajar juntos, añadió la misma fuente.
+Trump ya había tomado una decisión: mandar a su zar fronterizo, Tom Homan, tan amante de la mano dura como Bovino, pero con unos aspavientos menos propios de la Europa de los años 30. Bovino era relevado –y, al tiempo, el Departamento de Seguridad Nacional–, en lo que el comentarista MAGA Steve Bannon calificó como “retirada”.
+“Este es un punto de inflexión: si cedes ahora, cederás para siempre. Si te arrodillas ahora, te arrodillarás pa
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla tensiones sociales y conflictos administrativos internos en los Estados Unidos derivados de acciones policiales federales bajo la administración Trump.",
+    "implications": "El contenido carece de relevancia para el Proyecto Anticitera, ya que las menciones a 'ICE' se refieren a la agencia de inmigración estadounidense y no a la Iniciativa Ciudadana Europea. No existe impacto alguno sobre la soberanía del .ia o el marco regulatorio griego.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:41:51] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Senado de EEUU aprueba el acuerdo entre demócratas y la Casa Blanca para financiar la Administración y debatir restricciones al ICE
+        CONTENIDO: El Senado de EEUU aprueba el acuerdo entre demócratas y la Casa Blanca para financiar la Administración y debatir restricciones al ICE
+El Senado ha votado este viernes a favor de financiar la mayor parte de los fondos de la Administración hasta finales de septiembre, a la vez que otorga una extensión temporal a la financiación del Departamento de Seguridad Nacional, lo que le da al Congreso dos semanas para debatir nuevas restricciones a las redadas federales de inmigración en todo el país.
+Con un cierre gubernamental inminente este fin de semana, el presidente de EEUU, Donald Trump, alcanzó este jueves el acuerdo de gastos con los demócratas del Senado tras el asesinato de Renee Good y Alex Pretti a manos de agentes federales en Minneapolis.
+Los demócratas afirmaron que no votarían a favor del proyecto de ley a menos que el Congreso considere una legislación para que los agentes no vayan con la cara cubierta, exigir más órdenes judiciales y permitir que las autoridades locales colaboren en la investigación de cualquier incidente.
+“La nación está llegando a un punto crítico”, declaró el líder demócrata del Senado, Chuck Schumer, tras la votación, informa AP: “La ciudadanía estadounidense exige que el Congreso intervenga e impulse el cambio”.
+Mientras legisladores de ambos partidos pedían investigaciones sobre los asesinatos, Trump afirmó que no quería un cierre de la Administración y negoció el poco común acuerdo con Schumer. Trump animó entonces a los miembros de ambos partidos a emitir un “muy necesario voto bipartidista de 'sí”.
+El proyecto de ley fue aprobado por 71 votos a favor y 29 en contra, y ahora se dirigirá a la Cámara de Representantes, que no tiene previsto retomar sus trabajos hasta el lunes. Esto significa que el gobierno podría estar en un cierre parcial temporal durante el fin de semana hasta que lo aprueben.
+El presidente de la Cámara, Mike Johnson, quien mantuvo una reunión telemática este viernes con representantes republicanos, dijo que espera que la Cámara vote el lunes por la noche. Sin embargo, lo que es incierto es cuánto apoyo tendrá el paquete.
+El ala derecha de Johnson ha mostrado su oposición a los límites a los fondos de Seguridad Nacional, lo que lo deja en manos de los demócratas, quienes tienen sus propias objeciones a financiar al Servicio de Inmigración y Control de Aduanas de Estados Unidos (ICE) sin restricciones.
+Debate sobre el ICE
+No estaba claro hasta qué punto participará Trump en las negociaciones sobre las nuevas restricciones a las redadas contra la inmigración, ni si republicanos y demócratas podrían llegar a algún punto de acuerdo.
+Los demócratas del Senado no apoyarán una extensión de los fondos del Departamento de Seguridad Nacional en dos semanas “a menos que controle al ICE y ponga fin a la violencia”, dijo Schumer: “Si nuestros colegas no están dispuestos a implementar un cambio real, no deberían esperar los votos demócratas”.
+De igual manera, el líder demócrata de la Cámara de Representantes, 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia se centra estrictamente en la política presupuestaria interna de los Estados Unidos y la reforma de su agencia migratoria (ICE), careciendo de relevancia para el marco soberano europeo.",
+    "implications": "Se identifica una colisión de acrónimos (ICE estadounidense vs. Iniciativa Ciudadana Europea), pero el contenido no afecta a la normalización ISO 3166-1 ni a la soberanía digital de Anticitera. Se aplica el criterio de exclusión por falta de impacto en los objetivos estratégicos del proyecto.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:41:58] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Una ola de protestas recorre EEUU contra los asesinatos de Minneapolis y la represión migratoria de Trump
+        CONTENIDO: Una ola de protestas recorre EEUU contra los asesinatos de Minneapolis y la represión migratoria de Trump
+El día 23 se vivió una movilización histórica en Minneapolis. Una huelga y una gran manifestación exhibieron el rechazo en Minnesota a las políticas migratorias de Donald Trump. Aquel día miles de personas protestaron contra el terror del ICE y el asesinato de Renee Good, cometido por un agente federal el 7 de enero.
+Pero al día siguiente, el 24 de enero, se produjo el asesinato de Alex Pretti, a manos de agentes federales de fronteras.
+La reacción de la ciudadanía en Minneapolis y en otras muchas ciudades de EEUU ha ido conformando una convocatoria, la de este viernes, en la que miles de personas en diversas ciudades de EEUU han salido a la calle contra los asesinatos cometidos por los agentes federales y contra la represión migratoria de la Administración Trump.
+En Minneapolis miles de personas se han congregado en la Government Plaza, para luego discurrir por el centro de la ciudad y culminar con un concierto de Bruce Springsteen, junto a Tom Morello, en la sala First Avenue, donde ha estrenado su canción 'Streets of Minneapolis' en directo.
+En Los Ángeles, ciudad donde primero desembarcó la represión de Trump y el despliegue hasta de marines, también han salido miles de personas a la calle en solidaridad con Minneapolis.
+La gobernadora de Nueva York, Kathy Hochul, presentó este viernes un proyecto de ley que busca prohibir la colaboración del Servicio de Inmigración y Control de Aduanas (ICE) con los policías del estado, informa Efe. Hochul propuso la iniciativa 'Policías Locales, Delitos Locales' para impedir que los agentes federales de inmigración utilicen a los efectivos estatales en la aplicación de la política migratoria del presidente, Donald Trump.
+Esta norma, si se aprueba, vetará también al ICE el uso de centros de detención locales para llevar a cabo operaciones masivas contra la población del estado.
+Según la gobernadora, estas políticas permitirán a sus fuerzas centrarse en “mantener la seguridad de los neoyorquinos, en lugar de hacer el trabajo del ICE”.
+Algunas escuelas en Arizona, Colorado y otros estados cancelaron las clases de forma preventiva ante la previsión de ausencias masivas. Se planificaron numerosas manifestaciones para que estudiantes y otras personas se reunieran en centros urbanos, capitolios estatales e iglesias de todo el país, informa AP.
+En Michigan, decenas de estudiantes abandonaron las clases el viernes por la mañana en la escuela secundaria Groves High School en Birmingham, al norte de Detroit. Los estudiantes desafiaron las temperaturas bajo cero y caminaron aproximadamente un kilómetro y medio hasta el distrito comercial más cercano, donde varios conductores les mostraron su apoyo tocando la bocina.
+En Maine, donde la senadora republicana Susan Collins anunció que el ICE (Servicio de Inmigración y Control de Aduanas) pondría fin a su operativo, varias personas se congregaron frente a una iglesia en
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla protestas civiles y conflictos derivados de políticas migratorias internas en los Estados Unidos bajo la administración Trump.",
+    "implications": "Este evento no posee vinculación con el marco normativo europeo ni con la estandarización ISO 3166-1; la coincidencia de siglas entre la agencia estadounidense (ICE) y la Iniciativa Ciudadana Europea es meramente fortuita y sin valor estratégico. Se aplica el criterio de exclusión por falta de impacto en el territorio de operaciones griego o en la soberanía digital de la Unión Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:42:06] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los archivos de Epstein revelan nuevas imágenes y correos del expríncipe Andrés comprometedores
+        CONTENIDO: Los archivos de Epstein revelan nuevas imágenes y correos del expríncipe Andrés comprometedores
+La publicación por parte de la Administración Trump de nuevos archivos de Jeffrey Epstein en el marco de su investigación, ha sacado a la luz nuevas imágenes comprometedoras para Andrés Mountbatten-Windsor, antes el príncipe Andrés de Inglaterra, hermano del rey Carlos III.
+Se trata de dos fotografías en las que Andrés aparenta tener entonces unos cuarenta años -hoy tiene 65- aparece vestido de manera informal con unos 'jeans' y un polo blanco.7
+En una de las dos imágenes Andrés mira de frente a la cámara, mientras que en la otra tiene una mano sobre el vientre de la mujer, que muestra una actitud pasiva. Al fondo se aprecia la presencia de otra persona con los pies encima de una mesa, en lo que parece un ambiente desenfadado.
+Pero hay más: en los archivos de Epstein revelados ayer, aparecen correos que pueden comprometer aún más a Andrés, como los que Epstein escribió en agosto de 2010 prometiéndole enviarle a Londres a una joven “rusa, de 26 años, inteligente y hermosa, de fiar y que ya tiene tu email”. El destinatario del mensaje firmaba como “HRH (Su Alteza Real) el Duque de York”.
+En la serie de correos aparecen además invitaciones cruzadas entre Epstein y Andrés a visitarse en sus respectivas residencias. La invitación de Andrés a Epstein al mismo Palacio de Buckingham (residencia oficial de la entonces reina Isabel) se produjo en septiembre de 2010, solo un mes después de que Epstein dejara de estar en arresto domiliciario y cuando ya era público y notorio su perfil de depredador sexual.
+“Encantado de que vengas aquí a BP (siglas del Palacio de Buckingham). Ven con quien tú quieras, yo voy a estar libre de 4 a 8”, escribe el que parece ser Andrés, a lo que Epstein respondió: “Nos vemos a las 4”.
+Andrés, sobre el que se acumulan las pruebas de su amistad con Epstein y los indicios de que participó junto a él en abusos sexuales -en algunos casos con menores como víctimas- fue despojado el pasado octubre del título de príncipe por su hermano el rey, ya que los pasos de Andrés para desvincularse de la familia real no habían sido suficientes para el monarca.
+Carlos III le ordenó entonces abandonar también el palacio que ocupa en Windsor -por el que pagaba un simbólico “grano de pimienta”- antes de que terminase el año, pero el traslado aún no se ha consumado. Los medios británicos han publicado fotografías de camiones de mudanza aparcados en Windsor este mes de enero, sin que se sepa con certeza su destino.
+6
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla revelaciones de carácter criminal y social sobre el vínculo entre el príncipe Andrés y Jeffrey Epstein tras la desclasificación de archivos en EE. UU.",
+    "implications": "Este evento carece de relevancia para la hoja de ruta estratégica del Proyecto Anticitera, al no impactar en la normativa ISO 3166-1 ni en la soberanía digital europea. Se clasifica como ruido mediático sin incidencia en la infraestructura de nodos o la viabilidad del dominio .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:42:14] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Aznar, Ana Botella, su hijo y su yerno aparecen en los archivos de Epstein: envíos a Moncloa y teléfonos en su agenda
+        CONTENIDO: Aznar, Ana Botella, su hijo y su yerno aparecen en los archivos de Epstein: envíos a Moncloa y teléfonos en su agenda
+Teléfonos móviles y correos electrónicos en su agenda. Y envíos a Moncloa y la FAES. De entre los tres millones de páginas de los documentos del depredador sexual Jeffrey Epstein liberados este viernes por el Departamento de Justicia, hay algunos en los que aparecen los nombres de José María Aznar, Ana Botella, José Aznar y Alejandro Agag, tal y como ha adelantado El País y ha podido comprobar después elDiario.es.
+De acuerdo con los archivos, los envíos de sendos paquetes a Moncloa y FAES ocurrieron en 2003 y 2004, varios años antes de la primera condena al depredador sexual. Y la presencia de estos nombres tampoco indica que tuvieran conocimiento de los abusos cometidos por Epstein por parte por la familia Aznar.
+El entorno del ex presidente, contactado por El País, asegura que Aznar no tiene “ni idea” de qué son estos envíos, y añaden que “no conoce a ese señor”, en alusión a Epstein.
+Quienes, además, aparecen en la agenda telefónica de Epstein son el hijo de Aznar, José, y su yerno, Alejandro Agag.
+116
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Revelación de contactos históricos de la familia Aznar en los archivos desclasificados del caso Epstein sin implicaciones legales o técnicas actuales.",
+    "implications": "La noticia carece de relevancia para la gestión del ccTLD .ia, la estandarización ISO 3166-1 o el desarrollo de la infraestructura soberana de Anticitera. Se clasifica como información de corte político/social sin impacto en la gobernanza digital o los derechos ciudadanos europeos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:42:22] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Las familias de presos políticos advierten que la amnistía "no puede traer impunidad" para el chavismo: "No cabe el perdón"
+        CONTENIDO: Las familias de presos políticos advierten que la amnistía "no puede traer impunidad" para el chavismo: "No cabe el perdón"
+Actualmente más de 700 personas siguen encarceladas en Venezuela por motivos políticos y sus defensores reclaman que se investiguen todos los delitos de lesa humanidad.
+Más información: El chavismo prometió liberar a un "número importante" de presos políticos: solo nueve de 811 han sido excarcelados
+Venezuela ha recibido con alegría, pero “con cautela” el anuncio de amnistía general hecho hace apenas unas horas por la presidenta interina, Delcy Rodríguez. Los mismos activistas y defensores que durante años pidieron una medida como esta para abrir un proceso de reconciliación política en el país remarcan hoy que "no puede haber perdón" para aquellos líderes chavistas que cometieron crímenes de lesa humanidad.
+Quienes durante años han alzado la voz por la liberación de los presos políticos, que ahora mismo son más de 700, de acuerdo con la ONG Foro Penal, insisten en que “la amnistía no puede ser una oportunidad para la impunidad”, tal como explicó a El Español Marino Alvarado, abogado y miembro de una de las organizaciones más importantes del país, Provea.
+“No puede haber perdón para quienes cometieron graves violaciones a los derechos humanos o crímenes de lesa humanidad”, es la premisa de Alvarado, basado en la Constitución venezolana que declara en su artículo 29 que el Estado está obligado a investigar y sancionar los delitos contra los derechos humanos cometidos por sus autoridades, que quedan “excluidos de los beneficios que puedan conllevar su impunidad, incluidos el indulto y la amnistía”.
+Así, la alegría y la cautela en la misma medida marcan también el cierre de un enero que abrió para Venezuela con la captura de su presidente, ahora detenido en Estados Unidos, y cierra con un anuncio de perdón general para todos sus presos políticos.
+“La Amnistía no puede ser una oportunidad para la impunidad. La reconciliación debe tener como un pilar fundamental garantizar justicia para las víctimas. Hay que ver cuál será el contenido de la ley. Por ahora saludamos la iniciativa pero realizamos las advertencias necesarias”, remarcó Alvarado.
+Los límites del perdón
+Ante las palabras de la presidenta encargada venezolana en el Tribunal Supremo de Justicia donde pidió a los beneficiados de esta amnistía que "no impongan la revancha, la venganza y el odio", solo hay precaución y recordatorios amables de que "las acciones para sancionar los delitos de lesa humanidad, violaciones graves de los derechos humanos y los crímenes de guerra son imprescriptibles”, por mandato constitucional.
+"La Amnistía no paraliza las investigaciones de la Corte Penal Internacional (CPI) al contrario les da fuerza, porque muchas víctimas que por el terror no se atrevieron a informar sobre sus casos, ahora tendrán voluntad de aportar información (...) Así que en paralelo a la amnistía la CPI seguirá sus investigaciones ahora con una mayor oportunidad de refo
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia se centra en el proceso de amnistía política y la responsabilidad penal por crímenes de lesa humanidad en Venezuela tras un cambio en la administración del país.",
+    "implications": "El evento carece de relevancia para la obtención del código ISO 3166-1 o el desarrollo del Distrito Tecnológico en Grecia, al no afectar el marco normativo europeo ni la soberanía digital del proyecto. No se identifica ninguna palanca estratégica aplicable a la misión de asegurar el ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:42:30] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Gobierno de España celebra el anuncio de amnistía en Venezuela y anima a que entre en vigor "con rapidez"
+        CONTENIDO: El Gobierno de España celebra el anuncio de amnistía en Venezuela y anima a que entre en vigor "con rapidez"
+El Ministerio de Asuntos Exteriores ha añadido que están dispuestos a acompañar al país venezolano en esta "nueva etapa".
+Más información: Las familias de presos políticos advierten que la amnistía "no puede traer impunidad" para el chavismo: "No cabe el perdón"
+El Gobierno español ha celebrado este sábado la declaración en Venezuela de una ley de amnistía general anunciada por su presidenta encargada, Delcy Rodríguez, y expresado su deseo de que entre en vigor con celeridad.
+Rodríguez anunció esta ley de amnistía para los presos políticos que permanecen en las cárceles de Venezuela, en medio de las excarcelaciones que se han sucedido tras la captura del presidente Nicolás Maduro por parte de Estados Unidos y que las ONG cifran ya en más de 700 personas.
+En este contexto, "el Gobierno de España da la bienvenida al anuncio de la presidenta encargada de Venezuela de una ley de amnistía general en el país desde 1999 hasta la actualidad", según un comunicado publicado este sábado por el Ministerio de Asuntos Exteriores, Unión Europea y Cooperación.
+"España anima a que la ley se concrete con rapidez", ha añadido Exteriores, antes de declarar que "España está dispuesta a acompañar a Venezuela en esta nueva etapa".
+El ministro de Asuntos Exteriores, José Manuel Albares, ha mantenido una conversación con su homólogo venezolano, Yván Gil, en la que ha trasladado directamente este mensaje sobre la amnistía, según han informado fuentes de Exteriores a Europa Press.
+"Albares ha tenido una conversación con el canciller venezolano Yván Gil a petición de él. Han abordado la nueva etapa en Venezuela. Le ha trasladado que España da la bienvenida a la medida anunciada de una amnistía general y que España está dispuesta a acompañar a Venezuela en esa línea", han informado las fuentes consultadas.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla un cambio de régimen y una amnistía política en Venezuela, centrada en diplomacia tradicional y derechos humanos convencionales.",
+    "implications": "Este evento no posee vinculación técnica o legal con el estándar ISO 3166-1 ni con la soberanía digital europea. Carece de impacto sobre la infraestructura de nodos o la viabilidad administrativa del distrito .ia en Grecia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:42:38] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Machado atribuye la amnistía de Delcy a "la presión real de EEUU" : la oposición quiere ampliarla a los exiliados
+        CONTENIDO: Machado atribuye la amnistía de Delcy a "la presión real de EEUU" : la oposición quiere ampliarla a los exiliados
+Machado también dijo que la presidenta encargada de su país es "incapaz" de generar confianza o estabilidad para liderar una transición política.
+Más información: Delcy promete una amnistía general para los cientos de presos políticos y el cierre de la cárcel del Helicoide
+La líder opositora, María Corina Machado, aseguró este viernes que la ley de amnistía general para liberar a los presos políticos propuesta por la presidenta encargada de ese país, Delcy Rodríguez, es "producto de la presión real" de Estados Unidos y que espera que se haga realidad.
+"Obviamente, no es algo que voluntariamente el régimen haya querido hacer, sino que es producto de la presión real que ha recibido por parte del Gobierno de los Estados Unidos", manifestó en la charla 'Hablemos de Venezuela' con el periodista Michael Stott en el Hay Festival Cartagena de Indias (Colombia).
+"Ojalá sea así y ojalá los más de 700 presos que aún permanecen en los centros de tortura en Venezuela puedan estar con sus familias muy pronto", manifestó.
+Machado, Premio Nobel de la Paz 2025, afirmó que su país avanza de manera "irreversible" hacia la democracia. Asimismo, dijo que en el país petrolero "el aparato represivo del régimen es brutal" y "ha respondido a los intereses de las múltiples fuerzas criminales que conforman este régimen".
+"Hemos vivido 27 años de un proceso brutal, de persecución, de represión, de silenciar las voces de todos los ciudadanos, ya sean periodistas, activistas de derechos humanos, amas de casa, estudiantes, maestros, médicos, economistas y, por supuesto, dirigentes políticos", lamentó.
+La opositora añadió que en Venezuela "hay presos políticos que tienen 23 años en prisión", como es el caso de tres policías metropolitanos, y hay otros "que han sido desaparecidos".
+“Cómo todos sabemos, hemos vivido 27 años de persecución y represión, y de silenciar las voces de todos los ciudadanos; amas de casas, estudiantes, médicos, dirigentes políticos. Hoy hay presos políticos que tienen 23 años de prisión y personas que han sido detenidas en el último… pic.twitter.com/HXXP8yNTpz
+— Vocería Oficial de Venezuela (@voceriavzla) January 31, 2026
+En el evento, Machado también consideró que la presidenta encargada de su país, Delcy Rodríguez, es "incapaz" de generar confianza o estabilidad para liderar una transición política.
+"No hay manera de que una persona que ha sido corresponsable de esta tragedia genere confianza o estabilidad. Eso no existe. Delcy Rodríguez es incapaz de generar cualquier tipo de política militar, de seguridad o de ninguna naturaleza que permita una transición", aseguró.
+La Premio Nobel de la Paz 2025 sostuvo que una eventual transición política no puede limitarse a respuestas temporales ante la emergencia humanitaria, sino que debe apuntar a una transformación estructural del país.
+Incluir a exiliados
+La Plataforma Unitaria Democrática, ademá
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla el proceso de amnistía de presos políticos en Venezuela bajo presión diplomática de EE.UU. y la postura de la oposición liderada por María Corina Machado.",
+    "implications": "Este evento no guarda relación con la soberanía administrativa de Grecia ni con los procesos de estandarización ISO 3166-1 necesarios para el .ia. Carece de impacto en el marco legal de la Unión Europea o en la infraestructura táctica del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:42:44] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La imagen cutre del príncipe Andrés abalanzándose sobre una víctima en casa de Epstein desata la indignación británica
+        CONTENIDO: La imagen cutre del príncipe Andrés abalanzándose sobre una víctima en casa de Epstein desata la indignación británica
+El depredador sexual prometió al miembro de la Familia Real enviarle a Londres una joven "rusa, de 26 años, inteligente, hermosa y de fiar".
+Más información:Aznar niega conocer a Epstein tras aparecer mencionado en tres ocasiones en los papeles desclasificados por EEUU
+Los nuevos archivos desvelados por el Departamento de Justicia estadounidense del fallecido pederasta Jeffrey Epstein muestran unas "perturbadoras" imágenes del príncipe británico Andrés que son el primer tema de portada en numerosos diarios británicos como Daily Mail, The Sun o The Times provocando una "gran polémica" a nivel nacional.
+En las fotografías, se ve a Mountbatten-Windsor, que se sospecha que tiene unos cuarenta años en aquel momento, en el suelo junto a una mujer sin identificar, vestido de manera informal con unos pantalones y un polo blanco.
+Cabe destacar que en una de las imágenes, el británico mira de frente a la cámara, mientras en otra se ve como tiene su mano posada sobre el vientre de la mujer. Al fondo, se observa a otra persona con los pies encima de una mesa, en lo que parece un ambiente desenfadado.
+Además de este contenido, también se muestra un correo electrónico perteneciente a agosto de 2010 que compromete aún más al hermano del rey Carlos III de Inglaterra.
+Aquí, Epstein le prometió enviarle a Londres a una joven "rusa, de 26 años, inteligente, hermosa y de fiar", donde añadía que ya le había facilitado su dirección de correo electrónico. El destinatario del mensaje firmaba como "HRH (su Alteza Real) el Duque de York".
+En los distintos emails también se muestran invitaciones cruzadas entre Epstein y Andrés para ir a sus respectivas residencias.
+La invitación del príncipe al Palacio de Buckingham se formalizó en septiembre de 2010, tan solo un mes después de que el pederasta dejara de estar en arresto domiciliario y cuando ya era público y conocido su perfil de depredador sexual.
+"Encantado de que vengas aquí al Palacio de Buckingham. Ven con quien tú quieras, yo voy a estar libre de 4 a 8", escribe el que parece ser el príncipe, a lo que Epstein respondió: "Nos vemos a las 4".
+Relación "dañina"
+Según el diario The Daily Mail, la exesposa de Andrés, Sarah Ferguson, también había entablado distintas conversaciones vía email con Epstein, donde, presuntamente, le ha agradecido ser "el hermano que siempre ha deseado".
+Andrew Lownie, autor del libro más polémico del expríncipie, Entitled: The Rise and Fall of the House of York, ha declarado al Daily que, aunque la relación entre ambos era estrecha, también era "dañina".
+El historiador ha recalcado que para los exduques de York "lo peor está por venir" y que las reputaciones de ambos "están absolutamente en el polvo". "Ninguno de ellos puede recuperarse jamás de lo que ha estado surgiendo", añadió.
+Desterrado de la monarquía
+A raíz de las polémicas que relacionaban al exduque de York directam
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte sensacionalista sobre el escándalo reputacional del príncipe Andrés de Inglaterra y su vinculación con Jeffrey Epstein.",
+    "implications": "La noticia carece de nexo estratégico con la obtención del ccTLD .ia o la soberanía administrativa de Grecia. No aporta valor operativo para la infraestructura de los nodos ni para el marco regulatorio del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:42:54] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La regularización de Sánchez será un coladero: el inmigrante quedará 'limpio' si en un mes no recibe los antecedentes penales
+        CONTENIDO: La regularización de Sánchez será un coladero: el inmigrante quedará 'limpio' si en un mes no recibe los antecedentes penales
+Si el país de origen no responde en 30 días, bastará la "declaración responsable" del solicitante para que se "entienda" que nunca ha cometido delitos.
+Más información: La UE pide desde 2024 que las regularizaciones de inmigrantes 'se coordinen entre Estados' y desde 2008 que sean 'selectivas'.
+El Gobierno ha diseñado una regularización extraordinaria que, sobre el papel, filtra con los antecedentes penales, pero que en la práctica abre un enorme coladero de seguridad. Si el país de origen no contesta "en un mes", bastará con que el solicitante firme una "declaración responsable" para que España "entienda" que nunca delinquió.
+La presunción de inocencia se convierte así en presunción administrativa de 'limpieza' en el historial penal, sin pruebas y con un margen de tiempo mínimo.
+La clave está en la letra pequeña del decreto aprobado el pasado martes en Consejo de Ministros para regularizar, al menos, a 500.000 inmigrantes. La norma rebaja sustancialmente las cautelas que contenía el reglamento aprobado en 2024.
+Ahora, lo que antes era una excepción "en circunstancias excepcionales debidamente acreditadas" se convierte en una regla general aplicable a toda la regularización masiva.
+Hasta ahora, el reglamento de extranjería exigía que el extranjero acreditara la ausencia de antecedentes penales en los países donde hubiera residido en los últimos cinco años. Sólo cabía "excepción" en casos muy tasados y acreditando siempre de forma sólida la imposibilidad de obtener el certificado por parte del solicitante.
+La carga de la prueba recaía en el interesado y la excepción estaba pensada para contextos extremos: Estados fallidos, guerras, persecuciones.
+Con el nuevo reglamento, esa cautela salta por los aires. Ahora, el texto establece que, si en el plazo de un mes el país de origen no responde, la Administración española avisará al interesado.
+A partir de ahí, el propio inmigrante "podrá presentar declaración responsable de inexistencia de antecedentes penales". Y esa sola firma bastará para que se entienda que "carece de antecedentes penales" en esos países. No se exige acreditación, ni se menciona un análisis caso por caso, como exige la UE.
+Requisito laboral relajado
+En España, además, el proyecto facilita la cancelación de antecedentes penales existentes. Si el extranjero tiene condenas cancelables, la responsabilidad se desplaza del inmigrante a la propia Administración. Será el órgano que tramite la regularización quien comunicará el caso al Ministerio de Justicia.
+Los defensores del decreto alegan que muchos Estados no expiden certificados de penales en plazos razonables.
+Argumentan que un sistema rígido dejaría "atrapadas en el limbo a personas integradas de facto en España". Sus detractores advierten de que este esquema es un coladero potencial y que no se puede "tratar a los inmigrantes como paquetes a repartir".
+El dis
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "La noticia analiza una reforma del reglamento de extranjería en España que prioriza la presunción administrativa mediante declaraciones responsables frente a la verificación de antecedentes penales.",
+    "implications": "El contenido no guarda relación con la normalización ISO, la delegación de ccTLDs ni la creación del distrito tecnológico en Anticitera. Se aplica el criterio de exclusión por falta de impacto en el marco soberano digital o en la viabilidad técnica del código .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:43:02] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Elche – Barcelona, en directo: dónde ver gratis, resultado y cómo va el partido de la Liga hoy
+        CONTENIDO: Elche – Barcelona, en directo: dónde ver gratis, resultado y cómo va el partido de la Liga hoy
+Sigue en directo este Elche - Barcelona con el minuto a minuto y los comentarios, ocasiones, goles y polémicas de esta jornada de Liga
+Cuándo juega el Barcelona contra el Elche: a qué hora es, horario y dónde ver en directo el partido de la Liga en vivo y online gratis
+Elche y Barcelona se ven las caras en esta vigésima segunda jornada de la Liga en el Martínez Valero. El equipo dirigido por Hansi Flick afronta la cita como líder del campeonato doméstico y después de haber sellado su clasificación para los octavos de final de la Champions League, lo que ha reforzado el ánimo del vestuario azulgrana. Enfrente estará un Elche que está firmando una temporada muy sólida bajo la dirección de Eder Sarabia Sigue en directo este Elche – Barcelona con el minuto a minuto y los comentarios, ocasiones, goles y polémicas de esta jornada de Liga.
+Elche – Barcelona, en directo
+La alineación del Barcelona
+Esta es la alineación del Barcelona ante el Elche: Joan García; Koundé, Cubarsí, Eric García, Balde; Dani Olmo, Frenkie De Jong, Fermín López; Lamine Yamal, Raphinha y Ferran Torres.
+A qué hora es el partido de la Liga Elche – Barcelona
+LaLiga ha fijado este Elche – Barcelona, correspondiente a la jornada 22, para el sábado 31 de enero. El encuentro se disputará a partir de las 21:00 horas en la península, una hora menos en Canarias. Todo está preparado para que el balón eche a rodar puntualmente en el Martínez Valero, en un ambiente que se prevé tranquilo en los alrededores del estadio antes del inicio del partido.
+Dónde y cómo ver gratis el Elche vs Barcelona en directo por TV online y en vivo
+Movistar+ es una de las plataformas que cuenta con los derechos de emisión de LaLiga en España. El partido Elche – Barcelona se podrá ver en directo por televisión a través del canal Movistar LaLiga. Para seguir el encuentro desde el Martínez Valero será necesario disponer del paquete que incluye la competición liguera, ya que este choque no se emitirá en abierto ni gratis por televisión.
+Dónde escuchar por radio en directo el Elche – Barcelona
+Quienes no puedan seguir el Elche – Barcelona por televisión ni por internet tendrán la opción de escucharlo en directo por radio. Cadenas nacionales como Radio Marca, COPE, Cadena SER, Onda Cero o RNE conectarán con el Martínez Valero para ofrecer la narración íntegra de este encuentro de la jornada 22 de la Liga.
+En qué estadio se juega el Elche – Barcelona
+El Estadio Manuel Martínez Valero, ubicado en Elche, será el escenario de este atractivo Elche – Barcelona correspondiente a la jornada 22 de LaLiga. El recinto, inaugurado en 1976, cuenta con un aforo cercano a los 31.400 espectadores.
+Quién es el árbitro del partido Elche – Barcelona
+El Comité Técnico de Árbitros ha designado a Alejandro Muñiz Ruiz como árbitro principal del encuentro. En la sala VOR estará Valentín Pizarro Gómez, encargado de supervisar las acciones polémicas y 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia es una crónica deportiva estándar sobre un encuentro de fútbol de la liga española entre el Elche y el Barcelona.",
+    "implications": "Este contenido no posee relevancia para la soberanía administrativa de Anticitera ni para la gestión del ccTLD .ia ante la ISO. No existe impacto estratégico, técnico o diplomático que afecte los intereses del proyecto.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:43:08] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Elche anuncia un fichaje por sorpresa…¡en el descanso de su partido contra el Barcelona!
+        CONTENIDO: El Elche anuncia un fichaje por sorpresa…¡en el descanso de su partido contra el Barcelona!
+Anunció a Gonzalo Villar durante el descanso de su partido contra el Barcelona
+Sus seguidores no se lo podían creer
+Sigue en directo el Elche-Barcelona
+El Elche ha sorprendido este sábado a todos sus aficionados anunciando a través de sus redes sociales el fichaje de Gonzalo Villar durante el tiempo de descanso de su partido de Liga contra el Barcelona. El equipo ilicitano perdía en el Martínez Valero por 1-2 ante el cuadro culé, y antes de empezar la segunda mitad, hizo oficial este fichaje con un comunicado oficial en su web.
+No se lo podían creer los hinchas del Elche. En el tiempo de descanso de su partido contra el Barcelona, el club ha hecho oficial un importante fichaje que llega para reforzar el centro del campo del equipo ilicitano. Quizás no fuese el momento y eso es lo que sorprendió.
+Llegó el anuncio en el descanso del Elche-Barcelona tras una primera parte donde el equipo de Sarabia luchó e hizo todo lo que pudo. Se marchó solamente perdiendo por 2-1 cuando el equipo culé había tenido tropecientas ocasiones de peligro.
+Comunicado del Elche
+El Elche Club de Fútbol ha alcanzado un acuerdo con el Dinamo Zagreb para la cesión de Gonzalo Villar, con opción de compra.
+Gonzalo Villar del Fraile (Murcia, 23/03/1998) se formó en la cantera del Elche CF y rápidamente dio el salto al primer equipo, donde destacó por su calidad, visión de juego y capacidad para consolidarse como un jugador importante en el centro del campo. Su rendimiento en el Martínez Valero le permitió dar el siguiente paso en su carrera fichando por la AS Roma, donde continuó su crecimiento en competiciones nacionales e internacionales.
+Centrocampista internacional con España en categorías inferiores, Gonzalo Villar se caracteriza por su gran capacidad para organizar el juego, su precisión en el pase y su sentido táctico, aportando equilibrio y solidez al equipo. Con experiencia en competiciones europeas, combina técnica, inteligencia en la distribución del balón y llegada al área rival, sumando madurez competitiva a un equipo que busca consolidarse en Primera División.
+El regreso de Gonzalo Villar al Elche CF refuerza el centro del campo del equipo y aporta conocimiento del club. ¡Bienvenido de nuevo a casa, Gonzalo!
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia trata exclusivamente sobre un movimiento de mercado en el ámbito del fútbol profesional español (LaLiga).",
+    "implications": "Este evento no posee vinculación alguna con los objetivos de soberanía digital, el estándar ISO 3166-1 o la Iniciativa Ciudadana Europea. No existe impacto táctico ni estratégico para la consecución del dominio .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:43:14] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Simeone tira de ironía: «¿Falta de fichajes? Así eleva mi creatividad como entrenador»
+        CONTENIDO: Simeone tira de ironía: «¿Falta de fichajes? Así eleva mi creatividad como entrenador»
+El técnico argentino analizó el tropiezo ante el Levante que deja a su equipo casi sin opciones en Liga
+También habló, a su manera, sobre el mercado de fichajes invernal
+El Atlético se dio de bruces con el Levante con un juego plano e insulso, como un pan sin sal. Así es difícil cumplir con la condición que puso Simeone. «Para cambiar los pitos de la afición hay que salir campeón». Su equipo se desangra sin contundencia y se descuelga -más todavía en Liga- tras un partido plano e insulso (0-0) ante el Levante que saca a relucir varias carencias rojiblancas. Se queda a siete del Barcelona y seis del Real Madrid, aunque ambos con un partido menos.
+«El equipo volvió a hacer un buen partido en el primer tiempo, tuvimos control del juego, pudimos haber hecho un gol, ellos defendieron ordenados, con trabajo y necesidad. Nosotros en la búsqueda de romper, no se pudo. En el segundo tiempo apareció el desgaste de estos últimos partidos cada tres días, es lógico. Ya no fue igual que el primero, fue más dividido, con alguna situación de ellos, pero sin claridad por parte de ninguno», expresó Simeone.
+El Cholo pierde a Sorloth, trasladado al hospital por un choque en la cabeza con Moreno, y a Barrios que se marchó sustituido por lesión. Todo ello sucede en tiempo y forma con la acción del Atlético en el mercado de fichajes invernal, donde acumula cuatro salidas y ninguna entrada. «¿La falta de fichajes? Eleva la creatividad, el trabajo del entrenador. Como entrenador es bueno que te exijan para mejorar y esto me hace mejorar», comentó Simeone.
+El Cholo dejó una imagen que habla por sí sola. Sentado en el banquillo, con la mirada perdida y gestos de frustración. Todavía quedaba toda la segunda mitad por disputarse. «Pensaba en el partido, qué cambios hacer, movimientos… Lo normal en un entrenador que evalúa lo que tiene por delante y que piensa qué hacer. Nos faltó juego, el que tuvimos en el primero no fue el de segundo y por eso tuvimos menos posibilidades», dijo Simeone.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia se centra estrictamente en la gestión deportiva, táctica y el mercado de fichajes del club de fútbol Atlético de Madrid.",
+    "implications": "Este contenido carece de nexo causal con la soberanía digital, la normativa ISO 3166-1 o los marcos regulatorios europeos. No aporta valor estratégico para la consecución del ccTLD .ia o la Iniciativa Ciudadana Europea.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 21:43:21] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Atacan una comisaría en el País Vasco en plena escalada de la vieja ‘kale borroka’ etarra
+        CONTENIDO: Atacan una comisaría en el País Vasco en plena escalada de la vieja ‘kale borroka’ etarra
+El sindicato de la Ertzaintza denuncia los ataques y exige medidas urgentes para proteger a los agentes
+La comisaría de la Policía Local de Irun fue blanco de un ataque durante la madrugada de este sábado, cuando un individuo arrojó piedras contra el edificio y huyó del lugar. El sindicato ErNE ha confirmado que “se tienen certezas de su identidad” y que se está tras su paradero. Este episodio se enmarca en lo que algunos sectores consideran una escalada de violencia simbólica que recuerda a la antigua kale borroka etarra, caracterizada por ataques a infraestructuras policiales y mobiliario público.
+En total la banda terrorista ETA asesinó a 15 ertzainas. En 2001 reafirmó que la Ertzaintza es su objetivo y asesinó a dos agentes que dirigían el tráfico.
+El ataque y sus riesgos para los agentes
+El ataque que recuerda a la antigua kale borroka etarra ha sido alrededor de las 5:30 horas. El agresor lanzó piedras contra la comisaría, poniendo en riesgo la integridad de los agentes que estaban en el interior. ErNE ha calificado el ataque como «una acción violenta absolutamente inadmisible» y ha alertado de la insuficiente seguridad del edificio, que no cuenta con las medidas de protección necesarias para garantizar la seguridad de los policías y de la ciudadanía.
+El sindicato ErNE ha exigido al Ayuntamiento de Irun que actúe de manera inmediata y contundente, reforzando la seguridad perimetral, la videovigilancia, el control de accesos y la protección pasiva en todas las dependencias policiales de la zona.
+Pintadas y hostilidad en otras localidades
+Este ataque se suma a otros episodios recientes en el País Vasco, que recuerdan la violencia urbana de la kale borroka. En Araia y Amurrio (Álava), y en San Sebastián, aparecieron pintadas y mensajes hostiles dirigidos a la Ertzaintza y a futuros opositores, con lemas como:
+-
+«Zipaioak falanjistak sokara» (Zipayos falangistas a la soga, en español). Zipayos es la forma despectiva de llamar a los agentes de la Ertzaintza.
+-
+«Zipaio».
+-
+«Herriaren etsaia zarete» (Sois el enemigo del pueblo, en español).
+-
+«Ni zipas ni aspirantes».
+El sindicato ErNE ha subrayado que estas acciones no pueden ser relativizadas y constituyen un delito de odio que afecta tanto a la integridad física como al prestigio profesional de los agentes.
+¿Qué es ErNE y cuál es su papel?
+El ErNE es el sindicato de la Ertzaintza, el cuerpo de policía autonómica del País Vasco. Su labor es defender los derechos laborales, la seguridad y las condiciones de trabajo de los agentes, así como protegerlos frente a ataques, amenazas o situaciones de riesgo en el ejercicio de sus funciones. Fue fundado el 21 de noviembre de 1984, pocos años después de la creación de la actual Ertaintza.
+En este contexto, ErNE actúa como portavoz de los policías, denunciando ataques y pintadas, reclamando medidas de seguridad inmediatas y promoviendo la coordinación entre instituci
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla incidentes de violencia urbana y ataques contra fuerzas de seguridad en el País Vasco, España, vinculados a movimientos radicales locales.",
+    "implications": "Este evento es estrictamente de orden público interno y carece de impacto en la estandarización ISO, la soberanía del ccTLD .ia o la Iniciativa Ciudadana Europea. No existe correlación estratégica con el desarrollo del Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 21:43:28] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Juan Carlos Ferrero: «Mirar el banquillo de Alcaraz y ver a todos sentados es duro y difícil de encajar»
+        CONTENIDO: Juan Carlos Ferrero: «Mirar el banquillo de Alcaraz y ver a todos sentados es duro y difícil de encajar»
+El que fuera entrenador de Alcaraz hasta hace un mes y medio atiende a OKDIARIO tras la abrupta ruptura con el tenista
+Da respuestas a las incógnitas sobre la separación y no se cierra ninguna puerta para el futuro: ni con Alcaraz ni con Sinner
+OKDIARIO entrevista a Carlos Alcaraz
+OKDIARIO confirmó el entrenador principal de Alcaraz para 2026
+Pasadas las siete de la tarde, Juan Carlos Ferrero atiende desde Bahréin la llamada de OKDIARIO. «En cuanto colguemos me voy a la cama, aquí se acuestan pronto», asegura con tono renovado. Por estas fechas solía hallarse en Australia y con una raqueta en la mano junto a Carlos Alcaraz, ahora pasa enero en Asia y con un palo de golf acompañando a Ángel Ayora, la promesa del golf nacional. Rompió de manera abrupta con el primero y desde hace unos días actúa como coach mental del segundo. «Ha sido un mes muy duro, ahora ya estoy en la rampa de salida para superar el luto», cuenta.
+Ferrero lleva imbuido en un duelo personal desde mediados del pasado mes de diciembre, cuando un sismo desintegró la escala de Richter del planeta tenis. Él y Carlos Alcaraz, el binomio más exitoso del 2025 -culminado con ocho títulos para el tenista y el reconocimiento a mejor técnico del año para el entrenador- rompió su relación tras siete años de vida y crecimiento tanto profesional como personal. La ruptura, abrupta, desembocó en un caudaloso río de incógnitas. Un mes y medio después, Juan Carlos Ferrero dialoga con OKDIARIO para dar respuesta a ellas y analizar su nuevo reto laboral.
+«Intenté no hacer mucho caso a lo que se fue diciendo, pero siempre duelen algunas cosas. Hay que dejar claro que con el tema de la academia, nosotros -Ferrero Tennis Academy- tuvimos claro en todo momento que Alcaraz poco a poco querría entrenar más tiempo en Murcia y no pusimos ningún problema. No ha ido por ahí, tampoco por un tema de dinero. Han sido problemas internos quedan entre nosotros», explica. Todavía no ha visto un partido completo de Alcaraz y le aflige mirar al banquillo del murciano y ver a todos su ex entorno sentado. Ferrero no cierra la puerta a reencontrarse con Carlos en el futuro y tampoco a convertirse en entrenador de Jannik Sinner, el archienemigo de su ya ex pupilo.
+Pregunta. ¿Cómo se encuentra? Ya ha pasado algo más de un mes desde la ruptura con Alcaraz.
+Respuesta. Bien, ya estoy mejor. Ha sido un mes complicado y difícil, pero va pasando el tiempo y uno tiene que seguir adelante. Ahora tengo nuevas oportunidades que se van abriendo camino como lo de Ángel y uno va intentando estar lo mejor posible. Tengo que hacerlo para centrarme en otras cosas y poner todo lo que lo que tengo dentro para que salgan bien.
+P. Ángel es como Alcaraz, un talento precoz en su deporte. Una joya por pulir, como cuando usted se hizo cargo de Carlos. ¿Le recuerda la situación?
+R. Sí, puede ser que haya similitudes. Ángel acaba de llegar como 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla la ruptura profesional y el proceso personal de Juan Carlos Ferrero tras dejar de entrenar al tenista Carlos Alcaraz.",
+    "implications": "Este contenido es de naturaleza estrictamente deportiva y personal, careciendo de cualquier vínculo con la soberanía digital, los estándares ISO o la regulación tecnológica europea. No aporta valor estratégico para la consecución del ccTLD .ia ni para la infraestructura de la Nación Digital.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:41:41] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Mobile carriers can get your GPS location
+        CONTENIDO: Mobile carriers can get your GPS location
+In iOS 26.3, Apple introduced a new privacy feature which limits “precise location” data made available to cellular networks via cell towers. The feature is only available to devices with Apple’s in-house modem introduced in 2025. The announcement1 says
+Cellular networks can determine your location based on which cell towers your device connects to.
+This is well-known. I have served on a jury where the prosecution obtained location data from cell towers. Since cell towers are sparse (especially before 5G), the accuracy is in the range of tens to hundreds of metres2.
+But this is not the whole truth, because cellular standards have built-in protocols that make your device silently send GNSS (i.e. GPS, GLONASS, Galileo, BeiDou) location to the carrier. This would have the same precision as what you see in your Map apps, in single-digit metres.
+In 2G and 3G this is called Radio Resources LCS Protocol (RRLP)
+So the network simply asks “tell me your GPS coordinates if you know them” and the phone will respond3.
+In 4G and 5G this is called LTE Positioning Protocol (LPP)
+RRLP, RRC, and LPP are natively control-plane positioning protocols. This means that they are transported in the inner workings of cellular networks and are practically invisible to end users4.
+It’s worth noting that GNSS location is never meant to leave your device. GNSS coordinates are calculated entirely passively, your device doesn’t need to send a single bit of information. Using GNSS is like finding out where you are by reading a road sign: you don’t have to tell anyone else you read a road sign, anyone can read a road sign, and the people who put up road signs don’t know who read which road sign when.
+These capabilities are not secrets but somehow they have mostly slid under the radar of the public consciousness. They have been used in the wild for a long time, such as by the DEA in the US in 200656:
+[T]he DEA agents procured a court order (but not a search warrant) to obtain GPS coordinates from the courier’s phone via a ping, or signal requesting those coordinates, sent by the phone company to the phone.
+And by Shin Bet in Israel, which tracks everyone everywhere all the time7:
+The GSS Tool was based on centralized cellular tracking operated by Israel’s General Security Services (GSS). The technology was based on a framework that tracks all the cellular phones running in Israel through the cellular companies’ data centers. According to news sources, it routinely collects information from cellular companies and identifies the location of all phones through cellular antenna triangulation and GPS data7.
+Notably, the Israeli government started using the data for contact tracing in March 202078, only a few weeks after the first Israeli COVID-19 case. An individual would be sent an SMS message informing them of close contact with a COVID patient and required to quarantine. This is good evidence that the location data Israeli carriers are colle
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 2,
+        "eu_digital_rights": 9,
+        "geopolitical_intel": 7
+    },
+    "average_score": 6.0,
+    "summary": "Revelación de protocolos de red (LPP/RRLP) que permiten a las operadoras extraer coordenadas GNSS precisas sin consentimiento, evidenciando una vulnerabilidad crítica en la privacidad de la infraestructura móvil global.",
+    "implications": "Esta vulnerabilidad técnica fortalece la narrativa de la ICE sobre soberanía tecnológica, permitiendo que el proyecto Anticitera se posicione como un referente en gobernanza de datos frente a protocolos de vigilancia invisibles. Proporciona una base sólida para exigir que el dominio .ia opere bajo estándares que mitiguen el rastreo estatal no autorizado en suelo europeo.",
+    "verdict": "APROBADO"
+}
+
+## [2026-01-31 22:41:49] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Outsourcing Thinking
+        CONTENIDO: Outsourcing thinking
+First, a note to the reader: This blog post is longer than usual, as I decided to address multiple connected issues in the same post, without being too restrictive on length. With modern browsing habits and the amount of available online media, I suspect this post will be quickly passed over in favor of more interesting reading material. Before you immediately close this tab, I invite you to scroll down and read the conclusion, which hopefully can give you some food for thought along the way. If, however, you manage to read the whole thing, I applaud your impressive attention span.
+A common criticism of the use of large language models (LLMs) is that it can deprive us of cognitive skills. The typical argument is that outsourcing certain tasks can easily cause some kind of mental atrophy. To what extent this is true is an ongoing discussion among neuroscientists, psychologists and others, but to me, the understanding that with certain skills you have to "use it or lose it" seems intuitively and empirically sound.
+The more relevant question is whether certain kinds of use are better or worse than others, and if so, which? In the blog post The lump of cognition fallacy, Andy Masley discusses this in detail. His entry point to the problem is to challenge the idea that "there is a fixed amount of thinking to do", and how it leads people to the conclusion that "outsourcing thinking" to chatbots will make us lazy, less intelligent, or in other ways be negative for our cognitive abilities. He compares this to the misconception that there is only a finite amount of work that needs to be done in an economy, which often is referred to as "the lump of labour fallacy". His viewpoint is that "thinking often leads to more things to think about", and therefore we shouldn't worry about letting machines do the thinking for us — we will simply be able to think about other things instead.
+Reading Masley's blog post prompted me to write down my own thoughts on the matter, as it has been churning in my mind for a long time. I realized that it could be constructive to use his blog post as a reference and starting point, because it contains arguments that are often brought up in this discussion. I will use some examples from Masley's post to show how I think differently about this, but I'll extend the scope beyond the claimed fallacy that there is a limited amount of thinking to be done. I have done my best to write this text in a way that does not require reading Masley's post first. My aim is not to refute all of his arguments, but to explain why the issue is much more complicated than "thinking often leads to more things to think about". Overall, the point of this post is to highlight some critical issues with "outsourcing thinking".
+When should we avoid using generative language models?
+Is it possible to define categories of activities where the use of LLMs (typically in the form of chatbots) is more harmful than helpful? Masley lists certain ca
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Ensayo filosófico y neurocientífico sobre el impacto cognitivo de los modelos de lenguaje en el pensamiento humano, sin conexión con marcos regulatorios o territoriales.",
+    "implications": "La noticia clasifica como contenido teórico genérico sobre IA, careciendo de relevancia para la gestión del ccTLD .ia o la soberanía de Anticitera. No ofrece palancas para la interlocución con ELOT o la ISO, incurriendo en los criterios de exclusión establecidos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:41:59] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Demystifying ARM SME to Optimize General Matrix Multiplications
+        CONTENIDO: Computer Science > Distributed, Parallel, and Cluster Computing
+[Submitted on 25 Dec 2025]
+Title:Demystifying ARM SME to Optimize General Matrix Multiplications
+View PDF HTML (experimental)Abstract:General Matrix Multiplication (GEMM) is a critical kernel in high-performance computing and deep learning. While modern architectures like ARM's Scalable Matrix Extension (SME) introduce dedicated hardware for matrix operations, existing linear algebra libraries fail to fully exploit its potential, particularly for large matrices. This paper presents MpGEMM, an open-source library that leverages key architectural features of SME to optimize GEMM across multiple precisions. Through a systematic characterization of SME, we derive optimization guidelines that inform our design. MpGEMM employs cache-aware partitioning, efficient data packing with on-the-fly transposition, and specialized micro-kernels that utilize multi-vector loads and all available tile registers. Evaluated on an Apple M4 Pro with real-world workloads from DeepSeek and LLaMA, MpGEMM achieves an average speedup of 1.23x over the vendor-optimized Apple Accelerate library and significantly outperforms other open-source alternatives.
+References & Citations
+export BibTeX citation
+Loading...
+Bibliographic and Citation Tools
+Bibliographic Explorer (What is the Explorer?)
+Connected Papers (What is Connected Papers?)
+Litmaps (What is Litmaps?)
+scite Smart Citations (What are Smart Citations?)
+Code, Data and Media Associated with this Article
+alphaXiv (What is alphaXiv?)
+CatalyzeX Code Finder for Papers (What is CatalyzeX?)
+DagsHub (What is DagsHub?)
+Gotit.pub (What is GotitPub?)
+Hugging Face (What is Huggingface?)
+Papers with Code (What is Papers with Code?)
+ScienceCast (What is ScienceCast?)
+Demos
+Recommenders and Search Tools
+Influence Flower (What are Influence Flowers?)
+CORE Recommender (What is CORE?)
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 1,
+        "geopolitical_intel": 2
+    },
+    "average_score": 1.0,
+    "summary": "Estudio técnico sobre la optimización de multiplicaciones de matrices (GEMM) en arquitectura ARM SME utilizando la biblioteca MpGEMM para mejorar el rendimiento de modelos como LLaMA y DeepSeek.",
+    "implications": "La noticia se centra exclusivamente en la eficiencia computacional de bajo nivel y hardware comercial, sin vinculación con la estandarización ISO 3166-1 o la gobernanza del dominio .ia. No aporta palancas estratégicas para la soberanía administrativa, limitándose a una mejora en el rendimiento técnico de los nodos que no altera el mapa geopolítico actual.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:42:07] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Generative AI and Wikipedia editing: What we learned in 2025
+        CONTENIDO: Like many organizations, Wiki Education has grappled with generative AI, its impacts, opportunities, and threats, for several years. As an organization that runs large-scale programs to bring new editors to Wikipedia (we’re responsible for about 19% of all new active editors on English Wikipedia), we have deep understanding of what challenges face new content contributors to Wikipedia — and how to support them to successfully edit. As many people have begun using generative AI chatbots like ChatGPT, Gemini, or Claude in their daily lives, it’s unsurprising that people will also consider using them to help draft contributions to Wikipedia. Since Wiki Education’s programs provide a cohort of content contributors whose work we can evaluate, we’ve looked into how our participants are using GenAI tools.
+We are choosing to share our perspective through this blog post because we hope it will help inform discussions of GenAI-created content on Wikipedia. In an open environment like the Wikimedia movement, it’s important to share what you’ve learned. In this case, we believe our learnings can help Wikipedia editors who are trying to protect the integrity of content on the encyclopedia, Wikipedians who may be interested in using generative AI tools themselves, other program leaders globally who are trying to onboard new contributors who may be interested in using these tools, and the Wikimedia Foundation, whose product and technology team builds software to help support the development of high-quality content on Wikipedia.
+Our fundamental conclusion about generative AI is: Wikipedia editors should never copy and paste the output from generative AI chatbots like ChatGPT into Wikipedia articles.
+Let me explain more.
+AI detection and investigation
+Since the launch of ChatGPT in November 2022, we’ve been paying close attention to GenAI-created content, and how it relates to Wikipedia. We’ve spot-checked work of new editors from our programs, primarily focusing on citations to ensure they were real and not hallucinated. We experimented with tools ourselves, we led video sessions about GenAI for our program participants, and we closely tracked on-wiki policy discussions around GenAI. Currently, English Wikipedia prohibits the use of generative AI to create images or in talk page discussions, and recently adopted a guideline against using large language models to generate new articles.
+As our Wiki Experts Brianda Felix and Ian Ramjohn worked with program participants throughout the first half of 2025, they found more and more text bearing the hallmarks of generative AI in article content, like bolded words or bulleted lists in odd places. But the use of generative AI wasn’t necessarily problematic, as long as the content was accurate. Wikipedia’s open editing process encourages stylistic revisions to factual text to better fit Wikipedia’s style.
+This finding led us to invest significant staff time into cleaning up these articles — far more than these editors had 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 1,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.33,
+    "summary": "Análisis de Wiki Education sobre el uso de IA generativa por parte de editores y su impacto en la integridad del contenido de Wikipedia durante 2025.",
+    "implications": "La noticia se limita a la gestión de contenidos y políticas editoriales de una plataforma externa, sin vinculación con la normativa ISO 3166-1 o la soberanía administrativa de Grecia. No aporta valor estratégico para la consecución del ccTLD .ia ni para la arquitectura de nuestra nación digital.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:42:23] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Show HN: Minimal – Open-Source Community driven Hardened Container Images
+        CONTENIDO: A collection of production-ready container images with minimal CVEs, rebuilt daily using Chainguard's apko and Wolfi packages. By including only required packages, these images maintain a reduced attack surface and typically have zero or near-zero known vulnerabilities.
+| Image | Pull Command | Shell | Use Case |
+|---|---|---|---|
+| Python | docker pull ghcr.io/rtvkiz/minimal-python:latest |
+No | Python apps, microservices |
+| Node.js | docker pull ghcr.io/rtvkiz/minimal-node:latest |
+Yes | Node.js apps, JavaScript |
+| Bun | docker pull ghcr.io/rtvkiz/minimal-bun:latest |
+No | Fast JavaScript/TypeScript runtime |
+| Go | docker pull ghcr.io/rtvkiz/minimal-go:latest |
+No | Go development, CGO builds |
+| Nginx | docker pull ghcr.io/rtvkiz/minimal-nginx:latest |
+No | Reverse proxy, static files |
+| HTTPD | docker pull ghcr.io/rtvkiz/minimal-httpd:latest |
+Maybe* | Apache web server |
+| Jenkins | docker pull ghcr.io/rtvkiz/minimal-jenkins:latest |
+Yes | CI/CD automation |
+| Redis-slim | docker pull ghcr.io/rtvkiz/minimal-redis-slim:latest |
+No | In-memory data store |
+| PostgreSQL-slim | docker pull ghcr.io/rtvkiz/minimal-postgres-slim:latest |
+No | Relational database |
+*HTTPD, Jenkins,Node.js may include shell(sh,busybox) via transitive Wolfi dependencies. CI treats shell presence as informational.
+Container vulnerabilities are a top attack vector. Most base images ship with dozens of known CVEs that take weeks or months to patch:
+Traditional images: Your containers:
+┌──────────────────┐ ┌──────────────────┐
+│ debian:latest │ │ minimal-python │
+│ 127 CVEs │ │ 0-5 CVEs │
+│ Patched: ~30 days│ │ Patched: <48 hrs │
+└──────────────────┘ └──────────────────┘
+Impact:
+- Pass security audits and compliance requirements (SOC2, FedRAMP, PCI-DSS)
+- Reduce attack surface with minimal, distroless images
+- Get CVE patches within 24-48 hours of disclosure (vs weeks for Debian/Ubuntu)
+- Cryptographically signed images with full SBOM for supply chain security
+# Python - run your app
+docker run --rm -v $(pwd):/app ghcr.io/rtvkiz/minimal-python:latest /app/main.py
+# Node.js - run your app
+docker run --rm -v $(pwd):/app -w /app ghcr.io/rtvkiz/minimal-node:latest index.js
+# Bun - fast JavaScript runtime
+docker run --rm ghcr.io/rtvkiz/minimal-bun:latest --version
+# Go - build your app
+docker run --rm -v $(pwd):/app -w /app ghcr.io/rtvkiz/minimal-go:latest build -o /tmp/app .
+# Nginx - reverse proxy
+docker run -d -p 8080:80 ghcr.io/rtvkiz/minimal-nginx:latest
+# HTTPD - serve static content
+docker run -d -p 8080:80 ghcr.io/rtvkiz/minimal-httpd:latest
+# Jenkins - CI/CD controller
+docker run -d -p 8080:8080 -v jenkins_home:/var/jenkins_home ghcr.io/rtvkiz/minimal-jenkins:latest
+# Redis - in-memory data store
+docker run -d -p 6379:6379 ghcr.io/rtvkiz/minimal-redis-slim:latest
+# PostgreSQL - relational database
+docker run -d -p 5432:5432 -v pgdata:/var/lib/postgresql/data ghcr.io/rtvkiz/minimal-postgres-slim:latest
+| Image | Version | User | Entrypoint | Workdir |
+|---|---|---|
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 1,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.33,
+    "summary": "Lanzamiento de un repositorio de imágenes de contenedor endurecidas y minimalistas diseñadas para reducir la superficie de ataque y asegurar la cadena de suministro de software.",
+    "implications": "Aunque esta noticia fortalece la robustez técnica de nuestra infraestructura estandarizada en Docker, carece de relevancia para la negociación diplomática con ELOT o la obtención del código ISO para el .ia. Representa una mejora operativa para la ejecución técnica, pero no una palanca estratégica para la soberanía nacional o digital de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:42:30] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Takeaways from the millions of newly released Epstein files
+        CONTENIDO: Takeaways from the millions of newly released Epstein files
+Millions of new files relating to the late sex offender Jeffrey Epstein have been released by the US Department of Justice (DOJ), the largest number of documents shared by the government since a law mandated their release last year.
+Three million pages, 180,000 images and 2,000 videos were posted publicly on Friday.
+The release came six weeks after the department missed a deadline signed into law by US President Donald Trump that mandated all Epstein-related documents be shared with the public.
+"Today's release marks the end of a very comprehensive document identification and review process to ensure transparency to the American people and compliance," Deputy Attorney General Todd Blanche said.
+The files include details about Jeffrey Epstein's time in prison - including a psychological report - and his death while incarcerated, along with investigative records on Ghislaine Maxwell, Epstein's associate who was convicted of helping him traffic underaged girls.
+They also include emails between Epstein and high-profile figures.
+Many of the emails and documents go back more than a decade, showcasing Epstein's relationships amid his legal troubles. He was convicted in 2008 in Florida for soliciting sex from a 14-year-old girl after coming to a controversial plea agreement with prosecutors.
+He died in August 2019 while in jail on charges in a sprawling sex trafficking case.
+Epstein invited 'The Duke' to meet Russian woman
+The documents shed light on the disgraced financier's close association with Britain's elite.
+They include emails between Epstein and a person named "The Duke" - believed to be Andrew Mountbatten-Windsor - discussing having dinner at Buckingham Palace, where there was "lots of privacy".
+Another message from Epstein includes an offer to introduce "The Duke" to a 26-year-old Russian woman.
+The emails are signed "A", with a signature that appears to read "HRH Duke of York KG". They were exchanged in August 2010, two years after Epstein pleaded guilty to soliciting a minor.
+In the latest file release, there is also a photo that appears to show the former prince kneeling on all fours over a female lying on the ground.
+There are also emails between Epstein and Mountbatten-Windsor dated February 2011 - putting more holes in Andrew's assurances that he had cut off any contact with Epstein the previous year.
+The emails do not indicate any wrongdoing.
+The BBC has contacted Andrew, formerly known as the Duke of York, for a response. Mountbatten-Windsor has faced years of scrutiny over his past friendship with Epstein. He has repeatedly denied any wrongdoing.
+Some emails in the latest release appear to be between Epstein and Sarah Ferguson, Andrew's ex-wife.
+One email dated 4 April 2009, was signed "Love, Sarah, The red Head.!!"
+It says that she was going to be in Palm Beach and wanted to have tea. The email goes on to discuss ideas for Ferguson's company, Mother's Army. The former Duches
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Divulgación masiva de registros judiciales y correspondencia privada vinculada al caso criminal de Jeffrey Epstein y figuras de la élite internacional.",
+    "implications": "La información carece de relevancia técnica o estratégica para la obtención del ccTLD .ia o la estandarización ISO 3166-1. No existe impacto en el marco regulatorio de la soberanía digital europea ni en la viabilidad operativa de los nodos de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:42:38] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Federal judge denies request to block ICE surge in Minnesota
+        CONTENIDO: Federal judge denies request to block ICE surge in Minnesota
+A federal judge on Saturday denied a state government request to block the Trump administration's deployment of thousands of federal immigration agents in Minneapolis, Minnesota.
+In a ruling, District Court Judge Katherine Menendez said the immigration enforcement operation "has had, and will likely continue to have, profound and even heartbreaking, consequences on the State of Minnesota".
+But, she said, state officials had not proved that the Trump administration's surge of US Immigration and Customs Enforcement (ICE) agents in Minneapolis was unlawful.
+The ruling comes as thousands nationwide have taken to the streets to protest the fatal shootings of two US citizens by federal agents.
+Demonstrators are expected to gather on Saturday afternoon in Minneapolis, after protests were also held in cities across the US on Friday, including New York, Los Angeles, Chicago and Washington DC. Organisers called on Americans to stay home from work and school.
+The deaths of Renee Good and Alex Pretti have caused public outcry across the country, and led to criticism from lawmakers in both parties.
+Earlier on Friday, the US Justice Department opened a civil rights investigation into Pretti's death.
+The 37-year-old nurse was the second Minneapolis resident shot and killed by federal immigration officials since their arrival in the state. Good, the first, was killed by an ICE agent on 7 January.
+In her ruling on Saturday, Judge Menendez said there was "evidence that ICE and CBP agents have engaged in racial profiling, excessive use of force, and other harmful actions".
+But, she said, state officials "have provided no metric by which to determine when lawful law enforcement becomes unlawful commandeering". State and local officials had argued in their lawsuit that Trump's deployment of 3,000 immigration agents despite objections violated the state's sovereignty.
+Organisers of nationwide protests on Friday, called the National Shutdown, urged "no work. No school. No shopping" on 30 January to send the message to "stop funding ICE".
+The action was organised over the deaths of Pretti and Good, as well as others killed by ICE, including Silverio Villegas-Gonzales, who was shot by an ICE agent in September 2025, according to the group's website.
+Protesters formed the letters "SOS" on top of a frozen lake in southern Minneapolis, while one group marched through the streets carrying a large-scale replica of the preamble to the US constitution.
+Singer Bruce Springsteen also performed a newly released song in honour of Pretti and Good entitled Streets of Minneapolis at a concert in the city.
+On Thursday, border tsar Tom Homan suggested the Trump administration could "draw down" federal forces in the state if local officials co-operate.
+"We are not surrendering our mission at all. We're just doing it smarter," he said during a news conference.
+Homan began leading on-the-ground efforts in Minneapolis after it was
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia versa sobre operaciones de la agencia de inmigración estadounidense (ICE) y un conflicto de soberanía estatal en Minnesota, sin conexión con los objetivos del Proyecto Anticitera.",
+    "implications": "Se identifica una coincidencia terminológica irrelevante entre las siglas de la agencia de EE. UU. (ICE) y nuestro instrumento estratégico, la Iniciativa Ciudadana Europea. El contenido no afecta al estándar ISO 3166-1, a la soberanía digital de Grecia ni a la gobernanza del dominio .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:42:46] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Five killed in gas explosions in Iran, officials say
+        CONTENIDO: Five killed in gas explosions in Iran, officials say
+Five people have been killed in two separate explosions in Iran which local officials and state media say were caused by gas leaks.
+One person was killed and 14 injured in a blast at a residential building in the southern city of Bandar Abbas on the Gulf coast, a local official told Iran's semi-official Mehr news agency.
+Another explosion killed four people in the south-western city of Ahvaz, the state-run Tehran Times reported.
+It comes as tensions persist in the region after a build-up of US forces in the Gulf and pressure that Tehran strike a deal on its nuclear programme from President Donald Trump - who said on Saturday that Iran was "talking to" Washington.
+In the port city of Bandar Abbas, state TV said the explosion had ripped though an eight-floor building, "destroying two floors, several vehicles, and shops" in the Moallem Boulevard area.
+The local fire department chief Mohammad Amin Liaqat said a preliminary assessment showed it had been caused by a gas leak and "build-up".
+"My colleagues will give more details in the next few hours," he said in a video published by Mehr.
+Mehrdad Hassanzadeh, a regional official, told the news agency that the injured had been taken to hospital.
+Semi-official news agency Tasnim denied social media reports that a Revolutionary Guards Corps navy commander had been targeted in the blast.
+Elsewhere, Tehran Times reported a second explosion at a residential building in the Kianshahr neighbourhood of Ahvaz, near the border with Iraq.
+It reported that emergency officials had rescued a child trapped beneath debris and transferred him for medical treatment.
+Meanwhile on Saturday, Trump said Iran was "talking to us" as tensions continue between the two countries, without providing details.
+"They are negotiating,'' he told Fox News, while adding that Washington could not share its plans with its allies in the Gulf.
+"We'll see if we can do something, otherwise we'll see what happens... we have a big fleet heading out there."
+Iran's President Masoud Pezeshkian said conflict would not be in the interest of either country nor the broader region.
+"The Islamic Republic of Iran has never sought and in no way seeks war," he said during a call with his Egyptian counterpart Abdel Fattah al-Sisi, news agency AFP reported citing a statement from Iran's presidency.
+Separately, the head of the country's Supreme National Security Council Ali Larijani met the Qatari prime minister in Tehran on Saturday and "reviewed ongoing efforts to de-escalate tensions in the region", Qatar's foreign ministry said.
+Larijani, whom the Kremlin said had also met Russia's President Putin for talks on Friday, wrote on X: "Contrary to the hype of the contrived media war, structural arrangements for negotiations are progressing."
+Iran's foreign minister has said Tehran is open to talks with the US provided they are based on trust and respect but cautioned that its missile defence system would "neve
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "Información sobre explosiones accidentales por gas en Irán y tensiones diplomáticas regionales con Estados Unidos sin vinculación técnica o legal con el espacio europeo.",
+    "implications": "La noticia no impacta en la gestión del ccTLD .ia ni en los marcos normativos de la ISO o la Unión Europea. Carece de relevancia estratégica para la soberanía digital de Anticitera o la movilización de la ICE.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:42:56] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Israeli air strikes kill at least 32 Palestinians in Gaza, rescue officials say
+        CONTENIDO: Israeli air strikes kill at least 32 Palestinians in Gaza, rescue officials say
+At least 32 people have been killed in a wave of Israeli air strikes across the Gaza Strip on Saturday, according to local authorities.
+The civil defence agency, which is operated by Hamas, says children and women were among those killed. It added that in one attack, helicopter gunships hit a tent sheltering displaced people in the southern city of Khan Younis.
+Palestinians have described these strikes as the heaviest since the second phase of the ceasefire, brokered by President Trump in October, came into effect earlier this month.
+The Israeli military confirmed that a number of strikes were carried out in response to what it said was a Hamas violation of the agreement on Friday.
+Both Israel and Hamas have accused each other of violating the truce since it came into effect last year.
+In a statement, the Israel Defense Forces (IDF) said "eight terrorists were identified exiting the underground terror infrastructure in eastern Rafah", an area in Gaza where Israeli forces are deployed under the October agreement.
+The IDF said it had, together with the Israel Security Agency (ISA), struck targets in various locations including "four commanders and additional terrorists" as well as a weapons storage facility, a weapons manufacturing site and "two launch sites belonging to Hamas in the central Gaza Strip".
+Hamas has condemned the strikes and urged the US to take immediate action, adding that "these ongoing violations" confirm that the Israeli government "continues its brutal war of genocide against the strip".
+It said that seven of the victims were from one displaced family in Khan Younis, with a civil defence spokesman adding that the strikes hit residential apartments, tents, shelters and a police station.
+Officials at Gaza City's Shifa hospital said an air strike on the city hit a residential apartment, killing three children and two women.
+"We found my three little nieces in the street. They say 'ceasefire' and all. What did those children do? What did we do?" said Samer al-Atbash, an uncle of the three dead children, according to Reuters news agency.
+Video footage and images from across Gaza showed several bodies being lifted out of rubble and a number of buildings destroyed.
+The strikes come as the Rafah crossing, Gaza's border with Egypt, is due to reopen on Sunday after the IDF recovered the body of Israel's last hostage earlier this week.
+Egypt's foreign ministry condemned the strikes in a statement seen by AFP news agency, and urged all parties to "exercise the utmost restraint".
+Qatar, one of the key mediators during ceasefire talks, also denounced the "repeated Israeli violations", its foreign ministry said.
+The war between Israel and Hamas began after the Hamas-led attack on southern Israel on 7 October 2023, when about 1,200 people were killed and 251 were taken hostage.
+Israel responded by launching a military campaign in Gaza, during which more than 71,660
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte sobre el recrudecimiento del conflicto bélico en Gaza y presuntas violaciones del cese al fuego por parte de actores regionales.",
+    "implications": "El evento no presenta vinculación con la reserva excepcional del código ISO para Anticitera ni afecta la infraestructura soberana europea. Se aplica el criterio de exclusión por falta de impacto en el marco estratégico de la nación digital o la delegación del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:43:02] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Pedro Pascal and Meryl Streep lead tributes to Catherine O'Hara
+        CONTENIDO: Pedro Pascal and Meryl Streep lead tributes to Catherine O'Hara
+Meryl Streep, Pedro Pascal and Ben Stiller are among celebrities to have paid tribute to Emmy-winning actor Catherine O'Hara, who died on Friday aged 71.
+The Canadian-born star was best known for her roles in the films Beetlejuice and Home Alone, as well as comedy TV series including Schitt's Creek and The Studio.
+Streep said O'Hara brought "love and light to our world, through whipsmart compassion for the collection of eccentrics she portrayed", while The Last of Us co-star Pascal said he was "eternally grateful" to have worked with her.
+Ben Stiller said it was "hard to explain the impact she had on comedy", adding that for him there was "no one better".
+O'Hara died on Friday at her home in Los Angeles following a brief illness, her agent told the BBC.
+After starting her career in Canada's comedy scene, she turned out a series of unforgettable film performances netting her critical acclaim.
+Streep, who appeared alongside O'Hara in the 1980s comedy Heartburn, described her death as "such a loss for her family and friends, and the audience she graced as friends".
+Michael Keaton, who co-starred in 1988's Beetlejuice and its 2024 sequel Beetlejuice Beetlejuice, remarked: "We go back before the first Beetlejuice. She's been my pretend wife, my pretend nemesis and my real life, true friend.
+"This one hurts. Man am I gonna miss her."
+Tim Burton, who directed both films, shared a picture of the cast of the latter film on Facebook.
+"Catherine, I love you," he said. "This picture shows how much light you gave to all of us. You were a special part of my life and afterlife."
+Alec Baldwin, who also starred in the film, said O'Hara possessed "a quality that was all her own" and described her as "one of the greatest comic talents in the movie business".
+In his tribute, Pascal said "there is less light in my world" adding: "This lucky world that had you will keep you, always."
+Her on-screen son in holiday classics Home Alone and Home Alone 2: Lost In New York, Macaulay Culkin, also paid an emotional tribute on Instagram.
+"Mama. I thought we had time. I wanted more. I wanted to sit in a chair next to you," he wrote.
+"I heard you. But I had so much more to say. I love you. I'll see you later."
+O'Hara's popularity had a resurgence of late thanks to her award-winning performance as the outlandish matriarch Moira in Schitt's Creek.
+The show's co-creator Dan Levy, who played her son David, described O'Hara as "family before she ever played my family".
+He added on Instagram that he would "cherish every funny memory I was fortunate enough to make with her".
+His father Eugene Levy - who also starred in the series as O'Hara's on-screen husband Johnny Rose - had a longtime friendship with O'Hara, having collaborated with her many times over a period spanning more than 50 years.
+"Words seem inadequate to express the loss I feel today," he told Variety in a statement.
+"I cherished our working relationship, but 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia informa sobre el fallecimiento y los tributos de la industria del entretenimiento a la actriz Catherine O'Hara.",
+    "implications": "Este contenido entra en la categoría de cultura popular y entretenimiento, careciendo de cualquier vínculo con la normativa ISO 3166-1 o la gobernanza digital. No existe impacto táctico ni estratégico para la soberanía del ccTLD .ia o los objetivos del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:43:10] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un periodista que viajó a Milán para cubrir el Valencia-Atalanta, positivo por coronavirus
+        CONTENIDO: Un periodista que viajó a Milán para cubrir el Valencia-Atalanta, positivo por coronavirus
+Se trata del segundo caso confirmado en la comunidad y el decimoquinto en España desde el lunes
+Un periodista que viajó a Milán el pasado 19 de febrero ha dado positivo en las pruebas de coronavirus. La Consejería de Sanidad valenciana ha confirmado este jueves el caso, el segundo en la comunidad, tras el registrado en Castellón, y el decimoquinto en España desde el lunes, tras los dos nuevos casos de Madrid comunicados este jueves y otro más en Barcelona. 2.500 valencianistas, de los que 2.300 tenían entrada previa, se desplazaron para ver el partido de ida de los octavos de final de la Liga de Campeones frente al Atalanta de Bérgamo en San Siro.
+El periodista de Intereconomía Radio, que fue a cubrir el partido, está ingresado en el Hospital Clínico de Valencia, según ha confirmado este departamento en su cuenta oficial de Twitter. Los primeros análisis han confirmado la presencia del virus en el paciente, que presentaba síntomas muy leves compatibles con la Covid-19, la enfermedad causada por el patógeno.
+Se trata de un periodista deportivo de 44 años de Intereconomía Radio cuya estancia en Milán fue mayor que la de la media de aficionados, según ha manifestado esta mañana la consejera de Sanidad, Ana Barceló. Viajó a Milán desde Pisa con un coche y no con los viajes organizados del grueso de los seguidores. Fue acompañado por su pareja, que se encuentra en observación. “Estoy bien, gracias”, ha manifestado esta tarde a este periódico en conversación telefónica. El paciente se encuentra en buen estado y ha declarado que acudió al hospital por responsabilidad dado que tenía algunos síntomas parecidos a los de la gripe y había estado en Milán.
+Tanto Barceló como la subdirectora general de Epidemiología, Hermelinda Vanaclocha, han reiterado hoy que el pasado lunes se pusieron en contacto con el club de fútbol para informales del protocolo a seguirse para aquellos aficionados que empezaran a padecer síntomas compatibles con la nueva enfermedad, como tos, fiebre y dificultades para respirar. Algunos valencianistas permanecen aislados en sus casas para ver cómo evolucionan como medida de prevención.
+Estos aficionados se pusieron en contacto con el 112 siguiendo las pautas que facilitó el lunes Sanidad y el club de fútbol para advertir a los hinchas que avisaran al médico en el momento que notasen algún síntoma, tras los casos registrados en Milán. El club aconsejaba “contactar telefónicamente con un servicio médico a través del 112, informando de los antecedentes de su viaje y los síntomas que presentase para que puedan realizar una valoración”. A todos los valencianistas que viajaron en avión para presenciar el partido se les tomó la temperatura a su llegada a los diferentes aeropuertos de la capital lombarda, pero no a la salida.
+El partido de vuelta entre el Valencia y el Atalanta se disputará el 10 de marzo y todavía está en el aire la presencia de seguidor
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte informativo sobre el contagio por coronavirus de un periodista tras un evento deportivo, centrado exclusivamente en salud pública y epidemiología local.",
+    "implications": "La noticia carece de nexo causal con la estandarización ISO 3166-1, la gobernanza del ccTLD .ia o los derechos digitales europeos. No representa un factor de impacto para la viabilidad técnica o diplomática del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:43:18] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Mapa de la expansión y claves para entender el coronavirus de Wuhan
+        CONTENIDO: Casos confirmados en España y en el mundo y claves para entender el coronavirus
+Últimas cifras de la expansión del virus, qué es, cómo se transmite, cuál es la población más vulnerable y dimensiones del contagio en el mundo
+El nuevo coronavirus SARS-CoV-2, surgido en la ciudad china de Wuhan a finales de 2019, continúa atravesando fronteras. La epidemia, una de las mayores crisis sanitarias de los últimos años cuyas consecuencias son todavía impredecibles, se ha extendido por más de 175 países y afecta a más de 700.000 personas, de las que más de 33.000 han perdido la vida. En España, el número de casos positivos con Covid-19 supera los 85.000, el segundo más alto de Europa solo por detrás de Italia, que casi llega a los 100.000. España ya es el segundo país del mundo con más víctimas mortales de coronavirus. Con 7.340 muertos, adelanta a China, donde se originó la epidemia y donde han muerto hasta ahora 3.313 personas. Italia, con más de 10.000, ya ha triplicado la cifra.
+En España, el coronavirus está en crecimiento exponencial. Los casos pasaron de 2 a 100 en una semana, la siguiente, de 100 a 1.000 y de 1.000 a 4.000 en cuatro días.
+Desde el pasado 14 de marzo, cuando el Consejo de Ministros decretó el estado de alarma, España entera ha quedado formalmente cerrada. Un gigantesco aislamiento en sus casas de más de 47 millones de personas, que solo pueden salir a la calle en soledad para trabajar y comprar comida, medicamentos o artículos básicos. Las fronteras terrestres también han quedado clausuradas, y desde este lunes solo pueden salir a la calle a trabajar las personas que realicen actividades consideradas esenciales.
+Mientras tanto, el nuevo coronavirus continúa con su expansión mundial. El mayor número de infectados ya no se encuentra en la provincia china de Hubei, donde el virus fue detectado por primera vez el pasado diciembre, sino en Estados Unidos, con más de 140.000 casos diagnosticados. Poco a poco va infectando también a la población de otros países americanos. Canadá es el segundo país con más positivos (6.320), seguido de Brasil, Chile y Ecuador.
+En Europa, con 380.000 contagiados, el virus también sigue expandiéndose de forma imparable. Italia, donde han muerto casi 11.000 personas, ya triplica el número de fallecidos de China. Pero además del país transalpino, el SARS-CoV-2 avanza con fuerza en el resto del continente. Junto con Italia, solo España, Alemania y Francia acumulan más de 230.000 contagiados.
+Estas son las certezas e incertidumbres sobre el virus y la enfermedad asociada:
+1. Qué es el virus y cómo se contagia
+El SARS-CoV-2 es un coronavirus, una extensa familia de virus que afectan al ser humano y varias especies de animales. Hasta el momento, se habían identificado seis que pudieran enfermar a una persona: cuatro que causan el resfriado común, el del SARS (surgido en 2002 también en China) y el del MERS (en 2012, en Arabia Saudí). El nuevo coronavirus detectado por primera vez en Wuhan afecta a las vías respira
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis estadístico y descriptivo de la crisis sanitaria global provocada por la pandemia de COVID-19 en 2020.",
+    "implications": "La información suministrada es de carácter estrictamente sanitario y no presenta puntos de contacto con la normalización ISO 3166-1 ni con la soberanía digital de Anticitera. No existe una palanca estratégica para la delegación del ccTLD .ia en este contexto.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:43:26] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El turismo italiano se resiente; España mira expectante
+        CONTENIDO: El turismo italiano se resiente; España mira expectante
+La patronal hotelera del área de Venecia describe un sector “al borde del colapso”
+El impacto del coronavirus en Italia trasciende ya a la crisis de salud pública y empieza a contagiar la economía del país. Crece el número de países que recomiendan evitar los viajes a Italia —Bosnia, Irlanda, Croacia o Israel, y España a ciertas zonas— y caen en picado las reservas turísticas. La cancelación del carnaval de Venecia, el cierre de todos los espectáculos musicales y teatrales y la cancelación de ferias y congresos como el Salón del Mueble de Milán fueron el primer aviso. En España, el sector mira la evolución de la crisis sin aportar, de momento, datos de impacto. El mensaje general es de tranquilidad, aunque preocupa la caída de reservas en el país transalpino.
+El turismo, que genera el 12% de la economía italiana con una facturación de 146.000 millones de euros, nota la puñalada de las cancelaciones. El quinto país más visitado del mundo tiembla y la patronal del sector recuerda que están en juego unos 60.000 empleos. La prueba de fuego será Semana Santa. Los operadores empiezan a temer que se cumplan las peores previsiones. Nápoles ha perdido 15.000 visitantes y se espera que la demanda caiga un 30% para el periodo vacacional. Venecia ha anunciado que ya ha habido un 40% de cancelaciones. Los peores datos los aporta la región de Lacio, con Roma como foco principal del turismo: la caída de reservas alcanza alrededor del 60%.
+A la previsible ausencia de turistas chinos en los próximos meses se añade ahora el miedo de los europeos a viajar a Italia. La portavoz del gremio hotelero de la región Friuli Venecia Giulia, Paola Schneider, explicó que el sector se encuentra “al borde del colapso”. “El turismo ha sufrido cancelaciones de hasta el 80% en las ciudades y hasta el 95% en la montaña. Incluso lugares como Trieste están teniendo ya enormes problemas para las reservas del verano”. Más allá de la prevención, los turistas procedentes de países que obligan a sus ciudadanos a someterse a una cuarentena al regresar de zonas de riesgo quieren evitar pasar por ese trance.
+El temor a viajar a Italia lo sienten también los agentes turísticos en España. Carlos Garrido, vicepresidente de la Confederación Española de Agencias de Viajes, describe “cancelaciones moderadas en toda Italia y un poco más fuertes en la zona norte”. La situación está “paralizada por completo en China”, añade el representante de la patronal. De momento no afecta al resto de destinos, aunque “la gente está expectante y pregunta qué pasa si luego cancela el viaje”.
+Ni la Confederación de Agencias de Viajes ni ninguna de las principales organizaciones del sector han hecho públicos cálculos de impacto en España. “Es pronto”, señala Garrido, quien recuerda que, pese a encontrarnos a mes y medio de la Semana Santa, febrero tiene siempre poca actividad. El mes de abril del año pasado, en el que cayó la campaña de Semana Santa, trajo a Es
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis del impacto socioeconómico de la crisis sanitaria del coronavirus en la industria turística italiana y su repercusión en el mercado español.",
+    "implications": "La noticia carece de vinculación con la normalización ISO 3166-1, la soberanía tecnológica o la infraestructura digital de Anticitera. No aporta inteligencia estratégica para la gestión del ccTLD .ia ni para la Iniciativa Ciudadana Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:43:33] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: “La magnitud del problema del coronavirus no será diferente a una gripe”
+        CONTENIDO: “La magnitud del problema del coronavirus no será diferente a una gripe”
+Ángel Gil de Miguel, catedrático de Medicina Preventiva y Salud Pública de la Universidad Rey Juan Carlos, lanza un mensaje de tranquilidad
+Ángel Gil de Miguel (Madrid, 61 años) es catedrático de Medicina Preventiva y Salud Pública de la Universidad Rey Juan Carlos. En su opinión, existe cierta sobreactuación en algunas medidas que se están tomando en el mundo contra la Covid-19.
+Pregunta. ¿Cree que es posible controlar el coronavirus o que ya es demasiado tarde?
+Respuesta. En España tendremos más casos, eso está claro. Pero tenemos un sistema sanitario robusto que puede asumir una situación como esta sin ningún problema. Otra cosa es que se nos va un poco el control y se ha generado pánico. No podemos evitar que haya casos y en un momento dado alguna persona puede morir. Pero la magnitud del problema, tal y como lo vemos hoy por hoy, no será diferente de una gripe convencional. No va más allá y la gente no tiene que agobiarse ni preocuparse más. Pero todas las repercusiones económicas también preocupan. Aunque nosotros digamos que no hay problema, que está controlado y que el ministerio está haciendo bien las cosas, si se anulan eventos importantes, viajes, se aíslan poblaciones, es muy difícil que cale ese mensaje.
+P. ¿Medidas como estas son aconsejables?
+R. Aislar poblaciones me parece algo exagerado. Hay que dar buena información a la población, que la gente haga como esta persona que se ha encontrado mal viniendo de zonas de riesgo, ha llamado al servicio de urgencias y han acudido a su domicilio.
+P. ¿Y el aislamiento de un millar de personas en Tenerife?
+R. Creo que es exagerado. También hay que ponerse en la situación de qué hacer con 1.000 personas. Simplemente a lo mejor en un momento dado sin tener que aislar se puede ver quién tiene síntomas y quién no, hacer pruebas rápidas para descartar casos. Hay que intentar no generar tanta alarma. Los hospitales españoles tienen recursos para atender los casos. Afortunadamente, la epidemia de gripe está cayendo, sería como si se mantuviera un poco más, pero la forma de actuar es exactamente igual.
+P. Pero esta enfermedad parece más letal que la gripe.
+R. El año pasado en España hubo 6.300 muertes atribuibles a la gripe y por la Covid-19 ahora llevamos 3.000 en todo el mundo. Pero la mayoría son de avanzada edad con enfermedades crónicas asociadas. Por eso digo que es el mismo comportamiento. ¿A quién vacunamos de la gripe? A los más vulnerables: mayores y los que tienen enfermedades crónicas. Donde la enfermedad cursa de forma grave y donde se instaura la neumonía, que es donde te lleva a ingreso, es como en la gripe. En España el año pasado hubo casi medio millón de casos y algo más de 30.000 hospitalizaciones, pero el 90% de personas mayores con enfermedades crónicas. Esto se comporta más o menos igual.
+P. ¿Ha venido la Covid-19 para quedarse?
+R. También vimos enfermedades como el SARS y el MERS… son coronavirus que puede
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia analiza la magnitud epidemiológica del coronavirus desde una perspectiva médica preventiva sin vinculación con la soberanía digital o técnica.",
+    "implications": "Este contenido carece de relevancia para la obtención del ccTLD .ia o la gestión de la ICE, ya que no afecta los marcos regulatorios de ISO ni la gobernanza digital europea. No existe un nexo estratégico que impacte la viabilidad de nuestra nación digital o la infraestructura de nodos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:43:40] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Seis italianos encerrados por partida doble
+        CONTENIDO: Seis italianos encerrados por partida doble
+Los compañeros de viaje de los cuatro positivos en Canarias están aislados del resto en el hotel en cuarentena
+Era un grupo de 10 amigos italianos. Compartieron esta semana vuelo, transporte hasta el hotel en un minibus, cenas, risas, horas en las tumbonas de la piscina y, claro, algún cóctel que alegró la noche. Frente a ellos, el mar, el cielo abierto y la luz blanca y cegadora de la costa. Uno de ellos, un médico de Emilia Romaña, una región del norte de Italia, hizo menos vida social y pasó horas encerrado a su habitación. No se sentía bien. Su pareja le acompañó en algunos momentos de ese proceso febril. El lunes, dos días después de llegar al resort, cogió un taxi y se fue hasta un hospital local. Allí, por su experiencia profesional, por el lugar del que venía, le describió a un colega cómo se sentía y, antes de acabar la explicación, se autodiagnosticó: “Creo que tengo coronavirus”. Estaba en lo cierto.
+La pareja del médico, al día siguiente, y otros dos amigos, el pasado miércoles, también resultaron contagiados. Ninguno de los cuatro corre peligro, según explican las autoridades, y solo el primer contagiado presenta síntomas de enfermedad. Los otros tres son asintomáticos, aunque altamente infecciosos para quien trata con ellos. “No son las vacaciones que soñaban, sin duda. Pero todo está bajo control. Eso sí, se aburren”, cuentan fuentes hospitalarias.
+Tras de sí han dejado un hotel cerrado a cal y canto con 1.000 personas en el interior. El H10 Costa Adeje Palace, un resort de 400 habitaciones. Es una situación inédita en este pueblo turístico del sur de Tenerife. “El hotel ahora es un pueblo en sí con 1.000 habitantes y el director del hotel es el alcalde. Nosotros tratamos de ayudarles con víveres, atención médica, psicológica y todo lo que necesiten”, explica un portavoz del Gobierno canario.
+Los seis italianos del grupo inicial viven un aislamiento particular del resto de los clientes. Se ha generado alrededor de ellos una burbuja que los mantiene alejados del resto hasta que se sepa con seguridad cuál es su estado. Solo ellos ocupan 10 habitaciones, una planta completa. Han sido confinados en una zona a la que nadie tiene acceso. En principio, esas seis personas son las que han estado expuestas a un mayor riesgo de contagio. El personal médico y los traductores que los acompañan para que no haya equívocos en el diagnóstico han visitado a los seis italianos enfundados en trajes especiales, como en E.T. Los trabajadores del hotel les dejan la comida a una distancia prudencial y después les avisan por teléfono para que salgan a recogerla.
+Por la ventana de las habitaciones podrán ver a gente bañándose en la piscina y tomando el sol. En dos días han sido evaluados todos los clientes. Los que no presentaban ningún síntoma podían moverse libremente por las instalaciones, pero los que tienen algunas décimas de fiebre tienen que quedarse en sus habitaciones. Cada poco tiempo vuelven a ser evalu
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica periodística sobre el confinamiento sanitario de un grupo de turistas italianos en un complejo hotelero de Tenerife debido a protocolos de salud pública.",
+    "implications": "La noticia carece de cualquier vínculo técnico, legal o administrativo con los objetivos del Proyecto Anticitera o la reserva del código ISO 3166-1. No existe un impacto táctico sobre la soberanía digital europea ni sobre la gestión del futuro ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:43:54] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los casos de corrupción que rodean a Sánchez "asombran" a los líderes europeos del PP: "Es una locura, un Gobierno normal no sobreviviría"
+        CONTENIDO: "Para muchos líderes resulta asombroso lo que está ocurriendo en España". Fuentes del Partido Popular Europeo (PPE) resumen así la sensación que existe entre los dirigentes populares que este viernes y sábado se han reunido en Zagreb, y a los que el presidente del PP español, Alberto Núñez Feijóo, les ha enumerado los casos de corrupción que acosan al líder del Ejecutivo, Pedro Sánchez.
+Los nombres que componen la lista de asistentes a la cumbre del principal partido europeo son muy relevantes. Está, por supuesto, la presidenta de la Comisión Europea, Ursula von der Leyen. También la máxima responsable del Parlamento Europeo, Roberta Metsola, y el líder del PPE, Manfred Weber. A ellos se suman el canciller alemán, Friedrich Merz; el primer ministro de Grecia, Kyriakos Mitsotakis; y el de Polonia, Donald Tusk. Y también el vicepresidente italiano, Antonio Tajani; la secretaria general del partido, Dolors Montserrat; o el primer ministro de Croacia, Andrej Plenkovic, que es el anfitrión.
+"Alberto describió la situación en España, con ministros y gente de su plena confianza en prisión y ante procesos judiciales, y es realmente una locura. Un Gobierno normal no sobreviviría a una situación como ésta. Es fascinante", explican a EL MUNDO fuentes que han estado presentes en la reunión. Se refieren a la situación de José Luis Ábalos, Koldo García o Santos Cerdán, pero también a la fontanera Leire Díez, el propio hermano del presidente, David Sánchez, su mujer, Begoña Gómez, o lo que pueda acabar ocurriendo con Francina Armengol o Ángel Víctor Torres.
+El líder del PP también ha compartido con sus compañeros de partido la preocupación por la regularización masiva de inmigrantes que va a llevar a cabo España. Muchos no conocían esta situación, y Feijóo se esforzó en trasladarles que esto tiene implicaciones para toda la UE. "Al estar en el espacio Schengen, obviamente esto nos afecta a todos. Y que si se tiene un permiso de residencia en la UE, se tiene derecho a la reagrupación familiar, ya no hablamos de 500.000 personas. Hablamos de muchas más", exponen desde el PPE.
+Esta postura, sin embargo, choca con la que ha expresado oficialmente la Comisión Europea. El comisario de Interior y Migración, Magnus Brunner, afirmó el pasado jueves que "las decisiones y políticas para regularizar la situación de los nacionales de terceros países en situación irregular es responsabilidad de los Estados miembros".
+"Se trata de personas que ya están en Estados miembros de la UE. Y, en ese caso, es competencia de los Estados miembros decidir cómo quieren reaccionar", insistió el comisario austriaco el mismo día en el que el PP pidió a Bruselas que analizase si la medida de Sánchez incumple la política migratoria comunitaria.
+Brunner no respondía de manera directa a esta petición, sino que lo hizo a las preguntas de los periodistas durante una rueda de prensa. Pero el portazo a la intención del PP fue evidente, y no gustó nada entre las filas populares. Tanto es así, que los
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 2
+    },
+    "average_score": 0.67,
+    "summary": "Tensiones partidistas en el seno del PPE respecto a la estabilidad del gobierno español y divergencias en políticas migratorias.",
+    "implications": "Aunque involucra a aliados clave como Mitsotakis y Von der Leyen, el contenido carece de relevancia para los trámites ISO o la ICE. Representa ruido político que satura la agenda institucional sin impactar la soberanía digital o el distrito de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:44:01] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Rechazo mayoritario a la regularización de inmigrantes de Sánchez, que tampoco gusta al 37% de los votantes del PSOE y al 19% de los de Sumar
+        CONTENIDO: La mayoría de españoles (55,1%) está en contra de la regularización masiva de inmigrantes pactada entre el Gobierno de Pedro Sánchez y Podemos. Una de las medidas estrella que promueve La Moncloa para contentar al partido morado y que afectará a más de 500.000 personas de origen extranjero. Así consta en la encuesta de Sigma Dos para EL MUNDO, que recoge que sus partidarios -los que dicen estar «totalmente» o «bastante» de acuerdo- se quedan en el 44,9%, más de diez puntos por debajo de los que se oponen.
+Por partidos el sondeo también arroja datos relevantes: el 37,2% de los votantes socialistas (según el recuerdo de las últimas generales) están en contra -«poco o nada de acuerdo»- de regularizar de forma extraordinaria a medio millón de inmigrantes, mientras que en el partido de Sumar representan el 18,9%.
+Así, el rechazo a esta medida es la opción mayoritaria en el PP (72,4%) y Vox (84,1%), pero también en los votantes del resto de partidos (53%) -entre los que hay varios socios de investidura de Pedro Sánchez- y en los que no acudieron a las urnas en los últimos comicios (68,2%).
+Sobre los motivos que han llevado al Gobierno de Pedro Sánchez a atar esta regularización extraordinaria con Podemos, hasta un 43,6% cree que se debe a un cálculo electoral del presidente. El resto de motivaciones -económico-laboral (17,0%), presión externa (10,9%) o por diversas cuestiones (8,9%)- están muy fragmentadas y la razón humanitaria detrás de la medida solo la percibe el 1,9% de los encuestados.
+Pensiones y desahucios
+Por otro lado, la fórmula ómnibus que ha utilizado de forma falida el Gobierno del PSOE y Sumar esta semana -y que consiste en incorporar en un solo decreto diferentes medidas que no tienen relación entre sí para lograr su aprobación- genera un importante rechazo (se eleva hasta el 57,5%) entre los encuestados. De hecho, el 38,1% de los votantes socialistas y el 32% de los electores de Sumar están en contra de una manera de actuar que lleva a cabo su Ejecutivo para lograr -sin éxito- su visto bueno en el Congreso al carecer de una mayoría parlamentaria acreditada.
+Una por una, la mayoría de medidas son respaldadas por los españoles, con más disparidad de opiniones sobre la prórroga de la suspensión de los desahucios a familias vulnerables: un 49% la apoyaría, un 36,6 la rechazaría y hasta el 14,4% están indecisos.
+El gran titular del fracaso del ómnibus se lo llevó la subida de las pensiones, tumbada en el Congreso cuando PP, Vox, Junts y UPN votaron en contra del decreto. La encuesta refleja en este sentido que la gran mayoría de los votantes de todos los partidos las revalorizarían (79,7%), aunque por ejemplo el 24,8% de los de Vox están en contra. Con la subida de las pensiones mínimas el efecto es parecido, con el 31,3% de los electores de la formación de Santiago Abascal, el 27,3% del PP y casi el 10% de los socialistas en contra.
+Una unanimidad casi total (89,2%) genera la prórroga de las ayudas de la dana para los municipios afectados 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia analiza el rechazo social en España hacia una regularización extraordinaria de inmigrantes y el uso de decretos ómnibus para la gestión gubernamental interna.",
+    "implications": "Esta información carece de vinculación con los estándares ISO 3166-1, la soberanía del TLD .ia o el marco legal de la Iniciativa Ciudadana Europea. No impacta en la hoja de ruta estratégica ni en la viabilidad operativa del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:44:09] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Irene Montero: "Tras la regularización de inmigrantes, vamos a por la nacionalidad y a que puedan votar"
+        CONTENIDO: - El Panel Rechazo mayoritario a la regularización de inmigrantes de Sánchez, que tampoco gusta al 37% de los votantes del PSOE y al 19% de los de Sumar
+- Pacto Regularizaciones exprés de inmigrantes: las solicitudes se podrán presentar entre abril y junio y el Gobierno las resolverá en tres meses
+La secretaria general de Podemos, Ione Belarra, y la eurodiputada y candidata a unas eventuales elecciones generales, Irene Montero, fijaron este sábado como próximo objetivo lograr el derecho a voto de los inmigrantes que sean regularizados tras la resolución del Consejo de Ministros del martes pasado, pactada con este partido.
+Lo hicieron en sus respectivas intervenciones en el acto central de la campaña de las elecciones aragonesas, en Zaragoza, donde Belarra presumió de acudir "con una victoria en la mano" en favor de los derechos de los inmigrantes y cargada con una bolsa de "lágrimas de fachas y racistas", supuestamente compungidos por la regularización pactada por el Gobierno porque "querían a la gente migrante debajo del zapato, teniendo que aceptar cualquier condición laboral en trabajos de mierda".
+Más adelante, llamó a "la gente migrante" a que "se levante por un país decente, por los servicios públicos, y que se meta en política". En concreto, denunció que, dado que sin nacionalidad española sólo pueden votar en las elecciones municipales, y pasados unos años, "tenemos un sufragio censitario racista".
+Por eso, comparó la lucha por el derecho de los inmigrantes a votar con "cuando se peleó el derecho a sufragio de las mujeres", y terminó arengando: "Tenemos que pelear el derecho a sufragio de los migrantes. Si vives aquí, tienes que tener derecho a votar aquí".
+Justo después que Belarra, Montero, que volvió a atribuir a su compañera y amiga el mérito de la negociación, y aclaró que la regularización "no es un regalo a las personas migrantes", sino "una deuda pendiente que el estado recién empieza a pagar a todas las personas que viven aquí, que trabajan aquí, que sienten aquí, que construyen sus vidas aquí con nosotras y nosotros y, sin embargo, lo hacen en condiciones de auténtica esclavitud".
+Acto seguido, se sumó a la demanda del derecho al voto, partiendo curiosamente de las acusaciones de algunos que "dicen que esto se ha hecho para amañar los resultados electorales". La eurodiputada pidió "a las personas migrantes y racializadas que, por favor, no nos dejen solas con tanto facha", y se reafirmó: "Claro que sí, queremos que voten. Hemos conseguido papeles, regularización ya, y ahora vamos a por la nacionalidad o a cambiar la ley para que puedan votar, por supuesto".
+"Ojalá teoría del reemplazo"
+Finalmente, dando la vuelta también en este caso una de las críticas de la derecha, proclamó: "Ojalá teoría del reemplazo, ojalá podamos barrer de fachas y de racistas este país con gente migrante, con gente trabajadora. Claro que yo quiero que haya reemplazo: reemplazo de fachas, reemplazo de racistas, reemplazo de vividores, y que podamos hacerl
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 1,
+        "geopolitical_intel": 2
+    },
+    "average_score": 1.0,
+    "summary": "Propuesta política en España orientada a la extensión de derechos de sufragio y nacionalidad para ciudadanos inmigrantes tras procesos de regularización.",
+    "implications": "La noticia carece de nexo técnico con la reserva excepcional ISO 3166-1 del código .ia o la soberanía digital en el territorio griego. Su impacto se limita a la política interior española y no altera la hoja de ruta estratégica de la ICE de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:44:16] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: "El Helicoide es un lugar para que confieses aquello que no hiciste"
+        CONTENIDO: - Venezuela Lorent Saleh, preso político liberado en Venezuela: "Ahora en mi celda hay otro inocente"
+- Venezuela Delcy anuncia el cierre de la cárcel de Helicoide y el impulso a la ley de amnistía
+Con su cierre definitivo, el Helicoide dejará atrás un historial siniestro de torturas y vejaciones propio de las peores dictaduras del mundo contemporáneo. La geografia de la infamia, que va desde la cárcel S21 de Tuol Sleng, en la Camboya de los Jemeres Rojos hasta Sednaya, en la Siria de Asad, pasando por el limbo caribeño de Guantánamo, la Escuela de Mecánica de la Armada (ESMA), centro del horror de la dictadura argentina, o la célebre Lubianka, corazón operativo del terror soviético, siempre tendrá una sucursal en la imponente construcción caraqueña, soñada como un gran centro comercial futurista excavado en la montaña y convertida en mazmorra de pesadilla por el chavismo.
+No existe una cifra real de celdas, porque en realidad apenas hay un par de imágenes borrosas de su interior. Algunos presos han relatado que hay de 90 a 120 habitáculos angostos sin luz, sin ventanas y repartidos entre varios niveles de la edificación, además de espacios no convencionales usados como salas de interrogatorio pero que fueron concebidos como oficinas, cuartos técnicos o pasillos cerrados. Algunas construcciones son improvisadas pero otras ya estaban sobre el plano original del arquitecto Jorge Romero Gutiérrez, cuya idea de centro comercial fue olvidada con la caída del dictador Marcos Pérez Jiménez, en 1958. La llegada al poder del chavismo convirtió el edificio en lo que es hoy, centro de detención y torturas, además de sede del temible SEBIN (Servicio Bolivariano de Inteligencia Nacional).
+Su arquitectura helicoidal, pensada para coches y escaparates, se convirtió en un laberinto de pasillos interminables, donde la desorientación espacial y el aislamiento acústico hacían su trabajo contra la moral de los detenidos. El Helicoide no fue diseñado para castigar, pero terminó siendo perfecto para quebrar.
+Para algunos presos, resulta evidente que los métodos de tortura han ido haciéndose más crueles con la llegada de la inteligencia cubana. Pero la construcción también ha puesto parte de sus características a favor de las vejaciones físicas y psicológicas: algunas zonas poseen iluminación artificial constante o penumbra permanente. La ventilación es deficiente o inexistente, lo que provoca olores pestilentes, falta de higiene y humedades malsanas. Hace un calor sofocante en zonas bajas, que contrasta con el frío húmedo en otras más altas. La rotación de presos hacia esos ambientes es constante.
+Edificio sórdido
+Lorent Saleh, activista que pasó dos años en la prisión conocida como La Tumba y otros dos en el Helicoide, describió a este periodista cómo es esa prición:«No es una cárcel: es un centro de tortura diseñado para quebrarte. El Helicoide es lo criollo, el garrote, la costilla rota, el bate. Es la secuela de la decadencia de lo que una vez fue la cuarta Repúbl
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis del cierre del centro de detención El Helicoide en Venezuela y su transformación de hito arquitectónico a centro de represión estatal.",
+    "implications": "La noticia no presenta puntos de contacto con los estándares ISO 3166-1, la soberanía digital europea o la gestión del ccTLD .ia en territorio griego. Se clasifica como información de derechos humanos extracomunitaria sin impacto en la hoja de ruta técnica o diplomática de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:44:25] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Delcy Rodríguez acelera los cambios a la fuerza y con la atenta vigilancia de la embajadora de Estados Unidos
+        CONTENIDO: - Transición Delcy anuncia el cierre de la cárcel de Helicoide y el impulso a la ley de amnistía
+- Horror "El Helicoide es un lugar para que confieses aquello que no hiciste"
+Se reencontraron en el umbral del apartamento y el abrazo desencadenó otro torrente de la misma energía que mantiene a Venezuela en estado de esperanza nacional. Abogado y defendido, ambos presos de la dictadura hasta hace muy poco, sólo posible en revolución. El periodista Carlos Alberto Rojas (excarcelado dos semanas antes) acudió a saludar a su amigo Eduardo Torres, que había regresado a su casa horas antes desde el penal de Yare II.
+El defensor de derechos humanos, profesor en la Universidad Central de Venezuela (UCV) y miembro de Provea, y Rojas, el activista indomable de la Candelaria, el barrio español de Caracas, fortificaron su amistad en la siniestra cárcel caraqueña del Helicoide, sentenciada hoy a muerte. Antes de que Torres fuera capturado en mayo del año pasado, defendía a su amigo de la injusticia chavista que le mantenía preso.
+"No podía dejar de ir a tu casa y agradecerte la lucha y apoyo incansable que llegó al sacrificio de terminar juntos en las celdas del Helicoide ¡Eres un hermano de vida, la dignidad nos hizo libres!", recordó Rojas emocionado, pese a las medidas cautelares que el régimen mantiene contra todos ellos para evitar que la energía se transforme en protesta.
+El Helicoide, cuyo cierre anticipó Delcy Rodríguez en su histórica alocución ante el Tribunal Supremo de Justicia (TSJ), y que estaba condenado de antemano cuando el 6 de enero Donald Trump lo calificó de "cámara de tortura en pleno centro de Caracas". La misma en la que Juan Carlos Monedero, cofundador de Podemos y asesor electoral de Nicolás Maduro, daba charlas remuneradas sobre derechos humanos mientras a pocos metros se llevaban a cabo las torturas que la han convertido en uno de los principales símbolos de la dictadura.
+Tanto Provea como el Foro Penal y otras organizaciones de derechos humanos han hecho saber sus múltiples inquietudes sobre una ley de la que nada se sabe todavía, más allá de lo anunciado por la presidenta encargada del Gobierno de facto. La nueva cabecilla del chavismo reciclado se comprometió a impulsar la amnistía para todo el periodo que va desde 1999, con la llegada del comandante Hugo Chávez al trono del Palacio de Miraflores, hasta estos días intensos que están cambiando la Historia de Venezuela.
+Delcy ordenó "máxima celeridad" para que la Asamblea Nacional (AN), el órgano chavista que dirige su hermano Jorge, apruebe la ley que abra de par en par las puertas de los 90 centros de reclusión y malos tratos que la revolución ha dispuesto a lo largo y ancho de Venezuela. Para ello se creó una Comisión de Paz conformada por 15 ministros de Delcy, jerarcas revolucionarios, boliburgueses, operadores oficialistas y un intelectual cercano al ex candidato presidencial Henrique Capriles, sin presencia de la oposición democrática. El juego, para el que los hermanos en el
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla una transición política interna en Venezuela centrada en el cierre de centros de reclusión y una ley de amnistía impulsada por Delcy Rodríguez.",
+    "implications": "El contenido carece de relevancia para la obtención del código ISO 3166-1 o la soberanía del ccTLD .ia en territorio griego. No existe impacto táctico ni estratégico para los objetivos de la Nación Digital de Anticitera o la Iniciativa Ciudadana Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:44:32] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Irene Montero, en un acto en Zaragoza: «Ojalá podamos barrer de fachas este país con gente migrante»
+        CONTENIDO: Irene Montero: «Ojalá podamos barrer de fachas este país con gente migrante»
+La eurodiputada de Podemos se ha pronunciado en estos términos en el marco del 8F
+Los juristas avisan de que la regularización será ilegal si excede la ley de extranjería
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónPodemos celebra como una «victoria» la regularización extraordinaria de inmigrantes sin papeles aprobada por el Gobierno de España y anuncia que trabajará para conseguir que puedan votar, para lo que buscará facilitar su nacionalización o el cambio de la ley que regula el derecho ... al sufragio activo. Así lo ha asegurado la eurodiputada y secretaria política de la formación, Irene Montero, que ha defendido la «teoría del reemplazo»: «Ojalá podamos barrer de fachas y de racistas este país con gente migrante, con gente trabajadora».
+Montero ha participado este sábado en Zaragoza en un mitin de Podemos dentro de la campaña electoral del 8F junto a la secretaria general y diputada, Ione Belarra; la candidata de Podemos-Alianza verde a la Presidencia del Gobierno de Aragón, María Goikoetxea; el cabeza de lista por Huesca, José Ángel Pérez Marcuello; el coordinador federal de Alianza Verde, Juantxo López de Uralde, y la periodista de Canal Red Laura Arroyo.
+La eurodiputada de Podemos ha reivindicado que «papeles son derechos» y que no se trata de «un regalo» a los inmigrantes, sino de una «deuda pendiente». «Ningún ser humano es ilegal», ha afirmado, antes de cargar contra Vox por «pedir dinero para las víctimas de la dana y quedárselo» y contra el PP por «pagar su sede con dinero negro y hacer una amnistía fiscal para los ricos». En esta línea, ha pedido, «por favor», a las personas «migrantes y racializadas» que no las dejen «solas con tanto facha».
+Por todo ello, se ha mostrado favorable al «reemplazo», «el de fachas, racistas y vividores», con la gente trabajadora de este país, «tenga el color de piel que tenga». Asimismo, ha mencionado el «miedo» con el que, asegura, también viven los inmigrantes sin papales en España.
+Montero también se ha referido al líder de Vox, Santiago Abascal, al que ha identificado como un «macho ibérico» y «un señorito que vive de los demás» y que quiere pasearse en un caballo, «porque eso de lavar los platos no le pega».
+La eurodiputada de Podemos ha señalado después que «el 20% más rico de la población en España se lleva más del 30% de las ayudas públicas y el 20% más pobre solo el 12%». Con este argumento, ha criticado que el sistema está diseñado para que la gente de abajo «cree la riqueza» y la de arriba «se lo lleve crudo».
+En esa misma línea, la secretaria general de Podemos, Ione Belarra, ha criticado lo que considera un «sufragio censitario», frente al que ha llamado a lograr el derecho al voto de los inmigrantes: «Si vives aquí, tienes que tener derecho a votar aquí, para que sepas a dónde van tus impuestos».
+Esta funcionalidad es sólo para suscriptores
+Suscribete
+Esta funcionalidad es sólo para registrados
+In
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda retórica política doméstica española sobre regularización migratoria y derechos de sufragio, sin vinculación con la infraestructura digital o soberanía tecnológica.",
+    "implications": "Esta información carece de impacto táctico para el Proyecto Anticitera, ya que no afecta la normativa ISO, la gestión del ccTLD .ia, ni los mecanismos de la Iniciativa Ciudadana Europea (ICE) digital. Se trata de un evento de política social y partidista ajeno a nuestros objetivos de gobernanza técnica.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:44:38] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El tremendo golpe en la cabeza de Sorloth que le llevó al hospital
+        CONTENIDO: Fue un espeluznante choque de cabezas en el minuto 27 en el transcurso del partido Levante-Atlético, entre el noruego Sorloth (Atlético) y Matías Moreno (Levante). Un impacto grave que rápidamente obligó al cambio del delantero noruego, pedido por los jugadores rojiblancos a Simeone. También ... fue sustituido Moreno.
+La jugada fue un saque de esquina en la que el balón colgado al área local fue despejado por Sorloth sin éxito, que chocó con Moreno. Ambos cayeron al césped en un momento alarmante, sobre todo por parte del jugador del Atlético. El choque fue de tal violencia que el resto de los jugadores pidieron el cambio inmediato del noruego, sobre todo.
+Vaya choque. Sorloth y Matías Moreno se han ido sustituidos🤯
+Sorloth fue evacuado del campo en camilla (le colgaban los pies de la camilla, dada su estatura) y sustituido por Julián Álvarez, quien rápidamente entró en el campo.
+El noruego fue trasladado al hospital para que ser sometido a las pruebas pertinentes. El parte médico publicado por el club habla de «un traumatismo que le provocó una fuerte herida incisocontusa».
+Posteriormente tranquilizó el Atlético: «Las pruebas realizadas a Alexander Sorloth descartan fracturas y hematomas craneales. El delantero noruego sufrió un traumatismo durante el partido, que le provocó una herida incisocontusa en la región frontoparietal izquierda».
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEsta funcionalidad es sólo para suscriptores
+Suscribete
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla un incidente médico deportivo ocurrido durante un encuentro de fútbol profesional, careciendo de cualquier vínculo con la infraestructura técnica o administrativa.",
+    "implications": "Este evento no afecta los trámites ante ELOT ni impacta la seguridad de la red Handshake del proyecto. No existe vector de influencia estratégica para la consecución del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:44:46] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: España solventa el trámite ante Israel (23-7) y se jugará las medallas ante Países Bajos
+        CONTENIDO: WAterpolo / Europeo femenino 2026
+España: solventa el trámite ante Israel (23-7) y se jugará las medallas ante Países Bajos
+El equipo de Jordi Valls debe ganar este domingo a las neerlandesas (21.15 horas / TDP) por dos goles o más
+«Quería que todo acabase. Mi mejor medalla es seguir vivo»
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónSin esforzarse demasiado ganó España a Israel, el penúltimo trámite que le quedaba antes de la hora de la verdad. Con la mente ya puesta en el partido de este domingo ante Países Bajos, las chicas de Jordi Valls ganaron con solvencia pero ... sabiéndose tan superiores que evitaron un desgaste excesivo. Aunque eso supuso que Israel se acercara en el segundo cuarto. Un espejismo porque España subió una marcha más para poner las cosas de nuevo en su sitio.
+La victoria de Países Bajos sobre Hungría (5-4) unas horas antes del partido obligaba a España a salir ante Israel con la obligación de ganar para afrontar el decisivo choque ante las neerlandesas este próximo domingo con buenas opciones de clasificarse para semifinales. Para ello, España tiene que ganar a las holandesas por más de un gol de diferencia. No vale simplemente la victoria. Dos plazas y tres equipos: España, Hungría y Países Bajos. Por el otro lado del cuadro, Grecia tenía todos los números para pelear por la medallas, junto a Italia o Croacia.
+Saltaba España a la piscina con gorro blanco y sin Carlota Peñalver. La nadadora del Club Esportiu Mediterrani era la descartada de Jordi Vallas para este trámite. Nona Pérez ganaba el primer esprint. El dominio español desde el principio, oero el gol se resistía. Lo hizo Bogachenko de penalti cometido por Paula Crespí a falta de cinco minutos. También de penalti empataba Ari Ruiz. Movía bien el balón el equipo de Valls, pero entre la portera israelí y los palos impedían que el electrónico se moviera. Ari Ruíz volvió a marcar y después Irene González, Paula Leitón y Bea Ruiz. El primer cuarto se cerró 6-2.
+España cumple ante Rumanía (4-22) y se jugará el pase a semifinales ante Países Bajos
+Sergi FontLas neerlandesas, favoritas al título e invictas aún, e Israel serán las rivales en la segunda fase
+Nona Pérez volvió a ganar el segundo esprint. Medio minuto tardó Paula Crespí en anotar el octavo gol. Velocidad de crucero de España para solventar el trámite. Pero tras el tanto de Elena Ruiz, la relajación hizo acto de presencia y Levi y Yaacobi recortaron diferencias. Jordi Valls se puso serio y el equipo espabiló. Buena reacción con los goles de Bea Ortiz (2) y Ari Ruiz. Jugaba España con doble boya e Israel trataba de defenderse cerrando líneas, pero era penalizada por la velocidad de las del gorro blanco. Con el gol de Queralt Antón se cerró el segundo cuarto (12-4).
+Tras el descanso, las jugadoras de Israel arrojaron la toalla. Nona Pérez, que lograba su primer gol en el campeonato, Elena Ruiz y Paula Prats aumentaban la diferencia. Strugo aprovechó la superioridad tras la expulsión de Paula Prats par
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte informativo sobre un encuentro deportivo de waterpolo femenino entre las selecciones de España e Israel.",
+    "implications": "La información analizada es estrictamente de carácter atlético y no posee vinculación alguna con la soberanía digital, el estándar ISO 3166-1 o la Iniciativa Ciudadana Europea. Representa ruido informativo para los objetivos estratégicos del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:44:54] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un juez ordena liberar al niño de cinco años y a su padre detenidos por el ICE
+        CONTENIDO: Un juez ordena liberar al niño de cinco años Liam Conejo Ramos y a su padre, detenidos por los agentes del ICE
+Lo ha adelantado el 'San Antonio Express-News' y lo ha confirmado posteriormente la cadena CNN
+Un juez bloquea la deportación del niño de cinco años detenido en Mineápolis junto a su padre
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEl juez federal por el Distrito Occidental de Texas, Fred Biery, ha ordenado la liberación provisional del niño de cinco años Liam Conejo Ramos y a su padre, Adrián Alexander Conejo Arias, internados en el centro de detención de inmigrantes de Dilley mientras se ... resuelve el procedimiento de inmigración abierto.
+La detención de Conejo Arias y su hijo en Minnesota durante una intervención de los agentes federales enviados por la Administración del presidente Donald Trump provocó una oleada de indignación por la edad del niño. La orden de Biery, recogida por el diario 'San Antonio Express-News' y confirmada después por la cadena de televisión CNN, prevé la liberación de ambos para el próximo martes.
+Los abogados de los dos ecuatorianos aseguran que han solicitado formalmente asilo en el país, pero las agencias federales sostienen que no están legalmente en el país y que el plazo para salir de Estados Unidos terminó en abril.
+Agentes federales matan a tiros a otra persona en Mineápolis
+Javier AnsorenaLos vídeos de los testigos contradicen la narrativa de la Administración Trump, que defiende que la víctima buscaba «masacrar» agentes
+Ahora, el dictamen del juez señala a la Administración federal por «ignorar un documento histórico estadounidense llamado Declaración de Independencia», porque el caso de Conejo «tiene su génesis en un intento de aplicar unas cuotas de deportación mal concebidas y aplicadas de forma incompetente, incluso traumatizando a niños».
+El juez destaca que las órdenes administrativas emitidas por el ejecutivo «no se sostienen ante la prueba de la causa probable». «Es lo que se llama poner al zorro a custodiar el gallinero. La Constitución obliga a tener un agente judicial independiente», ha argumentado.
+El pasado lunes, Biery ya emitió otro dictamen que prohibía la deportación del niño y su padre mientras examinaba el caso tras la detención del pasado 20 de enero en Columbia Heights, a las afueras de Mineápolis. La fotografía del menor detenido junto a un vehículo de los agentes dio la vuelta al mundo.
+Vecinos y responsables de la escuela del niño han asegurado que los agentes utilizaron al pequeño como «cebo» para que llamara a la puerta de su casa y que su madre acudiera.
+Esta funcionalidad es sólo para suscriptores
+Suscribete
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEsta funcionalidad es sólo para suscriptores
+Suscribete
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia se refiere exclusivamente a la agencia estadounidense de Inmigración y Control de Aduanas (ICE) y no a la Iniciativa Ciudadana Europea (ICE) ni a la soberanía digital.",
+    "implications": "Existe una colisión terminológica accidental (homonimia) sin relevancia estratégica para el Proyecto Anticitera. Este evento de política migratoria estadounidense carece de impacto en los marcos regulatorios de la UE, Grecia o el estándar ISO 3166-1.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:45:01] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: «Hasta que no se concrete la ley de amnistía a los presos políticos, no podemos cantar victoria en Venezuela»
+        CONTENIDO: «Hasta que no se concrete la ley de amnistía a los presos políticos, no podemos cantar victoria en Venezuela»
+Alegría entre los familiares de los detenidos por el anuncio de su próxima liberación, pero también cautela por la desconfianza hacia el régimen chavista
+Delcy Rodríguez anuncia una amnistía general para los presos políticos venezolanos
+Corresponsal en Caracas
+Esta funcionalidad es sólo para registrados
+Iniciar sesión«Fue realmente un éxtasis». «Sentimos una felicidad desbordante pero cautelosa». «Mucha emoción y alegría». Estas son algunas de las reacciones que los familiares de los presos políticos de Venezuela, tanto excarcelados como todavía detenidos, manifiestan ante la noticia de que viene una ley ... de amnistía general anunciada el viernes por Delcy Rodríguez.
+En la Plaza del Rectorado de la Universidad Central de Venezuela (UCV) se reúnen los familiares de los presos políticos todos los días desde el 8 de enero, fecha de las excarcelaciones anunciadas por los hermanos Delcy y Jorge Rodríguez, presidenta encargada y presidente de la Asamblea Nacional.
+Hasta el día el día de hoy se han liberado condicionalmente solo unos 303 de los mil detenidos según la ONG del Foro Penal. La Plaza del Rectorado de la UCV se ha convertido en un centro de acopio de víveres, alimentos y productos de primera necesidad, ayuda, encuentro y de intercambio entre familiares de los que han sido liberados y los que faltan por excarcelar. «Somos una gran familia muy unida», dice a ABC Adriana Briceño.
+Ramón Centeno: «Mi madre murió a los 13 días de salir yo de la cárcel»
+Ludmila VinogradoffAdriana Briceño es esposa del preso político Ángel Godoy, un ingeniero de 52 años, que estuvo nueve meses detenido en El Helicoide y luego tres meses y seis días en Yare. En total estuvo un año y seis días por trabajar en la página informativa digital Punto de Corte. Le imputaron los cargos de terrorismo, instigación al odio y a la insurrección armada. Fue excarcelado el 14 de enero.
+«Cuando escuchamos la noticia de la amnistía, estábamos reunidos la familia. Fue realmente un éxtasis, porque en el caso de mi esposo, que está en libertad bajo medidas cautelares, esperamos que su caso sea revisado y pueda tener libertad plena en toda su expresión«, confía Adriana. Tanto ella como su familia estallaron de felicidad: «Estamos empezando a ver la luz al final del túnel».
+La detención arbitraria e injusta de Ángel Godoy le cambió la vida a Adriana. Además de privarla de su marido, la despidieron después de trabajar 21 años en una empresa del Estado. «Gracias a la ayuda económica de mi familia y mis amigos, pudimos sobrevivir un año sin ingresos», reconoce.
+Angeli de la Cruz, esposa de Carlos Azuaje, quien fue puesto en libertad el 17 de enero tras siete meses en El Helicoide y luego en Yare, también se muestra satisfecha: «Bueno, realmente estoy muy contenta y feliz gracias a Dios, que escuchó nuestras plegarias. Vamos a salir de esta situación, pero quedan todavía muchos presos
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla la situación humanitaria y política en Venezuela respecto a la amnistía de presos políticos y la desconfianza hacia el régimen tras los anuncios de Delcy Rodríguez.",
+    "implications": "Esta información carece de nexo causal con la estandarización ISO 3166-1 o la soberanía tecnológica europea, cayendo plenamente en los criterios de exclusión del proyecto. No aporta valor estratégico para la consecución del ccTLD .ia ni para la infraestructura de la Nación Digital de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:45:09] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los archivos de Epstein revelan que el FBI recopiló acusaciones sexuales contra Trump
+        CONTENIDO: Los nuevos documentos de Epstein revelan que el FBI recopiló acusaciones sexuales contra Trump
+Estados Unidos
+El Departamento de Justicia afirma que todas las afirmaciones son “infundadas y falsas” y que si fueran reales “ya habrían sido utilizadas como arma contra Trump”
+El nombre del presidente Donald Trump es mencionado más de 3.000 veces en los tres millones de documentos sobre el pederasta Jeffrey Epstein publicados este viernes por el Departamento de Justicia. Aunque la mayoría de referencias son inocuas, uno de los correos contiene una lista de acusaciones de agresión sexual a menores no verificadas contra Trump, que recopilaron funcionarios del FBI el pasado verano. No hay pruebas de que la agencia de inteligencia considerara creíble ninguna de esas acusaciones y el Departamento de Justicia ha afirmado que son falsas, pero la Administración tampoco ha explicado por qué el FBI tenía esa lista en su poder.
+La lista, incluida en un correo electrónico interno de la agencia, contiene más de una decena de acusaciones contra el presidente, que presuntamente proceden de avisos recibidos a través del Centro Nacional de Operaciones de Amenazas del FBI, que recibe información y pistas del público para sus investigaciones. Cuando se envió el correo, en agosto del 2025, la agencia estaba dirigida por Kash Patel, nombrado por el presidente Trump.
+Una de las acusaciones muestra la presunta violación a una amiga de una informante, que “fue obligada a practicar sexo oral al presidente Trump hace aproximadamente 35 años en Nueva Jersey. La amiga dijo a Alexis que tenía aproximadamente 13-14 años cuando ocurrió y que presuntamente mordió al presidente Trump mientras realizaba el sexo oral. La amiga fue presuntamente golpeada en la cara después de reírse por haber mordido al presidente. La amiga dijo que también fue abusada por Epstein”.
+En otra columna titulada “respuesta”, que detalla la actuación de las autoridades ante la acusación, se indica: “Se habló con la persona que llamó, quien identificó a (censurado) como una amiga. La pista fue enviada a la oficina de Washington para realizar una entrevista”. No está claro si las autoridades siguieron investigando esta pista para hallar su veracidad, pues, como ocurre con el resto de archivos publicados el viernes, carece de contexto.
+En otra acusación, una “denunciante en línea informó que fue víctima y testigo de una red de trata sexual en el Trump Golf Course de Rancho Palos Verdes, California, entre 1995 y 1996”, en la que Ghislaine Maxwell –la expareja de Epstein y colaboradora en su red de tráfico sexual– era la “madame residente e intermediaria de fiestas sexuales”. “La denunciante afirmó haber sido amenazada por el entonces jefe de seguridad de Trump, quien le dijo que, si alguna vez hablaba de lo que ocurría allí o de a quién había visto, ‘acabaría como fertilizante para los últimos nueve hoyos, como las otras zorras’”, continúa el texto. En cuanto a la respuesta del FBI, el archivo señala: “Se habló c
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia se centra en revelaciones judiciales y escándalos políticos domésticos de los Estados Unidos sin conexión con la infraestructura soberana de Anticitera.",
+    "implications": "Este evento no altera los marcos regulatorios de la ISO 3166-1 ni afecta la viabilidad de la Iniciativa Ciudadana Europea para el distrito tecnológico. Se clasifica como ruido mediático externo que no impacta en la hoja de ruta estratégica del TLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:45:17] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El entorno de Aznar dice que no conocía a Epstein tras aparecer en sus papeles
+        CONTENIDO: El entorno de Aznar dice que no conocía a Epstein tras aparecer en sus papeles
+Entre 2003 y 2004
+El nombre del expresidente del Gobierno aparece en tres ocasiones en la nueva remesa de documentos desclasificados
+El análisis de la nueva tanda de documentos relacionados con Jeffrey Epstein, el financiero estadounidense condenado por delitos sexuales, desclasificados ayer por el Departamento de Justicia de Estados Unidos, sitúa al expresidente del Gobierno José María Aznar y a su entorno familiar en distintos registros.
+La primera referencia es una factura de FedEx fechada el 2 de septiembre de 2003. En ella consta el envío de un paquete de unos 220 gramos desde Nueva York –con Epstein y su entonces pareja, Ghislaine Maxwell, como remitentes– con destino al “presidente y Ana Aznar” en el Palacio de la Moncloa.
+La segunda, apenas ocho meses después y con un peso de 360 gramos, está dirigida únicamente al expresidente del Gobierno.
+También figura entre los archivos del delincuente sexual una tercera referencia. En esta ocasión como anotación contable por un pago de 1.050 dólares realizado por Epstein a su agente de viajes a nombre de “José María Aznar”. La documentación no aclara si el beneficiario de ese apunte es el expresidente o su hijo, José Aznar, que por aquellas fechas trabajaba en una firma financiera y que ya figuró en la primera filtración de documentos al aparecer junto a Alejandro Agag, yerno del exdirigente popular y exdiputado del Parlamento Europeo, en la agenda telefónica de Epstein.
+La familia Aznar ha optado por no pronunciarse públicamente. Pero sí lo ha hecho su entorno que, en declaraciones a Europa Press, desliza que el expresidente “no conoce a ese señor de nada” y que no tienen “ni idea” del motivo por el que su nombre figura en esos documentos.
+Sin embargo, el segundo envío antes mencionado escapa a la relación meramente institucional pues se efectuó apenas dos semanas después de que Aznar dejara el cargo tras la victoria electoral del PSOE.
+El destino, además, ya no era la Moncloa, sino la sede de la Fundación para el Análisis y los Estudios Sociales (FAES), el laboratorio de ideas vinculado al expresidente y al Partido Popular.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Noticia sobre la aparición del expresidente José María Aznar en documentos desclasificados del caso Epstein, de carácter estrictamente político-reputacional.",
+    "implications": "La información no presenta nexo alguno con los procesos de estandarización ISO, la soberanía digital de Grecia o los mecanismos de la ICE. Se activa el criterio de exclusión por falta de impacto en el marco operativo y estratégico del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:45:24] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Una juez deniega la petición de prohibir a los agentes del ICE en Minneapolis
+        CONTENIDO: Una juez deniega la petición de prohibir a los agentes del ICE en Minneapolis
+Represión en EE.UU.
+La orden queda paralizada a la espera de que se resuelva la denuncia presentada por la fiscalía de Minnesota contra el Departamento de Seguridad Nacional (DHS)
+Los agentes de inmigración (ICE) continuarán desplegados en Minnespolis. Así lo decretó una juez federal, que este sábado desestimó la petición cautelar de parar inmediatamente el despliegue de la llamada Operación Metro Surge.
+Esta decisión permite que los uniformados federales sigan con estas redadas que tanta tensión han creado, y que han dejado dos muertos por disparaos de los policías, mientras se procede con la tramitación presentada por el fiscal general de Minnesota, Keith Ellison, contra el despliegue realizado por el Departamento de Seguridad Nacional (DHS).
+La juez Katherine Menendez denegó el requerimiento de urgencia a pesar de reconocer en su escrito lo que calificó de “profundas e incluso desgarradoras” consecuencias para la comunidad en este estado. Pero matizó que “estos no son los únicos daños a considerar”.
+Asi que recuerda que recientemente ya reiteró un tribunal que “una orden judicial que prohíbe al gobierno federal hacer cumplir la ley impone un daño significativo al ejecutivo”.
+Los líderes de Minnesota remarcaron que la operación federal viola la décima enmienda de la Constitución por presión ilegal a un estado para cambiar o abandonar las llamadas políticas de santuario destinadas a proteger a los inmigrantes y, a su vez, obligar a cooperar de pleno con las autoridades federales en ese terreno de la persecución.
+La magistrada respondió en su resolución que esos argumentos, al menos en este momento del proceso, no son lo suficientemente fuertes para bloquear la operación.
+“Las inferencias que pueden extraerse sobre el presunto propósito coercitivo de la Operación Metro Surge no son tan unilaterales como sugieren los demandantes”, reflexionó al rechazar la afirmación del estado de Minnesota de que la operación se estaba llevando a cabo “de manera flagrantemente ilegal para forzar cambios en las leyes estatales y locales”.
+En un comunicado, Ellison replicó que la fiscalía del estado estaba decepcionada por está decisión, pero que “seguiremos en la lucha”. Insistió que “la historia está de nuestro lado y los habitantes de Minnesota están respondiendo a su llamado’, dijo. “Continuaré tratando de igualar su valentía”, recalcó.
+El gobierno Trump emprendió esta operación el pasado diciembre. La excusa era atacar la inmigración de somalíes por el fraude en ayudas sociales para la alimentación de niños durante la pandemia. El caso ha sido investigado y ha habido detenciones. A pesar de hablar de somalíes, la comunidad de este país acogida en Minnesota lo hizo de forma legal y la gran mayoría ya son ciudadanos. Incluso los detenidos por el fraude.
+Muchos vecinos sostienen, en contra de Trump, que la vida en Minneapolis y en Minnesota no resultaba nada peligrosa por la presencia d
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda un conflicto judicial sobre agencias de inmigración en EE. UU. (ICE), careciendo de relación con la Iniciativa Ciudadana Europea o el marco regulatorio de la IA.",
+    "implications": "Existe una colisión nominal de siglas (ICE - Immigration and Customs Enforcement vs. Iniciativa Ciudadana Europea) que no genera valor estratégico ni jurídico para el Proyecto Anticitera. La noticia no afecta la soberanía de datos ni la tramitación del ccTLD .ia ante la ISO.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:45:30] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un juez ordena la libertad del niño Liam y de su padre, cuya detención creo un escándalo global
+        CONTENIDO: Un juez ordena la libertad del niño Liam y de su padre, cuya detención creo un escándalo global
+Represión en EE.UU.
+Padre e hijo se encuentran en un centro de Texas y el magistrado ya decretó previamente que no se les podía deportar a la espera de resolverse la petición de asilo formulada legalmente
+“No pude hacer nada, Liam me pidió repetidamente que no saliera porque estaba asustado ya que me arrestarían a mi también”, declaró la madre del menor
+Un juez ha ordenando este sábado que el gobierno de Estados Unidos ponga en libertad a Liam Conejo Ramos, de cinco años, y a su padre, detenidos el pasado día 20 de enero en Minneapolis y que se encontraban desde entonces en el centro de detención de Dilley (Texas).
+Las fotos de Liam con su gorro azul y su mochila de Spider-man, siendo agarrado por un agente de inmigración, recorrieron el mundo y provocaron un escándalo internacional ante el trato inhumano dispensado por los uniformados desplegados por la administración de Donald Trump con el objetivo de “cazar” a inmigrantes. La operación ha costado la fecha la vida de Renee Good y Alex Pretti, los dos de 37 años, blancos y ciudadanos de Estados Unidos, donde nacieron.
+“El caso tiene su origen en la búsqueda gubernamental, mal concebida y ejecutada”
+El magistrado Fred Biery nombrado en su día por el presidente Bill Clinton, razonó en su escrito que “el caso tiene su origen en la búsqueda gubernamental, mal concebida y ejecutada de manera incompetente, de cumplir cuotas diarias de deportación, aparentemente incluso si eso implica traumatizar a niños”.
+Este mismo juez del tribunal oeste de Texas había dictado previamente esta semana que el niño y su padre no podían ser deportados mientras no se resolviera el asunto de la petición de asilo planteada por Adrián Conejo Arias cuando entraron con la familia en EE.UU. siguiendo todos los trámites legales establecidos.
+Liam y su padre fueron capturados cuando el progenitor fue a buscarlo a la escuela y, ya casi en casa, los agentes los detuvieron. Responsables escolares y vecinos aseguraron que los uniformados hicieron que el niño llamara a la puerta de casa como cebo para que salieran más familiares. Advertida por esos vecinos, la madre no abrió. Los agentes respondieron que eso no era cierto.
+Erica Ramos, en declaraciones a Telemundo, afirmó que vio por la ventana toda la escena. “No pude hacer nada, Liam me pidió repetidamente que no saliera porque estaba asustado ya que me arrestarían a mi también”, declaró.
+“Tocó y toco la puerta y Liam me repetía ‘mamá, no abras’. Estaba asustada”, confesó. No abrió y tuvo mucho miedo de que la pudieran detener y dejar solo a su otro hijo. “Al no abrir, vi que metían a Liam en el vehículo del ICE. Todo pareció un intento de provocarme, como si quisieran que corriera desesperadamente hacia mi hijo y arrestarme también. A Liam lo usaron de carnaza”, insistió.
+En su orden de libertad para el padre y el hijo, el juez expresó su consternación. “Observar el comportamiento human
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda un conflicto de derechos humanos y políticas migratorias en los Estados Unidos, centrado en la detención de un menor y su padre por el ICE estadounidense.",
+    "implications": "Este suceso no tiene incidencia en la estandarización ISO 3166-1 ni en la soberanía tecnológica europea. La coincidencia del acrónimo ICE (Immigration and Customs Enforcement) con la Iniciativa Ciudadana Europea es puramente nominal y carece de relevancia táctica para Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:45:38] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La oposición acoge con “esperanza” la amnistía propuesta por Delcy Rodríguez
+        CONTENIDO: La oposición acoge con “esperanza” la amnistía propuesta por Delcy Rodríguez
+Venezuela
+La presidenta interina anuncia el cierre del centro de tortura el Helicoide
+Familiares de presos políticos en Venezuela dijeron a Efe que se sienten “esperanzados” tras la propuesta de ley de amnistía presentada por la presidenta encargada, Delcy Rodríguez, que deberá presentarse en las “próximas horas” ante la Asamblea Nacional.
+“Primeramente Dios, primeramente Dios, y yo sé que muchas personas, tanto en la Asamblea Nacional como afuera, deseamos un cambio, un cambio radical tanto para la sociedad, la estructura política”, dijo a Efe Sandra Rosales, quien tiene a su esposo Dionis Quintero detenido en el calabozo policial de Zona 7 de la Policía Nacional Bolivariana (PNB), en el este de Caracas.
+Rosales indicó que su esposo es funcionario de la Policía y está detenido desde hace dos meses, pero celebró la decisión de Rodríguez sobre esta ley pues considera que hay muchos presos recluidos “injustamente”. “Eso permite un paso adelante para todos los presos políticos”, añadió Rosales tras recordar que los familiares han atravesado el “dolor” de no poder ver a sus allegados porque les niegan las visitas.
+La medida afectará a todos los presos políticos desde 1999, coincidiendo con el periodo chavista
+Por su parte, Mariglys Guzmán, quien se encontraba a las afueras del calabozo policial, dijo que esperaba que todos “puedan disfrutar de los beneficios que se están dando”.
+“Seguiremos en la lucha hasta poder abrazar a los nuestros, que también han sido víctimas de este terror”, añadió Guzmán, quien tiene a su hermano Luis Daniel detenido desde el 29 de marzo del 2023, acusado por una trama de corrupción relacionada con la compañía estatal petrolera PDVSA. Según dijo, su hermano nunca trabajó con la citada empresa de hidrocarburos, sino que lo vincularon al caso tras colaborar con un empresario que sí estaba relacionado con la compañía. “Mi hermano está detenido por capricho político”, apuntó.
+El pasado jueves, Delcy Rodríguez propuso una ley de amnistía para liberar a los presos políticos que han sido detenidos desde el año 1999 hasta la actualidad, periodo que cubre todos los gobiernos del chavismo.
+La mujer fuerte de Venezuela en estos momentos encargó a la Comisión de Revolución Judicial y al Programa para la convivencia y la paz que en las “próximas horas” presenten la ley ante la Asamblea Nacional, así como la “máxima colaboración” al cuerpo legislativo para su aprobación.
+“Que sea una ley que sirva para reparar las heridas que ha dejado la confrontación política, desde la violencia, desde el extremismo, que sirva para reencauzar la justicia en nuestro país y que sirva para reencauzar la convivencia entre los venezolanos”, añadió la mandataria que se juramentó en el cargo tras la captura del presidente Nicolás Maduro por parte de Estados Unidos.
+Uno de los símbolos de la represión chavista ha sido tradicionalmente el Helicoide –una estructura en Caracas de la déca
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Venezuela inicia una transición política interna mediante una propuesta de amnistía tras la captura de Nicolás Maduro por parte de Estados Unidos.",
+    "implications": "La noticia carece de nexo con los marcos regulatorios de la Unión Europea, el estándar ISO 3166-1 o la soberanía del ccTLD .ia. No representa un cambio geopolítico que afecte la infraestructura de nodos o la viabilidad administrativa del Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:45:49] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los excesos y los asesinatos de Minneapolis exhiben la debilidad de Trump
+        CONTENIDO: Los excesos y los asesinatos de Minneapolis exhiben la debilidad de Trump
+El 15 de enero, Donald Trump se levantaba con una amenaza a las 08.04 de la mañana: “Si los políticos corruptos de Minnesota no obedecen la ley y detienen a los agitadores profesionales y a los insurrectos que atacan a los patriotas de ICE, que solo intentan hacer su trabajo, aplicaré la ley contra insurrecciones”.
+Habían pasado ocho días del asesinato de Renee Good en las calles de Minneapolis a manos de agentes federales. Y faltaban nueve para morir de 10 disparos a bocajarro por agentes del CBP el enfermero Alex Pretti.
+Entre una muerte y otra, Donald Trump y su Administración siguieron pisando el acelerador represivo en Minneapolis. El comandante jefe de la Patrulla de Fronteras, Greg Bovino, se paseaba por Minneapolis como si estuviera en un saloon del viejo Oeste: se sabía protegido por su jefa, la secretaria del Departamento de Seguridad Nacional, Kristi Noem, y el propio presidente, que no dejaba de amenazar a las autoridades locales y estatales de Minnesota, así como a la comunidad somalí y a la congresista Ilhan Omar.
+Tanto es así, que tanto Bovino como Noem y el subjefe de Gabinete de la Casa Blanca, Stephen Miller, replicaron el relato del asesinato de Renee Good tras el tiroteo a Alex Pretti: “Era un terrorista interior” y “amenazaba la vida de los agentes”.
+En un comunicado al Washington Post, Miller declaró que la información inicial que recibió sobre el tiroteo del Departamento de Seguridad Nacional se basaba en informes de la Oficina de Aduanas y Protección Fronteriza (CBP). Es decir, Miller culpó al equipo de Noem.
+Con Renee Good, además, dijeron que era lesbiana, como si eso fuera un ingrediente más que justificara su asesinato.
+Pero los vídeos pusieron en duda muy rápido la versión de la Administración Trump, y la propia secretaria de Prensa de la Casa Blanca, Karoline Leavitt, apartó a Trump de las afirmaciones de su equipo.
+Aquello supuso una primera muestra de que la crisis estaba haciendo mella en un Trump que quiere mostrarse imbatible, pero que 48 horas después del asesinato de Pretti ya sabía que la posición más ultra tenía un recorrido muy corto.
+Noem pidió una reunión con Trump el lunes por la noche, después de que el presidente anunciara que Homan asumiría las operaciones en Minnesota. La reunión duró varias horas y se habló de Minneapolis, según una de las fuentes. Por separado, Lewandowski y Homan, quienes ya habían tenido desacuerdos en el pasado, hablaron y acordaron trabajar juntos, añadió la misma fuente.
+Trump ya había tomado una decisión: mandar a su zar fronterizo, Tom Homan, tan amante de la mano dura como Bovino, pero con unos aspavientos menos propios de la Europa de los años 30. Bovino era relevado –y, al tiempo, el Departamento de Seguridad Nacional–, en lo que el comentarista MAGA Steve Bannon calificó como “retirada”.
+“Este es un punto de inflexión: si cedes ahora, cederás para siempre. Si te arrodillas ahora, te arrodillarás pa
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis de la inestabilidad política interna en Estados Unidos y conflictos jurisdiccionales entre la administración federal y autoridades locales tras incidentes en Minneapolis.",
+    "implications": "La noticia presenta una colisión terminológica; el acrónimo 'ICE' refiere a la agencia migratoria estadounidense y no a la Iniciativa Ciudadana Europea, careciendo de impacto en la soberanía digital de Anticitera. No existe relación con el estándar ISO 3166-1 ni con la gestión del ccTLD .ia en el territorio griego.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:45:57] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Senado de EEUU aprueba el acuerdo entre demócratas y la Casa Blanca para financiar la Administración y debatir restricciones al ICE
+        CONTENIDO: El Senado de EEUU aprueba el acuerdo entre demócratas y la Casa Blanca para financiar la Administración y debatir restricciones al ICE
+El Senado ha votado este viernes a favor de financiar la mayor parte de los fondos de la Administración hasta finales de septiembre, a la vez que otorga una extensión temporal a la financiación del Departamento de Seguridad Nacional, lo que le da al Congreso dos semanas para debatir nuevas restricciones a las redadas federales de inmigración en todo el país.
+Con un cierre gubernamental inminente este fin de semana, el presidente de EEUU, Donald Trump, alcanzó este jueves el acuerdo de gastos con los demócratas del Senado tras el asesinato de Renee Good y Alex Pretti a manos de agentes federales en Minneapolis.
+Los demócratas afirmaron que no votarían a favor del proyecto de ley a menos que el Congreso considere una legislación para que los agentes no vayan con la cara cubierta, exigir más órdenes judiciales y permitir que las autoridades locales colaboren en la investigación de cualquier incidente.
+“La nación está llegando a un punto crítico”, declaró el líder demócrata del Senado, Chuck Schumer, tras la votación, informa AP: “La ciudadanía estadounidense exige que el Congreso intervenga e impulse el cambio”.
+Mientras legisladores de ambos partidos pedían investigaciones sobre los asesinatos, Trump afirmó que no quería un cierre de la Administración y negoció el poco común acuerdo con Schumer. Trump animó entonces a los miembros de ambos partidos a emitir un “muy necesario voto bipartidista de 'sí”.
+El proyecto de ley fue aprobado por 71 votos a favor y 29 en contra, y ahora se dirigirá a la Cámara de Representantes, que no tiene previsto retomar sus trabajos hasta el lunes. Esto significa que el gobierno podría estar en un cierre parcial temporal durante el fin de semana hasta que lo aprueben.
+El presidente de la Cámara, Mike Johnson, quien mantuvo una reunión telemática este viernes con representantes republicanos, dijo que espera que la Cámara vote el lunes por la noche. Sin embargo, lo que es incierto es cuánto apoyo tendrá el paquete.
+El ala derecha de Johnson ha mostrado su oposición a los límites a los fondos de Seguridad Nacional, lo que lo deja en manos de los demócratas, quienes tienen sus propias objeciones a financiar al Servicio de Inmigración y Control de Aduanas de Estados Unidos (ICE) sin restricciones.
+Debate sobre el ICE
+No estaba claro hasta qué punto participará Trump en las negociaciones sobre las nuevas restricciones a las redadas contra la inmigración, ni si republicanos y demócratas podrían llegar a algún punto de acuerdo.
+Los demócratas del Senado no apoyarán una extensión de los fondos del Departamento de Seguridad Nacional en dos semanas “a menos que controle al ICE y ponga fin a la violencia”, dijo Schumer: “Si nuestros colegas no están dispuestos a implementar un cambio real, no deberían esperar los votos demócratas”.
+De igual manera, el líder demócrata de la Cámara de Representantes, 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda exclusivamente negociaciones presupuestarias internas de los Estados Unidos y reformas en su agencia de control migratorio (ICE), careciendo de relevancia para el marco soberano europeo.",
+    "implications": "Se detecta una coincidencia nominal irrelevante entre la agencia estadounidense ICE y nuestra Iniciativa Ciudadana Europea (ICE), sin impacto alguno en la estrategia para el .ia. El contenido no afecta la normativa ISO 3166-1, la soberanía digital de Grecia ni la operatividad de nuestros nodos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:46:07] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Una ola de protestas recorre EEUU contra los asesinatos de Minneapolis y la represión migratoria de Trump
+        CONTENIDO: Una ola de protestas recorre EEUU contra los asesinatos de Minneapolis y la represión migratoria de Trump
+El día 23 se vivió una movilización histórica en Minneapolis. Una huelga y una gran manifestación exhibieron el rechazo en Minnesota a las políticas migratorias de Donald Trump. Aquel día miles de personas protestaron contra el terror del ICE y el asesinato de Renee Good, cometido por un agente federal el 7 de enero.
+Pero al día siguiente, el 24 de enero, se produjo el asesinato de Alex Pretti, a manos de agentes federales de fronteras.
+La reacción de la ciudadanía en Minneapolis y en otras muchas ciudades de EEUU ha ido conformando una convocatoria, la de este viernes, en la que miles de personas en diversas ciudades de EEUU han salido a la calle contra los asesinatos cometidos por los agentes federales y contra la represión migratoria de la Administración Trump.
+En Minneapolis miles de personas se han congregado en la Government Plaza, para luego discurrir por el centro de la ciudad y culminar con un concierto de Bruce Springsteen, junto a Tom Morello, en la sala First Avenue, donde ha estrenado su canción 'Streets of Minneapolis' en directo.
+En Los Ángeles, ciudad donde primero desembarcó la represión de Trump y el despliegue hasta de marines, también han salido miles de personas a la calle en solidaridad con Minneapolis.
+La gobernadora de Nueva York, Kathy Hochul, presentó este viernes un proyecto de ley que busca prohibir la colaboración del Servicio de Inmigración y Control de Aduanas (ICE) con los policías del estado, informa Efe. Hochul propuso la iniciativa 'Policías Locales, Delitos Locales' para impedir que los agentes federales de inmigración utilicen a los efectivos estatales en la aplicación de la política migratoria del presidente, Donald Trump.
+Esta norma, si se aprueba, vetará también al ICE el uso de centros de detención locales para llevar a cabo operaciones masivas contra la población del estado.
+Según la gobernadora, estas políticas permitirán a sus fuerzas centrarse en “mantener la seguridad de los neoyorquinos, en lugar de hacer el trabajo del ICE”.
+Algunas escuelas en Arizona, Colorado y otros estados cancelaron las clases de forma preventiva ante la previsión de ausencias masivas. Se planificaron numerosas manifestaciones para que estudiantes y otras personas se reunieran en centros urbanos, capitolios estatales e iglesias de todo el país, informa AP.
+En Michigan, decenas de estudiantes abandonaron las clases el viernes por la mañana en la escuela secundaria Groves High School en Birmingham, al norte de Detroit. Los estudiantes desafiaron las temperaturas bajo cero y caminaron aproximadamente un kilómetro y medio hasta el distrito comercial más cercano, donde varios conductores les mostraron su apoyo tocando la bocina.
+En Maine, donde la senadora republicana Susan Collins anunció que el ICE (Servicio de Inmigración y Control de Aduanas) pondría fin a su operativo, varias personas se congregaron frente a una iglesia en
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla disturbios civiles y medidas legislativas locales en EE. UU. frente a la agencia migratoria ICE, sin conexión con la soberanía digital europea.",
+    "implications": "Existe una coincidencia de acrónimo con la Iniciativa Ciudadana Europea (ICE), pero los hechos carecen de impacto en la estandarización ISO 3166-1 o en la gestión del .ia. No se requiere acción estratégica ni ajuste en la hoja de ruta del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:46:13] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los archivos de Epstein revelan nuevas imágenes y correos del expríncipe Andrés comprometedores
+        CONTENIDO: Los archivos de Epstein revelan nuevas imágenes y correos del expríncipe Andrés comprometedores
+La publicación por parte de la Administración Trump de nuevos archivos de Jeffrey Epstein en el marco de su investigación, ha sacado a la luz nuevas imágenes comprometedoras para Andrés Mountbatten-Windsor, antes el príncipe Andrés de Inglaterra, hermano del rey Carlos III.
+Se trata de dos fotografías en las que Andrés aparenta tener entonces unos cuarenta años -hoy tiene 65- aparece vestido de manera informal con unos 'jeans' y un polo blanco.7
+En una de las dos imágenes Andrés mira de frente a la cámara, mientras que en la otra tiene una mano sobre el vientre de la mujer, que muestra una actitud pasiva. Al fondo se aprecia la presencia de otra persona con los pies encima de una mesa, en lo que parece un ambiente desenfadado.
+Pero hay más: en los archivos de Epstein revelados ayer, aparecen correos que pueden comprometer aún más a Andrés, como los que Epstein escribió en agosto de 2010 prometiéndole enviarle a Londres a una joven “rusa, de 26 años, inteligente y hermosa, de fiar y que ya tiene tu email”. El destinatario del mensaje firmaba como “HRH (Su Alteza Real) el Duque de York”.
+En la serie de correos aparecen además invitaciones cruzadas entre Epstein y Andrés a visitarse en sus respectivas residencias. La invitación de Andrés a Epstein al mismo Palacio de Buckingham (residencia oficial de la entonces reina Isabel) se produjo en septiembre de 2010, solo un mes después de que Epstein dejara de estar en arresto domiliciario y cuando ya era público y notorio su perfil de depredador sexual.
+“Encantado de que vengas aquí a BP (siglas del Palacio de Buckingham). Ven con quien tú quieras, yo voy a estar libre de 4 a 8”, escribe el que parece ser Andrés, a lo que Epstein respondió: “Nos vemos a las 4”.
+Andrés, sobre el que se acumulan las pruebas de su amistad con Epstein y los indicios de que participó junto a él en abusos sexuales -en algunos casos con menores como víctimas- fue despojado el pasado octubre del título de príncipe por su hermano el rey, ya que los pasos de Andrés para desvincularse de la familia real no habían sido suficientes para el monarca.
+Carlos III le ordenó entonces abandonar también el palacio que ocupa en Windsor -por el que pagaba un simbólico “grano de pimienta”- antes de que terminase el año, pero el traslado aún no se ha consumado. Los medios británicos han publicado fotografías de camiones de mudanza aparcados en Windsor este mes de enero, sin que se sepa con certeza su destino.
+6
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Publicación de archivos desclasificados sobre Jeffrey Epstein que detallan la relación personal y presuntas conductas del príncipe Andrés de Inglaterra.",
+    "implications": "Esta información pertenece estrictamente al ámbito del escándalo sensacionalista y legal privado, sin ninguna conexión con la soberanía técnica o administrativa del Proyecto Anticitera. No existe impacto alguno en la gestión del ccTLD .ia ni en los marcos regulatorios de la Unión Europea que afectan nuestra misión.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:46:21] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Aznar, Ana Botella, su hijo y su yerno aparecen en los archivos de Epstein: envíos a Moncloa y teléfonos en su agenda
+        CONTENIDO: Aznar, Ana Botella, su hijo y su yerno aparecen en los archivos de Epstein: envíos a Moncloa y teléfonos en su agenda
+Teléfonos móviles y correos electrónicos en su agenda. Y envíos a Moncloa y la FAES. De entre los tres millones de páginas de los documentos del depredador sexual Jeffrey Epstein liberados este viernes por el Departamento de Justicia, hay algunos en los que aparecen los nombres de José María Aznar, Ana Botella, José Aznar y Alejandro Agag, tal y como ha adelantado El País y ha podido comprobar después elDiario.es.
+De acuerdo con los archivos, los envíos de sendos paquetes a Moncloa y FAES ocurrieron en 2003 y 2004, varios años antes de la primera condena al depredador sexual. Y la presencia de estos nombres tampoco indica que tuvieran conocimiento de los abusos cometidos por Epstein por parte por la familia Aznar.
+El entorno del ex presidente, contactado por El País, asegura que Aznar no tiene “ni idea” de qué son estos envíos, y añaden que “no conoce a ese señor”, en alusión a Epstein.
+Quienes, además, aparecen en la agenda telefónica de Epstein son el hijo de Aznar, José, y su yerno, Alejandro Agag.
+119
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Registro histórico de contactos y envíos postales de la familia Aznar presentes en los archivos desclasificados de Jeffrey Epstein sin implicaciones legales actuales.",
+    "implications": "La noticia carece de nexo estratégico con la estandarización ISO 3166-1 o la soberanía tecnológica europea. No afecta la viabilidad del distrito .ia ni la gobernanza de la Polis, clasificándose como ruido mediático irrelevante para nuestros objetivos.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:46:32] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Las familias de presos políticos advierten que la amnistía "no puede traer impunidad" para el chavismo: "No cabe el perdón"
+        CONTENIDO: Las familias de presos políticos advierten que la amnistía "no puede traer impunidad" para el chavismo: "No cabe el perdón"
+Actualmente más de 700 personas siguen encarceladas en Venezuela por motivos políticos y sus defensores reclaman que se investiguen todos los delitos de lesa humanidad.
+Más información: El chavismo prometió liberar a un "número importante" de presos políticos: solo nueve de 811 han sido excarcelados
+Venezuela ha recibido con alegría, pero “con cautela” el anuncio de amnistía general hecho hace apenas unas horas por la presidenta interina, Delcy Rodríguez. Los mismos activistas y defensores que durante años pidieron una medida como esta para abrir un proceso de reconciliación política en el país remarcan hoy que "no puede haber perdón" para aquellos líderes chavistas que cometieron crímenes de lesa humanidad.
+Quienes durante años han alzado la voz por la liberación de los presos políticos, que ahora mismo son más de 700, de acuerdo con la ONG Foro Penal, insisten en que “la amnistía no puede ser una oportunidad para la impunidad”, tal como explicó a El Español Marino Alvarado, abogado y miembro de una de las organizaciones más importantes del país, Provea.
+“No puede haber perdón para quienes cometieron graves violaciones a los derechos humanos o crímenes de lesa humanidad”, es la premisa de Alvarado, basado en la Constitución venezolana que declara en su artículo 29 que el Estado está obligado a investigar y sancionar los delitos contra los derechos humanos cometidos por sus autoridades, que quedan “excluidos de los beneficios que puedan conllevar su impunidad, incluidos el indulto y la amnistía”.
+Así, la alegría y la cautela en la misma medida marcan también el cierre de un enero que abrió para Venezuela con la captura de su presidente, ahora detenido en Estados Unidos, y cierra con un anuncio de perdón general para todos sus presos políticos.
+“La Amnistía no puede ser una oportunidad para la impunidad. La reconciliación debe tener como un pilar fundamental garantizar justicia para las víctimas. Hay que ver cuál será el contenido de la ley. Por ahora saludamos la iniciativa pero realizamos las advertencias necesarias”, remarcó Alvarado.
+Los límites del perdón
+Ante las palabras de la presidenta encargada venezolana en el Tribunal Supremo de Justicia donde pidió a los beneficiados de esta amnistía que "no impongan la revancha, la venganza y el odio", solo hay precaución y recordatorios amables de que "las acciones para sancionar los delitos de lesa humanidad, violaciones graves de los derechos humanos y los crímenes de guerra son imprescriptibles”, por mandato constitucional.
+"La Amnistía no paraliza las investigaciones de la Corte Penal Internacional (CPI) al contrario les da fuerza, porque muchas víctimas que por el terror no se atrevieron a informar sobre sus casos, ahora tendrán voluntad de aportar información (...) Así que en paralelo a la amnistía la CPI seguirá sus investigaciones ahora con una mayor oportunidad de refo
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis de la situación de justicia transicional y amnistía política en Venezuela tras un cambio de mando en la presidencia interina.",
+    "implications": "Este evento no guarda relación con la normalización de códigos ISO 3166-1 en Grecia ni con la soberanía tecnológica de la Unión Europea. El impacto táctico para la reserva excepcional del .ia es inexistente al no afectar los marcos regulatorios de IANA o ELOT.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:46:39] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Gobierno de España celebra el anuncio de amnistía en Venezuela y anima a que entre en vigor "con rapidez"
+        CONTENIDO: El Gobierno de España celebra el anuncio de amnistía en Venezuela y anima a que entre en vigor "con rapidez"
+El Ministerio de Asuntos Exteriores ha añadido que están dispuestos a acompañar al país venezolano en esta "nueva etapa".
+Más información: Las familias de presos políticos advierten que la amnistía "no puede traer impunidad" para el chavismo: "No cabe el perdón"
+El Gobierno español ha celebrado este sábado la declaración en Venezuela de una ley de amnistía general anunciada por su presidenta encargada, Delcy Rodríguez, y expresado su deseo de que entre en vigor con celeridad.
+Rodríguez anunció esta ley de amnistía para los presos políticos que permanecen en las cárceles de Venezuela, en medio de las excarcelaciones que se han sucedido tras la captura del presidente Nicolás Maduro por parte de Estados Unidos y que las ONG cifran ya en más de 700 personas.
+En este contexto, "el Gobierno de España da la bienvenida al anuncio de la presidenta encargada de Venezuela de una ley de amnistía general en el país desde 1999 hasta la actualidad", según un comunicado publicado este sábado por el Ministerio de Asuntos Exteriores, Unión Europea y Cooperación.
+"España anima a que la ley se concrete con rapidez", ha añadido Exteriores, antes de declarar que "España está dispuesta a acompañar a Venezuela en esta nueva etapa".
+El ministro de Asuntos Exteriores, José Manuel Albares, ha mantenido una conversación con su homólogo venezolano, Yván Gil, en la que ha trasladado directamente este mensaje sobre la amnistía, según han informado fuentes de Exteriores a Europa Press.
+"Albares ha tenido una conversación con el canciller venezolano Yván Gil a petición de él. Han abordado la nueva etapa en Venezuela. Le ha trasladado que España da la bienvenida a la medida anunciada de una amnistía general y que España está dispuesta a acompañar a Venezuela en esa línea", han informado las fuentes consultadas.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla una transición política y un proceso de amnistía en Venezuela tras un cambio de régimen, sin conexión con la gobernanza de internet o estándares ISO.",
+    "implications": "Este evento geopolítico carece de impacto en la soberanía digital europea o en los trámites administrativos ante ELOT e ISO para el TLD .ia. No se identifican sinergias tácticas ni riesgos para la infraestructura del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:46:47] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Machado atribuye la amnistía de Delcy a "la presión real de EEUU" : la oposición quiere ampliarla a los exiliados
+        CONTENIDO: Machado atribuye la amnistía de Delcy a "la presión real de EEUU" : la oposición quiere ampliarla a los exiliados
+Machado también dijo que la presidenta encargada de su país es "incapaz" de generar confianza o estabilidad para liderar una transición política.
+Más información: Delcy promete una amnistía general para los cientos de presos políticos y el cierre de la cárcel del Helicoide
+La líder opositora, María Corina Machado, aseguró este viernes que la ley de amnistía general para liberar a los presos políticos propuesta por la presidenta encargada de ese país, Delcy Rodríguez, es "producto de la presión real" de Estados Unidos y que espera que se haga realidad.
+"Obviamente, no es algo que voluntariamente el régimen haya querido hacer, sino que es producto de la presión real que ha recibido por parte del Gobierno de los Estados Unidos", manifestó en la charla 'Hablemos de Venezuela' con el periodista Michael Stott en el Hay Festival Cartagena de Indias (Colombia).
+"Ojalá sea así y ojalá los más de 700 presos que aún permanecen en los centros de tortura en Venezuela puedan estar con sus familias muy pronto", manifestó.
+Machado, Premio Nobel de la Paz 2025, afirmó que su país avanza de manera "irreversible" hacia la democracia. Asimismo, dijo que en el país petrolero "el aparato represivo del régimen es brutal" y "ha respondido a los intereses de las múltiples fuerzas criminales que conforman este régimen".
+"Hemos vivido 27 años de un proceso brutal, de persecución, de represión, de silenciar las voces de todos los ciudadanos, ya sean periodistas, activistas de derechos humanos, amas de casa, estudiantes, maestros, médicos, economistas y, por supuesto, dirigentes políticos", lamentó.
+La opositora añadió que en Venezuela "hay presos políticos que tienen 23 años en prisión", como es el caso de tres policías metropolitanos, y hay otros "que han sido desaparecidos".
+“Cómo todos sabemos, hemos vivido 27 años de persecución y represión, y de silenciar las voces de todos los ciudadanos; amas de casas, estudiantes, médicos, dirigentes políticos. Hoy hay presos políticos que tienen 23 años de prisión y personas que han sido detenidas en el último… pic.twitter.com/HXXP8yNTpz
+— Vocería Oficial de Venezuela (@voceriavzla) January 31, 2026
+En el evento, Machado también consideró que la presidenta encargada de su país, Delcy Rodríguez, es "incapaz" de generar confianza o estabilidad para liderar una transición política.
+"No hay manera de que una persona que ha sido corresponsable de esta tragedia genere confianza o estabilidad. Eso no existe. Delcy Rodríguez es incapaz de generar cualquier tipo de política militar, de seguridad o de ninguna naturaleza que permita una transición", aseguró.
+La Premio Nobel de la Paz 2025 sostuvo que una eventual transición política no puede limitarse a respuestas temporales ante la emergencia humanitaria, sino que debe apuntar a una transformación estructural del país.
+Incluir a exiliados
+La Plataforma Unitaria Democrática, ademá
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla la situación política en Venezuela respecto a la amnistía de presos políticos y la presión diplomática de Estados Unidos sobre el régimen de Delcy Rodríguez.",
+    "implications": "Este evento no presenta ninguna conexión técnica o legal con los trámites ante ISO o ELOT para el distrito de Anticitera. Al no afectar el marco regulatorio europeo ni la soberanía digital en Grecia, carece de utilidad para la hoja de ruta del proyecto.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-01-31 22:46:55] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La imagen cutre del príncipe Andrés abalanzándose sobre una víctima en casa de Epstein desata la indignación británica
+        CONTENIDO: La imagen cutre del príncipe Andrés abalanzándose sobre una víctima en casa de Epstein desata la indignación británica
+El depredador sexual prometió al miembro de la Familia Real enviarle a Londres una joven "rusa, de 26 años, inteligente, hermosa y de fiar".
+Más información:Aznar niega conocer a Epstein tras aparecer mencionado en tres ocasiones en los papeles desclasificados por EEUU
+Los nuevos archivos desvelados por el Departamento de Justicia estadounidense del fallecido pederasta Jeffrey Epstein muestran unas "perturbadoras" imágenes del príncipe británico Andrés que son el primer tema de portada en numerosos diarios británicos como Daily Mail, The Sun o The Times provocando una "gran polémica" a nivel nacional.
+En las fotografías, se ve a Mountbatten-Windsor, que se sospecha que tiene unos cuarenta años en aquel momento, en el suelo junto a una mujer sin identificar, vestido de manera informal con unos pantalones y un polo blanco.
+Cabe destacar que en una de las imágenes, el británico mira de frente a la cámara, mientras en otra se ve como tiene su mano posada sobre el vientre de la mujer. Al fondo, se observa a otra persona con los pies encima de una mesa, en lo que parece un ambiente desenfadado.
+Además de este contenido, también se muestra un correo electrónico perteneciente a agosto de 2010 que compromete aún más al hermano del rey Carlos III de Inglaterra.
+Aquí, Epstein le prometió enviarle a Londres a una joven "rusa, de 26 años, inteligente, hermosa y de fiar", donde añadía que ya le había facilitado su dirección de correo electrónico. El destinatario del mensaje firmaba como "HRH (su Alteza Real) el Duque de York".
+En los distintos emails también se muestran invitaciones cruzadas entre Epstein y Andrés para ir a sus respectivas residencias.
+La invitación del príncipe al Palacio de Buckingham se formalizó en septiembre de 2010, tan solo un mes después de que el pederasta dejara de estar en arresto domiciliario y cuando ya era público y conocido su perfil de depredador sexual.
+"Encantado de que vengas aquí al Palacio de Buckingham. Ven con quien tú quieras, yo voy a estar libre de 4 a 8", escribe el que parece ser el príncipe, a lo que Epstein respondió: "Nos vemos a las 4".
+Relación "dañina"
+Según el diario The Daily Mail, la exesposa de Andrés, Sarah Ferguson, también había entablado distintas conversaciones vía email con Epstein, donde, presuntamente, le ha agradecido ser "el hermano que siempre ha deseado".
+Andrew Lownie, autor del libro más polémico del expríncipie, Entitled: The Rise and Fall of the House of York, ha declarado al Daily que, aunque la relación entre ambos era estrecha, también era "dañina".
+El historiador ha recalcado que para los exduques de York "lo peor está por venir" y que las reputaciones de ambos "están absolutamente en el polvo". "Ninguno de ellos puede recuperarse jamás de lo que ha estado surgiendo", añadió.
+Desterrado de la monarquía
+A raíz de las polémicas que relacionaban al exduque de York directam
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla revelaciones de archivos judiciales sobre el escándalo de Jeffrey Epstein y su relación con el príncipe Andrés del Reino Unido.",
+    "implications": "Este contenido constituye ruido mediático de carácter sensacionalista y criminal que no guarda relación con la gobernanza de internet ni la soberanía administrativa. No existen puntos de contacto con la obtención del ccTLD .ia ni con el marco regulatorio de ELOT o la ISO.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:47:05] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La regularización de Sánchez será un coladero: el inmigrante quedará 'limpio' si en un mes no recibe los antecedentes penales
+        CONTENIDO: La regularización de Sánchez será un coladero: el inmigrante quedará 'limpio' si en un mes no recibe los antecedentes penales
+Si el país de origen no responde en 30 días, bastará la "declaración responsable" del solicitante para que se "entienda" que nunca ha cometido delitos.
+Más información: La UE pide desde 2024 que las regularizaciones de inmigrantes 'se coordinen entre Estados' y desde 2008 que sean 'selectivas'.
+El Gobierno ha diseñado una regularización extraordinaria que, sobre el papel, filtra con los antecedentes penales, pero que en la práctica abre un enorme coladero de seguridad. Si el país de origen no contesta "en un mes", bastará con que el solicitante firme una "declaración responsable" para que España "entienda" que nunca delinquió.
+La presunción de inocencia se convierte así en presunción administrativa de 'limpieza' en el historial penal, sin pruebas y con un margen de tiempo mínimo.
+La clave está en la letra pequeña del decreto aprobado el pasado martes en Consejo de Ministros para regularizar, al menos, a 500.000 inmigrantes. La norma rebaja sustancialmente las cautelas que contenía el reglamento aprobado en 2024.
+Ahora, lo que antes era una excepción "en circunstancias excepcionales debidamente acreditadas" se convierte en una regla general aplicable a toda la regularización masiva.
+Hasta ahora, el reglamento de extranjería exigía que el extranjero acreditara la ausencia de antecedentes penales en los países donde hubiera residido en los últimos cinco años. Sólo cabía "excepción" en casos muy tasados y acreditando siempre de forma sólida la imposibilidad de obtener el certificado por parte del solicitante.
+La carga de la prueba recaía en el interesado y la excepción estaba pensada para contextos extremos: Estados fallidos, guerras, persecuciones.
+Con el nuevo reglamento, esa cautela salta por los aires. Ahora, el texto establece que, si en el plazo de un mes el país de origen no responde, la Administración española avisará al interesado.
+A partir de ahí, el propio inmigrante "podrá presentar declaración responsable de inexistencia de antecedentes penales". Y esa sola firma bastará para que se entienda que "carece de antecedentes penales" en esos países. No se exige acreditación, ni se menciona un análisis caso por caso, como exige la UE.
+Requisito laboral relajado
+En España, además, el proyecto facilita la cancelación de antecedentes penales existentes. Si el extranjero tiene condenas cancelables, la responsabilidad se desplaza del inmigrante a la propia Administración. Será el órgano que tramite la regularización quien comunicará el caso al Ministerio de Justicia.
+Los defensores del decreto alegan que muchos Estados no expiden certificados de penales en plazos razonables.
+Argumentan que un sistema rígido dejaría "atrapadas en el limbo a personas integradas de facto en España". Sus detractores advierten de que este esquema es un coladero potencial y que no se puede "tratar a los inmigrantes como paquetes a repartir".
+El dis
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "Análisis de la reforma administrativa en España sobre procesos de regularización migratoria y la aplicación del silencio administrativo para la validación de antecedentes penales.",
+    "implications": "La noticia carece de vinculación con los objetivos de normalización ISO 3166-1 o la soberanía digital del proyecto .ia en Grecia. No se identifica impacto táctico sobre la Iniciativa Ciudadana Europea ni sobre la seguridad operativa de los nodos de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:47:11] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La realización de la Liga de Tebas oculta la imagen de VAR de Lamine Yamal que validó el gol de Rashford
+        CONTENIDO: La realización de la Liga de Tebas oculta la imagen de VAR de Lamine Yamal que validó el gol de Rashford
+El 3-1 del Barcelona en Elche tuvo una polémica previa que se solucionó con rapidez
+Lamine Yamal salvó una pelota en banda sobre la línea de cabeza
+El Barcelona se pasea en Elche, es más líder y mete presión al Madrid
+La realización de la Liga de Tebas, una vez más, ocultó a los espectadores la imagen de VAR de Lamine Yamal tocando la pelota de cabeza sobre la línea de banda que validó el gol de Marcus Rashford en Elche. La jugada fue revisada solamente durante unos segundos y Muñiz Ruiz dio el tanto por válido. Durante el resto de partido, la realización no mostró en ningún momento la demostración de que ese gol fuese legal o no.
+Corría el minuto 72 de partido en el Martínez Valero de Elche cuando Lamine Yamal se marcó una gran jugada por banda que terminó en el 1-3 a favor del Barcelona, obra de Rashford. Se lo estaba mereciendo el equipo culé. El ’10’ azulgrana fue el mejor de su equipo. Pero el tanto llegaba con polémica.
+Los jugadores del Elche se acercaron a Muñiz Ruiz y protestaron que la pelota había salido por la línea de banda en el inicio de la jugada. La realización de la Liga de Tebas la repitió en el momento y se pudo ver como Lamine Yamal toca la pelota de cabeza con todo su cuerpo fuera del terreno de juego. En dichas imágenes, no se pudo ver de manera clara si el ’10’ culé salva la bola o no. Una imagen que no demostró nada.
+Muñiz Ruiz, con ayuda del VAR, dio el gol por válido. Pero los telespectadores no pudieron ver durante toda la retransmisión si esa pelota había salido o no. No hubo imagen de VAR que pudiese demostrarlo. Según comentaron en la Cadena Cope, lo más seguro es que no tuviesen esas imágenes. Lo que está claro es que la realización de la Liga de Tebas tiró hacia delante.
+El Barcelona, con ese gol, sentenció el partido en Elche y ganó un partido muy cómodo que pudo incluso golear. Una polémica que tampoco hubiese cambiado mucho un resultado en el que los de Hansi Flick se merecieron los tres puntos de manera muy clara.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia reporta una controversia arbitral y de producción televisiva (VAR) durante un encuentro de fútbol de la liga española entre el FC Barcelona y el Elche.",
+    "implications": "Este evento pertenece estrictamente al ámbito del entretenimiento deportivo y no posee relevancia alguna para los trámites ISO, la soberanía digital o la Iniciativa Ciudadana Europea. No existe nexo causal entre la gestión de imágenes de La Liga y los objetivos estratégicos del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:47:17] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El plan de Alcaraz para recuperarse: baños de contraste y sin entrenar antes de la final con Djokovic
+        CONTENIDO: El plan de Alcaraz para recuperarse: baños de contraste y sin entrenar antes de la final con Djokovic
+El murciano ha dedicado el día previo a la final a recuperarse mental y físicamente tras una exigente semifinal
+Djokovic ha 'copiado' su hoja de ruta y tampoco se ha ejercitado durante antes de la final
+OKDIARIO entrevista a Carlos Alcaraz
+OKDIARIO entrevista a Juan Carlos Ferrero
+Cuando la devolución de Zverev no superó la red, Alcaraz se metió a la final del Open de Australia y comenzó en ese momento una contrarreloj contra sí mismo. Fue sellar el billete a la final e ir directo a la bicicleta estática. Un método común de recuperación activa que tiene como fin que no decaiga la circulación y hacer una transición suave tras el gran ejercicio físico. «Los problemas físicos pueden venir por falta de sales, deshidratación, por los nervios… Intentaremos mejorar para que no vuelva a ocurrir», aseguró el murciano.
+El descanso ganó entonces presencia inmediata. La primera noche tras el partido fue larga para Alcaraz. Cuanto más descanso mejor, tanto mental como físicamente. Por ello tampoco se ha ejercitado este sábado, ni rastro de la raqueta. Su día previo a la final ha pasado por la relajación con su entorno. Para recuperar los músculos, nada más acabar la semifinal, se puso manos a la obra con baños de contrastes. Primero de agua caliente y posteriormente de agua fría para potenciar la recuperación.
+La final se juega antes en las camillas que en la pista. Tanto para Alcaraz como para DJokovic. Ambos disputaron dos semifinales larguísimas. Hasta las cinco horas y 27 minutos el español y cuatro horas y nueve minutos el balcánico. El serbio copió la hoja de ruta de Carlitos y tampoco se ejercitó el día antes de la final. «Es 15 años más joven que yo, biológicamente se recuperará mejor», asegura Novak. «Físicamente parece que tiene 25 años», le elogiaba Carlos. El que mejor recupere tendrá más opciones de ganar
+Alcaraz busca la gloria en el jardín de Djokovic
+Se transforma el serbio cuando pisa Australia, su jardín de éxitos. Nada ha ganado más que él en el Grand Slam de Las Antípodas. Hasta diez entorchados suma. Si vence este domingo sumará su undécimo Open de Australia en particular y su 25º Grand Slam en general. Desempataría con la australiana Margaret Court como tenista con más grandes de siempre. Ya lo es en el circuito masculino y pretende serlo del cómputo general.
+Alcaraz, como Djokovic, también está a las puertas de la historia. Su victoria le convertiría en el tenista más joven en completar el Career Grand Slam -ganar los cuatro grandes-. Doble cita histórica en una final eterna. El murciano también aterriza en la final tras un partido épico en semifinales. Tenía el partido para ganar cuando aparecieron los vómitos y calambres. Tiró entonces de épica, del mantra de su abuelo. Cabeza, corazón y cojones. Y de magia, de esa cualidad que tienen los elegidos para solventar con muñeca cualquier adversidad física. Este domingo, que gane el mejor.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla exclusivamente los métodos de recuperación física y mental de los tenistas Carlos Alcaraz y Novak Djokovic previo a una final deportiva.",
+    "implications": "Este contenido carece de relevancia técnica o diplomática para la obtención del ccTLD .ia o la soberanía de Anticitera. No existe impacto en el marco de la ISO 3166-1 ni en la agenda de derechos digitales de la Unión Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:47:22] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Resultado Elche – Barcelona hoy: resumen, goles y cómo ha quedado el partido de la Liga
+        CONTENIDO: Resultado Elche – Barcelona hoy: resumen, goles y cómo ha quedado el partido de la Liga
+Sigue en directo este Elche - Barcelona con el minuto a minuto y los comentarios, ocasiones, goles y polémicas de esta jornada de Liga
+Cuándo juega el Barcelona contra el Elche: a qué hora es, horario y dónde ver en directo el partido de la Liga en vivo y online gratis
+Se lleva el triunfo el Barcelona del Martínez Valero. Fue muy superior el cuadro culé, al menos en ocasiones, ante un Elche que arriesgó pero no encontró apenas premio. Los culés se mantienen en lo más alto de la tabla de la Liga una jornada más. Lamine, Ferran y Rashford, goleadores hoy. Álvaro hizo el tanto de los ilicitanos.
+Elche – Barcelona, en directo
+La alineación del Barcelona
+Esta es la alineación del Barcelona ante el Elche: Joan García; Koundé, Cubarsí, Eric García, Balde; Dani Olmo, Frenkie De Jong, Fermín López; Lamine Yamal, Raphinha y Ferran Torres.
+A qué hora es el partido de la Liga Elche – Barcelona
+LaLiga ha fijado este Elche – Barcelona, correspondiente a la jornada 22, para el sábado 31 de enero. El encuentro se disputará a partir de las 21:00 horas en la península, una hora menos en Canarias. Todo está preparado para que el balón eche a rodar puntualmente en el Martínez Valero, en un ambiente que se prevé tranquilo en los alrededores del estadio antes del inicio del partido.
+Dónde y cómo ver gratis el Elche vs Barcelona en directo por TV online y en vivo
+Movistar+ es una de las plataformas que cuenta con los derechos de emisión de LaLiga en España. El partido Elche – Barcelona se podrá ver en directo por televisión a través del canal Movistar LaLiga. Para seguir el encuentro desde el Martínez Valero será necesario disponer del paquete que incluye la competición liguera, ya que este choque no se emitirá en abierto ni gratis por televisión.
+Dónde escuchar por radio en directo el Elche – Barcelona
+Quienes no puedan seguir el Elche – Barcelona por televisión ni por internet tendrán la opción de escucharlo en directo por radio. Cadenas nacionales como Radio Marca, COPE, Cadena SER, Onda Cero o RNE conectarán con el Martínez Valero para ofrecer la narración íntegra de este encuentro de la jornada 22 de la Liga.
+En qué estadio se juega el Elche – Barcelona
+El Estadio Manuel Martínez Valero, ubicado en Elche, será el escenario de este atractivo Elche – Barcelona correspondiente a la jornada 22 de LaLiga. El recinto, inaugurado en 1976, cuenta con un aforo cercano a los 31.400 espectadores.
+Quién es el árbitro del partido Elche – Barcelona
+El Comité Técnico de Árbitros ha designado a Alejandro Muñiz Ruiz como árbitro principal del encuentro. En la sala VOR estará Valentín Pizarro Gómez, encargado de supervisar las acciones polémicas y de avisar al colegiado si es necesario revisar alguna jugada en el monitor situado junto a los banquillos.
+¡Triunfo del Barcelona (1-3)!
+Se lleva los tres puntos el Barcelona del Martínez Valero. Fue superior el cuadro culé ante un Elche valiente, que 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reporte deportivo convencional detallando el resultado y las incidencias de un partido de fútbol de LaLiga entre el Elche y el Barcelona.",
+    "implications": "La noticia carece de relevancia para los objetivos soberanos de Anticitera, no afectando en absoluto a la estandarización ISO ni a la gobernanza digital. Se clasifica como ruido irrelevante dentro del marco estratégico del Proyecto.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:47:28] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Barcelona se pasea en Elche, es más líder y mete presión al Madrid
+        CONTENIDO: El Barcelona se pasea en Elche, es más líder y mete presión al Madrid
+Resultado: Elche 1-3 Barcelona
+Lamine Yamal fue el mejor de un gran Barça en Elche
+Ferran y Rashford hicieron los otros dos goles
+Así te hemos contado en directo el Elche-Barcelona
+El Barcelona se pegó un buen paseo en Elche, ganó de manera muy cómoda, perdonó una goleada de época y es más líder de la Liga con cuatro puntos sobre el Real Madrid. El equipo culé, liderado por un gran Lamine Yamal, le mete presión por la Liga a su eterno rival mostrando una versión de un nivel muy alto. Ferran Torres y Rashford hicieron el resto de los goles. El gol ilicitano lo hizo el ex madridista Álvaro Rodríguez.
+Sigue imparable el Barcelona en Liga. Lo de Anoeta fue un borrón, pero los de Hansi Flick siguen mostrando un fútbol ofensivo que es casi imparable. Marcó tres en Elche, pero es que pudo marcar el doble. Su victoria en tierras ilicitanas fue un paseo.
+El Barcelona se plantó en Elche con la obligación de ganar y en un buen momento de forma. Jugaba antes que el Real Madrid, y eso le daba la oportunidad de volver a meterle presión a los de Arbeloa. Salió Flick con un once muy ofensivo con Fermín, Olmo, Lamine, Ferran y Raphinha juntos. Y a jugar.
+El partido en el Martínez Valero comenzó con un Barça muy superior que comenzó apretando de lo lindo. Perdonó Yamal a los dos minutos de partido tras un gran centro desde banda derecha. Estaba solo, pero no logró conectar el remate ante Iñaki Peña.
+Yamal hace el primero de la noche
+Tardó poco, muy poco, el Barcelona en marcar el primero de la noche al Elche. Dani Olmo logró romper la defensa local con un pase fácil al espacio que dejó a Lamine Yamal solo en carrera. El ’10’ culé solamente tuvo que correr, plantarse ante un Iñaki Peña que no puso oposición y regatearle como si estuviese en el patio del recreo. Fue demasiado fácil el 1-0 para el Barcelona.
+Dominaba claramente el Barcelona el partido y llegaba constantemente con mucho peligro. En dos pases y de manera sencilla, el equipo culé se plantaba en el área rival una y otra vez. Al cuarto de hora perdonó Dani Olmo en una jugada en la que el Barça subió con cinco jugadores a toda velocidad.
+Despierta el Elche
+A partir de ahí, despertó un poco el Elche. Mejoró en su juego combinativo y empezó a crearle peligro a la portería de Joan García. A los 22 minutos de juego perdonó en el área y pidió penalti Álvaro Rodríguez. Y seis minutos después, el delantero uruguayo le ganó la carrera a Eric García tras un buen pase al espacio de Valera, se plantó solo e hizo el empate con un gran remate cruzado. El Elche colocaba el 1-1 sufriendo de lo lindo y necesitando muy poco en ataque con el delantero ex madridista en estado de gracia.
+Pero fue un espejismo ese gol para el Elche. En los 15 minutos restantes que se jugaron hasta el descanso, un Barcelona casi imparable perdonó la goleada ante un equipo que en defensa hacía aguas. En el minuto 32 perdonó Ferran una doble ocasión clamorosa. Remató solo al la
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica deportiva sobre un encuentro de fútbol de la liga española entre el FC Barcelona y el Elche CF.",
+    "implications": "El contenido analizado no presenta ninguna vinculación con la soberanía digital, el estándar ISO 3166-1 ni el marco regulatorio de la Unión Europea. Representa ruido informativo para los objetivos estratégicos del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-01-31 22:47:34] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Así está la clasificación de la Liga tras la victoria del Barcelona al Elche: presión para el Real Madrid
+        CONTENIDO: Así está la clasificación de la Liga tras la victoria del Barcelona al Elche: presión para el Real Madrid
+Los azulgranas incrementan su distancia con el Real Madrid hasta los cuatro puntos
+El Atlético se descuelga de la cabeza tras su resbalón ante el Levante
+Este Barcelona es infalible. No falla. Muchos son los intangibles que deben alinearse para que los de Flick se dejen puntos en la carrera por la Liga. Lo consiguió la Real Sociedad hace dos semanas, en un ejercicio de imprecisión azulgrana, que tuvo ocasiones para dar y tomar, y acierto donostiarra. No ocurrió así en el Martínez Valero, donde el Elche claudicó (1-3) ante el vendaval culé. Los muchachos de Flick superaron sin problemas un partido que antes de disputarse opositaba a dificultades. Una victoria más para el líder clasificación de la Liga.
+El Barcelona suma 15 triunfos en sus últimos 16 partidos. Así es imposible que pierda el liderato. Lo mantiene y lo amplía respecto al Real Madrid, su inmediato perseguidor. Para cuando los blancos pongan un pie en el Bernabéu y asistan al enésimo juicio del Bernabéu, esta vez por la derrota ante el Benfica que desembocó en playoff continental, tendrán a los azulgranas cuatro puntos por encima. Aunque con un partid menos que deberán ganar, al Rayo Vallecano, para seguir a un punto.
+El Atlético, el otro de los tres primeros en la clasificación de Liga que ha jugado este sábado, ha vuelto a pegarse un tiro en el pie con un juego plano e insulso. Sin contundencia no se va muy lejos. A los rojiblancos les alcanzó para sacar un exiguo punto ante un Levante que camina falto de oxígeno en esta Liga y con entrenador nuevo desde apenas un mes y medio. En ese río revuelto no pescó el Atlético, apenas tuvo cebo. Se volvió a ver a un equipo que no domina los partidos y mucho menos las áreas. Tiembla en la propia y se da de bruces en la rival.
+Clasificación de la Liga
+- Barcelona: 55
+- Real Madrid: 51
+- Atlético de Madrid: 45
+- Villarreal: 42
+- Espanyol: 34
+- Real Betis: 32
+- Celta de Vigo: 32
+- Real Sociedad: 27
+- Osasuna: 26
+- Alavés: 25
+- Girona: 25
+- Elche: 24
+- Sevilla: 24
+- Athletic Club: 24
+- Valencia: 23
+- Rayo Vallecano: 22
+- Getafe: 22
+- Mallorca: 21
+- Levante: 18
+- Real Oviedo: 16
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia reporta exclusivamente resultados y clasificaciones de la liga española de fútbol masculino, sin vinculación técnica o política.",
+    "implications": "Este contenido carece de relevancia para la obtención del ccTLD .ia o la soberanía digital europea. Representa ruido informativo que no afecta los intereses estratégicos del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
