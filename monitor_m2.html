@@ -201,6 +201,55 @@
             pointer-events: auto;
         }
 
+        /* System Modal */
+        #system_modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 500px;
+            background: rgba(13, 17, 23, 0.95);
+            border: 2px solid var(--accent);
+            border-radius: 30px;
+            z-index: 4000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            gap: 30px;
+            box-sizing: border-box;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        #system_modal.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .system-btn-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .btn-large {
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s;
+        }
+
 
         .music-grid {
             display: grid;
@@ -743,6 +792,19 @@
         </div>
     </div>
 
+    <!-- System Modal -->
+    <div id="system_modal">
+        <h2 style="font-size: 2.2rem; color: var(--accent); margin: 0; letter-spacing: 3px;">OPCIONES DE SISTEMA</h2>
+        <div class="system-btn-grid">
+            <button class="btn-large" style="background: var(--accent); color: black;"
+                onclick="confirmSystemAction('reiniciar')">Reiniciar M2</button>
+            <button class="btn-large" style="background: #ff4646; color: white;"
+                onclick="confirmSystemAction('apagar')">Apagar M2</button>
+            <button class="btn-large" style="background: #333; color: white;"
+                onclick="closeSystemMenu()">Cancelar</button>
+        </div>
+    </div>
+
     <!-- TELEMETRY VIEW: (Hidden by default) -->
     <div class="main" id="telemetry_view">
         <!-- NODE M2 -->
@@ -1044,20 +1106,39 @@
             document.body.style.transform = `translate(-50%, -50%) rotate(${rotationDegrees}deg)`;
         }
 
-        async function showSystemMenu() {
-            const action = prompt("SISTEMA ANTICITERA:\nEscribe 'apagar' para apagar el nodo M2\nEscribe 'reiniciar' para reiniciar");
-            if (!action) return;
+        // Inactivity Timer (5 minutes)
+        let inactivityTimer;
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(activateScreensaver, 300000); // 300s = 5m
+        }
 
-            const confirmed = confirm(`¿Estás seguro de que deseas ${action.toUpperCase()} el sistema?`);
+        // Setup Inactivity Listeners
+        ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(evt => {
+            document.addEventListener(evt, resetInactivityTimer, true);
+        });
+
+        function showSystemMenu() {
+            document.getElementById('system_modal').classList.add('visible');
+        }
+
+        function closeSystemMenu() {
+            document.getElementById('system_modal').classList.remove('visible');
+        }
+
+        async function confirmSystemAction(action) {
+            const confirmed = confirm(`¿Estás seguro de que deseas ${action.toUpperCase()} el sistema M2?`);
             if (!confirmed) return;
 
+            closeSystemMenu();
             try {
                 const endpoint = action === 'reiniciar' ? '/system/reboot' : '/system/shutdown';
+                // Direct call to M2 Status API (Local or Network)
                 const res = await fetch(`http://192.168.1.75:5051${endpoint}`, { method: 'POST' });
                 const data = await res.json();
                 alert(data.message);
             } catch (err) {
-                alert("Error al comunicar con el agente.");
+                alert("Error al comunicar con el Agente de Sistema.");
             }
         }
 

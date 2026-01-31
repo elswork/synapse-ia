@@ -41,12 +41,25 @@ def get_stats():
             pass
             
     return jsonify({
+        "node": "M2",
         "cpu": psutil.cpu_percent(interval=None),
         "ram": psutil.virtual_memory().percent,
         "uptime": time.time() - psutil.boot_time(),
         "timestamp": time.time(),
         "brightness": brightness_val
     })
+
+@app.route('/system/reboot', methods=['POST'])
+def system_reboot():
+    # Attempt to reboot host from container
+    # Since we have /proc and /sys, we might try sysrq if standard reboot fails
+    os.system("reboot") 
+    return jsonify({"status": "ok", "message": "Reboot command sent"})
+
+@app.route('/system/shutdown', methods=['POST'])
+def system_shutdown():
+    os.system("shutdown -h now")
+    return jsonify({"status": "ok", "message": "Shutdown command sent"})
 
 @app.route('/brightness', methods=['POST'])
 def update_brightness():
