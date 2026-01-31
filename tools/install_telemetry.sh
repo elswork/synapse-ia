@@ -18,8 +18,7 @@ if [ ! -f "$AGENT_SCRIPT" ]; then
 fi
 
 echo "Instalando dependencias..."
-apt-get update && apt-get install -y python3-pip
-pip3 install flask flask-cors psutil
+apt-get update && apt-get install -y python3-pip python3-flask python3-flask-cors python3-psutil
 
 SERVICE_FILE="/etc/systemd/system/anticitera-telemetry.service"
 
