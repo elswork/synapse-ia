@@ -201,6 +201,72 @@
             pointer-events: auto;
         }
 
+        /* Launcher Grid */
+        .launcher-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 30px;
+            padding: 40px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .launcher-card {
+            background: rgba(13, 17, 23, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .launcher-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .launcher-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .launcher-card:hover::before {
+            opacity: 1;
+        }
+
+        .launcher-card:active {
+            transform: scale(0.98);
+        }
+
+        .launcher-icon {
+            font-size: 4rem;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+        }
+
+        .launcher-name {
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         .music-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -582,8 +648,48 @@
         </div>
     </div>
 
-    <!-- MAIN GRID: 4 Nodes -->
-    <div class="main">
+    <!-- LAUNCHER GRID: 9 App Modules -->
+    <div id="launcher_grid" class="launcher-grid">
+        <div class="launcher-card" onclick="showTelemetry()">
+            <div class="launcher-icon">📊</div>
+            <div class="launcher-name">Telemetría</div>
+        </div>
+        <div class="launcher-card" onclick="openMusicModal()">
+            <div class="launcher-icon">📻</div>
+            <div class="launcher-name">Radio</div>
+        </div>
+        <div class="launcher-card" onclick="openWeatherModal()">
+            <div class="launcher-icon">☁️</div>
+            <div class="launcher-name">El Tiempo</div>
+        </div>
+        <div class="launcher-card" onclick="openAthena()">
+            <div class="launcher-icon">🧠</div>
+            <div class="launcher-name">Athena</div>
+        </div>
+        <div class="launcher-card" onclick="openAutomation()">
+            <div class="launcher-icon">🏠</div>
+            <div class="launcher-name">Domótica</div>
+        </div>
+        <div class="launcher-card" onclick="openDiplomacy()">
+            <div class="launcher-icon">🌐</div>
+            <div class="launcher-name">Diplomacia</div>
+        </div>
+        <div class="launcher-card" onclick="openArchive()">
+            <div class="launcher-icon">📁</div>
+            <div class="launcher-name">Archivo</div>
+        </div>
+        <div class="launcher-card" onclick="openSystem()">
+            <div class="launcher-icon">⚙️</div>
+            <div class="launcher-name">Sistema</div>
+        </div>
+        <div class="launcher-card" onclick="openSecurity()">
+            <div class="launcher-icon">🛡️</div>
+            <div class="launcher-name">Seguridad</div>
+        </div>
+    </div>
+
+    <!-- TELEMETRY VIEW: (Hidden by default) -->
+    <div class="main" id="telemetry_view">
         <!-- NODE M2 -->
         <div class="card" id="node_m2">
             <div class="node-header">
@@ -598,9 +704,7 @@
                 <div class="progress-bar-bg">
                     <div class="progress-bar-fill" id="bar_cpu_m2"></div>
                 </div>
-
                 <div style="height: 15px;"></div>
-
                 <div class="stat-row">
                     <span class="stat-label">RAM</span>
                     <span class="stat-val" id="ram_m2">--%</span>
@@ -625,9 +729,7 @@
                 <div class="progress-bar-bg">
                     <div class="progress-bar-fill" id="bar_cpu_legion"></div>
                 </div>
-
                 <div style="height: 15px;"></div>
-
                 <div class="stat-row">
                     <span class="stat-label">RAM</span>
                     <span class="stat-val" id="ram_legion">--%</span>
@@ -652,9 +754,7 @@
                 <div class="progress-bar-bg">
                     <div class="progress-bar-fill" id="bar_cpu_chromebook"></div>
                 </div>
-
                 <div style="height: 15px;"></div>
-
                 <div class="stat-row">
                     <span class="stat-label">RAM</span>
                     <span class="stat-val" id="ram_chromebook">--%</span>
@@ -679,9 +779,7 @@
                 <div class="progress-bar-bg">
                     <div class="progress-bar-fill" id="bar_cpu_hc1"></div>
                 </div>
-
                 <div style="height: 15px;"></div>
-
                 <div class="stat-row">
                     <span class="stat-label">RAM</span>
                     <span class="stat-val" id="ram_hc1">--%</span>
@@ -865,7 +963,38 @@
             document.getElementById('header_np').style.display = 'none';
         }
 
-        // --- WEATHER ---
+        // Navigation Logic
+        function showTelemetry() {
+            document.getElementById('launcher_grid').style.display = 'none';
+            document.getElementById('telemetry_view').style.display = 'grid';
+        }
+
+        function showLauncher() {
+            document.getElementById('launcher_grid').style.display = 'grid';
+            document.getElementById('telemetry_view').style.display = 'none';
+            closeMusicModal();
+            closeWeatherModal();
+        }
+
+        // Clickable Title to go Home
+        document.getElementById('header_title').style.cursor = 'pointer';
+        document.getElementById('header_title').onclick = showLauncher;
+
+        // Placeholders for new modules
+        function openWeatherModal() {
+            weatherModal.classList.add('visible');
+            showLauncher(); // Ensure grid is ready if needed, but modal is over everything
+        }
+        function closeWeatherModal() { weatherModal.classList.remove('visible'); }
+
+        function openAthena() { alert("Accediendo a Athena Brain..."); }
+        function openAutomation() { alert("Accediendo a Domótica..."); }
+        function openDiplomacy() { alert("Accediendo a Diplomacia..."); }
+        function openArchive() { alert("Accediendo a Archivo..."); }
+        function openSystem() { alert("Accediendo a Sistema..."); }
+        function openSecurity() { alert("Accediendo a Seguridad..."); }
+
+        // --- WEATHER UTILS ---
         function getWMOIcon(code, isDay) {
             if (code === 0) return isDay ? '☀️' : '🌙';
             if (code >= 1 && code <= 3) return isDay ? '⛅' : '☁️';
