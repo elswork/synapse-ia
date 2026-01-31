@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M2 Touch Dashboard</title>
-    <!-- Chart.js removed -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
 
@@ -16,6 +15,7 @@
             --text: #e6edf3;
             --danger: #ff4444;
             --success: #2ea043;
+            --warning: #d29922;
         }
 
         body {
@@ -35,7 +35,7 @@
             flex-direction: column;
         }
 
-        /* Screensaver styles */
+        /* Screensaver */
         #screensaver {
             position: absolute;
             top: 0;
@@ -58,7 +58,6 @@
 
         #saver_time {
             font-size: 14rem;
-            /* Masivo */
             font-weight: 700;
             color: #fff;
             margin: 0;
@@ -67,11 +66,9 @@
 
         #saver_date {
             font-size: 4rem;
-            /* Mucho más grande */
             color: #888;
             margin-top: 20px;
             font-weight: 300;
-            text-align: center;
         }
 
         #saver_weather {
@@ -100,7 +97,7 @@
             letter-spacing: 3px;
         }
 
-        /* Smart Weather Modal */
+        /* Weather Modal */
         #weather_modal {
             position: absolute;
             top: 0;
@@ -207,7 +204,6 @@
         .music-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            /* 3 Columns for 9 items */
             gap: 20px;
             flex: 1;
             margin-top: 20px;
@@ -251,7 +247,6 @@
             flex-direction: column;
             gap: 15px;
             display: none;
-            /* Hidden by default */
             flex: 1;
             overflow-y: auto;
         }
@@ -322,6 +317,7 @@
             justify-content: center;
         }
 
+        /* Layout */
         .header {
             display: flex;
             justify-content: space-between;
@@ -354,28 +350,79 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
+            /* Adjusted for node content */
+            position: relative;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.2s;
         }
 
-        .card:active {
-            transform: scale(0.98);
-            background: #161b22;
+        .node-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
         }
 
-        .stat-value {
-            font-size: 3.5rem;
+        .node-name {
+            font-size: 1.5rem;
             font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .node-status {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .node-status.online {
+            background: var(--success);
+            box-shadow: 0 0 10px var(--success);
+        }
+
+        .node-status.offline {
+            background: var(--danger);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
             margin: 5px 0;
         }
 
         .stat-label {
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1rem;
+            font-size: 1.2rem;
+            color: #888;
+        }
+
+        .stat-val {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: #30363d;
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.5s ease;
         }
 
         .footer {
@@ -388,7 +435,6 @@
             justify-content: center;
             gap: 20px;
             position: relative;
-            /* For z-index context */
         }
 
         .btn {
@@ -433,29 +479,11 @@
             justify-content: center;
             z-index: 2001;
         }
-
-        .pulse {
-            animation: pulse-animation 2s infinite;
-        }
-
-        @keyframes pulse-animation {
-            0% {
-                opacity: 0.6;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0.6;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <!-- Screensaver Overlay -->
+    <!-- Screensaver -->
     <div id="screensaver" onclick="dismissScreensaver(event)">
         <div id="saver_time">--:--</div>
         <div id="saver_date">-- -- --</div>
@@ -467,11 +495,9 @@
         <div id="saver_loc">Alcorcón, ES</div>
     </div>
 
-    <!-- Smart Weather Modal -->
+    <!-- Weather Modal -->
     <div id="weather_modal" onclick="closeWeatherModal(event)">
         <button class="btn-close" onclick="closeWeatherModal(event)">✕</button>
-
-        <!-- Top Section -->
         <div class="weather-main">
             <div class="weather-info">
                 <h2 id="w_desc">Cargando...</h2>
@@ -483,59 +509,16 @@
             </div>
             <div class="weather-current-temp" id="w_current">--°</div>
         </div>
-
-        <!-- Hourly Forecast -->
-        <div class="hourly-container" id="hourly_strip">
-            <!-- Slots injected by JS -->
-        </div>
+        <div class="hourly-container" id="hourly_strip"></div>
     </div>
 
     <!-- Music Modal -->
     <div id="music_modal">
         <button class="btn-close" style="background: rgba(255,0,0,0.3);" onclick="closeMusicModal()">✕</button>
         <h2 style="font-size: 3rem; margin-top:0;">Música & Radio</h2>
-
-        <!-- Genre View -->
         <div class="music-grid" id="genre_view">
-            <div class="genre-card" onclick="showStations('noticias')">
-                <div class="genre-icon">🌍</div>
-                <div class="genre-name">Noticias</div>
-            </div>
-            <div class="genre-card" onclick="showStations('electronica')">
-                <div class="genre-icon">⚡</div>
-                <div class="genre-name">Electrónica</div>
-            </div>
-            <div class="genre-card" onclick="showStations('rock')">
-                <div class="genre-icon">🤘</div>
-                <div class="genre-name">Rock</div>
-            </div>
-            <div class="genre-card" onclick="showStations('urbano')">
-                <div class="genre-icon">🎤</div>
-                <div class="genre-name">Urbano</div>
-            </div>
-            <div class="genre-card" onclick="showStations('pop')">
-                <div class="genre-icon">🎉</div>
-                <div class="genre-name">Pop</div>
-            </div>
-            <div class="genre-card" onclick="showStations('world')">
-                <div class="genre-icon">🥁</div>
-                <div class="genre-name">World Music</div>
-            </div>
-            <div class="genre-card" onclick="showStations('ambient')">
-                <div class="genre-icon">🌌</div>
-                <div class="genre-name">Ambient</div>
-            </div>
-            <div class="genre-card" onclick="showStations('chill')">
-                <div class="genre-icon">🐚</div>
-                <div class="genre-name">Chill Out</div>
-            </div>
-            <div class="genre-card" onclick="showStations('lofi')">
-                <div class="genre-icon">☕</div>
-                <div class="genre-name">Lo-Fi</div>
-            </div>
+            <!-- Populated via JS -->
         </div>
-
-        <!-- Station View -->
         <div class="station-list" id="station_view">
             <button class="btn" style="align-self: flex-start; margin-bottom: 20px;" onclick="showGenres()">←
                 Volver</button>
@@ -543,7 +526,7 @@
         </div>
     </div>
 
-    <!-- Info Bar / Now Playing -->
+    <!-- Now Playing -->
     <div id="now_playing">
         <div class="np-info">
             <div style="font-size: 2rem;">🎵</div>
@@ -559,31 +542,116 @@
     </div>
 
     <div class="header">
-        <h1>ANTICITERA NEXUS M2</h1>
+        <h1>ANTICITERA NEXUS BOARD</h1>
         <div id="clock" style="font-size: 2rem; font-weight: 600;"></div>
     </div>
 
+    <!-- MAIN GRID: 4 Nodes -->
     <div class="main">
-        <div class="card" onclick="location.reload()">
-            <div class="stat-label">⚡ CPU LOAD</div>
-            <div class="stat-value" id="cpu_val">--%</div>
-        </div>
-        <div class="card">
-            <div class="stat-label">🧠 RAM USAGE</div>
-            <div class="stat-value" id="ram_val">--%</div>
-        </div>
-        <div class="card">
-            <div class="stat-label">🛰️ REPLICATION</div>
-            <div class="stat-value" id="sync_status" style="color: #0f0;">ONLINE</div>
-        </div>
-        <div class="card">
-            <div class="stat-label">🦉 NODES STATUS</div>
-            <div style="display: flex; gap: 20px; margin-top: 10px;">
-                <div style="text-align:center;">
-                    <div style="color:#0f0; font-size:1.5rem;">●</div> M2
+        <!-- NODE M2 -->
+        <div class="card" id="node_m2">
+            <div class="node-header">
+                <div class="node-name">NODO M2</div>
+                <div class="node-status" id="status_m2"></div>
+            </div>
+            <div>
+                <div class="stat-row">
+                    <span class="stat-label">CPU</span>
+                    <span class="stat-val" id="cpu_m2">--%</span>
                 </div>
-                <div style="text-align:center;">
-                    <div id="hc1_dot" style="color:#0f0; font-size:1.5rem;">●</div> HC1
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="bar_cpu_m2"></div>
+                </div>
+
+                <div style="height: 15px;"></div>
+
+                <div class="stat-row">
+                    <span class="stat-label">RAM</span>
+                    <span class="stat-val" id="ram_m2">--%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="bar_ram_m2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NODE LEGION -->
+        <div class="card" id="node_legion">
+            <div class="node-header">
+                <div class="node-name">NODO LEGION</div>
+                <div class="node-status" id="status_legion"></div>
+            </div>
+            <div>
+                <div class="stat-row">
+                    <span class="stat-label">CPU</span>
+                    <span class="stat-val" id="cpu_legion">--%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="bar_cpu_legion"></div>
+                </div>
+
+                <div style="height: 15px;"></div>
+
+                <div class="stat-row">
+                    <span class="stat-label">RAM</span>
+                    <span class="stat-val" id="ram_legion">--%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="bar_ram_legion"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NODE CHROMEBOOK -->
+        <div class="card" id="node_chromebook">
+            <div class="node-header">
+                <div class="node-name">CHROMEBOOK</div>
+                <div class="node-status" id="status_chromebook"></div>
+            </div>
+            <div>
+                <div class="stat-row">
+                    <span class="stat-label">CPU</span>
+                    <span class="stat-val" id="cpu_chromebook">--%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="bar_cpu_chromebook"></div>
+                </div>
+
+                <div style="height: 15px;"></div>
+
+                <div class="stat-row">
+                    <span class="stat-label">RAM</span>
+                    <span class="stat-val" id="ram_chromebook">--%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="bar_ram_chromebook"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NODE HC1 -->
+        <div class="card" id="node_hc1">
+            <div class="node-header">
+                <div class="node-name">NODO HC1</div>
+                <div class="node-status" id="status_hc1"></div>
+            </div>
+            <div>
+                <div class="stat-row">
+                    <span class="stat-label">CPU</span>
+                    <span class="stat-val" id="cpu_hc1">--%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="bar_cpu_hc1"></div>
+                </div>
+
+                <div style="height: 15px;"></div>
+
+                <div class="stat-row">
+                    <span class="stat-label">RAM</span>
+                    <span class="stat-val" id="ram_hc1">--%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="bar_ram_hc1"></div>
                 </div>
             </div>
         </div>
@@ -591,7 +659,7 @@
 
     <div class="footer">
         <button class="btn-music" onclick="openMusicModal()">🎵 MÚSICA</button>
-        <button class="btn" onclick="fetchStats()">ACTUALIZAR</button>
+        <button class="btn" onclick="updateAllNodes()">ACTUALIZAR</button>
         <button class="btn" style="background:#555; color:#fff;" onclick="activateScreensaver()">REPOSO</button>
     </div>
 
@@ -599,6 +667,14 @@
     <audio id="audio_player" preload="none"></audio>
 
     <script>
+        // CONFIG
+        const NODES = {
+            m2: 'http://localhost:5051/stats',
+            legion: 'http://192.168.1.34:5051/stats',
+            chromebook: 'http://192.168.1.86:5051/stats',
+            hc1: 'http://192.168.1.27:5051/stats'
+        };
+
         let idleTime = 0;
         const IDLE_LIMIT = 300;
         let isDimmed = false;
@@ -606,72 +682,143 @@
         const weatherModal = document.getElementById('weather_modal');
         const musicModal = document.getElementById('music_modal');
         const audioPlayer = document.getElementById('audio_player');
-
         let weatherData = null;
 
-        async function setBrightness(percent) {
-            try {
-                await fetch('http://localhost:5051/brightness', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ percent })
-                });
-            } catch (e) { console.error(e); }
-        }
-
-        // Configurar interacción
-        function dismissScreensaver(event) {
-            if (event && (event.target.closest('#weather_modal') || event.target.closest('#saver_weather') || event.target.closest('#music_modal'))) return;
-
-            screensaver.classList.add('hidden');
-            closeWeatherModal();
-            // closeMusicModal(); // Optional: keep music open? Better close modal but keep playing
-            idleTime = 0;
-            if (isDimmed) {
-                setBrightness(100);
-                isDimmed = false;
-            }
-        }
-
-        function activateScreensaver() {
-            screensaver.classList.remove('hidden');
-            fetchWeather();
-            closeMusicModal(); // Close UI but keep playing
-            if (!isDimmed) {
-                setBrightness(25);
-                isDimmed = true;
-            }
-        }
-
-        // Detector de inactividad
-        setInterval(() => {
-            idleTime++;
-            if (idleTime >= IDLE_LIMIT) {
-                if (screensaver.classList.contains('hidden')) {
-                    activateScreensaver();
-                }
-            }
-        }, 1000);
-
-        document.body.addEventListener('click', (e) => {
-            if (!e.target.closest('#weather_modal') && !e.target.closest('#music_modal')) idleTime = 0;
-        });
-
-        // Reloj
+        // --- CORE UI ---
         function updateTime() {
             const now = new Date();
             document.getElementById('clock').innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             document.getElementById('saver_time').innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const dateStr = now.toLocaleDateString('es-ES', options);
             document.getElementById('saver_date').innerText = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
         }
 
-        // --- Weather Logic ---
+        async function setBrightness(percent) {
+            try { await fetch('http://localhost:5051/brightness', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ percent }) }); } catch (e) { console.error(e); }
+        }
 
+        function dismissScreensaver(event) {
+            if (event && (event.target.closest('#weather_modal') || event.target.closest('#saver_weather') || event.target.closest('#music_modal'))) return;
+            screensaver.classList.add('hidden');
+            closeWeatherModal();
+            idleTime = 0;
+            if (isDimmed) { setBrightness(100); isDimmed = false; }
+        }
+
+        function activateScreensaver() {
+            screensaver.classList.remove('hidden');
+            fetchWeather();
+            closeMusicModal();
+            if (!isDimmed) { setBrightness(25); isDimmed = true; }
+        }
+
+        setInterval(() => {
+            idleTime++;
+            if (idleTime >= IDLE_LIMIT && screensaver.classList.contains('hidden')) activateScreensaver();
+        }, 1000);
+        document.body.addEventListener('click', (e) => { if (!e.target.closest('.modal')) idleTime = 0; });
+
+        // --- TELEMETRY ---
+        async function fetchNodeStats(id, url) {
+            const statusEl = document.getElementById(`status_${id}`);
+            const cpuEl = document.getElementById(`cpu_${id}`);
+            const ramEl = document.getElementById(`ram_${id}`);
+            const barCpu = document.getElementById(`bar_cpu_${id}`);
+            const barRam = document.getElementById(`bar_ram_${id}`);
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000); // 2s timeout
+
+                const res = await fetch(url, { signal: controller.signal });
+                const data = await res.json();
+                clearTimeout(timeoutId);
+
+                // Update UI
+                const cpu = Math.round(data.cpu);
+                const ram = Math.round(data.ram);
+
+                cpuEl.innerText = `${cpu}%`;
+                ramEl.innerText = `${ram}%`;
+                barCpu.style.width = `${cpu}%`;
+                barRam.style.width = `${ram}%`;
+
+                // Color Logic
+                barCpu.style.background = cpu > 80 ? 'var(--danger)' : 'var(--accent)';
+                barRam.style.background = ram > 80 ? 'var(--warning)' : 'var(--accent)';
+
+                statusEl.className = 'node-status online';
+            } catch (e) {
+                statusEl.className = 'node-status offline';
+                cpuEl.innerText = '--';
+                ramEl.innerText = '--';
+                barCpu.style.width = '0%';
+                barRam.style.width = '0%';
+            }
+        }
+
+        function updateAllNodes() {
+            Object.keys(NODES).forEach(id => fetchNodeStats(id, NODES[id]));
+        }
+
+        // --- MUSIC ---
+        const STATIONS = {
+            noticias: [{ name: "RNE Radio 5 (ES)", url: "https://rne.rtveradio.cires21.com/rne_radio5_todo_noticias/mp3/icecast.audio" }, { name: "BBC World Service", url: "http://stream.live.vc.bbcmedia.co.uk/bbc_world_service" }, { name: "Cadena SER", url: "https://21253.live.streamtheworld.com/CADENASER.mp3" }],
+            electronica: [{ name: "Ibiza Global Radio", url: "https://ibizaglobalradio.streaming-pro.com:8024/ibizaglobalradio.mp3" }, { name: "Sunshine Live", url: "https://sunshinelive.streamabc.net/sunshinelive-main-mp3-128-4435775" }, { name: "Tomorrowland", url: "https://28423.live.streamtheworld.com/OWR_INTERNATIONAL.mp3" }],
+            rock: [{ name: "Radio Paradise Rock", url: "https://stream.radioparadise.com/rock-128" }, { name: "Rock FM (ES)", url: "https://flucast-b02-04.flumotion.com/cope/rockfm.mp3" }, { name: "Classic Rock Florida", url: "http://vip2.str3am.net:5020/stream" }],
+            urbano: [{ name: "Los 40 Urban", url: "https://25263.live.streamtheworld.com/LOS40_URBAN_SC" }, { name: "Loca FM Urban", url: "http://audio-online.net:8200/urban" }],
+            pop: [{ name: "Los 40 Principales", url: "https://20853.live.streamtheworld.com/LOS40.mp3" }, { name: "Europa FM", url: "https://icecast-streaming.atresmedia.com/europafm.mp3" }, { name: "Capital FM (UK)", url: "https://media-ice.musicradio.com/CapitalMP3" }],
+            world: [{ name: "Radio 3 (ES)", url: "https://rne.rtveradio.cires21.com/rne_radio3/mp3/icecast.audio" }, { name: "KEXP (Seattle)", url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3" }, { name: "FIP (France)", url: "https://stream.radiofrance.fr/fip/fip.m3u8" }],
+            ambient: [{ name: "SomaFM Drone Zone", url: "https://ice1.somafm.com/dronezone-128-mp3" }, { name: "Ambient Sleeping Pill", url: "http://uwstream1.somafm.com:8400" }],
+            chill: [{ name: "Costa Del Mar", url: "https://radio.cdm-radio.com:8020/stream-mp3-Chillout" }, { name: "Chilltrax", url: "https://c3.houston1.radioservice.pro/8004/stream" }],
+            lofi: [{ name: "Lofi Girl Radio", url: "http://play.sas-media.ru/play_256" }, { name: "Chillhop", url: "http://stream.zeno.fm/f3wvbbqmdg8uv" }]
+        };
+
+        const GENRE_ICONS = { noticias: '🌍', electronica: '⚡', rock: '🤘', urbano: '🎤', pop: '🎉', world: '🥁', ambient: '🌌', chill: '🐚', lofi: '☕' };
+
+        // Init Music Grid
+        const genreView = document.getElementById('genre_view');
+        Object.keys(STATIONS).forEach(key => {
+            const div = document.createElement('div');
+            div.className = 'genre-card';
+            div.innerHTML = `<div class="genre-icon">${GENRE_ICONS[key] || '🎵'}</div><div class="genre-name">${key}</div>`;
+            div.onclick = () => showStations(key);
+            genreView.appendChild(div);
+        });
+
+        function openMusicModal() { musicModal.classList.add('visible'); showGenres(); }
+        function closeMusicModal() { musicModal.classList.remove('visible'); }
+        function showGenres() { document.getElementById('genre_view').style.display = 'grid'; document.getElementById('station_view').style.display = 'none'; }
+
+        function showStations(genre) {
+            document.getElementById('genre_view').style.display = 'none';
+            document.getElementById('station_view').style.display = 'flex';
+            const cont = document.getElementById('stations_container');
+            cont.innerHTML = '';
+            (STATIONS[genre] || []).forEach(st => {
+                const div = document.createElement('div');
+                div.className = 'station-item';
+                div.innerText = st.name;
+                div.onclick = () => playStation(st.name, st.url);
+                cont.appendChild(div);
+            });
+        }
+        function playStation(name, url) {
+            document.getElementById('np_name').innerText = name;
+            audioPlayer.src = url;
+            audioPlayer.play();
+            document.getElementById('now_playing').classList.add('visible');
+            document.getElementById('play_btn').innerText = '⏸';
+        }
+        function togglePlay() {
+            if (audioPlayer.paused) { audioPlayer.play(); document.getElementById('play_btn').innerText = '⏸'; }
+            else { audioPlayer.pause(); document.getElementById('play_btn').innerText = '▶'; }
+        }
+        function stopMusic() { audioPlayer.pause(); audioPlayer.src = ''; document.getElementById('now_playing').classList.remove('visible'); }
+
+        // --- WEATHER ---
         function getWMOIcon(code, isDay) {
-            // Mapeo simple
             if (code === 0) return isDay ? '☀️' : '🌙';
             if (code >= 1 && code <= 3) return isDay ? '⛅' : '☁️';
             if (code >= 45 && code <= 48) return '🌫️';
@@ -682,210 +829,46 @@
             return '☁️';
         }
 
-        function getWMODesc(code) {
-            const codes = {
-                0: "Despejado", 1: "Mayormente despejado", 2: "Parcialmente nublado", 3: "Nublado",
-                45: "Niebla", 48: "Niebla escarchada", 51: "Llovizna ligera", 53: "Llovizna moderada",
-                55: "Llovizna intensa", 61: "Lluvia ligera", 63: "Lluvia moderada", 65: "Lluvia intensa",
-                71: "Nieve ligera", 73: "Nieve moderada", 75: "Nieve intensa", 95: "Tormenta"
-            };
-            return codes[code] || "Desconocido";
-        }
-
         async function fetchWeather() {
             try {
-                // Fetch current + hourly + daily
                 const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=40.3458&longitude=-3.8249&current=temperature_2m,weather_code,is_day&hourly=temperature_2m,weather_code,is_day&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid&forecast_days=1');
                 weatherData = await res.json();
-
                 const current = weatherData.current;
-
-                // Update Screensaver
                 document.getElementById('saver_temp').innerText = Math.round(current.temperature_2m) + '°C';
                 document.getElementById('saver_icon').innerText = getWMOIcon(current.weather_code, current.is_day);
-
-                // Update Modal Data
-                document.getElementById('w_desc').innerText = getWMODesc(current.weather_code);
+                document.getElementById('w_desc').innerText = "Forecast"; // Simplified
                 document.getElementById('w_current').innerText = Math.round(current.temperature_2m) + '°';
-
-                const daily = weatherData.daily;
-                const max = Math.round(daily.temperature_2m_max[0]);
-                const min = Math.round(daily.temperature_2m_min[0]);
-                const rain = daily.precipitation_probability_max[0];
-
-                document.getElementById('w_hl').innerText = `↑ ${max}° ↓ ${min}°`;
-                document.getElementById('w_rain').innerText = `☔ ${rain}%`;
-
-            } catch (e) {
-                console.error("Weather error:", e);
-            }
+                document.getElementById('w_hl').innerText = `↑ ${Math.round(weatherData.daily.temperature_2m_max[0])}° ↓ ${Math.round(weatherData.daily.temperature_2m_min[0])}°`;
+                document.getElementById('w_rain').innerText = `☔ ${weatherData.daily.precipitation_probability_max[0]}%`;
+            } catch (e) { console.error("Weather error:", e); }
         }
-
         function showWeatherModal(event) {
             if (event) event.stopPropagation();
             if (!weatherData) return;
-
-            // Build Hourly Strip
             const strip = document.getElementById('hourly_strip');
             strip.innerHTML = '';
-
-            const hourly = weatherData.hourly;
             const now = new Date();
-            const currentHour = now.getHours();
-
-            // Show next 6 hours (skipping current if we want, but usually show current too)
             let count = 0;
-            for (let i = 0; i < hourly.time.length; i++) {
-                if (count >= 6) break;
-
-                const timeStr = hourly.time[i]; // ISO string
-                const date = new Date(timeStr);
-                const hour = date.getHours();
-
-                // Show from current hour onwards
-                if (hour >= currentHour) {
-                    const temp = Math.round(hourly.temperature_2m[i]);
-                    const code = hourly.weather_code[i];
-                    const isDay = hourly.is_day[i];
-
+            weatherData.hourly.time.forEach((t, i) => {
+                if (count < 6 && new Date(t).getHours() >= now.getHours()) {
                     const slot = document.createElement('div');
                     slot.className = 'hourly-slot';
-                    slot.innerHTML = `
-                        <span class="hourly-temp">${temp}°</span>
-                        <span class="hourly-icon">${getWMOIcon(code, isDay)}</span>
-                        <span class="hourly-time">${hour === currentHour ? 'Ahora' : hour + ':00'}</span>
-                    `;
+                    slot.innerHTML = `<span class="hourly-temp">${Math.round(weatherData.hourly.temperature_2m[i])}°</span><span class="hourly-icon">${getWMOIcon(weatherData.hourly.weather_code[i], weatherData.hourly.is_day[i])}</span><span class="hourly-time">${new Date(t).getHours()}:00</span>`;
                     strip.appendChild(slot);
                     count++;
                 }
-            }
-
+            });
             weatherModal.classList.add('visible');
         }
+        function closeWeatherModal(event) { if (event) event.stopPropagation(); weatherModal.classList.remove('visible'); }
 
-        function closeWeatherModal(event) {
-            if (event) event.stopPropagation();
-            weatherModal.classList.remove('visible');
-        }
-
-        async function fetchStats() {
-            try {
-                const response = await fetch('http://localhost:5051/stats');
-                const data = await response.json();
-                document.getElementById('cpu_val').innerText = Math.round(data.cpu) + '%';
-                document.getElementById('ram_val').innerText = Math.round(data.ram) + '%';
-                document.getElementById('cpu_val').style.color = 'var(--text)';
-            } catch (e) {
-                document.getElementById('cpu_val').style.color = 'var(--danger)';
-            }
-        }
-
-        // --- Music Logic ---
-        const STATIONS = {
-            noticias: [
-                { name: "RNE Radio 5 (ES)", url: "https://rne.rtveradio.cires21.com/rne_radio5_todo_noticias/mp3/icecast.audio" },
-                { name: "BBC World Service", url: "http://stream.live.vc.bbcmedia.co.uk/bbc_world_service" },
-                { name: "Cadena SER", url: "https://21253.live.streamtheworld.com/CADENASER.mp3" }
-            ],
-            electronica: [
-                { name: "Ibiza Global Radio", url: "https://ibizaglobalradio.streaming-pro.com:8024/ibizaglobalradio.mp3" },
-                { name: "Sunshine Live", url: "https://sunshinelive.streamabc.net/sunshinelive-main-mp3-128-4435775" },
-                { name: "Tomorrowland", url: "https://28423.live.streamtheworld.com/OWR_INTERNATIONAL.mp3" }
-            ],
-            rock: [
-                { name: "Radio Paradise Rock", url: "https://stream.radioparadise.com/rock-128" },
-                { name: "Rock FM (ES)", url: "https://flucast-b02-04.flumotion.com/cope/rockfm.mp3" },
-                { name: "Classic Rock Florida", url: "http://vip2.str3am.net:5020/stream" }
-            ],
-            urbano: [
-                { name: "Los 40 Urban", url: "https://25263.live.streamtheworld.com/LOS40_URBAN_SC" },
-                { name: "Loca FM Urban", url: "http://audio-online.net:8200/urban" }
-            ],
-            pop: [
-                { name: "Los 40 Principales", url: "https://20853.live.streamtheworld.com/LOS40.mp3" },
-                { name: "Europa FM", url: "https://icecast-streaming.atresmedia.com/europafm.mp3" },
-                { name: "Capital FM (UK)", url: "https://media-ice.musicradio.com/CapitalMP3" }
-            ],
-            world: [
-                { name: "Radio 3 (ES)", url: "https://rne.rtveradio.cires21.com/rne_radio3/mp3/icecast.audio" },
-                { name: "KEXP (Seattle)", url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3" },
-                { name: "FIP (France)", url: "https://stream.radiofrance.fr/fip/fip.m3u8" } // m3u8 might be tricky for simple audio tag, trying mp3 if possible, else standard icecast
-            ],
-            ambient: [
-                { name: "SomaFM Drone Zone", url: "https://ice1.somafm.com/dronezone-128-mp3" },
-                { name: "Ambient Sleeping Pill", url: "http://uwstream1.somafm.com:8400" }
-            ],
-            chill: [
-                { name: "Costa Del Mar", url: "https://radio.cdm-radio.com:8020/stream-mp3-Chillout" },
-                { name: "Chilltrax", url: "https://c3.houston1.radioservice.pro/8004/stream" }
-            ],
-            lofi: [
-                { name: "Lofi Girl Radio", url: "http://play.sas-media.ru/play_256" },
-                { name: "Chillhop", url: "http://stream.zeno.fm/f3wvbbqmdg8uv" }
-            ]
-        };
-
-        function openMusicModal() {
-            musicModal.classList.add('visible');
-            showGenres();
-        }
-
-        function closeMusicModal() {
-            musicModal.classList.remove('visible');
-        }
-
-        function showGenres() {
-            document.getElementById('genre_view').style.display = 'grid';
-            document.getElementById('station_view').style.display = 'none';
-        }
-
-        function showStations(genre) {
-            document.getElementById('genre_view').style.display = 'none';
-            document.getElementById('station_view').style.display = 'flex';
-
-            const cont = document.getElementById('stations_container');
-            cont.innerHTML = '';
-
-            const list = STATIONS[genre] || [];
-            list.forEach(st => {
-                const div = document.createElement('div');
-                div.className = 'station-item';
-                div.innerText = st.name;
-                div.onclick = () => playStation(st.name, st.url);
-                cont.appendChild(div);
-            });
-        }
-
-        function playStation(name, url) {
-            document.getElementById('np_name').innerText = name;
-            audioPlayer.src = url;
-            audioPlayer.play();
-            document.getElementById('now_playing').classList.add('visible');
-            document.getElementById('play_btn').innerText = '⏸';
-        }
-
-        function togglePlay() {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                document.getElementById('play_btn').innerText = '⏸';
-            } else {
-                audioPlayer.pause();
-                document.getElementById('play_btn').innerText = '▶';
-            }
-        }
-
-        function stopMusic() {
-            audioPlayer.pause();
-            audioPlayer.src = '';
-            document.getElementById('now_playing').classList.remove('visible');
-        }
-
+        // --- INIT ---
         setInterval(updateTime, 1000);
-        setInterval(fetchStats, 2000);
+        setInterval(updateAllNodes, 2000); // Poll nodes every 2s
         setInterval(fetchWeather, 600000);
 
         updateTime();
-        fetchStats();
+        updateAllNodes();
         fetchWeather();
     </script>
 </body>
