@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.4'
 
 services:
   db:
@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: arconte
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - synapse-ia_postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     restart: unless-stopped
@@ -49,13 +49,14 @@ services:
   m2-api:
     image: python:3.9-slim
     container_name: m2-status-api
+    privileged: true
     network_mode: host
     volumes:
       - ./tools:/app/tools
       - /sys:/sys
       - /proc:/proc
     working_dir: /app
-    command: sh -c "pip install flask flask-cors psutil && python3 tools/m2_status_api.py"
+    command: sh -c "apt-get update && apt-get install -y procps && pip install flask flask-cors psutil && python3 tools/m2_status_api.py"
     restart: unless-stopped
 
   adminer:
@@ -66,6 +67,5 @@ services:
     restart: unless-stopped
 
 volumes:
-  postgres_data:
+  synapse-ia_postgres_data:
     external: true
-    name: synapse-ia_postgres_data

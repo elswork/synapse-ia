@@ -51,15 +51,20 @@ def get_stats():
 
 @app.route('/system/reboot', methods=['POST'])
 def system_reboot():
-    # Attempt to reboot host from container
-    # Since we have /proc and /sys, we might try sysrq if standard reboot fails
-    os.system("reboot") 
-    return jsonify({"status": "ok", "message": "Reboot command sent"})
+    print("M2-API: Received Reboot Request")
+    # Intentar comando estándar
+    os.system("reboot")
+    # Fallback SysRq b (Reboot) si el anterior no cierra el proceso
+    os.system("echo 1 > /proc/sys/kernel/sysrq && echo b > /proc/sysrq-trigger")
+    return jsonify({"status": "ok", "message": "Reboot command executed"})
 
 @app.route('/system/shutdown', methods=['POST'])
 def system_shutdown():
+    print("M2-API: Received Shutdown Request")
     os.system("shutdown -h now")
-    return jsonify({"status": "ok", "message": "Shutdown command sent"})
+    # Fallback SysRq o (Power Off)
+    os.system("echo 1 > /proc/sys/kernel/sysrq && echo o > /proc/sysrq-trigger")
+    return jsonify({"status": "ok", "message": "Shutdown command executed"})
 
 @app.route('/brightness', methods=['POST'])
 def update_brightness():

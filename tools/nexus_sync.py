@@ -34,7 +34,23 @@ class NexusSync:
         except Exception as e:
             print(f"Error al registrar en DB (PostgreSQL): {e}")
 
+        # Git Commit (Soberanía de Datos)
+        self._git_commit(self.history_path, f"Update history: {event_type} by {agent}")
+
         print(f"Evento registrado por {agent}")
+
+    def _git_commit(self, file_path, message):
+        """Asegura que los cambios en archivos de contexto se comiteen automáticamente."""
+        import subprocess
+        try:
+            # Solo si el directorio es un repositorio git
+            repo_dir = os.path.dirname(os.path.dirname(file_path))
+            subprocess.run(["git", "-C", repo_dir, "add", file_path], check=True, capture_output=True)
+            # Intentar commit (puede fallar si no hay cambios reales)
+            subprocess.run(["git", "-C", repo_dir, "commit", "-m", message], capture_output=True)
+            print(f"Git: Cambios en {os.path.basename(file_path)} comiteados.")
+        except Exception as e:
+            print(f"Git: Error al comitear {file_path}: {e}")
 
     def update_goal(self, agent, new_goal):
         """Actualiza el objetivo prioritario en MD y DB (PostgreSQL)."""
@@ -61,6 +77,7 @@ class NexusSync:
         except Exception as e:
             print(f"Error al actualizar objetivo en DB (PostgreSQL): {e}")
 
+        self._git_commit(self.goal_path, f"Update goal: {agent}")
         self.log_event(agent, "GOAL_UPDATE", f"Nuevo objetivo: {new_goal}")
 
 if __name__ == "__main__":
