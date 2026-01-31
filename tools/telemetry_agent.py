@@ -18,7 +18,15 @@ try:
 except:
     pass
 
+# Caching for Windows stats to avoid lag
+stats_cache = {"data": (0, 0), "time": 0}
+CACHE_TTL = 3 # seconds
+
 def get_windows_stats():
+    global stats_cache
+    if time.time() - stats_cache["time"] < CACHE_TTL:
+        return stats_cache["data"]
+
     try:
         # CPU
         cpu_cmd = "powershell.exe -Command \"Get-CimInstance Win32_Processor | Select-Object -ExpandProperty LoadPercentage\""
@@ -32,10 +40,12 @@ def get_windows_stats():
         total = int(ram_out[1].strip())
         ram_percent = round(((total - free) / total) * 100, 1)
         
-        return float(cpu), ram_percent
+        stats_cache["data"] = (float(cpu), ram_percent)
+        stats_cache["time"] = time.time()
+        return stats_cache["data"]
     except Exception as e:
         print(f"Error fetching Windows stats: {e}")
-        return 0, 0
+        return stats_cache["data"] # Return last known good data
 
 @app.route('/stats')
 def get_stats():
