@@ -13100,3 +13100,2902 @@ Respuesta: ```json
 }
 ```
 
+
+## [2026-02-01 03:06:49] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Scientist who helped eradicate smallpox dies at age 89
+        CONTENIDO: William Foege, a leader in the global fight to eliminate smallpox, has died. Foege passed away on Saturday at the age of 89, according to the Task Force for Global Health, a public health organization he co-founded.
+Foege headed the U.S. Centers for Disease Control and Prevention’s Smallpox Eradication Program in the 1970s. Before the disease was officially eradicated in 1980, it killed around one in three people who were infected. According to the CDC, there have been no new smallpox cases since 1977.
+“If you look at the simple metric of who has saved the most lives, he is right up there with the pantheon,” said former CDC director Tom Frieden to the Associated Press. “Smallpox eradication has prevented hundreds of millions of deaths.”
+On supporting science journalism
+If you're enjoying this article, consider supporting our award-winning journalism by subscribing. By purchasing a subscription you are helping to ensure the future of impactful stories about the discoveries and ideas shaping our world today.
+Foege went on to lead the CDC and served as a senior medical adviser and senior fellow at the Bill & Melinda Gates Foundation. In 2012 then president Barack Obama awarded him the Presidential Medal of Freedom.
+Foege was a vocal proponent of vaccines for public health, writing with epidemiologist Larry Brilliant in Scientific American in 2013 that the effort to eliminate polio “has never been closer” to success. “By working together,” they wrote, “we will soon relegate polio—alongside smallpox—to the history books.” Polio remains a “candidate for eradication,” according to the World Health Assembly.
+And in 2025 Foege, alongside several other former CDC directors, spoke out against the policies of the current secretary of health and human services Robert F. Kennedy, Jr. In a New York Times op-ed, they wrote that the top health official’s tenure was “unlike anything we had ever seen at the agency.”
+In a statement, Task Force for Global Health CEO Patrick O’Carroll remembered Foege as an “inspirational” figure, both for early-career public health workers and veterans of the field. “Whenever he spoke, his vision and compassion would reawaken the optimism that prompted us to choose this field, and re-energize our efforts to make this world a better place,” O’Carroll said.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Obituario y semblanza histórica de William Foege, epidemiólogo centrado en salud pública global y la erradicación de la viruela.",
+    "implications": "La noticia carece de nexo operativo con la obtención del ccTLD .ia o la estandarización ISO 3166-1. No afecta los intereses soberanos de Anticitera ni el marco regulatorio de la Unión Europea.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:06:57] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Apple-1 Computer Prototype Board #0 sold for $2.75M
+        CONTENIDO: Sold For $2,750,000
+*Includes Buyers Premium
+UPDATE: Click here to view Corey Cohen's report.
+Historical documentation shows that Apple commissioned the initial Apple-1 PCB layout from Howard Cantin in March 1976. From this work came the tan phenolic prototype board, sold by RR Auction in August 2022—an inexpensive test board that required extensive reworking to operate properly. After those issues were identified and corrected, Apple needed to confirm that the revised design functioned correctly when produced on a proper fiberglass PCB. The “Celebration” Apple-1 is that transitional board: the validation unit assembled before Apple built the first fifty machines for Paul Terrell’s Byte Shop order.
+Its construction clearly distinguishes it from all other surviving Apple-1 computers. This board uses wave-soldered Robinson-Nugent sockets instead of the cheaper Texas Instruments sockets used on production boards, and it incorporates a unique mix of hand-soldered components sourced locally for testing rather than from Apple’s later standardized purchasing (e.g. two common silver Sprague 39D capacitors that were not computer-rated, but easily available at a radio repair shop).
+The board carries a smaller, non-standard heatsink, and the voltage regulation area displays no evidence that the larger, production-style heatsink was ever installed. The board also contains a unique modification to the 74123 timing circuit used for DRAM refresh, consistent with the diagnosis of timing issues before full-scale production.
+These characteristics demonstrate that the “Celebration” Apple-1 predates all Byte Shop boards and was never intended for retail sale. It embodies the moment of Apple's transition from an experimental prototype to a manufacturable product, marking the beginning of Apple’s emergence as a computer company.
+This Apple-1 computer was examined by Apple-1 expert Corey Cohen in May 2016, with revisions to his report made in December 2025. A comprehensive, technical condition report prepared by Cohen is available to qualified bidders; he evaluates the cosmetic condition of the unit as 6.5 to 7.0. It has not been tested for functionality. The computer is recorded as #75 in the Apple-1 Registry, listed as the “Celebration” Apple-1.
+The set includes:
+• original Apple-1 board, distinguished as the earliest known fiberglass prototype
+• vintage, period-correct Key Tronic keyboard (c. 1977)
+• vintage, period-correct power supply
+• vintage Sony TV set
+• replica Apple-1 Operation Manual, signed in blue felt tip by Steve Wozniak
+• replica Apple-1 schematic, signed in blue felt tip by Steve Wozniak
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia reporta la subasta de un prototipo histórico del Apple-1 por 2.75 millones de dólares como un objeto de alto valor para el coleccionismo privado.",
+    "implications": "Este hito representa una curiosidad histórica y comercial sobre los orígenes de la computación personal, pero carece de relevancia operativa para la gestión del ccTLD .ia o la soberanía digital europea. No aporta ninguna palanca técnica o diplomática que asista en la negociación con ISO o el Ministerio de Gobernanza Digital de Grecia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:07:05] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Rape trial puts Norway's royal family in unwelcome glare of public
+        CONTENIDO: Rape trial puts Norway's royal family in unwelcome glare of public
+When Marius Borg Høiby stands up in room 250 at Oslo district court on Tuesday, at the start of Norway's biggest trial in years, he will have no moral support from his closest relatives. His mother Crown Princess Mette-Marit will not be there, nor will the man she married when her son was four - the heir to the Norwegian throne, Crown Prince Haakon.
+For the next seven weeks there will be no pictures of the blond 29-year-old either inside the court or outside - the court has banned them - but the world's press is here in numbers and the palace is keeping well away.
+Høiby is accused of 38 charges, including the rape of four women, assaulting and threatening a girlfriend and damaging her flat, as well as drugs charges and driving offences. If found guilty he could face more than 10 years in jail.
+The palace stresses Marius Borg Høiby is not part of the royal family, and that he is not a public figure. But he is considered a close member of the family, by his stepfather the crown prince who sees him as a son, and by Norway's much loved King Harald V, 88, who he has known for much of his life as his grandfather.
+"It's a very dangerous moment, because the royal family should be role models," says Ulf Andre Andersen, who broke the story for celebrity-focused magazine Se og Hør [See and Hear] in early August 2024 when police were called to a woman's flat in Frogner on the west side of Oslo after reports of a violent incident.
+Marius Borg Høiby has admitted some of the lesser offences, and after his arrest admitted physical abuse and destroying objects. The indictment alleges he tore down a chandelier, threw a knife at the wall and shattered a mirror, calling the woman words such as whore.
+The four rape charges date from 2018, at his parents' official residence, the Skaugum estate outside Oslo, to November 2024, after his initial arrest. One of the four, dating back to 2023, involves intercourse while the woman was asleep. The other three also involve sexual assault while the women were incapacitated, which also counts as rape in Norway.
+"This is the biggest scandal the Norwegian royals ever had," says Andersen's colleague and current Se og Hør editor-in-chief Niklas Kokkinn-Thoresen, who covered the arrest with him at the time. "They've never had to deal with anything of this measure."
+Known to Norwegians since his mother married into the royal family, Marius has admitted to years of struggles with substance abuse and spoken of "several mental illnesses" since childhood.
+Approached for comment by the BBC, his lawyers pointed to a previous statement by defence counsel Petar Sekulic: "Høiby is absolutely taking the accusations very seriously, but doesn't acknowledge any wrongdoing in most of the cases – especially the cases regarding sexual abuse and violence."
+Evidence will emerge from a number of women, not just those he is alleged to have raped.
+Only one can be identified. Former girlfri
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Proceso penal por agresiones sexuales y diversos delitos graves que involucra a un miembro del entorno cercano de la familia real noruega.",
+    "implications": "La noticia es estrictamente de índole judicial y sensacionalista, careciendo de cualquier nexo con la soberanía digital, el estándar ISO 3166-1 o los mecanismos de la ICE. No representa un vector de influencia para la creación del Distrito Tecnológico en Grecia ni para la obtención del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:07:14] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: After ICE raids... a once bustling Chicago neighbourhood has changed
+        CONTENIDO: After ICE raids... a once bustling Chicago neighbourhood has changed
+For weeks, all eyes have been on Minneapolis where the anger at the killing of two US citizens by federal immigration agents has turned the Midwestern city into a sea of unrest.
+President Donald Trump has pledged to "de-escalate" the situation and the new man in charge on the ground, Tom Homan, said on Thursday there will eventually be a "drawdown" in numbers.
+A few hundred miles away, Chicago has already seen a surge of immigration agents, and a crackdown on its streets, ease off somewhat.
+Operation Midway Blitz was launched in September with the aim, it said, of targeting "criminal illegal aliens" and it peaked in the weeks that followed.
+Since then, Chicago and specifically its Hispanic neighbourhoods have had to adjust to a new normal.
+In Little Village - often referred to as the "Mexican Magnificent Mile" - the fear of raids has caused people to stay indoors, turning one of Chicago's key economic hubs into something resembling a ghost town, business owners and city officials say.
+"Business has dropped half during the week, sometimes even more than that. People don't want to spend money," says Carlos Macias, who owns the grocery store and restaurant Carniceria y Taqueria Aguascalientes, which his father opened 50 years ago on 26th Street, the main thoroughfare.
+Macias remembers how a raid on his own store spread fear in the community. The agents wore balaclavas partially covering their faces, he says, and some carried rifles while others had handguns in their holsters.
+As they moved through the space, they scanned the room, making eye contact with employees and customers. Some people ducked under tables, he recalls, and some began to cry. Others ran towards the back of the building, unsure of the men's intentions. As the tension rose, Macias stepped in.
+"This is my property," Macias told them. "You're not allowed in here."
+His words had little effect. The incident is still etched in his brain, and one of the reasons he believes that business has slowed.
+But while raids may be keeping people at home, Trump says they are necessary to protect American citizens.
+The Department of Homeland Security says it launched Operation Midway Blitz in honour of Katie Abraham, a 20-year-old US student who was killed in a drunk-driving hit-and-run by an illegal immigrant from Guatemala.
+The agency says more than 800 undocumented migrants have been arrested, including sex offenders, burglars, murderers and gang members.
+The downturn in Little Village is having ripple effects on the wider economy of the city, officials say.
+The two-mile corridor is one of Chicago's key economic hubs, generating some of the city's highest tax revenues outside the downtown Magnificent Mile.
+And unlike the posh boutiques and flagship international stores that dot that premier North Michigan Avenue address, this street runs through a predominantly Hispanic neighbourhood.
+Businesses are locally owned and cater large
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis de las repercusiones socioeconómicas de las redadas de la agencia de inmigración estadounidense (ICE) en barrios hispanos de Chicago.",
+    "implications": "El contenido carece de relevancia estratégica al tratarse de una coincidencia puramente acronímica entre la agencia federal de EE. UU. (ICE) y la Iniciativa Ciudadana Europea (ICE). No existe vínculo con la soberanía digital, el estándar ISO 3166-1 ni los intereses territoriales del Proyecto Anticitera en Grecia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:07:27] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Zapatero cobró 450.000 euros por "asesoría global" de su amigo en Plus Ultra
+        CONTENIDO: - Investigación Zapatero cobró "cantidades" de su amigo detenido en Plus Ultra por "consultorías globales"
+- Entrevista Julio Martínez, detenido por el rescate de Plus Ultra: "No soy el testaferro de Zapatero; somos amigos de salir a correr"
+El ex presidente del Gobierno José Luis Rodríguez Zapatero percibió al menos 450.000 euros del asesor de Plus Ultra Julio Martínez Martínez en concepto de «consultorías globales» durante seis años. Según ha podido acreditar EL MUNDO, el histórico dirigente socialista ha venido cobrando una media de 75.000 euros brutos anuales de la sociedad Análisis Relevante, propiedad del referido empresario, recientemente detenido por orden del Juzgado de Instrucción 15 de Madrid en una operación por blanqueo de capitales en torno a la aerolínea española de capital venezolano que fue rescatada por el Gobierno de Pedro Sánchez con una inyección de 53 millones públicos. Zapatero ha percibido estos fondos de manera directa, sin ningún tipo de sociedad interpuesta, y los ha venido comunicando a Hacienda en sus declaraciones de IRPF.
+Este periódico se ha puesto en contacto con el ex secretario general del PSOE, que ha confirmado la información y ha reiterado que estas operaciones responden al «trabajo de consultoría» que viene prestando durante los últimos años y que se materializa «a través de informes, reuniones, viajes, seminarios o publicaciones». Zapatero ya explicó hace dos semanas, cuando este diario desveló en exclusiva la existencia de relaciones económicas entre Martínez y él, que le había venido prestando servicios de «consultoría global» desde antes de la pandemia y recalcó que se ajustan a la legalidad. Este periódico tiene constancia de la existencia de un primer informe remitido por el ex líder socialista a Análisis Relevante fechado en marzo de 2020 que versa sobre la situación geopolítica mundial.
+Empezó a cobrar con un informe sobre geopolítica de marzo de 2020
+Plus Ultra contrató al empresario Julio Martínez Martínez, a quien le une una estrecha relación de amistad con Zapatero, con quien salía a correr con frecuencia por El Pardo hasta su detención, también hace seis años. El objetivo fue que ejerciera de intermediario de la compañía ante las autoridades venezolanas para resolver cualquier tipo de problema operativo ante el Régimen que comandaba Nicolás Maduro.
+Fuentes próximas a estas operaciones coinciden en que Martínez fue contratado como conseguidor y que se le encomendó, por citar algunos ejemplos, solventar contratiempos con el Servicio Aduanero venezolano, la gestión de envío de materiales para los aviones o incluso la búsqueda de oportunidades de negocio para la aerolínea.
+Martínez percibió por estos servicios en torno a medio millón de euros que cobró utilizando, entre otras, la referida sociedad Análisis Relevante. Tanto desde el entorno del empresario como desde la compañía se subraya que sus servicios fueron «reales» y «muy relevantes», toda vez que se pone en valor que Martínez tenía acceso a a
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "Investigación periodística sobre pagos de consultoría global al ex-presidente Zapatero vinculados a la aerolínea Plus Ultra y relaciones con Venezuela.",
+    "implications": "La noticia se circunscribe a la política interna española y presuntas irregularidades financieras, sin impacto en la estandarización ISO 3166-1 ni en el marco legal de las ICE. No ofrece palancas estratégicas para la soberanía del .ia o la gestión del distrito tecnológico en Grecia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:07:36] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: 24 horas en la campaña de Azcón: "En las elecciones de Aragón se vota cómo parar al independentismo catalán"
+        CONTENIDO: - 8-F El PSOE intenta exprimir ya en Aragón el rechazo del PP a su treta para subir las pensiones
+- Elecciones Aragón En el pueblo aragonés con mayor concentración de inmigrantes: "Sin ellos el trabajo del campo no sale adelante"
+«Llevo siempre un cojín en el coche por si tengo que echar una cabezadita. Y a veces hasta ronco, ¿verdad, Paco? Pero hoy no lo voy a necesitar, he dormido siete horas». Paco es el conductor y quien presume de facilidad para el sueño es Jorge Azcón. Antonio Ordóñez decía que la condición indispensable para ser figura del toreo es saber dormir en el coche de cuadrillas, y Emiliano García-Page añade que para ser presidente autonómico también hay que saber leer en el asiento trasero sin marearse. «Yo las cumplo las dos», sonríe Azcón. Menos mal, porque lleva la cuenta y ya acumula 160.000 kilómetros de carretera desde que llegó al poder. En dos años y medio. En la parte trasera del Volkswagen Passat que lo traslada este viernes de Zaragoza a Fraga y de Fraga a Villanueva de Sijena (ambas, en Huesca), el candidato del PP lleva ocho periódicos de papel y dos carpetas con documentación sobre logística -el tema del día-. En el maletero, lo comprobamos, hay un cojín para hacer honor al maestro rondeño cuando se eternizan las jornadas de campaña. «El presidente dice que trabaja 'media jornada, 12 horas', pero nunca baja de 14», atestigua Paco.
+Son las 8.20 cuando Azcón llega a la sede autonómica del PP, en pleno casco antiguo de Zaragoza. A y media comienza la reunión de maitines con su núcleo duro: Roberto Bermúdez de Castro, Octavio López, Ana Alós, Ángel Gorri, Carlos Villanova, María Navarro y Rocío Dívar. Tras el segundo debate de los ocho candidatos a las elecciones aragonesas del 8 de febrero, el presidente autonómico ha amanecido con una preocupación capital: cómo frenar «el plan del PSOE para engordar a Vox».
+Es viernes, 30 de enero, nos acercamos al ecuador de la campaña. EL MUNDO pasa un día entero de campaña con el candidato del PP, que viaja a Sijena, kilómetro cero del agravio, para explicar desde allí por qué estas elecciones «también van de parar al independentismo catalán». El Real Monasterio de Santa María de Sijena, ubicado en Villanueva de Sijena -un pueblecito de los Monegros a 64 kilómetros de la capital oscense- lo fundó en 1188 la reina Sancha de Castilla. Fue panteón real de la Corona de Aragón, y uno de los monasterios más ricos del continente. En agosto de 1936, unas columnas de milicianos procedentes de Barcelona le prendieron fuego mientras las monjas se camuflaban como civiles en el pueblo. El incendio destruyó parte del mobiliario y dañó las pinturas murales de la Sala Capitular, una joya artística de primer nivel conocida como «la Capilla Sixtina del arte románico». Técnicos de la Generalitat de Cataluña extrajeron los frescos de los muros -unos 120 metros cuadrados- y los trasladaron a Barcelona. Igual que otras pinturas arrancadas del templo en plena dictadura.
+Sijena es la máxima expresión del a
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica política sobre la campaña electoral regional en Aragón (España), centrada en tensiones territoriales domésticas y disputas de patrimonio histórico.",
+    "implications": "La noticia carece de cualquier vínculo con la estandarización ISO 3166-1, la soberanía digital europea o la gobernanza técnica de Grecia. No existe impacto táctico ni estratégico para la misión de asegurar el ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:07:44] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Los rostros de los 840.000 'conpapeles' de Sánchez: Gabriel, Adriana...y los que vendrán después del gran caos burocrático
+        CONTENIDO: Nadie imaginó que Pedro Sánchez podría hacer una «cortina de humo», en la semana de la nieve, utilizando 840.000 seres humanos. Eso al menos aseguran desde el Partido Popular. Lo insinúa hasta su propio socio de Gobierno, Junts. La repercusión ha sido global. The Telegraph afirma en su titular que es una medida para «derrotar a la extrema derecha». The New York Times afirma que «España abre una ruta de regularización migratoria, en contraste con el mundo». Hablan ambos de cuán inesperada era la medida. Por no decir improvisada.
+Detrás están en juego la vida y el destino de migrantes como Gabriel y Adriana, esperanzados. El caos se apodera ya de consulados como el de Pakistán, que no están aún preparados. Y ya el endeble sistema español de extranjería sufría retrasos incesantes; ahora se prevé una saturación sin precedentes. No hay previsión siquiera de cuántos funcionarios serán necesarios para atender cientos de miles de peticiones.
+PREPARANDO LA DOCUMENTACIÓN
+La medida acaba de publicitarse y Gabriel, 34 años, ya ha acudido a un despacho de la Gran Vía madrileña a asesorarse. Se quita la gorra antes de entrar y escucha atentamente. Le hacen un listado de los requisitos. Asegura que los cumple todos: llegó antes del 31 de diciembre de 2025 y no posee antecedentes penales. «No los tengo. Me he portado bien aquí y allí», afirma. Llegó escapando del fracaso sandinista, de la miseria. «Huí de la situación económica del país». También en búsqueda de más libertad frente al régimen del sátrapa Daniel Ortega. «Uno allí ya no puede tener una opinión. Ni siquiera se puede levantar la voz porque ya uno es metido al calabozo».
+Ve en la regularización una esperanza. Aquí está solo, trabajando en la construcción. Cobrando en negro. Vive en Getafe y buena parte de su dinero va a su familia en Centroamérica. Eso y en abonar el alquiler. «Pago 450 euros por una habitación de unos 10 metros cuadrados». Quiere volver a ver a Kiara, su mujer. Y a sus dos hijos. Llegó a Europa a través de Francia y luego voló a Madrid, entrando como turista. Eso, con la reglamentación vigente, le impediría tramitar la residencia con derecho a trabajo. Es uno de tantos cuyas vidas están en juego.
+Decenas esperan en lugares como Plaza Elíptica, en la capital, la llegada de coches que los escogen para la obra. La escena se repite en Barcelona, Murcia, Vigo... La mayoría africanos y latinoamericanos. Sin derechos. Pero también sin deberes. Ellos no existen para la administración. Gabriel coge aire cuando le preguntamos si había pensado en ir a Estados Unidos. «Como otros amigos que hoy viven asustados ahí». Sánchez ha aprovechado la oportunidad para colarse en el debate internacional actual: mientras el ICE de Trump asesina, él apunta a dar papeles a los inmigrantes. Sin apenas requisitos. ¿Una irresponsabilidad?
+30 AÑOS ASESORANDO
+Roberto Fernández, 66 años, es quien asesora a Gabriel. Lleva más de tres décadas ayudando a miles de inmigrantes a conseguir la documentación. Ha vivido ya 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 2
+    },
+    "average_score": 0.67,
+    "summary": "La noticia se centra exclusivamente en la política migratoria interna de España y la regularización masiva de extranjeros, sin vinculación con la soberanía digital o estándares ISO.",
+    "implications": "El evento evidencia una saturación administrativa en un Estado miembro de la UE que podría servir como estudio de caso sobre cuellos de botella burocráticos, pero carece de impacto táctico para la delegación del .ia. Se identifica una homonimia irrelevante entre las siglas del servicio migratorio estadounidense y nuestra Iniciativa Ciudadana Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:07:57] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Por qué la inmigración alivia la economía pero no la sostiene
+        CONTENIDO: El Gobierno ha recurrido a la figura del real decreto, prevista constitucionalmente sólo en casos de extrema urgencia, para legislar una regularización extraordinaria de inmigrantes. La medida afecta a los extranjeros que hayan solicitado asilo hasta el 31 de diciembre y a aquellos que puedan acreditar su residencia en España con algún tipo de documento cinco meses antes de esa fecha. Se concede el permiso de trabajo y residencia durante un año y allanará a los beneficiarios la obtención de la nacionalidad. El Ejecutivo margina la legislación ordinaria en el Parlamento, que impulsó una iniciativa popular (IPL) con el apoyo de todos los grupos menos Vox, y lo sustituye por un acuerdo con Podemos. Defiende «la urgencia» de la medida por sus beneficios económicos.
+1. ¿Contribuye la migración a una mejora de la economía?
+Una manera de medir el PIB consiste en multiplicar las horas trabajadas de una economía por la productividad. En 2018, España tenía 4.734.691 residentes extranjeros y hoy tiene 2.397.633 más. La mayoría de ellos se han incorporado al mercado de trabajo. Según Fedea, constituyen el 57% del empleo generado en los últimos siete años, lo que les convierte en fundamentales con un añadido: el crecimiento vegetativo de la población nativa es negativo. Las familias migrantes gastan prácticamente el 100% de su renta e impulsan la demanda interna. Pero por el lado de la productividad, la aportación es escasa. Se incorporan a empleos de valor añadido muy bajo, al menos en las primeras cohortes.
+2. ¿Vendrán más migrantes de los que demanda el mercado laboral?
+Lo primero es saber cuántos migrantes se van a regularizar. El Gobierno calcula que medio millón. Funcas eleva la cifra a 800.000. Las cifras no estarán claras hasta que no se inicie el proceso. No existe evidencia previa de que se produzca un efecto llamada como consecuencia de la regularización. En los dos estudios publicados (Ismael Gálvez Iniesta, 2025 y Ferran Elías et al., 2022) no se constata y sí se aprecia un efecto positivo en cuanto al afloramiento de economía sumergida. Lo anómalo es que una iniciativa de un impacto social así sea fruto de un pacto a tres bandas entre el Gobierno, Podemos y Junts y que no vaya acompañado de una memoria económica.
+3. ¿Pueden prescindir las empresas de migrantes?
+Es la respuesta más sencilla: no. Según un estudio del economista Santiago Calvo, en los últimos tres años los migrantes han asumido la mitad de los empleos nuevos. Pero en algunas comunidades, los datos son abrumadores. En el País Vasco, el 91% de las ocupaciones recientes son de trabajadores nacidos fuera de España. El porcentaje es muy importante también en La Rioja (80%), Aragón (78%), la Comunidad Valenciana (66%), Cataluña (59%) o Madrid (51%), entre otros. Las patronales de casi todas las industrias, especialmente las intensivas en mano de obra, reclaman medidas para atraer más extranjeros. Para quienes crean que el empleo es una cuestión de suma cero, la respuesta es tan simple co
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 2,
+        "geopolitical_intel": 2
+    },
+    "average_score": 1.33,
+    "summary": "Regularización migratoria extraordinaria en España mediante Real Decreto, priorizando la urgencia económica sobre una Iniciativa Legislativa Popular previa.",
+    "implications": "La noticia muestra la vulnerabilidad de las iniciativas ciudadanas frente a decretos ejecutivos, lo cual es un riesgo táctico para nuestra ICE. No obstante, carece de impacto directo en la gestión del código ISO 3166-1 o en la soberanía digital de Grecia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:08:09] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Vox rebaja al mínimo su distancia con el PSOE y se pone ya a ocho puntos
+        CONTENIDO: - Sociedad Rechazo mayoritario a la regularización de inmigrantes de Sánchez, que tampoco gusta al 37% de los votantes del PSOE y al 19% de los de Sumar
+- Crisis ferroviaria Cuatro de cada 10 españoles creen ya que el tren de alta velocidad es poco o nada seguro
+Vox no parece tener techo, ni el PSOE suelo. El partido de Santiago Abascal, que encadena ya 10 meses de subida sostenida en las encuestas, vuelve a superarse en febrero y reúne el 17,8% de los votos, según el sondeo de Sigma Dos para EL MUNDO. En el lado opuesto, la formación que lidera Pedro Sánchez ahonda por tercer mes consecutivo en su tendencia a la baja y solo aglutina hoy el 26,1% de los apoyos, su peor dato de la legislatura. La coexistencia de estas dos realidades tiene un efecto determinante: la distancia entre las que ahora serían segunda y tercera fuerza, PSOE y Vox, es mínima, con solo 8,3 puntos porcentuales de diferencia entre ambas. Poco más de dos millones de votos separan a Sánchez de Abascal.
+Si hoy se produjera una llamada a las urnas, el PP ganaría las elecciones, aunque lo haría con el 32,4% de los apoyos, tres décimas menos que hace un mes. Y siete por debajo del 33,1% que marcó en las elecciones de 2023. Los de Alberto Núñez Feijóo dibujan así también un nuevo suelo en su cuenta particular de la legislatura, aunque mantienen el liderato y podrían alcanzar La Moncloa de la mano de Vox. Ambas derechas sumarían hoy 200 escaños en el Congreso, un montante que nunca ha sido superior en lo que va de legislatura -sí fue igual en diciembre de 2025-. Los 139 asientos que ocuparía el PP -dos más que ahora, pero también dos menos que en la estimación de enero- y los 61 de Vox -añade 28 a su cuenta, tres de ellos en el último mes- dejarían a la izquierda sin margen para reeditar la mayoría que hizo presidente a Sánchez.
+El líder socialista aglutinaría hoy el 26,1% de las papeletas, cuatro décimas menos que hace un mes y 5,6 puntos por debajo de su resultado de 2023. Desde entonces, Sánchez ha perdido casi 1,4 millones de votos -de 7,8 a 6,4 millones- y 15 escaños -de 121 a 106, bajando uno en el último mes-, lo que deja a la izquierda sin posibilidad de articular cualquier ecuación de gobernabilidad.
+Feijóo cae al 32,4% de los votos, pero suma dos escaños más que en 2023
+Esto se produce, sin embargo, en un mes marcado por los movimientos del jefe del Ejecutivo para intentar recoser la relación con los partidos que lo auparon a La Moncloa. Al nuevo modelo de financiación autonómica pactado con ERC se ha sumado, en la última semana, el acuerdo con Podemos para regularizar a más de medio millón de inmigrantes. La encuesta de Sigma Dos, elaborada mediante entrevistas realizadas entre el 26 y el 30 de enero, recoge la valoración ciudadana de ambas cosas, así como la respuesta de los españoles al accidente ferroviario en Adamuz (Córdoba) del pasado 18 de enero, que se cobró 46 vidas y cuya investigación mantiene al Ministerio de Transportes en el foco. Pese a que en los últimos día
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 2
+    },
+    "average_score": 0.67,
+    "summary": "Sondeo electoral en España que refleja un ascenso de Vox y el PP frente a un desgaste del PSOE, marcado por debates sobre inmigración y seguridad infraestructural.",
+    "implications": "La noticia se centra en la política interna española y carece de vinculación con la soberanía administrativa de Anticitera o los trámites ante ISO y ELOT. Aunque el clima político en los Estados miembros es relevante para una futura ICE, esta información no altera la viabilidad estratégica ni operativa del proyecto .ia.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:08:19] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Estados Unidos: dos siglos conquistando el mundo a golpe de talonario
+        CONTENIDO: Uno a uno: todos los territorios que EE.UU. ha comprado al mundo (incluida España) en su historia
+Europa está en vilo porque Trump ha puesto precio a Groenlandia, pero no hay que olvidar que el presidente sigue una vieja tradición alimentada por sus predecesores, acostumbrados a expandirse mediante la compra más que por las armas
+La realidad es que, desde su fundación, más del 40% del territorio del país se incorporó echando mano a la billetera
+Macron rebaja el tono con Trump y pide una mayor presencia de la OTAN en Groenlandia
+Donald Trump ha puesto precio a Groenlandia: 700.000 millones de dólares (601.800 millones de euros). Esa es la cantidad que está dispuesto a pagar por la isla más grande del mundo: más de dos millones de kilómetros cuadrados que pertenecen a ... Dinamarca, cuatro veces la extensión de España. «Solo pido un trozo de hielo», insistió el presidente estadounidense en el Foro Económico Mundial de Davos la semana pasada. Y, como siempre, lanzó su amenaza: «Tienen dos opciones. O aceptan, y estaremos agradecidos, o se niegan, y no lo olvidaremos».
+La ambición de Trump tiene a Europa en vilo, pero no debemos olvidar que la codicia y arrogancia del mandatario no es nueva en la historia de Estados Unidos. El país está acostumbrado a que sus presidentes conquisten el mundo a golpe de talonario desde que, en 1803, Thomas Jefferson comprara a Francia 1,3 millones de kilómetros cuadrados al oeste del río Misisipi. Fue la primera adquisición, pero no la última. De hecho, Washington ha mostrado interés por Groenlandia hasta en tres ocasiones.
+Ramón Larramendi
+El explorador español de Groenlandia: «China, Rusia y EEUU están construyendo rompehielos como locos»
+Texto y retrato por Daniel MéndezEn 1867, el secretario de Estado William H. Seward quiso comprársela al zar Alejandro II de Rusia por 7,2 millones de dólares. Pretendía incluir aquel vasto territorio helado en el mismo paquete que Alaska, pero la medida fue tan criticada en su país que el presidente Andrew Johnson abandonó la idea. En realidad, la rechazó porque ese mismo año Gran Bretaña había concedido la independencia a Canadá, el verdadero objetivo de los americanos para no tener a los ingleses como vecinos. Ya no era necesario.
+Origen de los territorios
+de Estados Unidos
+Territorio inicial
+(1763-1783)
+1763
+Frontera
+actual
+Línea de
+proclamación*
+Límites de
+los estados
+actuales
+1783
+Territorio
+original
+México
+(*): Línea de Proclamación: frontera establecida
+por el rey Jorge III de Inglaterra que prohibía
+a los colonos angloamericanos asentarse
+al oeste de los montes Apalaches.
+Origen de los territorios de Estados Unidos
+Territorio inicial
+(1763-1783)
+Frontera
+actual
+Canadá
+Límites
+de los estados
+actuales
+1783
+1763
+Territorio
+original
+Línea de
+proclamación*
+México
+(*): Línea de Proclamación: frontera establecida por el rey Jorge III de Inglaterra que prohibía
+a los colonos angloamericanos asentarse al oeste de los montes Apalaches.
+Hace unos meses, Trump volvió a especular con la
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 2,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 5
+    },
+    "average_score": 2.33,
+    "summary": "Análisis histórico y contemporáneo sobre la adquisición de soberanía territorial por parte de potencias externas y la vulnerabilidad de los márgenes geográficos europeos.",
+    "implications": "Aunque refuerza la narrativa de urgencia sobre la soberanía territorial, el artículo carece de nexos técnicos con la estandarización ISO 3166-1 o mecanismos de la ICE. Sirve únicamente como contexto retórico para justificar ante ELOT la protección de Anticitera como un activo estratégico frente a intereses transatlánticos.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:08:27] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Rybakina se eleva por encima de Sabalenka para conquistar la final femenina
+        CONTENIDO: Tenis / ABIERTO DE AUSTRALIA
+Rybakina se eleva por encima de Sabalenka para conquistar la final femenina
+La kazaja desequilibra a la número 1 con la misma potencia pero más efectividad y logra su segundo Grand Slam (6-4, 4-6 y 6-4 en dos horas y 18 minutos)
+Y Alcaraz, ahora como antes, simplemente creyó
+Dónde ver online y en televisión a Alcaraz en la final del Open de Australia y a qué hora juega contra Djokovic
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEs un puño que saca al aire, pequeño, casi tímido, como su sonrisa, pero que encierra una realidad enorme y descarada: Elena Rybakina , 26 años y 5 del mundo, es la campeona del Abierto de Australia tras un partidazo de adrenalina y ganadores contra ... Aryna Sabalenka, la número 1 del mundo. La kazaja, cerrada esta final con un 'ace', qué mejor forma, levanta así su segundo título de Grand Slam, después de triunfar en Wimbledon en 2022.
+Open de Australia
+Final
+|
+|
+6 | 4 | 6 |
+|
+|
+4 | 6 | 4 |
+«Siempre creí que volvería a este nivel. He tenido altibajos, pero hemos puesto mucho trabajo, y mi equipo me ayuda a mantenerme positiva cuando tengo momentos malos», se expresa después la nacida en Moscú, pero envuelta en la bandera kazaja desde la adolescencia en esa campaña del país de atraer el talento a base de talonario.
+Hay cierta revancha puesta en juego, que esta final ya la han vivido ambas, pero en 2023 fue la bielorrusa quien se llevó la copa a casa. Era su primer Grand Slam y destapado el tarro de las esencias y los éxitos, la bielorrusa entró en un caminar esplendoroso con otros tres grandes: Australia de nuevo en 2024, y los US Open de 2024 y 2025. Pero se le resisten las finales en los últimos tiempos, pues también cayó en Melbourne el año pasado, ante Madison Keys, y en Roland Garros contra Coco Gauff.
+Rybakina se mantuvo siempre cerca de Sabalenka, que la había doblegado en cuatro ocasiones antes de 'perderle el respeto' en la final de Indian Wells 2023. A partir de ahí, le fue arrebatando cierto control en los siguientes choques. Como ocurre en esta final en Melbourne, en el que a las dos se les hace incómodo porque a ninguna le gusta ceder la iniciativa y se enfrentan casi casi a un espejo en cuanto al estilo de juego.
+Pero a las primeras de cambio, la kazaja lanza la garra a los nervios de Sabalenka, que cede su primer turno de saque. Muy segura Rybakina a partir de ahí, no deja de mantener la batuta del juego, desequilibrando la entereza de la bielorrusa al liderar los puntos con más saña incluso que esta. Una quiere dominar, la otra más. Apenas intercambios por encima de los cuatro golpes.
+Sabalenka, pura potencia, se retuerce en la silla, toalla sobre la cabeza para sacudirse la frustración al no ser la clara dominadora de los puntos, repensar la estrategia y buscar cómo darle la vuelta al guion y ponerlo a su favor. Apela, claro, a la potencia, con la que comanda el circuito femenino desde aquel 21 de octubre de 2024 cuando se sentó en el trono de la WTA (lo había he
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica deportiva sobre la victoria de Elena Rybakina frente a Aryna Sabalenka en la final femenina del Abierto de Australia de tenis.",
+    "implications": "La noticia carece de cualquier vínculo con la infraestructura de DNS, la estandarización ISO 3166-1 o la soberanía digital de Grecia. No existe impacto táctico ni estratégico para la consecución del ccTLD .ia para Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:08:34] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Barça sufre para ganar al Elche
+        CONTENIDO: Elche 1 - 3 Barcelona
+El Barça sufre para ganar al Elche
+El equipo de Flick desaprovechó numerosas oportunidades y se impuso con los goles de Lamine, Ferran y Rashford
+Mourinho vuelve al Bernabéu con recuerdo de la debacle de Lisboa aún reciente
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEl Barça tenía el reto en Elche de no empezar perdiendo por muy abonado que esté a las remontadas. Presión alta de los dos equipos, el Barça jugaba mejor entre líneas. Ferran, Fermín y Lamine dinamizaban el ataque. Iñaki Peña con los pies daba ... la razón a Flick cuando prefirió a Tec. El Elche, muy nervioso, perdía demasiados balones. Es suicida hacer esto con el Barça. Y a los cinco minutos -largos- Lamine corrió, dribló, marcó y bailó el primero haciendo honor a una sobresaliente asistencia de Dani Olmo y castigando a Iñaki Peña, que salió como los porteros que buscan más no quedar retratados por un fallo que evitar el gol. Destellos de Lamine como si poco a poco se estuviera encaramando a su mejor versión. Todavía le falta, es cierto, pero también lo es que parece que está de vuelta su genio.
+Elche 1 - 3 Barcelona
+Jornada 22 de LaLiga
+- Elche: Iñaki Peña; John Donald, Chust, Affengruber (Pétrut, min. 74), Pedrosa; Diangana (Neto, min. 60), Mendoza, Aguado (Redondo, min. 56), G. Valera; Álvaro (Lucas Cepeda, min. 74), André Silva (Adam, min. 60).
+- Barcelona: Joan García; Koundé (Araujo, min. 84), Cubarsí, Eric García, Balde; Dani Olmo (Marc Bernal, min. 62), De Jong, Fermín (Marc Casadó, min. 84); Lamine Yamal, Ferran (Lewandowski, min. 62), Raphinha (Rashford, min. 46).
+- Goles: 0-1, min. 6: Lamine Yamal. 1-1, min. 29: Álvaro. 1-2, min. 40: Ferran. 1-3, min. 72: Rashford.
+- Árbitro: Muñiz Ruiz (colegio gallego). Amonestó a John Donald (min. 38), Mendoza (min. 76) y De Jong (min. 90).
+El Elche no se rindió pero sus jugadores tenían mucha más voluntad que calidad y una gran dificultad para concretar lo que generaban. Olmo falló el segundo indultando un pase de la muerte de Balde. Iñaki Peña no perdía ninguna oportunidad de demostrar su mediocridad y su equipo, pese a la superioridad rival, tenía sus oportunidades y avisaba al Barça de lo que podía pasarle si continuaba perdonando. No es que creara gran peligro, pero los de Flick estaban demasiado cómodos para el poco margen que tenía en el marcador. Dani Olmo en el 27 insistió en su tradición de estrellar un balón en el larguero, y en el 28 Álvaro se comió a Éric y Joan García y empató el partido.
+Ferran volvió por unos instantes a su antigua fatalidad y en una misma jugada remató dos veces al palo, y a la siguiente pareció más un defensa local que un delantero de su equipo despejando lo que era mucho más fácil marcar. Pero a la tercera que tuvo recuperó la luz y aprovechando otra deplorable actuación de Iñaki Peña para marcar el segundo. Al filo del descanso Fermín decidió sustituir a Ferran en el festival de las embarradas y falló la ocasión más fácil de la noche en una acción muy difícil de 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica deportiva sobre un encuentro de fútbol de la liga española entre el FC Barcelona y el Elche CF.",
+    "implications": "El contenido es estrictamente lúdico y carece de vinculación con la soberanía digital, el estándar ISO 3166-1 o los objetivos estratégicos de Anticitera. No existe impacto táctico ni político para la misión del Proyecto.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:08:42] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Paddy Pimblett, el 'archienemigo' de Ilia Topuria, tras su derrota: «Volveré a por ese cinturón»
+        CONTENIDO: Paddy Pimblett, el 'archienemigo' de Ilia Topuria, tras su derrota: «Volveré a por ese cinturón»
+El de Liverpool perdió por decisión unánime frente a Justin Gaethje, posible siguiente rival del hispanogeorgiano tras lograr el título interino
+Justin Gaethje, el posible rival de Ilia Topuria: «Solo tengo que confiar en mis habilidades»
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEl primer evento de la temporada de la UFC sirvió como punto de partida a la 'era Paramount'. Y fue inaugurado con una incontestable victoria del estadounidense Justin Gaethje sobre la estrella en ascenso inglesa Paddy Pimblett, logrando un triunfo por decisión unánime en ... el UFC 324, que se celebró en el T-Mobile Arena de Las Vegas.
+La victoria de Gaethje le valió su segundo campeonato interino del peso ligero (155 libras. 70,3 kilos) y le abre las puertas a una pelea por el título unificado contra el campeón absoluto, Ilia Topuria, quien anunció un parón temporal en su carrera en noviembre pasado debido a sus problemas personales, pero se espera que regrese en junio de 2026 si todo sigue su curso.
+Alejandra Boixader, la 'niña prodigio' que debutará en MMA: «El gran sueño es pelear en la UFC»
+Álvaro ColmeneroA sus 15 años, la joven luchadora ha sido cinco veces campeona mundial de jiujitsu brasileño y ahora aspira a serlo en las artes marciales mixtas
+Fue un duro golpe para Paddy Pimblett, 'archienemigo' de Topuria, y quien planeaba vencer para poder enfrentarse finalmente contra el hispanogeorgiano, después de varios años de cruces de palabras y tensiones que, probablemente, ya jamás se cierren en el octágono. Después de las numerosas críticas por su escasa estrategia durante el combate, el inglés ha salido al paso con un comunicado en sus redes sociales.
+«Espero que todos hayan disfrutado de mi lucha tanto como yo, quiero agradecer a todos los que vinieron a apoyarme y a todos los que me apoyan en casa. Estoy todo bien, sin lesiones, entré en la pelea sintiéndome increíblemente bien, había hecho un gran campamento de entrenamiento y un corte de peso fácil, pero no pongo excusas: el mejor hombre ganó en la noche y ese fue Justin Gaethje», trasladó Paddy en su cuenta de Instagram.
+«Felicidades, hermano, fue un honor compartir la jaula con una leyenda así. Ahora ve a conseguir ese título indiscutido porque tu carrera se lo merece. Ojalá podamos hacer otra carrera hacia el título indiscutido porque todavía sé que está en mi destino ganar ese oro. A la UFC: gracias por la oportunidad. Todos saben que volveré a por ese cinturón en un futuro cercano», ha sentenciado el inglés.
+Lo cierto es que la competitividad que existe en el peso ligero, con numerosos contendientes reclamando su oportunidad, entre ellos Arman Tsarukyan o el que salga ganador del duelo entre Max Holloway y Charles Oliveira, invita a pensar que Paddy Pimblett tendrá un duro camino hasta volver a tener la oportunidad en caso de que siga sumando triunfos.
+Esta funcionalidad es sólo para suscript
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Crónica deportiva sobre resultados de combates de la UFC y declaraciones de luchadores de artes marciales mixtas.",
+    "implications": "La noticia analizada carece de cualquier nexo estratégico, legal o administrativo con el ccTLD .ia o la soberanía digital de la Unión Europea. No existe impacto alguno para los objetivos de normalización ISO o la Iniciativa Ciudadana Europea del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:08:48] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Horario y dónde ver la final del Abierto de Australia entre Alcaraz y Djokovic
+        CONTENIDO: tenis
+Dónde ver online y en televisión a Alcaraz en la final del Open de Australia y a qué hora juega contra Djokovic
+Conoce a qué hora juega Carlos Alcaraz la final en el Open de Australia y dónde ver el partido en televisión y online contra Novak Djokovic
+Otra barbaridad de Alcaraz: superó calambres, vómitos y a un gran Zverev
+Será la primera final de Carlos Alcaraz en el Open de Australia, en busca del único Grand Slam que falta en su palmarés con solo 22 años, el tenista más joven en posición de alcanzar esos trofeos grandes. Y enfrente, Djokovic buscará su undécimo ... título en la pista del Rod Laver en Melbourne. El serbio residente en Atenas tiene más títulos que nadie (10) en la superficie de cemento australiana.
+Djokovic, que tiene ya 38 años, se medirá al español este domingo en la final de Australia, primera cita del 'Grand Slam' cada temporada, después de ganar el viernes en la segunda semifinal al italiano y defensor del título Jannik Sinner por 3-6, 6-3, 4-6, 6-4, 6-4 en un partido épico que puso al límite las fuerzas de ambos tenistas.
+Después de más de cuatro horas de batalla en la Rod Laver Arena, el veterano jugador de Belgrado, a punto de cumplir 39 años, se ha ganado el derecho a optar a su vigesimoquinto 'grande', una cifra récord en el tenis. El murciano busca ser el más joven en completar el Grand Slam.
+𝐒𝐈𝐆𝐔𝐄 𝐄𝐒𝐂𝐑𝐈𝐁𝐈𝐄𝐍𝐃𝐎 𝐋𝐀 𝐇𝐈𝐒𝐓𝐎𝐑𝐈𝐀 𝐃𝐄𝐋 𝐃𝐄𝐏𝐎𝐑𝐓𝐄 𝐘 𝐃𝐄𝐋 𝐓𝐄𝐍𝐈𝐒
+— Eurosport.es (@Eurosport_ES) January 30, 2026
+Novak Djokovic gana a Sinner en cinco sets y tras más de cuatro horas y jugará la final del Open de Australia, la UNDÉCIMA de su carrera, la primera desde 2023
+LE-YEN-DA. pic.twitter.com/I9qLhcgK7P
+Será el décimo enfrentamiento entre Djokovic y Alcaraz en el circuito profesional (5-4). El balance está de momento a favor del serbio, que ha ganado cinco veces. Alcaraz se ha impuesto en cuatro. La última vez que se midieron fue en las semifinales del Open de Estados Unidos, con victoria para el español 6-4, 7-6 (4) y 6-2.
+La última vez que se enfrentaron en el Open de Australia fue el año pasado, 2025, con triunfo para el serbio en los cuartos de final por 4-6, 6-4, 6-3 y 6-4. Ambos han disputado cuatro finales, con reparto de éxitos (2-2). Alcaraz se impuso en las finales de Wimbledon (2023 y 2024) y Djokovic en Cincinnati (2023) y los Juegos Olímpicos de París (2024).
+A qué hora es el Alcaraz - Djokovic, final del Open de Australia
+El partido entre Carlos Alcaraz y Novak Djokovic se jugará este domingo 1 de febrero a las 9.30 de la mañana, hora en España, que serán las 19:30 de la tarde noche en Melbourne.
+Donde ver en televisión y online la final Alcaraz-Djokovic en el Open de Australia
+El partido entre Alcaraz y Djokovic se emite por Eurosport, canal que tiene íntegros y en exclusiva los derechos del Grand Slam australiano. De este modo, el partido no se verá en abierto
+Y podrá seguir el minuto a minuto y toda la información sobre el torneo en ABC.es.
+Esta funcionalidad es sólo para suscriptores
+Suscribete
+Esta funcionalid
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reportaje deportivo sobre la final del Abierto de Australia entre Carlos Alcaraz y Novak Djokovic sin relevancia para la infraestructura digital.",
+    "implications": "La noticia carece de impacto en los marcos normativos de ISO 3166-1 o en la soberanía tecnológica de la Unión Europea. La mención incidental de la residencia de un atleta en Atenas no constituye un factor de inteligencia estratégica para la delegación del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:09:07] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Sánchez ha nacionalizado ya a 1,4 millones de extranjeros: en 2027 podrá votar un millón más que en las generales de 2023
+        CONTENIDO: Sánchez ha nacionalizado ya a 1,4 millones de extranjeros: en 2027 podrá votar un millón más que en las generales de 2023
+Casi el 20% son de origen marroquí, pero en los últimos años han crecido otros colectivos como los de origen venezolano, colombiano y ecuatoriano.
+Un total de 870.000 extranjeros han pedido la nacionalidad española desde 2022 gracias a la Ley de Memoria Democrática: de ellos, 240.000 ya la han obtenido.
+Más información: El PP acusa a Sánchez de buscar "alterar el censo electoral en el medio plazo" a través de la regularización de inmigrantes
+Cerca de 1,4 millones de extranjeros han obtenido la nacionalidad española (y por tanto, el derecho al voto) desde que Pedro Sánchez llegó a la Moncloa, en junio de 2018.
+Casi el 20% (alrededor de 261.000) de ellos son de origen marroquí, aunque en los últimos años han crecido especialmente otros colectivos como los de origen venezolano, colombiano y ecuatoriano.
+Si se mantiene el ritmo de los tres últimos años (en los que han obtenido la nacionalidad española alrededor de 240.000 extranjeros, cada año), en las elecciones generales de 2027 podrían votar un millón de nuevos españoles más que en las de 2023.
+El líder del PP, Alberto Núñez Feijóo, denunció este sábado que el Decreto Ley aprobado por el Consejo de Ministros para conceder el permiso de residencia a cerca de 850.000 inmigrantes sin papeles va a "tensionar" aún más los servicios públicos y el mercado de la vivienda.
+Pero los populares sostienen, además, que el plan de inmigración de Sánchez busca "alterar el censo electoral en el medio plazo". ¿Hasta qué punto es así?
+Estos cerca de 850.000 inmigrantes (según las estimaciones de Funcas) no podrán votar, todavía, en 2027.
+Pero regularizar su situación es un paso decisivo para comenzar a computar los años de residencia legal necesarios (dos, en el caso de los procedentes de América Latina, Portugal, Andorra y las antiguas colonias de Guinea Ecuatorial y Filipinas) para solicitar la nacionalidad española.
+Por tanto, una parte de estos inmigrantes (fundamentalmente los latinos) sí podrían votar en las siguientes elecciones generales, previstas para 2031 si Pedro Sánchez no altera su calendario.
+Para el resto de países (como Marruecos), es preciso contabilizar al menos 10 años de residencia legal para poder pedir la nacionalidad.
+Durante los últimos años, el Gobierno ha pisado el acelerador en la concesión de la nacionalidad española a extranjeros, que sí va a tener un impacto directo en las próximas elecciones generales (al hinchar el censo en un millón de potenciales votantes).
+El Gobierno nacionalizó a 90.774 extranjeros en 2018 (primer año de Sánchez en La Moncloa desde el mes de junio). Fueron 98.954 en 2019, otros 126.266 en el año siguiente y 144.012 en el ejercicio 2021, según los datos del Instituto Nacional de Estadística (INE):
+La cifra siguió ascendiendo hasta 181.581 en el año 2023, otros 240.208 en el ejercicio siguiente y 252.476 en 2024. Del año 2025 sólo hay un dato p
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "Informe sobre el incremento del censo electoral en España debido a procesos de nacionalización y regularización migratoria bajo leyes domésticas.",
+    "implications": "La noticia no tiene impacto en la gestión del ccTLD .ia ni en los trámites ante ISO o ELOT en Grecia. Se considera ruido estadístico para la misión de soberanía digital y el marco de la Iniciativa Ciudadana Europea (ICE).",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:09:21] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Once líderes de la UE rechazan la regularización masiva de Sánchez: "Es una negligencia política intolerable"
+        CONTENIDO: Once líderes de la UE rechazan la regularización masiva de Sánchez: "Es una negligencia política intolerable"
+Los dirigentes del PPE acuerdan en Zagreb, a petición de Feijóo, mantener las sanciones a dirigentes chavistas hasta que llegue la libertad a Venezuela.
+Más información: Feijóo pide a la UE que aclare el accidente de Adamuz y frene el plan de Sánchez para legalizar a 850.000 'sin papeles'
+Los líderes del Partido Popular Europeo (PPE) aprobaron este sábado en Zagreb (Croacia) una resolución en la que expresan su rechazo frontal a los planes del Gobierno de Pedro Sánchez de regularizar a cerca de 850.000 inmigrantes sin papeles.
+La resolución indica que "la legalización masiva de inmigrantes ilegales debilita gravemente nuestra política. La solidaridad sin control", añade el documento, "es una negligencia política intolerable".
+"Defendemos una Europa que proteja sus fronteras y frene la migración ilegal", señalan los populares europeos.
+La cumbre del PPE celebrada este fin de semana en Zagreb, que ha aprobado este documento, ha contado con la participación de 11 de los principales líderes de la Unión Europea (UE).
+Entre ellos, la presidenta de la Comisión Europea, Ursula von der Leyen; la presidenta del Parlamento Europeo, Roberta Metsola; el canciller alemán Friedrich Merz; el primer ministro de Polonia, Donald Tusk; el de Portugal, Luis Montenegro; el de Grecia, Kyriakos Mitsotakis; y el de Croacia, Andrej Plenković, que ha actuado como anfitrión del encuentro.
+También el ministro de Exteriores de Italia, Antonio Tajani; el presidente de Chipre, Nikos Christodoulides; la primera ministra de Letonia, Evika Silina; y el presidente del Partido Popular Europeo, Manfred Weber.
+El documento de prioridades para 2026 aprobado por el PPE apuesta por potenciar el papel de la agencia de fronteras Frontex, no sólo en tareas de vigilancia, sino también como apoyo para facilitar la devolución de inmigrantes irregulares a sus países de origen.
+De acuerdo con las nuevas medidas aprobadas por la UE, el uso de "terceros países seguros" para llevar a cabo expulsiones "garantizará el retorno más rápido de quienes no tienen derecho a permanecer en Europa", añade el documento.
+El Consejo de Ministros aprobó el pasado martes el Real Decreto que permitirá obtener el permiso de residencia a todos los inmigrantes ilegales que lleven al menos cinco meses residiendo en España.
+El Gobierno estima que podrán acogerse a esta medida alrededor de 500.000 inmigrantes irregulares, aunque el PP eleva la cifra hasta los 850.000, de acuerdo al último informe elaborado por Funcas.
+Alberto Núñez Feijóo, que ha participado en la cumbre de Zagreb, advirtió el sábado que esto "va a provocar un efecto llamada en la frontera sur del continente", lo que afectará al conjunto de la UE.
+La regularización masiva del Gobierno presionará los servicios públicos, tensionará el mercado de la vivienda y creará problemas de convivencia.
+— Alberto Núñez Feijóo (@NunezFeijoo) January 31, 2026
+La 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 2
+    },
+    "average_score": 0.67,
+    "summary": "El Partido Popular Europeo, incluyendo al Primer Ministro griego Mitsotakis, rechaza frontalmente la política migratoria española en favor de una soberanía fronteriza reforzada.",
+    "implications": "La noticia confirma la sólida alineación política entre Mitsotakis y Von der Leyen en temas de soberanía, pero carece de conexión con la infraestructura digital o el código ISO 3166-1. Al no afectar la viabilidad del distrito .ia ni el mecanismo de la ICE, no posee valor estratégico directo para el Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:09:32] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Sánchez revienta España
+        CONTENIDO: España no aguanta más. Con cada inyección de grasa al viejo quintanar patrio no dejan de crecerle los michelines del omento. Vivimos amontonados en las estaciones y andenes, en las salas y listas de espera, en los atascos y barrios dormitorios de las zonas urbanas.
+Los números de la España llena son brutales.
+La población ha crecido en estos últimos años de manera descontrolada. Sánchez ha abierto las puertas de par en par como si nuestro país fuera un hotel con capacidad infinita.
+De ahí la degradación de los servicios públicos. Nos vendemos como si fuéramos un establecimiento de cinco estrellas y apenas merecemos tres.
+En España viven de manera permanente casi cuatro millones de personas más que cuando llegó Sánchez al poder hace ocho años. La inmensa mayoría, extranjeros. Vamos a medio millón de incremento anual, pese al frenazo de la COVID.
+Muy pronto superaremos la cota oficial de los 50 millones de residentes. Al mismo tiempo hemos transitado de 83 a 99 millones de turistas.
+Son dos buenos baremos de nuestro crecimiento y desarrollo, pero nos hemos pasado de frenada. Hace medio siglo Alfredo Amestoy triunfaba en TVE con el programa '35 millones de españoles' y pese al boom del turismo apenas teníamos 27 millones de visitantes.
+La suma de ambas cifras se ha multiplicado por 2,5, pero el territorio sigue siendo el mismo y la inversión en infraestructuras ha tenido un inevitable carácter espasmódico en función de los ciclos de la economía.
+Durante la última década del pasado siglo y la primera del presente, España se dotó de una red de autopistas y vías férreas de alta velocidad envidiables, con ayuda de los fondos europeos para el desarrollo (FEDER).
+A la vez se construyeron colegios, hospitales y viviendas. Hubo un boom que trocó en burbuja inmobiliaria.
+Entonces llegó la crisis financiera con sus drásticos recortes. Ahora vuelve a crecer el PIB y contamos con los Next Gen, pero la inversión se ha reanudado de forma tan insuficiente como ineficaz.
+El caso de la red ferroviaria es paradigmático. Todo un ejemplo de crecimiento desbocado a base de más kilómetros de vías, más trenes, más operadores, más velocidad, pero peor mantenimiento y menor seguridad. Por no hablar de la impuntualidad.
+Esas eran las bases de la movilidad sostenible impulsada por Ábalos —con Koldo en el antedespacho— y a la que se apuntó con entusiasmo Puente.
+El resultado, con todos sus preludios que debieron haber servido de advertencia, son los 46 muertos de Adamuz. Porque, como ha dicho el presidente de la comisión investigadora del siniestro Ignacio Barrón, "los mantenimientos no se inauguran".
+Óscar Puente quería poner las máquinas del AVE a 350 por hora, igual que Beatriz Corredor quería batir la plusmarca de aportación de las renovables al mix energético. Así se cayó la red, así llegó el descarrilamiento.
+Hay políticos que se las pintan solos para cortar la cinta inaugural de una nueva línea o estación, colgarse la medalla ante sus jefes y poner cara de funeral cuand
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis de opinión sobre la crisis demográfica, migratoria y el deterioro de la infraestructura ferroviaria interna en España.",
+    "implications": "La noticia se centra estrictamente en asuntos de política interna y gestión administrativa española sin conexión con los estándares ISO 3166-1 ni la soberanía digital europea. No presenta utilidad estratégica para la consecución del ccTLD .ia ni para la movilización de la Iniciativa Ciudadana Europea del proyecto.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:09:42] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Ignatieff, gran pensador liberal: "España debe tener puerta y muro, y regularizar sólo a quien no tenga antecedentes"
+        CONTENIDO: Ignatieff, gran pensador liberal: "España debe tener puerta y muro, y regularizar sólo a quien no tenga antecedentes"
+"Si España no invierte más en Defensa, el resto del mundo puede pensar que no quiere jugar el partido de la construcción del nuevo orden".
+"La operación contra Maduro ha abierto el mundo a los depredadores. Si llega la democracia a Venezuela, el precio habrá sido muy alto".
+Es como si la biografía de Michael Ignatieff (Toronto, 1947) y la geopolítica fueran un mismo álbum. Un periódico que puede leerse de adelante atrás y de atrás adelante. Como una kalinka; un estribillo que se repite y se repite.
+Ignatieff, este hombre de suéter oscuro que deja varios segundos de silencio y paseo al pensamiento antes de responder, debería ser el verdadero autor de esa frase apócrifa que se atribuye a Mark Twain: “La historia no se repite, pero rima”.
+Para saberlo (casi) todo de él, conviene acercarse a su “Álbum ruso”; un viaje literario a sus orígenes. El Ignatieff que ahora tenemos enfrente y que nos atiende con paciencia proverbial en una Viena a cinco grados bajo cero –¡qué frío hace en el liberalismo!– es una de las últimas ramas del árbol de la aristocracia rusa.
+Su bisabuelo fue ministro del Interior en el Imperio; el encargado de restaurar el orden tras el asesinato del zar Alejandro II. Su abuelo fue ministro de Educación con Nicolás II.
+Después vino el exilio. La Revolución. Octubre, Lenin, el Palacio de Invierno, Potemkin. Pero la pasión política de los Ignatieff no murió con los bolcheviques.
+Su padre, en la Inglaterra de Churchill, comenzó a jugar un papel relevante como diplomático canadiense. Y su madre, ennoviada entonces con un soldado que moriría en el campo de Buchenwald, era estenógrafa de la Inteligencia británica.
+De ahí, de todo eso, nació este Ignatieff, Michael, que se crio en una navegación continua por los destinos paternos: Washington, Belgrado, Londres, París, Ginebra, Ottawa.
+Quizá lo más impactante para un español sea constatar cómo este Ignatieff pudo canalizar su pasión política de juventud… ¡en el liberalismo! Porque el liberalismo era poder en Canadá. Y lo sigue siendo ahora con Mark Carney, al que conoce bien, y de cuyo discurso en Davos vamos a hablar.
+Las ideas del discurso de Carney, en el fondo, son muy parecidas a las que lleva escribiendo Ignatieff desde hace décadas. Aunque él, casi siempre excesivamente modesto, repite: “Lo conozco mucho, pero no tengo nada que ver”.
+El joven Ignatieff recaló en Inglaterra a finales de los setenta. Se hizo famoso como presentador de radio y televisión. Columnista estrella de The Observer. Acabaría haciendo una serie de relumbrón sobre el nuevo nacionalismo, que volvía a prender fuego a Europa en los Balcanes.
+Resulta extraño encontrar a un intelectual completo de esta talla: éxito como libretista de teatro, como periodista, como novelista y como ensayista. Profesor en Oxford, en Harvard, en Cambridge.
+Y no seguiré por si algún lector ha desayunado melocotón en almíbar;
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis filosófico y político de Michael Ignatieff sobre la soberanía fronteriza y el gasto en defensa de España dentro del orden liberal.",
+    "implications": "La noticia carece de relevancia para la obtención del ccTLD .ia o la creación del Distrito Tecnológico en Grecia, al no tratar sobre estándares administrativos o derechos digitales. No existe impacto táctico ni estratégico para la operación de los nodos o la Iniciativa Ciudadana Europea (ICE).",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:09:51] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Sánchez va "desesperado" a por los Presupuestos y sus socios lo aprovechan: "Es la negociación más fácil que hemos hecho"
+        CONTENIDO: Sánchez va "desesperado" a por los Presupuestos y sus socios lo aprovechan: "Es la negociación más fácil que hemos hecho"
+El presidente se ha implicado personalmente en la operación para salvar la legislatura y se ha reunido esta vez con los líderes de PNV y ERC.
+Más información: Moncloa cree que las cesiones sobre inmigración a Podemos, Junts y PNV le permiten rehacer sus pactos y seguir hasta 2027
+El entusiasmo, que a veces condiciona y ciega, lleva estos días a un osado ministro a comparar en privado a Pedro Sánchez con Carlos Alcaraz.
+No por sus certeros y profundos golpes de derecha, sino por la capacidad para sobreponerse cuando se arrastra dramáticamente por la pista con calambres y la impresión de que, si fuera cualquier otro, habría tirado la toalla.
+Así el viernes 6 de febrero habrá superado a José Luis Rodríguez Zapatero en tiempo de permanencia en la Moncloa y a José María Aznar el 15 de mayo, pese a que, según uno de sus colaboradores más cercanos, en julio de 2018 expresó en privado su temor a ser el presidente del Gobierno más efímero.
+Y con el mérito de hacerlo con la mayor fragmentación parlamentaria, el apoyo en la investidura de más partidos que nunca, sin ser el partido más votado y con el menor número de escaños propios de un presidente del Gobierno.
+Sánchez tiene dificultades para hacer frente a los escándalos y los casos judiciales que le debilitan, se desgasta por las circunstancias del accidente de Adamuz y pierde votaciones clave en el Congreso.
+Pero sigue devolviendo bolas desde el fondo de la pista para llegar hasta el último juego, pelear agónicamente e intentar ganar el partido.
+Es decir, hasta 2027 y, si fuera posible, hasta septiembre de ese año, al borde legal de la legislatura, tras las elecciones autonómicas y municipales de mayo.
+Las últimas elecciones generales fueron el 23 de julio de 2023. Por tanto, el fin legal de la legislatura sería el 23 de julio de 2027 y ese día se disolverían las Cortes.
+Sánchez aspira a presentar como logro político y personal la estabilidad en tiempos de dificultades.
+La hoja de ruta diseñada por el presidente del Gobierno tiene como hito principal la difícil tramitación de los Presupuestos Generales del Estado de 2026, que intentará aprobar entre marzo y abril. Es su difícil objetivo de máximos.
+Si lo lograra, según fuentes de la Moncloa, Sánchez estaría "blindado" ya para llegar al final de su mandato, salvo contratiempo inopinado.
+Si no lo logra, irá al plan B: intentar resistir a los calambres para alargar el partido todo lo que pueda, aunque sea totalmente debilitado.
+Para eso necesita acercarse de nuevo a todos sus socios, con el fin de poder sacar adelante alguna iniciativa, como la del escudo social con la moratoria antidesahucios, aunque no haya Presupuestos.
+Estará más débil por haber creado la expectativa de que era posible aprobar los Presupuestos y no haberla cumplido. Y normalmente, cuanto más alta es la expectativa, más alta es también la percepción de fracaso.
+María
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "El reporte analiza la fragilidad política y las maniobras tácticas del ejecutivo español para asegurar la continuidad de la legislatura mediante pactos presupuestarios con socios regionales.",
+    "implications": "La noticia carece de relevancia técnica o diplomática para la obtención del ccTLD .ia o el posicionamiento de Anticitera ante ELOT e ISO. No impacta los marcos de soberanía digital europea ni los mecanismos de la Iniciativa Ciudadana Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 03:09:59] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Baches y socavones de medio metro en las calles de Manacor por la dejadez total del alcalde separatista
+        CONTENIDO: Baches y socavones de medio metro en las calles de Manacor por la dejadez total del alcalde separatista
+Se han convertido en una imagen habitual en el callejero de la localidad y núcleos costeros
+El PP exige la elaboración inmediata de un plan integral de rehabilitación de las calzadas
+Baches y socavones de medio metro en las calles de Manacor por la dejadez total del alcalde separatista, Miquel Oliver (Més Esquerra) por la grave falta de mantenimiento de las calles y los espacios públicos del municipio.
+Una situación que se ha ido agravando de manera progresiva durante los últimos años y que evidencia la dejadez del actual equipo de gobierno de socialistas e independentistas.
+El estado de conservación del asfaltado y de las aceras ha empeorado notablemente donde la presencia de baches, desperfectos y pavimentos deteriorados se han convertido en una imagen habitual tanto en las calles de Manacor como en los núcleos costeros y rurales. Lejos de reaccionar y actuar con diligencia, el equipo de gobierno ha optado por la inacción, permitiendo que cada día aparezcan nuevos socavones sin una respuesta efectiva ni planificada.
+Esta situación preocupa cada vez más a los vecinos, que expresan su malestar tanto en la calle como en las redes sociales.
+«No hablamos de un problema puntual, sino de una dejadez generalizada que afecta al día a día de la gente», ha señalado el presidente de la Junta Local, Mateu Fullana.
+Ante esta situación, el PP de Manacor ha presentado una propuesta para que sea debatida en el próximo pleno ordinario del mes de febrero, con el objetivo de obligar al equipo de gobierno a abordar públicamente esta problemática. La iniciativa reclama la elaboración inmediata de un plan integral de rehabilitación de las calles, con un calendario claro de actuaciones y el inicio urgente de las obras en los puntos más degradados.
+«Manacor necesita gestión, planificación y acción, no excusas ni burlas ante un problema que afecta a la seguridad y a la calidad de vida de la gente», ha concluido Fullana, remarcando «la incapacidad de socialistas e independentistas para gestionar el mantenimiento básico del municipio».
+Temas:
+- Infraestructuras
+- Mallorca
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia describe una disputa política local sobre el mantenimiento de infraestructuras urbanas en un municipio español sin vinculación con la soberanía tecnológica.",
+    "implications": "Este evento no presenta ninguna conexión con los objetivos del Proyecto Anticitera, la estandarización ISO 3166-1 o el marco regulatorio de la Unión Europea. Representa ruido táctico irrelevante para nuestra hoja de ruta estratégica.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:10:06] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Unos 30 jóvenes, muchos de ellos menores, se enzarzan en una batalla campal frente a una discoteca de Palma
+        CONTENIDO: Unos 30 jóvenes, muchos de ellos menores, se enzarzan en una batalla campal frente a una discoteca de Palma
+Una discusión en el interior del local acabó fuera del mismo con decenas de implicados
+Lo que debía ser una noche de música, luces y diversión acabó convirtiéndose en una auténtica escena de guerra urbana en el polígono de Son Rossinyol, justo frente a la cárcel de Palma. Más de una treintena de jóvenes —muchos de ellos menores de edad— protagonizaron una brutal pelea multitudinaria a las puertas de la discoteca ‘Palante’, dejando imágenes estremecedoras que ya circulan sin control por redes sociales y grupos de WhatsApp. Todo ello sucedió en la madrugada del sábado al domingo.
+Testigos presenciales relatan momentos de auténtico pánico. Botellas de cristal volando por los aires y estrellándose contra cabezas, puñetazos a cara descubierta, patadas cuando algunos ya estaban en el suelo, empujones violentos, tirones de pelo y gritos desgarradores rompieron la madrugada en una zona ya de por sí marcada por la conflictividad. La escena, según describen quienes la vivieron, era «caótica y fuera de control».
+Según la información a la que ha tenido acceso en primicia OKBALEARES, los primeros enfrentamientos comenzaron en el interior del local. Lo que inicialmente parecían simples discusiones subidas de tono fueron escalando rápidamente hasta convertirse en un intercambio de agresiones físicas. El personal de seguridad tuvo que intervenir de urgencia para expulsar a varios implicados, pero lejos de calmarse, la tensión explotó en la calle.
+Fue entonces cuando se desató la batalla campal. Decenas de jóvenes se agruparon en cuestión de segundos, formando corrillos que se abalanzaban unos contra otros sin contemplaciones. Hombres y mujeres participaron activamente en la reyerta, sin que nadie pareciera dispuesto a frenar la espiral de violencia. Algunos testigos aseguran que hubo momentos en los que varias personas quedaron tendidas en el suelo mientras continuaban recibiendo golpes.
+La grabación, realizada por uno de los clientes del establecimiento, muestra con crudeza la magnitud del altercado. En las imágenes se observa cómo los implicados se persiguen, se encaran y se agreden con objetos contundentes. Los gritos y la tensión son evidentes. El vídeo fue difundido rápidamente y ha generado una oleada de indignación entre vecinos y usuarios en redes sociales.
+Y no es un episodio aislado. Según fuentes consultadas, las peleas multitudinarias se han convertido en una preocupante constante cada fin de semana en esta zona de ocio nocturno. La situación resulta aún más alarmante por la presencia, en otras ocasiones, de armas blancas entre algunos participantes, lo que multiplica el riesgo de que una disputa termine en tragedia.
+La grabación ya ha sido remitida a la Jefatura Superior de Policía para que los grupos de investigación analicen las imágenes e incorporen el material a los correspondientes atestados policiales. Por el momento, se desconoce si alg
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Incidente de orden público y violencia juvenil en una zona de ocio nocturno en Palma de Mallorca, sin vinculación con la infraestructura digital o regulatoria.",
+    "implications": "La noticia no presenta relevancia para la gestión del código ISO 3166-1 ni para los objetivos de soberanía tecnológica del Proyecto Anticitera. Se trata de un suceso de carácter policial local que no impacta en la estrategia diplomática o técnica de la ICE.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:10:16] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Baleares incorpora variedades históricas al vino de Binissalem para potenciar su aroma afrutado
+        CONTENIDO: Baleares incorpora variedades históricas al vino de Binissalem para potenciar su aroma afrutado
+Recupera el esperó de gall, el giró negro y el fogoneu para la vinificación
+La nueva regulación permitirá identificar el origen de la uva en la etiqueta
+Baleares incorpora variedades de uva históricas al vino de Binissalem para potenciar su aroma afrutado tras la modificación por el Govern del pliego de condiciones de esta Denominación de Origen Protegida (DOP) para reforzar la identidad territorial y la calidad de los vinos, y ofrecer más transparencia al consumidor.
+Una de las principales novedades es la inclusión de las variedades siguientes como variedades autorizadas para la vinificación: esperó de gall, el giró negro y el fogoneu.
+Las tres son variedades locales con una presencia documentada en la comarca desde el siglo XIX y un fuerte arraigo histórico en la zona de producción.
+Aunque su cultivo se vio reducido a partir de los años ochenta del siglo pasado con la introducción de variedades foráneas, en las últimas décadas se ha impulsado su recuperación, así como la elaboración y comercialización de vinos monovarietales.
+Diversos estudios científicos han acreditado que estas variedades locales potencian el aroma afrutado de los vinos (uno de los rasgos distintivos de los vinos amparados por la DOP Binissalem) y contribuyen a mejorar la acidez natural, un factor especialmente relevante para paliar parcialmente los efectos negativos del cambio climático sobre los parámetros de equilibrio del vino.
+Con esta modificación, la DOP Binissalem da un paso adelante para reforzar la calidad, la diferenciación y la identidad territorial de sus vinos, y se alinea la normativa con la realidad productiva actual y con las expectativas de un consumidor cada vez más exigente e informado, ha destacado el director general de Calidad Agroalimentaria y Producto Local, Joan Llabrés.
+La modificación del pliego también regula el uso de la mención facultativa vinyet en el etiquetado. Vinyet es una expresión tradicional de la comarca que hace referencia a parcelas pequeñas de viña, generalmente antiguas, con una elevada presencia de variedades locales.
+Actualmente, cerca del 90 % de las parcelas de variedades locales y de moscatel tienen más de 20 años de antigüedad y una superficie inferior a dos hectáreas.
+Con el fin de potenciar el prestigio de los vinos de la DOP Binissalem, el pliego establece criterios específicos para poder hacer uso de esta mención, como una edad mínima de las viñas, un porcentaje elevado de variedades locales, la vendimia manual, unos rendimientos más bajos que los generales de la DO y una reducción del contenido máximo de dióxido de azufre. Así, se garantiza una línea de calidad más exigente.
+«Esta regulación permite diferenciar claramente unos vinos de alto valor añadido y pone de relieve la identidad y la singularidad de nuestro sector vitivinícola», ha indicado Llabrés.
+Otra de las modificaciones relevantes es la regulación del uso de la menc
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Actualización de la normativa agrícola y de Denominación de Origen Protegida (DOP) para la recuperación de variedades vinícolas históricas en las Islas Baleares.",
+    "implications": "La noticia carece de relevancia técnica o administrativa para la gestión del código ISO 3166-1 o la soberanía digital. No existe impacto estratégico ni sinergia con los objetivos del Proyecto Anticitera o la obtención del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:10:25] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Formentera se encamina a un verano sin chiringuitos por incumplimiento de los concesionarios
+        CONTENIDO: Formentera se encamina a un verano sin chiringuitos por incumplimiento de los concesionarios
+El Govern tramita el expediente de caducidad tras no desmantelar este invierno las instalaciones por segundo año
+El Consell de Formentera no tendría tiempo para resolver un nuevo concurso para su explotación antes de la temporada
+Formentera se encamina a un verano sin chiringuitos por la caducidad de las concesiones cuyo procedimiento ya ha puesto marcha el Govern tras los informes técnicos de la Conselleria de Medio Ambiente y del Consell de Formentera en relación al incumplimiento reiterado de las obligaciones de desmontaje de estas instalaciones de modo generalizado.
+La concesión para la gestión de estos negocios incluye instalación además, las escuelas de vela y los servicios de salvamento que también se verán afectados la próxima temporada alta, dado que no habrá tiempo material para resolver una nueva concesión ya que el Consell de Formentera tendrá que convocar el concurso público pertinente para su gestión.
+El inicio del procedimiento para la caducidad de estas concesiones por parte de la dirección general de Costas y Litoral de la Conselleria del Mar se produce después de que estos empresarios, por segundo año consecutivo, no desmantelaran sus instalaciones entre el 15 de enero y el 15 de febrero, tal y como están obligados por el contrato de concesión y el reglamento de Costas.
+Ahora será la citada dirección general y el Consell de Formentera los que tengan que decidir el calado de las medidas a adoptar por este flagrante incumplimiento. La institución insular tiene plazo hasta el próximo lunes para presentar las alegaciones al procedimiento de caducidad de las concesiones.
+Una vez informadas las alegaciones y si éstas son desestimadas por la Conselleria del Mar, ésta podría decretar la suspensión de las explotaciones de los quioscos de playa, una de las grandes atracciones turística de menor de las Pitiusas lo que sería un duro varapalo para la economía de esta isla.
+El año pasado la negativa de los concesionarios a cumplir con lo contemplado en este normativa se saldó con una multa de 1.500 euros, algo que todo apunta sucederá en esta ocasión con una cuantía más elevada, por reiteración en el incumplimiento que también podría derivar en la revocación de la concesión a los titulares de estos negocios.
+Este conflicto viene a sumarse a los 72 expedientes abiertos por el Consell de Formentera, a través de la Conselleria de Medio Ambiente, con procedimientos sancionadores ante la detección de incumplimientos reiterados en diferentes concesiones, fruto de las inspecciones técnicas realizadas a estos chiringuitos durante la pasada temporada turística.
+Entre las infracciones más habituales destacan la falta de registros obligatorios de limpieza y mantenimiento, los incumplimientos de la oferta complementaria comprometida en los pliegos, así como deficiencias en materia ambiental, especialmente en lo que se refiere a la separación de residuos, el uso d
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Conflicto administrativo local en las Islas Baleares relativo a la caducidad de concesiones turísticas por incumplimiento de normativas medioambientales y de costas.",
+    "implications": "La noticia carece de relevancia técnica o diplomática para la obtención del ccTLD .ia o la creación del Distrito Tecnológico. No se identifican precedentes administrativos ni cambios en la soberanía territorial que afecten nuestra hoja de ruta estratégica.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 03:10:33] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La prioridad de CCOO con los trabajadores en Baleares, Valencia y Cataluña: más cursos de catalán
+        CONTENIDO: La prioridad de CCOO con los trabajadores en Baleares, Valencia y Cataluña: más cursos de catalán
+Las tres delegaciones sellan un pacto "por los derechos lingüísticos" laborales
+Consideran que la oferta pública de cursos de catalán "es insuficiente"
+La prioridad de CCOO en Baleares, Valencia y Cataluña con los trabajadores: más cursos de catalán en unas comunidades autónomas donde como sucede en las Islas el mercado laboral se caracteriza por salarios bajos, alta temporalidad, inestabilidad y creciente pobreza.
+Pese a esta cruda realidad y con unos sindicatos que en los siete años de Gobierno de Pedro Sánchez con una cada vez más lacerante precariedad laboral mantienen un silencio sepulcral a pie de calle, esta semana las delegaciones de CCOO de estas tres comunidades autónomas han sellado un acuerdo reivindicativo «por los derechos lingüísticos en el mundo laboral».
+Representantes sindicales han firmado lo que han denominado la ‘Proposta integral per les llengües pròpies i la cohesió social’, un documento con el que el sindicato asegura que «quiere fijar una estrategia común para garantizar que la diversidad lingüística sea un derecho real y efectivo en todos los ámbitos de la vida pública y laboral».
+El documento consensuado exige «políticas de acción positiva para compensar la minorización histórica y asegurar que el catalán, en todas sus variedades territoriales, tenga una normalidad de uso equivalente al castellano».
+La organización alerta de que «no habrá igualdad de oportunidades real mientras la lengua propia sea una barrera o un motivo de discriminación».
+La propuesta reclama que el conocimiento de la lengua propia sea «un requisito indispensable en la función pública para garantizar el derecho de la ciudadanía a ser atendida en su lengua y defiende el derecho de cualquier trabajador o trabajadora a vivir y expresarse en su lengua en el ámbito laboral como un factor de salud y respecto a la identidad».
+Las tres confederaciones territoriales han manifestado su apoyo «sin fisuras» a la Proposición de Ley Orgánica de garantía del plurilingüismo y consideran «vital» que las instituciones del Estado, «dejen de ser espacios monolingües y se adapten a la realidad plurilingüe de la sociedad que representan».
+Como primera medida ejecutiva, han anunciado la solicitud de reuniones con los grupos parlamentarios de Les Corts Valencianes, el Parlament de Cataluña, el Parlament balear y el Congreso de los Diputados. También lo harán con organizaciones culturales y cívicas que trabajan en la defensa de la lengua para crear un «frente común» que impulse esta propuesta integral.
+Exigen más cursos de catalán
+El sindicato quiere mandar «un mensaje claro a las instituciones: las lenguas no dividen, lo que divide es la privación de derechos».
+El secretario general de CCOO en Baleares, José Luis García, ha apostado por «avanzar desde el mundo del trabajo en la defensa de las lenguas propias de cada territorio y del catalán en particular, puesto que, en cuanto 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda exclusivamente reivindicaciones de derechos lingüísticos laborales y formación en catalán por parte de sindicatos regionales en España.",
+    "implications": "Esta información carece de vinculación técnica o diplomática con la obtención del ccTLD .ia o la estandarización ISO 3166-1. No afecta la soberanía tecnológica de Anticitera ni los objetivos de la Iniciativa Ciudadana Europea en materia de Inteligencia Artificial.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:10:42] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: List animals until failure
+        CONTENIDO: Animals must have Wikipedia articles.
+You have limited time, but get more time for each animal listed. When the timer runs out, that's game over.
+No overlapping terms. For example, if you list “bear” and “polar bear”, you get no point (or time bonus) for the latter. But you can still get a point for a second kind of bear. Order doesn't matter.
+Ignore the extraneous visuals. Focus on naming animals.
+Score: 0
+By Vivian Rose.
+Uses Wikipedia and Wikidata, plus a lot of hand-tuning. No LLMs involved.
+Contact me with bug reports, questions, suggestions, and praise.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Se trata de un recurso lúdico y técnico basado en bases de datos biológicas que carece de vinculación con la gobernanza de Internet, estándares ISO o soberanía tecnológica.",
+    "implications": "El contenido analizado no aporta valor estratégico ni presenta riesgos para la hoja de ruta del Proyecto Anticitera. No existe impacto alguno sobre la negociación del ccTLD .ia ni sobre el marco de la Iniciativa Ciudadana Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:10:50] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Cells use 'bioelectricity' to coordinate and make group decisions
+        CONTENIDO: Cells Use ‘Bioelectricity’ To Coordinate and Make Group Decisions
+Introduction
+We’re used to thinking of the brain as an electric organ. The rest of the body? Not so much. But it would be a mistake to dismiss your other tissues as dumb hunks of electrically inert flesh. Even the protective layers of cells that compose your skin and line your organs use electrical signals to make decisions, according to recent research.
+Results published in Nature show that cells use bioelectricity to coordinate a complex collective behavior called extrusion, a vital process that ejects sick or struggling individual cells from tissue to maintain health and keep growth in check. Merciless as it might seem, extrusion helps keep you alive. It’s vital for the health of protective epithelial tissues, and when it goes wrong, it can contribute to disease, including cancer and asthma. Until now, it’s been unclear how cells were singled out for this process.
+According to the new results, as epithelial tissue grows, cells are packed more tightly together, which increases the electrical current flowing through each cell’s membrane. A weak, old, or energy-starved cell will struggle to compensate, triggering a response that sends water rushing out of the cell, shriveling it up and marking it for death. In this way, electricity acts like a health checkup for the tissue and guides the pruning process.
+“This is a very interesting discovery — finding that bioelectricity is the earliest event during this cell-extrusion process,” said the geneticist GuangJun Zhang of Purdue University, who studies bioelectrical signals in zebra fish development and wasn’t involved in the study. “It’s a good example of how a widening electronic-signaling perspective can be used in fundamental biology.”
+The new discovery adds to the growing assortment of bioelectrical phenomena that scientists have discovered playing out beyond the nervous system, from bacteria swapping signals within a biofilm to cells following electric fields during embryonic development. Electricity increasingly appears to be one of biology’s go-to tools for coordinating and exchanging information between all kinds of cells.
+“People just kind of relegated [bioelectricity] to ‘This is just neurons.’ No — it’s all of our bodies,” said study author Jody Rosenblatt, an epithelial cell biologist at King’s College London and the Francis Crick Institute. “There are electrical currents going through your body all the time, and they’re doing things.”
+Life’s Spark
+It’s no coincidence that Frankenstein’s monster sprang to life with a spark. In the late 18th century, just a few decades before Mary Shelley wrote her science fiction masterpiece, the Italian surgeon Luigi Galvani jolted the scientific community with experiments that used metal and electricity to compel disembodied frog legs to kick. He became convinced that there was an “animal electricity” running through life.
+Public Domain; ETH-Bibliothek Zurich / Science Source
+While Galvani
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Investigación biológica sobre cómo las células epiteliales utilizan señales bioeléctricas para coordinar procesos de exclusión celular y mantenimiento de la salud del tejido.",
+    "implications": "La noticia carece de nexo con la infraestructura de dominios, la soberanía territorial griega o el marco regulatorio de la Unión Europea. No existe impacto táctico para la obtención del ccTLD .ia ni para la validación del Distrito Tecnológico ante el ISO.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:10:58] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: In praise of –dry-run
+        CONTENIDO: For the last few months, I have been developing a new reporting application. Early on, I decided to add a –dry-run option to the run command. This turned out to be quite useful – I have used it many times a day while developing and testing the application.
+Background
+The application will generate a set of reports every weekday. It has a loop that checks periodically if it is time to generate new reports. If so, it will read data from a database, apply some logic to create the reports, zip the reports, upload them to an sftp server, check for error responses on the sftp server, parse the error responses, and send out notification mails. The files (the generated reports, and the downloaded feedback files) are moved to different directories depending on the step in the process. A simple and straightforward application.
+Early in the development process, when testing the incomplete application, I remembered that Subversion (the version control system after CVS, before Git) had a –dry-run option. Other linux commands have this option too. If a command is run with the argument –dry-run, the output will print what will happen when the command is run, but no changes will be made. This lets the user see what will happen if the command is run without the –dry-run argument.
+I remembered how helpful that was, so I decided to add it to my command as well. When I run the command with –dry-run, it prints out the steps that will be taken in each phase: which reports that will be generated (and which will not be), which files will be zipped and moved, which files will be uploaded to the sftp server, and which files will be downloaded from it (it logs on and lists the files).
+Looking back at the project, I realized that I ended up using the –dry-run option pretty much every day.
+Benefits
+I am surprised how useful I found it to be. I often used it as a check before getting started. Since I know –dry-run will not change anything, it is safe to run without thinking. I can immediately see that everything is accessible, that the configuration is correct, and that the state is as expected. It is a quick and easy sanity check.
+I also used it quite a bit when testing the complete system. For example, if I changed a date in the report state file (the date for the last successful report of a given type), I could immediately see from the output whether it would now be generated or not. Without –dry-run, the actual report would also be generated, which takes some time. So I can test the behavior, and receive very quick feedback.
+Downside
+The downside is that the dryRun-flag pollutes the code a bit. In all the major phases, I need to check if the flag is set, and only print the action that will be taken, but not actually doing it. However, this doesn’t go very deep. For example, none of the code that actually generates the report needs to check it. I only need to check if that code should be invoked in the first place.
+Conclusion
+The type of application I have been writing is i
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "El artículo técnico analiza las ventajas de implementar la función '--dry-run' en el desarrollo de aplicaciones de reporting de software.",
+    "implications": "Esta información constituye ruido técnico sin relevancia para la gestión diplomática ante ELOT o la obtención de la Reserva Excepcional en ISO 3166-1. No existe un vínculo con la soberanía digital de Anticitera ni impacto en el marco regulatorio europeo.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:11:07] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: pg_tracing: Distributed Tracing for PostgreSQL
+        CONTENIDO: pg_tracing is a PostgreSQL extension that generates server-side spans for distributed tracing.
+When pg_tracing is active, it generates spans on sampled queries. To access these spans, the extension provides two ways:
+pg_tracing_consume_spans
+andpg_tracing_peek_spans
+views output spans as a set of recordspg_tracing_json_spans
+function outputs spans as a OTLP json
+The utility functions pg_tracing_reset
+and pg_tracing_info
+provide ways to read and reset extension's statistics. These are not available globally but can be enabled for a specific database with CREATE EXTENSION pg_tracing
+.
+There are currently two mechanisms to propagate trace context:
+- As a SQL comment using SQLCommenter
+- As a GUC parameter
+pg_tracing.trace_context
+See Trace Propagation for more details.
+Warning
+This extension is still in early development and may be unstable.
+pg_tracing only supports PostgreSQL 14, 15 and 16 for the moment.
+pg_tracing generates spans for the following events:
+- PostgreSQL internal functions: Planner, ProcessUtility, ExecutorRun, ExecutorFinish
+- Statements: SELECT, INSERT, DELETE...
+- Utility Statements: ALTER, SHOW, TRUNCATE, CALL...
+- Execution Plan: A span is created for each node of the execution plan (SeqScan, NestedLoop, HashJoin...)
+- Nested queries: Statements invoked within another statement (like a function)
+- Triggers: Statements executed through BEFORE and AFTER trigger are tracked
+- Parallel Workers: Processes created to handle queries like Parallel SeqScans are tracked
+- Transaction Commit: Time spent fsync changes on the WAL
+The following list of files is found in the doc folder of the pg_tracing github repository. For installation instructions, please see the next section of this README.
+| File | Description |
+|---|---|
+| pg_tracing.md | Main reference documentation for pg_tracing. |
+pg_tracing can be compiled against an installed copy of PostgreSQL with development packages using PGXS
+.
+To compile and install the extension, run:
+git clone https://github.com/DataDog/pg_tracing.git
+cd pg_tracing
+make install
+# To compile and install with debug symbols:
+PG_CFLAGS="-g" make install
+The extension must be loaded by adding pg_tracing to the shared_preload_libraries in postgresql.conf
+.
+A server restart is needed to add or remove the extension.
+# postgresql.conf
+shared_preload_libraries = 'pg_tracing'
+compute_query_id = on
+pg_tracing.max_span = 10000
+pg_tracing.track = all
+# Send spans every 2 seconds to an otel collector
+pg_tracing.otel_endpoint = http://127.0.0.1:4318/v1/traces
+pg_tracing.otel_naptime = 2000
+The extension requires additional shared memory proportional to pg_tracing.max_span
+. Note that this memory is consumed whenever the extension is loaded, even if no spans are generated.
+Trace context can be propagated through SQLCommenter. By default, all queries with a SQLCommenter with a sampled flag enabled will generate spans.
+-- Query with trace context and sampled flag enable
+/*traceparent='00-00000000000000000000000000000123-000
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Herramienta técnica de observabilidad para bases de datos PostgreSQL orientada al monitoreo de rendimiento y trazabilidad distribuida de consultas.",
+    "implications": "Se clasifica como una utilidad técnica genérica de infraestructura que no impacta en la obtención del ccTLD .ia ni en la gobernanza política de la Polis. Carece de relevancia estratégica para los hitos diplomáticos ante ISO, ELOT o la Comisión Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:11:15] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Deadly gun and bomb attacks hit Pakistan's Balochistan province
+        CONTENIDO: Pakistan military says it has killed 92 militants in Balochistan
+Pakistan' military says it has killed at least 92 militants blamed for deadly co-ordinated attacks in the south-western Balochistan province on Saturday.
+The military said 15 security service personnel and 18 civilians were also killed. It accused India of supporting the militants. Delhi has repeatedly denied such accusations.
+The Balochistan Liberation Army (BLA) rebel group had earlier claimed responsibility for the attacks, saying dozens of soldiers were killed.
+The claims by both sides have not been independently verified. The escalation is one of the deadliest days of violence in the impoverished province, where Pakistan's government has been battling an ethnic insurgency for decades.
+In a statement late on Saturday, Pakistan's military blamed the militants for carrying out multiple attacks targeting civilians around the provincial capital Quetta and other cities.
+The military said it responded by launching "clearance" operations across Balochistan and "successfully thwarted the evil design" of the rebels.
+Some key administrative buildings in Quetta and roads around them were reported to have been sealed off during the day. Mobile phone services were jammed, and regional train services were suspended as a precaution.
+Prime Minister Prime Minister Shehbaz Sharif later praised the military, pledging to "continue the war against terrorism until its complete eradication".
+Earlier on Saturday, militants armed with grenades and guns attacked 12 cities and towns across the province, targeting police and paramilitary installations, as well as prison and government buildings.
+The BLA accuses the federal government of exploiting rich mineral resources of Pakistan's largest province without benefiting the local population.
+Local activists also blame Pakistani security forces for enforced disappearances - Islamabad denies the allegations.
+Resistance against the Pakistani government and the militant insurgency advocating for an independent state for the Baloch people began in 1948, after Pakistan's independence from the British Indian Empire.
+Sharing a volatile border with Iran and Taliban-controlled Afghanistan, Balochistan also boasts a vast coastline along the Arabian Sea.
+The region derives its name from the Baloch tribe, which has resided here for centuries. Balochs remain the largest ethnic group, followed by the Pashtuns.
+The largest part of Balochistan is in south-western Pakistan. The Pakistani province covers nearly 44% of the country's total land but is home to about 5% of the country's more than 240 million people. Balochistan is also the richest Pakistani province in terms of natural resources, including gas and minerals.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Conflicto armado e insurgencia étnica en la provincia de Baluchistán, Pakistán, sin vinculación con la soberanía digital europea o la estandarización ISO.",
+    "implications": "El evento carece de relevancia operativa o estratégica para la consecución del ccTLD .ia o el desarrollo del Distrito Tecnológico de Anticitera. No existe impacto en los procesos administrativos ante ELOT, ISO o IANA dentro del marco de soberanía de la Unión Europea.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:11:24] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: ICE, el brazo armado de Trump contra los sin papeles
+        CONTENIDO: ICE, el brazo armado de Trump contra los sin papeles
+El presidente de EE.UU. ha triplicado el presupuesto y duplicado el número de agentes de esta polémica fuerza policial para llevar a cabo sus redadas masivas de inmigrantes indocumentados, que han provocado protestas en las que han muerto dos personas
+Vídeo | Así es el ICE: la policía fronteriza que persigue a la inmigración
+Enviado especial a Mineápolis
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónLas tres letras de una sigla dominan Mineápolis desde diciembre: ICE, la Policía de inmigración y aduanas, que tiene a miles de agentes desplegados en una operación migratoria descomunal, polémica y trágica. 'Fuck ICE' ('Que le jodan al ICE'), dicen las ... pintadas por toda la ciudad. 'ICE out' ('ICE fuera'), gritan los manifestantes. «Han pasado dos coches del ICE por la avenida Portland con la calle 31, dirección sur», alerta en un grupo de Signal uno de los miles de voluntarios, armados con silbato y móvil, dedicados a detectar y documentar sus operativos. «No salgo de casa hasta que no se vaya el ICE», lamenta una indocumentada mexicana.
+ICE, ICE, ICE... se escucha en una ciudad por lo general tranquila, somnolienta. Pero ahora sacudida por este despliegue masivo de agentes federales decretado por Trump, entre alegaciones de redadas indiscriminadas, detenciones de gente con papeles e incluso de ciudadanos, episodios de uso excesivo de fuerza y, también, acoso y resistencia a la labor de los agentes, en ocasiones de forma violenta. Y, por supuesto, la muerte de dos vecinos, ambos estadounidenses, ambos por disparos de agentes federales, en dos tragedias a todas luces innecesarias.
+Los demócratas, que controlan Mineápolis y Minnesota, han combatido este despliegue, por ahora sin éxito. Una jueza federal decidió este sábado contra su exigencia de suspender las operaciones de los agentes federales. Y otro juez ordenó la liberación antes del martes del niño de cinco años Liam Conejo Ramos, cuya imagen se ha convertido en el símbolo de la crueldad de las redadas.
+Mineápolis no ha sido la primera ciudad donde ha actuado el ICE. Antes vinieron Los Ángeles, Chicago o Nueva Orleans. Pero el despliegue en la principal ciudad de Minnesota puede haber sido una muestra de qué cara puede tener la mano dura de Trump: el desembarco de un pequeño ejército doméstico, fortalecido con inversiones multimillonarias y reclutamientos masivos, con tácticas agresivas y cuestionables y en confrontación con las autoridades locales.
+«Mineápolis es un ensayo de lo que va a ocurrir en otros lugares de EE.UU.», advierte Madison, una entre varios cientos de manifestantes delante del edificio federal Whipple, un centro de operaciones cercano al aeropuerto. «Esto es la materialización de la deriva autoritaria de Trump, pero nosotros también estamos mostrando cómo hacerle frente».
+Trump prometió en campaña la mayor deportación de inmigrantes indocumentados de la historia. Fue una promesa popular entre sus votantes, tra
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda exclusivamente las operaciones migratorias de la agencia estadounidense Immigration and Customs Enforcement (ICE), sin vinculación con la Iniciativa Ciudadana Europea.",
+    "implications": "Se identifica un caso de homonimia irrelevante; las siglas coinciden con nuestro instrumento legal (ICE), pero el contenido carece de impacto en la soberanía digital o el estándar ISO. Este tipo de información debe ser descartada para mantener la integridad de la base de conocimiento estratégica.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:11:36] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Sánchez acumula cinco decretos derogados en dos años: los mismos que en el resto de la democracia
+        CONTENIDO: Sánchez acumula cinco decretos derogados en dos años: los mismos que en el resto de la democracia
+El Congreso ha tumbado siete del actual presidente desde que llegó al poder en 2018 por los tres que rechazó de todos sus antecesores juntos
+La parálisis del Congreso afecta ya a 145 leyes
+Madrid
+Esta funcionalidad es sólo para registrados
+Iniciar sesión'Dato mata relato' se ha convertido en una frase manida en política. El Gobierno de PSOE y Sumar la utiliza con frecuencia, como si invocarla constituyese un sinónimo de victoria intelectual, en las sesiones de control y en las ruedas de prensa. No ... importa que no haya Presupuestos Generales del Estado, que el volumen legislativo sea muy inferior al de otras legislaturas ni que las derrotas parlamentarias se intenten normalizar y maquillar con cifras cuantitativas que ocultan la incapacidad del Ejecutivo de aprobar un proyecto de mínima entidad. Con la excepción, por supuesto, de la amnistía a los encausados por el 'procés', de la que abjuraba antes de pasar por las urnas y comprobar su dependencia del prófugo Carles Puigdemont.
+Un dato constatado el martes, la derogación del real decreto ley que incluía, entre otras muchas medidas, la revalorización de las pensiones, mata el relato de que el Gobierno está mucho más fuerte de lo que pregonan la oposición y la prensa conservadora. El Congreso, exactamente igual que el año anterior, tumbó el incremento de las prestaciones a los jubilados con el mismo argumento que en enero del 2025: no se puede usar esto, algo que genera consenso, para hacer «chantaje» a sus señorías y conceder un cheque en blanco para aprobar un popurrí de cuestiones que rechazan.
+El de esta semana es el quinto real decreto ley que la Cámara Baja deroga en lo que va de legislatura. Los reales decretos leyes, como establece la Constitución en su artículo 86.1, son normas que aplica el Gobierno en casos de «extraordinaria y urgente necesidad», pero que el Congreso debe convalidar o derogar en el plazo de treinta días. En dos años, los diputados han votado en contra, mayoritariamente, de cinco paquetes de medidas urgentes a los que el Consejo de Ministros confería una excepcionalidad y perentoria necesidad. Y por mucho que el Gabinete de Pedro Sánchez reste importancia a estos tropiezos, la realidad es tozuda.
+El PNV dice estar harto del «trilerismo político» y las negociaciones del Gobierno a espaldas del Congreso
+Patricia RomeroLos de Aitor Esteban en la Cámara Baja piden a Sánchez que no juegue a la «ruleta rusa» con la subida de las pensiones y el SMI volviendo a incluirlas en un decreto ómnibus
+Si desde enero del 2024 el Congreso ha derogado cinco decretos leyes, ¿cuántos había tumbado antes? La respuesta para el Gobierno de coalición es dura: cinco. Es decir, en los últimos dos años, con el PSOE y Sumar en la Moncloa, la Cámara Baja ha rechazado tantas de estas normas como en el resto de la democracia. Antes de esta legislatura, para más 'inri', Sánchez ya era el presidente al qu
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Informe sobre la inestabilidad legislativa y la derogación de decretos-ley en el marco de la política doméstica española.",
+    "implications": "La noticia no guarda relación con la soberanía territorial griega, los estándares ISO 3166-1, ni el mecanismo de la ICE a nivel europeo. Es una contingencia interna de un Estado miembro que no altera la viabilidad estratégica del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:11:43] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Gobierno quiere un Adif con «careta» para tapar el caos ferroviario
+        CONTENIDO: con permiso
+El Gobierno quiere un Adif con «careta» para tapar el caos ferroviario
+La solución a la gravísima crisis del gestor de las infraestructuras pasa por cambiar la marca, el locuaz Puente y sus comparecencias cantinflescas, y buscar chivos expiatorios entre el personal más indefenso
+Moncloa prepara un lavado de cara de Adif y sopesa un cambio de nombre o volver a unirla a Renfe
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónEl manual de resistencia del sanchismo tenía un anexo ferroviario y no lo sabíamos. Puede que haya sido redactado a cuatro manos, entre Irene lozano y Carlos Ocaña, que ambos tienen ahora más tiempo libre con la Casa Árabe y el baloncesto madrileño ... estando como están. Como idea fuerza de tan didáctica tarea está la negación de toda evidencia y la utilización de la gramática parda para salir del atolladero. La técnica se sublima en nivel maestro con el arte de entintado de calamar para escurrir el bulto de cualquier responsabilidad cambiando el nombre de las cosas y dando apariencia de reseteo y propósito de enmienda a lo que no es más que gramática parda y los mismos galgos con distintos collares. Adif mancha. Siempre llevará sobre sus espaldas el sello de varias decenas de muertos en Huelva y compromete las relaciones comerciales con otros países donde preocupa la preocupación y, lo que es más, la conciencia.
+La dejadez del Ministerio de Transportes donde todavía se escucha la jarana de los Ábalos, Koldos y otras sobrinas, ha derivado en una tragedia de una magnitud inimaginable. El tren ha pasado de ser el medio más valorado por los viajeros a una suerte de rasca y gana en la que una ya no sabía a qué hora iba a llegar y ahora ya no sabe siquiera si va a llegar. Así de duro. En la etapa de la inefable Isabel Pardo de Vera -¿qué tendría Adif que atraía a esta gente?- la compañía aplicó un severo plan de recorte del gasto en mantenimiento, según consta en los correos intervenidos por la Guardia Civil. Adif asegura que no cuenta con personal ni medios necesarios para detectar defectos en las vías del tren. Y se quedan tan anchos. Acusados estáis, falta que nos digan.
+Adif detectó hasta 123.732 traviesas defectuosas en solo 65 kilómetros de la línea AVE junto al tramo de Adamuz
+Antonio R. VegaLas del lugar del accidente siguen siendo las construidas en 1989, como las señaladas por el propio Ministerio en su informe sobre el estado de la vía
+A grandes males, grandes remedios. Moncloa y, por extensión aunque lo niegue, el ministro de la cartera también 'manchada', Óscar Puente, han ideado un plan para reparar lo ocurrido: un 'rebranding' o cambio de marca por el que Adif pasará a denominarse con otra nomenclatura capaz de que nadie pueda relacionarla a simple vista con la cadena de desastres que viene protagonizando. La idea es sencilla. Se apela a la integración de la compañía que gestiona las vías (Adif) con la empresa que proporciona el servicio (Renfe) y se crea un nuevo bicho que en sus tripas lleve la 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia analiza una maniobra de comunicación política y reestructuración administrativa del sector ferroviario español (Adif/Renfe) para mitigar una crisis de imagen pública.",
+    "implications": "Este evento pertenece estrictamente al ámbito de la gestión de infraestructuras físicas de transporte en España y carece de vinculación con la soberanía digital o el estándar ISO 3166-1. No afecta la hoja de ruta para la obtención del ccTLD .ia ni impacta los intereses estratégicos de la nación digital de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:11:51] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Andalucía liderará un proyecto europeo para aplicar inteligencia artificial generativa en las administraciones públicas
+        CONTENIDO: Andalucía liderará un proyecto europeo para aplicar inteligencia artificial generativa en las administraciones públicas
+La Junta coordinará, a través de la Agencia Digital de Andalucía, un consorcio con 34 entidades de 14 países para implantar el uso seguro de la IA en servicios públicos
+Una aplicación gratuita en el móvil advertirá a los padres andaluces de los peligros de internet para menores
+Sevilla
+Esta funcionalidad es sólo para registrados
+Iniciar sesiónAndalucía ha sido seleccionada para liderar un proyecto europeo destinado a impulsar el uso de la inteligencia artificial generativa en las administraciones públicas de la Unión Europea. La iniciativa, denominada Eunomia.AI, se desarrollará en el marco del programa Europa Digital y tiene como ... objetivo facilitar una aplicación segura, controlada y útil de esta tecnología en la prestación de servicios públicos a la ciudadanía.
+El liderazgo andaluz se articulará a través de la Agencia Digital de Andalucía (ADA), adscrita a la Consejería de Industria, Energía y Minas, que coordinará un consorcio integrado por 34 entidades de 14 países, entre ellas 25 administraciones públicas de distintos niveles de gobierno. El proyecto fue abordado esta semana en Bruselas por el consejero del ramo, Jorge Paradela, en una reunión con Thomas Skordas, subdirector de la Dirección General de Redes de Comunicación, Contenido y Tecnologías (DG Connect) de la Comisión Europea.
+Entre los participantes figuran los Gobiernos nacionales de Austria, Estonia, Grecia, Polonia y Portugal, además de administraciones regionales como Madrid, Galicia o la región polaca de Mazovia, y entidades locales de distintos países europeos, entre ellas los ayuntamientos de Granada, La Haya, Tampere, Legnano, Wels o Graz.
+El proyecto Eunomia.AI tiene como finalidad aplicar la inteligencia artificial generativa a tareas habituales de la administración pública, como la tramitación de expedientes, la atención a la ciudadanía a través de asistentes virtuales multilingües, la simplificación de procedimientos administrativos o la mejora de la comprensión de normas y documentos oficiales. Todo ello se realizará bajo el cumplimiento estricto de la Ley Europea de Inteligencia Artificial, el Reglamento General de Protección de Datos y los estándares comunitarios de ciberseguridad.
+Reducir duplicidades
+Con una duración prevista de 36 meses, la iniciativa impulsará un modelo europeo de uso de la IA generativa en el sector público basado en una infraestructura compartida y soberana, que permitirá reducir duplicidades y costes entre las administraciones participantes. Parte de esta infraestructura tecnológica estará alojada en la Universidad de Granada, que tendrá un papel relevante en el desarrollo del proyecto.
+El programa incorpora además un enfoque de 'cumplimiento por diseño' (evolucionar los procesos de las empresas para que los mismos sean adaptativos), integrando la regulación desde las primeras fases del desarrollo tecnológico, y apostando p
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 6,
+        "eu_digital_rights": 8,
+        "geopolitical_intel": 9
+    },
+    "average_score": 7.67,
+    "summary": "Andalucía lidera Eunomia.AI, un consorcio de 14 países que incluye a Grecia y la DG Connect para desplegar infraestructura de IA soberana en la administración pública europea.",
+    "implications": "La participación directa del Gobierno de Grecia y la DG Connect en un proyecto de 'infraestructura soberana' valida políticamente nuestra tesis; debemos presentar el ccTLD .ia como el identificador natural para esta red administrativa. Es una ventana táctica para contactar con los socios griegos de Eunomia.AI y alinear la propuesta del Distrito Tecnológico de Anticitera con este despliegue.",
+    "verdict": "APROBADO"
+}
+```
+
+## [2026-02-01 07:12:00] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La crisis de Rodalies sacude el debate del modelo de financiación
+        CONTENIDO: La crisis de Rodalies sacude el debate del modelo de financiación
+Infraestructuras
+El colapso de la red salpica los presupuestos y la entente con el mundo empresarial
+El acoplamiento entre el colapso de las infraestructuras de transporte ferroviario y el debate sobre la financiación de la Generalitat es en Catalunya el combustible político más explosivo que se pueda concebir. Y esto es lo que ha sucedido durante las intensas semanas que han transcurrido desde que el pasado 9 de enero María Jesús Montero, vicepresidenta primera y ministra de Hacienda, dibujara las primeras pinceladas del nuevo modelo de financiación autonómica pactado con ERC.
+Sin apenas tiempo para digerir la propuesta, Rodalies saltó trágicamente por los aires y a la vida social, económica y, por lo tanto, política catalana se le ha cambiado la cara. De estar a las puertas de acordar un presupuesto de la Generalitat para este 2026, a una tensa espera y petición de dimisión de la consellera del Govern más afectada por el desmoronamiento de la red de cercanías, Sílvia Paneque.
+Otro tanto en el mundo empresarial, con el que Salvador Illa esperaba iniciar una luna de miel a cuenta de la financiación, y al que la crisis ferroviaria ha pillado en pleno debate sobre qué decir de la propuesta de Montero. La casa se ha derrumbado sobre la mesa en la que se iba a celebrar la fiesta. Un giro irónico de los acontecimientos que pone de manifiesto que las soluciones coyunturales no resuelven los problemas crónicos o estructurales.
+El debate sobre si los 4.700 millones adicionales para Catalunya, respecto al 2023, que supondrá la revisión de la financiación son poco o mucho, suficiente o no, y en el que desde el primer día entraron partidos y organizaciones empresariales, quedó embarrado y desdibujado con la trágica muerte de un maquinista.
+Una vez más desde hace varios lustros quedaba de manifiesto el descuido financiero y de gestión de esa infraestructura básica en la segunda metrópolis española. El hartazgo de los afectados se ha ido poniendo de manifiesto en los medios de comunicación desde hace mucho tiempo, pero, pese a ello, el Estado ha sido incapaz de hacerle frente.
+Por Barcelona han pasado casi todos los presidentes de la democracia prometiendo las inversiones necesarias para evitar que crisis como la de estos días se repitan. La forma de comunicarlo, acorde con los avances tecnológicos, ha ganado en ingenio y vistosidad, pero el problema, lejos de resolverse, se ha ido enquistando. Factor de agravio en los preludios del procés y motor del malestar independentista, ahora alimento del populismo derechista, la quiebra de la estructura ferroviaria de cercanías es una realidad siempre presente y sin perspectiva de solución.
+Desde los gobiernos de José María Aznar, la inversión principal en ferrocarriles se ha destinado a la ampliación de la red de los trenes de alta velocidad (AVE), un plan que contó con la complicidad inicial de buena parte de las élites de la periferia, catalanas incl
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia aborda una crisis de infraestructuras ferroviarias y un conflicto de financiación autonómica en España, careciendo de conexión con la soberanía digital o el marco regulatorio griego.",
+    "implications": "Esta crisis interna española no genera fricción ni oportunidad para la obtención del ccTLD .ia ni para la movilización de la ICE en el territorio de Anticitera. El evento se clasifica como ruido sistémico irrelevante para los objetivos estratégicos del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:12:11] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: ¿Quién puede arreglar esto?
+        CONTENIDO: ¿Quién puede arreglar esto?
+De un tiempo a esta parte crecen las justificaciones del crecimiento de la derecha extrema como lógica respuesta a la desafección ciudadana por los fallos de la Administración y por las dificultades que generan la falta de vivienda o el aumento de la inflación. El caos de Rodalies en Catalunya es el mejor ejemplo de cómo se crea impotencia en unos usuarios que llevan mucho tiempo sufriendo un mal servicio y se sienten engañados por los partidos que han gobernado los últimos años, el PSOE y el PP. Hay razones sobradas para que exista este malestar, sobre todo cuando analizamos la falta de inversiones y el posterior timo de la ejecución de estas obras. La pregunta de fondo que se podría hacer, más allá del calentón histórico por estos agravios, es si los partidos de ultraderecha, los de extrema izquierda o el independentismo están en condiciones de hacerlo mejor que los clásicos socialistas y populares. Quien esto firma lo duda.
+En estos años de democracia en Catalunya, los gobiernos de CiU y, pese a las críticas que sufrieron en su día, también los del tripartito tomaron decisiones que en su conjunto supusieron un avance y una mejora del autogobierno catalán. Cuesta escribir lo mismo de lo hecho en la etapa independentista, donde Junts y ERC se dedicaron más a intentar implantar el procés que en gobernar la autonomía, y por eso hoy tienen poca credibilidad cuando atacan al actual Ejecutivo por los problemas de gestión.
+El desastre de Rodalies, entre otros muchos, influyó en el ánimo de muchos catalanes que se sintieron engañados y menospreciados por el Gobierno central y abrazaron la causa independentista como huida hacia adelante. Constatado el fracaso, vuelve otra vez con Salvador Illa la vía pactista , ya intentada por Jordi Pujol, Pasqual Maragall, José Montilla o Artur Mas, de intentar llegar a acuerdos puntuales con el Gobierno para resolver las carpetas pendientes. Pero seguimos allí donde estábamos. Miren el ruido que ha generado el nuevo modelo de financiación. Los catalanes acabarán teniendo que pedir perdón por serlo. Todos los problemas pendientes van a ser muy difíciles de resolver, pero trasladar el lógico malestar a formaciones antisistema no parece que vaya a ser la mejor fórmula para arreglar todos los desaguisados.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.33,
+    "summary": "El texto analiza la desafección ciudadana ante fallos en la gestión administrativa de infraestructuras físicas y vivienda en España, vinculándola al auge de extremismos políticos.",
+    "implications": "La noticia carece de nexo con la soberanía digital, el estándar ISO 3166-1 o el marco operativo en Grecia. No aporta inteligencia estratégica aplicable a la obtención del .ia ni a la Iniciativa Ciudadana Europea del proyecto.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:12:19] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La gran mayoría de los maquinistas de Rodalies están de paso y se marchan antes de tres años
+        CONTENIDO: La gran mayoría de los maquinistas de Rodalies están de paso y se marchan antes de tres años
+Crisis feroviaria
+Más del 80% son de fuera de Catalunya y terminan pidiendo el traslado por el elevado coste de la vida y una rutina laboral repleta de incidencias, atropellos, averías y lanzamientos de piedras
+“Catalunya se ha convertido en la autoescuela de maquinistas de toda España”. Así define un trabajador de Rodalies la situación laboral de Renfe a este lado del Ebro, con rotaciones constantes, muy poca identificación con el terreno, escasa cultura profesional ferroviaria y muy pocas ganas de trabajar donde el coste de la vida es más alto, donde más piedras se lanzan a los convoyes y donde más atropellos mortales se registran, entre otros factores. Es la autoescuela porque aquí pasa todo lo malo que cualquier aprendiz puede encontrarse en el resto de la red ferroviaria, aunque con mucha menos frecuencia que en la R4 camino de Manresa, la R1 hacia Mataró, la R2Sud hacia Sant Vicenç de Calders o la R3 en dirección a Vic. Así se explica que más del 80% de los maquinistas que trabajan en la red catalana sean de fuera, y que, como mucho, pasen aquí dos o tres años, según confirman los sindicatos, antes de conseguir un nuevo destino mucho más sosegado, sin tanto sobresalto.
+Los trabajadores de Renfe se ganan bien la vida. De manera resumida, según relatan a La Vanguardia miembros de la propia plantilla, se estrenan con unos 2.000 euros al mes y en menos de 10 años se pueden plantar en la categoría superior, que ya son unos 3.500 euros. El primer paso, para la mayoría de los recién licenciados, es recuperar la inversión inicial, pues para acceder a la profesión tuvieron que desembolsar cerca de 21.000 euros para realizar el curso de nueve meses (seis meses de teoría y tres de práctica) en uno de los 23 centros acreditados en toda España.
+Salario digno
+Se ganan bien la vida: empiezan con unos 2.000 euros anuales y antes de 10 años ya han llegado a los 3.500 euros al mes
+Esta sesuda formación desemboca en el examen que de manera periódica (dos o tres veces al año) convoca en Madrid el Ministerio de Transportes y Movilidad Sostenible y que permite obtener la licencia y el diploma de maquinista. La escuela de Renfe suele ser la más solicitada, con lo que el operador convoca pruebas de acceso para cubrir las plazas de los 12 institutos que tiene repartidos por todo el Estado, uno de ellos, junto a la estación de Rodalies de L’Hospitalet de Llobregat.
+A partir de ahí, los licenciados pueden empezar a buscar trabajo, aunque la mayoría intenta entrar en Renfe, que a lo largo del año va sacando convocatorias que también se resuelven con multitudinarios exámenes. En los últimos tiempos, sin embargo, la irrupción de empresas extranjeras de alta velocidad (Iryo y Ouigo), amén de las mercancías, ha diversificado la demanda de maquinistas de tren.
+En Catalunya son multitud los conductores que comparten piso. Muchos viven cerca de la estación de Sants y en L’Hospitalet.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Informe sobre la crisis operativa y alta rotación de personal en la red ferroviaria de Rodalies de Cataluña debido a factores socioeconómicos y laborales locales.",
+    "implications": "La noticia se circunscribe estrictamente a la gestión de infraestructura física de transporte y movilidad laboral regional en España, sin impacto alguno en la soberanía digital, el marco normativo de la ISO o la estrategia del Proyecto Anticitera en Grecia. No aporta inteligencia relevante para la consecución del ccTLD .ia ni para la activación de la ICE.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:12:25] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un doble aniversario
+        CONTENIDO: Un doble aniversario
+Siempre he admirado a Katharine Graham, sobre cuya vida Steven Spielberg realizó una película interpretada por Meryl Streep. Graham fue durante cuarenta años la editora de The Washington Post, después de suceder a su esposo, Phil, en 1963. Durante su mandato, se publicaron los llamados papeles del Pentágono sobre la guerra de Vietnam, pero también protegió a Bob Woodward y Carl Bernstein cuando investigaron el caso Watergate, que provocó la dimisión del presidente Richard Nixon. Entró en el negocio de los periódicos sin un gran conocimiento empresarial, pero con un empeño ejemplar: siempre defendió a los periodistas y no se plegó al poder.
+Cuando empecé a trabajar en La Vanguardia, hace sesenta años, era un joven inexperto que había terminado los estudios de Económicas. Mi padre vio precipitada mi irrupción en el diario, así que no me asignó ni siquiera un despacho. Tenía la mesa de trabajo en la hemeroteca, adonde iban a consultar la colección de diarios los lectores, que me observaban desconcertados. Manifesté mi disgusto, pero solo conseguí que me colocaran un biombo para permanecer oculto a los ojos de los visitantes. Unos días más tarde, me presenté al director, Horacio Sáenz Guerrero, que me enseñó a querer y comprender el periodismo. De hecho, se convertiría en mi tutor y me presentó a los periodistas de referencia. Igualmente, pasé por todas las áreas de la Casa para saber cómo se hacía un periódico, desde que saltaba la noticia hasta que llegaba impresa al quiosco. La primera iniciativa que llevé a cabo fue poner en marcha una editorial de libros de actualidad. La obra con que se inició la colección en 1974 fue El escándalo Watergate , de Bob Woodward y Carl Bernstein. También publicamos otro sobre los papeles del Pentágono. No se trata, pues, de un hecho casual que la autobiografía de Graham figure en una estantería de mi despacho. Su testimonio me ha resultado siempre inspirador.
+¿Qué significa ser editor? El editor es, en mi caso, quien se mantiene fiel a sus principios fundacionales de independencia, rigor y pluralidad. Hoy, que se cumplen 145 años de la aparición de La Vanguardia, puedo dar fe de que he puesto los medios necesarios para ir adaptando el diario a cada momento de su historia, he protegido al medio de las presiones para inclinarlo a uno u otro lado, he incorporado talento para mejorar sus contenidos y he procurado proteger la libertad de los profesionales. El editor es, además, quien elige al director, que es el capitán que debe llevar diariamente la nave a buen puerto. Eso último no pudo hacerlo durante muchos años mi padre, Carlos, porque desde que recuperó el diario al final de la Guerra Civil hasta la ley de Prensa de Manuel Fraga los designaba el general Franco. Recuerdo que en la crisis de Luis de Galinsoga llegaron a quemarse ejemplares en la facultad donde estudiaba por unas desafortunadas declaraciones suyas al concluir una misa en catalán. Recuerdo haber escuchado detrás de la puerta del s
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Reflexión histórica y conmemorativa sobre la trayectoria editorial del diario La Vanguardia y la ética del periodismo tradicional frente al poder político.",
+    "implications": "La noticia no presenta vinculación alguna con los estándares ISO 3166-1, la soberanía digital de Anticitera o el marco regulatorio de la IA en la Unión Europea. El contenido es de naturaleza puramente biográfica y periodística, careciendo de impacto táctico para nuestra hoja de ruta estratégica.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:12:34] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Europa ve con sorpresa la regularización
+        CONTENIDO: Europa ve con sorpresa la regularización
+El reto demográfico
+Alemania, Francia e Italia, sin embargo, no logran resolver los problemas de la residencia ilegal de miles de personas
+L a regularización de inmigrantes que ha aprobado esta semana el Gobierno español ha sorprendido a medio mundo, singularmente a las principales cancillerías europeas. Francia, Italia y Alemania, que no prevén una medida parecida y al menos de cara al electorado apuestan más bien por poner trabas a la llegada de migrantes, no logran, sin embargo, resolver los problemas de la residencia ilegal de miles de personas ya presentes en su territorio.
+Francia
+“Hablan español y son cristianos”, dice el partido de Le Pen
+Francia no ha realizado recientemente ninguna regularización masiva de inmigrantes. Al contrario, el debate en el país va en dirección totalmente opuesta, sobre cómo frenar la llegada de extracomunitarios y la reagrupación familiar de los ya instalados. El caso español causa perplejidad en el país vecino.
+En enero del 2024, después de discusiones caóticas en la Asamblea Nacional y de un voto que unió por sorpresa a macronistas y la extrema derecha de Le Pen, se promulgó una nueva ley de inmigración que pretendía, por un lado, agilizar las expulsiones y endurecer las condiciones para otorgar permiso de residencia, mientras se creaba un procedimiento para legalizar a quienes estén trabajando en sectores con falta de mano de obra, como la construcción, la restauración y el agropecuario. Esa legalización se hace caso por caso, después de un trámite en la prefectura del departamento. Pueden solicitarlo quienes puedan probar al menos tres años de presencia en Francia y haber trabajado como mínimo 12 meses de los últimos 24 en los sectores afectados. Su aplicación real varía mucho según el departamento. Se tiene en cuenta la situación de cada solicitante, su integración, situación familiar y otros factores. Obviamente deben tener un expediente policial limpio.
+Uno de los portavoces del Reagrupamiento Nacional (RN, extrema derecha), el diputado Philippe Ballard, fue preguntado por el plan del Gobierno Sánchez en una tertulia en la cadena LCI. Ballard relativizó la regularización porque, según recordó, se trata en su mayor parte de latinoamericanos fácilmente integrables. “Hablan español y son cristianos”, subrayó, dejando claro que el problema mayor en Francia, según él, son los inmigrantes de origen árabe o de religión musulmana porque constituyen una sociedad aparte, con sus propias reglas, y eso desestabiliza al país. Ballard no tuvo argumentos cuando la presentadora le recordó la alta tasa de crecimiento económico de España, que es la envidia de Francia y de otros países, y la vinculó a la inmigración.
+La voluntad de frenar la inmigración va más allá de la extrema derecha. La derecha gaullista tradicional (Los Republicanos, LR) está en la misma onda. Incluso entre los macronistas hay líderes con posiciones no muy alejadas, como el actual ministro de Justicia, Gérald D
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis sobre la divergencia en políticas de regularización migratoria y tensiones demográficas entre España, Francia, Alemania e Italia.",
+    "implications": "La noticia no guarda relación con la normalización técnica ISO 3166-1, la soberanía digital ni los mecanismos de la ICE para el dominio .ia. No representa un cambio geopolítico que afecte la infraestructura o la legitimidad del Distrito Tecnológico de Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:12:47] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Sánchez multiplica los gestos para rearmar la mayoría de la investidura con vistas a los Presupuestos
+        CONTENIDO: Sánchez multiplica los gestos para rearmar la mayoría de la investidura con vistas a los Presupuestos
+Pedro Sánchez ya ha dejado clara su capacidad de resistencia con capítulos y capítulos que le permitirían escribir otro ensayo, quizás con el título de Manual de Supervivencia. Dependerá en buena medida de sus posibilidades de agotar, como dice, la legislatura en 2027. Los derroteros pueden ser distintos: hacerlo pese a no tener unos presupuestos en todo el mandato o incluso que se dé la carambola de conseguirlos. En el Gobierno trabajan por el segundo escenario, aunque no ocultan la dificultad, y el presidente se conjura contra el clima de fin de ciclo que sobrevoló a final de año, con extensión de las derivadas de la corrupción y la acumulación de casos de acoso tras la revelación de las denuncias contra el exasesor Francisco Salazar.
+Con el clima más adverso hacia su supervivencia política desde que llegó a Moncloa, las advertencias de los socios, entre ellos PNV y ERC, se multiplicaron. Aunque ninguno daba síntomas de pretender dejar caer al Gobierno, ni siquiera el socio minoritario pese a la petición de una remodelación del gabinete que reclamó Yolanda Díaz y que Sánchez ignoró, los avisos sonaban a ultimátum. “O consigue detener la hemorragia o Sánchez deberá plantearse convocar elecciones”, llegó a decir Aitor Esteban.
+En Moncloa tomaron nota y han centrado buena parte de sus esfuerzos con la vista puesta en los Presupuestos Generales del Estado que la vicepresidenta y ministra de Hacienda, María Jesús Montero, se comprometió a presentar en las próximas semanas. “La pantalla previa es reagrupar la mayoría de la investidura”, explican fuentes gubernamentales, que sostienen que no van a tirar la toalla.
+“Estamos en tomar medidas. Tenemos el poder de gobernar. Vamos a subir el salario mínimo y las pensiones. El tiempo que estemos, vamos a hacer cosas. Pero para hacer cosas hay que reagrupar a esa mayoría”, apuntan esas fuentes, que recuerdan a los socios que, “el día después de las elecciones de 2027, el mejor escenario para la mayoría de la investidura es el actual, que gobierne Pedro Sánchez”. “Ninguno quiere que gobiernen PP y Vox, por el futuro de nuestros hijos, pero también por una cuestión de rentabilidad política”, agregan. “Nos conviene a todos (PSOE, Sumar, PNV, ERC, Podemos y Junts) aprobar los Presupuestos y decirle al electorado: Vótenme para seguir haciendo cosas”, animan en Moncloa: “Cuanto antes volvamos a querernos, mejor”.
+Pero también son conscientes de que tienen que arreglar el clima de desconfianza que se ha ido instaurando entre los socios y que tuvo su punto álgido con la implicación del exsecretario de Organización Santos Cerdán en la trama corrupta.
+Primero ERC y PNV
+Y ahí es donde Sánchez ha ido haciendo gestos en las últimas semanas. El primero fue con ERC, que se ha convertido junto al PNV en su principal baluarte parlamentario. “Más allá de las ruedas de prensa, de las grandes frases, de los videos de TikTok, de
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla las maniobras de supervivencia política y negociación presupuestaria del Gobierno de España en un contexto de política interna nacional.",
+    "implications": "Este contenido no guarda relación con la reserva excepcional de ISO 3166-1 ni con la soberanía digital en Grecia. Se clasifica como ruido político local sin impacto en la hoja de ruta estratégica del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:12:58] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Cinco años de lucha por la regularización: la intrahistoria del movimiento liderado por migrantes que lo consiguió
+        CONTENIDO: Cinco años de lucha por la regularización: la intrahistoria del movimiento liderado por migrantes que lo consiguió
+España aún asimilaba los efectos del Estado de alarma y el rígido confinamiento decretado durante la pandemia del coronavirus, cuando Edith Espínola recibía preocupantes mensajes de trabajadoras internas sin papeles a las que apoyaba desde su organización. Lamine Sarr repartía alimentos entre las casas de compañeros manteros que, sin poder salir a la calle, habían perdido el poco sustento que obtenían día a día de la venta ambulante. Seydou Diop recorría los asentamientos de temporeros de Huelva para denunciar las condiciones de hacinamiento que les impedía cumplir con la exigida distancia social.
+Tras la declaración del Estado de alarma, el Gobierno aseguraba que su plan social ante la emergencia del coronavirus “no dejaba a nadie atrás”, pero cientos de miles de personas en España no se sentían parte de ese “nadie”. Y decenas de activistas migrantes y racializados decidieron unirse y exigir una solución.
+Esa preocupación, esa situación de vulnerabilidad extra sufrida por todas las personas sin papeles a las que el Gobierno de Pedro Sánchez dejó atrás durante la pandemia —nunca les llegaron las ayudas sociales ligadas al coronavirus—, conformó los primeros coletazos de un movimiento que, semanas después, sería bautizado con un nombre directo y conciso: Regularización YA. Un movimiento autoorganizado y formado únicamente por personas migrantes que se marcó un objetivo: conseguir una regularización extraordinaria para todas las personas que en ese momento vivían en España en situación irregular.
+No lo lograron entonces, pero no pararon de salir a la calle, patear todo el Estado para conseguir firmas, hablar con los medios, negociar con quien hiciese falta y gritar sus exigencias en cualquier espacio al que fuesen invitadas. Más de cinco años después, el Consejo de Ministros ha iniciado los primeros trámites de un proceso de regularización amplio con unas condiciones pactadas con el Movimiento Regularización YA, gracias a un acuerdo entre Podemos y el Gobierno. De ser aprobado bajo los requisitos recogidos en el borrador actual, será el primer proceso de regularización de la historia nacido de un movimiento de base, conformado exclusivamente por personas migrantes.
+Durante todo este tiempo, el movimiento ha tenido momentos en los que ha estado formado por cientos de personas y otros en los que los varapalos del Gobierno y de los partidos políticos de la derecha, la dilatada burocracia y el bloqueo institucional acabaron por rebajar el número de integrantes a unas decenas. Quienes lo han conformado son activistas antirracistas que también han sufrido los efectos de la política de extranjería, del racismo y de la precariedad ligada a muchos procesos migratorios. Son o fueron empleadas domésticas, manteros, trabajadoras de la hostelería, temporeros en el campo, prostitutas, repartidores... Y, los representantes que han estado en la primer
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 1,
+        "geopolitical_intel": 1
+    },
+    "average_score": 0.67,
+    "summary": "Éxito de un movimiento civil de base en España para la regularización migratoria tras cinco años de presión política y social.",
+    "implications": "Aunque ejemplifica la eficacia de la organización ciudadana para forzar cambios legislativos, el contenido no guarda relación con la soberanía del ccTLD .ia ni con los marcos técnicos de la ISO. No contribuye a los objetivos estratégicos de digitalización o estandarización internacional del Proyecto Anticitera.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:13:06] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Un gallego contra la emigración
+        CONTENIDO: Un gallego contra la emigración
+“Viudas de vivos”, las llamaba Rosalía de Castro en uno de sus poemarios, Follas novas, publicado en 1880. Son las mujeres que se quedaron solas en aquella Galicia miserable de la que huyeron los hombres jóvenes. Esas viudas de los emigrantes.
+Galicia, sin homes quedas
+146
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Relato histórico-literario sobre la emigración gallega del siglo XIX y su impacto demográfico, centrado en la figura de Rosalía de Castro.",
+    "implications": "La noticia carece de nexo técnico o legal con la estandarización ISO 3166-1 o la soberanía digital europea. No ofrece palancas estratégicas para la obtención del ccTLD .ia ni para la movilización de la Iniciativa Ciudadana Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:13:16] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: La regularización de migrantes enfrenta a las derechas con la Iglesia: “Están más con el demonio que con los pobres”
+        CONTENIDO: La regularización de migrantes enfrenta a las derechas con la Iglesia: “Están más con el demonio que con los pobres”
+“Esto es puro Evangelio”. 84 instituciones vinculadas a la Iglesia católica, entre ellas la propia Conferencia Episcopal, la Confer, Cáritas o Redes, formaron parte, “desde el principio”, del proceso que germinó en la mayor Iniciativa Legislativa Popular (ILP) de la historia de nuestra democracia para solicitar al Congreso la regularización extraordinaria de alrededor de medio millón de migrantes. Una medida que, finalmente, verá la luz a través de un Real Decreto, tras un pacto entre el Gobierno y Podemos, y que desde la Iglesia ven como “una gran noticia”.
+“Es un reconocimiento de la dignidad humana, una oportunidad para colaborar en el bien común”, señalaba el presidente de la Conferencia Episcopal, Luis Argüello, que durante meses mantuvo encuentros personales con los principales líderes políticos para lograr su adhesión a un pacto social sin precedentes.
+Sin embargo, otros ‘católicos’, tanto dentro como fuera de la Iglesia, se han sacudido ante la reforma migratoria. Algunos, muy sonoros, por su cargo, como los obispos ultras de Oviedo y Orihuela, Jesús Sanz y José Ignacio Munilla, que se quejaban de que “todos no caben”, rompiendo la unidad episcopal.
+Católicos pidiendo eliminar la X de la Iglesia
+También, desde la denominada ‘fachosfera eclesial’, calificando a los obispos de “traidores” por permitir la “invasión” de extranjeros (obviando que la norma regulará solo los casos de migrantes con arraigo, ya residentes en España), y asumiendo (falsamente) que se trata de una medida para otorgar millones de votos para lograr un vuelco en las próximas generales. Son casos tan estrambóticos como el de ‘Universitarios católicos’, que ha lanzado una campaña para pedir “la eliminación de la casilla para la Iglesia Católica en el IRPF” por el apoyo a la regularización extraordinaria por parte de los obispos, a los que acusan de estar “una vez más, alejados de los católicos españoles y cercanos a los políticos anticlericales”.
+O como algunos de los curas que rezaron por la muerte del Papa Francisco y que, en sus redes sociales, denuncian la “traición continua” de la Conferencia Episcopal. Y es que, de un tiempo a esta parte, la deriva antiepiscopal de la ultraderecha y sus pseudomedios es evidente. Entre los adalides de esta estrategia se sitúa el filósofo cercano a Vox, Miguel Ángel Quintana Paz, quien no ha dudado en arremeter contra los obispos, mezclando convenientemente la resignificación de Cuelgamuros y la regularización de migrantes para llamar a los buenos católicos a desobedecer a sus obispos. O, al menos, a los que disienten de las verdades oficiales de lo que el teólogo Juan José Tamayo denomina “neocristofascismo”. Así, el director del think tank de la sobrina de Le Pen (ISEEP) apunta que “la visible incompetencia de nuestros obispos al abordar asuntos políticos (inmigración, Valle...) tiene algo bueno: que el resurgir catól
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 1,
+        "geopolitical_intel": 2
+    },
+    "average_score": 1.0,
+    "summary": "Análisis de la regularización de migrantes en España mediante una Iniciativa Legislativa Popular (ILP) y el conflicto político-eclesiástico derivado.",
+    "implications": "La noticia es irrelevante para los objetivos técnicos y diplomáticos de Anticitera; el único punto de contacto es el uso exitoso de mecanismos de democracia directa (ILP), análogos a nuestra estrategia de la ICE.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:13:26] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Tumbar al Gobierno cubano: el nuevo objetivo de Trump después de haber secuestrado a Maduro
+        CONTENIDO: Tumbar al Gobierno cubano: el nuevo objetivo de Trump después de haber secuestrado a Maduro
+Después de Nicolás Maduro llega Cuba. O, quizá, Cuba siempre fue la última estación, y el secuestro del presidente venezolano tras atacar militarmente el país era un paso fundamental en esa estrategia. La revolución cubana ha sido un objetivo declarado de Washington desde 1959, hasta el punto de intentar la invasión de Playa Girón –o Bahía de Cochinos– de 1961, repelida por el ejército cubano. Desde entonces, se han sucedido embargos, bloqueos, política de puertas abiertas para las personas que salieran de la isla, financiación de la oposición, boicoteos en organismos internacionales y uno de los episodios más tensos de la Guerra Fría con la crisis de los misiles de 1962, en la que parecía que EEUU y la URSS chocarían militarmente de forma directa, cosa que al final no ocurrió.
+Y este año, cuando se cumplen 67 de la revolución cubana, la Administración Trump se ha marcado el objetivo de hacer caer al Gobierno castrista, un símbolo de las revoluciones latinoamericanas de la segunda mitad del siglo XX que desafiaron la injerencia estadounidense en lo que la Casa Blanca denomina “patio trasero”.
+Para tumbar al Gobierno cubano, el secuestro de Nicolás Maduro supone una fase imprescindible: Venezuela y México han sido los grandes suministradores de petróleo para Cuba desde la caída de la URSS. Si bien la alianza con Moscú continúa, nada ha sido igual desde 1991. Y la revolución chavista supuso un impulso para Cuba por el acceso a petróleo barato, igual que para otros gobiernos afines de la región.
+Pero eso se ha acabado. El ataque de EEUU a Venezuela ha supuesto una toma de control sobre decisiones del Gobierno de Delcy Rodríguez, desde la política de presos a la liberalización del sector petrolero y el cierre del grifo a Cuba.
+Además, la Administración Trump ha dado este viernes una vuelta de tuerca en el estrangulamiento de la economía cubana, con el decreto firmado por el presidente de EEUU, que declara una “emergencia nacional”, al afirmar que el gobierno cubano representa “una amenaza para la seguridad nacional de Estados Unidos” y amenaza con la imposición de aranceles secundarios, en virtud de la Ley de Poderes Económicos de Emergencia Internacional (IEEPA), a los productos provenientes de países que venden o suministran petróleo a Cuba.
+“Cuba caerá muy pronto. Cuba es una nación que está muy cerca del colapso”, ha declarado Trump a los periodistas el martes pasado: “Obtenían su dinero de Venezuela. Obtenían el petróleo de Venezuela, pero ya no”. Según el decreto de Trump, además, toda ayuda a la isla “constituye una amenaza inusual y extraordinaria para la seguridad nacional y la política exterior de EEUU.”
+Y ha sugerido este sábado por la noche un desenlace similar a la Venezuela de Nicolás Maduro: “Creo que vamos a llegar a un acuerdo con Cuba. No tienen dinero, no tienen petróleo”.
+Este mensaje es una clara advertencia para México, que ha proporciona
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Análisis de la ofensiva geopolítica y económica de la Administración Trump para forzar un cambio de régimen en Cuba mediante el control energético en Venezuela.",
+    "implications": "La noticia se centra exclusivamente en la esfera de influencia de EE. UU. y Latinoamérica, sin conexión con los trámites ante ELOT o la ISO 3166-1. No afecta la estrategia de la ICE ni la soberanía digital del proyecto en territorio griego.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:13:33] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Predicción del horóscopo para Libra hoy, domingo 1 de febrero de 2026
+        CONTENIDO: Predicción del horóscopo para Libra hoy, domingo 1 de febrero de 2026
+Esto es lo que te depara hoy según el horóscopo: la predicción del zodiaco para Libra
+Hoy domingo 1 de febrero, el futuro tiene grandes sorpresas preparadas para ti, Libra. Esto es lo que te espera en el amor, dinero, trabajo y salud.
+Tu previsión de hoy
+Hay traslados, movimientos, cambios en el horizonte emocional y eso hoy vas a empezar a notarlo si te dedicas a observar a esa persona que te interesa tanto y por lo que de vez en cuando haces algunas locuras y te saltas las reglas. No será negativo, puede traerte satisfacciones o buenas noticias.
+Es posible que sientas un renovado interés en las pequeñas cosas que antes pasaban desapercibidas. Tal vez notes un brillo especial en su mirada o una sonrisa que ilumina el ambiente. Estos detalles, aunque sutiles, pueden ser indicativos de un cambio más profundo en la relación. Aprovecha este momento para acercarte, para comunicarte de manera abierta y honesta. A veces, los movimientos en el horizonte emocional pueden ser la clave para dar el siguiente paso hacia una conexión más significativa. Confía en tus instintos y permítete explorar lo que este nuevo capítulo puede ofrecerte.
+Así le irá a Libra en el amor, hoy
+Los cambios emocionales que se avecinan pueden abrirte a nuevas oportunidades en el amor. Observa con atención a esa persona especial, ya que podrías descubrir que tus locuras y saltos de reglas pueden llevarte a momentos de satisfacción y buenas noticias. Mantén una actitud positiva y abierta y no temas dar el primer paso.
+La predicción del horóscopo en el trabajo para Libra
+Los cambios emocionales que se avecinan pueden influir en tu entorno laboral, así que es un buen momento para observar cómo tus relaciones con colegas y superiores se ven afectadas. Mantén la mente abierta y organiza tus tareas para evitar bloqueos mentales; esto te permitirá aprovechar cualquier oportunidad que surja. Recuerda que la administración responsable de tus finanzas será clave para navegar cualquier gasto inesperado que pueda presentarse.
+Predicción del zodiaco para Libra en la salud, hoy
+Permítete sentir la brisa de los cambios emocionales que se avecinan; una buena forma de canalizar esa energía es a través de una danza libre en tu sala, donde cada movimiento sea una expresión de tus deseos y anhelos. Deja que la música te envuelva y te lleve a un lugar de alegría y liberación, mientras te conectas con tu esencia más auténtica.
+Nuestro consejo del día para Libra
+Observa a esa persona que te interesa y no dudes en hacer algo inesperado que te saque de la rutina; un pequeño gesto o una sorpresa puede abrir la puerta a momentos gratificantes y nuevas conexiones.
+Temas:
+- Horóscopo Libra
+- OKD
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "Contenido de carácter astrológico recreativo referente a predicciones zodiacales para el signo de Libra.",
+    "implications": "La información carece de nexo con la soberanía digital, estándares ISO o marcos regulatorios, activando los criterios de exclusión por trivialidad. No aporta valor estratégico ni operativo para la consecución del ccTLD .ia.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:13:41] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Desde que descubrí el aceite de ricino de Deliplus mi cara parece otra: todo el mundo me pregunta qué me he hecho
+        CONTENIDO: Desde que descubrí el aceite de ricino de Deliplus mi cara parece otra: todo el mundo me pregunta qué me he hecho
+El aceite de ricino para pestañas y cejas que está triunfando en Mercadona
+Lidl ya tiene los disfraces tirados de precios con los que vas a arrasar en Carnaval
+Llegó para desbancar a Zara y ahora está cerrando sus tiendas en España: la mítica marca de ropa que dice adiós
+Parece de restaurante pero éste plato preparado es de Mercadona: mejor que el de tu abuela
+En las últimas semanas, un producto que parecía discreto y que se encuentra enla sección de belleza de Mercadona se ha convertido en uno de los más comentados entre quienes buscan algo sencillo y barato para mejorar el aspecto de cejas y pestañas. No se trata de un sérum de alto precio ni de una nueva fórmula milagrosa, sino del aceite de ricino de Deliplus, un frasco pequeño, de 30 ml y apenas 3,45 euros, que muchas personas entre las que me incluyo, están incorporando a su rutina diaria. Un aceite que además viene con un aplicador tipo goupillón para que nos sea más fácil aplicarlo y lo cierto es que no obtienes resultados al momento, pero sí que acabas notando a medida que pasan los días y semanas como tienes cejas y pestañas más densas.
+El aceite de ricino ha sido siempre uno de los aceites naturales recomendados para el uso en cosmética. Algunas cremas o sérums lo pueden incorporar entre sus ingredientes pero en el caso del que vende Mercadona, podemos decir que es 100% natural. Este tipo de ácido graso actúa como agente nutritivo y acondicionador. De este modo, no alarga el pelo por arte de magia, pero sí ayuda a que las pestañas y cejas estén más flexibles, hidratadas y menos propensas a quebrarse. Y como no, añade una capa extra de protección a las cejas y a las pestañas y las deja perfectas y listas para que luego, si quieres, las maquilles.
+Desde que descubrí el aceite de ricino de Deliplus mi cara parece otra
+Y desde que descubrí este aceite y lo aplico mucha gente me pregunta si me hecho algún tratamiento en las pestañas y las cejas, pero lo cierto es que no. Aquí el secreto está en el uso de un aceite vegetal clásico, conocido desde hace décadas por su contenido en ácido ricinoleico y por su uso cosmético.
+El frasco incluye un goupillón, algo que facilita la aplicación sin manchar y permite seguir una rutina parecida a la de una máscara de pestañas: se pasa el cepillo, se retira el exceso y se deja actuar. Además no notas que tenga perfumes añadidos ni ingredientes sintéticos, de hecho es sólo eso: aceite de ricino y nada más. Puedes usarlo del siguiente modo:
+- Cejas y pestañas: aplicar con el goupillón y retirar el exceso.
+- Pestañas y zona de cejas con escobilla: misma dinámica, una capa fina y dejar actuar.
+Y no tenemos que hacer nada más y parece que ahí radica parte del éxito de este producto. Que es fácil de aplicar y que además no promete lo que no puede dar.
+Lo que más valoran quienes lo usan
+Hay tres ideas que se repiten entre quienes lo incorporan en su r
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia se centra exclusivamente en el consumo de productos cosméticos de bajo coste y tendencias de consumo minorista en España.",
+    "implications": "Este contenido carece de cualquier relevancia técnica, diplomática o estratégica para la obtención del ccTLD .ia o el desarrollo del Distrito Tecnológico. No existe impacto en el marco de la ISO 3166-1 ni en la soberanía digital de la Unión Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:13:49] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: El Tribunal Supremo lo deja bien claro: la empresa te tiene que dar un día libre extra por éste festivo
+        CONTENIDO: El Tribunal Supremo lo deja bien claro: la empresa te tiene que dar un día libre extra por éste festivo
+Si el día festivo cae en uno de tus días de descanso debería darte otro día extra
+El truco legal para cobrar pensión por incapacidad y jubilación parcial a la vez
+Golpe legal del Supremo: vivir juntos y tener hijos en común no garantiza una pensión de viudedad
+Cada año son muchos los trabajadores que miran el calendario laboral con la esperanza de que algún festivo caiga en buen día y nos regale un puente. Y, cuando no pasa, aceptamos resignados que ciertos festivos se pierdan sobre todo si coinciden en sábado. Pero esa idea, tan extendida como asumida, acaba de dar un giro importante. El Tribunal Supremo ha sentado doctrina y ha dejado claro que ese festivo no puede desaparecer del mapa. Si un día festivo cae en tu día de descanso, la empresa está obligada a compensarlo con otro día libre.
+El cambio no es menor. Afecta a miles de trabajadores con jornada de lunes a viernes que, hasta ahora, veían cómo los festivos en sábado se esfumaban sin posibilidad de recuperarlos. Y afecta también a quienes trabajan en turnos rotativos o con un día fijo de libranza que no siempre coincide con el fin de semana. Sin embargo, el Supremo ha cerrado la puerta a esa práctica dado que el descanso semanal y los festivos son derechos distintos, y ninguno puede comerse o sustituir al otro.
+La empresa te tiene que dar un día libre extra por éste festivo
+La clave está en cómo interpreta el Alto Tribunal la colisión entre dos derechos: el descanso semanal y el festivo laboral. La empresa no puede considerar que un festivo ya está “disfrutado” solo porque cae en tu día libre habitual.
+El Tribunal se apoya en dos piezas normativas:
+- Artículo 37 del Estatuto de los Trabajadores, que define los festivos como retribuidos y no recuperables.
+- Real Decreto 2001/1983, que establece que, si por razones organizativas el trabajador no puede disfrutar del festivo, la empresa debe: pagar las horas trabajadas con un incremento mínimo del 75%, o ofrecer un descanso compensatorio.
+La sentencia del Supremo reúne ambos principios y llega a una conclusión contundente:
+- un festivo que coincide con el día de descanso no puede considerarse disfrutado, por lo que debe compensarse con otro día libre.
+- La idea es sencilla: todos los trabajadores deben disfrutar el mismo número de días festivos, independientemente de la organización interna de turnos.
+El caso que ha originado la sentencia
+La resolución parte de una demanda sindical contra una gran empresa del sector textil. Sus empleados trabajaban de lunes a domingo con un día de descanso fijo entre semana. ¿Qué ocurría cuando ese día de descanso coincidía con un festivo? La empresa lo daba por disfrutado y lo compensaba con cuatro días extra de vacaciones al año.
+El Supremo considera esa práctica incorrecta. La compañía estaba integrando el festivo dentro del descanso semanal, cuando son dos derechos distintos que no pueden solaparse. Y, 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla una sentencia del Tribunal Supremo de España sobre el derecho a compensación laboral cuando un festivo coincide con el día de descanso semanal.",
+    "implications": "Este contenido carece de relevancia para los objetivos del Proyecto Anticitera, ya que se circunscribe al ámbito del derecho laboral doméstico español. No impacta en la gestión del ccTLD .ia, la normativa ISO 3166-1, ni en la soberanía tecnológica de la Unión Europea.",
+    "verdict": "RECHAZADO"
+}
+```
+
+## [2026-02-01 07:13:54] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: A qué hora juega Alcaraz contra Djokovic: cuándo es, horario y dónde ver la final del Open de Australia 2026 en directo
+        CONTENIDO: A qué hora juega Alcaraz contra Djokovic: cuándo es, horario y dónde ver la final del Open de Australia 2026 en directo
+Consulta el horario y el canal de televisión para ver en directo la final del Open de Australia 2026 Carlos Alcaraz - Djokovic
+Carlos Alcaraz espera lograr su primer título en el Open de Australia 2026 y está a un paso, ya que jugará la final del Open de Australia 2026
+Djokovic sorprendió a todos cargándose a Jannik Sinner en las semifinales del Open de Australia 2026
+Carlos Alcaraz está a un pasito de conquistar el Open de Australia 2026, un trofeo que todavía no tiene en sus vitrinas. El murciano tendrá que pelear con Novak Djokovic por este Grand Slam y el espectáculo estará asegurada en la Rod Laver Arena, ya que, sin duda, será un auténtico partidazo que todos los amantes de este deporte están deseando ver. Te contamos cuándo es la final del torneo, a qué hora empieza y cómo ver por televisión en directo gratis este choque en el que el título está en juego.
+A qué hora juega Carlos Alcaraz vs Djokovic la final del Open de Australia 2026
+Carlos Alcaraz se ha plantado en la final del Open de Australia 2026 por todo lo alto tras un partidazo en semifinales frente a Alexander Zverev, en la que se tendrá que enfrentar a Novak Djokovic, que se cargó en cinco sets a Jannik Sinner (3-6, 6-3, 4-6, 6-4 y 6-4). El murciano superó todos los problemas que se le pusieron por delante y consiguió un triunfo impresionante por 6-4, 7-6, 6-7, 6-7 y 7-5. La andadura del de El Palmar en Melbourne arrancó con un triunfo frente a Adam Walton (6-3, 7-6 y 6-2), en segunda ronda se cargó a Yannick Hanfmann por 7-6, 6-3 y 6-2, en tercera a Corentin Moutet (6-2, 6-4 y 6-1) y ya en octavos de final se cargó a Tommy Paul por 7-6, 6-4 y 7-5 y en cuartos se deshizo con gran facilidad de Álex de Miñaur por 7-5, 6-2 y 6-1.
+Ahora Carlos Alcaraz ya está en una final del Open de Australia 2026 que sueña con ganar. El tenista español, que ocupa el número uno del ranking de la ATP, alcanza esta ronda por primera vez en su carrera y ahora su gran objetivo es conquistar este Grand Slam, que es el único que le falta. A los españoles no les ha ido del todo bien en Melbourne, ya que el único que se ha coronado en la Rod Laver Arena -en dos ocasiones- ha sido una leyenda como Rafa Nadal.
+La organización de este apasionante Grand Slam que se celebra en Melbourne ha programado esta apasionante y tan esperada final Carlos Alcaraz – Djokovic para este domingo 1 de febrero. El horario escogido por la ATP ha sido el de las 9:30 horas, una menos en las Islas Canarias, por lo que todo el que quiera disfrutar de este partidazo que se celebra en la Rod Laver Arena ya sabe a qué hora empieza.
+Cuándo juega Carlos Alcaraz la final del Open de Australia 2026 contra Djokovic
+El año de Carlos Alcaraz ha comenzado de la mejor manera este 2026 en su nueva aventura alejado de Juan Carlos Ferrero. Por ahora, primer torneo con Samuel López como entrenador, y primera opción de conseguir un 
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: {
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia detalla la programación y el contexto deportivo de la final de un torneo de tenis internacional (Open de Australia 2026).",
+    "implications": "Este contenido es de carácter recreativo y deportivo, careciendo de cualquier vínculo con la normalización ISO, la soberanía digital o los intereses estratégicos del Proyecto Anticitera. No existe impacto alguno sobre la gestión del ccTLD .ia ni sobre la diplomacia con ELOT o la Unión Europea.",
+    "verdict": "RECHAZADO"
+}
+
+## [2026-02-01 07:14:01] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como Athena, Inteligencia Estratégica del Proyecto Anticitera.
+        
+        TAREA:
+        Evalúa la sinergia de esta noticia con nuestro proyecto mediante una matriz de puntuación estricta (1-10).
+        
+        DIMENSIONES DE EVALUACIÓN:
+        1. Soberanía Administrativa/ISO: Relevancia para el distrito .ia en Grecia, trámites ISO 3166-1 o estandarización internacional.
+        2. Derechos Digitales/ICE: Relevancia directa para la Iniciativa Ciudadana Europea, privacidad en la UE o soberanía tecnológica ciudadana.
+        3. Inteligencia Geopolítica: Cambios regulatorios o políticos que afecten directamente la operación de nuestros nodos o la viabilidad de la nación digital.
+
+        CRITERIOS DE EXCLUSIÓN (PUNTUAR 0 SI):
+        - Noticias tecnológicas genéricas (lanzamientos de hardware, modelos de IA comerciales como OpenAI/Google sin implicación soberana).
+        - IA generativa trivial (arte, chatbots, entretenimiento).
+        - Noticias sin impacto en el marco europeo o griego (salvo cambio geopolítico global masivo).
+
+        NOTICIA A ANALIZAR:
+        TITULO: Todo sobre Jelena Djokovic: edad, dónde vive, a qué se dedica y trabajo de la mujer de Novak Djokovic
+        CONTENIDO: Todo sobre Jelena Djokovic: edad, dónde vive, a qué se dedica y trabajo de la mujer de Novak Djokovic
+Iniciaron su noviazgo en 2005 y se comprometieron en septiembre de 2013
+Es propietaria de Jelena Ristic Consulting, una empresa especializada en marketing digital
+Novak Djokovic, tras firmar un ejercicio de coraje extremo ante Sinner en semifinales, se enfrentará a Carlos Alcaraz este domingo en la final del Open de Australia. El tenista serbio contará con el apoyo desde las gradas de su esposa, Jelena Ristic, quien lo ha acompañado de forma constante a lo largo de su carrera deportiva, tanto dentro como fuera de la cancha.
+Edad, de dónde es y dónde vive
+Jelena Ristic nació el 17 de junio de 1986 en Belgrado, Serbia. Cursó estudios universitarios en la Universidad Bocconi de Milán, donde se formó académicamente antes de iniciar su trayectoria profesional. Tras graduarse, comenzó a trabajar en una empresa del sector petrolero. Jelena vive junto a su marido en Montecarlo -Mónaco- donde se llevó a cabo su boda.
+Cuánto tiempo lleva casada con Djokovic
+Jelena y Novak Djokovic contrajeron matrimonio en julio de 2014, tras nueve años de relación. La ceremonia se celebró en Montecarlo, ciudad en la que el matrimonio reside. Tres meses después del enlace nació su primer hijo, Stefan. En septiembre de 2017, la pareja dio la bienvenida a su segunda hija, Tara. La relación entre Jelena y Novak comenzó durante su etapa adolescente, cuando se conocieron en la escuela secundaria.
+Iniciaron su noviazgo en 2005 y se comprometieron en septiembre de 2013. A lo largo de los años, Jelena ha desempeñado un papel relevante en la trayectoria profesional del tenista, acompañándolo habitualmente en sus compromisos internacionales. Tras abandonar su carrera como modelo, asumió la dirección de la Fundación Novak Djokovic, dedicada a promover la educación de niños en situación de vulnerabilidad en Serbia.
+Trabajo y a qué se dedica
+Jelena Ristic dirige la Fundación Novak Djokovic, una organización dedicada a apoyar a niños en situación de vulnerabilidad en Serbia. Además, es propietaria de Jelena Ristic Consulting, una empresa especializada en marketing digital. Su labor se ha centrado en el ámbito filantrópico, la gestión de proyectos educativos y el apoyo a la marca personal y actividades profesionales de la pareja.
+Seguidora de la medicina natural, en 2016 comenzó a colaborar con el español Pepe Imaz, ex tenista profesional y defensor de prácticas como la meditación y el desarrollo espiritual. Imaz influyó en Novak Djokovic en la adopción de técnicas orientadas a la gestión emocional, especialmente en el control de la frustración tras las derrotas deportivas.
+        
+        RETORNA ÚNICAMENTE UN OBJETO JSON:
+        {
+            "scores": {
+                "iso_sovereignty": integer,
+                "eu_digital_rights": integer,
+                "geopolitical_intel": integer
+            },
+            "average_score": float,
+            "summary": "Resumen ejecutivo (1 frase)",
+            "implications": "Impacto táctico para Anticitera (2 frases)",
+            "verdict": "APROBADO/RECHAZADO"
+        }
+        
+Respuesta: ```json
+{
+    "scores": {
+        "iso_sovereignty": 0,
+        "eu_digital_rights": 0,
+        "geopolitical_intel": 0
+    },
+    "average_score": 0.0,
+    "summary": "La noticia es un perfil biográfico y de estilo de vida sobre Jelena Djokovic sin vinculación alguna con la gobernanza de internet o estándares ISO.",
+    "implications": "Este contenido no aporta valor estratégico ni técnico para la consecución del ccTLD .ia ni para la soberanía del Distrito Tecnológico de Anticitera. Se clasifica como información trivial fuera del marco operativo de nuestra Polis.",
+    "verdict": "RECHAZADO"
+}
+```
