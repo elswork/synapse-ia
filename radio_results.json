@@ -1,0 +1,67 @@
+{
+    "noticias": [],
+    "nacional": [],
+    "electronica": [],
+    "rock": [
+        {
+            "name": "Radio Paradise Rock",
+            "url": "https://stream.radioparadise.com/rock-128",
+            "ok": true,
+            "status": 200
+        }
+    ],
+    "urbano": [],
+    "pop": [],
+    "world": [
+        {
+            "name": "KEXP (Seattle)",
+            "url": "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
+            "ok": true,
+            "status": 200
+        },
+        {
+            "name": "FIP (France)",
+            "url": "https://stream.radiofrance.fr/fip/fip.m3u8",
+            "ok": true,
+            "status": 200
+        }
+    ],
+    "relax": [],
+    "ambient": [
+        {
+            "name": "SomaFM Drone Zone",
+            "url": "https://ice1.somafm.com/dronezone-128-mp3",
+            "ok": true,
+            "status": 200
+        }
+    ],
+    "concentracion": [
+        {
+            "name": "Deep Focus",
+            "url": "http://streaming.radionomy.com/DeepFocus",
+            "ok": true,
+            "status": 200
+        },
+        {
+            "name": "Binaural Beats",
+            "url": "http://streaming.radionomy.com/BinauralBeats",
+            "ok": true,
+            "status": 200
+        },
+        {
+            "name": "Brain.fm (Sim)",
+            "url": "http://ice.somafm.com/defcon",
+            "ok": true,
+            "status": 200
+        }
+    ],
+    "chill": [],
+    "lofi": [
+        {
+            "name": "Lofi Girl Radio",
+            "url": "http://play.sas-media.ru/play_256",
+            "ok": true,
+            "status": 200
+        }
+    ]
+}
