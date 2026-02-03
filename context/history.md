@@ -12004,3 +12004,4 @@ En el ecosistema de la gobernanza de Internet, la reputación es una moneda de c
 ### 2. Cloudflare como Vector de Soberanía Técnica
 El acceso potencial a la infraestructura y al *know-how* de Cloudflare es, estratégicamente, el movimiento más disruptivo que podíamos esperar:
 Binary file /home/pirate/docker/synapse-ia/context/history.md matches
+Binary file /home/pirate/docker/synapse-ia/context/history.md matches
