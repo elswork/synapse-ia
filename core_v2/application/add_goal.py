@@ -8,11 +8,11 @@ class AddGoalUseCase:
         self.consultant = consultant
 
     def execute(self, description: str) -> str:
-        # 1. IA Analysis
+        # 2. IA Analysis
         analysis = self.consultant.ask(f"Analiza esta directiva para el Proyecto Anticitera: {description}")
         
-        # 2. Persist (Simplificado para este ejemplo de Core)
-        # En una versión completa, se crearía el objeto Goal y se guardaría
-        # self.memory.save_goal(...) 
+        # 3. Persist
+        goal = Goal(description=description, status=GoalStatus.PENDING, priority=1)
+        self.memory.save_goal(goal)
         
-        return f"✅ Directiva analizada por el Núcleo:\n{analysis}"
+        return f"✅ Directiva analizada y registrada en la Memoria Soberana:\n{analysis}"

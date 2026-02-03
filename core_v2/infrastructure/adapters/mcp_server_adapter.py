@@ -13,6 +13,8 @@ from core_v2.infrastructure.adapters.gemini_athena_adapter import GeminiAthenaAd
 from core_v2.infrastructure.adapters.system_telemetry_adapter import SystemTelemetryAdapter
 from core_v2.application.get_telemetry import GetTelemetryUseCase
 from core_v2.application.add_goal import AddGoalUseCase
+from core_v2.application.speak import SpeakUseCase
+from core_v2.infrastructure.adapters.hass_communication_adapter import HassCommunicationAdapter
 import json
 
 class MCPServer:
@@ -21,10 +23,16 @@ class MCPServer:
         self.memory = PostgresSovereignMemory(db_url=settings.db_url)
         self.consultant = GeminiAthenaAdapter(api_key=settings.gemini_api_key)
         self.telemetry_adapter = SystemTelemetryAdapter()
+        self.comm_adapter = HassCommunicationAdapter(
+            hass_url=settings.hass_url, 
+            token=settings.hass_token,
+            media_player=settings.hass_media_player
+        )
         
         # Use cases
         self.telemetry_use_case = GetTelemetryUseCase(self.telemetry_adapter)
         self.goal_use_case = AddGoalUseCase(self.memory, self.consultant)
+        self.speak_use_case = SpeakUseCase(self.comm_adapter)
 
     def run(self):
         for line in sys.stdin:
@@ -69,6 +77,18 @@ class MCPServer:
                                     },
                                     "required": ["query"]
                                 }
+                            },
+                            {
+                                "name": "speak",
+                                "description": "Verbaliza un mensaje a través del sistema de voz del Agora.",
+                                "inputSchema": {
+                                    "type": "object", 
+                                    "properties": {
+                                        "text": {"type": "string"},
+                                        "language": {"type": "string", "default": "es"}
+                                    },
+                                    "required": ["text"]
+                                }
                             }
                         ]
                     })
@@ -90,6 +110,8 @@ class MCPServer:
             return self.goal_use_case.execute(args.get("description", ""))
         elif name == "ask_athena":
             return self.consultant.ask(args.get("query", ""))
+        elif name == "speak":
+            return self.speak_use_case.execute(args.get("text", ""), args.get("language", "es"))
         return "Tool not found"
 
     def send_response(self, req_id, result):

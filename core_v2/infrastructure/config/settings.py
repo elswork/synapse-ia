@@ -10,6 +10,9 @@ class Settings:
     telegram_user_id: str
     smtp_user: str
     smtp_password: str
+    hass_url: str
+    hass_token: str
+    hass_media_player: str
 
 def get_settings() -> Settings:
     load_dotenv()
@@ -19,5 +22,8 @@ def get_settings() -> Settings:
         telegram_token=os.environ.get("TELEGRAM_BOT_TOKEN", ""),
         telegram_user_id=os.environ.get("TELEGRAM_ALLOWED_USER_ID", ""),
         smtp_user=os.environ.get("SMTP_USER", ""),
-        smtp_password=os.environ.get("SMTP_PASSWORD", "")
+        smtp_password=os.environ.get("SMTP_PASSWORD", ""),
+        hass_url=os.environ.get("HASS_URL", "http://localhost:8123"),
+        hass_token=os.environ.get("HASS_TOKEN", ""),
+        hass_media_player=os.environ.get("HASS_MEDIA_PLAYER", "media_player.mitv_mssp3")
     )

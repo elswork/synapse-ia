@@ -35,14 +35,21 @@ class PostgresSovereignMemory(ISovereignMemory):
     def get_pending_goals(self) -> List[Goal]:
         with self._get_conn() as conn:
             with conn.cursor() as cur:
-                cur.execute("SELECT id, description, status, priority, created_at, updated_at FROM goals WHERE status = 'pending'")
+                # Alineado con el esquema real: id, timestamp, agent, goal, status
+                cur.execute("SELECT id, goal, status FROM goals WHERE status = 'active' OR status = 'pending'")
                 rows = cur.fetchall()
-                return [Goal(id=r[0], description=r[1], status=GoalStatus(r[2]), priority=r[3], created_at=r[4], updated_at=r[5]) for r in rows]
+                # Ajustamos la creación del objeto Goal para que coincida con el esquema
+                return [Goal(id=r[0], description=r[1], status=GoalStatus(r[2]), priority=1) for r in rows]
 
-    def save_news(self, news: News) -> None:
-        with self._get_conn() as conn:
-            with conn.cursor() as cur:
                 cur.execute(
                     "INSERT INTO news_intel (title, url, source, published_at, summary, implications, synergy_score, notified) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                     (news.title, news.url, news.source, news.published_at, news.summary, news.implications, news.synergy_score, news.notified)
+                )
+
+    def save_goal(self, goal: Goal) -> None:
+        with self._get_conn() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "INSERT INTO goals (goal, agent, status) VALUES (%s, %s, %s)",
+                    (goal.description, "Arconte/CoreV2", goal.status.value)
                 )

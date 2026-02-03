@@ -20,3 +20,7 @@ class ISovereignMemory(ABC):
     @abstractmethod
     def save_news(self, news: News) -> None:
         pass
+
+    @abstractmethod
+    def save_goal(self, goal: Goal) -> None:
+        pass
