@@ -1,4 +1,5 @@
-{
+// Datos dinámicos para el Agora - Panel M2
+window.STATIONS_DATA = {
     "noticias": [
         {
             "name": "BBC World Service",
@@ -198,4 +199,4 @@
             "ok": true
         }
     ]
-}
+};

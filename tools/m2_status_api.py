@@ -1,6 +1,7 @@
 import os
 import time
 import psutil
+import json
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -61,10 +62,24 @@ def system_reboot():
 @app.route('/system/shutdown', methods=['POST'])
 def system_shutdown():
     print("M2-API: Received Shutdown Request")
-    os.system("shutdown -h now")
-    # Fallback SysRq o (Power Off)
     os.system("echo 1 > /proc/sys/kernel/sysrq && echo o > /proc/sysrq-trigger")
     return jsonify({"status": "ok", "message": "Shutdown command executed"})
+
+@app.route('/radio')
+def get_radio():
+    try:
+        # Intentamos cargar el archivo de la misma carpeta
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        # Si estamos en tools/, el json está un nivel arriba
+        json_path = os.path.join(base_path, "../radio_results.json")
+        if not os.path.exists(json_path):
+             json_path = os.path.join(base_path, "radio_results.json")
+             
+        with open(json_path, 'r') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/brightness', methods=['POST'])
 def update_brightness():

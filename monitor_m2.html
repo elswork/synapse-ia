@@ -918,6 +918,7 @@
     <!-- Audio Element -->
     <audio id="audio_player" preload="none"></audio>
 
+    <script src="stations_data.js"></script>
     <script>
         // CONFIG
         const NODES = {
@@ -1015,20 +1016,28 @@
         }
 
         // --- MUSIC ---
-        const STATIONS = {
-            noticias: [],
-            nacional: [],
-            electronica: [],
-            rock: [{ name: "Radio Paradise Rock", url: "https://stream.radioparadise.com/rock-128" }],
-            urbano: [],
-            pop: [],
-            world: [{ name: "KEXP (Seattle)", url: "https://kexp-mp3-128.streamguys1.com/kexp128.mp3" }, { name: "FIP (France)", url: "https://stream.radiofrance.fr/fip/fip.m3u8" }],
-            relax: [],
-            ambient: [{ name: "SomaFM Drone Zone", url: "https://ice1.somafm.com/dronezone-128-mp3" }],
-            concentracion: [{ name: "Deep Focus", url: "http://streaming.radionomy.com/DeepFocus" }, { name: "Binaural Beats", url: "http://streaming.radionomy.com/BinauralBeats" }, { name: "Brain.fm (Sim)", url: "http://ice.somafm.com/defcon" }],
-            chill: [],
-            lofi: [{ name: "Lofi Girl Radio", url: "http://play.sas-media.ru/play_256" }]
-        };
+        let STATIONS = {};
+
+        async function fetchStations() {
+            // Priority 1: Data pre-loaded via script tag (file:// protocol friendly)
+            if (window.STATIONS_DATA) {
+                STATIONS = window.STATIONS_DATA;
+                renderMusicGrid();
+                console.log("Stations loaded via script tag.");
+            }
+
+            // Priority 2: Try to refresh from API for real-time updates
+            try {
+                const res = await fetch('http://localhost:5051/radio');
+                if (res.ok) {
+                    STATIONS = await res.json();
+                    renderMusicGrid();
+                    console.log("Stations refreshed from API.");
+                }
+            } catch (e) {
+                console.warn("API not available for stations refresh.");
+            }
+        }
 
         const GENRE_ICONS = {
             noticias: '🌍',
@@ -1045,15 +1054,17 @@
             lofi: '☕'
         };
 
-        // Init Music Grid
-        const genreView = document.getElementById('genre_view');
-        Object.keys(STATIONS).forEach(key => {
-            const div = document.createElement('div');
-            div.className = 'genre-card';
-            div.innerHTML = `<div class="genre-icon">${GENRE_ICONS[key] || '🎵'}</div><div class="genre-name">${key}</div>`;
-            div.onclick = () => showStations(key);
-            genreView.appendChild(div);
-        });
+        function renderMusicGrid() {
+            const genreView = document.getElementById('genre_view');
+            genreView.innerHTML = '';
+            Object.keys(STATIONS).forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'genre-card';
+                div.innerHTML = `<div class="genre-icon">${GENRE_ICONS[key] || '🎵'}</div><div class="genre-name">${key}</div>`;
+                div.onclick = () => showStations(key);
+                genreView.appendChild(div);
+            });
+        }
 
         function openMusicModal() { musicModal.classList.add('visible'); showGenres(); }
         function closeMusicModal() { musicModal.classList.remove('visible'); }
@@ -1232,6 +1243,7 @@
         updateTime();
         updateAllNodes();
         fetchWeather();
+        fetchStations();
     </script>
 </body>
 
