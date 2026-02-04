@@ -12,16 +12,23 @@ class HassCommunicationAdapter(ICommunicationService):
 
     def speak(self, text: str, language: str = "es") -> bool:
         """Utiliza el servicio TTS de Home Assistant para verbalizar texto."""
-        endpoint = f"{self.url}/api/services/tts/speak"
         
-        # Nota: engine_id y media_player deben estar configurados en HASS
-        # Por defecto intentaremos usar 'tts.piper' si está disponible
-        payload = {
-            "engine_id": "tts.piper",
-            "media_player_entity_id": self.media_player,
-            "message": text,
-            "language": language
-        }
+        # Check if we are targeting a satellite directly
+        if self.media_player.startswith("assist_satellite."):
+            endpoint = f"{self.url}/api/services/assist_satellite/announce"
+            payload = {
+                "entity_id": self.media_player,
+                "message": text
+            }
+        else:
+            # Standard Media Player TTS
+            endpoint = f"{self.url}/api/services/tts/speak"
+            payload = {
+                "engine_id": "tts.piper",
+                "media_player_entity_id": self.media_player,
+                "message": text,
+                "language": language
+            }
         
         try:
             response = requests.post(endpoint, headers=self.headers, json=payload, timeout=10)
@@ -31,7 +38,9 @@ class HassCommunicationAdapter(ICommunicationService):
             else:
                 print(f"HASS TTS Error ({response.status_code}): {response.text}")
                 # Fallback to google_translate if piper fails or isn't first choice
-                return self._fallback_speak(text, language)
+                if not self.media_player.startswith("assist_satellite."):
+                     return self._fallback_speak(text, language)
+                return False
         except Exception as e:
             print(f"HASS Connection Exception: {e}")
             return False

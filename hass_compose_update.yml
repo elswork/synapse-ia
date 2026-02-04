@@ -1,0 +1,63 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - /home/pirate/docker/hass/config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    network_mode: host
+
+  whisper:
+    container_name: whisper
+    image: rhasspy/wyoming-whisper
+    command: --model base --language es
+    volumes:
+      - /home/pirate/docker/hass/whisper-data:/data
+    restart: unless-stopped
+    ports:
+      - "10300:10300"
+
+  piper:
+    container_name: piper
+    image: rhasspy/wyoming-piper
+    command: --voice es_ES-sharvard-medium
+    volumes:
+      - /home/pirate/docker/hass/piper-data:/data
+    restart: unless-stopped
+    ports:
+      - "10200:10200"
+
+  openwakeword:
+    container_name: openwakeword
+    image: rhasspy/wyoming-openwakeword
+    command: --preload-model 'hey_jarvis'
+    restart: unless-stopped
+    ports:
+      - "10400:10400"
+
+  satellite:
+    container_name: satellite
+    image: local/wyoming-satellite:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.satellite
+    restart: unless-stopped
+    user: "1001:1001"
+    network_mode: host
+    environment:
+      - PULSE_SERVER=unix:/run/user/1001/pulse/native
+      - PULSE_COOKIE=/run/pulse/cookie
+    volumes:
+      - /run/user/1001/pulse/native:/run/user/1001/pulse/native
+      - /home/pirate/.config/pulse/cookie:/run/pulse/cookie:ro
+      - /home/pirate/docker/hass/satellite-data:/data
+    command: >
+      --name 'Anticitera Nexus'
+      --uri 'tcp://0.0.0.0:10700'
+      --mic-command 'parecord --property=media.role=phone --rate=16000 --channels=1 --format=s16le --raw'
+      --snd-command 'paplay --property=media.role=announce --rate=22050 --channels=1 --format=s16le --raw'
+      --wake-uri 'tcp://127.0.0.1:10400'
+      --wake-word-name 'hey_jarvis'

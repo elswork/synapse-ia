@@ -41,6 +41,9 @@ class PostgresSovereignMemory(ISovereignMemory):
                 # Ajustamos la creación del objeto Goal para que coincida con el esquema
                 return [Goal(id=r[0], description=r[1], status=GoalStatus(r[2]), priority=1) for r in rows]
 
+    def save_news(self, news: News) -> None:
+        with self._get_conn() as conn:
+            with conn.cursor() as cur:
                 cur.execute(
                     "INSERT INTO news_intel (title, url, source, published_at, summary, implications, synergy_score, notified) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                     (news.title, news.url, news.source, news.published_at, news.summary, news.implications, news.synergy_score, news.notified)
