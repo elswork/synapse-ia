@@ -33,7 +33,7 @@ services:
   openwakeword:
     container_name: openwakeword
     image: rhasspy/wyoming-openwakeword
-    command: --preload-model 'hey_jarvis'
+    command: --preload-model 'hey_jarvis' --threshold 0.45 --trigger-level 3
     restart: unless-stopped
     ports:
       - "10400:10400"
@@ -61,3 +61,6 @@ services:
       --snd-command 'paplay --property=media.role=announce --rate=22050 --channels=1 --format=s16le --raw'
       --wake-uri 'tcp://127.0.0.1:10400'
       --wake-word-name 'hey_jarvis'
+      --vad-threshold 0.5
+      --vad-trigger-level 2
+      --vad-buffer-seconds 2
