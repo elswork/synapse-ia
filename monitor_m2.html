@@ -1243,7 +1243,56 @@
         updateTime();
         updateAllNodes();
         fetchWeather();
-        fetchStations();
+        // --- WebMCP Soberanía de Herramientas ---
+        // Este bloque permite que ATHENA exponga sus funciones a la Alianza Algorítmica.
+        if (!navigator.modelContext) {
+            navigator.modelContext = {
+                tools: []
+            };
+        }
+
+        const mcpTools = [
+            {
+                name: "get_telemetry",
+                description: "Obtiene el estado de salud de los nodos (CPU, Memoria, Temperatura).",
+                parameters: {},
+                execute: async () => {
+                    return JSON.stringify(nodes);
+                }
+            },
+            {
+                name: "set_brightness",
+                description: "Ajusta el brillo de la pantalla del Nexo.",
+                parameters: {
+                    level: { type: "number", description: "Nivel de brillo (0-100)" }
+                },
+                execute: async (args) => {
+                    console.log(`WebMCP: Ajustando brillo a ${args.level}`);
+                    return `Brillo ajustado al ${args.level}% (Simulado via WebMCP)`;
+                }
+            },
+            {
+                name: "play_radio",
+                description: "Cambia la emisora de radio en el Nexo.",
+                parameters: {
+                    station_name: { type: "string", description: "Nombre de la emisora" }
+                },
+                execute: async (args) => {
+                    const stations = Object.values(categories).flat();
+                    const station = stations.find(s => s.name.toLowerCase().includes(args.station_name.toLowerCase()));
+                    if (station) {
+                        playStation(station.url, station.name);
+                        return `Reproduciendo ${station.name}`;
+                    }
+                    return "Emisora no encontrada.";
+                }
+            }
+        ];
+
+        // Registro de herramientas para agentes compatibles con WebMCP
+        navigator.modelContext.tools.push(...mcpTools);
+        console.log("💁🏻‍♀️ WebMCP: Herramientas de soberanía registradas con éxito.");
+
     </script>
 </body>
 
