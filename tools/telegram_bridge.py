@@ -6,6 +6,7 @@ import html
 from dotenv import load_dotenv
 from tools.athena_brain import AthenaBrain
 from tools.select_mep_proposal import MEPSelector
+from tools.select_bunny_proposal import BunnySelector
 from tools.email_sender import EmailSender
 from tools.url_analyzer import URLAnalyzer
 from tools.news_sentinel import NewsSentinel
@@ -60,6 +61,7 @@ def send_welcome(message):
         "/vigilar - Ronda de vigilancia de noticias\n\n"
         "🏛️ <b>Diplomacia</b>\n"
         "/pasar_mep [filtro] - Forjar propuesta para MEP\n"
+        "/pasar_bunny [filtro] - Forjar propuesta para Arconte Experto\n"
         "/aprobar [id] - Validar noticia para la memoria\n"
         "/todos - Listar tareas pendientes"
     )
@@ -171,6 +173,66 @@ def pasar_mep(message):
 
     except Exception as e:
         bot.reply_to(message, f"❌ Error crítico en la forja: {str(e)}")
+
+@bot.message_handler(commands=['pasar_bunny'])
+def pasar_bunny(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    # Extraer nombre si existe
+    args = message.text.split(maxsplit=1)
+    name_filter = args[1] if len(args) > 1 else None
+
+    bot.send_message(message.chat.id, "🏛️ *Protocolo Arquímedes (Operación Bad Bunny):* Iniciando selección de Arconte y forja de invitación...", parse_mode='Markdown')
+    bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        selector = BunnySelector()
+        proposal = selector.generate_proposal(name_filter)
+
+        if "error" in proposal:
+            bot.reply_to(message, f"❌ {proposal['error']}")
+            return
+
+        expert = proposal['expert']
+        email_data = proposal['email']
+
+        # Cargar template HTML
+        template_path = os.path.join(os.path.dirname(__file__), "templates/bunny_email_template.html")
+        with open(template_path, 'r', encoding='utf-8') as f:
+            template_html = f.read()
+
+        # Reemplazar variables en template
+        rich_html = template_html.replace("{{expert_name}}", expert['name'])
+        rich_html = rich_html.replace("{{expert_country}}", expert['country'])
+        rich_html = rich_html.replace("{{expert_role}}", expert['role'])
+        rich_html = rich_html.replace("{{expert_email}}", expert['email'])
+        rich_html = rich_html.replace("{{subject}}", email_data['subject_local'])
+        rich_html = rich_html.replace("{{body_text}}", email_data['body_local'])
+        rich_html = rich_html.replace("{{body_spanish}}", email_data['body_spanish'])
+
+        # Enviar Email
+        sender = EmailSender()
+        success = sender.send_mep_email(
+            expert['name'], expert['country'], expert['email'],
+            email_data['subject_local'], rich_html, email_data['body_local'],
+            category="Expert"
+        )
+
+        if success:
+            saved_path = selector.save_proposal(proposal)
+            bot.reply_to(message, 
+                f"✅ <b>Propuesta enviada a elswork@gmail.com</b>\n\n"
+                f"<b>Experto:</b> {html.escape(expert['name'])} ({html.escape(expert['country'])})\n"
+                f"<b>Email:</b> <code>{html.escape(expert['email'])}</code>\n\n"
+                f"He guardado el borrador en:\n<code>{html.escape(saved_path)}</code>",
+                parse_mode='HTML'
+            )
+        else:
+            bot.reply_to(message, "❌ Error al enviar el correo. Revisa los logs del sistema.")
+
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error crítico en la forja de Arconte: {str(e)}")
 
 @bot.message_handler(commands=['auditar'])
 def auditar_url(message):

@@ -1,0 +1,56 @@
+{
+    "1": {
+        "name": "Matthias C. Kettemann",
+        "country": "Germany",
+        "role": "AI Ethics & Digital Law",
+        "profile_url": "https://www.leibniz-hbi.de/en/staff/matthias-c-kettemann/",
+        "status": "pending",
+        "email": "m.kettemann@leibniz-hbi.de",
+        "notes": "Expert in internet governance and international law."
+    },
+    "2": {
+        "name": "Margit Sutrop",
+        "country": "Estonia",
+        "role": "AI Ethics & Philosophy",
+        "profile_url": "https://www.ut.ee/en/margit-sutrop",
+        "status": "pending",
+        "email": "margit.sutrop@ut.ee",
+        "notes": "Chair of Practical Philosophy at the University of Tartu."
+    },
+    "3": {
+        "name": "Mauritz Kop",
+        "country": "Netherlands",
+        "role": "AI Law & Regulation",
+        "profile_url": "https://law.stanford.edu/directory/mauritz-kop/",
+        "status": "pending",
+        "email": "advies@airecht.nl",
+        "notes": "Focus on AI, IP and technology law."
+    },
+    "4": {
+        "name": "Helena Moniz",
+        "country": "Portugal",
+        "role": "Responsible AI & Ethics",
+        "profile_url": "https://www.inesc-id.pt/member.php?id=336",
+        "status": "pending",
+        "email": "helena.moniz@inesc-id.pt",
+        "notes": "President of the European Association for Machine Translation."
+    },
+    "5": {
+        "name": "Mauro Santaniello",
+        "country": "Italy",
+        "role": "Digital Sovereignty & Governance",
+        "profile_url": "https://docenti.unisa.it/025252/en/curriculum",
+        "status": "pending",
+        "email": "msantaniello@unisa.it",
+        "notes": "Associate Professor at the University of Salerno."
+    },
+    "6": {
+        "name": "Julie Austin",
+        "country": "Ireland",
+        "role": "Data Privacy & Tech Law",
+        "profile_url": "https://www.mhc.ie/people/julie-austin",
+        "status": "pending",
+        "email": "jaustin@MHC.ie",
+        "notes": "Partner at Mason Hayes Curran, specialist in data protection."
+    }
+}

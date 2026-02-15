@@ -14,18 +14,18 @@ class EmailSender:
         self.smtp_port = int(os.getenv("SMTP_PORT", 587))
         self.admin_email = os.getenv("ADMIN_EMAIL")
 
-    def send_mep_email(self, mep_name, mep_country, mep_email, subject, body_html, body_text):
+    def send_mep_email(self, name, country, email, subject, body_html, body_text, category="MEP"):
         if not self.smtp_user or not self.smtp_password:
             raise ValueError("SMTP credentials not configured in .env")
 
         msg = MIMEMultipart("alternative")
-        msg["Subject"] = f"🏛️ MEP Proposal: {mep_name} ({mep_country})"
+        msg["Subject"] = f"🏛️ {category} Proposal: {name} ({country})"
         msg["From"] = f"Anticitera Digital Nation <{self.smtp_user}>"
         msg["To"] = self.admin_email
 
         # Content for the user to copy/paste easily
         # We'll prepend the actual recipient info
-        intro = f"Para enviar a: {mep_email}\nSubject: {subject}\n\n"
+        intro = f"Para enviar a: {email}\nSubject: {subject}\n\n"
         
         part1 = MIMEText(intro + body_text, "plain")
         part2 = MIMEText(body_html, "html")
