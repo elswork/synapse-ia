@@ -106,5 +106,59 @@
         "status": "pending",
         "email": "susanne.stenberg@ri.se",
         "notes": "Senior researcher and legal expert at RISE, specialized in the EU AI Act."
+    },
+    "13": {
+        "name": "Jakub Míšek",
+        "country": "Czech Republic",
+        "role": "Privacy & ICT Law",
+        "profile_url": "https://www.muni.cz/en/people/205634-jakub-misek",
+        "status": "pending",
+        "email": "205634@mail.muni.cz",
+        "notes": "Expert in privacy, personal data protection, and legal regulation of public sector information."
+    },
+    "14": {
+        "name": "Dragoș Boicu",
+        "country": "Romania",
+        "role": "Tech Law & Legal Informatics",
+        "profile_url": "https://techlawllm.ro/team/dragos-boicu/",
+        "status": "pending",
+        "email": "dragos.boicu@drept.unibuc.ro",
+        "notes": "Lecturer and Vice-Dean, specialized in tech law and juridical informatics."
+    },
+    "15": {
+        "name": "Adrian-Victor Vevera",
+        "country": "Romania",
+        "role": "Digital Sovereignty",
+        "profile_url": "https://ici.ro/en/about-ici/management/",
+        "status": "pending",
+        "email": "victor.vevera@ici.ro",
+        "notes": "General Director at ICI Bucharest, strategic leader for Romania's digital sovereignty."
+    },
+    "16": {
+        "name": "Petri Ylikoski",
+        "country": "Finland",
+        "role": "AI in Society & Ethics",
+        "profile_url": "https://researchportal.helsinki.fi/en/persons/petri-ylikoski",
+        "status": "pending",
+        "email": "petri.ylikoski@helsinki.fi",
+        "notes": "Professor focusing on the societal consequences and ethics of AI."
+    },
+    "17": {
+        "name": "Rosa Ballardini",
+        "country": "Finland",
+        "role": "AI Legal Solutions & IP",
+        "profile_url": "https://research.ulapland.fi/en/persons/rosa-ballardini",
+        "status": "pending",
+        "email": "rosa.ballardini@ulapland.fi",
+        "notes": "Vice-dean of research, expert in finding legal solutions for AI use."
+    },
+    "18": {
+        "name": "Nikolaus Forgó",
+        "country": "Austria",
+        "role": "IT/IP Law & Innovation",
+        "profile_url": "https://id-law.univie.ac.at/en/team/forgo-nikolaus/",
+        "status": "pending",
+        "email": "nikolaus.forgo@univie.ac.at",
+        "notes": "Head of the Department of Innovation and Digitalisation in Law."
     }
 }
