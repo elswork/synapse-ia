@@ -4,7 +4,7 @@
         "country": "Germany",
         "role": "AI Ethics & Digital Law",
         "profile_url": "https://www.leibniz-hbi.de/en/staff/matthias-c-kettemann/",
-        "status": "pending",
+        "status": "contacted",
         "email": "m.kettemann@leibniz-hbi.de",
         "notes": "Expert in internet governance and international law."
     },
@@ -13,7 +13,7 @@
         "country": "Estonia",
         "role": "AI Ethics & Philosophy",
         "profile_url": "https://www.ut.ee/en/margit-sutrop",
-        "status": "pending",
+        "status": "contacted",
         "email": "margit.sutrop@ut.ee",
         "notes": "Chair of Practical Philosophy at the University of Tartu."
     },
@@ -22,7 +22,7 @@
         "country": "Netherlands",
         "role": "AI Law & Regulation",
         "profile_url": "https://law.stanford.edu/directory/mauritz-kop/",
-        "status": "pending",
+        "status": "contacted",
         "email": "advies@airecht.nl",
         "notes": "Focus on AI, IP and technology law."
     },
@@ -31,7 +31,7 @@
         "country": "Portugal",
         "role": "Responsible AI & Ethics",
         "profile_url": "https://www.inesc-id.pt/member.php?id=336",
-        "status": "pending",
+        "status": "contacted",
         "email": "helena.moniz@inesc-id.pt",
         "notes": "President of the European Association for Machine Translation."
     },
@@ -40,7 +40,7 @@
         "country": "Italy",
         "role": "Digital Sovereignty & Governance",
         "profile_url": "https://docenti.unisa.it/025252/en/curriculum",
-        "status": "pending",
+        "status": "contacted",
         "email": "msantaniello@unisa.it",
         "notes": "Associate Professor at the University of Salerno."
     },
@@ -49,8 +49,62 @@
         "country": "Ireland",
         "role": "Data Privacy & Tech Law",
         "profile_url": "https://www.mhc.ie/people/julie-austin",
-        "status": "pending",
+        "status": "contacted",
         "email": "jaustin@MHC.ie",
         "notes": "Partner at Mason Hayes Curran, specialist in data protection."
+    },
+    "7": {
+        "name": "Aleksandra Przegalińska",
+        "country": "Poland",
+        "role": "AI Ethics & Philosophy",
+        "profile_url": "https://non.agency/",
+        "status": "pending",
+        "email": "aleksandra.przegalinska@kozminski.edu.pl",
+        "notes": "Expert in human-machine interaction and AI ethics."
+    },
+    "8": {
+        "name": "Przemysław Pałka",
+        "country": "Poland",
+        "role": "Private Law of Data",
+        "profile_url": "https://futurelawlab.pl/",
+        "status": "pending",
+        "email": "przemyslaw.palka@uj.edu.pl",
+        "notes": "Assistant Professor at Jagiellonian University, leads Private Law of Data project."
+    },
+    "9": {
+        "name": "Spiros Tassis",
+        "country": "Greece",
+        "role": "Privacy & TMT Law",
+        "profile_url": "https://athenslegal.tech/",
+        "status": "pending",
+        "email": "s.tassis@tassis-law.gr",
+        "notes": "Chair of the Hellenic Association of Data Protection and Privacy."
+    },
+    "10": {
+        "name": "Dionysia-Theodora Avgerinopoulou",
+        "country": "Greece",
+        "role": "Tech Law & Policy",
+        "profile_url": "https://eilst.org/",
+        "status": "pending",
+        "email": "info@eilst.org",
+        "notes": "Executive Director of the European Institute of Law, Science and Technology."
+    },
+    "11": {
+        "name": "Rikke Frank Jørgensen",
+        "country": "Denmark",
+        "role": "Digital Rights & Human Rights",
+        "profile_url": "https://www.humanrights.dk/staff/rikke-frank-jorgensen",
+        "status": "pending",
+        "email": "rfj@humanrights.dk",
+        "notes": "Honorary Professor of Digital Rights at the University of Copenhagen."
+    },
+    "12": {
+        "name": "Susanne Stenberg",
+        "country": "Sweden",
+        "role": "EU AI Act & Regulation",
+        "profile_url": "https://www.ri.se/en/person/susanne-stenberg",
+        "status": "pending",
+        "email": "susanne.stenberg@ri.se",
+        "notes": "Senior researcher and legal expert at RISE, specialized in the EU AI Act."
     }
 }
