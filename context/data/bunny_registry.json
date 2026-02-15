@@ -108,13 +108,13 @@
         "notes": "Senior researcher and legal expert at RISE, specialized in the EU AI Act."
     },
     "13": {
-        "name": "Jakub Míšek",
+        "name": "Jakub Eberle",
         "country": "Czech Republic",
-        "role": "Privacy & ICT Law",
-        "profile_url": "https://www.muni.cz/en/people/205634-jakub-misek",
+        "role": "Digital Sovereignty Discourse",
+        "profile_url": "https://www.iir.cz/en/jakub-eberle",
         "status": "pending",
-        "email": "205634@mail.muni.cz",
-        "notes": "Expert in privacy, personal data protection, and legal regulation of public sector information."
+        "email": "eberle@iir.cz",
+        "notes": "Senior Researcher at the Institute of International Relations Prague."
     },
     "14": {
         "name": "Dragoș Boicu",
@@ -160,5 +160,293 @@
         "status": "pending",
         "email": "nikolaus.forgo@univie.ac.at",
         "notes": "Head of the Department of Innovation and Digitalisation in Law."
+    },
+    "19": {
+        "name": "Vojko Strahovnik",
+        "country": "Slovenia",
+        "role": "Head of Centre for Human-Centred AI",
+        "profile_url": "https://www.ff.uni-lj.si/en/staff/vojko-strahovnik",
+        "status": "pending",
+        "email": "vojko.strahovnik@ff.uni-lj.si",
+        "notes": "Interdisciplinary researcher in ethical dimensions of AI."
+    },
+    "20": {
+        "name": "Ana Pošćić",
+        "country": "Croatia",
+        "role": "AI Law & Ethics (EDIH Adria)",
+        "profile_url": "https://pravri.uniri.hr/en/ana-poscic/",
+        "status": "pending",
+        "email": "ana.poscic@uniri.hr",
+        "notes": "Expert in legal and ethical challenges of AI, Univ. Rijeka."
+    },
+    "21": {
+        "name": "Tatiana-Eleni Synodinou",
+        "country": "Cyprus",
+        "role": "Chair of Ad Hoc Committee on AI",
+        "profile_url": "https://www.ucy.ac.cy/dir/en/component/comprofiler/userprofile/synodint",
+        "status": "pending",
+        "email": "synodint@ucy.ac.cy",
+        "notes": "Vice-Rector at UCY, expert in private and digital law."
+    },
+    "22": {
+        "name": "Alexiei Dingli",
+        "country": "Malta",
+        "role": "AI Policy & Ethics Task Force",
+        "profile_url": "https://www.um.edu.mt/profile/alexieidingli",
+        "status": "pending",
+        "email": "alexiei.dingli@um.edu.mt",
+        "notes": "Professor of AI, member of the national AI task force of Malta."
+    },
+    "23": {
+        "name": "Natalija Černecka",
+        "country": "Latvia",
+        "role": "CEO of Latvian AI Centre",
+        "profile_url": "https://www.lsm.lv/raksts/zinas/latvija/22.05.2024-latvijas-maksliga-intelekta-centru-vadis-natalija-cernecka.a554277/",
+        "status": "pending",
+        "email": "pasts@vdaa.gov.lv",
+        "notes": "Key driver of sovereign AI infrastructure in Latvia."
+    },
+    "24": {
+        "name": "Vigita Vėbraitė",
+        "country": "Lithuania",
+        "role": "Professor of Law (AI Ethics)",
+        "profile_url": "https://www.tf.vu.lt/en/staff/vebraite-vigita/",
+        "status": "pending",
+        "email": "vigita.vebraite@tf.vu.lt",
+        "notes": "Vice-Dean at Vilnius University, specializing in human-centric AI."
+    },
+    "25": {
+        "name": "Christoph Lütge",
+        "country": "Germany",
+        "role": "Director of Institute for Ethics in AI",
+        "profile_url": "https://www.ieai.tum.de/team/christoph-luetge/",
+        "status": "pending",
+        "email": "luetge@tum.de",
+        "notes": "Chair of Business Ethics at TUM."
+    },
+    "26": {
+        "name": "Margit Sutrop",
+        "country": "Estonia",
+        "role": "Head of Centre for Ethics",
+        "profile_url": "https://www.ut.ee/en/contact/margit-sutrop",
+        "status": "pending",
+        "email": "margit.sutrop@ut.ee",
+        "notes": "Prominent figure in EU AI ethics councils."
+    },
+    "27": {
+        "name": "Natali Helberger",
+        "country": "Netherlands",
+        "role": "Law & Digital Technology",
+        "profile_url": "https://www.ivir.nl/staff/helberger/",
+        "status": "pending",
+        "email": "n.helberger@uva.nl",
+        "notes": "Focused on AI and democratic values."
+    },
+    "28": {
+        "name": "Luciano Floridi",
+        "country": "Italy",
+        "role": "Director of Digital Ethics Center",
+        "profile_url": "https://www.unibo.it/sitoweb/luciano.floridi",
+        "status": "pending",
+        "email": "luciano.floridi@unibo.it",
+        "notes": "One of the world's leading philosophers of information."
+    },
+    "29": {
+        "name": "Virginia Dignum",
+        "country": "Sweden",
+        "role": "Professor of Responsible AI",
+        "profile_url": "https://www.umu.se/en/staff/virginia-dignum/",
+        "status": "pending",
+        "email": "virginia.dignum@umu.se",
+        "notes": "Lead of Social and Ethical AI research group."
+    },
+    "30": {
+        "name": "Petri Ylikoski",
+        "country": "Finland",
+        "role": "Coord. Prof. AI in Society",
+        "profile_url": "https://researchportal.helsinki.fi/en/persons/petri-ylikoski",
+        "status": "pending",
+        "email": "petri.ylikoski@helsinki.fi",
+        "notes": "Focus on politics and political economy of data."
+    },
+    "31": {
+        "name": "Bruno Martins",
+        "country": "Portugal",
+        "role": "Responsible AI Lead (INESC-ID)",
+        "profile_url": "https://www.inesc-id.pt/member/bruno-martins/",
+        "status": "pending",
+        "email": "bruno.g.martins@tecnico.ulisboa.pt",
+        "notes": "Leading R&D in responsible AI solutions."
+    },
+    "32": {
+        "name": "Barry O'Sullivan",
+        "country": "Ireland",
+        "role": "Director Insight Centre",
+        "profile_url": "https://www.ucc.ie/en/compsci/people/barryosullivan/",
+        "status": "pending",
+        "email": "barry.osullivan@insight-centre.org",
+        "notes": "Vice Chair of the EC High-Level Expert Group on AI."
+    },
+    "33": {
+        "name": "Charalambos Tsekeris",
+        "country": "Greece",
+        "role": "National Commission for Bioethics",
+        "profile_url": "https://www.ekke.gr/en/staff/tsekeris-charalambos",
+        "status": "pending",
+        "email": "tsekeris@ekke.gr",
+        "notes": "Expert in technoethics and digital social research."
+    },
+    "34": {
+        "name": "Piotr Sankowski",
+        "country": "Poland",
+        "role": "Director ELLIS Unit Warsaw",
+        "profile_url": "https://mimuw.edu.pl/~sank/",
+        "status": "pending",
+        "email": "sank@mimuw.edu.pl",
+        "notes": "Focus on technological sovereignty and responsible AI."
+    },
+    "35": {
+        "name": "Michael Nentwich",
+        "country": "Austria",
+        "role": "Director Technology Assessment",
+        "profile_url": "https://www.oeaw.ac.at/ita/das-ita/team/michael-nentwich",
+        "status": "pending",
+        "email": "michael.nentwich@oeaw.ac.at",
+        "notes": "Specialist in tech self-determination and AI democracy."
+    },
+    "36": {
+        "name": "Luboš Král",
+        "country": "Czech Republic",
+        "role": "Deputy Head of CTU AI Center",
+        "profile_url": "https://www.aic.fel.cvut.cz/people/lubos-kral",
+        "status": "pending",
+        "email": "lubos.kral@fel.cvut.cz",
+        "notes": "Focus on AI in journalism and mission-critical systems."
+    },
+    "37": {
+        "name": "Constantin Vică",
+        "country": "Romania",
+        "role": "Ethics of AI Researcher",
+        "profile_url": "https://unibuc.ro/user/constantin.vica/",
+        "status": "pending",
+        "email": "constantin.vica@filosofie.unibuc.ro",
+        "notes": "Lecturer at Faculty of Philosophy, Univ. of Bucharest."
+    },
+    "38": {
+        "name": "Jacob Udo-Udo Jacob",
+        "country": "Bulgaria",
+        "role": "Director CIDC (AUBG)",
+        "profile_url": "https://www.aubg.edu/directory/jacob-udo-udo-jacob/",
+        "status": "pending",
+        "email": "jjacob@aubg.edu",
+        "notes": "Expert in information, democracy, and citizenship."
+    },
+    "39": {
+        "name": "Gábor Palkó",
+        "country": "Hungary",
+        "role": "Director Digital Heritage Lab",
+        "profile_url": "https://elte-dh.hu/en/staff/gabor-palko/",
+        "status": "pending",
+        "email": "palko.gabor@btk.elte.hu",
+        "notes": "Leading digital humanities and governance at ELTE."
+    },
+    "40": {
+        "name": "Matúš Mesarčík",
+        "country": "Slovakia",
+        "role": "Law & Ethics of AI (KInIT)",
+        "profile_url": "https://kinit.sk/person/matus-mesarcik/",
+        "status": "pending",
+        "email": "matus.mesarcik@flaw.uniba.sk",
+        "notes": "Specialist in AI regulation and digital policy."
+    },
+    "41": {
+        "name": "Marko Grobelnik",
+        "country": "Slovenia",
+        "role": "Digital Ocean & AI lead (IJS)",
+        "profile_url": "http://ijs.si/ijsw/MarkoGrobelnik",
+        "status": "pending",
+        "email": "marko.grobelnik@ijs.si",
+        "notes": "Member of OECD AI expert group."
+    },
+    "42": {
+        "name": "Anto Čartolovni",
+        "country": "Croatia",
+        "role": "Head of Digit-HeaL Lab",
+        "profile_url": "https://www.unicath.hr/anto-cartolovni",
+        "status": "pending",
+        "email": "anto.cartolovni@unicath.hr",
+        "notes": "Expert in digital healthcare ethics."
+    },
+    "43": {
+        "name": "Matthew Montebello",
+        "country": "Malta",
+        "role": "Head of AI Dept, Univ Malta",
+        "profile_url": "https://www.um.edu.mt/profile/matthewmontebello",
+        "status": "pending",
+        "email": "mmont@cs.um.edu.mt",
+        "notes": "Key academic for Malta's AI strategy."
+    },
+    "44": {
+        "name": "Jure Petrovic",
+        "country": "Latvia",
+        "role": "Professor of AI & ML",
+        "profile_url": "https://iu.id.lv/staff/jure-petrovic/",
+        "status": "pending",
+        "email": "info@iu.id.lv",
+        "notes": "Specialist in machine learning for governance."
+    },
+    "45": {
+        "name": "Linas Petkevičius",
+        "country": "Lithuania",
+        "role": "Head of Software Engineering (VU)",
+        "profile_url": "https://www.mif.vu.lt/en/staff/petkevicius-linas/",
+        "status": "pending",
+        "email": "linas.petkevicius@mif.vu.lt",
+        "notes": "Leading deep learning research at Vilnius University."
+    },
+    "46": {
+        "name": "Petra Gehring",
+        "country": "Germany",
+        "role": "Scientific Director ZEVEDI",
+        "profile_url": "https://zevedi.de/en/person/petra-gehring/",
+        "status": "pending",
+        "email": "gehring@phil.tu-darmstadt.de",
+        "notes": "Expert in philosophy of technology and digital law."
+    },
+    "47": {
+        "name": "Federico Faroldi",
+        "country": "Italy",
+        "role": "Director CERNAI",
+        "profile_url": "https://faroldi.org/",
+        "status": "pending",
+        "email": "federico.faroldi@unipv.it",
+        "notes": "Leading normative risk research at Pavia University."
+    },
+    "48": {
+        "name": "José van Dijck",
+        "country": "Netherlands",
+        "role": "Digital Society Professor",
+        "profile_url": "https://www.uu.nl/staff/JFfvanDijck",
+        "status": "pending",
+        "email": "j.f.f.vandijck@uu.nl",
+        "notes": "Former KNAW President, expert in public values."
+    },
+    "49": {
+        "name": "Jaan Aru",
+        "country": "Estonia",
+        "role": "Assoc. Professor AI & Neuroscience",
+        "profile_url": "https://www.ut.ee/en/contact/jaan-aru",
+        "status": "pending",
+        "email": "jaan.aru@ut.ee",
+        "notes": "Working on trustworthy AI systems at EXAI."
+    },
+    "50": {
+        "name": "Tomasz Trzciński",
+        "country": "Poland",
+        "role": "Director ELLIS Unit Warsaw",
+        "profile_url": "http://purl.org/net/ttrzcinski",
+        "status": "pending",
+        "email": "tomasz.trzcinski@pw.edu.pl",
+        "notes": "Leading responsible AI and computer vision projects."
     }
 }
