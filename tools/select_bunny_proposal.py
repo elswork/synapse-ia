@@ -3,6 +3,8 @@ import os
 import random
 import sys
 from datetime import datetime
+import re
+
 
 # Añadir el directorio raíz al path para importar tools
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -13,6 +15,22 @@ class BunnySelector:
         self.base_path = base_path or os.environ.get("BASE_PATH", "/app")
         self.registry_path = os.path.join(self.base_path, "context/data/bunny_registry.json")
         self.brain = AthenaBrain(self.base_path)
+
+    def clean_markdown_professional(self, text):
+        # Remove bold markers
+        text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
+        text = re.sub(r'__(.*?)__', r'\1', text)
+        # Remove italic markers
+        text = re.sub(r'\*(.*?)\*', r'\1', text)
+        text = re.sub(r'_(.*?)_', r'\1', text)
+        # Convert links: [text](url) -> text (url)
+        text = re.sub(r'\[(.*?)\]\((.*?)\)', r'\1 (\2)', text)
+        # Remove headers: # Header -> Header
+        text = re.sub(r'^#+\s*(.*?)$', r'\1', text, flags=re.MULTILINE)
+        # Remove horizontal rules
+        text = re.sub(r'^---\s*$', '', text, flags=re.MULTILINE)
+        
+        return text.strip()
 
     def load_data(self):
         with open(self.registry_path, 'r', encoding='utf-8') as f:
@@ -131,6 +149,12 @@ class BunnySelector:
                 "body_spanish": "Error en traducción automatizada.",
                 "recipient_email": expert_data['email']
             }
+        
+        # Clean markdown from the generated bodies
+        if "body_local" in email_data:
+            email_data["body_local"] = self.clean_markdown_professional(email_data["body_local"])
+        if "body_spanish" in email_data:
+            email_data["body_spanish"] = self.clean_markdown_professional(email_data["body_spanish"])
         
         return {
             "expert": expert_data,

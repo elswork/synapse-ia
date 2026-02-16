@@ -3,6 +3,8 @@ import os
 import random
 import sys
 from datetime import datetime
+import re
+
 
 # Añadir el directorio raíz al path para importar tools
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -15,6 +17,22 @@ class MEPSelector:
         self.registry_path = os.path.join(self.base_path, "context/data/mep_registry.json")
         self.radar_path = os.path.join(self.base_path, "context/data/radar_data.json")
         self.brain = AthenaBrain(self.base_path)
+
+    def clean_markdown_professional(self, text):
+        # Remove bold markers
+        text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
+        text = re.sub(r'__(.*?)__', r'\1', text)
+        # Remove italic markers
+        text = re.sub(r'\*(.*?)\*', r'\1', text)
+        text = re.sub(r'_(.*?)_', r'\1', text)
+        # Convert links: [text](url) -> text (url)
+        text = re.sub(r'\[(.*?)\]\((.*?)\)', r'\1 (\2)', text)
+        # Remove headers: # Header -> Header
+        text = re.sub(r'^#+\s*(.*?)$', r'\1', text, flags=re.MULTILINE)
+        # Remove horizontal rules
+        text = re.sub(r'^---\s*$', '', text, flags=re.MULTILINE)
+        
+        return text.strip()
 
     def load_data(self):
         with open(self.registry_path, 'r') as f:
@@ -110,6 +128,10 @@ class MEPSelector:
                 "body": response_text,
                 "recipient_email": mep_data['email']
             }
+        
+        # Clean markdown from the generated body
+        if "body" in email_data:
+            email_data["body"] = self.clean_markdown_professional(email_data["body"])
         
         return {
             "mep": mep_data,
