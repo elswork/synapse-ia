@@ -34,6 +34,48 @@ class MEPSelector:
         
         return text.strip()
 
+    def extract_json(self, text):
+        try:
+            # Reemplazo rudimentario actual por Regex robusto
+            match = re.search(r'\{.*\}', text, re.DOTALL)
+            if match:
+                return json.loads(match.group(0))
+            return None
+        except Exception as e:
+            print(f"Error parseando JSON: {e}")
+            return None
+
+    def clean_email_body(self, body):
+        # Eliminar posibles bloques de código que el modelo haya dejado
+        body = re.sub(r'```[a-z]*\n?', '', body)
+        body = body.replace('```', '')
+        
+        # Eliminar introducciones conversacionales típicas
+        lines = body.split('\n')
+        clean_lines = []
+        skip_patterns = [
+            r'^as a .*strategist',
+            r'^here is the .*invitation',
+            r'^como estratega principal',
+            r'^presento la correspondencia',
+            r'^a continuación',
+            r'^subject:',
+            r'^cuerpo del mensaje'
+        ]
+        
+        for line in lines:
+            should_skip = False
+            for pattern in skip_patterns:
+                if re.search(pattern, line, re.IGNORECASE):
+                    should_skip = True
+                    break
+            if not should_skip:
+                clean_lines.append(line)
+        
+        body = '\n'.join(clean_lines).strip()
+        # Limpiar markdown genérico
+        return self.clean_markdown_professional(body)
+
     def load_data(self):
         with open(self.registry_path, 'r') as f:
             self.registry = json.load(f)
@@ -116,22 +158,23 @@ class MEPSelector:
         try:
             # Obtener respuesta
             response_text = self.brain.ask(prompt)
+            email_data = self.extract_json(response_text)
             
-            # Limpiar posible markdown ```json ... ```
-            clean_text = response_text.replace("```json", "").replace("```", "").strip()
-            email_data = json.loads(clean_text)
+            if not email_data:
+                raise ValueError("No JSON found in response")
+
         except Exception as e:
             # Fallback en caso de error de parseo
-            print(f"Error parsing JSON from Athena: {e}")
+            print(f"Fallback due to: {e}")
             email_data = {
                 "subject": f"Propuesta de Cooperación: Proyecto Anticitera ({mep_data['country']})",
                 "body": response_text,
                 "recipient_email": mep_data['email']
             }
         
-        # Clean markdown from the generated body
+        # Clean the generated body
         if "body" in email_data:
-            email_data["body"] = self.clean_markdown_professional(email_data["body"])
+            email_data["body"] = self.clean_email_body(email_data["body"])
         
         return {
             "mep": mep_data,

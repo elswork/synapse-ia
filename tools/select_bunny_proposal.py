@@ -29,8 +29,47 @@ class BunnySelector:
         text = re.sub(r'^#+\s*(.*?)$', r'\1', text, flags=re.MULTILINE)
         # Remove horizontal rules
         text = re.sub(r'^---\s*$', '', text, flags=re.MULTILINE)
-        
         return text.strip()
+
+    def extract_json(self, text):
+        try:
+            match = re.search(r'\{.*\}', text, re.DOTALL)
+            if match:
+                return json.loads(match.group(0))
+            return None
+        except Exception as e:
+            print(f"Error parseando JSON: {e}")
+            return None
+
+    def clean_email_body(self, body):
+        # Eliminar bloques de código
+        body = re.sub(r'```[a-z]*\n?', '', body)
+        body = body.replace('```', '')
+        
+        # Eliminar introducciones conversacionales típicas
+        lines = body.split('\n')
+        clean_lines = []
+        skip_patterns = [
+            r'^as a .*strategist',
+            r'^here is the .*invitation',
+            r'^como estratega principal',
+            r'^presento la correspondencia',
+            r'^a continuación',
+            r'^subject:',
+            r'^cuerpo del mensaje'
+        ]
+        
+        for line in lines:
+            should_skip = False
+            for pattern in skip_patterns:
+                if re.search(pattern, line, re.IGNORECASE):
+                    should_skip = True
+                    break
+            if not should_skip:
+                clean_lines.append(line)
+        
+        body = '\n'.join(clean_lines).strip()
+        return self.clean_markdown_professional(body)
 
     def load_data(self):
         with open(self.registry_path, 'r', encoding='utf-8') as f:
@@ -139,9 +178,13 @@ class BunnySelector:
         
         try:
             response_text = self.brain.ask(prompt)
-            clean_text = response_text.replace("```json", "").replace("```", "").strip()
-            email_data = json.loads(clean_text)
+            email_data = self.extract_json(response_text)
+            
+            if not email_data:
+                raise ValueError("No JSON found in response")
+                
         except Exception as e:
+            print(f"Fallback due to: {e}")
             email_data = {
                 "subject_local": f"Strategic Cooperation Proposal: Antikythera Project ({expert_data['country']})",
                 "body_local": response_text,
@@ -150,11 +193,11 @@ class BunnySelector:
                 "recipient_email": expert_data['email']
             }
         
-        # Clean markdown from the generated bodies
+        # Clean the generated bodies
         if "body_local" in email_data:
-            email_data["body_local"] = self.clean_markdown_professional(email_data["body_local"])
+            email_data["body_local"] = self.clean_email_body(email_data["body_local"])
         if "body_spanish" in email_data:
-            email_data["body_spanish"] = self.clean_markdown_professional(email_data["body_spanish"])
+            email_data["body_spanish"] = self.clean_email_body(email_data["body_spanish"])
         
         return {
             "expert": expert_data,
