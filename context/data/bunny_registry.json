@@ -85,7 +85,7 @@
         "country": "Greece",
         "role": "Tech Law & Policy",
         "profile_url": "https://eilst.org/",
-        "status": "pending",
+        "status": "contacted",
         "email": "info@eilst.org",
         "notes": "Executive Director of the European Institute of Law, Science and Technology."
     },
@@ -166,7 +166,7 @@
         "country": "Slovenia",
         "role": "Head of Centre for Human-Centred AI",
         "profile_url": "https://www.ff.uni-lj.si/en/staff/vojko-strahovnik",
-        "status": "pending",
+        "status": "contacted",
         "email": "vojko.strahovnik@ff.uni-lj.si",
         "notes": "Interdisciplinary researcher in ethical dimensions of AI."
     },
@@ -193,7 +193,7 @@
         "country": "Malta",
         "role": "AI Policy & Ethics Task Force",
         "profile_url": "https://www.um.edu.mt/profile/alexieidingli",
-        "status": "pending",
+        "status": "contacted",
         "email": "alexiei.dingli@um.edu.mt",
         "notes": "Professor of AI, member of the national AI task force of Malta."
     },
@@ -337,7 +337,7 @@
         "country": "Bulgaria",
         "role": "Director CIDC (AUBG)",
         "profile_url": "https://www.aubg.edu/directory/jacob-udo-udo-jacob/",
-        "status": "pending",
+        "status": "contacted",
         "email": "jjacob@aubg.edu",
         "notes": "Expert in information, democracy, and citizenship."
     },
@@ -382,7 +382,7 @@
         "country": "Malta",
         "role": "Head of AI Dept, Univ Malta",
         "profile_url": "https://www.um.edu.mt/profile/matthewmontebello",
-        "status": "pending",
+        "status": "contacted",
         "email": "mmont@cs.um.edu.mt",
         "notes": "Key academic for Malta's AI strategy."
     },
@@ -391,7 +391,7 @@
         "country": "Latvia",
         "role": "Professor of AI & ML",
         "profile_url": "https://iu.id.lv/staff/jure-petrovic/",
-        "status": "pending",
+        "status": "contacted",
         "email": "info@iu.id.lv",
         "notes": "Specialist in machine learning for governance."
     },
@@ -436,7 +436,7 @@
         "country": "Estonia",
         "role": "Assoc. Professor AI & Neuroscience",
         "profile_url": "https://www.ut.ee/en/contact/jaan-aru",
-        "status": "pending",
+        "status": "contacted",
         "email": "jaan.aru@ut.ee",
         "notes": "Working on trustworthy AI systems at EXAI."
     },
