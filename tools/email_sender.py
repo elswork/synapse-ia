@@ -47,6 +47,31 @@ class EmailSender:
             print(f"❌ Error sending email: {e}")
             return False
 
+    def send_direct_email(self, to_email, subject, body_html, body_text):
+        if not self.smtp_user or not self.smtp_password:
+            raise ValueError("SMTP credentials not configured in .env")
+
+        msg = MIMEMultipart("alternative")
+        msg["Subject"] = subject
+        msg["From"] = f"Anticitera Digital Nation <{self.smtp_user}>"
+        msg["To"] = to_email
+
+        part1 = MIMEText(body_text, "plain")
+        part2 = MIMEText(body_html, "html")
+
+        msg.attach(part1)
+        msg.attach(part2)
+
+        try:
+            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                server.starttls()
+                server.login(self.smtp_user, self.smtp_password)
+                server.sendmail(self.smtp_user, to_email, msg.as_string())
+            return True
+        except Exception as e:
+            print(f"❌ Error sending direct email: {e}")
+            return False
+
 if __name__ == "__main__":
     # Test
     sender = EmailSender()

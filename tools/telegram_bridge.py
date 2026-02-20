@@ -241,8 +241,9 @@ def pasar_bunny(message):
                 f"🐇 <b>Propuesta Lista para Arconte (Bad Bunny)</b>\n\n"
                 f"<b>Experto:</b> {html.escape(expert['name'])} ({html.escape(expert['country'])})\n"
                 f"<b>Email:</b> <code>{html.escape(expert['email'])}</code>\n\n"
-                f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}\n"
-                f"<i>(Revisa el borrador local si quieres ver el contenido)</i>\n"
+                f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}\n\n"
+                f"<b>Cuerpo (Castellano):</b>\n"
+                f"<i>{html.escape(email_data['body_spanish'])}</i>\n\n"
                 f"¿Autorizas el despliegue del correo?",
                 parse_mode='HTML',
                 reply_markup=markup
@@ -287,11 +288,15 @@ def handle_bunny_approval(call):
     mode_text = "⚠️ <b>[MODO TEST - ENVIADO A ELSWORK]</b>" if TEST_BUNNY_MODE else "✅ <b>[DESPLIEGUE OFICIAL]</b>"
     
     sender = EmailSender()
-    success = sender.send_mep_email(
-        expert['name'], expert['country'], expert['email'],
-        email_data['subject_local'], proposal['rich_html'], email_data['body_local'],
-        category="Expert",
-        to_email=destination_email
+    
+    formatted_body = email_data['body_local'].replace('\n', '<br>')
+    body_html_direct = f"<div style='font-family: sans-serif; font-size: 14px; color: #333; line-height: 1.6;'>{formatted_body}</div>"
+    
+    success = sender.send_direct_email(
+        to_email=destination_email,
+        subject=email_data['subject_local'],
+        body_html=body_html_direct,
+        body_text=email_data['body_local']
     )
     
     if success:
