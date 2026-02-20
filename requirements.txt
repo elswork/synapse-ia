@@ -10,3 +10,4 @@ lxml_html_clean
 feedparser
 psutil
 
+schedule==1.2.1
