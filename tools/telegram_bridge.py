@@ -25,7 +25,7 @@ ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID", "").strip() # Para segur
 
 # Global cache for pending bunny proposals
 pending_bunny_proposals = {}
-TEST_BUNNY_MODE = True
+TEST_BUNNY_MODE = False
 
 if not BOT_TOKEN:
     print("❌ Error: TELEGRAM_BOT_TOKEN no configurado en el .env")

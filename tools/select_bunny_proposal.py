@@ -162,8 +162,8 @@ class BunnySelector:
         4. Llamado a la acción: Unirse al comité de la ICE. 
         5. Cierre profesional.
         
-        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN:
-        La comunicación asíncrona es vital para nosotros. Muestra una clara preferencia por comunicarte por correo electrónico y EVITA categóricamente proponer "llamadas telefónicas", "videoconferencias" o reuniones virtuales iniciales (nada de Zoom, Teams, Meets ni "agendar una llamada").
+        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN (Incluir al final del correo textualmente o traducido):
+        "Quedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio."
         
         ENLACES OBLIGATORIOS (Inclúyelos de forma natural):
         1. Official Website: {web_url}
