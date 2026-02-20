@@ -12,6 +12,9 @@ from tools.url_analyzer import URLAnalyzer
 from tools.news_sentinel import NewsSentinel
 import psutil
 import subprocess
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+import threading
+import schedule
 
 # Cargar variables de entorno
 load_dotenv()
@@ -19,6 +22,10 @@ load_dotenv()
 # Configuración
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID", "").strip() # Para seguridad, solo el COO puede hablarle
+
+# Global cache for pending bunny proposals
+pending_bunny_proposals = {}
+TEST_BUNNY_MODE = True
 
 if not BOT_TOKEN:
     print("❌ Error: TELEGRAM_BOT_TOKEN no configurado en el .env")
@@ -211,28 +218,90 @@ def pasar_bunny(message):
         rich_html = rich_html.replace("{{body_text}}", email_data['body_local'])
         rich_html = rich_html.replace("{{body_spanish}}", email_data['body_spanish'])
 
-        # Enviar Email
-        sender = EmailSender()
-        success = sender.send_mep_email(
-            expert['name'], expert['country'], expert['email'],
-            email_data['subject_local'], rich_html, email_data['body_local'],
-            category="Expert"
+        import time
+        # Guardar en la caché de pendientes
+        proposal_id = f"bunny_{int(time.time())}"
+        
+        pending_bunny_proposals[proposal_id] = {
+            "expert": expert,
+            "email_data": email_data,
+            "rich_html": rich_html,
+            "saved_path": selector.save_proposal(proposal)
+        }
+
+        # Construir teclado interactivo de Telegram
+        markup = InlineKeyboardMarkup()
+        markup.row_width = 2
+        markup.add(
+            InlineKeyboardButton("✅ Aprobar Envío", callback_data=f"approve_{proposal_id}"),
+            InlineKeyboardButton("❌ Descartar", callback_data=f"reject_{proposal_id}")
         )
 
-        if success:
-            saved_path = selector.save_proposal(proposal)
-            bot.reply_to(message, 
-                f"✅ <b>Propuesta enviada a elswork@gmail.com</b>\n\n"
+        bot.reply_to(message, 
+                f"🐇 <b>Propuesta Lista para Arconte (Bad Bunny)</b>\n\n"
                 f"<b>Experto:</b> {html.escape(expert['name'])} ({html.escape(expert['country'])})\n"
                 f"<b>Email:</b> <code>{html.escape(expert['email'])}</code>\n\n"
-                f"He guardado el borrador en:\n<code>{html.escape(saved_path)}</code>",
-                parse_mode='HTML'
+                f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}\n"
+                f"<i>(Revisa el borrador local si quieres ver el contenido)</i>\n"
+                f"¿Autorizas el despliegue del correo?",
+                parse_mode='HTML',
+                reply_markup=markup
             )
-        else:
-            bot.reply_to(message, "❌ Error al enviar el correo. Revisa los logs del sistema.")
 
     except Exception as e:
         bot.reply_to(message, f"❌ Error crítico en la forja de Arconte: {str(e)}")
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('approve_bunny_') or call.data.startswith('reject_bunny_'))
+def handle_bunny_approval(call):
+    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+        return
+        
+    action, proposal_id = call.data.split('_', 1)
+    # Reconstruir ID correctamente si fue cortado por split
+    proposal_id = "bunny_" + proposal_id.split('_', 1)[1] if len(proposal_id.split('_')) > 1 else call.data.replace('approve_', '').replace('reject_', '')
+
+    if proposal_id not in pending_bunny_proposals:
+        bot.answer_callback_query(call.id, "❌ Esta propuesta ha expirado o ya fue procesada.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text + "\n\n<i>(Propuesta Expirada)</i>", parse_mode='HTML')
+        return
+        
+    proposal = pending_bunny_proposals[proposal_id]
+    
+    if call.data.startswith('reject'):
+        bot.answer_callback_query(call.id, "Propuesta descartada.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+        del pending_bunny_proposals[proposal_id]
+        return
+        
+    # Lógica de Aprobación
+    bot.answer_callback_query(call.id, "Aprobado. Desplegando...")
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                          text=call.message.text + "\n\n⏳ <i>Desplegando en la red...</i>", parse_mode='HTML')
+                          
+    expert = proposal['expert']
+    email_data = proposal['email_data']
+    
+    # Evaluar test mode
+    destination_email = "elswork@gmail.com" if TEST_BUNNY_MODE else expert['email']
+    mode_text = "⚠️ <b>[MODO TEST - ENVIADO A ELSWORK]</b>" if TEST_BUNNY_MODE else "✅ <b>[DESPLIEGUE OFICIAL]</b>"
+    
+    sender = EmailSender()
+    success = sender.send_mep_email(
+        expert['name'], expert['country'], expert['email'],
+        email_data['subject_local'], proposal['rich_html'], email_data['body_local'],
+        category="Expert",
+        to_email=destination_email
+    )
+    
+    if success:
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n{mode_text} Desplegado con éxito a `{destination_email}`."), parse_mode='HTML')
+    else:
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n❌ Error en el servidor SMTP."), parse_mode='HTML')
+                              
+    del pending_bunny_proposals[proposal_id]
 
 @bot.message_handler(commands=['auditar'])
 def auditar_url(message):
@@ -429,6 +498,30 @@ def background_sentinel():
         # Esperar 4 horas (14400 segundos) entre rondas
         time.sleep(14400)
 
+def auto_bunny_job():
+    """Job to generate bunny proposal automatically."""
+    print("🐇 Ejecutando auto-bunny (Directiva 3.0)...")
+    if not ALLOWED_USER_ID:
+        return
+        
+    # Simulate a message to reuse the logic
+    class DummyMessage:
+        def __init__(self):
+            self.text = "/pasar_bunny"
+            self.chat = type('Chat', (), {'id': int(ALLOWED_USER_ID)})()
+            self.from_user = type('User', (), {'id': int(ALLOWED_USER_ID)})()
+            
+    pasar_bunny(DummyMessage())
+
+def scheduler_loop():
+    """Loop for all scheduled jobs."""
+    schedule.every().day.at("09:00").do(auto_bunny_job)
+    schedule.every().day.at("21:00").do(auto_bunny_job)
+    
+    while True:
+        schedule.run_pending()
+        time.sleep(30)
+
 if __name__ == "__main__":
     # Ejecutar migración/limpieza inicial solicitada por el COO
     try:
@@ -441,5 +534,8 @@ if __name__ == "__main__":
 
     # Iniciar hilo del centinela
     threading.Thread(target=background_sentinel, daemon=True).start()
+    
+    # Iniciar hilo del scheduler
+    threading.Thread(target=scheduler_loop, daemon=True).start()
     
     bot.infinity_polling()

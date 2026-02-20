@@ -158,9 +158,12 @@ class BunnySelector:
         ESTRUCTURA SUGERIDA:
         1. Saludo formal.
         2. Reconocimiento breve de su trabajo en {expert_data['role']}.
-        3. Presentación del Proyecto Anticitera y el desafío de la soberanía digital.
-        4. Llamado a la acción: Unirse al comité de la ICE.
+        3. Presentación del Proyecto Anticitera. OBLIGATORIO: El Mecanismo de Anticitera (la primera computadora analógica de hace 2000 años) debe ser mencionado como nuestra inspiración central y una entidad histórica muy importante para nuestro proyecto técnico/ético de soberanía digital.
+        4. Llamado a la acción: Unirse al comité de la ICE. 
         5. Cierre profesional.
+        
+        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN:
+        La comunicación asíncrona es vital para nosotros. Muestra una clara preferencia por comunicarte por correo electrónico y EVITA categóricamente proponer "llamadas telefónicas", "videoconferencias" o reuniones virtuales iniciales (nada de Zoom, Teams, Meets ni "agendar una llamada").
         
         ENLACES OBLIGATORIOS (Inclúyelos de forma natural):
         1. Official Website: {web_url}
