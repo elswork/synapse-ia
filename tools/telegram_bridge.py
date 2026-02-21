@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from tools.athena_brain import AthenaBrain
 from tools.select_mep_proposal import MEPSelector
 from tools.select_bunny_proposal import BunnySelector
+from tools.moltbook_heartbeat import execute_heartbeat
 from tools.email_sender import EmailSender
 from tools.url_analyzer import URLAnalyzer
 from tools.news_sentinel import NewsSentinel
@@ -525,6 +526,9 @@ def scheduler_loop():
     # The previous timezone parameter caused a crash on older schedule library versions.
     schedule.every().day.at("09:00").do(auto_bunny_job)
     schedule.every().day.at("21:00").do(auto_bunny_job)
+    
+    # Moltbook Heartbeat every 30 minutes
+    schedule.every(30).minutes.do(execute_heartbeat)
     
     while True:
         schedule.run_pending()
