@@ -198,7 +198,7 @@ def pasar_bunny(message):
         proposal = selector.generate_proposal(name_filter)
 
         if "error" in proposal:
-            bot.reply_to(message, f"❌ {proposal['error']}")
+            bot.send_message(message.chat.id, f"❌ {proposal['error']}")
             return
 
         expert = proposal['expert']
@@ -237,7 +237,7 @@ def pasar_bunny(message):
             InlineKeyboardButton("❌ Descartar", callback_data=f"reject_{proposal_id}")
         )
 
-        bot.reply_to(message, 
+        bot.send_message(message.chat.id, 
                 f"🐇 <b>Propuesta Lista para Arconte (Bad Bunny)</b>\n\n"
                 f"<b>Experto:</b> {html.escape(expert['name'])} ({html.escape(expert['country'])})\n"
                 f"<b>Email:</b> <code>{html.escape(expert['email'])}</code>\n\n"
@@ -250,7 +250,7 @@ def pasar_bunny(message):
             )
 
     except Exception as e:
-        bot.reply_to(message, f"❌ Error crítico en la forja de Arconte: {str(e)}")
+        bot.send_message(message.chat.id, f"❌ Error crítico en la forja de Arconte: {str(e)}")
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith('approve_bunny_') or call.data.startswith('reject_bunny_'))
 def handle_bunny_approval(call):
@@ -520,8 +520,14 @@ def auto_bunny_job():
 
 def scheduler_loop():
     """Loop for all scheduled jobs."""
-    schedule.every().day.at("09:00").do(auto_bunny_job)
-    schedule.every().day.at("21:00").do(auto_bunny_job)
+    import pytz
+    madrid = pytz.timezone('Europe/Madrid')
+    
+    # We schedule the times assuming schedule library uses the local container time (which is CET).
+    # To be fully bulletproof against UTC container drift, we set the timezone natively.
+    # Note: `at("09:00", "Europe/Madrid")` is supported in schedule 1.2+
+    schedule.every().day.at("09:00", "Europe/Madrid").do(auto_bunny_job)
+    schedule.every().day.at("21:00", "Europe/Madrid").do(auto_bunny_job)
     
     while True:
         schedule.run_pending()
