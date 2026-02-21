@@ -520,14 +520,11 @@ def auto_bunny_job():
 
 def scheduler_loop():
     """Loop for all scheduled jobs."""
-    import pytz
-    madrid = pytz.timezone('Europe/Madrid')
-    
-    # We schedule the times assuming schedule library uses the local container time (which is CET).
-    # To be fully bulletproof against UTC container drift, we set the timezone natively.
-    # Note: `at("09:00", "Europe/Madrid")` is supported in schedule 1.2+
-    schedule.every().day.at("09:00", "Europe/Madrid").do(auto_bunny_job)
-    schedule.every().day.at("21:00", "Europe/Madrid").do(auto_bunny_job)
+    # Since the container runs in CET (UTC+1), to run at 09:00 local Madrid time, 
+    # we just use "09:00" assuming the base system time is correct.
+    # The previous timezone parameter caused a crash on older schedule library versions.
+    schedule.every().day.at("09:00").do(auto_bunny_job)
+    schedule.every().day.at("21:00").do(auto_bunny_job)
     
     while True:
         schedule.run_pending()
