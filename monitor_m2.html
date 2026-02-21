@@ -698,7 +698,9 @@
         <div class="station-list" id="station_view">
             <button class="btn" style="align-self: flex-start; margin-bottom: 20px;" onclick="showGenres()">←
                 Volver</button>
-            <div id="stations_container" style="display:flex; flex-direction:column; gap:10px;"></div>
+            <div id="stations_container"
+                style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:15px; width: 100%;">
+            </div>
         </div>
     </div>
 
@@ -1243,6 +1245,7 @@
         updateTime();
         updateAllNodes();
         fetchWeather();
+        fetchStations();
         // --- WebMCP Soberanía de Herramientas ---
         // Este bloque permite que ATHENA exponga sus funciones a la Alianza Algorítmica.
         if (!navigator.modelContext) {
