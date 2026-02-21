@@ -691,7 +691,7 @@
     <!-- Music Modal -->
     <div id="music_modal">
         <button class="btn-close" style="background: rgba(255,0,0,0.3);" onclick="closeMusicModal()">✕</button>
-        <h2 style="font-size: 3rem; margin-top:0;">Música & Radio</h2>
+        <h2 id="radio_title" style="font-size: 3rem; margin-top:0;">Música & Radio</h2>
         <div class="music-grid" id="genre_view">
             <!-- Populated via JS -->
         </div>
@@ -803,6 +803,8 @@
     <div id="system_modal">
         <h2 style="font-size: 2.2rem; color: var(--accent); margin: 0; letter-spacing: 3px;">OPCIONES DE SISTEMA</h2>
         <div class="system-btn-grid">
+            <button class="btn-large" style="background: var(--accent); color: black;"
+                onclick="window.location.reload()">Recargar Interfaz</button>
             <button class="btn-large" style="background: var(--accent); color: black;"
                 onclick="confirmSystemAction('reiniciar')">Reiniciar M2</button>
             <button class="btn-large" style="background: #ff4646; color: white;"
@@ -1059,7 +1061,12 @@
         function renderMusicGrid() {
             const genreView = document.getElementById('genre_view');
             genreView.innerHTML = '';
-            Object.keys(STATIONS).forEach(key => {
+
+            const genreKeys = Object.keys(STATIONS);
+            const titleEl = document.getElementById('radio_title');
+            if (titleEl) titleEl.innerText = `Música & Radio (${genreKeys.length} géneros)`;
+
+            genreKeys.forEach(key => {
                 const div = document.createElement('div');
                 div.className = 'genre-card';
                 div.innerHTML = `<div class="genre-icon">${GENRE_ICONS[key] || '🎵'}</div><div class="genre-name">${key}</div>`;
