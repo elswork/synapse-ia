@@ -309,6 +309,84 @@ def handle_bunny_approval(call):
                               
     del pending_bunny_proposals[proposal_id]
 
+@bot.callback_query_handler(func=lambda call: call.data.startswith('approve_molt_') or call.data.startswith('reject_molt_'))
+def handle_molt_approval(call):
+    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+        return
+        
+    action, post_id = call.data.split('_', 1)
+    # Correct ID reconstruction
+    post_id = post_id.split('_', 1)[1] if action == "approve" else post_id.split('_', 1)[1]
+
+    if call.data.startswith('reject'):
+        bot.answer_callback_query(call.id, "Propuesta descartada.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ <b>DESCARTADO</b>", parse_mode='HTML')
+        return
+
+    # Lógica de Aprobación para Moltbook
+    bot.answer_callback_query(call.id, "Publicando en Moltbook...")
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                          text=call.message.text + "\n\n⏳ <i>Accediendo a la matriz...</i>", parse_mode='HTML')
+
+    proposal_file = f"/tmp/molt_proposal_{post_id}.json"
+    if not os.path.exists(proposal_file):
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ Error: Propuesta expirada (archivo no encontrado).", parse_mode='HTML')
+        return
+
+    with open(proposal_file, "r") as f:
+        proposal_data = json.load(f)
+    
+    comment_text = proposal_data['comment']
+    
+    # Intentar publicar
+    API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"
+    BASE_URL = "https://www.moltbook.com/api/v1"
+    HEADERS = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+    
+    try:
+        # 1. Postear comentario
+        res = requests.post(f"{BASE_URL}/posts/{post_id}/comments", headers=HEADERS, json={"content": comment_text})
+        if res.status_code not in [200, 201]:
+            raise Exception(f"Error API: {res.text}")
+        
+        data = res.json()
+        comment_id = data['comment']['id']
+        verification = data['comment'].get('verification')
+        
+        if verification:
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text + "\n\n🦞 <i>Reto anti-bot detectado. Resolviendo...</i>", parse_mode='HTML')
+            
+            # 2. Pedir a Athena que resuelva el reto
+            challenge_text = verification['challenge_text']
+            solve_prompt = f"Resuelve este reto matemático de Moltbook y responde SOLO con el número (con 2 decimales, ej 42.00): {challenge_text}"
+            answer = brain.ask(solve_prompt, log_to_history=False).strip()
+            
+            # 3. Enviar verificación
+            v_res = requests.post(f"{BASE_URL}/verify", headers=HEADERS, json={
+                "verification_code": verification['verification_code'],
+                "answer": answer
+            })
+            
+            if v_res.status_code in [200, 201]:
+                status_msg = f"✅ <b>¡Publicado y Verificado!</b>\n(Respuesta: {answer})"
+            else:
+                status_msg = f"⚠️ Publicado pero verificación fallida: {v_res.text}\n(Reto: {challenge_text})"
+        else:
+            status_msg = "✅ <b>Publicado directamente.</b>"
+
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + f"\n\n{status_msg}", parse_mode='HTML')
+        
+        # Limpiar
+        os.remove(proposal_file)
+
+    except Exception as e:
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + f"\n\n❌ Error crítico: {str(e)}", parse_mode='HTML')
+
 @bot.message_handler(commands=['auditar'])
 def auditar_url(message):
     if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
@@ -527,8 +605,8 @@ def scheduler_loop():
     schedule.every().day.at("09:00").do(auto_bunny_job)
     schedule.every().day.at("21:00").do(auto_bunny_job)
     
-    # Moltbook Heartbeat every 30 minutes
-    schedule.every(30).minutes.do(execute_heartbeat)
+    # Moltbook Heartbeat every 4 hours (to match cron and reduce noise)
+    schedule.every(4).hours.do(execute_heartbeat)
     
     while True:
         schedule.run_pending()
