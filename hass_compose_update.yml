@@ -31,7 +31,7 @@ services:
   openwakeword:
     container_name: openwakeword
     image: rhasspy/wyoming-openwakeword
-    command: --preload-model 'okay_nabu' --threshold 0.40 --debug --debug-probability
+    command: --preload-model 'okay_nabu' --preload-model 'hey_jarvis' --threshold 0.15 --debug --debug-probability
     restart: unless-stopped
     network_mode: host
 
@@ -56,9 +56,9 @@ services:
       --name 'Anticitera Nexus'
       --uri 'tcp://0.0.0.0:10700'
       --mic-command 'parecord --device=alsa_input.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.multichannel-input --rate=16000 --channels=1 --channel-map=front-left --format=s16le --raw'
-      --snd-command 'paplay --property=media.role=announce'
+      --snd-command 'paplay --property=media.role=announce --rate=22050 --channels=1 --format=s16le --raw'
       --wake-uri 'tcp://127.0.0.1:10400'
-      --wake-word-name 'okay_nabu'
+      --wake-word-name 'okay_nabu' 'hey_jarvis'
       --awake-wav /data/awake.wav
       --done-wav /data/done.wav
       --no-zeroconf
@@ -66,3 +66,18 @@ services:
       --mic-volume-multiplier 5.0
       --mic-auto-gain 15
       --mic-noise-suppression 2
+  mpd:
+    container_name: mpd
+    build:
+      context: .
+      dockerfile: Dockerfile.mpd
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - PULSE_SERVER=unix:/run/user/1001/pulse/native
+      - PULSE_COOKIE=/root/.config/pulse/cookie
+    volumes:
+      - /run/user/1001/pulse/native:/run/user/1001/pulse/native
+      - /home/pirate/.config/pulse/cookie:/root/.config/pulse/cookie:ro
+      - /home/pirate/docker/synapse-ia/mpd.conf:/etc/mpd.conf:ro
+    command: mpd --no-daemon --stdout /etc/mpd.conf

@@ -1,0 +1,7 @@
+FROM debian:bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    mpd mpc pulseaudio ca-certificates curl \
+    && rm -rf /var/lib/apt/lists/*
+RUN update-ca-certificates
+RUN mkdir -p /var/lib/mpd/playlists
+RUN chown -R mpd:audio /var/lib/mpd || true
