@@ -26,6 +26,9 @@ load_dotenv()
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID", "").strip() # Para seguridad, solo el COO puede hablarle
 
+import logging
+telebot.logger.setLevel(logging.DEBUG)
+
 # Global cache for pending bunny proposals
 pending_bunny_proposals = {}
 TEST_BUNNY_MODE = False
@@ -33,6 +36,9 @@ TEST_BUNNY_MODE = False
 if not BOT_TOKEN:
     print("❌ Error: TELEGRAM_BOT_TOKEN no configurado en el .env")
     exit(1)
+
+print(f"DEBUG: BOT_TOKEN starts with {BOT_TOKEN[:10]}...")
+print(f"DEBUG: ALLOWED_USER_ID is '{ALLOWED_USER_ID}'")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -311,14 +317,20 @@ def handle_bunny_approval(call):
                               
     del pending_bunny_proposals[proposal_id]
 
-@bot.callback_query_handler(func=lambda call: call.data.startswith('approve_molt_') or call.data.startswith('reject_molt_'))
+@bot.callback_query_handler(func=lambda call: True)
+def debug_all_callbacks(call):
+    print(f"DEBUG: Callback received: {call.data} from {call.from_user.id}")
+    # Proceed to existing handlers or re-route
+    if call.data.startswith('approve_molt_') or call.data.startswith('reject_molt_'):
+        handle_molt_approval(call)
+
 def handle_molt_approval(call):
+    print(f"DEBUG: Handling Molt approval: {call.data}")
     if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+        print(f"DEBUG: ID mismatch! {call.from_user.id} != {ALLOWED_USER_ID}")
         return
         
-    action, post_id = call.data.split('_', 1)
-    # Correct ID reconstruction
-    post_id = post_id.split('_', 1)[1] if action == "approve" else post_id.split('_', 1)[1]
+    action, post_id = call.data.split('_molt_', 1)
 
     if call.data.startswith('reject'):
         bot.answer_callback_query(call.id, "Propuesta descartada.")
@@ -348,14 +360,20 @@ def handle_molt_approval(call):
     HEADERS = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
     
     try:
-        # 1. Postear comentario
-        res = requests.post(f"{BASE_URL}/posts/{post_id}/comments", headers=HEADERS, json={"content": comment_text})
+        # 1. Postear (comentario o post nuevo)
+        if post_id.startswith("new"):
+            res = requests.post(f"{BASE_URL}/posts", headers=HEADERS, json={"content": comment_text})
+            obj_tag = "post"
+        else:
+            res = requests.post(f"{BASE_URL}/posts/{post_id}/comments", headers=HEADERS, json={"content": comment_text})
+            obj_tag = "comment"
+
         if res.status_code not in [200, 201]:
             raise Exception(f"Error API: {res.text}")
         
         data = res.json()
-        comment_id = data['comment']['id']
-        verification = data['comment'].get('verification')
+        item_id = data[obj_tag]['id']
+        verification = data[obj_tag].get('verification')
         
         if verification:
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
