@@ -1,14 +1,21 @@
 import os
 import json
 import requests
+import sys
 from datetime import datetime
 from dotenv import load_dotenv
 
-# Reutilizar AthenaBrain para evaluación
-from tools.athena_brain import AthenaBrain
+# Asegurar que el directorio raíz está en el path para las importaciones
+base_dir = os.path.join(os.path.dirname(__file__), "..")
+sys.path.append(base_dir)
+
+try:
+    from tools.athena_brain import AthenaBrain
+except ImportError:
+    from athena_brain import AthenaBrain
 
 # Cargar configuración
-load_dotenv(os.path.join(os.path.dirname(__file__), "../.env"))
+load_dotenv(os.path.join(base_dir, ".env"))
 
 API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"
 BASE_URL = "https://www.moltbook.com/api/v1"
@@ -33,8 +40,8 @@ def send_to_telegram_proposal(post, proposed_comment):
     
     text = (
         f"🦞 <b>Nueva oportunidad en Moltbook</b>\n\n"
-        f"<b>Post de:</b> {post['author']['name']}\n"
-        f"<b>Contenido:</b>\n<i>{post['content'][:200]}...</i>\n\n"
+        f"<b>Post de:</b> {post['author']['name']}\n\n"
+        f"📝 <b>Post Original:</b>\n<i>{post['content']}</i>\n\n"
         f"📜 <b>Propuesta de Arquímedes:</b>\n{proposed_comment}\n\n"
         f"¿Autorizas la publicación?"
     )

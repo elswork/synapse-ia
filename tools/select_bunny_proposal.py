@@ -72,19 +72,24 @@ class BunnySelector:
         return self.clean_markdown_professional(body)
 
     def load_data(self):
+        print(f"DEBUG: Cargando registro desde: {self.registry_path}")
         with open(self.registry_path, 'r', encoding='utf-8') as f:
             self.registry = json.load(f)
 
     def select_candidate(self, name_filter=None):
         candidates = []
         for e_id, data in self.registry.items():
+            # Siempre saltar los que ya están contactados (Soberanía de Datos)
+            if data.get('status') != 'pending' and not name_filter:
+                continue
+
             if name_filter:
                 if name_filter.lower() in data['name'].lower():
+                    # Si el usuario busca por nombre, lo devolvemos aunque esté avisando
                     return (e_id, data)
                 continue
 
-            if data['status'] == 'pending':
-                candidates.append((e_id, data))
+            candidates.append((e_id, data))
         
         if name_filter:
             return None

@@ -1,8 +1,10 @@
 import os
+import json
 import telebot
 import threading
 import time
 import html
+from datetime import datetime
 from dotenv import load_dotenv
 from tools.athena_brain import AthenaBrain
 from tools.select_mep_proposal import MEPSelector
@@ -512,6 +514,32 @@ def add_todo(message):
 
     except Exception as e:
         bot.reply_to(message, f"❌ Error en el registro de la directiva: {str(e)}")
+
+@bot.message_handler(commands=['directiva'])
+def handle_directiva(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    args = message.text.split(maxsplit=1)
+    if len(args) < 2:
+        bot.reply_to(message, "📝 **Protocolo de Operación Nocturna:** Proporciona una instrucción para el Turno de Noche.\nEj: `/directiva Investiga el impacto de los agentes en el mercado de energía.`", parse_mode='Markdown')
+        return
+
+    directive = args[1].strip()
+    queue_file = "/tmp/night_shift_queue.json"
+    
+    try:
+        # Guardar en cola
+        with open(queue_file, "w") as f:
+            json.dump({
+                "directive": directive,
+                "timestamp": datetime.now().isoformat(),
+                "status": "pending"
+            }, f)
+        
+        bot.reply_to(message, f"🌌 <b>Directiva Nocturna Registrada</b>\n\nInstrucción: <i>{directive}</i>\n\nEjecutaré el análisis de forma autónoma a las 02:00 AM y publicaré los resultados en Moltbook. Descansa, COO.", parse_mode='HTML')
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error al registrar directiva: {str(e)}")
 
 @bot.message_handler(commands=['todos'])
 def list_todos(message):

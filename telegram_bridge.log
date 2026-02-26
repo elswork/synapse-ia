@@ -1,0 +1,258 @@
+/home/pirate/docker/synapse-ia/tools/athena_brain.py:2: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+2026-02-26 19:11:39,924 (__init__.py:1241 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running"
+2026-02-26 19:11:39,925 (__init__.py:1243 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 1234, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 115, in raise_exceptions
+    raise self.exception_info
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 97, in run
+    task(*args, **kwargs)
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 688, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 660, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 339, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 168, in _make_request
+    json_result = _check_result(method_name, result)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 197, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+"
+2026-02-26 19:12:43,329 (__init__.py:1241 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running"
+2026-02-26 19:12:43,339 (__init__.py:1243 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 1234, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 115, in raise_exceptions
+    raise self.exception_info
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 97, in run
+    task(*args, **kwargs)
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 688, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 660, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 339, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 168, in _make_request
+    json_result = _check_result(method_name, result)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 197, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+"
+2026-02-26 19:13:46,786 (__init__.py:1241 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running"
+2026-02-26 19:13:46,792 (__init__.py:1243 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 1234, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 115, in raise_exceptions
+    raise self.exception_info
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 97, in run
+    task(*args, **kwargs)
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 688, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 660, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 339, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 168, in _make_request
+    json_result = _check_result(method_name, result)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 197, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+"
+2026-02-26 19:14:50,482 (__init__.py:1241 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running"
+2026-02-26 19:14:50,491 (__init__.py:1243 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 1234, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 115, in raise_exceptions
+    raise self.exception_info
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 97, in run
+    task(*args, **kwargs)
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 688, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 660, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 339, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 168, in _make_request
+    json_result = _check_result(method_name, result)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 197, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+"
+🏛️ Puente de Arquímedes activado. Esperando órdenes del COO...
+🔧 Ejecutando migración de base de datos...
+--- Limpiando noticias existentes ---
+--- Añadiendo columna is_approved ---
+La columna 'is_approved' ya existe.
+Operación completada con éxito.
+🛰️ Centinela en segundo plano iniciado.
+[2026-02-26 19:10:38.451743] Iniciando ronda de vigilancia...
+Escaneando Hacker News...
+Nueva noticia detectada: AirSnitch: Demystifying and breaking client isolation in Wi-Fi networks [pdf]
+Nueva noticia detectada: Open Source Endowment – new funding source for open source maintainers
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Palm OS User Interface Guidelines [pdf, 2003]
+Error al extraer contenido: HTTPSConnectionPool(host='cs.uml.edu', port=443): Max retries exceeded with url: /~fredm/courses/91.308-spr05/files/palmdocs/uiguidelines.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')))
+Nueva noticia detectada: Google Street View in 2026
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Nano Banana 2: Google's latest AI image generation model
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Escaneando BBC World...
+Nueva noticia detectada: Danish PM calls snap election with Greenland issue centre-stage
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: US and Iran hold talks seen as crucial to prevent conflict
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Four convicted over spyware scandal that shook Greece
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Israeli soldiers shot a Palestinian boy and stood around as he bled to death, video shows
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Cuba says group shot on US-registered speedboat planned 'armed infiltration'
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Escaneando El País...
+Nueva noticia detectada: Un periodista que viajó a Milán para cubrir el Valencia-Atalanta, positivo por coronavirus
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Mapa de la expansión y claves para entender el coronavirus de Wuhan
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: El turismo italiano se resiente; España mira expectante
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: “La magnitud del problema del coronavirus no será diferente a una gripe”
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Seis italianos encerrados por partida doble
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Escaneando El Mundo...
+Nueva noticia detectada: Doble golpe de Junts al Gobierno: fracasa el segundo intento de aprobar el "escudo social" y cae el decreto para topar precios en emergencias
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: El Supremo rechaza anular la condena a García Ortiz  y despeja el camino al ex fiscal general para acudir al Constitucional
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: PP y Vox ni tan siquiera logran sentarse en el primer encuentro previsto para desbloquear la gobernabilidad de Extremadura
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: La situación crítica del Rey dentro de las Fuerzas Armadas 10 meses después del golpe:  "Sufre un deterioro personal y profesional"
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Zarzuela: "La decisión de volver a España depende exclusivamente de Don Juan Carlos"
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Escaneando ABC...
+Nueva noticia detectada: Los protagonistas de 'Los Bridgerton', en Madrid: «El romanticismo no ha muerto»
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Recetas de brócoli para niños: sanas y sin dramas
+Error al extraer contenido: 404 Client Error: Not Found for url: https://www.abc.es/gastronomia/falsa-rechupete-20240712032340-nt.html
+Nueva noticia detectada: ¿El café es bueno para mi salud? Beneficios y curiosidades
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Instrucciones para fundar un partido
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Tu casero también tiene obligaciones: qué requisitos debe cumplir antes de renovar tu contrato
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Escaneando La Vanguardia...
+Nueva noticia detectada: El escudo social se estrella de nuevo en el Congreso
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Las medidas del escudo social que ha tumbado hoy el Congreso
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Sánchez desmiente que sufra una enfermedad cardiovascular: “Queda Gobierno para rato”
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Las claves del nuevo tratado sobre Gibraltar: el fin de la verja y el derecho a veto
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: El Gobierno asegura respetar la decisión que adopte Juan Carlos sobre su regreso a España
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Escaneando El Confidencial...
+Escaneando elDiario.es...
+Nueva noticia detectada: El Supremo rechaza anular la sentencia que condenó al ex fiscal general
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: PP, Vox y Junts vuelven a tumbar el decreto con el escudo social y la protección contra los desahucios
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Junts, PP y Vox tumban los topes de precios en emergencias o catástrofes como la de Adamuz o la dana
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: El Congreso aprueba, a la segunda, subir un 2,7% las pensiones en 2026: así quedan las mínimas y las máximas
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: Sánchez desmiente el bulo de su enfermedad cardiovascular: "Su única forma de hacer oposición es la mentira"
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Escaneando El Español...
+Nueva noticia detectada: Junts tumba el "escudo social" y recibe la condena del PSOE y sus socios: "Suban aquí y enrojezcan de vergüenza"
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+Nueva noticia detectada: La Casa Real responde a Feijóo y afirma que el regreso de Juan Carlos I a España depende exclusivamente del Emérito
+Consultando al Oráculo con Memoria Semántica Activa...
+Evento registrado por ATHENA_REAL
+2026-02-26 19:15:54,082 (__init__.py:1241 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running"
+2026-02-26 19:15:54,084 (__init__.py:1243 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 1234, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 115, in raise_exceptions
+    raise self.exception_info
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/util.py", line 97, in run
+    task(*args, **kwargs)
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 688, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/__init__.py", line 660, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 339, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 168, in _make_request
+    json_result = _check_result(method_name, result)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/telebot/apihelper.py", line 197, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+"

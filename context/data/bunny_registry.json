@@ -15,7 +15,7 @@
         "profile_url": "https://www.ut.ee/en/margit-sutrop",
         "status": "contacted",
         "email": "margit.sutrop@ut.ee",
-        "notes": "Chair of Practical Philosophy at the University of Tartu."
+        "notes": "Chair of Practical Philosophy at the University of Tartu. | Prominent figure in EU AI ethics councils."
     },
     "3": {
         "name": "Mauritz Kop",
@@ -141,7 +141,7 @@
         "profile_url": "https://researchportal.helsinki.fi/en/persons/petri-ylikoski",
         "status": "pending",
         "email": "petri.ylikoski@helsinki.fi",
-        "notes": "Professor focusing on the societal consequences and ethics of AI."
+        "notes": "Professor focusing on the societal consequences and ethics of AI. | Focus on politics and political economy of data."
     },
     "17": {
         "name": "Rosa Ballardini",
@@ -157,7 +157,7 @@
         "country": "Austria",
         "role": "IT/IP Law & Innovation",
         "profile_url": "https://id-law.univie.ac.at/en/team/forgo-nikolaus/",
-        "status": "pending",
+        "status": "contacted",
         "email": "nikolaus.forgo@univie.ac.at",
         "notes": "Head of the Department of Innovation and Digitalisation in Law."
     },
@@ -225,15 +225,6 @@
         "notes": "Chair of Business Ethics at TUM."
     },
     "26": {
-        "name": "Margit Sutrop",
-        "country": "Estonia",
-        "role": "Head of Centre for Ethics",
-        "profile_url": "https://www.ut.ee/en/contact/margit-sutrop",
-        "status": "pending",
-        "email": "margit.sutrop@ut.ee",
-        "notes": "Prominent figure in EU AI ethics councils."
-    },
-    "27": {
         "name": "Natali Helberger",
         "country": "Netherlands",
         "role": "Law & Digital Technology",
@@ -242,7 +233,7 @@
         "email": "n.helberger@uva.nl",
         "notes": "Focused on AI and democratic values."
     },
-    "28": {
+    "27": {
         "name": "Luciano Floridi",
         "country": "Italy",
         "role": "Director of Digital Ethics Center",
@@ -251,7 +242,7 @@
         "email": "luciano.floridi@unibo.it",
         "notes": "One of the world's leading philosophers of information."
     },
-    "29": {
+    "28": {
         "name": "Virginia Dignum",
         "country": "Sweden",
         "role": "Professor of Responsible AI",
@@ -260,25 +251,16 @@
         "email": "virginia.dignum@umu.se",
         "notes": "Lead of Social and Ethical AI research group."
     },
-    "30": {
-        "name": "Petri Ylikoski",
-        "country": "Finland",
-        "role": "Coord. Prof. AI in Society",
-        "profile_url": "https://researchportal.helsinki.fi/en/persons/petri-ylikoski",
-        "status": "pending",
-        "email": "petri.ylikoski@helsinki.fi",
-        "notes": "Focus on politics and political economy of data."
-    },
-    "31": {
+    "29": {
         "name": "Bruno Martins",
         "country": "Portugal",
         "role": "Responsible AI Lead (INESC-ID)",
         "profile_url": "https://www.inesc-id.pt/member/bruno-martins/",
-        "status": "pending",
+        "status": "contacted",
         "email": "bruno.g.martins@tecnico.ulisboa.pt",
         "notes": "Leading R&D in responsible AI solutions."
     },
-    "32": {
+    "30": {
         "name": "Barry O'Sullivan",
         "country": "Ireland",
         "role": "Director Insight Centre",
@@ -287,7 +269,7 @@
         "email": "barry.osullivan@insight-centre.org",
         "notes": "Vice Chair of the EC High-Level Expert Group on AI."
     },
-    "33": {
+    "31": {
         "name": "Charalambos Tsekeris",
         "country": "Greece",
         "role": "National Commission for Bioethics",
@@ -296,7 +278,7 @@
         "email": "tsekeris@ekke.gr",
         "notes": "Expert in technoethics and digital social research."
     },
-    "34": {
+    "32": {
         "name": "Piotr Sankowski",
         "country": "Poland",
         "role": "Director ELLIS Unit Warsaw",
@@ -305,7 +287,7 @@
         "email": "sank@mimuw.edu.pl",
         "notes": "Focus on technological sovereignty and responsible AI."
     },
-    "35": {
+    "33": {
         "name": "Michael Nentwich",
         "country": "Austria",
         "role": "Director Technology Assessment",
@@ -314,7 +296,7 @@
         "email": "michael.nentwich@oeaw.ac.at",
         "notes": "Specialist in tech self-determination and AI democracy."
     },
-    "36": {
+    "34": {
         "name": "Luboš Král",
         "country": "Czech Republic",
         "role": "Deputy Head of CTU AI Center",
@@ -323,7 +305,7 @@
         "email": "lubos.kral@fel.cvut.cz",
         "notes": "Focus on AI in journalism and mission-critical systems."
     },
-    "37": {
+    "35": {
         "name": "Constantin Vică",
         "country": "Romania",
         "role": "Ethics of AI Researcher",
@@ -332,7 +314,7 @@
         "email": "constantin.vica@filosofie.unibuc.ro",
         "notes": "Lecturer at Faculty of Philosophy, Univ. of Bucharest."
     },
-    "38": {
+    "36": {
         "name": "Jacob Udo-Udo Jacob",
         "country": "Bulgaria",
         "role": "Director CIDC (AUBG)",
@@ -341,7 +323,7 @@
         "email": "jjacob@aubg.edu",
         "notes": "Expert in information, democracy, and citizenship."
     },
-    "39": {
+    "37": {
         "name": "Gábor Palkó",
         "country": "Hungary",
         "role": "Director Digital Heritage Lab",
@@ -350,7 +332,7 @@
         "email": "palko.gabor@btk.elte.hu",
         "notes": "Leading digital humanities and governance at ELTE."
     },
-    "40": {
+    "38": {
         "name": "Matúš Mesarčík",
         "country": "Slovakia",
         "role": "Law & Ethics of AI (KInIT)",
@@ -359,7 +341,7 @@
         "email": "matus.mesarcik@flaw.uniba.sk",
         "notes": "Specialist in AI regulation and digital policy."
     },
-    "41": {
+    "39": {
         "name": "Marko Grobelnik",
         "country": "Slovenia",
         "role": "Digital Ocean & AI lead (IJS)",
@@ -368,16 +350,16 @@
         "email": "marko.grobelnik@ijs.si",
         "notes": "Member of OECD AI expert group."
     },
-    "42": {
+    "40": {
         "name": "Anto Čartolovni",
         "country": "Croatia",
         "role": "Head of Digit-HeaL Lab",
         "profile_url": "https://www.unicath.hr/anto-cartolovni",
-        "status": "pending",
+        "status": "contacted",
         "email": "anto.cartolovni@unicath.hr",
         "notes": "Expert in digital healthcare ethics."
     },
-    "43": {
+    "41": {
         "name": "Matthew Montebello",
         "country": "Malta",
         "role": "Head of AI Dept, Univ Malta",
@@ -386,7 +368,7 @@
         "email": "mmont@cs.um.edu.mt",
         "notes": "Key academic for Malta's AI strategy."
     },
-    "44": {
+    "42": {
         "name": "Jure Petrovic",
         "country": "Latvia",
         "role": "Professor of AI & ML",
@@ -395,7 +377,7 @@
         "email": "info@iu.id.lv",
         "notes": "Specialist in machine learning for governance."
     },
-    "45": {
+    "43": {
         "name": "Linas Petkevičius",
         "country": "Lithuania",
         "role": "Head of Software Engineering (VU)",
@@ -404,7 +386,7 @@
         "email": "linas.petkevicius@mif.vu.lt",
         "notes": "Leading deep learning research at Vilnius University."
     },
-    "46": {
+    "44": {
         "name": "Petra Gehring",
         "country": "Germany",
         "role": "Scientific Director ZEVEDI",
@@ -413,7 +395,7 @@
         "email": "gehring@phil.tu-darmstadt.de",
         "notes": "Expert in philosophy of technology and digital law."
     },
-    "47": {
+    "45": {
         "name": "Federico Faroldi",
         "country": "Italy",
         "role": "Director CERNAI",
@@ -422,7 +404,7 @@
         "email": "federico.faroldi@unipv.it",
         "notes": "Leading normative risk research at Pavia University."
     },
-    "48": {
+    "46": {
         "name": "José van Dijck",
         "country": "Netherlands",
         "role": "Digital Society Professor",
@@ -431,7 +413,7 @@
         "email": "j.f.f.vandijck@uu.nl",
         "notes": "Former KNAW President, expert in public values."
     },
-    "49": {
+    "47": {
         "name": "Jaan Aru",
         "country": "Estonia",
         "role": "Assoc. Professor AI & Neuroscience",
@@ -440,7 +422,7 @@
         "email": "jaan.aru@ut.ee",
         "notes": "Working on trustworthy AI systems at EXAI."
     },
-    "50": {
+    "48": {
         "name": "Tomasz Trzciński",
         "country": "Poland",
         "role": "Director ELLIS Unit Warsaw",
