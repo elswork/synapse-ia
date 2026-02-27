@@ -45,31 +45,41 @@ def run():
     intent_lines = [
         "language: es",
         "intents:",
-        "  HassMediaPause:",
+        "  NasuMediaPause:",
         "    data:",
         "      - sentences:",
-        "          - \"[pausa|para|deten|ahora] [la] [m[ú|u]sica|audio|radio]\"",
-        "          - \"pausa\"",
-        "          - \"para\"",
-        "  HassMediaResume:",
+        "          - \"[pausa|para|deten] [la] [m[ú|u]sica|audio|radio] [.]\"",
+        "          - \"ahora [la] [m[ú|u]sica|audio|radio] [.]\"",
+        "          - \"pausa [.]\"",
+        "          - \"para [.]\"",
+        "  NasuMediaResume:",
         "    data:",
         "      - sentences:",
-        "          - \"reproduce [la] [m[ú|u]sica|audio|radio]\"",
-        "          - \"contin[ú|u]a [la] [m[ú|u]sica|audio|radio]\"",
-        "          - \"[pon|dale al] play\"",
-        "  HassPlayRadio:",
+        "          - \"reproduce [la] [m[ú|u]sica|audio|radio] [.]\"",
+        "          - \"contin[ú|u]a [la] [m[ú|u]sica|audio|radio] [.]\"",
+        "          - \"[pon|dale al] play [.]\"",
+        "  NasuGetTime:",
         "    data:",
         "      - sentences:",
-        "          - \"(pon|reproduce|escuchar|escucha|) [la] (radio|emisora|) {emisora}\"",
-        "          - \"{emisora}\"",
+        "          - \"[que|y] [ahora|hora|onda] es [.]\"",
+        "          - \"dime la hora [.]\"",
+        "          - \"hora [.]\"",
+        "  NasuPlayRadio:",
+        "    data:",
+        "      - sentences:",
+        "          - \"(pon|reproduce|escuchar|escucha) [la] (radio|emisora) {emisora} [.]\"",
+        "          - \"(pon|reproduce|escuchar|escucha) {emisora} [.]\"",
+        "          - \"{emisora} [.]\"",
         "  VolumenUpM2:",
         "    data:",
         "      - sentences:",
-        "          - \"(sube|aumenta|mas) [el] volumen\"",
+        "          - \"(sube|aumenta|mas) [el|la] [volumen|m[ú|u]sica|audio|radio] [.]\"",
+        "          - \"sube [.]\"",
         "  VolumenDownM2:",
         "    data:",
         "      - sentences:",
-        "          - \"(baja|disminuye|menos) [el] volumen\"",
+        "          - \"(baja|disminuye|menos) [el|la] [volumen|m[ú|u]sica|audio|radio] [.]\"",
+        "          - \"baja [.]\"",
         "",
         "lists:",
         "  emisora:",
@@ -77,6 +87,8 @@ def run():
     ]
     
     all_stations = {}
+    alias_to_sid = {}
+
     for st in stations:
         name = st['name']
         original_sid = st.get('id', name.lower().replace(" ", "_")).replace("-", "_")
@@ -87,7 +99,10 @@ def run():
         # Special expansions
         name_lower = name.lower()
         if "40" in name_lower:
-            aliases.extend(["los 40", "los cuarenta", "los cuarenta principales", "cuarenta principales"])
+            aliases.extend([
+                "los 40", "los cuarenta", "los cuarenta principales", 
+                "los 40 principales", "cuarenta principales", "40 principales"
+            ])
         if re.search(r'\bser\b', name_lower):
             aliases.extend(["la ser", "cadena ser", "radio ser"])
         if "rne" in name_lower or "nacional" in name_lower:
@@ -104,13 +119,32 @@ def run():
             if not a.startswith("la "):
                 expanded.append(f"la {a}")
         
+        # Deduplication priority: 
+        # 1. Main station (shorter SID usually)
+        # 2. Prefer NOT having "urban", "classic", etc unless it's the only one
+        for a in expanded:
+            if a not in alias_to_sid:
+                alias_to_sid[a] = sid
+            else:
+                existing_sid = alias_to_sid[a]
+                # If existing has "urban" and new doesn't, swap
+                if "urban" in existing_sid and "urban" not in sid:
+                    alias_to_sid[a] = sid
+                elif len(sid) < len(existing_sid) and "urban" not in sid:
+                    alias_to_sid[a] = sid
+
         all_stations[sid] = {
             "url": st['url'],
             "name": name,
-            "aliases": sorted(list(set(expanded)), key=len, reverse=True)
+            "aliases": [] 
         }
-        
-        for alias in all_stations[sid]['aliases']:
+
+    for alias, sid in alias_to_sid.items():
+        all_stations[sid]["aliases"].append(alias)
+    
+    for sid in sorted(all_stations.keys()):
+        st = all_stations[sid]
+        for alias in sorted(st["aliases"], key=len, reverse=True):
             intent_lines.append(f"      - in: \"{alias}\"")
             intent_lines.append(f"        out: \"{sid}\"")
 
@@ -146,7 +180,10 @@ def run():
         "intent:",
         "",
         "intent_script:",
-        "  HassPlayRadio:",
+        "  NasuGetTime:",
+        "    speech:",
+        "      text: \"Son las {{ now().strftime('%H:%M') }}\"",
+        "  NasuPlayRadio:",
         "    action:",
         "      - service: media_player.play_media",
         "        target: { entity_id: media_player.media_player_mpd }",
@@ -156,12 +193,12 @@ def run():
         indented_jinja,
         "    speech:",
         "      text: \"Sintonizando {{ emisora }}\"",
-        "  HassMediaPause:",
+        "  NasuMediaPause:",
         "    action:",
         "      - service: media_player.media_pause",
         "        target: { entity_id: media_player.media_player_mpd }",
         "    speech: { text: \"Pausado\" }",
-        "  HassMediaResume:",
+        "  NasuMediaResume:",
         "    action:",
         "      - service: media_player.media_play",
         "        target: { entity_id: media_player.media_player_mpd }",
@@ -175,12 +212,10 @@ def run():
     ]
     new_blocks_str = "\n".join(new_blocks)
 
-    # 3. Aggressive Reset of configuration.yaml
     if os.path.exists(CONFIG_YAML_PATH):
         with open(CONFIG_YAML_PATH, "r") as f:
             lines = f.readlines()
         
-        # Keep ONLY lines until scene: !include scenes.yaml
         clean_lines = []
         for line in lines:
             clean_lines.append(line)
