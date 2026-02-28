@@ -344,10 +344,10 @@ def handle_molt_approval(call):
     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
                           text=call.message.text + "\n\n⏳ <i>Accediendo a la matriz...</i>", parse_mode='HTML')
 
-    proposal_file = f"/tmp/molt_proposal_{post_id}.json"
+    proposal_file = f"/app/cache/moltbook/molt_proposal_{post_id}.json"
     if not os.path.exists(proposal_file):
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + "\n\n❌ Error: Propuesta expirada (archivo no encontrado).", parse_mode='HTML')
+                              text=call.message.text + "\n\n❌ Error: Propuesta expirada o archivo no encontrado.", parse_mode='HTML')
         return
 
     with open(proposal_file, "r") as f:

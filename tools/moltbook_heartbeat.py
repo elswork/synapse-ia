@@ -55,7 +55,9 @@ def send_to_telegram_proposal(post, proposed_comment):
     }
     
     # Guardar propuesta temporalmente para que el bridge la encuentre
-    proposal_file = f"/tmp/molt_proposal_{post['id']}.json"
+    proposal_dir = os.path.join(base_dir, "cache/moltbook")
+    os.makedirs(proposal_dir, exist_ok=True)
+    proposal_file = os.path.join(proposal_dir, f"molt_proposal_{post['id']}.json")
     with open(proposal_file, "w") as f:
         json.dump({"post_id": post['id'], "comment": proposed_comment}, f)
 
