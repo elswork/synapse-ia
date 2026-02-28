@@ -2,11 +2,19 @@ import os
 import time
 import psutil
 import json
+import docker
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app) # Permitir peticiones desde el dashboard local
+
+# Initialize Docker client
+try:
+    docker_client = docker.from_env()
+except Exception as e:
+    print(f"Error initializing Docker client: {e}")
+    docker_client = None
 
 BRIGHTNESS_FILE = "/sys/class/backlight/backlight/brightness"
 MAX_BRIGHTNESS_FILE = "/sys/class/backlight/backlight/max_brightness"
@@ -41,13 +49,23 @@ def get_stats():
         except:
             pass
             
+    # Check satellite container status for microphone
+    mic_active = False
+    if docker_client:
+        try:
+            container = docker_client.containers.get('satellite')
+            mic_active = container.status == 'running'
+        except Exception:
+            pass
+
     return jsonify({
         "node": "M2",
         "cpu": psutil.cpu_percent(interval=None),
         "ram": psutil.virtual_memory().percent,
         "uptime": time.time() - psutil.boot_time(),
         "timestamp": time.time(),
-        "brightness": brightness_val
+        "brightness": brightness_val,
+        "mic_active": mic_active
     })
 
 @app.route('/system/reboot', methods=['POST'])
@@ -64,6 +82,26 @@ def system_shutdown():
     print("M2-API: Received Shutdown Request")
     os.system("echo 1 > /proc/sys/kernel/sysrq && echo o > /proc/sysrq-trigger")
     return jsonify({"status": "ok", "message": "Shutdown command executed"})
+
+@app.route('/system/mic/toggle', methods=['POST'])
+def toggle_mic():
+    if not docker_client:
+        return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    
+    try:
+        container = docker_client.containers.get('satellite')
+        if container.status == 'running':
+            container.stop()
+            new_state = False
+            msg = "Micrófono desactivado"
+        else:
+            container.start()
+            new_state = True
+            msg = "Micrófono activado"
+        
+        return jsonify({"status": "ok", "message": msg, "mic_active": new_state})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/radio')
 def get_radio():
