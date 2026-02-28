@@ -1214,8 +1214,17 @@
                 const res = await fetch(`http://192.168.1.75:5051/system/mic/toggle`, { method: 'POST' });
                 const data = await res.json();
                 if (data.status === 'ok') {
-                    // Refrescar status para actualizar visualmente
-                    fetchNodeStats('m2', NODES['m2']);
+                    const btnMic = document.getElementById('btn_mic');
+                    const iconMic = document.getElementById('icon_mic');
+                    if (data.mic_active) {
+                        btnMic.style.borderColor = 'var(--success)';
+                        btnMic.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
+                        iconMic.innerText = '🎙️';
+                    } else {
+                        btnMic.style.borderColor = 'var(--danger)';
+                        btnMic.style.boxShadow = '0 0 15px rgba(255, 68, 68, 0.4)';
+                        iconMic.innerText = '🔇';
+                    }
                 } else {
                     alert("Error: " + data.message);
                 }
