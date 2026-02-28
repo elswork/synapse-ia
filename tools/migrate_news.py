@@ -11,8 +11,8 @@ def run_migration():
         conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()
         
-        print("--- Limpiando noticias existentes ---")
-        cursor.execute("TRUNCATE TABLE news_intel CASCADE;")
+        # print("--- Limpiando noticias existentes ---")
+        # cursor.execute("TRUNCATE TABLE news_intel CASCADE;")
         
         print("--- Añadiendo columna is_approved ---")
         cursor.execute("""

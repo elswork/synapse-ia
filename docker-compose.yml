@@ -23,6 +23,7 @@ services:
     volumes:
       - .:/app
     environment:
+      - BASE_PATH=/app
       - DB_PASSWORD=${DB_PASSWORD}
       - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@synapse-ia-db:5432/synapse_ia
     env_file:
@@ -41,6 +42,7 @@ services:
     env_file:
       - .env
     environment:
+      - BASE_PATH=/app
       - PYTHONPATH=/app
       - DB_PASSWORD=${DB_PASSWORD}
       - DATABASE_URL=postgresql://arconte:${DB_PASSWORD}@synapse-ia-db:5432/synapse_ia
