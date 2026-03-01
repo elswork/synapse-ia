@@ -119,6 +119,18 @@ def get_radio():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/system/volume/up', methods=['POST'])
+def volume_up():
+    print("M2-API: Received Volume Up Request")
+    os.system("pactl set-sink-volume @DEFAULT_SINK@ +5%")
+    return jsonify({"status": "ok", "message": "Volume increased"})
+
+@app.route('/system/volume/down', methods=['POST'])
+def volume_down():
+    print("M2-API: Received Volume Down Request")
+    os.system("pactl set-sink-volume @DEFAULT_SINK@ -5%")
+    return jsonify({"status": "ok", "message": "Volume decreased"})
+
 @app.route('/brightness', methods=['POST'])
 def update_brightness():
     data = request.json

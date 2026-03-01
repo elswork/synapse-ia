@@ -413,9 +413,9 @@
         /* Views */
         .launcher-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             grid-template-rows: repeat(3, 1fr);
-            gap: 25px;
+            gap: 20px;
             padding: 30px 40px;
             flex: 1;
             box-sizing: border-box;
@@ -594,6 +594,27 @@
             background: var(--accent);
             width: 0%;
             transition: width 0.5s ease;
+        }
+
+        .btn-volume {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-volume:active {
+            transform: scale(0.9);
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent);
         }
 
         .footer {
@@ -796,6 +817,14 @@
         <div class="launcher-card" onclick="openSecurity()">
             <div class="launcher-icon">🛡️</div>
             <div class="launcher-name">Seguridad</div>
+        </div>
+        <div class="launcher-card" onclick="adjustVolume('up')">
+            <div class="launcher-icon">🔊</div>
+            <div class="launcher-name">Vol +</div>
+        </div>
+        <div class="launcher-card" onclick="adjustVolume('down')">
+            <div class="launcher-icon">🔉</div>
+            <div class="launcher-name">Vol -</div>
         </div>
     </div>
 
@@ -1180,6 +1209,20 @@
 
         function closeSystemMenu() {
             document.getElementById('system_modal').classList.remove('visible');
+        }
+
+        async function adjustVolume(direction) {
+            try {
+                const endpoint = direction === 'up' ? '/system/volume/up' : '/system/volume/down';
+                const res = await fetch(`http://192.168.1.75:5051${endpoint}`, { method: 'POST' });
+                const data = await res.json();
+                console.log(`Volumen: ${data.message}`);
+
+                // Feedback visual breve en el botón si fuera necesario, 
+                // pero por ahora solo ejecutamos.
+            } catch (err) {
+                console.error("Error al ajustar volumen:", err);
+            }
         }
 
         async function confirmSystemAction(action) {

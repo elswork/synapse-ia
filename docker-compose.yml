@@ -59,7 +59,7 @@ services:
       - /proc:/proc
       - /var/run/docker.sock:/var/run/docker.sock
     working_dir: /app
-    command: sh -c "apt-get update && apt-get install -y procps && pip install flask flask-cors psutil docker && python3 tools/m2_status_api.py"
+    command: sh -c "apt-get update && apt-get install -y procps pulseaudio-utils && pip install flask flask-cors psutil docker && python3 tools/m2_status_api.py"
     restart: unless-stopped
 
   adminer:
