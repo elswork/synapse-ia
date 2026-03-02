@@ -1,0 +1,218 @@
+:root {
+    --primary-gold: #c5a059;
+    --primary-gold-dim: #8e7340;
+    --bg-dark: #0a0b0d;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-main: #e0e0e0;
+    --text-dim: #a0a0a0;
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --accent-glow: rgba(197, 160, 89, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-gold);
+    margin-bottom: 1rem;
+}
+
+.glass-container {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 3rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    position: relative;
+    animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-dossier {
+    text-align: center;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+}
+
+.header-dossier h1 {
+    font-size: 3rem;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.header-metadata {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-metadata span strong {
+    color: var(--primary-gold);
+}
+
+.section-dossier {
+    margin-bottom: 3rem;
+    transition: transform 0.3s ease;
+}
+
+.section-dossier:hover {
+    transform: translateX(5px);
+}
+
+.section-dossier h2 {
+    font-size: 1.8rem;
+    border-left: 4px solid var(--primary-gold);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-dossier p {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+.highlight-box {
+    background: rgba(197, 160, 89, 0.05);
+    border: 1px solid var(--primary-gold-dim);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    transition: all 0.4s ease;
+}
+
+.highlight-box:hover {
+    background: rgba(197, 160, 89, 0.1);
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.highlight-box h3 {
+    font-size: 1.4rem;
+    color: var(--primary-gold);
+}
+
+.highlight-box ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.highlight-box li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.highlight-box li::before {
+    content: "◈";
+    position: absolute;
+    left: 0;
+    color: var(--primary-gold);
+}
+
+.footer-dossier {
+    margin-top: 4rem;
+    text-align: center;
+    font-style: italic;
+    color: var(--text-dim);
+}
+
+.signature {
+    margin-top: 2rem;
+    font-weight: 600;
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+}
+
+/* Background elements */
+.circles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--accent-glow);
+    filter: blur(80px);
+}
+
+.circle-1 {
+    width: 400px;
+    height: 400px;
+    top: -10%;
+    right: -10%;
+    animation: float 20s infinite alternate;
+}
+
+.circle-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -5%;
+    left: -5%;
+    animation: float 15s infinite alternate-reverse;
+}
+
+@keyframes float {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(50px, 50px);
+    }
+}
+
+@media (max-width: 768px) {
+    .glass-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .header-dossier h1 {
+        font-size: 2rem;
+    }
+
+    .header-metadata {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

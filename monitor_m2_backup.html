@@ -415,8 +415,8 @@
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             grid-template-rows: repeat(3, 1fr);
-            gap: 15px;
-            padding: 20px 30px;
+            gap: 20px;
+            padding: 30px 40px;
             flex: 1;
             box-sizing: border-box;
             overflow: hidden;
@@ -457,17 +457,16 @@
         }
 
         .launcher-icon {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
         }
 
         .launcher-name {
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             color: var(--text);
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            text-align: center;
+            letter-spacing: 1.5px;
         }
 
         .btn-system {
@@ -769,7 +768,6 @@
 
     <!-- LAUNCHER GRID: 12 App Modules (3x4) -->
     <div id="launcher_grid" class="launcher-grid">
-        <!-- Fila 1 -->
         <div class="launcher-card" onclick="showTelemetry()">
             <div class="launcher-icon">📊</div>
             <div class="launcher-name">Telemetría</div>
@@ -780,18 +778,13 @@
         </div>
         <div class="launcher-card" onclick="openWeatherModal()">
             <div class="launcher-icon">☁️</div>
-            <div class="launcher-name">Tiempo</div>
+            <div class="launcher-name">El Tiempo</div>
         </div>
         <div class="launcher-card" onclick="openAthena()">
             <div class="launcher-icon">🧠</div>
             <div class="launcher-name">Athena</div>
         </div>
-        <div class="launcher-card" onclick="openDiplomacy()">
-            <div class="launcher-icon">🌐</div>
-            <div class="launcher-name">Diplomacia</div>
-        </div>
 
-        <!-- Fila 2 -->
         <div class="launcher-card" onclick="openCameras()">
             <div class="launcher-icon">🎥</div>
             <div class="launcher-name">Cámaras</div>
@@ -800,10 +793,15 @@
             <div class="launcher-icon">🏠</div>
             <div class="launcher-name">Domótica</div>
         </div>
+        <div class="launcher-card" onclick="openDiplomacy()">
+            <div class="launcher-icon">🌐</div>
+            <div class="launcher-name">Diplomacia</div>
+        </div>
         <div class="launcher-card" onclick="openMessages()">
             <div class="launcher-icon">📩</div>
             <div class="launcher-name">Mensajes</div>
         </div>
+
         <div class="launcher-card" id="btn_mic" onclick="toggleMic()">
             <div class="launcher-icon" id="icon_mic">🎙️</div>
             <div class="launcher-name" id="label_mic">Micrófono</div>
@@ -812,8 +810,6 @@
             <div class="launcher-icon">⚙️</div>
             <div class="launcher-name">Sistema</div>
         </div>
-
-        <!-- Fila 3 -->
         <div class="launcher-card" onclick="openPower()">
             <div class="launcher-icon">🔋</div>
             <div class="launcher-name">Energía</div>
@@ -822,12 +818,11 @@
             <div class="launcher-icon">🛡️</div>
             <div class="launcher-name">Seguridad</div>
         </div>
-        <div class="launcher-divider" style="grid-column: span 1;"></div> <!-- Spacer -->
-        <div class="launcher-card" onclick="adjustVolume('up')" style="border-color: var(--accent);">
+        <div class="launcher-card" onclick="adjustVolume('up')">
             <div class="launcher-icon">🔊</div>
             <div class="launcher-name">Vol +</div>
         </div>
-        <div class="launcher-card" onclick="adjustVolume('down')" style="border-color: var(--accent);">
+        <div class="launcher-card" onclick="adjustVolume('down')">
             <div class="launcher-icon">🔉</div>
             <div class="launcher-name">Vol -</div>
         </div>

@@ -49,6 +49,15 @@ def get_stats():
         except:
             pass
             
+    # Intento de obtener temperatura (específico de Linux/ARM)
+    temp_val = None
+    if os.path.exists("/sys/class/thermal/thermal_zone0/temp"):
+        try:
+            with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
+                temp_val = int(f.read()) / 1000.0
+        except:
+            pass
+
     # Check satellite container status for microphone
     mic_active = False
     if docker_client:
@@ -61,7 +70,11 @@ def get_stats():
     return jsonify({
         "node": "M2",
         "cpu": psutil.cpu_percent(interval=None),
+        "cpu_percent": psutil.cpu_percent(interval=None), # Compatibilidad Córtex
         "ram": psutil.virtual_memory().percent,
+        "memory_percent": psutil.virtual_memory().percent, # Compatibilidad Córtex
+        "temperature_c": temp_val,
+        "mic_active": mic_active,
         "uptime": time.time() - psutil.boot_time(),
         "timestamp": time.time(),
         "brightness": brightness_val,
