@@ -184,7 +184,7 @@
         "country": "Cyprus",
         "role": "Chair of Ad Hoc Committee on AI",
         "profile_url": "https://www.ucy.ac.cy/dir/en/component/comprofiler/userprofile/synodint",
-        "status": "pending",
+        "status": "contacted",
         "email": "synodint@ucy.ac.cy",
         "notes": "Vice-Rector at UCY, expert in private and digital law."
     },
@@ -211,7 +211,7 @@
         "country": "Lithuania",
         "role": "Professor of Law (AI Ethics)",
         "profile_url": "https://www.tf.vu.lt/en/staff/vebraite-vigita/",
-        "status": "pending",
+        "status": "contacted",
         "email": "vigita.vebraite@tf.vu.lt",
         "notes": "Vice-Dean at Vilnius University, specializing in human-centric AI."
     },
