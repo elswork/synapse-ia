@@ -354,6 +354,12 @@ def handle_molt_approval(call):
         proposal_data = json.load(f)
     
     comment_text = proposal_data['comment']
+    # Como medida de seguridad, si [POST] sigue existiendo (por borradores antiguos), lo extraemos
+    if "[POST]" in comment_text:
+        try:
+            comment_text = comment_text.split("[POST]")[1].strip()
+        except Exception:
+            pass
     
     # Intentar publicar
     API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"

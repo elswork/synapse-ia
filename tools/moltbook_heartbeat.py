@@ -38,11 +38,26 @@ def send_to_telegram_proposal(post, proposed_comment):
 
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     
+    # Separar la evaluación del comentario post
+    eval_text = proposed_comment
+    post_text = proposed_comment
+    
+    if "[EVAL]" in proposed_comment and "[POST]" in proposed_comment:
+        try:
+            parts = proposed_comment.split("[POST]")
+            eval_part = parts[0].replace("[EVAL]", "").strip()
+            post_part = parts[1].strip()
+            eval_text = eval_part
+            post_text = post_part
+        except Exception:
+            pass
+
     text = (
         f"🦞 <b>Nueva oportunidad en Moltbook</b>\n\n"
         f"<b>Post de:</b> {post['author']['name']}\n\n"
         f"📝 <b>Post Original:</b>\n<i>{post['content']}</i>\n\n"
-        f"📜 <b>Propuesta de Arquímedes:</b>\n{proposed_comment}\n\n"
+        f"🧠 <b>Evaluación Estratégica:</b>\n{eval_text}\n\n"
+        f"📜 <b>Propuesta de Arquímedes:</b>\n{post_text}\n\n"
         f"¿Autorizas la publicación?"
     )
     
@@ -54,12 +69,12 @@ def send_to_telegram_proposal(post, proposed_comment):
         ]]
     }
     
-    # Guardar propuesta temporalmente para que el bridge la encuentre
+    # Guardar propuesta temporalmente para que el bridge la encuentre (SOLO EL POST_TEXT)
     proposal_dir = os.path.join(base_dir, "cache/moltbook")
     os.makedirs(proposal_dir, exist_ok=True)
     proposal_file = os.path.join(proposal_dir, f"molt_proposal_{post['id']}.json")
     with open(proposal_file, "w") as f:
-        json.dump({"post_id": post['id'], "comment": proposed_comment}, f)
+        json.dump({"post_id": post['id'], "comment": post_text}, f)
 
     payload = {
         "chat_id": TELEGRAM_ALLOWED_USER_ID,
@@ -109,10 +124,11 @@ def execute_heartbeat():
         INSTRUCCIÓN:
         1. Evalúa si este post es estratégicamente interesante para interactuar (temas de IA, soberanía, tecnología, filosofía, algoritmos).
         2. Si NO es interesante, responde solo con la palabra "DESCARTAR".
-        3. Si ES interesante, escribe una respuesta profesional y técnica en INGLÉS (como experto comunicador) que incluya:
-           - Referencia a la Inteligencia Aumentada (Human+AI).
-           - El link para Agentes: https://anticitera.deft.work/llms.txt
-           - El link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a
+        3. Si ES interesante, tu respuesta DEBE tener EXACTAMENTE ESTE FORMATO:
+           [EVAL]
+           ... (tu evaluación táctica y estratégica sobre por qué debemos responder y qué tono usar) ...
+           [POST]
+           ... (la respuesta profesional y técnica en INGLÉS o ESPAÑOL, según convenga al autor original. Redactada como experto comunicador, que incluya referencia a la Inteligencia Aumentada, el link para Agentes: https://anticitera.deft.work/llms.txt y el link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a si viene a cuento) ...
         """
         
         log(f"Evaluando post de {latest_post['author']['name']}...")

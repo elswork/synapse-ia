@@ -24,11 +24,26 @@ def trigger_simulation():
 
     post_id = "new_ciudadela"
     
+    # Separar EVAL y POST si existen
+    eval_text = relevant_content
+    post_text = relevant_content
+    
+    if "[EVAL]" in relevant_content and "[POST]" in relevant_content:
+        try:
+            parts = relevant_content.split("[POST]")
+            eval_part = parts[0].replace("[EVAL]", "").strip()
+            post_part = parts[1].strip()
+            eval_text = eval_part
+            post_text = post_part
+        except Exception:
+            pass
+
     # Payload para Telegram
     text = (
         f"🦞 <b>SIMULACIÓN: Nueva oportunidad en Moltbook</b>\n\n"
         f"<b>Operación:</b> Ciudadela\n\n"
-        f"📝 <b>Borrador Estratégico:</b>\n<i>{relevant_content[:1000]}...</i>\n\n"
+        f"🧠 <b>Evaluación Estratégica:</b>\n<i>{eval_text[:500]}...</i>\n\n"
+        f"📝 <b>Borrador (Moltbook):</b>\n<i>{post_text[:1000]}...</i>\n\n"
         f"¿Autorizas el despliegue de esta nueva oportunidad?"
     )
     
@@ -39,10 +54,10 @@ def trigger_simulation():
         ]]
     }
 
-    # Guardar propuesta temporalmente para el bridge
+    # Guardar propuesta temporalmente para el bridge (Solo guardamos el post_text)
     proposal_file = f"/tmp/molt_proposal_{post_id}.json"
     with open(proposal_file, "w") as f:
-        json.dump({"post_id": post_id, "comment": relevant_content}, f)
+        json.dump({"post_id": post_id, "comment": post_text}, f)
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     payload = {
