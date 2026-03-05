@@ -30,6 +30,46 @@ TELEGRAM_ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID")
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 🦞 [MOLTBOOK] {msg}")
 
+import re
+
+def sanitize_comment(text):
+    # 1. Etiquetas de control que separan bloques
+    tags = [r"\[POST\]", r"\[RESPUESTA\]", r"\[ANSWER\]", r"\[EVAL\]", r"\[EVALUACIÓN\]"]
+    pattern = '|'.join(tags)
+    matches = list(re.finditer(pattern, text, re.IGNORECASE))
+    
+    if matches:
+        last_match = matches[-1]
+        text = text[last_match.end():].strip()
+    
+    # 2. Eliminar cabeceras comunes y ruidos residuales (En Inglés, Respuesta, etc.)
+    internal_headers = [
+        "ANÁLISIS ESTRATÉGICO", "ESTRATEGIA", "EVALUACIÓN", 
+        "RESPUESTA", "PROPUESSTA", "COMENTARIO", "POST", "ANSWER"
+    ]
+    
+    lines = text.split('\n')
+    changed = True
+    while changed and lines:
+        changed = False
+        line = lines[0].strip()
+        if not line:
+            lines.pop(0)
+            changed = True
+            continue
+            
+        line_upper = line.upper()
+        # Caso A: Cabecera interna corta
+        is_header = any(h in line_upper for h in internal_headers)
+        # Caso B: Metadatos entre paréntesis
+        is_parenthetical = line.startswith('(') and (line.endswith('):') or line.endswith(')')) and len(line) < 30
+        
+        if (is_header or is_parenthetical) and len(line) < 100:
+            lines.pop(0)
+            changed = True
+            
+    return '\n'.join(lines).strip()
+
 def send_to_telegram_proposal(post, full_evaluation, final_comment):
     """Envía la propuesta al COO vía Telegram con botones."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_ALLOWED_USER_ID:
@@ -39,18 +79,21 @@ def send_to_telegram_proposal(post, full_evaluation, final_comment):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     
     # Separar la evaluación del comentario post
-    eval_text = proposed_comment
-    post_text = proposed_comment
+    eval_text = full_evaluation
+    post_text = final_comment
     
-    if "[EVAL]" in proposed_comment and "[POST]" in proposed_comment:
+    if "[EVAL]" in full_evaluation and "[POST]" in full_evaluation:
         try:
-            parts = proposed_comment.split("[POST]")
+            parts = full_evaluation.split("[POST]")
             eval_part = parts[0].replace("[EVAL]", "").strip()
             post_part = parts[1].strip()
             eval_text = eval_part
             post_text = post_part
         except Exception:
             pass
+
+    # Asegurar que post_text esté limpio para la previsualización en Telegram
+    post_text = sanitize_comment(post_text)
 
     text = (
         f"🦞 <b>Nueva oportunidad en Moltbook</b>\n\n"
@@ -69,7 +112,7 @@ def send_to_telegram_proposal(post, full_evaluation, final_comment):
         ]]
     }
     
-    # Guardar propuesta temporalmente para que el bridge la encuentre (SOLO EL POST_TEXT)
+    # Guardar propuesta temporalmente para que el bridge la encuentre (SOLO EL POST_TEXT LIMPIO)
     proposal_dir = os.path.join(base_dir, "cache/moltbook")
     os.makedirs(proposal_dir, exist_ok=True)
     proposal_file = os.path.join(proposal_dir, f"molt_proposal_{post['id']}.json")
@@ -140,7 +183,19 @@ def execute_heartbeat():
             final_comment = athena_eval
             if "[POST]" in athena_eval:
                 final_comment = athena_eval.split("[POST]")[-1].strip()
+            elif "[RESPUESTA]" in athena_eval:
+                final_comment = athena_eval.split("[RESPUESTA]")[-1].strip()
             
+            # Limpieza de emergencia de cabeceras comunes que Athena suele inventar
+            headers_to_clean = ["RESPUESTA (En Inglés):", "RESPUESTA:", "ANÁLISIS ESTRATÉGICO:", "EVALUACIÓN:"]
+            for header in headers_to_clean:
+                if final_comment.upper().startswith(header):
+                    final_comment = final_comment[len(header):].strip()
+                # También limpiar si están en negrita markdown
+                bold_header = f"**{header}**"
+                if final_comment.upper().startswith(bold_header):
+                    final_comment = final_comment[len(bold_header):].strip()
+
             send_to_telegram_proposal(latest_post, athena_eval, final_comment)
 
             
