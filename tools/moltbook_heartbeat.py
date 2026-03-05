@@ -30,7 +30,7 @@ TELEGRAM_ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID")
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 🦞 [MOLTBOOK] {msg}")
 
-def send_to_telegram_proposal(post, proposed_comment):
+def send_to_telegram_proposal(post, full_evaluation, final_comment):
     """Envía la propuesta al COO vía Telegram con botones."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_ALLOWED_USER_ID:
         log("Error: Configuración de Telegram incompleta.")
@@ -137,7 +137,12 @@ def execute_heartbeat():
         if "DESCARTAR" in athena_eval.upper() and len(athena_eval) < 20:
             log("Post descartado por falta de relevancia estratégica.")
         else:
-            send_to_telegram_proposal(latest_post, athena_eval)
+            final_comment = athena_eval
+            if "[POST]" in athena_eval:
+                final_comment = athena_eval.split("[POST]")[-1].strip()
+            
+            send_to_telegram_proposal(latest_post, athena_eval, final_comment)
+
             
         log("Heartbeat completado con éxito.")
         
