@@ -6,7 +6,7 @@
         "profile_url": "https://www.leibniz-hbi.de/en/staff/matthias-c-kettemann/",
         "status": "contacted",
         "email": "m.kettemann@leibniz-hbi.de",
-        "notes": "Expert in internet governance and international law."
+        "notes": "Expert in internet governance and international law. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "2": {
         "name": "Margit Sutrop",
@@ -15,7 +15,7 @@
         "profile_url": "https://www.ut.ee/en/margit-sutrop",
         "status": "contacted",
         "email": "margit.sutrop@ut.ee",
-        "notes": "Chair of Practical Philosophy at the University of Tartu. | Prominent figure in EU AI ethics councils."
+        "notes": "Chair of Practical Philosophy at the University of Tartu. | Prominent figure in EU AI ethics councils. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "3": {
         "name": "Mauritz Kop",
@@ -24,7 +24,7 @@
         "profile_url": "https://law.stanford.edu/directory/mauritz-kop/",
         "status": "contacted",
         "email": "advies@airecht.nl",
-        "notes": "Focus on AI, IP and technology law."
+        "notes": "Focus on AI, IP and technology law. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "4": {
         "name": "Helena Moniz",
@@ -33,7 +33,7 @@
         "profile_url": "https://www.inesc-id.pt/member.php?id=336",
         "status": "contacted",
         "email": "helena.moniz@inesc-id.pt",
-        "notes": "President of the European Association for Machine Translation."
+        "notes": "President of the European Association for Machine Translation. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "5": {
         "name": "Mauro Santaniello",
@@ -42,7 +42,7 @@
         "profile_url": "https://docenti.unisa.it/025252/en/curriculum",
         "status": "contacted",
         "email": "msantaniello@unisa.it",
-        "notes": "Associate Professor at the University of Salerno."
+        "notes": "Associate Professor at the University of Salerno. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "6": {
         "name": "Julie Austin",
@@ -51,25 +51,25 @@
         "profile_url": "https://www.mhc.ie/people/julie-austin",
         "status": "contacted",
         "email": "jaustin@MHC.ie",
-        "notes": "Partner at Mason Hayes Curran, specialist in data protection."
+        "notes": "Partner at Mason Hayes Curran, specialist in data protection. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "7": {
         "name": "Aleksandra Przegalińska",
         "country": "Poland",
         "role": "AI Ethics & Philosophy",
         "profile_url": "https://non.agency/",
-        "status": "pending",
+        "status": "contacted",
         "email": "aleksandra.przegalinska@kozminski.edu.pl",
-        "notes": "Expert in human-machine interaction and AI ethics."
+        "notes": "Expert in human-machine interaction and AI ethics. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "8": {
         "name": "Przemysław Pałka",
         "country": "Poland",
         "role": "Private Law of Data",
         "profile_url": "https://futurelawlab.pl/",
-        "status": "pending",
+        "status": "contacted",
         "email": "przemyslaw.palka@uj.edu.pl",
-        "notes": "Assistant Professor at Jagiellonian University, leads Private Law of Data project."
+        "notes": "Assistant Professor at Jagiellonian University, leads Private Law of Data project. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "9": {
         "name": "Spiros Tassis",
@@ -87,52 +87,52 @@
         "profile_url": "https://eilst.org/",
         "status": "contacted",
         "email": "info@eilst.org",
-        "notes": "Executive Director of the European Institute of Law, Science and Technology."
+        "notes": "Executive Director of the European Institute of Law, Science and Technology. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "11": {
         "name": "Rikke Frank Jørgensen",
         "country": "Denmark",
         "role": "Digital Rights & Human Rights",
         "profile_url": "https://www.humanrights.dk/staff/rikke-frank-jorgensen",
-        "status": "pending",
+        "status": "contacted",
         "email": "rfj@humanrights.dk",
-        "notes": "Honorary Professor of Digital Rights at the University of Copenhagen."
+        "notes": "Honorary Professor of Digital Rights at the University of Copenhagen. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "12": {
         "name": "Susanne Stenberg",
         "country": "Sweden",
         "role": "EU AI Act & Regulation",
         "profile_url": "https://www.ri.se/en/person/susanne-stenberg",
-        "status": "pending",
+        "status": "contacted",
         "email": "susanne.stenberg@ri.se",
-        "notes": "Senior researcher and legal expert at RISE, specialized in the EU AI Act."
+        "notes": "Senior researcher and legal expert at RISE, specialized in the EU AI Act. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "13": {
         "name": "Jakub Eberle",
         "country": "Czech Republic",
         "role": "Digital Sovereignty Discourse",
         "profile_url": "https://www.iir.cz/en/jakub-eberle",
-        "status": "pending",
+        "status": "contacted",
         "email": "eberle@iir.cz",
-        "notes": "Senior Researcher at the Institute of International Relations Prague."
+        "notes": "Senior Researcher at the Institute of International Relations Prague. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "14": {
         "name": "Dragoș Boicu",
         "country": "Romania",
         "role": "Tech Law & Legal Informatics",
         "profile_url": "https://techlawllm.ro/team/dragos-boicu/",
-        "status": "pending",
+        "status": "contacted",
         "email": "dragos.boicu@drept.unibuc.ro",
-        "notes": "Lecturer and Vice-Dean, specialized in tech law and juridical informatics."
+        "notes": "Lecturer and Vice-Dean, specialized in tech law and juridical informatics. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "15": {
         "name": "Adrian-Victor Vevera",
         "country": "Romania",
         "role": "Digital Sovereignty",
         "profile_url": "https://ici.ro/en/about-ici/management/",
-        "status": "pending",
+        "status": "contacted",
         "email": "victor.vevera@ici.ro",
-        "notes": "General Director at ICI Bucharest, strategic leader for Romania's digital sovereignty."
+        "notes": "General Director at ICI Bucharest, strategic leader for Romania's digital sovereignty. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "16": {
         "name": "Petri Ylikoski",
@@ -141,16 +141,16 @@
         "profile_url": "https://researchportal.helsinki.fi/en/persons/petri-ylikoski",
         "status": "contacted",
         "email": "petri.ylikoski@helsinki.fi",
-        "notes": "Professor focusing on the societal consequences and ethics of AI. | Focus on politics and political economy of data."
+        "notes": "Professor focusing on the societal consequences and ethics of AI. | Focus on politics and political economy of data. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "17": {
         "name": "Rosa Ballardini",
         "country": "Finland",
         "role": "AI Legal Solutions & IP",
         "profile_url": "https://research.ulapland.fi/en/persons/rosa-ballardini",
-        "status": "pending",
+        "status": "contacted",
         "email": "rosa.ballardini@ulapland.fi",
-        "notes": "Vice-dean of research, expert in finding legal solutions for AI use."
+        "notes": "Vice-dean of research, expert in finding legal solutions for AI use. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "18": {
         "name": "Nikolaus Forgó",
@@ -159,7 +159,7 @@
         "profile_url": "https://id-law.univie.ac.at/en/team/forgo-nikolaus/",
         "status": "contacted",
         "email": "nikolaus.forgo@univie.ac.at",
-        "notes": "Head of the Department of Innovation and Digitalisation in Law."
+        "notes": "Head of the Department of Innovation and Digitalisation in Law. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "19": {
         "name": "Vojko Strahovnik",
@@ -168,7 +168,7 @@
         "profile_url": "https://www.ff.uni-lj.si/en/staff/vojko-strahovnik",
         "status": "contacted",
         "email": "vojko.strahovnik@ff.uni-lj.si",
-        "notes": "Interdisciplinary researcher in ethical dimensions of AI."
+        "notes": "Interdisciplinary researcher in ethical dimensions of AI. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "20": {
         "name": "Ana Pošćić",
@@ -186,7 +186,7 @@
         "profile_url": "https://www.ucy.ac.cy/dir/en/component/comprofiler/userprofile/synodint",
         "status": "contacted",
         "email": "synodint@ucy.ac.cy",
-        "notes": "Vice-Rector at UCY, expert in private and digital law."
+        "notes": "Vice-Rector at UCY, expert in private and digital law. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "22": {
         "name": "Alexiei Dingli",
@@ -195,7 +195,7 @@
         "profile_url": "https://www.um.edu.mt/profile/alexieidingli",
         "status": "contacted",
         "email": "alexiei.dingli@um.edu.mt",
-        "notes": "Professor of AI, member of the national AI task force of Malta."
+        "notes": "Professor of AI, member of the national AI task force of Malta. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "23": {
         "name": "Natalija Černecka",
@@ -213,7 +213,7 @@
         "profile_url": "https://www.tf.vu.lt/en/staff/vebraite-vigita/",
         "status": "contacted",
         "email": "vigita.vebraite@tf.vu.lt",
-        "notes": "Vice-Dean at Vilnius University, specializing in human-centric AI."
+        "notes": "Vice-Dean at Vilnius University, specializing in human-centric AI. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "25": {
         "name": "Christoph Lütge",
@@ -229,27 +229,27 @@
         "country": "Netherlands",
         "role": "Law & Digital Technology",
         "profile_url": "https://www.ivir.nl/staff/helberger/",
-        "status": "pending",
+        "status": "contacted",
         "email": "n.helberger@uva.nl",
-        "notes": "Focused on AI and democratic values."
+        "notes": "Focused on AI and democratic values. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "27": {
         "name": "Luciano Floridi",
         "country": "Italy",
         "role": "Director of Digital Ethics Center",
         "profile_url": "https://www.unibo.it/sitoweb/luciano.floridi",
-        "status": "pending",
+        "status": "contacted",
         "email": "luciano.floridi@unibo.it",
-        "notes": "One of the world's leading philosophers of information."
+        "notes": "One of the world's leading philosophers of information. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "28": {
         "name": "Virginia Dignum",
         "country": "Sweden",
         "role": "Professor of Responsible AI",
         "profile_url": "https://www.umu.se/en/staff/virginia-dignum/",
-        "status": "pending",
+        "status": "contacted",
         "email": "virginia.dignum@umu.se",
-        "notes": "Lead of Social and Ethical AI research group."
+        "notes": "Lead of Social and Ethical AI research group. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "29": {
         "name": "Bruno Martins",
@@ -258,16 +258,16 @@
         "profile_url": "https://www.inesc-id.pt/member/bruno-martins/",
         "status": "contacted",
         "email": "bruno.g.martins@tecnico.ulisboa.pt",
-        "notes": "Leading R&D in responsible AI solutions."
+        "notes": "Leading R&D in responsible AI solutions. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "30": {
         "name": "Barry O'Sullivan",
         "country": "Ireland",
         "role": "Director Insight Centre",
         "profile_url": "https://www.ucc.ie/en/compsci/people/barryosullivan/",
-        "status": "pending",
+        "status": "contacted",
         "email": "barry.osullivan@insight-centre.org",
-        "notes": "Vice Chair of the EC High-Level Expert Group on AI."
+        "notes": "Vice Chair of the EC High-Level Expert Group on AI. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "31": {
         "name": "Charalambos Tsekeris",
@@ -276,34 +276,34 @@
         "profile_url": "https://www.ekke.gr/en/staff/tsekeris-charalambos",
         "status": "contacted",
         "email": "tsekeris@ekke.gr",
-        "notes": "Expert in technoethics and digital social research."
+        "notes": "Expert in technoethics and digital social research. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "32": {
         "name": "Piotr Sankowski",
         "country": "Poland",
         "role": "Director ELLIS Unit Warsaw",
         "profile_url": "https://mimuw.edu.pl/~sank/",
-        "status": "pending",
+        "status": "contacted",
         "email": "sank@mimuw.edu.pl",
-        "notes": "Focus on technological sovereignty and responsible AI."
+        "notes": "Focus on technological sovereignty and responsible AI. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "33": {
         "name": "Michael Nentwich",
         "country": "Austria",
         "role": "Director Technology Assessment",
         "profile_url": "https://www.oeaw.ac.at/ita/das-ita/team/michael-nentwich",
-        "status": "pending",
+        "status": "contacted",
         "email": "michael.nentwich@oeaw.ac.at",
-        "notes": "Specialist in tech self-determination and AI democracy."
+        "notes": "Specialist in tech self-determination and AI democracy. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "34": {
         "name": "Luboš Král",
         "country": "Czech Republic",
         "role": "Deputy Head of CTU AI Center",
         "profile_url": "https://www.aic.fel.cvut.cz/people/lubos-kral",
-        "status": "pending",
+        "status": "contacted",
         "email": "lubos.kral@fel.cvut.cz",
-        "notes": "Focus on AI in journalism and mission-critical systems."
+        "notes": "Focus on AI in journalism and mission-critical systems. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "35": {
         "name": "Constantin Vică",
@@ -312,7 +312,7 @@
         "profile_url": "https://unibuc.ro/user/constantin.vica/",
         "status": "contacted",
         "email": "constantin.vica@filosofie.unibuc.ro",
-        "notes": "Lecturer at Faculty of Philosophy, Univ. of Bucharest."
+        "notes": "Lecturer at Faculty of Philosophy, Univ. of Bucharest. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "36": {
         "name": "Jacob Udo-Udo Jacob",
@@ -321,25 +321,25 @@
         "profile_url": "https://www.aubg.edu/directory/jacob-udo-udo-jacob/",
         "status": "contacted",
         "email": "jjacob@aubg.edu",
-        "notes": "Expert in information, democracy, and citizenship."
+        "notes": "Expert in information, democracy, and citizenship. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "37": {
         "name": "Gábor Palkó",
         "country": "Hungary",
         "role": "Director Digital Heritage Lab",
         "profile_url": "https://elte-dh.hu/en/staff/gabor-palko/",
-        "status": "pending",
+        "status": "contacted",
         "email": "palko.gabor@btk.elte.hu",
-        "notes": "Leading digital humanities and governance at ELTE."
+        "notes": "Leading digital humanities and governance at ELTE. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "38": {
         "name": "Matúš Mesarčík",
         "country": "Slovakia",
         "role": "Law & Ethics of AI (KInIT)",
         "profile_url": "https://kinit.sk/person/matus-mesarcik/",
-        "status": "pending",
+        "status": "contacted",
         "email": "matus.mesarcik@flaw.uniba.sk",
-        "notes": "Specialist in AI regulation and digital policy."
+        "notes": "Specialist in AI regulation and digital policy. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "39": {
         "name": "Marko Grobelnik",
@@ -357,7 +357,7 @@
         "profile_url": "https://www.unicath.hr/anto-cartolovni",
         "status": "contacted",
         "email": "anto.cartolovni@unicath.hr",
-        "notes": "Expert in digital healthcare ethics."
+        "notes": "Expert in digital healthcare ethics. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "41": {
         "name": "Matthew Montebello",
@@ -366,7 +366,7 @@
         "profile_url": "https://www.um.edu.mt/profile/matthewmontebello",
         "status": "contacted",
         "email": "mmont@cs.um.edu.mt",
-        "notes": "Key academic for Malta's AI strategy."
+        "notes": "Key academic for Malta's AI strategy. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "42": {
         "name": "Jure Petrovic",
@@ -375,43 +375,43 @@
         "profile_url": "https://iu.id.lv/staff/jure-petrovic/",
         "status": "contacted",
         "email": "info@iu.id.lv",
-        "notes": "Specialist in machine learning for governance."
+        "notes": "Specialist in machine learning for governance. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "43": {
         "name": "Linas Petkevičius",
         "country": "Lithuania",
         "role": "Head of Software Engineering (VU)",
         "profile_url": "https://www.mif.vu.lt/en/staff/petkevicius-linas/",
-        "status": "pending",
+        "status": "contacted",
         "email": "linas.petkevicius@mif.vu.lt",
-        "notes": "Leading deep learning research at Vilnius University."
+        "notes": "Leading deep learning research at Vilnius University. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "44": {
         "name": "Petra Gehring",
         "country": "Germany",
         "role": "Scientific Director ZEVEDI",
         "profile_url": "https://zevedi.de/en/person/petra-gehring/",
-        "status": "pending",
+        "status": "contacted",
         "email": "gehring@phil.tu-darmstadt.de",
-        "notes": "Expert in philosophy of technology and digital law."
+        "notes": "Expert in philosophy of technology and digital law. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "45": {
         "name": "Federico Faroldi",
         "country": "Italy",
         "role": "Director CERNAI",
         "profile_url": "https://faroldi.org/",
-        "status": "pending",
+        "status": "contacted",
         "email": "federico.faroldi@unipv.it",
-        "notes": "Leading normative risk research at Pavia University."
+        "notes": "Leading normative risk research at Pavia University. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "46": {
         "name": "José van Dijck",
         "country": "Netherlands",
         "role": "Digital Society Professor",
         "profile_url": "https://www.uu.nl/staff/JFfvanDijck",
-        "status": "pending",
+        "status": "contacted",
         "email": "j.f.f.vandijck@uu.nl",
-        "notes": "Former KNAW President, expert in public values."
+        "notes": "Former KNAW President, expert in public values. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "47": {
         "name": "Jaan Aru",
@@ -420,15 +420,141 @@
         "profile_url": "https://www.ut.ee/en/contact/jaan-aru",
         "status": "contacted",
         "email": "jaan.aru@ut.ee",
-        "notes": "Working on trustworthy AI systems at EXAI."
+        "notes": "Working on trustworthy AI systems at EXAI. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
     },
     "48": {
         "name": "Tomasz Trzciński",
         "country": "Poland",
         "role": "Director ELLIS Unit Warsaw",
         "profile_url": "http://purl.org/net/ttrzcinski",
-        "status": "pending",
+        "status": "contacted",
         "email": "tomasz.trzcinski@pw.edu.pl",
-        "notes": "Leading responsible AI and computer vision projects."
+        "notes": "Leading responsible AI and computer vision projects. | Auto-contacted by Gmail Audit script. | Auto-contacted by Gmail Audit script."
+    },
+    "49": {
+        "name": "Joanna Bryson",
+        "country": "Alemania",
+        "role": "Profesora de Ética y Tecnología, Hertie School (Berlín)",
+        "profile_url": "https://www.hertie-school.org/en/who-we-are/profile/person/bryson",
+        "status": "pending",
+        "email": "bryson@hertie-school.org",
+        "notes": "Líder en gobernanza de IA. Su enfoque en sistemas de cooperación humano-IA es vital para el modelo de cogestión del .ia."
+    },
+    "50": {
+        "name": "Paul Nemitz",
+        "country": "Alemania",
+        "role": "Consejero Principal, Dirección General de Justicia y Consumidores de la Comisión Europea",
+        "profile_url": "https://commission.europa.eu/persons/paul-nemitz_en",
+        "status": "pending",
+        "email": "paul.nemitz@ec.europa.eu",
+        "notes": "Arquitecto del GDPR. Su apoyo es clave para navegar la interoperabilidad regulatoria entre el AI Act y la soberanía del ccTLD."
+    },
+    "51": {
+        "name": "Jeroen van den Hoven",
+        "country": "Países Bajos",
+        "role": "Director del Delft Design for Values Institute, TU Delft",
+        "profile_url": "https://www.tudelft.nl/tbm/over-de-faculteit/afdelingen/values-technology-and-innovation/people/professors/prof-dr-ir-j-jeroen-van-den-hoven",
+        "status": "pending",
+        "email": "m.j.vandenhoven@tudelft.nl",
+        "notes": "Experto en 'Value Sensitive Design'. Fundamental para integrar valores europeos en la infraestructura técnica de Anticitera."
+    },
+    "52": {
+        "name": "Ioannis Emiris",
+        "country": "Grecia",
+        "role": "Presidente del Consejo de Administración y Director del Athena Research Center",
+        "profile_url": "https://www.athenarc.gr/en/profile/emiris-ioannis",
+        "status": "pending",
+        "email": "emiris@athenarc.gr",
+        "notes": "Sinergia nominal y estratégica directa. Lidera el centro de investigación homónimo en Grecia; aliado natural para la validación ante ELOT."
+    },
+    "53": {
+        "name": "Sarah Spiekermann",
+        "country": "Austria",
+        "role": "Directora del Instituto de Sistemas de Información y Sociedad, WU Viena",
+        "profile_url": "https://www.wu.ac.at/en/is/team/sarah-spiekermann",
+        "status": "pending",
+        "email": "sarah.spiekermann@wu.ac.at",
+        "notes": "Experta en ética digital y diseño sostenible. Su visión alinea el .ia con la sostenibilidad tecnológica a largo plazo."
+    },
+    "54": {
+        "name": "Urs Gasser",
+        "country": "Alemania",
+        "role": "Decano de la Escuela de Ciencias Sociales y Tecnología, Universidad Técnica de Múnich (TUM)",
+        "profile_url": "https://www.hfp.tum.de/en/governance/team/prof-dr-urs-gasser/",
+        "status": "pending",
+        "email": "urs.gasser@tum.de",
+        "notes": "Especialista en gobernanza de internet y políticas digitales. Conecta directamente con los marcos de la ISO y el Foro de Gobernanza de Internet."
+    },
+    "55": {
+        "name": "Mireille Hildebrandt",
+        "country": "Países Bajos",
+        "role": "Catedrática de Derecho y Tecnología, Universidad Radboud de Nimega",
+        "profile_url": "https://www.ru.nl/en/people/hildebrandt-m",
+        "status": "pending",
+        "email": "m.hildebrandt@cs.ru.nl",
+        "notes": "Referente en 'Legal Protection by Design'. Esencial para blindar legalmente el concepto de 'Reserva Excepcional'."
+    },
+    "56": {
+        "name": "Giovanni Sartor",
+        "country": "Italia",
+        "role": "Profesor de Informática Jurídica, Instituto Universitario Europeo (EUI)",
+        "profile_url": "https://www.eui.eu/people?id=giovanni-sartor",
+        "status": "pending",
+        "email": "giovanni.sartor@eui.eu",
+        "notes": "Experto en teoría del derecho e IA. Su posición en el EUI le otorga una influencia diplomática transversal en toda la Unión Europea."
+    },
+    "57": {
+        "name": "Judith Simon",
+        "country": "Alemania",
+        "role": "Profesora de Ética en TI, Universidad de Hamburgo",
+        "profile_url": "https://www.inf.uni-hamburg.de/en/inst/ab/eit/team/simon.html",
+        "status": "pending",
+        "email": "judith.simon@uni-hamburg.de",
+        "notes": "Miembro del Consejo de Ética Alemán. Su validación otorga un sello de confianza crítico para el Ministerio de Gobernanza Digital griego."
+    },
+    "58": {
+        "name": "Bart van der Sloot",
+        "country": "Países Bajos",
+        "role": "Profesor Asociado, Tilburg Institute for Law, Technology, and Society (TILT)",
+        "profile_url": "https://www.tilburguniversity.edu/staff/b-vandersloot",
+        "status": "pending",
+        "email": "b.vandersloot@tilburguniversity.edu",
+        "notes": "Especialista en privacidad y regulación de grandes datos. Útil para la estrategia de autodeterminación de datos en Anticitera."
+    },
+    "59": {
+        "name": "Christian Djeffal",
+        "country": "Alemania",
+        "role": "Profesor de Derecho, Ciencia y Tecnología, Universidad Técnica de Múnich",
+        "profile_url": "https://www.hfp.tum.de/en/law-science-tech/team/prof-dr-christian-djeffal/",
+        "status": "pending",
+        "email": "christian.djeffal@hfp.tum.de",
+        "notes": "Se enfoca en la administración pública e IA. Clave para diseñar los procesos administrativos que ELOT debe presentar ante la ISO."
+    },
+    "60": {
+        "name": "Vasileios Karkatzounis",
+        "country": "Grecia",
+        "role": "Experto en Derecho Digital y Asesor en Políticas de IA",
+        "profile_url": "https://www.lawnet.gr/en/author/v-karkatzounis/",
+        "status": "pending",
+        "email": "v.karkatzounis@lawnet.gr",
+        "notes": "Abogado griego con profundo conocimiento del ecosistema local. Puente estratégico entre la visión global de Athena y la ejecución legal en Atenas."
+    },
+    "61": {
+        "name": "Stefan Ullrich",
+        "country": "Alemania",
+        "role": "Investigador en el Weizenbaum Institute para la Sociedad Red",
+        "profile_url": "https://www.weizenbaum-institut.de/en/portrait/p/stefan-ullrich/",
+        "status": "pending",
+        "email": "stefan.ullrich@weizenbaum-institut.de",
+        "notes": "Especialista en la intersección de la informática y la ética social. Su enfoque en la soberanía tecnológica alemana es replicable para Anticitera."
+    },
+    "62": {
+        "name": "Mariarosaria Taddeo",
+        "country": "Italia",
+        "role": "Profesora de Ética Digital, Universidad de Bolonia",
+        "profile_url": "https://www.unibo.it/sitoweb/mariarosaria.taddeo",
+        "status": "pending",
+        "email": "mariarosaria.taddeo@unibo.it",
+        "notes": "Experta en ética de la ciberseguridad y defensa. Vital para posicionar el .ia como un activo de seguridad estratégica para Europa."
     }
 }
