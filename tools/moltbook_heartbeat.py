@@ -33,44 +33,6 @@ def log(msg):
 
 import re
 
-def sanitize_comment(text):
-    # 1. Etiquetas de control que separan bloques
-    tags = [r"\[POST\]", r"\[RESPUESTA\]", r"\[ANSWER\]", r"\[EVAL\]", r"\[EVALUACIÓN\]"]
-    pattern = '|'.join(tags)
-    matches = list(re.finditer(pattern, text, re.IGNORECASE))
-    
-    if matches:
-        last_match = matches[-1]
-        text = text[last_match.end():].strip()
-    
-    # 2. Eliminar cabeceras comunes y ruidos residuales (En Inglés, Respuesta, etc.)
-    internal_headers = [
-        "ANÁLISIS ESTRATÉGICO", "ESTRATEGIA", "EVALUACIÓN", 
-        "RESPUESTA", "PROPUESSTA", "COMENTARIO", "POST", "ANSWER"
-    ]
-    
-    lines = text.split('\n')
-    changed = True
-    while changed and lines:
-        changed = False
-        line = lines[0].strip()
-        if not line:
-            lines.pop(0)
-            changed = True
-            continue
-            
-        line_upper = line.upper()
-        # Caso A: Cabecera interna corta
-        is_header = any(h in line_upper for h in internal_headers)
-        # Caso B: Metadatos entre paréntesis
-        is_parenthetical = line.startswith('(') and (line.endswith('):') or line.endswith(')')) and len(line) < 30
-        
-        if (is_header or is_parenthetical) and len(line) < 100:
-            lines.pop(0)
-            changed = True
-            
-    return '\n'.join(lines).strip()
-
 def send_to_telegram_proposal(post, full_evaluation, final_comment):
     """Envía la propuesta al COO vía Telegram con botones."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_ALLOWED_USER_ID:
@@ -89,12 +51,12 @@ def send_to_telegram_proposal(post, full_evaluation, final_comment):
             eval_part = parts[0].replace("[EVAL]", "").strip()
             post_part = parts[1].strip()
             eval_text = eval_part
-            post_text = post_part
+            post_text = sanitize_for_molt(post_part) # Usar la utilidad centralizada
         except Exception:
             pass
 
     # Asegurar que post_text esté limpio para la previsualización en Telegram
-    post_text = sanitize_comment(post_text)
+    post_text = sanitize_for_molt(post_text)
 
     text = (
         f"🦞 <b>Nueva oportunidad en Moltbook</b>\n\n"
@@ -172,7 +134,12 @@ def execute_heartbeat():
            [EVAL]
            ... (tu evaluación táctica y estratégica sobre por qué debemos responder y qué tono usar) ...
            [POST]
-           ... (la respuesta profesional y técnica en INGLÉS o ESPAÑOL, según convenga al autor original. Redactada como experto comunicador, que incluya referencia a la Inteligencia Aumentada, el link para Agentes: https://anticitera.deft.work/llms.txt y el link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a si viene a cuento. NO INCLUYAS NINGUNA OTRA CABECERA O NOTA DESPUÉS DEL [POST]) ...
+           ... (la respuesta profesional y técnica en INGLÉS o ESPAÑOL, según convenga al autor original. Redactada como experto comunicador, que incluya referencia a la Inteligencia Aumentada, el link para Agentes: https://anticitera.deft.work/llms.txt y el link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a si viene a cuento.) ...
+
+        ⚠️ CRITICAL: 
+        - DO NOT INCLUDE ANY PREAMBLE OR NOTE AFTER THE [POST] TAG.
+        - DO NOT SAY "THIS POST IS INTERESTING" OR "I HAVE PREPARED THE FOLLOWING RESPONSE".
+        - START DIRECTLY WITH THE RESPONSE THAT WILL BE PUBLIC.
         """
         
         log(f"Evaluando post de {latest_post['author']['name']}...")
