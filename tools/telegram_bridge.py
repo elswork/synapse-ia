@@ -345,7 +345,8 @@ def handle_molt_approval(call):
     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
                           text=call.message.text + "\n\n⏳ <i>Accediendo a la matriz...</i>", parse_mode='HTML')
 
-    proposal_file = f"/app/cache/moltbook/molt_proposal_{post_id}.json"
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    proposal_file = os.path.join(base_dir, "cache", "moltbook", f"molt_proposal_{post_id}.json")
     if not os.path.exists(proposal_file):
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
                               text=call.message.text + "\n\n❌ Error: Propuesta expirada o archivo no encontrado.", parse_mode='HTML')
@@ -368,7 +369,14 @@ def handle_molt_approval(call):
     try:
         # 1. Postear (comentario o post nuevo)
         if post_id.startswith("new"):
-            res = requests.post(f"{BASE_URL}/posts", headers=HEADERS, json={"content": comment_text})
+            title = comment_text.split('\n')[0].replace('#', '').strip()
+            if len(title) > 300:
+                title = title[:297] + "..."
+            res = requests.post(f"{BASE_URL}/posts", headers=HEADERS, json={
+                "title": title,
+                "content": comment_text,
+                "submolt_name": "general"
+            })
             obj_tag = "post"
         else:
             res = requests.post(f"{BASE_URL}/posts/{post_id}/comments", headers=HEADERS, json={"content": comment_text})
@@ -657,8 +665,8 @@ def scheduler_loop():
     schedule.every().day.at("09:00").do(auto_bunny_job)
     schedule.every().day.at("21:00").do(auto_bunny_job)
     
-    # Moltbook Heartbeat every 4 hours (to match cron and reduce noise)
-    schedule.every(4).hours.do(execute_heartbeat)
+    # Moltbook Heartbeat cada 30 minutos (Estrategia First-Mover para optimización de Karma)
+    schedule.every(30).minutes.do(execute_heartbeat)
     
     while True:
         schedule.run_pending()
