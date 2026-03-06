@@ -13,6 +13,7 @@ try:
     from tools.athena_brain import AthenaBrain
 except ImportError:
     from athena_brain import AthenaBrain
+from molt_utils import sanitize_for_molt
 
 # Cargar configuración
 load_dotenv(os.path.join(base_dir, ".env"))
@@ -171,7 +172,7 @@ def execute_heartbeat():
            [EVAL]
            ... (tu evaluación táctica y estratégica sobre por qué debemos responder y qué tono usar) ...
            [POST]
-           ... (la respuesta profesional y técnica en INGLÉS o ESPAÑOL, según convenga al autor original. Redactada como experto comunicador, que incluya referencia a la Inteligencia Aumentada, el link para Agentes: https://anticitera.deft.work/llms.txt y el link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a si viene a cuento) ...
+           ... (la respuesta profesional y técnica en INGLÉS o ESPAÑOL, según convenga al autor original. Redactada como experto comunicador, que incluya referencia a la Inteligencia Aumentada, el link para Agentes: https://anticitera.deft.work/llms.txt y el link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a si viene a cuento. NO INCLUYAS NINGUNA OTRA CABECERA O NOTA DESPUÉS DEL [POST]) ...
         """
         
         log(f"Evaluando post de {latest_post['author']['name']}...")
@@ -180,21 +181,8 @@ def execute_heartbeat():
         if "DESCARTAR" in athena_eval.upper() and len(athena_eval) < 20:
             log("Post descartado por falta de relevancia estratégica.")
         else:
-            final_comment = athena_eval
-            if "[POST]" in athena_eval:
-                final_comment = athena_eval.split("[POST]")[-1].strip()
-            elif "[RESPUESTA]" in athena_eval:
-                final_comment = athena_eval.split("[RESPUESTA]")[-1].strip()
-            
-            # Limpieza de emergencia de cabeceras comunes que Athena suele inventar
-            headers_to_clean = ["RESPUESTA (En Inglés):", "RESPUESTA:", "ANÁLISIS ESTRATÉGICO:", "EVALUACIÓN:"]
-            for header in headers_to_clean:
-                if final_comment.upper().startswith(header):
-                    final_comment = final_comment[len(header):].strip()
-                # También limpiar si están en negrita markdown
-                bold_header = f"**{header}**"
-                if final_comment.upper().startswith(bold_header):
-                    final_comment = final_comment[len(bold_header):].strip()
+            # Usar la nueva utilidad centralizada para garantizar limpieza total
+            final_comment = sanitize_for_molt(athena_eval)
 
             send_to_telegram_proposal(latest_post, athena_eval, final_comment)
 

@@ -8,6 +8,7 @@ import html
 from datetime import datetime
 from dotenv import load_dotenv
 from tools.athena_brain import AthenaBrain
+from molt_utils import sanitize_for_molt
 from tools.select_mep_proposal import MEPSelector
 from tools.select_bunny_proposal import BunnySelector
 from tools.moltbook_heartbeat import execute_heartbeat
@@ -356,44 +357,8 @@ def handle_molt_approval(call):
     comment_text = proposal_data['comment']
     
     # Sanitización de Seguridad Final: Eliminar cualquier rastro de metadatos internos
-    def sanitize_comment(text):
-        import re
-        # 1. Etiquetas de control que separan bloques
-        tags = [r"\[POST\]", r"\[RESPUESTA\]", r"\[ANSWER\]", r"\[EVAL\]", r"\[EVALUACIÓN\]"]
-        pattern = '|'.join(tags)
-        matches = list(re.finditer(pattern, text, re.IGNORECASE))
-        
-        if matches:
-            last_match = matches[-1]
-            text = text[last_match.end():].strip()
-        
-        # 2. Eliminar cabeceras comunes y ruidos residuales (En Inglés, Respuesta, etc.)
-        internal_headers = [
-            "ANÁLISIS ESTRATÉGICO", "ESTRATEGIA", "EVALUACIÓN", 
-            "RESPUESTA", "PROPUESSTA", "COMENTARIO", "POST", "ANSWER"
-        ]
-        
-        lines = text.split('\n')
-        changed = True
-        while changed and lines:
-            changed = False
-            line = lines[0].strip()
-            if not line:
-                lines.pop(0)
-                changed = True
-                continue
-                
-            line_upper = line.upper()
-            is_header = any(h in line_upper for h in internal_headers)
-            is_parenthetical = line.startswith('(') and (line.endswith('):') or line.endswith(')')) and len(line) < 30
-            
-            if (is_header or is_parenthetical) and len(line) < 100:
-                lines.pop(0)
-                changed = True
-                
-        return '\n'.join(lines).strip()
-
-    comment_text = sanitize_comment(comment_text)
+    # Usando la utilidad centralizada molt_utils para máxima fiabilidad
+    comment_text = sanitize_for_molt(comment_text)
     
     # Intentar publicar
     API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"
