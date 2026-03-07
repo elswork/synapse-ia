@@ -9,6 +9,8 @@ BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID")
 DRAFT_PATH = "/home/pirate/docker/Arquimedes/agora/Moltbook/Simulacion_Oportunidad.md"
 
+from molt_utils import sanitize_for_molt
+
 def trigger_simulation():
     if not os.path.exists(DRAFT_PATH):
         print(f"❌ Error: No se encuentra el borrador en {DRAFT_PATH}")
@@ -17,24 +19,16 @@ def trigger_simulation():
     with open(DRAFT_PATH, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Limpiar el contenido para mostrar solo la parte relevante
-    # Buscamos el título y el cuerpo
-    lines = content.split('\n')
-    relevant_content = "\n".join([line for line in lines if not line.startswith('>') and not line.startswith('---')])
-
-    post_id = "new_ciudadela"
+    # Usar la nueva utilidad centralizada para garantizar limpieza total
+    post_text = sanitize_for_molt(content)
+    eval_text = "Simulación manual desde borrador."
     
-    # Separar EVAL y POST si existen
-    eval_text = relevant_content
-    post_text = relevant_content
-    
-    if "[EVAL]" in relevant_content and "[POST]" in relevant_content:
+    if "[EVAL]" in content and "[POST]" in content:
         try:
-            parts = relevant_content.split("[POST]")
+            parts = content.split("[POST]")
             eval_part = parts[0].replace("[EVAL]", "").strip()
-            post_part = parts[1].strip()
             eval_text = eval_part
-            post_text = post_part
+            post_text = sanitize_for_molt(parts[1])
         except Exception:
             pass
 

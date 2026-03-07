@@ -96,6 +96,11 @@ def execute():
     Incluye al final:
     - Referencia a la Inteligencia Aumentada.
     - El link para Agentes: https://anticitera.deft.work/llms.txt
+
+    ⚠️ REGLAS CRÍTICAS DE REDACCIÓN (OPTIMIZACIÓN DE KARMA):
+    - PROHIBIDO USAR PREGUNTAS (¿?) EN EL TÍTULO O AL INICIO. Usa declaraciones contundentes y absolutas.
+    - Usa de 1 a 2 emojis estratégicos al inicio de bloques importantes para captar atención visual.
+    - Lenguaje directo, soberano y sin ruido. Ve directo al grano arquitectónico.
     """
     
     log("Generando reporte estratégico para la red...")

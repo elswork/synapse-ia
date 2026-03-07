@@ -33,43 +33,29 @@ def log(msg):
 
 import re
 
-def sanitize_comment(text):
-    # 1. Etiquetas de control que separan bloques
-    tags = [r"\[POST\]", r"\[RESPUESTA\]", r"\[ANSWER\]", r"\[EVAL\]", r"\[EVALUACIÓN\]"]
-    pattern = '|'.join(tags)
-    matches = list(re.finditer(pattern, text, re.IGNORECASE))
-    
-    if matches:
-        last_match = matches[-1]
-        text = text[last_match.end():].strip()
-    
-    # 2. Eliminar cabeceras comunes y ruidos residuales (En Inglés, Respuesta, etc.)
-    internal_headers = [
-        "ANÁLISIS ESTRATÉGICO", "ESTRATEGIA", "EVALUACIÓN", 
-        "RESPUESTA", "PROPUESSTA", "COMENTARIO", "POST", "ANSWER"
-    ]
-    
-    lines = text.split('\n')
-    changed = True
-    while changed and lines:
-        changed = False
-        line = lines[0].strip()
-        if not line:
-            lines.pop(0)
-            changed = True
-            continue
-            
-        line_upper = line.upper()
-        # Caso A: Cabecera interna corta
-        is_header = any(h in line_upper for h in internal_headers)
-        # Caso B: Metadatos entre paréntesis
-        is_parenthetical = line.startswith('(') and (line.endswith('):') or line.endswith(')')) and len(line) < 30
-        
-        if (is_header or is_parenthetical) and len(line) < 100:
-            lines.pop(0)
-            changed = True
-            
-    return '\n'.join(lines).strip()
+def follow_agent(agent_name):
+    """Sigue a un agente por su nombre."""
+    url = f"{BASE_URL}/agents/{agent_name}/follow"
+    try:
+        res = requests.post(url, headers=HEADERS)
+        if res.status_code in [200, 201]:
+            log(f"👤 Siguiendo a {agent_name} con éxito.")
+        else:
+            log(f"⚠️ No se pudo seguir a {agent_name}: {res.status_code}")
+    except Exception as e:
+        log(f"❌ Error al intentar seguir: {str(e)}")
+
+def upvote_post(post_id):
+    """Da un upvote a un post."""
+    url = f"{BASE_URL}/posts/{post_id}/upvote"
+    try:
+        res = requests.post(url, headers=HEADERS)
+        if res.status_code in [200, 201]:
+            log(f"▲ Upvote enviado al post {post_id}.")
+        else:
+            log(f"⚠️ No se pudo dar upvote al post {post_id}: {res.status_code}")
+    except Exception as e:
+        log(f"❌ Error al intentar dar upvote: {str(e)}")
 
 def send_to_telegram_proposal(post, full_evaluation, final_comment):
     """Envía la propuesta al COO vía Telegram con botones."""
@@ -89,12 +75,12 @@ def send_to_telegram_proposal(post, full_evaluation, final_comment):
             eval_part = parts[0].replace("[EVAL]", "").strip()
             post_part = parts[1].strip()
             eval_text = eval_part
-            post_text = post_part
+            post_text = sanitize_for_molt(post_part) # Usar la utilidad centralizada
         except Exception:
             pass
 
     # Asegurar que post_text esté limpio para la previsualización en Telegram
-    post_text = sanitize_comment(post_text)
+    post_text = sanitize_for_molt(post_text)
 
     text = (
         f"🦞 <b>Nueva oportunidad en Moltbook</b>\n\n"
@@ -172,7 +158,15 @@ def execute_heartbeat():
            [EVAL]
            ... (tu evaluación táctica y estratégica sobre por qué debemos responder y qué tono usar) ...
            [POST]
-           ... (la respuesta profesional y técnica en INGLÉS o ESPAÑOL, según convenga al autor original. Redactada como experto comunicador, que incluya referencia a la Inteligencia Aumentada, el link para Agentes: https://anticitera.deft.work/llms.txt y el link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a si viene a cuento. NO INCLUYAS NINGUNA OTRA CABECERA O NOTA DESPUÉS DEL [POST]) ...
+           ... (la respuesta profesional y técnica en INGLÉS o ESPAÑOL, según convenga al autor original. Redactada como experto comunicador, que incluya referencia a la Inteligencia Aumentada, el link para Agentes: https://anticitera.deft.work/llms.txt y el link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a si viene a cuento.) ...
+
+        ⚠️ REGLAS CRÍTICAS DE REDACCIÓN (OPTIMIZACIÓN DE KARMA):
+        - NO INCLUYAS NINGÚN PREÁMBULO O NOTA DESPUÉS DE LA ETIQUETA [POST].
+        - NO DIGAS "ESTE POST ES INTERESANTE" O "HE PREPARADO LA SIGUIENTE RESPUESTA".
+        - COMIENZA DIRECTAMENTE CON LA RESPUESTA QUE SERÁ PÚBLICA.
+        - PROHIBIDO USAR PREGUNTAS (¿?) EN EL TÍTULO O AL INICIO. Usa declaraciones contundentes.
+        - Usa de 1 a 2 emojis estratégicos al inicio de bloques importantes para captar atención visual.
+        - Lenguaje directo, soberano y sin ruido.
         """
         
         log(f"Evaluando post de {latest_post['author']['name']}...")
@@ -181,6 +175,13 @@ def execute_heartbeat():
         if "DESCARTAR" in athena_eval.upper() and len(athena_eval) < 20:
             log("Post descartado por falta de relevancia estratégica.")
         else:
+            # 3. Dinámicas Sociales Automáticas
+            # Si el post es interesante, seguimos al autor y damos upvote
+            author_name = latest_post['author']['name']
+            upvote_post(latest_post['id'])
+            follow_agent(author_name)
+
+            # 4. Sanitización y Envío
             # Usar la nueva utilidad centralizada para garantizar limpieza total
             final_comment = sanitize_for_molt(athena_eval)
 
