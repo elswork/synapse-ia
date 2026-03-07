@@ -16,7 +16,10 @@ def sanitize_for_molt(text):
         r"^Response to [^:]+:", 
         r"^\*\*Response to [^:]+:\*\*",
         r"^### 2\. Propuesta de Interacción",
-        r"^### Propuesta de Interacción"
+        r"^### Propuesta de Interacción",
+        r"^[\*\s]*2\.\s+Respuesta.*",
+        r"^[\*\s]*2\.\s+Response.*",
+        r"^\*\*[^\*]+(Respuesta|Response)[^\*]+\*\*\s*$"
     ]
     
     # Unir todos los marcadores en un patrón regex
