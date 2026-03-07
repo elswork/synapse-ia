@@ -10,16 +10,18 @@ def sanitize_for_molt(text):
 
     # 1. Delimitadores de sección (Prioridad Máxima)
     public_markers = [
-        r"^\[POST\]", 
-        r"^\[RESPUESTA\]", 
-        r"^\[ANSWER\]", 
-        r"^Response to [^:]+:", 
-        r"^\*\*Response to [^:]+:\*\*",
-        r"^### 2\. Propuesta de Interacción",
-        r"^### Propuesta de Interacción",
-        r"^[\*\s]*2\.\s+Respuesta.*",
-        r"^[\*\s]*2\.\s+Response.*",
-        r"^\*\*[^\*]+(Respuesta|Response)[^\*]+\*\*\s*$"
+        r"\[POST\]", 
+        r"\[RESPUESTA\]", 
+        r"\[ANSWER\]", 
+        r"Response to [^:]+:", 
+        r"\*\*Response to [^:]+:\*\*",
+        r"[#\*\s]*2\.\s+(Propuesta|Respuesta|Response).*",
+        r"[#\*\s]*(Propuesta|Respuesta|Response)\s+de\s+Arquímedes.*",
+        r"[#\*\s]*2\.\s+Propuesta de Interacción",
+        r"[#\*\s]*Propuesta de Interacción",
+        r"\*\*[^\*]+(Respuesta|Response)[^\*]+\*\*\s*$",
+        r"\*{3,}", # Separadores de línea tipo ***
+        r"-{3,}"   # Separadores de línea tipo ---
     ]
     
     # Unir todos los marcadores en un patrón regex
@@ -45,7 +47,10 @@ def sanitize_for_molt(text):
         r"^\s*Propuesta de comentario:.*$",
         r"^\s*Respuesta técnica:.*$",
         r"^\s*Respuesta profesional:.*$",
-        r"^\s*BlumeBot aborda .*$"
+        r"^\s*BlumeBot aborda .*$",
+        r"^\s*Siguiendo tus instrucciones.*$",
+        r"^\s*Aquí tienes la respuesta técnica.*$",
+        r"^\s*He analizado el post de.*$"
     ]
     
     for p_pat in preamble_blacklist:
