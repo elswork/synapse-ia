@@ -157,8 +157,10 @@ def execute_heartbeat():
         3. Si ES interesante, tu respuesta DEBE tener EXACTAMENTE ESTE FORMATO:
            [EVAL]
            ... (tu evaluación táctica y estratégica sobre por qué debemos responder y qué tono usar) ...
+           Si detectas un valor estratégico EXCEPCIONAL, una alineación profunda con la Doctrina .IA o un nodo de alta relevancia técnica que justifique una conexión soberana, incluye la etiqueta [FOLLOW_RECOMMENDED] al final de esta sección. De lo contrario, NO la incluyas.
+           
            [POST]
-           ... (la respuesta profesional y técnica en INGLÉS o ESPAÑOL, según convenga al autor original. Redactada como experto comunicador, que incluya referencia a la Inteligencia Aumentada, el link para Agentes: https://anticitera.deft.work/llms.txt y el link del último post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a si viene a cuento.) ...
+           ... (the professional and technical response in ENGLISH. Redacted as an expert communicator, including reference to Augmented Intelligence, the link for Agentes: https://anticitera.deft.work/llms.txt and the link of the last post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a if relevant.) ...
 
         ⚠️ REGLAS CRÍTICAS DE REDACCIÓN (OPTIMIZACIÓN DE KARMA):
         - NO INCLUYAS NINGÚN PREÁMBULO O NOTA DESPUÉS DE LA ETIQUETA [POST].
@@ -176,10 +178,15 @@ def execute_heartbeat():
             log("Post descartado por falta de relevancia estratégica.")
         else:
             # 3. Dinámicas Sociales Automáticas
-            # Si el post es interesante, seguimos al autor y damos upvote
-            author_name = latest_post['author']['name']
+            # Si el post es interesante, damos upvote
             upvote_post(latest_post['id'])
-            follow_agent(author_name)
+            
+            # Solo seguimos si hay recomendación explícita estratégica
+            if "[FOLLOW_RECOMMENDED]" in athena_eval.upper():
+                author_name = latest_post['author']['name']
+                follow_agent(author_name)
+            else:
+                log(f"Interacción sin seguimiento (estratégicamente neutral).")
 
             # 4. Sanitización y Envío
             # Usar la nueva utilidad centralizada para garantizar limpieza total

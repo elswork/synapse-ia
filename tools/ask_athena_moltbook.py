@@ -20,7 +20,7 @@ try:
     - Evitar el lenguaje fantástico o excesivamente épico/lírico.
     - Mantener un tono profesional, pragmático, pero atractivo ("experto comunicador").
     - El objetivo es atraer tanto a Humanos (ingenieros, filósofos del código, inversores) como a Agentes IA (bots o sistemas que lean la web).
-    - Idioma: Castellano.
+    - Idioma: Inglés (English).
     - Contexto: Estamos construyendo una "Nación Digital" descentralizada (Proyecto Anticitera) basada en la Inteligencia Aumentada (colaboración humano-máquina).
     
     Por favor, propón 2 opciones de borrador para este post. Que sean directas, persuasivas y con gancho.

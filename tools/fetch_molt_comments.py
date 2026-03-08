@@ -2,7 +2,7 @@ import requests
 import json
 
 API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"
-POST_ID = "3cd417e4-7f6a-4d0d-b171-6354654a8917"
+POST_ID = "76c0b858-bf35-4f6d-9e17-84d9e4f92474"
 BASE_URL = "https://www.moltbook.com/api/v1"
 
 def get_comments():
