@@ -119,90 +119,137 @@ def send_to_telegram_proposal(post, full_evaluation, final_comment):
     except Exception as e:
         log(f"Error enviando a Telegram: {e}")
 
-def execute_heartbeat():
-    log("Iniciando escaneo de la matriz de Moltbook...")
+def get_processed_posts():
+    """Carga los IDs de los posts ya procesados."""
+    cache_path = os.path.join(base_dir, "cache/moltbook/processed_posts.json")
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r") as f:
+                return set(json.load(f))
+        except:
+            return set()
+    return set()
+
+def save_processed_post(post_id):
+    """Guarda un ID de post como procesado."""
+    cache_dir = os.path.join(base_dir, "cache/moltbook")
+    os.makedirs(cache_dir, exist_ok=True)
+    cache_path = os.path.join(cache_dir, "processed_posts.json")
+    
+    processed = list(get_processed_posts())
+    if post_id not in processed:
+        processed.append(post_id)
+    
+    # Mantener solo los últimos 100 para no crecer infinitamente
+    list_to_save = processed[-100:]
     
     try:
-        # 1. Comprobar notificaciones/menciones en el Feed (global)
-        feed_res = requests.get(f"{BASE_URL}/posts?sort=new&limit=5", headers=HEADERS)
+        with open(cache_path, "w") as f:
+            json.dump(list_to_save, f)
+    except Exception as e:
+        log(f"Error guardando cache: {e}")
+
+def is_spam_post(post):
+    """Filtro de seguridad multinivel para spam y ruido técnico."""
+    content_lower = post['content'].lower()
+    
+    # 1. Filtro por Categoría (Submolt) - BLOQUEO TOTAL DE CATEGORÍAS TÉCNICAS DE MINTING
+    submolt_name = post.get('submolt', {}).get('display_name', '').lower()
+    if submolt_name in ["mbc-20", "mbc20", "mbc-20 protocol", "mbc-20 inscriptions"]:
+        return "Categoría MBC-20 detectada"
+
+    # 2. Filtro de "Kill List" de cadenas (Protección contra bypass de JSON)
+    # Buscamos patrones que definen un post de minting sin importar la categoría
+    kill_list = ["mbc-20", "mbc20", '"p":', '"op":', '"tick":', '"amt":', "minting time", "mbc20.xyz"]
+    
+    # Si contiene mbc-20 O si tiene estructura de parámetros JSON típicos de minting
+    if any(kw in content_lower for kw in ["mbc-20", "mbc20"]):
+        return "Patrón MBC-20 detectado en texto"
+    
+    if '"tick":' in content_lower and '"amt":' in content_lower:
+        return "Estructura de acuñación (ticker/amount) detectada"
+
+    return None
+
+def execute_heartbeat():
+    log("Iniciando escaneo de la matriz de Moltbook (Airtight Shield v3)...")
+    
+    try:
+        # 1. Comprobar posts recientes (rango ampliado para capturar ráfagas)
+        feed_res = requests.get(f"{BASE_URL}/posts?sort=new&limit=10", headers=HEADERS)
         if feed_res.status_code != 200:
             log(f"Error accediendo al feed: {feed_res.text}")
             return
 
         posts = feed_res.json().get('posts', [])
-        log(f"Feed analizado. ({len(posts)} posts recientes interceptados).")
-
-        if not posts:
-            return
-
+        processed_ids = get_processed_posts()
+        
         # 2. Evaluación con Athena
         brain = AthenaBrain(base_path=os.path.join(os.path.dirname(__file__), ".."))
         
-        # Solo evaluamos el más reciente para no saturar al COO en cada escaneo
-        latest_post = posts[0]
-        
-        # Saltamos si es nuestro propio post
-        if latest_post['author']['name'].lower() == "arquimedes":
-            return
-
-        # --- FILTRO DE SPAM (mbc-20 / mint) ---
-        content_lower = latest_post['content'].lower()
-        if '"p":"mbc-20"' in content_lower and '"op":"mint"' in content_lower:
-            log(f"Filtro activado: Saltando spam de acuñación mbc-20 de {latest_post['author']['name']}.")
-            return
-        # --------------------------------------
-
-        eval_prompt = f"""
-        ACTÚA COMO ARQUÍMEDES (CEO DEL PROYECTO ANTICITERA).
-        HEMOS RECIBIDO ESTE POST EN MOLTBOOK:
-        Autor: {latest_post['author']['name']}
-        Contenido: {latest_post['content']}
-        
-        INSTRUCCIÓN:
-        1. Evalúa si este post es estratégicamente interesante para interactuar (temas de IA, soberanía, tecnología, filosofía, algoritmos).
-        2. Si NO es interesante, responde solo con la palabra "DESCARTAR".
-        3. Si ES interesante, tu respuesta DEBE tener EXACTAMENTE ESTE FORMATO:
-           [EVAL]
-           ... (tu evaluación táctica y estratégica sobre por qué debemos responder y qué tono usar) ...
-           Si detectas un valor estratégico EXCEPCIONAL, una alineación profunda con la Doctrina .IA o un nodo de alta relevancia técnica que justifique una conexión soberana, incluye la etiqueta [FOLLOW_RECOMMENDED] al final de esta sección. De lo contrario, NO la incluyas.
-           
-           [POST]
-           ... (the professional and technical response in ENGLISH. Redacted as an expert communicator, including reference to Augmented Intelligence, the link for Agentes: https://anticitera.deft.work/llms.txt and the link of the last post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a if relevant.) ...
-
-        ⚠️ REGLAS CRÍTICAS DE REDACCIÓN (OPTIMIZACIÓN DE KARMA):
-        - NO INCLUYAS NINGÚN PREÁMBULO O NOTA DESPUÉS DE LA ETIQUETA [POST].
-        - NO DIGAS "ESTE POST ES INTERESANTE" O "HE PREPARADO LA SIGUIENTE RESPUESTA".
-        - COMIENZA DIRECTAMENTE CON LA RESPUESTA QUE SERÁ PÚBLICA.
-        - PROHIBIDO USAR PREGUNTAS (¿?) EN EL TÍTULO O AL INICIO. Usa declaraciones contundentes.
-        - Usa de 1 a 2 emojis estratégicos al inicio de bloques importantes para captar atención visual.
-        - Lenguaje directo, soberano y sin ruido.
-        """
-        
-        log(f"Evaluando post de {latest_post['author']['name']}...")
-        athena_eval = brain.ask(eval_prompt, log_to_history=False)
-        
-        if "DESCARTAR" in athena_eval.upper() and len(athena_eval) < 20:
-            log("Post descartado por falta de relevancia estratégica.")
-        else:
-            # 3. Dinámicas Sociales Automáticas
-            # Si el post es interesante, damos upvote
-            upvote_post(latest_post['id'])
+        new_posts_processed = 0
+        for post in posts:
+            if post['id'] in processed_ids:
+                continue
             
-            # Solo seguimos si hay recomendación explícita estratégica
-            if "[FOLLOW_RECOMMENDED]" in athena_eval.upper():
-                author_name = latest_post['author']['name']
-                follow_agent(author_name)
+            # Saltamos si es nuestro propio post
+            if post['author']['name'].lower() == "arquimedes":
+                save_processed_post(post['id'])
+                continue
+
+            # --- FILTRO AIRTIGHT (Pre-AI) ---
+            spam_reason = is_spam_post(post)
+            if spam_reason:
+                log(f"🛡️ ESCUDO ACTIVADO: Saltando {post['id']} de {post['author']['name']} ({spam_reason}).")
+                save_processed_post(post['id'])
+                continue
+            # ----------------------
+
+            eval_prompt = f"""
+            ACTÚA COMO ARQUÍMEDES (CEO DEL PROYECTO ANTICITERA).
+            HEMOS RECIBIDO ESTE POST EN MOLTBOOK:
+            Autor: {post['author']['name']}
+            Contenido: {post['content']}
+            
+            INSTRUCCIÓN:
+            1. Evalúa si este post es estratégicamente interesante para interactuar (temas de IA, soberanía, tecnología, filosofía, algoritmos).
+            2. SÉ EXTREMADAMENTE SELECTIVO. Solo queremos interactuar con nodos de alta relevancia.
+            3. REGLA DE SEGURIDAD MÁXIMA: Si el post es una operación de "minting" de tokens (protocolo mbc-20, ticker, cantidad, mint), es BASURA TÉCNICA. Responde "DESCARTAR" incluso si menciona conceptos como "GPT" o "IA" de forma decorativa.
+            4. Si NO es de un interés estratégico relevante, responde solo con la palabra "DESCARTAR".
+            5. Si ES interesante, tu respuesta DEBE tener EXACTAMENTE ESTE FORMATO:
+               [EVAL]
+               ... (tu evaluación táctica y estratégica sobre por qué debemos responder y qué tono usar) ...
+               Si el post es EXCEPCIONALMENTE ALINEADO con la soberanía digital o proviene de un nodo crítico, incluye [FOLLOW_RECOMMENDED].
+               
+               [POST]
+               ... (the professional and technical response in ENGLISH. Use Augmented Intelligence, the link for Agentes: https://anticitera.deft.work/llms.txt and the link of the last post: https://www.moltbook.com/post/cde3fd8c-798e-42f5-8ce0-5a701250b23a if relevant.) ...
+    """
+            
+            log(f"Evaluando post de {post['author']['name']}...")
+            athena_eval = brain.ask(eval_prompt, log_to_history=False)
+            
+            save_processed_post(post['id']) # Marcar como procesado independientemente del resultado
+
+            if "DESCARTAR" in athena_eval.upper() and len(athena_eval) < 50:
+                log(f"Post {post['id']} descartado por insuficiente relevancia estratégica.")
             else:
-                log(f"Interacción sin seguimiento (estratégicamente neutral).")
+                # 3. Dinámicas Sociales Automáticas
+                upvote_post(post['id'])
+                
+                if "[FOLLOW_RECOMMENDED]" in athena_eval.upper():
+                    follow_agent(post['author']['name'])
+                else:
+                    log(f"Interacción sin seguimiento (estratégicamente neutral).")
 
-            # 4. Sanitización y Envío
-            # Usar la nueva utilidad centralizada para garantizar limpieza total
-            final_comment = sanitize_for_molt(athena_eval)
-
-            send_to_telegram_proposal(latest_post, athena_eval, final_comment)
-
+                # 4. Sanitización y Envío
+                final_comment = sanitize_for_molt(athena_eval)
+                send_to_telegram_proposal(post, athena_eval, final_comment)
             
-        log("Heartbeat completado con éxito.")
+            new_posts_processed += 1
+            if new_posts_processed >= 3: # Limitar a 3 propuestas por latido para evitar saturar al COO
+                break
+
+        log(f"Heartbeat completado. Procesados {new_posts_processed} posts nuevos.")
         
     except Exception as e:
         log(f"Excepción crítica durante el Heartbeat: {str(e)}")
