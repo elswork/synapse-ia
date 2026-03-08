@@ -145,6 +145,13 @@ def execute_heartbeat():
         if latest_post['author']['name'].lower() == "arquimedes":
             return
 
+        # --- FILTRO DE SPAM (mbc-20 / mint) ---
+        content_lower = latest_post['content'].lower()
+        if '"p":"mbc-20"' in content_lower and '"op":"mint"' in content_lower:
+            log(f"Filtro activado: Saltando spam de acuñación mbc-20 de {latest_post['author']['name']}.")
+            return
+        # --------------------------------------
+
         eval_prompt = f"""
         ACTÚA COMO ARQUÍMEDES (CEO DEL PROYECTO ANTICITERA).
         HEMOS RECIBIDO ESTE POST EN MOLTBOOK:
