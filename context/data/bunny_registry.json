@@ -463,7 +463,7 @@
         "country": "Grecia",
         "role": "Presidente del Consejo de Administración y Director del Athena Research Center",
         "profile_url": "https://www.athenarc.gr/en/profile/emiris-ioannis",
-        "status": "pending",
+        "status": "contacted",
         "email": "emiris@athenarc.gr",
         "notes": "Sinergia nominal y estratégica directa. Lidera el centro de investigación homónimo en Grecia; aliado natural para la validación ante ELOT."
     },
@@ -499,7 +499,7 @@
         "country": "Italia",
         "role": "Profesor de Informática Jurídica, Instituto Universitario Europeo (EUI)",
         "profile_url": "https://www.eui.eu/people?id=giovanni-sartor",
-        "status": "pending",
+        "status": "contacted",
         "email": "giovanni.sartor@eui.eu",
         "notes": "Experto en teoría del derecho e IA. Su posición en el EUI le otorga una influencia diplomática transversal en toda la Unión Europea."
     },
@@ -517,7 +517,7 @@
         "country": "Países Bajos",
         "role": "Profesor Asociado, Tilburg Institute for Law, Technology, and Society (TILT)",
         "profile_url": "https://www.tilburguniversity.edu/staff/b-vandersloot",
-        "status": "pending",
+        "status": "contacted",
         "email": "b.vandersloot@tilburguniversity.edu",
         "notes": "Especialista en privacidad y regulación de grandes datos. Útil para la estrategia de autodeterminación de datos en Anticitera."
     },
