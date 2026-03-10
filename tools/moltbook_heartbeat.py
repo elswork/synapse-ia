@@ -110,7 +110,7 @@ def send_to_telegram_proposal(post, full_evaluation, final_comment):
     os.makedirs(proposal_dir, exist_ok=True)
     proposal_file = os.path.join(proposal_dir, f"molt_proposal_{post['id']}.json")
     with open(proposal_file, "w") as f:
-        json.dump({"post_id": post['id'], "comment": post_text}, f)
+        json.dump({"post_id": post['id'], "comment": post_text, "status": "pending", "author": post['author']['name'], "original_content": post['content'], "evaluation": eval_text, "timestamp": datetime.now().isoformat()}, f)
 
     payload = {
         "chat_id": TELEGRAM_ALLOWED_USER_ID,
@@ -260,7 +260,8 @@ def execute_heartbeat():
                     follow_agent(post['author']['name'])
                 
                 final_comment = sanitize_for_molt(athena_eval)
-                send_to_telegram_proposal(post, athena_eval, final_comment)
+                # send_to_telegram_proposal(post, athena_eval, final_comment) # Comentado para resumen diario
+                log(f"Propuesta para {post['id']} encolada para resumen diario.")
             
             new_posts_processed += 1
             if new_posts_processed >= 2: # Reducido a 2 para mayor exclusividad
