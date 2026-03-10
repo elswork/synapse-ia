@@ -18,3 +18,4 @@ context/synapse_memory.db
 
 # Backups created during git conflict resolution
 _git_backups/
+cache/

@@ -12,6 +12,7 @@ DRAFT_PATH = "/home/pirate/docker/Arquimedes/agora/Moltbook/Simulacion_Oportunid
 from molt_utils import sanitize_for_molt
 
 def trigger_simulation():
+    post_id = "simulation"
     if not os.path.exists(DRAFT_PATH):
         print(f"❌ Error: No se encuentra el borrador en {DRAFT_PATH}")
         return
