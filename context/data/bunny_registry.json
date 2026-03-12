@@ -175,7 +175,7 @@
         "country": "Croatia",
         "role": "AI Law & Ethics (EDIH Adria)",
         "profile_url": "https://pravri.uniri.hr/en/ana-poscic/",
-        "status": "pending",
+        "status": "contacted",
         "email": "ana.poscic@uniri.hr",
         "notes": "Expert in legal and ethical challenges of AI, Univ. Rijeka."
     },
@@ -346,7 +346,7 @@
         "country": "Slovenia",
         "role": "Digital Ocean & AI lead (IJS)",
         "profile_url": "http://ijs.si/ijsw/MarkoGrobelnik",
-        "status": "pending",
+        "status": "contacted",
         "email": "marko.grobelnik@ijs.si",
         "notes": "Member of OECD AI expert group."
     },
