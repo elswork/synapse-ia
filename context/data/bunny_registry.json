@@ -556,5 +556,185 @@
         "status": "contacted",
         "email": "mariarosaria.taddeo@unibo.it",
         "notes": "Experta en ética de la ciberseguridad y defensa. Vital para posicionar el .ia como un activo de seguridad estratégica para Europa."
+    },
+    "63": {
+        "name": "Alina Wernick",
+        "country": "Germany",
+        "role": "Law, AI, and Society Researcher",
+        "profile_url": "https://uni-tuebingen.de/en/faculties/faculty-of-law/chairs-and-institutes/chair-of-law-and-artificial-intelligence/team/dr-alina-wernick/",
+        "status": "pending",
+        "email": "alina.wernick@uni-tuebingen.de",
+        "notes": "Leads the Research Group 'Law, AI, and Society' at Univ. Tübingen. Focus on legal frameworks and societal impact."
+    },
+    "64": {
+        "name": "Claudia Lemke",
+        "country": "Germany",
+        "role": "Professor of Business Informatics",
+        "profile_url": "https://www.hwr-berlin.de/en/hwr-berlin/about-us/people/person/claudia-lemke/",
+        "status": "pending",
+        "email": "claudia.lemke@hwr-berlin.de",
+        "notes": "Expert in ethics for transformative technologies and business informatics at HWR Berlin."
+    },
+    "65": {
+        "name": "Silja Voeneky",
+        "country": "Germany",
+        "role": "Professor of Public International Law",
+        "profile_url": "https://www.jura.uni-freiburg.de/en/chairs/voeneky",
+        "status": "pending",
+        "email": "svoeneky@jura.uni-freiburg.de",
+        "notes": "Specialist in legal and ethical issues of AI and biotechnology since 2015."
+    },
+    "66": {
+        "name": "Eirini Ntoutsi",
+        "country": "Germany",
+        "role": "Professor for Open Source Intelligence",
+        "profile_url": "https://www.unibw.de/osint/team/prof-dr-eirini-ntoutsi",
+        "status": "pending",
+        "email": "eirini.ntoutsi@unibw.de",
+        "notes": "Focuses on responsible development of AI and open source intelligence at Bundeswehr University Munich."
+    },
+    "67": {
+        "name": "Nicoletta Rangone",
+        "country": "Italy",
+        "role": "Professor of Administrative Law",
+        "profile_url": "https://www.lumsa.it/nicoletta-rangone",
+        "status": "pending",
+        "email": "n.rangone@lumsa.it",
+        "notes": "Director of the Jean Monnet Centre of Excellence on Sustainable AI for Regulation (SUSTAIN-AI-REG)."
+    },
+    "68": {
+        "name": "Federico Galli",
+        "country": "Italy",
+        "role": "Assistant Professor of Legal Studies",
+        "profile_url": "https://www.unibo.it/sitoweb/federico.galli2",
+        "status": "pending",
+        "email": "federico.galli2@unibo.it",
+        "notes": "Research Fellow at the Alma Mater Research Institute for Human-Centered AI. Expert in Law & Tech."
+    },
+    "69": {
+        "name": "G. Marco Gambaro",
+        "country": "Italy",
+        "role": "Professor of Media Economics",
+        "profile_url": "https://www.unimi.it/it/ugov/person/marco-gambaro",
+        "status": "pending",
+        "email": "marco.gambaro@unimi.it",
+        "notes": "Expert in technological autonomy and digital sovereignty at Università degli Studi di Milano."
+    },
+    "70": {
+        "name": "Pietro Falletta",
+        "country": "Italy",
+        "role": "Associate Professor of Administrative Law",
+        "profile_url": "https://docenti.uninsubria.it/falletta-pietro",
+        "status": "pending",
+        "email": "pietro.falletta@uninsubria.it",
+        "notes": "Director of @LawLab – Laboratorio sul diritto del digitale at LUISS. Focus on internet law and discrimination."
+    },
+    "71": {
+        "name": "Nadya Purtova",
+        "country": "Netherlands",
+        "role": "Professor of Law, Innovation, and Technology",
+        "profile_url": "https://www.uu.nl/staff/npurtova",
+        "status": "pending",
+        "email": "n.purtova@uu.nl",
+        "notes": "Expert in data protection law, ownership, and AI at Utrecht University."
+    },
+    "72": {
+        "name": "Catalina Goanta",
+        "country": "Netherlands",
+        "role": "Associate Professor of Private Law",
+        "profile_url": "https://www.uu.nl/staff/cgoanta",
+        "status": "pending",
+        "email": "c.goanta@uu.nl",
+        "notes": "Researches private governance of Internet platforms and consumer forensics. Coordinator for DAI."
+    },
+    "73": {
+        "name": "Eduard Fosch-Villaronga",
+        "country": "Netherlands",
+        "role": "Associate Professor in Law and AI",
+        "profile_url": "https://www.universiteitleiden.nl/en/staffmembers/eduard-fosch-villaronga",
+        "status": "pending",
+        "email": "e.fosch.villaronga@law.leidenuniv.nl",
+        "notes": "Expert in robotics, AI and Law. Co-editor of 'Law and AI'."
+    },
+    "74": {
+        "name": "Konrad Kollnig",
+        "country": "Netherlands",
+        "role": "Researcher in EU AI Regulation",
+        "profile_url": "https://www.maastrichtuniversity.nl/k-kollnig",
+        "status": "pending",
+        "email": "konrad.kollnig@maastrichtuniversity.nl",
+        "notes": "Works on the RegTech4AI project to improve EU AI regulation and protect citizens."
+    },
+    "75": {
+        "name": "Meelis Kull",
+        "country": "Estonia",
+        "role": "Associate Professor of Machine Learning",
+        "profile_url": "https://cs.ut.ee/en/contact/meelis-kull",
+        "status": "pending",
+        "email": "meelis.kull@ut.ee",
+        "notes": "Leads the AI Center of Excellence at Univ. Tartu. Focus on reliable AI for e-governance."
+    },
+    "76": {
+        "name": "Pawel Sobocinski",
+        "country": "Estonia",
+        "role": "Professor at TalTech School of IT",
+        "profile_url": "https://taltech.ee/en/contacts/pawel-sobocinski",
+        "status": "pending",
+        "email": "pawel.sobocinski@taltech.ee",
+        "notes": "Expert in secure AI development and Estonia's role in digital sovereignty."
+    },
+    "77": {
+        "name": "Rain Ottis",
+        "country": "Estonia",
+        "role": "Head of Cybersecurity Research Group",
+        "profile_url": "https://taltech.ee/en/contacts/rain-ottis",
+        "status": "pending",
+        "email": "rain.ottis@taltech.ee",
+        "notes": "Focus on critical infrastructure protection, e-governance, and cybersecurity strategy."
+    },
+    "78": {
+        "name": "Ott Velsberg",
+        "country": "Estonia",
+        "role": "Government Chief Data Officer",
+        "profile_url": "https://www.mkm.ee/en/contacts",
+        "status": "pending",
+        "email": "ott.velsberg@mkm.ee",
+        "notes": "Leads Estonia's data governance, open data, and AI implementation strategy."
+    },
+    "79": {
+        "name": "Paweł Kowalski",
+        "country": "Poland",
+        "role": "Lawyer and AI Ethics Expert",
+        "profile_url": "https://swps.pl/pracownicy/pawel-kowalski",
+        "status": "pending",
+        "email": "pkowalski1@swps.edu.pl",
+        "notes": "Associated with SWPS University. Expert in AI guidelines and technology law."
+    },
+    "80": {
+        "name": "Bartłomiej Nowak",
+        "country": "Poland",
+        "role": "Dean of Faculty of Law, Kozminski Univ",
+        "profile_url": "https://www.kozminski.edu.pl/en/node/1484",
+        "status": "pending",
+        "email": "bnowak@kozminski.edu.pl",
+        "notes": "Emphasizes AI role in economic competitiveness. Involved in AI Law Master's program."
+    },
+    "81": {
+        "name": "Ewa Laskowska-Litak",
+        "country": "Poland",
+        "role": "Expert in IP and Internet Law",
+        "profile_url": "https://law.uj.edu.pl/ewa-laskowska-litak/",
+        "status": "pending",
+        "email": "ewa.laskowska-litak@uj.edu.pl",
+        "notes": "Researcher at Future Law Lab, Jagiellonian Univ. Focus on IP, copyright, and the internet."
+    },
+    "82": {
+        "name": "Mateusz Pszczyński",
+        "country": "Poland",
+        "role": "Lead Researcher in AI Public Services",
+        "profile_url": "https://prawo.uni.opole.pl/mateusz-pszczynski/",
+        "status": "pending",
+        "email": "mpszczynski@uni.opole.pl",
+        "notes": "Focus on acceptability of AI in public services and regulatory solutions in the EU."
     }
 }
