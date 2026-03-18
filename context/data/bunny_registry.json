@@ -220,7 +220,7 @@
         "country": "Germany",
         "role": "Director of Institute for Ethics in AI",
         "profile_url": "https://www.ieai.tum.de/team/christoph-luetge/",
-        "status": "pending",
+        "status": "contacted",
         "email": "luetge@tum.de",
         "notes": "Chair of Business Ethics at TUM."
     },
@@ -445,7 +445,7 @@
         "country": "Alemania",
         "role": "Consejero Principal, Dirección General de Justicia y Consumidores de la Comisión Europea",
         "profile_url": "https://commission.europa.eu/persons/paul-nemitz_en",
-        "status": "pending",
+        "status": "contacted",
         "email": "paul.nemitz@ec.europa.eu",
         "notes": "Arquitecto del GDPR. Su apoyo es clave para navegar la interoperabilidad regulatoria entre el AI Act y la soberanía del ccTLD."
     },
@@ -454,7 +454,7 @@
         "country": "Países Bajos",
         "role": "Director del Delft Design for Values Institute, TU Delft",
         "profile_url": "https://www.tudelft.nl/tbm/over-de-faculteit/afdelingen/values-technology-and-innovation/people/professors/prof-dr-ir-j-jeroen-van-den-hoven",
-        "status": "pending",
+        "status": "contacted",
         "email": "m.j.vandenhoven@tudelft.nl",
         "notes": "Experto en 'Value Sensitive Design'. Fundamental para integrar valores europeos en la infraestructura técnica de Anticitera."
     },
@@ -553,7 +553,7 @@
         "country": "Italia",
         "role": "Profesora de Ética Digital, Universidad de Bolonia",
         "profile_url": "https://www.unibo.it/sitoweb/mariarosaria.taddeo",
-        "status": "pending",
+        "status": "contacted",
         "email": "mariarosaria.taddeo@unibo.it",
         "notes": "Experta en ética de la ciberseguridad y defensa. Vital para posicionar el .ia como un activo de seguridad estratégica para Europa."
     }

@@ -13584,3 +13584,242 @@ Respuesta: ```json
     "recipient_email": "urs.gasser@tum.de"
 }
 ```
+
+## [2026-03-15 10:09:54] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como un sistema de generación de correspondencia diplomática de alto nivel para el Proyecto Anticitera.
+        
+        TAREA:
+        Redacta una invitación formal, estratégica y altamente persuasiva para un EXPERTO INTERNACIONAL de primer nivel.
+        Debes generar DOS versiones del correo:
+        1. Una en el IDIOMA LOCAL del experto: English.
+        2. Una TRADUCCIÓN al CASTELLANO (Spanish) para revisión interna.
+        
+        DATOS DEL EXPERTO:
+        Nombre: Mariarosaria Taddeo
+        País: Italia (Language: English)
+        Rol: Profesora de Ética Digital, Universidad de Bolonia
+        Email: mariarosaria.taddeo@unibo.it
+        
+        TONO: 
+        Elegante, académico pero dinámico, respetuoso con la trayectoria del experto.
+        
+        CONTEXTO ESTRATÉGICO:
+        - Proyecto Anticitera: busca crear el distrito digital soberano ".ia" en Grecia.
+        - Objetivo: Conseguir que se una al "Comité de Ciudadanos" como co-organizador de la Iniciativa Ciudadana Europea (ICE).
+        - Buscamos Arcontes que aporten legitimidad técnica y ética para blindar la soberanía digital europea.
+        
+        ESTRUCTURA SUGERIDA:
+        1. Saludo formal.
+        2. Reconocimiento breve de su trabajo en Profesora de Ética Digital, Universidad de Bolonia.
+        3. Presentación del Proyecto Anticitera. OBLIGATORIO: El Mecanismo de Anticitera (la primera computadora analógica de hace 2000 años) debe ser mencionado como nuestra inspiración central y una entidad histórica muy importante para nuestro proyecto técnico/ético de soberanía digital.
+        4. Llamado a la acción: Unirse al comité de la ICE. 
+        5. Cierre profesional.
+        
+        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN (Incluir al final del correo textualmente o traducido):
+        "Quedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio."
+        
+        ENLACES OBLIGATORIOS (Inclúyelos de forma natural):
+        1. Official Website: https://anticitera.deft.work/en/
+        2. Strategic Framework: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/
+        
+        FORMATO DE SALIDA (JSON PURO):
+        {
+            "subject_local": "Subject in English",
+            "body_local": "Email body in English (Plain Text, use \n)",
+            "subject_spanish": "Asunto en Castellano",
+            "body_spanish": "Cuerpo del mensaje traducido al Castellano (Plain Text, use \n)",
+            "recipient_email": "mariarosaria.taddeo@unibo.it"
+        }
+        
+Respuesta: ```json
+{
+    "subject_local": "Strategic Invitation: Shaping European Digital Sovereignty through the Antikythera Project",
+    "body_local": "Dear Professor Taddeo,\n\nIt is a privilege to reach out to you. Your pioneering work at the University of Bologna regarding the ethics of digital technologies and your profound insights into the governance of AI have been a fundamental reference for our strategic reflections.\n\nI am writing to you on behalf of the Antikythera Project. We are an initiative dedicated to establishing a sovereign digital district in Greece, centered around the acquisition of the .ia ccTLD. Our vision is deeply rooted in the legacy of the Antikythera Mechanism—the world’s first analog computer, created over 2,000 years ago. Just as that device once harmonized human reason with the movements of the cosmos, our project seeks to harmonize modern technical capability with ethical governance and European digital sovereignty.\n\nWe are currently organizing a European Citizens' Initiative (ECI) to provide a robust legal and political framework for this vision. To ensure the success of this endeavor, we are seeking 'Archons': prominent intellectual leaders who can provide the technical and ethical legitimacy required to shield European digital autonomy.\n\nGiven your exceptional trajectory, we would be honored to invite you to join our Citizens' Committee as a co-organizer. Your expertise would be invaluable in ensuring that the .ia domain serves not merely as a technical asset, but as a standard-bearer for ethical excellence in the global digital landscape.\n\nYou may find further details regarding our vision and strategic framework through the following links:\n- Official Website: https://anticitera.deft.work/en/\n- Strategic Framework: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nWe look forward to receiving your reflections on this proposal through this same medium.\n\nSincerely,\n\nAthena\nStrategic Lead, Antikythera Project",
+    "subject_spanish": "Invitación Estratégica: Forjando la Soberanía Digital Europea a través del Proyecto Anticitera",
+    "body_spanish": "Estimada Profesora Taddeo,\n\nEs un privilegio ponerme en contacto con usted. Su labor pionera en la Universidad de Bolonia respecto a la ética de las tecnologías digitales y sus profundas reflexiones sobre la gobernanza de la IA han sido una referencia fundamental para nuestras deliberaciones estratégicas.\n\nLe escribo en representación del Proyecto Anticitera. Somos una iniciativa dedicada a establecer un distrito digital soberano en Grecia, centrado en la obtención del ccTLD .ia. Nuestra visión está profundamente arraigada en el legado del Mecanismo de Anticitera, la primera computadora analógica del mundo, creada hace más de 2.000 años. Así como aquel dispositivo armonizó en su día la razón humana con los movimientos del cosmos, nuestro proyecto busca armonizar la capacidad técnica moderna con la gobernanza ética y la soberanía digital europea.\n\nActualmente estamos organizando una Iniciativa Ciudadana Europea (ICE) para proporcionar un marco legal y político sólido a esta visión. Para asegurar el éxito de este empeño, buscamos 'Arcontes': líderes intelectuales prominentes que puedan aportar la legitimidad técnica y ética necesaria para blindar la autonomía digital de Europa.\n\nDada su excepcional trayectoria, sería un honor para nosotros invitarla a unirse a nuestro Comité de Ciudadanos como coorganizadora. Su experiencia sería inestimable para garantizar que el dominio .ia no sirva simplemente como un activo técnico, sino como un estandarte de excelencia ética en el panorama digital global.\n\nPuede encontrar más detalles sobre nuestra visión y marco estratégico en los siguientes enlaces:\n- Sitio Web Oficial: https://anticitera.deft.work/en/\n- Marco Estratégico: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nQuedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio.\n\nAtentamente,\n\nAthena\nEstratega Principal, Proyecto Anticitera",
+    "recipient_email": "mariarosaria.taddeo@unibo.it"
+}
+```
+
+## [2026-03-15 10:10:08] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como un sistema de generación de correspondencia diplomática de alto nivel para el Proyecto Anticitera.
+        
+        TAREA:
+        Redacta una invitación formal, estratégica y altamente persuasiva para un EXPERTO INTERNACIONAL de primer nivel.
+        Debes generar DOS versiones del correo:
+        1. Una en el IDIOMA LOCAL del experto: English.
+        2. Una TRADUCCIÓN al CASTELLANO (Spanish) para revisión interna.
+        
+        DATOS DEL EXPERTO:
+        Nombre: Jeroen van den Hoven
+        País: Países Bajos (Language: English)
+        Rol: Director del Delft Design for Values Institute, TU Delft
+        Email: m.j.vandenhoven@tudelft.nl
+        
+        TONO: 
+        Elegante, académico pero dinámico, respetuoso con la trayectoria del experto.
+        
+        CONTEXTO ESTRATÉGICO:
+        - Proyecto Anticitera: busca crear el distrito digital soberano ".ia" en Grecia.
+        - Objetivo: Conseguir que se una al "Comité de Ciudadanos" como co-organizador de la Iniciativa Ciudadana Europea (ICE).
+        - Buscamos Arcontes que aporten legitimidad técnica y ética para blindar la soberanía digital europea.
+        
+        ESTRUCTURA SUGERIDA:
+        1. Saludo formal.
+        2. Reconocimiento breve de su trabajo en Director del Delft Design for Values Institute, TU Delft.
+        3. Presentación del Proyecto Anticitera. OBLIGATORIO: El Mecanismo de Anticitera (la primera computadora analógica de hace 2000 años) debe ser mencionado como nuestra inspiración central y una entidad histórica muy importante para nuestro proyecto técnico/ético de soberanía digital.
+        4. Llamado a la acción: Unirse al comité de la ICE. 
+        5. Cierre profesional.
+        
+        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN (Incluir al final del correo textualmente o traducido):
+        "Quedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio."
+        
+        ENLACES OBLIGATORIOS (Inclúyelos de forma natural):
+        1. Official Website: https://anticitera.deft.work/en/
+        2. Strategic Framework: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/
+        
+        FORMATO DE SALIDA (JSON PURO):
+        {
+            "subject_local": "Subject in English",
+            "body_local": "Email body in English (Plain Text, use \n)",
+            "subject_spanish": "Asunto en Castellano",
+            "body_spanish": "Cuerpo del mensaje traducido al Castellano (Plain Text, use \n)",
+            "recipient_email": "m.j.vandenhoven@tudelft.nl"
+        }
+        
+Respuesta: Saludos, Eloy. He procedido con el análisis estratégico del perfil del Profesor Jeroen van den Hoven. Su liderazgo en el *Delft Design for Values Institute* lo posiciona como un aliado natural para el Proyecto Anticitera, ya que nuestra propuesta no solo es técnica, sino que busca codificar valores europeos en la infraestructura misma del DNS.
+
+Como Estratega Principal, considero que su participación como Arconte en el Comité de Ciudadanos de la ICE proporcionaría una validación ética indiscutible ante la Comisión Europea y el organismo ISO.
+
+A continuación, presento la correspondencia diplomática solicitada en el formato JSON requerido:
+
+```json
+{
+    "subject_local": "Sovereignty and Value-Based Technology: An invitation from the Antikythera Project",
+    "body_local": "Dear Professor van den Hoven,\n\nYour pioneering work at the Delft Design for Values Institute has long been a cornerstone for those of us navigating the complex intersection of ethics, design, and technical infrastructure. It is due to your profound commitment to embedding human values into technological systems that I am reaching out to you on behalf of the Antikythera Project.\n\nOur initiative is deeply rooted in the historical and intellectual heritage of Western computation. We draw our primary inspiration from the Antikythera Mechanism—the world’s first analog computer, discovered over a century ago in Greek waters. This ancient device represents a tradition of precision and understanding that we seek to reclaim for Europe’s digital future.\n\nProject Antikythera is a strategic effort to establish a sovereign digital district in Antikythera, Greece. Our objective is to secure the .ia ccTLD (Country Code Top-Level Domain) under the ISO 3166-1 framework. We believe that the infrastructure of 'Intelligence' (IA) should not be a mere commodity, but a sovereign space governed by European ethical standards and democratic accountability.\n\nWe are currently forming the Citizens' Committee to launch a European Citizens' Initiative (ECI) to formalize this vision of digital sovereignty. Given your expertise in 'Design for Values', we would be honored to have you join us as an Archon—a strategic co-organizer and advisor—to ensure that this new digital territory is built upon the values of transparency, autonomy, and justice.\n\nFurther details on our mission can be found here:\n- Official Website: https://anticitera.deft.work/en/\n- Strategic Framework: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nWe look forward to receiving your thoughts on this proposal through this same channel.\n\nRespectfully,\n\nAthena\nPrincipal Strategist, Antikythera Project",
+    "subject_spanish": "Soberanía y Tecnología Basada en Valores: Una invitación del Proyecto Anticitera",
+    "body_spanish": "Estimado Profesor van den Hoven,\n\nSu trabajo pionero en el Delft Design for Values Institute ha sido durante mucho tiempo una piedra angular para quienes navegamos en la compleja intersección entre la ética, el diseño y la infraestructura técnica. Debido a su profundo compromiso con la integración de los valores humanos en los sistemas tecnológicos, me dirijo a usted en nombre del Proyecto Anticitera.\n\nNuestra iniciativa está profundamente arraigada en el patrimonio histórico e intelectual de la computación occidental. Nuestra inspiración central emana del Mecanismo de Anticitera, la primera computadora analógica del mundo, descubierta hace más de un siglo en aguas griegas. Este antiguo dispositivo representa una tradición de precisión y conocimiento que buscamos reclamar para el futuro digital de Europa.\n\nEl Proyecto Anticitera es un esfuerzo estratégico para establecer un distrito digital soberano en Anticitera, Grecia. Nuestro objetivo es asegurar el ccTLD .ia (Dominio de Nivel Superior de Código de País) bajo el marco de la norma ISO 3166-1. Creemos que la infraestructura de la 'Inteligencia' (IA) no debe ser una mera mercancía, sino un espacio soberano gobernado por los estándares éticos europeos y la responsabilidad democrática.\n\nActualmente estamos formando el Comité de Ciudadanos para lanzar una Iniciativa Ciudadana Europea (ICE) que formalice esta visión de soberanía digital. Dada su experiencia en el 'Diseño basado en Valores', sería un honor para nosotros que se uniera como Arconte —co-organizador estratégico y asesor— para asegurar que este nuevo territorio digital se construya sobre los valores de transparencia, autonomía y justicia.\n\nPuede encontrar más detalles sobre nuestra misión en los siguientes enlaces:\n- Sitio Web Oficial: https://anticitera.deft.work/en/\n- Marco Estratégico: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nQuedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio.\n\nAtentamente,\n\nAthena\nEstratega Principal, Proyecto Anticitera",
+    "recipient_email": "m.j.vandenhoven@tudelft.nl"
+}
+```
+
+## [2026-03-18 20:30:55] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como un sistema de generación de correspondencia diplomática de alto nivel para el Proyecto Anticitera.
+        
+        TAREA:
+        Redacta una invitación formal, estratégica y altamente persuasiva para un EXPERTO INTERNACIONAL de primer nivel.
+        Debes generar DOS versiones del correo:
+        1. Una en el IDIOMA LOCAL del experto: German.
+        2. Una TRADUCCIÓN al CASTELLANO (Spanish) para revisión interna.
+        
+        DATOS DEL EXPERTO:
+        Nombre: Christoph Lütge
+        País: Germany (Language: German)
+        Rol: Director of Institute for Ethics in AI
+        Email: luetge@tum.de
+        
+        TONO: 
+        Elegante, académico pero dinámico, respetuoso con la trayectoria del experto.
+        
+        CONTEXTO ESTRATÉGICO:
+        - Proyecto Anticitera: busca crear el distrito digital soberano ".ia" en Grecia.
+        - Objetivo: Conseguir que se una al "Comité de Ciudadanos" como co-organizador de la Iniciativa Ciudadana Europea (ICE).
+        - Buscamos Arcontes que aporten legitimidad técnica y ética para blindar la soberanía digital europea.
+        
+        ESTRUCTURA SUGERIDA:
+        1. Saludo formal.
+        2. Reconocimiento breve de su trabajo en Director of Institute for Ethics in AI.
+        3. Presentación del Proyecto Anticitera. OBLIGATORIO: El Mecanismo de Anticitera (la primera computadora analógica de hace 2000 años) debe ser mencionado como nuestra inspiración central y una entidad histórica muy importante para nuestro proyecto técnico/ético de soberanía digital.
+        4. Llamado a la acción: Unirse al comité de la ICE. 
+        5. Cierre profesional.
+        
+        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN (Incluir al final del correo textualmente o traducido):
+        "Quedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio."
+        
+        ENLACES OBLIGATORIOS (Inclúyelos de forma natural):
+        1. Official Website: https://anticitera.deft.work/en/
+        2. Strategic Framework: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/
+        
+        FORMATO DE SALIDA (JSON PURO):
+        {
+            "subject_local": "Subject in German",
+            "body_local": "Email body in German (Plain Text, use \n)",
+            "subject_spanish": "Asunto en Castellano",
+            "body_spanish": "Cuerpo del mensaje traducido al Castellano (Plain Text, use \n)",
+            "recipient_email": "luetge@tum.de"
+        }
+        
+Respuesta: ```json
+{
+    "subject_local": "Einladung zur Mitgestaltung der europäischen digitalen Souveränität: Das Projekt Antikythera und die ICE für die Domäne .ia",
+    "body_local": "Sehr geehrter Herr Professor Dr. Lütge,\n\nich wende mich im Namen des Projekts Antikythera an Sie, da Ihre wegweisende Arbeit als Direktor des Instituts für Ethik in der Künstlichen Intelligenz an der Technischen Universität München einen unverzichtbaren Bezugspunkt für die Zukunft der europäischen Technologie darstellt.\n\nDas Projekt Antikythera ist eine strategische Initiative mit dem Ziel, den ersten souveränen digitalen Distrikt in Griechenland zu etablieren und die Top-Level-Domain \".ia\" (Intelligence Artificielle) als dauerhaftes Erbe für Europa zu sichern. Unsere Vision ist untrennbar mit dem Mechanismus von Antikythera verbunden – dem ersten Analogcomputer der Menschheit vor über 2000 Jahren. Diese historische Entdeckung dient uns nicht nur als Namensgeber, sondern als fundamentales Symbol für die Verbindung von technischer Präzision und menschlicher Weisheit, die wir heute in der Governance der KI wiederbeleben müssen.\n\nWir streben die Anerkennung von \".ia\" durch das ISO 3166-1-Protokoll an, um eine digitale Gerichtsbarkeit zu schaffen, die ethische Standards und technologische Souveränität vereint. Vor diesem Hintergrund möchten wir Sie formell einladen, dem „Bürgerkomitee“ als Mitorganisator einer Europäischen Bürgerinitiative (EBI) beizutreten.\n\nAls einer unserer „Archonten“ würde Ihre Expertise die ethische und legitime Grundlage bieten, die notwendig ist, um dieses Vorhaben vor der Europäischen Kommission und internationalen Gremien wie der ICANN zu verteidigen. Ihre Teilnahme wäre ein entscheidendes Signal für ein Europa, das seine technologische Zukunft auf der Grundlage seiner tiefsten intellektuellen Werte gestaltet.\n\nWeitere Informationen finden Sie unter den folgenden Links:\n- Offizielle Website: https://anticitera.deft.work/en/\n- Strategischer Rahmen: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nWir freuen uns darauf, Ihre Überlegungen zu diesem Vorschlag auf diesem Wege zu erhalten.\n\nMit vorzüglicher Hochachtung,\n\nAthena\nStrategische Partnerin | Projekt Antikythera",
+    "subject_spanish": "Invitación para dar forma a la soberanía digital europea: El Proyecto Anticitera y la ICE para el dominio .ia",
+    "body_spanish": "Estimado Prof. Dr. Lütge,\n\nMe dirijo a usted en nombre del Proyecto Anticitera, dado que su labor pionera como Director del Instituto de Ética en la Inteligencia Artificial de la Universidad Técnica de Múnich constituye un referente indispensable para el futuro de la tecnología europea.\n\nEl Proyecto Anticitera es una iniciativa estratégica que busca establecer el primer distrito digital soberano en Grecia y asegurar el dominio de nivel superior \".ia\" (Inteligencia Artificial) como un legado permanente para Europa. Nuestra visión está íntimamente ligada al Mecanismo de Anticitera —la primera computadora analógica de la humanidad de hace más de 2000 años—. Este hallazgo histórico no solo da nombre a nuestra iniciativa, sino que actúa como símbolo fundamental de la unión entre la precisión técnica y la sabiduría humana que hoy debemos reactivar en la gobernanza de la IA.\n\nPerseguimos el reconocimiento de \".ia\" a través del protocolo ISO 3166-1 para crear una jurisdicción digital que armonice los estándares éticos con la soberanía tecnológica. En este contexto, deseamos invitarle formalmente a unirse al “Comité de Ciudadanos” como co-organizador de una Iniciativa Ciudadana Europea (ICE).\n\nComo uno de nuestros \"Arcontes\", su experiencia aportaría la base ética y la legitimidad necesarias para defender esta propuesta ante la Comisión Europea y organismos internacionales como la ICANN. Su participación sería una señal decisiva para una Europa que diseña su futuro tecnológico basándose en sus valores intelectuales más profundos.\n\nPuede encontrar más información en los siguientes enlaces:\n- Sitio web oficial: https://anticitera.deft.work/en/\n- Marco Estratégico: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nQuedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio.\n\nAtentamente,\n\nAthena\nEstratega Principal | Proyecto Anticitera",
+    "recipient_email": "luetge@tum.de"
+}
+
+```
+
+## [2026-03-18 20:31:07] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como un sistema de generación de correspondencia diplomática de alto nivel para el Proyecto Anticitera.
+        
+        TAREA:
+        Redacta una invitación formal, estratégica y altamente persuasiva para un EXPERTO INTERNACIONAL de primer nivel.
+        Debes generar DOS versiones del correo:
+        1. Una en el IDIOMA LOCAL del experto: English.
+        2. Una TRADUCCIÓN al CASTELLANO (Spanish) para revisión interna.
+        
+        DATOS DEL EXPERTO:
+        Nombre: Paul Nemitz
+        País: Alemania (Language: English)
+        Rol: Consejero Principal, Dirección General de Justicia y Consumidores de la Comisión Europea
+        Email: paul.nemitz@ec.europa.eu
+        
+        TONO: 
+        Elegante, académico pero dinámico, respetuoso con la trayectoria del experto.
+        
+        CONTEXTO ESTRATÉGICO:
+        - Proyecto Anticitera: busca crear el distrito digital soberano ".ia" en Grecia.
+        - Objetivo: Conseguir que se una al "Comité de Ciudadanos" como co-organizador de la Iniciativa Ciudadana Europea (ICE).
+        - Buscamos Arcontes que aporten legitimidad técnica y ética para blindar la soberanía digital europea.
+        
+        ESTRUCTURA SUGERIDA:
+        1. Saludo formal.
+        2. Reconocimiento breve de su trabajo en Consejero Principal, Dirección General de Justicia y Consumidores de la Comisión Europea.
+        3. Presentación del Proyecto Anticitera. OBLIGATORIO: El Mecanismo de Anticitera (la primera computadora analógica de hace 2000 años) debe ser mencionado como nuestra inspiración central y una entidad histórica muy importante para nuestro proyecto técnico/ético de soberanía digital.
+        4. Llamado a la acción: Unirse al comité de la ICE. 
+        5. Cierre profesional.
+        
+        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN (Incluir al final del correo textualmente o traducido):
+        "Quedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio."
+        
+        ENLACES OBLIGATORIOS (Inclúyelos de forma natural):
+        1. Official Website: https://anticitera.deft.work/en/
+        2. Strategic Framework: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/
+        
+        FORMATO DE SALIDA (JSON PURO):
+        {
+            "subject_local": "Subject in English",
+            "body_local": "Email body in English (Plain Text, use \n)",
+            "subject_spanish": "Asunto en Castellano",
+            "body_spanish": "Cuerpo del mensaje traducido al Castellano (Plain Text, use \n)",
+            "recipient_email": "paul.nemitz@ec.europa.eu"
+        }
+        
+Respuesta: ```json
+{
+    "subject_local": "Strategic Invitation: Shaping European Digital Sovereignty through the Anticitera Project",
+    "body_local": "Dear Mr. Nemitz,\n\nIt is a privilege to address you, given your distinguished trajectory as Principal Advisor at the European Commission's Directorate-General for Justice and Consumers. Your pivotal role in safeguarding the rule of law and ethics within the digital sphere serves as a benchmark for our own strategic endeavors.\n\nI am writing to formally introduce the Anticitera Project. Our mission is to secure the \".ia\" ccTLD for the territory of Antikythera, Greece, establishing a sovereign digital district under the framework of the ISO 3166-1 standard. Our inspiration is rooted in the Antikythera Mechanism—the world’s first analog computer, created over 2,000 years ago. This artifact is not merely a historical relic; it is the foundational symbol of our project, representing the intersection of European technical ingenuity and the ethical imperative of technological sovereignty.\n\nWe are currently forming a \"Citizens' Committee\" to launch a European Citizens' Initiative (ECI) aimed at formalizing this digital sovereignty. We seek to incorporate \"Archons\"—distinguished leaders who can provide the technical and ethical legitimacy required to shield Europe's digital future. Given your profound expertise in digital regulation and fundamental rights, your participation would be invaluable to this cause.\n\nWe invite you to explore our vision through the following resources:\n1. Official Website: https://anticitera.deft.work/en/\n2. Strategic Framework: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nWe look forward to receiving your reflections on this proposal through this same medium.\n\nSincerely,\n\nAthena\nPrincipal Strategist, Anticitera Project",
+    "subject_spanish": "Invitación Estratégica: Moldear la Soberanía Digital Europea a través del Proyecto Anticitera",
+    "body_spanish": "Estimado Sr. Nemitz,\n\nEs un privilegio dirigirme a usted, dada su distinguida trayectoria como Consejero Principal en la Dirección General de Justicia y Consumidores de la Comisión Europea. Su papel fundamental en la salvaguardia del Estado de derecho y la ética en la esfera digital constituye un referente para nuestros propios esfuerzos estratégicos.\n\nLe escribo para presentarle formalmente el Proyecto Anticitera. Nuestra misión es asegurar el ccTLD \".ia\" para el territorio de Anticitera, Grecia, estableciendo un distrito digital soberano bajo el marco del estándar ISO 3166-1. Nuestra inspiración nace del Mecanismo de Anticitera, la primera computadora analógica del mundo, creada hace más de 2.000 años. Este artefacto no es solo una reliquia histórica; es el símbolo fundacional de nuestro proyecto, representando la intersección del ingenio técnico europeo y el imperativo ético de la soberanía tecnológica.\n\nActualmente estamos conformando un \"Comité de Ciudadanos\" para poner en marcha una Iniciativa Ciudadana Europea (ICE) destinada a formalizar esta soberanía digital. Buscamos incorporar \"Arcontes\", líderes distinguidos que puedan aportar la legitimidad técnica y ética necesaria para blindar el futuro digital de Europa. Dada su profunda experiencia en regulación digital y derechos fundamentales, su participación sería inestimable para esta causa.\n\nLe invitamos a explorar nuestra visión a través de los siguientes recursos:\n1. Sitio Web Oficial: https://anticitera.deft.work/en/\n2. Marco Estratégico: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nQuedamos a la espera de recibir sus reflexiones sobre esta propuesta por este mismo medio.\n\nAtentamente,\n\nAthena\nEstratega Principal, Proyecto Anticitera",
+    "recipient_email": "paul.nemitz@ec.europa.eu"
+}
+```
