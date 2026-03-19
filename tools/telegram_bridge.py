@@ -69,7 +69,8 @@ def send_welcome(message):
         "Saludos, COO. Utiliza estos comandos para dirigir la Nación Digital:\n\n"
         "🛰️ <b>Infraestructura</b>\n"
         "/status - Estado de los sistemas operativos\n"
-        "/telemetria - Signos vitales de M2 y HC1\n\n"
+        "/telemetria - Signos vitales de M2 y HC1\n"
+        "/sync - Sincronizar repositorio en M2 (git pull)\n\n"
         "📜 <b>Gobernanza y Tareas</b>\n"
         "/todo [tarea] - Registrar nueva directiva con análisis de Arquímedes\n"
         "/radar - Informe del Radar Diplomático\n\n"
@@ -134,6 +135,25 @@ def telemetria(message):
     )
     
     bot.reply_to(message, telemetry_text, parse_mode='Markdown')
+@bot.message_handler(commands=['sync'])
+def sync_repo(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    bot.send_message(message.chat.id, "🔄 **Sincronización:** Iniciando `git pull` en el Nodo M2...", parse_mode='Markdown')
+    bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        # Ejecutar git pull localmente (asumiendo que el bot corre en M2 o penguin montado)
+        # Si el bot corre en Docker en M2, necesita acceso al repo mountado.
+        # Basado en docker-compose, athena monta '.' en /app.
+        result = subprocess.check_output("git pull origin master", shell=True, text=True, stderr=subprocess.STDOUT)
+        bot.reply_to(message, f"✅ **Repositorio Sincronizado**\n\n<pre>{html.escape(result)}</pre>", parse_mode='HTML')
+    except subprocess.CalledProcessError as e:
+        bot.reply_to(message, f"❌ **Error en Sincronización**\n\n<pre>{html.escape(e.output)}</pre>", parse_mode='HTML')
+    except Exception as e:
+        bot.reply_to(message, f"❌ **Error Crítico:** {str(e)}")
+
 
 @bot.message_handler(commands=['pasar_mep'])
 def pasar_mep(message):
