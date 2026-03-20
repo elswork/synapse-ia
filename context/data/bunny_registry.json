@@ -544,7 +544,7 @@
         "country": "Alemania",
         "role": "Investigador en el Weizenbaum Institute para la Sociedad Red",
         "profile_url": "https://www.weizenbaum-institut.de/en/portrait/p/stefan-ullrich/",
-        "status": "pending",
+        "status": "contacted",
         "email": "stefan.ullrich@weizenbaum-institut.de",
         "notes": "Especialista en la intersección de la informática y la ética social. Su enfoque en la soberanía tecnológica alemana es replicable para Anticitera."
     },
@@ -652,7 +652,7 @@
         "country": "Netherlands",
         "role": "Associate Professor in Law and AI",
         "profile_url": "https://www.universiteitleiden.nl/en/staffmembers/eduard-fosch-villaronga",
-        "status": "pending",
+        "status": "contacted",
         "email": "e.fosch.villaronga@law.leidenuniv.nl",
         "notes": "Expert in robotics, AI and Law. Co-editor of 'Law and AI'."
     },
