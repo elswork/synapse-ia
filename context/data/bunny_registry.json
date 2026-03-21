@@ -571,7 +571,7 @@
         "country": "Germany",
         "role": "Professor of Business Informatics",
         "profile_url": "https://www.hwr-berlin.de/en/hwr-berlin/about-us/people/person/claudia-lemke/",
-        "status": "pending",
+        "status": "contacted",
         "email": "claudia.lemke@hwr-berlin.de",
         "notes": "Expert in ethics for transformative technologies and business informatics at HWR Berlin."
     },
@@ -733,7 +733,7 @@
         "country": "Poland",
         "role": "Lead Researcher in AI Public Services",
         "profile_url": "https://prawo.uni.opole.pl/mateusz-pszczynski/",
-        "status": "pending",
+        "status": "contacted",
         "email": "mpszczynski@uni.opole.pl",
         "notes": "Focus on acceptability of AI in public services and regulatory solutions in the EU."
     }
