@@ -472,7 +472,7 @@
         "country": "Austria",
         "role": "Directora del Instituto de Sistemas de Información y Sociedad, WU Viena",
         "profile_url": "https://www.wu.ac.at/en/is/team/sarah-spiekermann",
-        "status": "pending",
+        "status": "contacted",
         "email": "sarah.spiekermann@wu.ac.at",
         "notes": "Experta en ética digital y diseño sostenible. Su visión alinea el .ia con la sostenibilidad tecnológica a largo plazo."
     },
@@ -580,7 +580,7 @@
         "country": "Germany",
         "role": "Professor of Public International Law",
         "profile_url": "https://www.jura.uni-freiburg.de/en/chairs/voeneky",
-        "status": "pending",
+        "status": "contacted",
         "email": "svoeneky@jura.uni-freiburg.de",
         "notes": "Specialist in legal and ethical issues of AI and biotechnology since 2015."
     },
@@ -643,7 +643,7 @@
         "country": "Netherlands",
         "role": "Associate Professor of Private Law",
         "profile_url": "https://www.uu.nl/staff/cgoanta",
-        "status": "pending",
+        "status": "contacted",
         "email": "c.goanta@uu.nl",
         "notes": "Researches private governance of Internet platforms and consumer forensics. Coordinator for DAI."
     },
@@ -670,7 +670,7 @@
         "country": "Estonia",
         "role": "Associate Professor of Machine Learning",
         "profile_url": "https://cs.ut.ee/en/contact/meelis-kull",
-        "status": "pending",
+        "status": "contacted",
         "email": "meelis.kull@ut.ee",
         "notes": "Leads the AI Center of Excellence at Univ. Tartu. Focus on reliable AI for e-governance."
     },
@@ -688,7 +688,7 @@
         "country": "Estonia",
         "role": "Head of Cybersecurity Research Group",
         "profile_url": "https://taltech.ee/en/contacts/rain-ottis",
-        "status": "pending",
+        "status": "contacted",
         "email": "rain.ottis@taltech.ee",
         "notes": "Focus on critical infrastructure protection, e-governance, and cybersecurity strategy."
     },
@@ -706,7 +706,7 @@
         "country": "Poland",
         "role": "Lawyer and AI Ethics Expert",
         "profile_url": "https://swps.pl/pracownicy/pawel-kowalski",
-        "status": "pending",
+        "status": "contacted",
         "email": "pkowalski1@swps.edu.pl",
         "notes": "Associated with SWPS University. Expert in AI guidelines and technology law."
     },
