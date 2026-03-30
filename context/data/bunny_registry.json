@@ -736,5 +736,95 @@
         "status": "contacted",
         "email": "mpszczynski@uni.opole.pl",
         "notes": "Focus on acceptability of AI in public services and regulatory solutions in the EU. | Auto-contacted by Gmail Audit script."
+    },
+    "83": {
+        "name": "Mark D. Cole",
+        "country": "Luxembourg",
+        "role": "Media & Telecommunication Law",
+        "profile_url": "https://wwwfr.uni.lu/fdef/people/mark_d_cole",
+        "status": "contacted",
+        "email": "mark.cole@uni.lu",
+        "notes": "Professor at University of Luxembourg, specialist in Media and IT Law."
+    },
+    "84": {
+        "name": "Mária Bieliková",
+        "country": "Slovakia",
+        "role": "AI Ethics & Intelligent Technologies",
+        "profile_url": "https://kinit.sk/team/maria-bielikova/",
+        "status": "pending",
+        "email": "maria.bielikova@kinit.sk",
+        "notes": "CEO of KInIT, Chair of the Permanent Committee for Ethics and Regulation of AI (Slovakia)."
+    },
+    "85": {
+        "name": "Martin Vechev",
+        "country": "Bulgaria",
+        "role": "AI Safety & Reliability",
+        "profile_url": "https://insait.ai/prof-martin-vechev/",
+        "status": "pending",
+        "email": "martin.vechev@inf.ethz.ch",
+        "notes": "Founder of INSAIT and Professor at ETH Zurich, leading figure in reliable AI."
+    },
+    "86": {
+        "name": "András Tóth",
+        "country": "Hungary",
+        "role": "Infocommunication Law",
+        "profile_url": "https://ajk.kre.hu/",
+        "status": "pending",
+        "email": "toth.andras@kre.hu",
+        "notes": "Associate Professor and Head of Infocommunication Law at Károli Gáspár University."
+    },
+    "87": {
+        "name": "Alžběta Krausová",
+        "country": "Czech Republic",
+        "role": "Legal Informatics & AI Law",
+        "profile_url": "https://alzbetakrausova.com/",
+        "status": "pending",
+        "email": "alzbeta.krausova@ilaw.cas.cz",
+        "notes": "Legal scholar at the Czech Academy of Sciences, focus on human rights and AI."
+    },
+    "88": {
+        "name": "Maja Bogataj Jančič",
+        "country": "Slovenia",
+        "role": "Intellectual Property & AI Ethics",
+        "profile_url": "https://odipi.si/team/maja-bogataj-jancic/",
+        "status": "pending",
+        "email": "maja.bogataj@ipi.si",
+        "notes": "Head of the Intellectual Property Institute (IPI) and OECD.AI expert."
+    },
+    "89": {
+        "name": "Christiane Wendehorst",
+        "country": "Austria",
+        "role": "Civil Law & Digital Economy",
+        "profile_url": "https://zivilrecht.univie.ac.at/ueber-uns/personen/wendehorst-christiane/",
+        "status": "pending",
+        "email": "christiane.wendehorst@univie.ac.at",
+        "notes": "Scientific Director of the European Law Institute (ELI) and GPAI delegate."
+    },
+    "90": {
+        "name": "Andrea Renda",
+        "country": "Italy",
+        "role": "AI Governance & Digital Economy",
+        "profile_url": "https://www.ceps.eu/ceps-staff/andrea-renda/",
+        "status": "pending",
+        "email": "andrea.renda@ceps.eu",
+        "notes": "Senior Research Fellow and Head of GRID at CEPS, expert in global AI governance."
+    },
+    "91": {
+        "name": "Ieva Kalniņa",
+        "country": "Latvia",
+        "role": "Digital Policy & Governance",
+        "profile_url": "https://www.lu.lv/en/profile/51042/",
+        "status": "pending",
+        "email": "ieva.kalnina@lu.lv",
+        "notes": "Expert in digital policy and academic research at the University of Latvia."
+    },
+    "92": {
+        "name": "Eivindas Laukys",
+        "country": "Lithuania",
+        "role": "AI Law",
+        "profile_url": "https://www.tf.vu.lt/en/staff/",
+        "status": "pending",
+        "email": "eivindas.laukys@tf.vu.lt",
+        "notes": "AI Law specialist associated with Vilnius University."
     }
 }
