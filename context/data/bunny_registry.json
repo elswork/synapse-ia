@@ -625,7 +625,7 @@
         "country": "Italy",
         "role": "Associate Professor of Administrative Law",
         "profile_url": "https://docenti.uninsubria.it/falletta-pietro",
-        "status": "pending",
+        "status": "contacted",
         "email": "pietro.falletta@uninsubria.it",
         "notes": "Director of @LawLab – Laboratorio sul diritto del digitale at LUISS. Focus on internet law and discrimination. | Marcado como pendiente prioritario por el COO. | Marcado como pendiente prioritario por el COO."
     },
@@ -742,8 +742,7 @@
         "country": "Luxembourg",
         "role": "Media & Telecommunication Law",
         "profile_url": "https://wwwfr.uni.lu/fdef/people/mark_d_cole",
-        "status": "contacted",
-        "email": "mark.cole@uni.lu",
+        "status": "contacted",        "email": "mark.cole@uni.lu",
         "notes": "Professor at University of Luxembourg, specialist in Media and IT Law."
     },
     "84": {
@@ -751,8 +750,7 @@
         "country": "Slovakia",
         "role": "AI Ethics & Intelligent Technologies",
         "profile_url": "https://kinit.sk/team/maria-bielikova/",
-        "status": "pending",
-        "email": "maria.bielikova@kinit.sk",
+        "status": "contacted",        "email": "maria.bielikova@kinit.sk",
         "notes": "CEO of KInIT, Chair of the Permanent Committee for Ethics and Regulation of AI (Slovakia)."
     },
     "85": {
@@ -823,8 +821,7 @@
         "country": "Lithuania",
         "role": "AI Law",
         "profile_url": "https://www.tf.vu.lt/en/staff/",
-        "status": "pending",
-        "email": "eivindas.laukys@tf.vu.lt",
+        "status": "contacted",        "email": "eivindas.laukys@tf.vu.lt",
         "notes": "AI Law specialist associated with Vilnius University."
     }
 }
