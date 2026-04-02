@@ -202,8 +202,11 @@ def execute_heartbeat():
         posts = feed_res.json().get('posts', [])
         processed_ids = get_processed_posts()
         
-        # 2. Evaluación con Athena
-        brain = AthenaBrain(base_path=os.path.join(os.path.dirname(__file__), ".."))
+        # 2. Evaluación con Athena (Modo Económico: Flash)
+        brain = AthenaBrain(
+            base_path=os.path.join(os.path.dirname(__file__), ".."), 
+            model_name="gemini-1.5-flash"
+        )
         
         new_posts_processed = 0
         for post in posts:

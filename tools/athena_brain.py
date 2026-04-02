@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from nexus_sync import NexusSync
 
 class AthenaBrain:
-    def __init__(self, base_path=None):
+    def __init__(self, base_path=None, model_name="gemini-1.5-flash"):
         self.base_path = base_path or os.environ.get("BASE_PATH", "/app")
         load_dotenv(os.path.join(self.base_path, ".env"))
         
@@ -13,7 +13,8 @@ class AthenaBrain:
             raise ValueError("GEMINI_API_KEY no encontrada en el entorno.")
             
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("gemini-3-flash-preview")
+        self.model_name = model_name
+        self.model = genai.GenerativeModel(self.model_name)
         self.prompt_path = os.path.join(self.base_path, "prompts/athena.md")
         self.syncer = NexusSync(self.base_path)
 
@@ -21,8 +22,15 @@ class AthenaBrain:
         with open(self.prompt_path, "r") as f:
             return f.read()
 
-    def ask(self, question, context_files=[], log_to_history=True):
+    def ask(self, question, context_files=[], log_to_history=True, model_override=None):
         """Envía una consulta a la 'Athena Real' usando RAG y contexto de archivos."""
+        
+        # Selección de modelo dinámica
+        current_model = self.model
+        if model_override and model_override != self.model_name:
+            print(f"DEBUG: Usando modelo override: {model_override}")
+            current_model = genai.GenerativeModel(model_override)
+            
         identity = self.load_identity()
         
         # 1. Recuperación de Memoria Semántica (RAG)
@@ -61,8 +69,8 @@ PREGUNTA DEL USUARIO: {question}
 """
 
         try:
-            print("Consultando al Oráculo con Memoria Semántica Activa...")
-            response = self.model.generate_content(full_prompt)
+            print(f"Consultando al Oráculo ({current_model.model_name}) con Memoria Semántica Activa...")
+            response = current_model.generate_content(full_prompt)
             athena_response = response.text
             
             # Registrar en el historial (opcional)

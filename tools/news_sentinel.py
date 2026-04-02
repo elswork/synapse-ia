@@ -36,9 +36,26 @@ RSS_FEEDS = {
 class NewsSentinel:
     def __init__(self):
         self.analyzer = URLAnalyzer()
-        self.brain = AthenaBrain()
+        # Usamos flash para el centinela (ahorro de costes masivo)
+        self.brain = AthenaBrain(model_name="gemini-1.5-flash")
         self.conn = psycopg2.connect(DATABASE_URL)
         self.cursor = self.conn.cursor()
+        
+        # Palabras clave de alta relevancia para Anticitera
+        self.relevant_keywords = [
+            "soberanía", "sovereignty", "anticitera", "antikythera", "grecia", "greece", 
+            "ia ", " ai ", "artificial intelligence", "inteligencia artificial", 
+            "europe", "ue ", " bruselas", "brussels", "privacidad", "privacy", 
+            "regulation", "regulación", "normativa", "standard", "estándar", "iso", 
+            "semiconductor", "chip", "cuántica", "quantum", "ciberseguridad", "cybersecurity",
+            "digital rights", "derechos digitales", "ice", "iniciativa ciudadana", 
+            ".ia", "domain", "dominio", "iana", "icann"
+        ]
+
+    def is_relevant_title(self, title):
+        """Filtro rápido basado en palabras clave para evitar costes de IA en noticias basura."""
+        title_lower = title.lower()
+        return any(kw in title_lower for kw in self.relevant_keywords)
 
     def url_exists(self, url):
         self.cursor.execute("SELECT 1 FROM news_intel WHERE url = %s", (url,))
@@ -119,17 +136,27 @@ class NewsSentinel:
             return None
 
     def run(self):
-        print(f"[{datetime.now()}] Iniciando ronda de vigilancia...")
+        print(f"[{datetime.now()}] Iniciando ronda de vigilancia (Modo Económico)...")
         for source_name, feed_url in RSS_FEEDS.items():
             print(f"Escaneando {source_name}...")
             feed = feedparser.parse(feed_url)
             
-            for entry in feed.entries[:5]: # Solo las 5 más recientes por ronda para evitar saturación
+            # Solo las 3 más recientes por ronda (antes 5)
+            for entry in feed.entries[:3]: 
                 url = entry.link
                 if self.url_exists(url):
                     continue
                 
-                print(f"Nueva noticia detectada: {entry.title}")
+                # PRE-FILTRO DE RELEVANCIA
+                if not self.is_relevant_title(entry.title):
+                    print(f"⏩ Saltando noticia irrelevante: {entry.title}")
+                    # Registramos el salto para no volver a evaluarla
+                    self.cursor.execute("INSERT INTO news_intel (title, url, source, synergy_score) VALUES (%s, %s, %s, %s)", 
+                                       (entry.title, url, source_name, 0.0))
+                    self.conn.commit()
+                    continue
+
+                print(f"📍 Alta relevancia potencial detectada: {entry.title}")
                 content = self.analyzer.extract_content(url)
                 if not content:
                     continue

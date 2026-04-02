@@ -45,15 +45,15 @@ print(f"DEBUG: ALLOWED_USER_ID is '{ALLOWED_USER_ID}'")
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Inicializar el cerebro de Arquímedes
-# Por defecto usaremos el prompt de archimedes.md
+# Para chat directo usamos Pro para máxima calidad, pero los jobs de fondo usarán Flash
 class ArchimedesBrain(AthenaBrain):
     def __init__(self, base_path=None):
         base_path = base_path or os.environ.get("BASE_PATH", "/app")
-        super().__init__(base_path)
+        # El cerebro principal para chat usa PRO
+        super().__init__(base_path, model_name="gemini-1.5-pro")
         self.prompt_path = os.path.join(self.base_path, "prompts/archimedes.md")
 
 brain = ArchimedesBrain()
-
 print("🏛️ Puente de Arquímedes activado. Esperando órdenes del COO...")
 
 @bot.message_handler(commands=['start', 'help', 'ayuda'])
@@ -685,8 +685,8 @@ def scheduler_loop():
     schedule.every().day.at("09:00").do(auto_bunny_job)
     schedule.every().day.at("21:00").do(auto_bunny_job)
     
-    # Moltbook Heartbeat cada 30 minutos (Estrategia First-Mover para optimización de Karma)
-    schedule.every(30).minutes.do(execute_heartbeat)
+    # Moltbook Heartbeat desactivado por acuerdo con el COO (Optimización Final)
+    # schedule.every(60).minutes.do(execute_heartbeat)
     
     while True:
         schedule.run_pending()
@@ -702,8 +702,8 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"⚠️ Error en migración automática: {e}")
 
-    # Iniciar hilo del centinela
-    threading.Thread(target=background_sentinel, daemon=True).start()
+    # Centinela de Noticias desactivado por acuerdo con el COO (Optimización Final)
+    # threading.Thread(target=background_sentinel, daemon=True).start()
     
     # Iniciar hilo del scheduler
     threading.Thread(target=scheduler_loop, daemon=True).start()
