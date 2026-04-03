@@ -715,7 +715,7 @@
         "country": "Poland",
         "role": "Dean of Faculty of Law, Kozminski Univ",
         "profile_url": "https://www.kozminski.edu.pl/en/node/1484",
-        "status": "pending",
+        "status": "contacted",
         "email": "bnowak@kozminski.edu.pl",
         "notes": "Emphasizes AI role in economic competitiveness. Involved in AI Law Master's program. | Marcado como pendiente prioritario por el COO. | Marcado como pendiente prioritario por el COO."
     },
@@ -760,7 +760,7 @@
         "country": "Bulgaria",
         "role": "AI Safety & Reliability",
         "profile_url": "https://insait.ai/prof-martin-vechev/",
-        "status": "pending",
+        "status": "contacted",
         "email": "martin.vechev@inf.ethz.ch",
         "notes": "Founder of INSAIT and Professor at ETH Zurich, leading figure in reliable AI."
     },
