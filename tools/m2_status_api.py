@@ -144,6 +144,23 @@ def volume_down():
     os.system("pactl set-sink-volume @DEFAULT_SINK@ -5%")
     return jsonify({"status": "ok", "message": "Volume decreased"})
 
+@app.route('/docker/containers')
+def get_containers():
+    if not docker_client:
+        return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    try:
+        containers = docker_client.containers.list(all=True)
+        result = []
+        for c in containers:
+            result.append({
+                "name": c.name,
+                "status": c.status,
+                "image": c.image.tags[0] if c.image.tags else "unknown"
+            })
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 @app.route('/brightness', methods=['POST'])
 def update_brightness():
     data = request.json
