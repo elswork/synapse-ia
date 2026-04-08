@@ -1142,10 +1142,11 @@
                 cont.appendChild(div);
             });
         }
+        let isRadioPaused = false;
         function playStation(name, url) {
             document.getElementById('np_name_header').innerText = name.toUpperCase();
-            audioPlayer.src = url;
-            audioPlayer.play();
+            fetch('http://192.168.1.75:5051/system/radio/play', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: url}) });
+            isRadioPaused = false;
 
             // Toggle Header Visibility
             document.getElementById('header_title').style.display = 'none';
@@ -1153,18 +1154,16 @@
             document.getElementById('play_btn_header').innerText = '⏸';
         }
         function togglePlay() {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                document.getElementById('play_btn_header').innerText = '⏸';
-            }
-            else {
-                audioPlayer.pause();
+            fetch('http://192.168.1.75:5051/system/radio/toggle', { method: 'POST' });
+            isRadioPaused = !isRadioPaused;
+            if (isRadioPaused) {
                 document.getElementById('play_btn_header').innerText = '▶';
+            } else {
+                document.getElementById('play_btn_header').innerText = '⏸';
             }
         }
         function stopMusic() {
-            audioPlayer.pause();
-            audioPlayer.src = '';
+            fetch('http://192.168.1.75:5051/system/radio/stop', { method: 'POST' });
 
             // Revert Header
             document.getElementById('header_title').style.display = 'block';

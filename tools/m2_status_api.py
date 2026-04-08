@@ -144,6 +144,25 @@ def volume_down():
     os.system("pactl set-sink-volume @DEFAULT_SINK@ -5%")
     return jsonify({"status": "ok", "message": "Volume decreased"})
 
+@app.route('/system/radio/play', methods=['POST'])
+def radio_play():
+    data = request.json
+    url = data.get('url')
+    if url:
+        os.system(f"docker exec mpd mpc clear && docker exec mpd mpc add {url} && docker exec mpd mpc play")
+        return jsonify({"status": "ok", "message": f"Playing {url}"})
+    return jsonify({"status": "error", "message": "No url provided"}), 400
+
+@app.route('/system/radio/stop', methods=['POST'])
+def radio_stop():
+    os.system("docker exec mpd mpc stop")
+    return jsonify({"status": "ok", "message": "Stopped"})
+
+@app.route('/system/radio/toggle', methods=['POST'])
+def radio_toggle():
+    os.system("docker exec mpd mpc toggle")
+    return jsonify({"status": "ok", "message": "Toggled"})
+
 @app.route('/docker/containers')
 def get_containers():
     if not docker_client:
