@@ -348,17 +348,15 @@ def reset_photos():
         container = docker_client.containers.get("m2-photos-api")
         token_found = False
         for m in container.attrs['Mounts']:
-            # Ajuste de mira: buscamos el vínculo directo al archivo o a la carpeta app
-            if m['Destination'] in ['/app/token.json', '/app']:
-                src = m['Source']
-                # Si src es un archivo, borramos el archivo en el host. 
-                # Si es una carpeta /app, borramos token.json dentro.
-                cmd = "rm -rf /data && touch /data" if m['Destination'] == '/app/token.json' else "rm -rf /data/token.json && touch /data/token.json"
-                
+            # Ajuste de mira v19: Buscamos el origen físico del token
+            if m['Destination'] == '/app/token.json':
+                src_file = m['Source']
+                # Subimos un nivel en el host para poder borrar el archivo/carpeta original
+                parent_dir = os.path.dirname(src_file)
                 docker_client.containers.run(
                     "alpine",
-                    command=["sh", "-c", cmd],
-                    volumes={src: {'bind': '/data', 'mode': 'rw'}},
+                    command=["sh", "-c", "rm -rf /data/token.json && touch /data/token.json"],
+                    volumes={parent_dir: {'bind': '/data', 'mode': 'rw'}},
                     remove=True
                 )
                 token_found = True
