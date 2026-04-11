@@ -433,6 +433,65 @@ def write_config():
         except Exception as e2:
             return jsonify({"status": "error", "message": str(e2)}), 500
 
+@app.route('/system/ls', methods=['GET'])
+def system_ls():
+    try:
+        path = request.args.get('path')
+        if not path:
+            return jsonify({"status": "error", "message": "Missing path"}), 400
+        
+        result = docker_client.containers.run(
+            "alpine",
+            command=["ls", "-la", "/data"],
+            volumes={path: {'bind': '/data', 'mode': 'ro'}},
+            remove=True
+        ).decode('utf-8')
+        
+        return jsonify({"status": "ok", "output": result}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/system/cat', methods=['GET'])
+def system_cat():
+    try:
+        target_path = request.args.get('path')
+        if not target_path:
+            return jsonify({"status": "error", "message": "Missing path"}), 400
+            
+        parent_dir = os.path.dirname(target_path)
+        filename = os.path.basename(target_path)
+        
+        result = docker_client.containers.run(
+            "alpine",
+            command=["cat", f"/data/{filename}"],
+            volumes={parent_dir: {'bind': '/data', 'mode': 'ro'}},
+            remove=True
+        ).decode('utf-8')
+        
+        return jsonify({"status": "ok", "content": result}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/system/run', methods=['POST'])
+def system_run():
+    try:
+        data = request.json
+        cmd = data.get('command')
+        if not cmd:
+            return jsonify({"status": "error", "message": "Missing command"}), 400
+        
+        result = docker_client.containers.run(
+            "alpine",
+            command=["sh", "-c", cmd],
+            volumes={'/': {'bind': '/host', 'mode': 'rw'}},
+            remove=True,
+            working_dir='/host'
+        ).decode('utf-8')
+        
+        return jsonify({"status": "ok", "output": result}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 if __name__ == '__main__':
     # Correr en puerto 5051 para no interferir con el trigger de Athena (5050)
     app.run(host='0.0.0.0', port=5051)

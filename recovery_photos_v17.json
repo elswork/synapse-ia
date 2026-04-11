@@ -1,0 +1,1 @@
+{"message":"Command '['sh', '-c', 'rm -rf /data && touch /data']' in image 'alpine' returned non-zero exit status 1: b\"rm: can't remove '/data': Resource busy\\n\"","status":"error"}

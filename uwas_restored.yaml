@@ -1,0 +1,76 @@
+global:
+    worker_count: auto
+    max_connections: 65536
+    http_listen: :80
+    https_listen: :443
+    sftp_listen: ""
+    http3: false
+    pid_file: /var/run/uwas.pid
+    web_root: /var/www
+    log_level: info
+    log_format: text
+    trusted_proxies: []
+    timeouts:
+        read: 30s
+        read_header: 10s
+        write: 1m0s
+        idle: 2m0s
+        shutdown_grace: 30s
+        max_header_bytes: 1048576
+    admin:
+        listen: :2019
+        enabled: true
+        api_key: uwas_master_key_ba5fd3e7042ff15d
+        pin_code: "190119"
+    mcp:
+        enabled: true
+        listen: :3000
+    acme:
+        email: elswork@gmail.com
+        ca_url: https://acme-v02.api.letsencrypt.org/directory
+        storage: /var/lib/uwas/certs
+        dns_provider: ""
+        dns_credentials: {}
+        on_demand: true
+        on_demand_ask: ""
+    cache:
+        enabled: false
+        memory_limit: 512MB
+        disk_path: /var/cache/uwas
+        disk_limit: 10GB
+        default_ttl: 3600
+        grace_ttl: 86400
+        stale_while_revalidate: false
+        purge_key: ""
+    alerting:
+        enabled: false
+        webhook_url: ""
+        slack_url: ""
+        telegram_token: ""
+        telegram_chat_id: ""
+        email_smtp: ""
+        email_from: ""
+        email_to: ""
+    backup:
+        enabled: false
+        provider: ""
+        schedule: ""
+        keep: 0
+        local:
+            path: ""
+        s3:
+            endpoint: ""
+            bucket: ""
+            access_key: ""
+            secret_key: ""
+            region: ""
+        sftp:
+            host: "" port: 0 user: "" key_file: "" password: "" remote_path: ""
+    webhooks: []
+    users:
+        enabled: false
+        allow_reseller: false
+        session_ttl: 0
+domains: []
+include: []
+domains_dir: domains.d
