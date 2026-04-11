@@ -26,7 +26,8 @@ def get_credentials():
         try:
             creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
         except Exception:
-            os.remove(TOKEN_FILE)
+            # No borramos el archivo porque Docker lo bloquea (Device or resource busy)
+            # Simplemente devolvemos None para forzar nueva autorización
             return None
     
     if not creds or not creds.valid:
@@ -36,8 +37,7 @@ def get_credentials():
                 with open(TOKEN_FILE, 'w') as token:
                     token.write(creds.to_json())
             except Exception:
-                if os.path.exists(TOKEN_FILE):
-                    os.remove(TOKEN_FILE)
+                # Si falla el refresh, ignoramos y devolvemos None para re-auth
                 return None
         else:
             return None
