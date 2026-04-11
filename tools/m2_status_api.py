@@ -247,16 +247,18 @@ def system_audit():
         
         audit_lines.append("\n--- DOCKER VOLUME AUDIT ---")
         if docker_client:
-            for vol_name in ['certs', 'cache']:
+            vols = docker_client.volumes.list()
+            for vol in vols:
                 try:
-                    vol = docker_client.volumes.get(vol_name)
+                    name = vol.name
                     mountpoint = vol.attrs['Mountpoint']
-                    audit_lines.append(f"Volume {vol_name} mountpoint: {mountpoint}")
-                    # Try to list files in mountpoint (may need permissions)
-                    files = subprocess.check_output(["ls", "-R", mountpoint], stderr=subprocess.STDOUT).decode('utf-8')
-                    audit_lines.append(f"Files in {vol_name}:\n{files}")
+                    audit_lines.append(f"Volume: {name} | Mountpoint: {mountpoint}")
+                    # Search specifically for lock/pid files in any volume that looks relevant
+                    if 'uwas' in name.lower() or 'certs' in name.lower() or 'cache' in name.lower():
+                        files = subprocess.check_output(["ls", "-R", mountpoint], stderr=subprocess.STDOUT).decode('utf-8')
+                        audit_lines.append(f"Files in {name}:\n{files}")
                 except Exception as ve:
-                    audit_lines.append(f"Error auditing volume {vol_name}: {ve}")
+                    audit_lines.append(f"Error auditing volume {vol.name}: {ve}")
 
         audit_lines.append("\n--- LOCK FILE AUDIT (HOST) ---")
         search_dirs = ["/var/run", "/tmp"]
@@ -268,7 +270,7 @@ def system_audit():
                 else:
                     audit_lines.append(f"In {d}: None")
             except:
-                audit_lines.append(f"In {d}: inaccessible or error")
+                audit_lines.append(f"In {d}: error")
         
         return jsonify({"status": "ok", "audit": "\n".join(audit_lines)})
     except Exception as e:
