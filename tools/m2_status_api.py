@@ -135,33 +135,64 @@ def get_radio():
 @app.route('/system/volume/up', methods=['POST'])
 def volume_up():
     print("M2-API: Received Volume Up Request")
-    os.system("pactl set-sink-volume @DEFAULT_SINK@ +5%")
-    return jsonify({"status": "ok", "message": "Volume increased"})
+    sink = "alsa_output.platform-es8316-sound.stereo-fallback"
+    # Intentamos primero con el sink específico de los altavoces, luego con el default
+    cmd = f"pactl set-sink-volume {sink} +5% || pactl set-sink-volume @DEFAULT_SINK@ +5%"
+    res = os.system(cmd)
+    return jsonify({"status": "ok", "message": "Volume increased", "exit_code": res})
 
 @app.route('/system/volume/down', methods=['POST'])
 def volume_down():
     print("M2-API: Received Volume Down Request")
-    os.system("pactl set-sink-volume @DEFAULT_SINK@ -5%")
-    return jsonify({"status": "ok", "message": "Volume decreased"})
+    sink = "alsa_output.platform-es8316-sound.stereo-fallback"
+    cmd = f"pactl set-sink-volume {sink} -5% || pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    res = os.system(cmd)
+    return jsonify({"status": "ok", "message": "Volume decreased", "exit_code": res})
+
 
 @app.route('/system/radio/play', methods=['POST'])
 def radio_play():
     data = request.json
     url = data.get('url')
+    if not docker_client:
+        return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    
     if url:
-        os.system(f"docker exec mpd mpc clear && docker exec mpd mpc add {url} && docker exec mpd mpc play")
-        return jsonify({"status": "ok", "message": f"Playing {url}"})
+        try:
+            container = docker_client.containers.get('mpd')
+            container.exec_run("mpc clear")
+            container.exec_run(f"mpc add {url}")
+            container.exec_run("mpc play")
+            return jsonify({"status": "ok", "message": f"Playing {url}"})
+        except Exception as e:
+            return jsonify({"status": "error", "message": str(e)}), 500
     return jsonify({"status": "error", "message": "No url provided"}), 400
 
 @app.route('/system/radio/stop', methods=['POST'])
 def radio_stop():
-    os.system("docker exec mpd mpc stop")
-    return jsonify({"status": "ok", "message": "Stopped"})
+    if not docker_client:
+         return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    try:
+        container = docker_client.containers.get('mpd')
+        container.exec_run("mpc stop")
+        return jsonify({"status": "ok", "message": "Stopped"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/system/radio/toggle', methods=['POST'])
 def radio_toggle():
-    os.system("docker exec mpd mpc toggle")
-    return jsonify({"status": "ok", "message": "Toggled"})
+    if not docker_client:
+         return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    try:
+        container = docker_client.containers.get('mpd')
+        container.exec_run("mpc toggle")
+        return jsonify({"status": "ok", "message": "Toggled"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/docker/containers')
 def get_containers():
@@ -177,6 +208,27 @@ def get_containers():
                 "image": c.image.tags[0] if c.image.tags else "unknown"
             })
         return jsonify(result)
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/docker/restart/<name>', methods=['POST'])
+def restart_container(name):
+    if not docker_client:
+        return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    try:
+        container = docker_client.containers.get(name)
+        container.restart()
+        return jsonify({"status": "ok", "message": f"Contenedor {name} reiniciado correctamente"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/system/gui/close', methods=['POST', 'GET'])
+def close_gui():
+    print("M2-API: Received GUI Close Request (Universal)")
+    try:
+        # Buscamos procesos de firefox, chromium o chrome
+        res = os.system("pkill -9 -f firefox || pkill -9 -f chromium || pkill -9 -f chrome")
+        return jsonify({"status": "ok", "message": "Comando de cierre enviado", "exit_code": res})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 

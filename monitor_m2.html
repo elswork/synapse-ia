@@ -667,16 +667,87 @@
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: none;
-            width: 60px;
-            height: 60px;
-            font-size: 2rem;
+            width: 80px;
+            height: 80px;
+            font-size: 3rem;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 2001;
+            transition: all 0.2s;
         }
+
+        .btn-close:active { transform: scale(0.9); background: rgba(255,0,0,0.4); }
+
+        #photo_btn_saver {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        #photo_btn_saver:hover { color: var(--accent); transform: scale(1.1); }
+
+        #photo_view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 3000;
+            display: none;
+            flex-direction: column;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #111;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover { transform: scale(1.02); }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-header {
+            padding: 40px 60px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            z-index: 3001;
+        }
+
+        .photo-header-time { font-size: 4rem; font-weight: 700; color: #fff; }
+        .photo-header-date { font-size: 1.5rem; color: #aaa; margin-left: 20px; }
+        .photo-header-temp { font-size: 3rem; color: var(--accent); font-weight: 600; }
     </style>
 </head>
 
@@ -691,6 +762,7 @@
             <div style="font-size:1.5rem; color:#888;">(Detalles)</div>
         </div>
         <div id="saver_loc">Alcorcón, ES</div>
+        <div id="photo_btn_saver" onclick="openPhotoGallery(event)">🖼️</div>
     </div>
 
     <!-- Weather Modal -->
@@ -726,6 +798,20 @@
         </div>
     </div>
 
+    <!-- Photo Gallery View -->
+    <div id="photo_view">
+        <div class="photo-header" onclick="closePhotoGallery()">
+            <div style="display: flex; align-items: baseline;">
+                <span id="photo_time" class="photo-header-time">--:--</span>
+                <span id="photo_date" class="photo-header-date">-- -- --</span>
+            </div>
+            <div id="photo_temp" class="photo-header-temp">--°</div>
+        </div>
+        <div class="gallery-container" id="gallery_content">
+            <!-- Photos go here -->
+        </div>
+    </div>
+
     <div class="header">
         <div id="header_left" style="flex: 1.5; overflow: hidden; display: flex; align-items: center; gap: 20px;">
             <button id="btn_back" class="btn-circle-small"
@@ -758,6 +844,7 @@
         <div id="header_right"
             style="flex: 1.5; display: flex; align-items: center; justify-content: flex-end; gap: 15px;">
             <!-- Rotation & System Controls -->
+            <button class="btn-system" onclick="closeDashboard()" title="Cerrar Panel" style="background: rgba(255, 68, 68, 0.2); color: #ff4444;">✖</button>
             <button class="btn-system" onclick="rotateScreen()" title="Rotar Pantalla">🔄</button>
             <button class="btn-system danger" onclick="showSystemMenu()" title="Apagar/Reiniciar">⏻</button>
 
@@ -1384,6 +1471,129 @@
                 }
             }
         ];
+
+        function closeDashboard() {
+            // Quitamos el confirm para evitar bloqueos y usamos modo no-cors para una llamada de fuego y olvido
+            const endpoints = [
+                'http://localhost:5051/system/gui/close',
+                'http://192.168.1.75:5051/system/gui/close'
+            ];
+            
+            endpoints.forEach(url => {
+                fetch(url, { method: 'POST', mode: 'no-cors' })
+                    .catch(e => console.warn("Error en endpoint de cierre:", url));
+            });
+        }
+
+        const mockPhotos = [
+            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+        ];
+
+        let currentPhotos = [];
+
+        async function openPhotoGallery(event) {
+            if (event) event.stopPropagation();
+            document.getElementById('photo_view').style.display = 'flex';
+            const container = document.getElementById('gallery_content');
+            container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px; font-size: 2rem; color: #888;">Cargando recuerdos...</div>';
+            
+            try {
+                const response = await fetch('http://192.168.1.75:5052/photos/status');
+                const data = await response.json();
+                
+                if (data.status === 'authenticated') {
+                    loadRealPhotos();
+                } else {
+                    showAuthScreen(data.auth_url);
+                }
+            } catch (error) {
+                console.error('Error de conexión con Photos API:', error);
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px;">Error al conectar con el servidor de fotos. Asegúrate de que m2-photos-api esté corriendo.</div>';
+            }
+            updateGalleryMeta();
+        }
+
+        function showAuthScreen(url) {
+            const container = document.getElementById('gallery_content');
+            const qrUrl = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${encodeURIComponent(url)}&choe=UTF-8`;
+            
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: rgba(0,0,0,0.4); border-radius: 30px; margin: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--accent);">Escanea para Autorizar</h2>
+                    <p style="font-size: 1.2rem; color: #aaa; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                        Para no bloquear el kiosco, usa tu móvil para autorizar el acceso. 
+                        Abre la cámara, escanea el código y sigue los pasos en tu dispositivo.
+                    </p>
+                    
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <img src="${qrUrl}" alt="QR Auth" style="border: 15px solid white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; font-family: monospace; font-size: 0.9rem; color: #888; max-width: 90%; overflow: hidden; text-overflow: ellipsis;">
+                            ${url}
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+                        <button class="btn" style="background: var(--warning); padding: 15px 40px;" onclick="closePhotoGallery()">VOLVER</button>
+                        <button class="btn" style="padding: 15px 40px;" onclick="loadRealPhotos()">YA HE AUTORIZADO</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function startAuthFlow() {
+            // Ya no usamos window.open para evitar bloqueos en modo kiosco
+            alert("Usa el código QR que aparece en pantalla para completar la autorización en tu móvil.");
+        }
+
+        async function loadRealPhotos() {
+            try {
+                const response = await fetch('http://192.168.1.75:5052/photos/list');
+                const data = await response.json();
+                if (data.status === 'ok') {
+                    currentPhotos = data.photos;
+                    renderPhotos();
+                }
+            } catch (error) {
+                console.error('Error listando fotos:', error);
+            }
+        }
+
+        function renderPhotos() {
+            const container = document.getElementById('gallery_content');
+            if (currentPhotos.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px;">No se encontraron fotos en tu librería.</div>';
+                return;
+            }
+            container.innerHTML = currentPhotos.map(p => `
+                <div class="gallery-item" onclick="viewPhoto('${p.url}')">
+                    <img src="${p.url}" alt="${p.filename}">
+                </div>
+            `).join('');
+        }
+
+        function viewPhoto(url) {
+            // Ampliar foto o simplemente disfrutar de la cuadrícula
+            console.log("Visualizando:", url);
+        }
+
+        function closePhotoGallery() {
+            document.getElementById('photo_view').style.display = 'none';
+        }
+
+        function updateGalleryMeta() {
+            const now = new Date();
+            document.getElementById('photo_time').innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('photo_date').innerText = now.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+            // Sync with current weather temp
+            const saverTemp = document.getElementById('saver_temp');
+            if (saverTemp) document.getElementById('photo_temp').innerText = saverTemp.innerText;
+        }
 
         // Registro de herramientas para agentes compatibles con WebMCP
         navigator.modelContext.tools.push(...mcpTools);
