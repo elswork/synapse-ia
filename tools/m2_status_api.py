@@ -289,16 +289,21 @@ def purge_uwas_locks():
         # 1. Purga en carpetas de volúmenes conocidos
         base_dir = "/home/pirate/docker/uwas-anticitera"
         for subdir in ["certs", "logs", "config", "www"]:
-            path = os.path.join(base_dir, subdir)
-            try:
-                # Usamos el contenedor auxiliar para limpiar los volúmenes en el host
-                # Añadimos autosave.json y .uwas.lock específicamente
-                docker_client.containers.run(
-                    "alpine",
-                    command=["sh", "-c", "find /data -name '*.pid' -o -name '*.lock' -o -name '*.sock' -o -name 'autosave.json' -exec rm -rf {} \\;"],
-                    volumes={path: {'bind': '/data', 'mode': 'rw'}},
-                    remove=True
-                )
+                # Purga agresiva en CONFIG: Borrar TODO menos uwas.yaml
+                if subdir == "config":
+                     docker_client.containers.run(
+                        "alpine",
+                        command=["sh", "-c", "find /data -mindepth 1 ! -name 'uwas.yaml' -exec rm -rf {} +"],
+                        volumes={path: {'bind': '/data', 'mode': 'rw'}},
+                        remove=True
+                    )
+                else:
+                    docker_client.containers.run(
+                        "alpine",
+                        command=["sh", "-c", "find /data -name '*.pid' -o -name '*.lock' -o -name '*.sock' -o -name 'autosave.json' -exec rm -rf {} \\;"],
+                        volumes={path: {'bind': '/data', 'mode': 'rw'}},
+                        remove=True
+                    )
                 audit_results.append(f"Purged volumes in {path}")
             except Exception as e:
                 audit_results.append(f"Notice: Skip volume {path} ({e})")
@@ -341,13 +346,17 @@ def reset_photos():
         container = docker_client.containers.get("m2-photos-api")
         token_found = False
         for m in container.attrs['Mounts']:
-            if m['Destination'] == '/app':
+            # Ajuste de mira: buscamos el vínculo directo al archivo o a la carpeta app
+            if m['Destination'] in ['/app/token.json', '/app']:
                 src = m['Source']
-                # Demolición total: borrar carpeta o archivo y recrear archivo
+                # Si src es un archivo, borramos el archivo en el host. 
+                # Si es una carpeta /app, borramos token.json dentro.
+                cmd = "rm -rf /data && touch /data" if m['Destination'] == '/app/token.json' else "rm -rf /data/token.json && touch /data/token.json"
+                
                 docker_client.containers.run(
                     "alpine",
-                    command=["sh", "-c", "rm -rf /app/token.json && touch /app/token.json"],
-                    volumes={src: {'bind': '/app', 'mode': 'rw'}},
+                    command=["sh", "-c", cmd],
+                    volumes={src: {'bind': '/data', 'mode': 'rw'}},
                     remove=True
                 )
                 token_found = True
