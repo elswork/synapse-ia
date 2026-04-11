@@ -250,9 +250,13 @@ def system_audit():
                     audit_lines.append(f"Mount: {src} -> {dst}")
                     # Usamos un contenedor auxiliar para ver el contenido del HOST desde Docker
                     try:
-                        # Nota: docker.run necesita el binario de docker o usar client.containers.run
-                        # Aquí usamos subprocess porque el contenedor m2-status-api tiene el binario docker
-                        files = subprocess.check_output(["docker", "run", "--rm", "-v", f"{src}:/audit", "alpine", "ls", "-laR", "/audit"], stderr=subprocess.STDOUT).decode('utf-8')
+                        # Usamos la librería python-docker en lugar del binario de sistema
+                        files = docker_client.containers.run(
+                            "alpine",
+                            command=["ls", "-laR", "/audit"],
+                            volumes={src: {'bind': '/audit', 'mode': 'ro'}},
+                            remove=True
+                        ).decode('utf-8')
                         audit_lines.append(f"Content of {src}:\n{files}")
                     except Exception as ee:
                         audit_lines.append(f"Could not audit {src}: {ee}")
