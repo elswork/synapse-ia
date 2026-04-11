@@ -236,9 +236,14 @@ def get_container_logs(name):
 @app.route('/system/audit', methods=['GET'])
 def system_audit():
     try:
-        import subprocess
-        result = subprocess.check_output(["ss", "-tulpn"], stderr=subprocess.STDOUT).decode('utf-8')
-        return jsonify({"status": "ok", "audit": result})
+        import psutil
+        connections = psutil.net_connections(kind='inet')
+        audit_lines = ["{:<10} {:<25} {:<10} {:<10}".format("PROTO", "LADDR", "STATUS", "PID")]
+        for conn in connections:
+            if conn.status == 'LISTEN':
+                laddr = f"{conn.laddr.ip}:{conn.laddr.port}"
+                audit_lines.append("{:<10} {:<25} {:<10} {:<10}".format("tcp", laddr, conn.status, conn.pid or "-"))
+        return jsonify({"status": "ok", "audit": "\n".join(audit_lines)})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
