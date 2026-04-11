@@ -281,22 +281,51 @@ def get_container_logs_full(name):
 @app.route('/system/purge-uwas-locks', methods=['POST'])
 def purge_uwas_locks():
     try:
-        # Purgado directo en las carpetas físicas del host
-        base_dir = "/home/pirate/docker/uwas-anticitera"
+        if not docker_client:
+            return jsonify({"status": "error", "message": "Docker client not available"}), 500
+            
         audit_results = []
+        
+        # 1. Purga en carpetas de volúmenes conocidos
+        base_dir = "/home/pirate/docker/uwas-anticitera"
         for subdir in ["certs", "logs", "config", "www"]:
             path = os.path.join(base_dir, subdir)
             try:
-                # Buscamos y destruimos archivos de bloqueo en el host 
-                # Necesita que m2-status-api tenga el host path montado o usar un helper
-                # Como no lo tiene, usaremos el truco del contenedor Alpine
-                cmd = f"docker run --rm -v {path}:/data alpine sh -c \"find /data -name '*.pid' -o -name '*.lock' -o -name '*.sock' -exec rm -f {{}} \\;\""
-                subprocess.check_call(cmd, shell=True)
-                audit_results.append(f"Purged {path}")
+                # Usamos el contenedor auxiliar para limpiar los volúmenes en el host
+                docker_client.containers.run(
+                    "alpine",
+                    command=["sh", "-c", "find /data -name '*.pid' -o -name '*.lock' -o -name '*.sock' -exec rm -f {} \\;"],
+                    volumes={path: {'bind': '/data', 'mode': 'rw'}},
+                    remove=True
+                )
+                audit_results.append(f"Purged volumes in {path}")
             except Exception as e:
-                audit_results.append(f"Error purging {path}: {e}")
+                audit_results.append(f"Notice: Skip volume {path} ({e})")
+
+        # 2. PURGA PROFUNDA: Buscar en carpetas temporales del HOST (vía montajes mágicos)
+        # Intentamos montar carpetas críticas del host en el contenedor auxiliar
+        critical_paths = {
+            "/tmp": "/host_tmp",
+            "/var/run": "/host_run",
+            "/dev/shm": "/host_shm"
+        }
         
-        return jsonify({"status": "ok", "message": "Physical directories purged via Alpine spirit", "details": audit_results})
+        for host_path, container_mount in critical_paths.items():
+            try:
+                # Buscamos y destruimos específicamente archivos de caddy/uwas
+                # Usamos patrones que Caddy suele usar como .pid o sockets
+                cmd = f"find {container_mount} -name '*caddy*' -o -name '*uwas*' -o -name '.pid' -o -name '.lock' -exec rm -f {{}} \\;"
+                docker_client.containers.run(
+                    "alpine",
+                    command=["sh", "-c", cmd],
+                    volumes={host_path: {'bind': container_mount, 'mode': 'rw'}},
+                    remove=True
+                )
+                audit_results.append(f"Deep purged ghost files in host {host_path}")
+            except Exception as e:
+                audit_results.append(f"Notice: Skip host path {host_path} ({e})")
+        
+        return jsonify({"status": "ok", "message": "Deep physical purge completed", "details": audit_results})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
