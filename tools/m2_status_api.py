@@ -342,9 +342,10 @@ def reset_photos():
         for m in container.attrs['Mounts']:
             if m['Destination'] == '/app':
                 src = m['Source']
+                # Borramos y recreamos vacío para evitar el error 'not a directory' de Docker
                 docker_client.containers.run(
                     "alpine",
-                    command=["rm", "-f", "/app/token.json"],
+                    command=["sh", "-c", "rm -f /app/token.json && touch /app/token.json"],
                     volumes={src: {'bind': '/app', 'mode': 'rw'}},
                     remove=True
                 )
