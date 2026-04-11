@@ -237,12 +237,26 @@ def get_container_logs(name):
 def system_audit():
     try:
         import psutil
+        import subprocess
         connections = psutil.net_connections(kind='inet')
-        audit_lines = ["{:<10} {:<25} {:<10} {:<10}".format("PROTO", "LADDR", "STATUS", "PID")]
+        audit_lines = ["--- PORT AUDIT ---", "{:<10} {:<25} {:<10} {:<10}".format("PROTO", "LADDR", "STATUS", "PID")]
         for conn in connections:
             if conn.status == 'LISTEN':
                 laddr = f"{conn.laddr.ip}:{conn.laddr.port}"
                 audit_lines.append("{:<10} {:<25} {:<10} {:<10}".format("tcp", laddr, conn.status, conn.pid or "-"))
+        
+        audit_lines.append("\n--- LOCK FILE AUDIT ---")
+        search_dirs = ["/var/run", "/tmp", "/var/lib/uwas", "/var/cache/uwas"]
+        for d in search_dirs:
+            try:
+                files = subprocess.check_output(["find", d, "-name", "*.pid", "-o", "-name", "*.lock", "-o", "-name", "*.sock"], stderr=subprocess.STDOUT).decode('utf-8')
+                if files.strip():
+                    audit_lines.append(f"In {d}:\n{files}")
+                else:
+                    audit_lines.append(f"In {d}: None")
+            except:
+                audit_lines.append(f"In {d}: inaccessible or error")
+        
         return jsonify({"status": "ok", "audit": "\n".join(audit_lines)})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
