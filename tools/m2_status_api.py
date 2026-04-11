@@ -394,6 +394,45 @@ def update_brightness():
     else:
         return jsonify({"status": "error"}), 500
 
+@app.route('/system/write-config', methods=['POST'])
+def write_config():
+    try:
+        data = request.json
+        target_path = data.get('path')
+        content = data.get('content')
+        
+        if not target_path or not content:
+            return jsonify({"status": "error", "message": "Missing path or content"}), 400
+            
+        # Usamos un contenedor auxiliar para escribir en el host
+        parent_dir = os.path.dirname(target_path)
+        filename = os.path.basename(target_path)
+        
+        docker_client.containers.run(
+            "alpine",
+            command=["sh", "-c", f"cat > /data/{filename}"],
+            volumes={parent_dir: {'bind': '/data', 'mode': 'rw'}},
+            entrypoint="/bin/sh",
+            stdin_open=True,
+            remove=True
+        ).attach(stdin=True).send(content.encode('utf-8'))
+        
+        return jsonify({"status": "ok", "message": f"File {target_path} written successfully"}), 200
+    except Exception as e:
+        # Intento fallback con echo por si el stream falla
+        try:
+             import base64
+             b64_content = base64.b64encode(content.encode('utf-8')).decode('utf-8')
+             docker_client.containers.run(
+                "alpine",
+                command=["sh", "-c", f"echo {b64_content} | base64 -d > /data/{filename}"],
+                volumes={parent_dir: {'bind': '/data', 'mode': 'rw'}},
+                remove=True
+             )
+             return jsonify({"status": "ok", "message": f"File {target_path} written via fallback"}), 200
+        except Exception as e2:
+            return jsonify({"status": "error", "message": str(e2)}), 500
+
 if __name__ == '__main__':
     # Correr en puerto 5051 para no interferir con el trigger de Athena (5050)
     app.run(host='0.0.0.0', port=5051)
