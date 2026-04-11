@@ -292,9 +292,10 @@ def purge_uwas_locks():
             path = os.path.join(base_dir, subdir)
             try:
                 # Usamos el contenedor auxiliar para limpiar los volúmenes en el host
+                # Añadimos autosave.json y .uwas.lock específicamente
                 docker_client.containers.run(
                     "alpine",
-                    command=["sh", "-c", "find /data -name '*.pid' -o -name '*.lock' -o -name '*.sock' -exec rm -f {} \\;"],
+                    command=["sh", "-c", "find /data -name '*.pid' -o -name '*.lock' -o -name '*.sock' -o -name 'autosave.json' -exec rm -rf {} \\;"],
                     volumes={path: {'bind': '/data', 'mode': 'rw'}},
                     remove=True
                 )
@@ -342,10 +343,10 @@ def reset_photos():
         for m in container.attrs['Mounts']:
             if m['Destination'] == '/app':
                 src = m['Source']
-                # Borramos y recreamos vacío para evitar el error 'not a directory' de Docker
+                # Demolición total: borrar carpeta o archivo y recrear archivo
                 docker_client.containers.run(
                     "alpine",
-                    command=["sh", "-c", "rm -f /app/token.json && touch /app/token.json"],
+                    command=["sh", "-c", "rm -rf /app/token.json && touch /app/token.json"],
                     volumes={src: {'bind': '/app', 'mode': 'rw'}},
                     remove=True
                 )
