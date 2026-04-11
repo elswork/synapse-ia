@@ -278,22 +278,22 @@ def system_audit():
 
 @app.route('/system/purge-uwas-locks', methods=['POST'])
 def purge_uwas_locks():
-    if not docker_client:
-        return jsonify({"status": "error", "message": "Docker client not available"}), 500
     try:
-        # Usamos un contenedor temporal para limpiar los volúmenes persistentes
-        # donde uwas-anticitera guarda sus bloqueos
-        cmd = "rm -f /var/lib/uwas/*.pid /var/lib/uwas/*.lock /var/lib/uwas/*.sock /var/cache/uwas/*.pid /var/cache/uwas/*.lock /var/cache/uwas/*.sock"
-        docker_client.containers.run(
-            "alpine:latest",
-            command=["sh", "-c", cmd],
-            volumes={
-                'certs': {'bind': '/var/lib/uwas', 'mode': 'rw'},
-                'cache': {'bind': '/var/cache/uwas', 'mode': 'rw'}
-            },
-            remove=True
-        )
-        return jsonify({"status": "ok", "message": "Persistent volumes purged of lock files"})
+        import subprocess
+        # Purgado directo en las carpetas físicas del host identificadas por el audit
+        base_dir = "/home/pirate/docker/uwas-anticitera"
+        audit_results = []
+        for subdir in ["certs", "logs", "config", "www"]:
+            path = os.path.join(base_dir, subdir)
+            try:
+                # Buscamos y destruimos archivos de bloqueo en el host
+                cmd = f"find {path} -name '*.pid' -o -name '*.lock' -o -name '*.sock' -exec rm -f {{}} \\;"
+                subprocess.check_call(cmd, shell=True)
+                audit_results.append(f"Purged {path}")
+            except Exception as e:
+                audit_results.append(f"Error purging {path}: {e}")
+        
+        return jsonify({"status": "ok", "message": "Physical directories purged", "details": audit_results})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
