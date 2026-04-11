@@ -15,19 +15,17 @@ from google.oauth2.credentials import Credentials
 app = Flask(__name__)
 CORS(app)
 
-# Scopes necesarios para ver la librería de Google Photos
 SCOPES = ['https://www.googleapis.com/auth/photoslibrary.readonly', 'https://www.googleapis.com/auth/photoslibrary']
 CREDENTIALS_FILE = '/app/credentials.json'
-TOKEN_FILE = '/app/token.json'
+TOKEN_FILE = '/app/token_m2.json' # Nuevo nombre para evadir bloqueos
 
 def get_credentials():
     creds = None
     if os.path.exists(TOKEN_FILE):
         try:
             creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
-        except Exception:
-            # No borramos el archivo porque Docker lo bloquea (Device or resource busy)
-            # Simplemente devolvemos None para forzar nueva autorización
+        except Exception as e:
+            print(f"Error cargando token: {e}")
             return None
     
     if not creds or not creds.valid:
@@ -36,8 +34,8 @@ def get_credentials():
                 creds.refresh(Request())
                 with open(TOKEN_FILE, 'w') as token:
                     token.write(creds.to_json())
-            except Exception:
-                # Si falla el refresh, ignoramos y devolvemos None para re-auth
+            except Exception as e:
+                print(f"Error refrescando token: {e}")
                 return None
         else:
             return None
