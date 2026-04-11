@@ -245,11 +245,24 @@ def system_audit():
                 laddr = f"{conn.laddr.ip}:{conn.laddr.port}"
                 audit_lines.append("{:<10} {:<25} {:<10} {:<10}".format("tcp", laddr, conn.status, conn.pid or "-"))
         
-        audit_lines.append("\n--- LOCK FILE AUDIT ---")
-        search_dirs = ["/var/run", "/tmp", "/var/lib/uwas", "/var/cache/uwas"]
+        audit_lines.append("\n--- DOCKER VOLUME AUDIT ---")
+        if docker_client:
+            for vol_name in ['certs', 'cache']:
+                try:
+                    vol = docker_client.volumes.get(vol_name)
+                    mountpoint = vol.attrs['Mountpoint']
+                    audit_lines.append(f"Volume {vol_name} mountpoint: {mountpoint}")
+                    # Try to list files in mountpoint (may need permissions)
+                    files = subprocess.check_output(["ls", "-R", mountpoint], stderr=subprocess.STDOUT).decode('utf-8')
+                    audit_lines.append(f"Files in {vol_name}:\n{files}")
+                except Exception as ve:
+                    audit_lines.append(f"Error auditing volume {vol_name}: {ve}")
+
+        audit_lines.append("\n--- LOCK FILE AUDIT (HOST) ---")
+        search_dirs = ["/var/run", "/tmp"]
         for d in search_dirs:
             try:
-                files = subprocess.check_output(["find", d, "-name", "*.pid", "-o", "-name", "*.lock", "-o", "-name", "*.sock"], stderr=subprocess.STDOUT).decode('utf-8')
+                files = subprocess.check_output(["find", d, "-maxdepth", "2", "-name", "*.pid", "-o", "-name", "*.lock"], stderr=subprocess.STDOUT).decode('utf-8')
                 if files.strip():
                     audit_lines.append(f"In {d}:\n{files}")
                 else:
