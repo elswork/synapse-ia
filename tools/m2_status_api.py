@@ -233,6 +233,15 @@ def get_container_logs(name):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/system/audit', methods=['GET'])
+def system_audit():
+    try:
+        import subprocess
+        result = subprocess.check_output(["ss", "-tulpn"], stderr=subprocess.STDOUT).decode('utf-8')
+        return jsonify({"status": "ok", "audit": result})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 @app.route('/system/gui/close', methods=['POST', 'GET'])
 def close_gui():
     print("M2-API: Received GUI Close Request (Universal)")
