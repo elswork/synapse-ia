@@ -289,6 +289,8 @@ def purge_uwas_locks():
         # 1. Purga en carpetas de volúmenes conocidos
         base_dir = "/home/pirate/docker/uwas-anticitera"
         for subdir in ["certs", "logs", "config", "www"]:
+            path = os.path.join(base_dir, subdir)
+            try:
                 # Purga agresiva en CONFIG: Borrar TODO menos uwas.yaml
                 if subdir == "config":
                      docker_client.containers.run(
