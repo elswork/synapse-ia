@@ -245,34 +245,25 @@ def system_audit():
                 laddr = f"{conn.laddr.ip}:{conn.laddr.port}"
                 audit_lines.append("{:<10} {:<25} {:<10} {:<10}".format("tcp", laddr, conn.status, conn.pid or "-"))
         
-        audit_lines.append("\n--- DOCKER VOLUME AUDIT ---")
-        if docker_client:
-            vols = docker_client.volumes.list()
-            for vol in vols:
-                try:
-                    name = vol.name
-                    mountpoint = vol.attrs['Mountpoint']
-                    audit_lines.append(f"Volume: {name} | Mountpoint: {mountpoint}")
-                    # Search specifically for lock/pid files in any volume that looks relevant
-                    if 'uwas' in name.lower() or 'certs' in name.lower() or 'cache' in name.lower():
-                        files = subprocess.check_output(["ls", "-R", mountpoint], stderr=subprocess.STDOUT).decode('utf-8')
-                        audit_lines.append(f"Files in {name}:\n{files}")
-                except Exception as ve:
-                    audit_lines.append(f"Error auditing volume {vol.name}: {ve}")
+        audit_lines.append("\n--- FULL FILE AUDIT (UWAS DIR) ---")
+        try:
+            files = subprocess.check_output(["ls", "-laR", "/home/pirate/docker/uwas-anticitera/"], stderr=subprocess.STDOUT).decode('utf-8')
+            audit_lines.append(files)
+        except Exception as e:
+            audit_lines.append(f"Error listing uwas dir: {e}")
 
-        audit_lines.append("\n--- LOCK FILE AUDIT (HOST) ---")
-        search_dirs = ["/var/run", "/tmp"]
-        for d in search_dirs:
-            try:
-                files = subprocess.check_output(["find", d, "-maxdepth", "2", "-name", "*.pid", "-o", "-name", "*.lock"], stderr=subprocess.STDOUT).decode('utf-8')
-                if files.strip():
-                    audit_lines.append(f"In {d}:\n{files}")
-                else:
-                    audit_lines.append(f"In {d}: None")
-            except:
-                audit_lines.append(f"In {d}: error")
-        
         return jsonify({"status": "ok", "audit": "\n".join(audit_lines)})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/docker/logs-full/<name>', methods=['GET'])
+def get_container_logs_full(name):
+    if not docker_client:
+        return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    try:
+        container = docker_client.containers.get(name)
+        logs = container.logs(tail=500).decode('utf-8')
+        return jsonify({"status": "ok", "name": name, "logs": logs})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
