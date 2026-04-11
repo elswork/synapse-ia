@@ -61,7 +61,7 @@ def status():
     return jsonify({"status": "authorized"})
 
 @app.route('/photos/authorize', methods=['POST'])
-def authorize():
+def finalize_authorization():
     try:
         data = request.json
         code = data.get('code')
