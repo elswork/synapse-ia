@@ -10,51 +10,36 @@ from google.auth.transport.requests import Request
 
 # Almacenamos temporalmente los flujos para persistir el code_verifier (PKCE)
 auth_flows = {}
+from google.oauth2.credentials import Credentials
 
 app = Flask(__name__)
 CORS(app)
 
 # Scopes necesarios para ver la librería de Google Photos
-SCOPES = [
-    'https://www.googleapis.com/auth/photoslibrary.readonly',
-    'https://www.googleapis.com/auth/photoslibrary'
-]
+SCOPES = ['https://www.googleapis.com/auth/photoslibrary.readonly', 'https://www.googleapis.com/auth/photoslibrary']
 CREDENTIALS_FILE = '/app/credentials.json'
 TOKEN_FILE = '/app/token.json'
 
 def get_credentials():
     creds = None
-    if os.path.exists(TOKEN_FILE) and os.path.getsize(TOKEN_FILE) > 0:
-        try:
-            with open(TOKEN_FILE, 'rb') as token:
-                creds = pickle.load(token)
-        except (EOFError, pickle.UnpicklingError):
-            print("Token file corrupted or empty.")
+    if os.path.exists(TOKEN_FILE):
+        creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
     
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             try:
                 creds.refresh(Request())
-                with open(TOKEN_FILE, 'wb') as token:
-                    pickle.dump(creds, token)
-            except Exception as e:
-                return None, f"Error refreshing token: {e}"
+            except Exception:
+                if os.path.exists(TOKEN_FILE):
+                    os.remove(TOKEN_FILE)
+                return None
         else:
-            return None, "Authentication required"
+            return None
             
-    return creds, None
+    return creds
 
 @app.route('/photos/status', methods=['GET'])
 def status():
-    creds, error = get_credentials()
-    if error == "Authentication required":
-        flow = Flow.from_client_secrets_file(
-            CREDENTIALS_FILE, 
-            scopes=SCOPES,
-            redirect_uri='http://192.168.1.75:5052/photos/callback'
-        )
-        auth_url, state = flow.authorization_url(prompt='consent', access_type='offline')
-        auth_flows[state] = flow
         return jsonify({"status": "needs_auth", "auth_url": auth_url})
     elif error:
         return jsonify({"status": "error", "message": error})
