@@ -15,7 +15,10 @@ app = Flask(__name__)
 CORS(app)
 
 # Scopes necesarios para ver la librería de Google Photos
-SCOPES = ['https://www.googleapis.com/auth/photoslibrary.readonly']
+SCOPES = [
+    'https://www.googleapis.com/auth/photoslibrary.readonly',
+    'https://www.googleapis.com/auth/photoslibrary'
+]
 CREDENTIALS_FILE = '/app/credentials.json'
 TOKEN_FILE = '/app/token.json'
 

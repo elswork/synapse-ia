@@ -3,6 +3,7 @@ import time
 import psutil
 import json
 import docker
+import subprocess
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -77,8 +78,7 @@ def get_stats():
         "mic_active": mic_active,
         "uptime": time.time() - psutil.boot_time(),
         "timestamp": time.time(),
-        "brightness": brightness_val,
-        "mic_active": mic_active
+        "brightness": brightness_val
     })
 
 @app.route('/system/reboot', methods=['POST'])
@@ -190,10 +190,6 @@ def radio_toggle():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-        return jsonify(result)
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
-
 @app.route('/docker/containers')
 def get_containers():
     if not docker_client:
@@ -236,8 +232,6 @@ def get_container_logs(name):
 @app.route('/system/audit', methods=['GET'])
 def system_audit():
     try:
-        import psutil
-        import subprocess
         connections = psutil.net_connections(kind='inet')
         audit_lines = ["--- PORT AUDIT ---", "{:<10} {:<25} {:<10} {:<10}".format("PROTO", "LADDR", "STATUS", "PID")]
         for conn in connections:
@@ -245,12 +239,25 @@ def system_audit():
                 laddr = f"{conn.laddr.ip}:{conn.laddr.port}"
                 audit_lines.append("{:<10} {:<25} {:<10} {:<10}".format("tcp", laddr, conn.status, conn.pid or "-"))
         
-        audit_lines.append("\n--- FULL FILE AUDIT (UWAS DIR) ---")
-        try:
-            files = subprocess.check_output(["ls", "-laR", "/home/pirate/docker/uwas-anticitera/"], stderr=subprocess.STDOUT).decode('utf-8')
-            audit_lines.append(files)
-        except Exception as e:
-            audit_lines.append(f"Error listing uwas dir: {e}")
+        audit_lines.append("\n--- CONTAINER MOUNT AUDIT ---")
+        if docker_client:
+            try:
+                # Obtenemos los puntos de montaje reales de uwas-anticitera
+                container = docker_client.containers.get("uwas-anticitera")
+                for m in container.attrs['Mounts']:
+                    src = m['Source']
+                    dst = m['Destination']
+                    audit_lines.append(f"Mount: {src} -> {dst}")
+                    # Usamos un contenedor auxiliar para ver el contenido del HOST desde Docker
+                    try:
+                        # Nota: docker.run necesita el binario de docker o usar client.containers.run
+                        # Aquí usamos subprocess porque el contenedor m2-status-api tiene el binario docker
+                        files = subprocess.check_output(["docker", "run", "--rm", "-v", f"{src}:/audit", "alpine", "ls", "-laR", "/audit"], stderr=subprocess.STDOUT).decode('utf-8')
+                        audit_lines.append(f"Content of {src}:\n{files}")
+                    except Exception as ee:
+                        audit_lines.append(f"Could not audit {src}: {ee}")
+            except Exception as e:
+                audit_lines.append(f"Error inspecting uwas-anticitera: {e}")
 
         return jsonify({"status": "ok", "audit": "\n".join(audit_lines)})
     except Exception as e:
@@ -270,21 +277,22 @@ def get_container_logs_full(name):
 @app.route('/system/purge-uwas-locks', methods=['POST'])
 def purge_uwas_locks():
     try:
-        import subprocess
-        # Purgado directo en las carpetas físicas del host identificadas por el audit
+        # Purgado directo en las carpetas físicas del host
         base_dir = "/home/pirate/docker/uwas-anticitera"
         audit_results = []
         for subdir in ["certs", "logs", "config", "www"]:
             path = os.path.join(base_dir, subdir)
             try:
-                # Buscamos y destruimos archivos de bloqueo en el host
-                cmd = f"find {path} -name '*.pid' -o -name '*.lock' -o -name '*.sock' -exec rm -f {{}} \\;"
+                # Buscamos y destruimos archivos de bloqueo en el host 
+                # Necesita que m2-status-api tenga el host path montado o usar un helper
+                # Como no lo tiene, usaremos el truco del contenedor Alpine
+                cmd = f"docker run --rm -v {path}:/data alpine sh -c \"find /data -name '*.pid' -o -name '*.lock' -o -name '*.sock' -exec rm -f {{}} \\;\""
                 subprocess.check_call(cmd, shell=True)
                 audit_results.append(f"Purged {path}")
             except Exception as e:
                 audit_results.append(f"Error purging {path}: {e}")
         
-        return jsonify({"status": "ok", "message": "Physical directories purged", "details": audit_results})
+        return jsonify({"status": "ok", "message": "Physical directories purged via Alpine spirit", "details": audit_results})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
