@@ -74,7 +74,7 @@ services:
     volumes:
       - ./tools:/app/tools
       - ./credentials.json:/app/credentials.json
-      - ./token.json:/app/token.json
+      - ./token_m2.json:/app/token_m2.json
     working_dir: /app
     command: sh -c "pip install flask flask-cors google-auth-oauthlib google-auth-httplib2 google-api-python-client && python3 tools/photos_api.py"
     restart: unless-stopped
