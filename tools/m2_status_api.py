@@ -297,6 +297,16 @@ def purge_uwas_locks():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/docker/inspect/<name>', methods=['GET'])
+def inspect_container(name):
+    if not docker_client:
+        return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    try:
+        container = docker_client.containers.get(name)
+        return jsonify({"status": "ok", "state": container.attrs['State'], "mounts": container.attrs['Mounts']})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 @app.route('/system/gui/close', methods=['POST', 'GET'])
 def close_gui():
     print("M2-API: Received GUI Close Request (Universal)")
