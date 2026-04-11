@@ -23,27 +23,64 @@ TOKEN_FILE = '/app/token.json'
 def get_credentials():
     creds = None
     if os.path.exists(TOKEN_FILE):
-        creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
+        try:
+            creds = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
+        except Exception:
+            os.remove(TOKEN_FILE)
+            return None
     
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             try:
                 creds.refresh(Request())
+                with open(TOKEN_FILE, 'w') as token:
+                    token.write(creds.to_json())
             except Exception:
                 if os.path.exists(TOKEN_FILE):
                     os.remove(TOKEN_FILE)
                 return None
         else:
             return None
-            
     return creds
 
 @app.route('/photos/status', methods=['GET'])
 def status():
-        return jsonify({"status": "needs_auth", "auth_url": auth_url})
-    elif error:
-        return jsonify({"status": "error", "message": error})
-    return jsonify({"status": "authenticated"})
+    creds = get_credentials()
+    if not creds:
+        # Generar URL de flujo manual
+        flow = InstalledAppFlow.from_client_secrets_file(
+            CREDENTIALS_FILE, SCOPES,
+            redirect_uri='http://localhost:5052/photos/callback'
+        )
+        auth_url, _ = flow.authorization_url(prompt='consent', access_type='offline')
+        return jsonify({
+            "status": "needs_auth",
+            "message": "Visit the URL and submit the 'code' to /photos/authorize",
+            "auth_url": auth_url
+        })
+    return jsonify({"status": "authorized"})
+
+@app.route('/photos/authorize', methods=['POST'])
+def authorize():
+    try:
+        data = request.json
+        code = data.get('code')
+        if not code:
+            return jsonify({"status": "error", "message": "Code missing"}), 400
+            
+        flow = InstalledAppFlow.from_client_secrets_file(
+            CREDENTIALS_FILE, SCOPES,
+            redirect_uri='http://localhost:5052/photos/callback'
+        )
+        flow.fetch_token(code=code)
+        creds = flow.credentials
+        
+        with open(TOKEN_FILE, 'w') as token:
+            token.write(creds.to_json())
+            
+        return jsonify({"status": "ok", "message": "Token generated successfully. Please restart the container."})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/photos/callback')
 def callback():
