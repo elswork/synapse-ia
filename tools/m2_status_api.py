@@ -261,6 +261,27 @@ def system_audit():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/system/purge-uwas-locks', methods=['POST'])
+def purge_uwas_locks():
+    if not docker_client:
+        return jsonify({"status": "error", "message": "Docker client not available"}), 500
+    try:
+        # Usamos un contenedor temporal para limpiar los volúmenes persistentes
+        # donde uwas-anticitera guarda sus bloqueos
+        cmd = "rm -f /var/lib/uwas/*.pid /var/lib/uwas/*.lock /var/lib/uwas/*.sock /var/cache/uwas/*.pid /var/cache/uwas/*.lock /var/cache/uwas/*.sock"
+        docker_client.containers.run(
+            "alpine:latest",
+            command=["sh", "-c", cmd],
+            volumes={
+                'certs': {'bind': '/var/lib/uwas', 'mode': 'rw'},
+                'cache': {'bind': '/var/cache/uwas', 'mode': 'rw'}
+            },
+            remove=True
+        )
+        return jsonify({"status": "ok", "message": "Persistent volumes purged of lock files"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 @app.route('/system/gui/close', methods=['POST', 'GET'])
 def close_gui():
     print("M2-API: Received GUI Close Request (Universal)")
