@@ -329,6 +329,31 @@ def purge_uwas_locks():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/system/reset-photos', methods=['POST'])
+def reset_photos():
+    try:
+        if not docker_client:
+            return jsonify({"status": "error", "message": "Docker client not available"}), 500
+            
+        # El volumen de photos está en synapse-ia/tools (físicamente en el host)
+        # O podemos buscarlo vía inspección del contenedor
+        container = docker_client.containers.get("m2-photos-api")
+        token_found = False
+        for m in container.attrs['Mounts']:
+            if m['Destination'] == '/app':
+                src = m['Source']
+                docker_client.containers.run(
+                    "alpine",
+                    command=["rm", "-f", "/app/token.json"],
+                    volumes={src: {'bind': '/app', 'mode': 'rw'}},
+                    remove=True
+                )
+                token_found = True
+        
+        return jsonify({"status": "ok", "message": "Photos token reset attempt completed", "token_found": token_found})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 @app.route('/docker/inspect/<name>', methods=['GET'])
 def inspect_container(name):
     if not docker_client:
