@@ -11,3 +11,5 @@ feedparser
 psutil
 
 schedule==1.2.1
+docker
+flask-cors

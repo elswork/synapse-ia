@@ -3,10 +3,13 @@ Description=Anticitera M2 Status and Brightness API
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/pirate/docker/synapse-ia/tools/m2_status_api.py
+[Service]
+ExecStart=/home/pirate/docker/synapse-ia/venv/bin/python3 /home/pirate/docker/synapse-ia/tools/m2_status_api.py
 WorkingDirectory=/home/pirate/docker/synapse-ia
 Restart=always
 User=root
+StandardOutput=append:/home/pirate/docker/synapse-ia/logs/m2_status_api.log
+StandardError=append:/home/pirate/docker/synapse-ia/logs/m2_status_api.log
 
 [Install]
 WantedBy=multi-user.target
