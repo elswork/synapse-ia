@@ -349,13 +349,13 @@ def reset_photos():
         token_found = False
         for m in container.attrs['Mounts']:
             # Ajuste de mira v19: Buscamos el origen físico del token
-            if m['Destination'] == '/app/token.json':
+            if m['Destination'] == '/app/token_m2.json':
                 src_file = m['Source']
                 # Subimos un nivel en el host para poder borrar el archivo/carpeta original
                 parent_dir = os.path.dirname(src_file)
                 docker_client.containers.run(
                     "alpine",
-                    command=["sh", "-c", "rm -rf /data/token.json && touch /data/token.json"],
+                    command=["sh", "-c", "rm -rf /data/token_m2.json"],
                     volumes={parent_dir: {'bind': '/data', 'mode': 'rw'}},
                     remove=True
                 )
