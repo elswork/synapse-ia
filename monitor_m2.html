@@ -1052,9 +1052,10 @@
     <script src="stations_data.js"></script>
     <script>
         // CONFIG
+        const API_HOST = location.hostname || 'localhost';
         const NODES = {
-            m2: 'http://${location.hostname}:5051/stats', // Cambiado de anticitera.athena para mayor robustez
-            legion: 'http://192.168.1.34:5052/stats', // Mapeado a la IP local y puerto 5052
+            m2: `http://${API_HOST}:5051/stats`,
+            legion: 'http://192.168.1.34:5052/stats',
             chromebook: 'http://chromebook.athena:5051/stats',
             odroid: 'http://odroid.athena:5051/stats'
         };
@@ -1238,7 +1239,7 @@
         let isRadioPaused = false;
         function playStation(name, url) {
             document.getElementById('np_name_header').innerText = name.toUpperCase();
-            fetch('http://${location.hostname}:5051/system/radio/play', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: url}) });
+            fetch('http://${API_HOST}:5051/system/radio/play', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: url}) });
             isRadioPaused = false;
 
             // Toggle Header Visibility
@@ -1247,7 +1248,7 @@
             document.getElementById('play_btn_header').innerText = '⏸';
         }
         function togglePlay() {
-            fetch('http://${location.hostname}:5051/system/radio/toggle', { method: 'POST' });
+            fetch('http://${API_HOST}:5051/system/radio/toggle', { method: 'POST' });
             isRadioPaused = !isRadioPaused;
             if (isRadioPaused) {
                 document.getElementById('play_btn_header').innerText = '▶';
@@ -1256,7 +1257,7 @@
             }
         }
         function stopMusic() {
-            fetch('http://${location.hostname}:5051/system/radio/stop', { method: 'POST' });
+            fetch('http://${API_HOST}:5051/system/radio/stop', { method: 'POST' });
 
             // Revert Header
             document.getElementById('header_title').style.display = 'block';
@@ -1312,7 +1313,7 @@
         async function adjustVolume(direction) {
             try {
                 const endpoint = direction === 'up' ? '/system/volume/up' : '/system/volume/down';
-                const res = await fetch(`http://${location.hostname}:5051${endpoint}`, { method: 'POST' });
+                const res = await fetch(`http://${API_HOST}:5051${endpoint}`, { method: 'POST' });
                 const data = await res.json();
                 console.log(`Volumen: ${data.message}`);
 
@@ -1331,7 +1332,7 @@
             try {
                 const endpoint = action === 'reiniciar' ? '/system/reboot' : '/system/shutdown';
                 // Usamos la IP directamente para asegurar el funcionamiento mientras se propaga el DNS .athena
-                const res = await fetch(`http://${location.hostname}:5051${endpoint}`, { method: 'POST' });
+                const res = await fetch(`http://${API_HOST}:5051${endpoint}`, { method: 'POST' });
                 const data = await res.json();
                 alert(data.message);
             } catch (err) {
@@ -1352,7 +1353,7 @@
         async function toggleMic() {
             try {
                 // Usamos la IP directamente como en confirmSystemAction
-                const res = await fetch(`http://${location.hostname}:5051/system/mic/toggle`, { method: 'POST' });
+                const res = await fetch(`http://${API_HOST}:5051/system/mic/toggle`, { method: 'POST' });
                 const data = await res.json();
                 if (data.status === 'ok') {
                     const btnMic = document.getElementById('btn_mic');
@@ -1482,7 +1483,7 @@
             // Quitamos el confirm para evitar bloqueos y usamos modo no-cors para una llamada de fuego y olvido
             const endpoints = [
                 'http://localhost:5051/system/gui/close',
-                'http://${location.hostname}:5051/system/gui/close'
+                'http://${API_HOST}:5051/system/gui/close'
             ];
             
             endpoints.forEach(url => {
@@ -1509,7 +1510,7 @@
             container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px; font-size: 2rem; color: #888;">Cargando recuerdos...</div>';
             
             try {
-                const response = await fetch(`http://${location.hostname}:5052/photos/status?t=${Date.now()}`);
+                const response = await fetch(`http://${API_HOST}:5052/photos/status?t=${Date.now()}`);
                 const data = await response.json();
                 
                 if (data.status === 'authorized') {
@@ -1526,7 +1527,7 @@
 
         function showAuthScreen(url) {
             const container = document.getElementById('gallery_content');
-                const qrUrl = `http://${location.hostname}:5051/system/qr?url=${encodeURIComponent(url)}`;
+                const qrUrl = `http://${API_HOST}:5051/system/qr?url=${encodeURIComponent(url)}`;
             
             container.innerHTML = `
                 <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: rgba(0,0,0,0.4); border-radius: 30px; margin: 20px; border: 1px solid rgba(255,255,255,0.1);">
@@ -1565,13 +1566,13 @@
         async function loadRealPhotos() {
             const container = document.getElementById('gallery_content');
             try {
-                const response = await fetch(`http://${location.hostname}:5052/photos/list?t=${Date.now()}`);
+                const response = await fetch(`http://${API_HOST}:5052/photos/list?t=${Date.now()}`);
                 const data = await response.json();
                 if (data.status === 'ok') {
                     // Mapear URLs para incluir el host de la API
                     currentPhotos = data.photos.map(p => ({
                         ...p,
-                        url: `http://${location.hostname}:5052${p.url}`
+                        url: `http://${API_HOST}:5052${p.url}`
                     }));
                     renderPhotos();
                 } else {
@@ -1596,7 +1597,7 @@
         async function resetPhotosToken() {
             if (!confirm("Esto borrará el token actual y forzará un nuevo código QR. ¿Proceder?")) return;
             try {
-                const res = await fetch(`http://${location.hostname}:5051/system/reset-photos?t=${Date.now()}`, { method: 'POST' });
+                const res = await fetch(`http://${API_HOST}:5051/system/reset-photos?t=${Date.now()}`, { method: 'POST' });
                 const data = await res.json();
                 if (data.status === 'ok') {
                     alert("Token eliminado. Reiniciando flujo de autorización...");
