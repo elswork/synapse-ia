@@ -1,27 +1,4 @@
-nohup: ignoring input
-/home/pirate/miniconda3/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: 
-    You are using a Python version 3.9 past its end of life. Google will update
-    google-auth with critical bug fixes on a best-effort basis, but not
-    with any other fixes or features. Please upgrade your Python version,
-    and then update google-auth.
-    
-  warnings.warn(eol_message.format("3.9"), FutureWarning)
-/home/pirate/miniconda3/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: 
-    You are using a Python version 3.9 past its end of life. Google will update
-    google-auth with critical bug fixes on a best-effort basis, but not
-    with any other fixes or features. Please upgrade your Python version,
-    and then update google-auth.
-    
-  warnings.warn(eol_message.format("3.9"), FutureWarning)
- * Serving Flask app 'photos_api'
- * Debug mode: off
-WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5052
- * Running on http://192.168.1.34:5052
-Press CTRL+C to quit
-127.0.0.1 - - [12/Apr/2026 10:52:18] "GET /photos/status HTTP/1.1" 200 -
-127.0.0.1 - - [12/Apr/2026 11:02:59] "GET /photos/callback?state=W0om0APSi0BdvpWDZkMGLWxmbmT4yB&iss=https://accounts.google.com&code=4/0Aci98E_s6xt-bJ36wyRrxfN9wyepxvTH9uz52dDLD17zWpDbqNcCi4EnlmtpzExoB-wtWA&scope=https://www.googleapis.com/auth/photoslibrary%20https://www.googleapis.com/auth/photoslibrary.readonly HTTP/1.1" 400 -
-127.0.0.1 - - [12/Apr/2026 11:02:59] "GET /favicon.ico HTTP/1.1" 404 -
-127.0.0.1 - - [12/Apr/2026 11:05:19] "GET /photos/callback?state=INzY6jl6LOkSX0dObkX71GLDhkKirQ&iss=https://accounts.google.com&code=4/0Aci98E9tYgAv8SjKDsU1WNsbvzCmvcaP7mc-WHzRvWmREUSubo-YeLlSu42Uql9-nnWszw&scope=https://www.googleapis.com/auth/photoslibrary%20https://www.googleapis.com/auth/photoslibrary.readonly HTTP/1.1" 400 -
-127.0.0.1 - - [12/Apr/2026 12:15:04] "GET /photos/callback?state=rxEKYtizBIiRwnVRVmJEDKKhRRkwKU&iss=https://accounts.google.com&code=4/0Aci98E_i5idMqpQP4AZrkZnIJWU8VMarSfBdOqpdnGsxuTkhJ7nTbiEuUVtc_z95BGqrcQ&scope=https://www.googleapis.com/auth/photoslibrary%20https://www.googleapis.com/auth/photoslibrary.readonly HTTP/1.1" 400 -
+Traceback (most recent call last):
+  File "photos_api.py", line 9, in <module>
+    from google_auth_oauthlib.flow import Flow, InstalledAppFlow
+ModuleNotFoundError: No module named 'google_auth_oauthlib'
