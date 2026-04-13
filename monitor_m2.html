@@ -733,6 +733,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            animation: kenBurns 20s linear infinite alternate;
+        }
+
+        @keyframes kenBurns {
+            from { transform: scale(1) translate(0, 0); }
+            to { transform: scale(1.1) translate(-1%, -1%); }
         }
 
         .photo-header {
@@ -1047,7 +1053,7 @@
     <script>
         // CONFIG
         const NODES = {
-            m2: 'http://192.168.1.75:5051/stats', // Cambiado de anticitera.athena para mayor robustez
+            m2: 'http://${location.hostname}:5051/stats', // Cambiado de anticitera.athena para mayor robustez
             legion: 'http://192.168.1.34:5052/stats', // Mapeado a la IP local y puerto 5052
             chromebook: 'http://chromebook.athena:5051/stats',
             odroid: 'http://odroid.athena:5051/stats'
@@ -1232,7 +1238,7 @@
         let isRadioPaused = false;
         function playStation(name, url) {
             document.getElementById('np_name_header').innerText = name.toUpperCase();
-            fetch('http://192.168.1.75:5051/system/radio/play', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: url}) });
+            fetch('http://${location.hostname}:5051/system/radio/play', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: url}) });
             isRadioPaused = false;
 
             // Toggle Header Visibility
@@ -1241,7 +1247,7 @@
             document.getElementById('play_btn_header').innerText = '⏸';
         }
         function togglePlay() {
-            fetch('http://192.168.1.75:5051/system/radio/toggle', { method: 'POST' });
+            fetch('http://${location.hostname}:5051/system/radio/toggle', { method: 'POST' });
             isRadioPaused = !isRadioPaused;
             if (isRadioPaused) {
                 document.getElementById('play_btn_header').innerText = '▶';
@@ -1250,7 +1256,7 @@
             }
         }
         function stopMusic() {
-            fetch('http://192.168.1.75:5051/system/radio/stop', { method: 'POST' });
+            fetch('http://${location.hostname}:5051/system/radio/stop', { method: 'POST' });
 
             // Revert Header
             document.getElementById('header_title').style.display = 'block';
@@ -1306,7 +1312,7 @@
         async function adjustVolume(direction) {
             try {
                 const endpoint = direction === 'up' ? '/system/volume/up' : '/system/volume/down';
-                const res = await fetch(`http://192.168.1.75:5051${endpoint}`, { method: 'POST' });
+                const res = await fetch(`http://${location.hostname}:5051${endpoint}`, { method: 'POST' });
                 const data = await res.json();
                 console.log(`Volumen: ${data.message}`);
 
@@ -1325,7 +1331,7 @@
             try {
                 const endpoint = action === 'reiniciar' ? '/system/reboot' : '/system/shutdown';
                 // Usamos la IP directamente para asegurar el funcionamiento mientras se propaga el DNS .athena
-                const res = await fetch(`http://192.168.1.75:5051${endpoint}`, { method: 'POST' });
+                const res = await fetch(`http://${location.hostname}:5051${endpoint}`, { method: 'POST' });
                 const data = await res.json();
                 alert(data.message);
             } catch (err) {
@@ -1346,7 +1352,7 @@
         async function toggleMic() {
             try {
                 // Usamos la IP directamente como en confirmSystemAction
-                const res = await fetch(`http://192.168.1.75:5051/system/mic/toggle`, { method: 'POST' });
+                const res = await fetch(`http://${location.hostname}:5051/system/mic/toggle`, { method: 'POST' });
                 const data = await res.json();
                 if (data.status === 'ok') {
                     const btnMic = document.getElementById('btn_mic');
@@ -1476,7 +1482,7 @@
             // Quitamos el confirm para evitar bloqueos y usamos modo no-cors para una llamada de fuego y olvido
             const endpoints = [
                 'http://localhost:5051/system/gui/close',
-                'http://192.168.1.75:5051/system/gui/close'
+                'http://${location.hostname}:5051/system/gui/close'
             ];
             
             endpoints.forEach(url => {
@@ -1562,7 +1568,11 @@
                 const response = await fetch(`http://${location.hostname}:5052/photos/list?t=${Date.now()}`);
                 const data = await response.json();
                 if (data.status === 'ok') {
-                    currentPhotos = data.photos;
+                    // Mapear URLs para incluir el host de la API
+                    currentPhotos = data.photos.map(p => ({
+                        ...p,
+                        url: `http://${location.hostname}:5052${p.url}`
+                    }));
                     renderPhotos();
                 } else {
                     console.error('Error de API:', data.message);

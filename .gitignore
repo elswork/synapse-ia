@@ -24,3 +24,5 @@ cache/
 # Secretos y Credenciales
 credentials.json
 token.json
+token_m2.json
+credentials.json

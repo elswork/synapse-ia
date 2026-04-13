@@ -55,7 +55,7 @@ services:
     network_mode: host
     pid: host
     volumes:
-      - ./tools:/app/tools
+      - .:/app
       - /sys:/sys
       - /proc:/proc
       - /var/run/docker.sock:/var/run/docker.sock

@@ -1,9 +1,8 @@
 import os
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-import pickle
 import json
+import io
 import requests as http_requests
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file, Response
 from flask_cors import CORS
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -46,30 +45,34 @@ def get_credentials():
 def status():
     creds, error = get_credentials()
     if not creds:
-        # Generar URL de flujo manual
-        flow = InstalledAppFlow.from_client_secrets_file(
-            CREDENTIALS_FILE, SCOPES,
+        flow = Flow.from_client_secrets_file(
+            CREDENTIALS_FILE, 
+            scopes=SCOPES,
             redirect_uri='http://localhost:5052/photos/callback'
         )
         auth_url, state = flow.authorization_url(prompt='consent', access_type='offline')
         auth_flows[state] = flow
         return jsonify({
             "status": "needs_auth",
-            "message": "Visit the URL and submit the 'code' to /photos/authorize",
-            "auth_url": auth_url
+            "message": "Autorización Drive requerida",
+            "auth_url": auth_url,
+            "state": state
         })
     return jsonify({"status": "authorized"})
 
 @app.route('/photos/authorize', methods=['POST'])
-def finalize_authorization():
+def authorize_manual():
     try:
         data = request.json
         code = data.get('code')
+        state = data.get('state')
+        
         if not code:
             return jsonify({"status": "error", "message": "Code missing"}), 400
             
-        flow = InstalledAppFlow.from_client_secrets_file(
-            CREDENTIALS_FILE, SCOPES,
+        flow = Flow.from_client_secrets_file(
+            CREDENTIALS_FILE, 
+            scopes=SCOPES,
             redirect_uri='http://localhost:5052/photos/callback'
         )
         flow.fetch_token(code=code)
@@ -78,7 +81,7 @@ def finalize_authorization():
         with open(TOKEN_FILE, 'w') as token:
             token.write(creds.to_json())
             
-        return jsonify({"status": "ok", "message": "Token generated successfully. Please restart the container."})
+        return jsonify({"status": "ok", "message": "Token M2 (Drive) generado con éxito."})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
@@ -109,60 +112,84 @@ def exchange():
 
 @app.route('/photos/callback')
 def callback():
-    state = request.args.get('state')
-    if not state or state not in auth_flows:
-        return "<h1>Error</h1><p>Estado de sesión no encontrado o expirado por favor reinicia el Dashboard.</p>", 400
-    
-    flow = auth_flows.pop(state)
     try:
-        # Recuperamos el token usando el code_verifier guardado en el objeto flow
+        flow = Flow.from_client_secrets_file(
+            CREDENTIALS_FILE, 
+            scopes=SCOPES,
+            redirect_uri='http://localhost:5052/photos/callback'
+        )
         flow.fetch_token(authorization_response=request.url)
-        
         creds = flow.credentials
         with open(TOKEN_FILE, 'w') as token:
             token.write(creds.to_json())
             
-        return "<h1>¡Conexión Exitosa!</h1><p>El Nexo M2 ha recibido las llaves de acceso. Ya puedes cerrar esta pestaña y refrescar tu Dashboard.</p>"
+        return "<h1>¡Conexión M2 Drive Exitosa!</h1><p>Vuelve al Dashboard y refresca para ver tus fotos.</p>"
     except Exception as e:
         return f"<h1>Error en la autorización</h1><p>{str(e)}</p>", 400
-
-@app.route('/photos/authorize', methods=['GET'])
-def authorize():
-    # Mantenemos este endpoint solo para compatibilidad de redirección si fuera necesario
-    return jsonify({"status": "deprecated", "message": "Usa /photos/callback"})
 
 @app.route('/photos/list', methods=['GET'])
 def list_photos():
     creds, error = get_credentials()
     if error:
-        return jsonify({"status": "error", "message": error}), 401
+        return jsonify({"status": "error", "message": error, "needs_auth": True}), 401
     
-    # Usamos REST directo para evitar problemas con el discovery de la API deprecado
     headers = {'Authorization': f'Bearer {creds.token}'}
-    r = http_requests.get(
-        'https://photoslibrary.googleapis.com/v1/mediaItems',
-        headers=headers,
-        params={'pageSize': 50},
-        timeout=15
-    )
-    
-    if r.status_code != 200:
-        return jsonify({"status": "error", "message": r.text}), r.status_code
-    
-    data = r.json()
-    items = data.get('mediaItems', [])
-    
-    photos = []
-    for item in items:
-        if 'image' in item.get('mediaMetadata', {}):
-            photos.append({
-                "id": item['id'],
-                "url": item['baseUrl'] + "=w1280-h800",
-                "filename": item.get('filename', 'photo')
-            })
+    try:
+        # 1. Buscar carpeta Kiosco_M2
+        folder_query = "name = 'Kiosco_M2' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+        r = http_requests.get(
+            'https://www.googleapis.com/drive/v3/files',
+            headers=headers,
+            params={'q': folder_query, 'fields': 'files(id, name)'}
+        )
+        folders = r.json().get('files', [])
+        
+        if not folders:
+            return jsonify({
+                "status": "error", 
+                "message": "Carpeta 'Kiosco_M2' no encontrada",
+                "details": "Crea la carpeta en tu Drive y sube fotos."
+            }), 404
             
-    return jsonify({"status": "ok", "photos": photos})
+        folder_id = folders[0]['id']
+        
+        # 2. Listar fotos
+        file_query = f"'{folder_id}' in parents and mimeType contains 'image/' and trashed = false"
+        r = http_requests.get(
+            'https://www.googleapis.com/drive/v3/files',
+            headers=headers,
+            params={'q': file_query, 'fields': 'files(id, name)'}
+        )
+        
+        files = r.json().get('files', [])
+        photos = [{"id": f['id'], "url": f"/photos/file/{f['id']}", "filename": f['name']} for f in files]
+                
+        return jsonify({"status": "ok", "photos": photos})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/photos/file/<file_id>', methods=['GET'])
+def get_file(file_id):
+    creds, error = get_credentials()
+    if error: return "Unauthorized", 401
+    headers = {'Authorization': f'Bearer {creds.token}'}
+    try:
+        r = http_requests.get(
+            f'https://www.googleapis.com/drive/v3/files/{file_id}',
+            headers=headers,
+            params={'alt': 'media'},
+            stream=True
+        )
+        return Response(r.iter_content(chunk_size=4096), mimetype=r.headers.get('Content-Type'))
+    except Exception as e:
+        return str(e), 500
+
+@app.route('/photos/reset', methods=['POST'])
+def reset_token():
+    if os.path.exists(TOKEN_FILE):
+        os.remove(TOKEN_FILE)
+        return jsonify({"status": "ok", "message": "Token M2 purgado."})
+    return jsonify({"status": "error", "message": "No hay token."})
 
 if __name__ == '__main__':
-    # El servidor corre en el puerto 5052 para no interferir con m2-status-api
     app.run(host='0.0.0.0', port=5052, debug=False)

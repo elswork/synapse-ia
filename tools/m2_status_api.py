@@ -4,7 +4,7 @@ import psutil
 import json
 import docker
 import subprocess
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory, send_file
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -491,6 +491,15 @@ def system_run():
         return jsonify({"status": "ok", "output": result}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/')
+def serve_index():
+    return send_file('/app/monitor_m2.html')
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    # Fallback para recursos (imágenes, json)
+    return send_from_directory('/app', filename)
 
 if __name__ == '__main__':
     # Correr en puerto 5051 para no interferir con el trigger de Athena (5050)
