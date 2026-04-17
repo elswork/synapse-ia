@@ -786,13 +786,17 @@
         }
 
         .photo-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             padding: 40px 60px;
             background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            z-index: 3001;
+            z-index: 3500;
         }
 
         .photo-header-time { font-size: 4rem; font-weight: 700; color: #fff; }
@@ -850,19 +854,19 @@
 
     <!-- Photo Gallery View -->
     <div id="photo_view">
+        <div class="photo-header" onclick="closePhotoGallery()">
+            <div style="display: flex; align-items: baseline;">
+                <span id="photo_time" class="photo-header-time">--:--</span>
+                <span id="photo_date" class="photo-header-date">-- -- --</span>
+            </div>
+            <div id="photo_temp" class="photo-header-temp">--°</div>
+        </div>
         <div id="slideshow_viewport">
             <div id="slide1" class="slide"></div>
             <div id="slide2" class="slide"></div>
         </div>
         <div id="gallery_view">
-            <div class="photo-header" onclick="closePhotoGallery()">
-                <div style="display: flex; align-items: baseline;">
-                    <span id="photo_time" class="photo-header-time">--:--</span>
-                    <span id="photo_date" class="photo-header-date">-- -- --</span>
-                </div>
-                <div id="photo_temp" class="photo-header-temp">--°</div>
-            </div>
-            <div class="gallery-container" id="gallery_content">
+            <div class="gallery-container" id="gallery_content" style="margin-top: 120px;">
                 <!-- Photos go here -->
             </div>
         </div>
