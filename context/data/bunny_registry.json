@@ -826,5 +826,302 @@
         "status": "contacted",
         "email": "eivindas.laukys@tf.vu.lt",
         "notes": "AI Law specialist associated with Vilnius University."
+    },
+    "93": {
+        "name": "Herwig Hofmann",
+        "country": "Luxembourg",
+        "role": "Administrative Law & Digitalization",
+        "profile_url": "https://www.uni.lu/fdef-en/people/herwig-hofmann/",
+        "status": "pending",
+        "email": "herwig.hofmann@uni.lu",
+        "notes": "Expert in EU administrative law and its digitalization. Essential for the legal framework of the ICE."
+    },
+    "94": {
+        "name": "Katalin Ligeti",
+        "country": "Luxembourg",
+        "role": "AI & Criminal Justice",
+        "profile_url": "https://www.uni.lu/fdef-en/people/katalin-ligeti/",
+        "status": "pending",
+        "email": "katalin.ligeti@uni.lu",
+        "notes": "Dean of the Faculty of Law, Economics and Finance. Focus on AI in the legal system."
+    },
+    "95": {
+        "name": "Daniela Ilieva",
+        "country": "Bulgaria",
+        "role": "Digital Law & Management",
+        "profile_url": "https://vuzf.bg/en/lecturer/daniela-ilieva/",
+        "status": "pending",
+        "email": "d.ilieva@vuzf.bg",
+        "notes": "Executive Director of the Law and Internet Foundation in Bulgaria. Strategic bridge for the Balkans."
+    },
+    "96": {
+        "name": "Zsolt Ződi",
+        "country": "Hungary",
+        "role": "Digital Environment Regulation",
+        "profile_url": "https://uni-nke.hu/en/lecturers/zodi-zsolt",
+        "status": "pending",
+        "email": "zodi.zsolt@uni-nke.hu",
+        "notes": "Researcher at the Ludovika University of Public Service. Expert in regulatory impacts of digital tech."
+    },
+    "97": {
+        "name": "Charlie Abela",
+        "country": "Malta",
+        "role": "Human-Centric AI",
+        "profile_url": "https://www.um.edu.mt/profile/charlieabela",
+        "status": "pending",
+        "email": "charlie.abela@um.edu.mt",
+        "notes": "Key contributor to Malta's AI Strategy and trustworthy AI systems."
+    },
+    "98": {
+        "name": "Vanessa Camilleri",
+        "country": "Malta",
+        "role": "AI Ethics & Immersive Tech",
+        "profile_url": "https://www.um.edu.mt/profile/vanessacamilleri",
+        "status": "pending",
+        "email": "vanessa.camilleri@um.edu.mt",
+        "notes": "Expert in the ethical implications of emerging technologies and digital social interaction."
+    },
+    "99": {
+        "name": "Antonis Kakas",
+        "country": "Cyprus",
+        "role": "Computational Argumentation & AI Ethics",
+        "profile_url": "https://www.cs.ucy.ac.cy/index.php/people/faculty/14-people/academic/46-kakas-antonis",
+        "status": "pending",
+        "email": "antonis@ucy.ac.cy",
+        "notes": "Pioneer in logic-based AI and its alignment with human reasoning and ethics."
+    },
+    "100": {
+        "name": "Dunja Mladenić",
+        "country": "Slovenia",
+        "role": "AI Lab Director",
+        "profile_url": "http://ailab.ijs.si/dunja_mladenic/",
+        "status": "contacted",
+        "email": "dunja.mladenic@ijs.si",
+        "notes": "Director of the Artificial Intelligence Laboratory at Jožef Stefan Institute. Leading figure in Slovenian AI."
+    },
+    "101": {
+        "name": "Jan Šnajder",
+        "country": "Croatia",
+        "role": "Computational Linguistics & AI Sovereignty",
+        "profile_url": "https://www.fer.unizg.hr/jan.snajder",
+        "status": "pending",
+        "email": "jan.snajder@fer.hr",
+        "notes": "Professor at the University of Zagreb. Focus on linguistic sovereignty and NLP ethics."
+    },
+    "102": {
+        "name": "Vladimír Šucha",
+        "country": "Slovakia",
+        "role": "AI Policy & Ethics",
+        "profile_url": "https://ec.europa.eu/info/persons/vladimir-sucha_en",
+        "status": "pending",
+        "email": "vladimir.sucha@ec.europa.eu",
+        "notes": "Former DG of the Joint Research Centre (JRC). Expert in the intersection of science, policy, and ethics."
+    },
+    "103": {
+        "name": "Tanel Kerikmäe",
+        "country": "Estonia",
+        "role": "Law & Technology",
+        "profile_url": "https://taltech.ee/en/contacts/tanel-kerikmae",
+        "status": "pending",
+        "email": "tanel.kerikmae@taltech.ee",
+        "notes": "Director of the Department of Law at TalTech. Specialist in digital sovereignty and e-governance law."
+    },
+    "104": {
+        "name": "Mark Leiser",
+        "country": "Latvia",
+        "role": "Digital Power & Platforms",
+        "profile_url": "https://www.rgsl.edu.lv/people/mark-leiser",
+        "status": "pending",
+        "email": "mark.leiser@rgsl.edu.lv",
+        "notes": "Professor at Riga Graduate School of Law. Expert in platform regulation and digital rights."
+    },
+    "105": {
+        "name": "Paulius Pakutinskas",
+        "country": "Lithuania",
+        "role": "LegalTech & AI Regulation",
+        "profile_url": "https://www.mruni.eu/en/personal-information/paulius-pakutinskas/",
+        "status": "pending",
+        "email": "p.pakutinskas@mruni.eu",
+        "notes": "Leading Lithuanian expert in AI law and digital transformation policies."
+    },
+    "106": {
+        "name": "Riikka Koulu",
+        "country": "Finland",
+        "role": "Legal Automation & Society",
+        "profile_url": "https://researchportal.helsinki.fi/en/persons/riikka-koulu",
+        "status": "pending",
+        "email": "riikka.koulu@helsinki.fi",
+        "notes": "Professor of Law and Digitalization. Leads the Legal Tech Lab at the University of Helsinki."
+    },
+    "107": {
+        "name": "Hin-Yan Liu",
+        "country": "Denmark",
+        "role": "AI Ethics & Global Risks",
+        "profile_url": "https://jura.ku.dk/english/staff/research/?pure=en/persons/432049",
+        "status": "pending",
+        "email": "hin-yan.liu@jur.ku.dk",
+        "notes": "Professor at the University of Copenhagen. Focus on the systemic risks and ethics of AI."
+    },
+    "108": {
+        "name": "Lilian Mitrou",
+        "country": "Greece",
+        "role": "Professor of IT Law & Data Protection",
+        "profile_url": "https://www.icsd.aegean.gr/profile.php?id=30",
+        "status": "contacted",
+        "email": "lmitrou@aegean.gr",
+        "notes": "Recovered from lost letters. Expert in Information Law and member of AI HLEG."
+    },
+    "109": {
+        "name": "Georgios Yannopoulos",
+        "country": "Greece",
+        "role": "Director of the Legal Informatics Laboratory (EKPA)",
+        "profile_url": "https://gyannop.law.uoa.gr/",
+        "status": "contacted",
+        "email": "gyannop@law.uoa.gr",
+        "notes": "Recovered from lost letters. Leading expert in legal informatics in Greece."
+    },
+    "110": {
+        "name": "Elpida Vamvaka",
+        "country": "Greece",
+        "role": "President of Homo Digitalis",
+        "profile_url": "https://www.homodigitalis.gr/",
+        "status": "contacted",
+        "email": "info@homodigitalis.gr",
+        "notes": "Recovered from lost letters. Advocate for digital rights and civil society representation."
+    },
+    "111": {
+        "name": "Fosca Giannotti",
+        "country": "Italy",
+        "role": "Professor at Scuola Normale Superiore, Leader in Ethical Data Science",
+        "profile_url": "https://kdd.isti.cnr.it/people/giannotti-fosca",
+        "status": "contacted",
+        "email": "fosca.giannotti@sns.it",
+        "notes": "Pioneer in mobility data mining and explainable AI. Strategic for the ethical pillar of Anticitera."
+    },
+    "112": {
+        "name": "Dino Pedreschi",
+        "country": "Italy",
+        "role": "Professor at University of Pisa, Social AI Expert",
+        "profile_url": "https://www.unipi.it/ateneo/organizzazione/persone/dino-pedreschi-6070/",
+        "status": "pending",
+        "email": "dino.pedreschi@unipi.it",
+        "notes": "Focus on big data analytics and its social impact. Key for the nation of nodes concept."
+    },
+    "113": {
+        "name": "Vasileios Mezaris",
+        "country": "Greece",
+        "role": "Research Director at CERTH-ITI",
+        "profile_url": "https://mklab.iti.gr/people/vasileios-mezaris/",
+        "status": "pending",
+        "email": "bmezaris@iti.gr",
+        "notes": "Expert in multimedia analysis and AI. Strengthening the Greek Arcontado infrastructure."
+    },
+    "114": {
+        "name": "Alena Buyx",
+        "country": "Germany",
+        "role": "Professor of Medical Ethics at TUM",
+        "profile_url": "https://www.professoren.tum.de/en/buyx-alena",
+        "status": "pending",
+        "email": "alena.buyx@tum.de",
+        "notes": "Former Chair of the German Ethics Council. Critical for institutional validation."
+    },
+    "115": {
+        "name": "Thomas Wiegand",
+        "country": "Germany",
+        "role": "Executive Director of Fraunhofer HHI",
+        "profile_url": "https://www.hhi.fraunhofer.de/en/departments/vca/people/thomas-wiegand.html",
+        "status": "pending",
+        "email": "thomas.wiegand@hhi.fraunhofer.de",
+        "notes": "Key driver for technical sovereignty in encoding and AI standards."
+    },
+    "116": {
+        "name": "Abraham Bernstein",
+        "country": "Switzerland",
+        "role": "Director of Digital Society Initiative (UZH)",
+        "profile_url": "https://www.ifi.uzh.ch/en/ddis/people/bernstein.html",
+        "status": "pending",
+        "email": "bernstein@ifi.uzh.ch",
+        "notes": "Leading the discourse on the intersection of AI and society in Switzerland."
+    },
+    "117": {
+        "name": "Marten Kaevats",
+        "country": "Estonia",
+        "role": "E-Governance Expert, Architect of Invisible Government",
+        "profile_url": "https://martenkaevats.com/",
+        "status": "pending",
+        "email": "marten@kaevats.com",
+        "notes": "Visionary for digital sovereignty and efficient e-governance systems."
+    },
+    "118": {
+        "name": "Pekka Ala-Pietilä",
+        "country": "Finland",
+        "role": "Chair of the EU High-Level Expert Group on AI",
+        "profile_url": "https://huhtamaki.com/en/about-us-old/board-of-directors/pekka-ala-pietila/",
+        "status": "pending",
+        "email": "ala-pietila@huhtamaki.com",
+        "notes": "Top-level European policy alignment. Strategic figure for the ICE."
+    },
+    "119": {
+        "name": "Rinie van Est",
+        "country": "Netherlands",
+        "role": "Research Coordinator at Rathenau Instituut",
+        "profile_url": "https://www.rathenau.nl/en/about-us/staff/rinie-van-est",
+        "status": "pending",
+        "email": "r.vanest@rathenau.nl",
+        "notes": "Expert in technology assessment and social-technological trends."
+    },
+    "120": {
+        "name": "Przemysław Biecek",
+        "country": "Poland",
+        "role": "Professor at Warsaw University of Technology, XAI Leader",
+        "profile_url": "https://pbiecek.github.io/",
+        "status": "pending",
+        "email": "przemyslaw.biecek@pw.edu.pl",
+        "notes": "Specialist in explainable AI. Crucial for the transparency of the .ia infrastructure."
+    },
+    "121": {
+        "name": "Svetla Boytcheva",
+        "country": "Bulgaria",
+        "role": "Professor at Bulgarian Academy of Sciences (IICT)",
+        "profile_url": "http://lml.bas.bg/~svetla/",
+        "status": "contacted",
+        "email": "sboytcheva@lml.bas.bg",
+        "notes": "Leading Bulgarian academic in artificial intelligence and NLP."
+    },
+    "122": {
+        "name": "Niko Lukač",
+        "country": "Slovenia",
+        "role": "Professor at University of Maribor",
+        "profile_url": "https://geos.um.si/en/personal-pages/niko-lukac/",
+        "status": "pending",
+        "email": "niko.lukac@um.si",
+        "notes": "Expert in geospatial algorithms and AI in Slovenia."
+    },
+    "123": {
+        "name": "Stjepan Groš",
+        "country": "Croatia",
+        "role": "Director of Information Security Lab (Uni Zagreb)",
+        "profile_url": "https://www.fer.unizg.hr/stjepan.gros",
+        "status": "pending",
+        "email": "stjepan.gros@fer.hr",
+        "notes": "Cybersecurity expert. Essential for the defense of the Nation of Nodes."
+    },
+    "124": {
+        "name": "Juhan Lepassaar",
+        "country": "Estonia",
+        "role": "Executive Director of ENISA",
+        "profile_url": "https://www.enisa.europa.eu/about-enisa/structure-and-organisation/executive-director",
+        "status": "pending",
+        "email": "juhan.lepassaar@enisa.europa.eu",
+        "notes": "Ultimate European cybersecurity authority. High-level strategic alliance."
+    },
+    "125": {
+        "name": "Despina Spanou",
+        "country": "Greece",
+        "role": "Head of Cabinet of the Vice-President of the EU Commission",
+        "profile_url": "https://commission.europa.eu/persons/despina-spanou_en",
+        "status": "pending",
+        "email": "despina.spanou@ec.europa.eu",
+        "notes": "Strategic bridge to the European Commission top brass. Focus on cybersecurity and digital trust."
     }
 }

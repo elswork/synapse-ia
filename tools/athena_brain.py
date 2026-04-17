@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from nexus_sync import NexusSync
 
 class AthenaBrain:
-    def __init__(self, base_path=None, model_name="gemini-1.5-flash"):
+    def __init__(self, base_path=None, model_name="gemini-3-flash-preview"):
         self.base_path = base_path or os.environ.get("BASE_PATH", "/app")
         load_dotenv(os.path.join(self.base_path, ".env"))
         
