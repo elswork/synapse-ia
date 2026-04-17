@@ -119,9 +119,6 @@ class BunnySelector:
 
         e_id, expert_data = selection
         
-        # Marcar como contactado inmediatamente para evitar repeticiones
-        self.update_status(e_id, 'contacted')
-        
         web_url = "https://anticitera.deft.work/en/"
         dossier_url = "https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/"
 
@@ -207,6 +204,9 @@ class BunnySelector:
         if "body_spanish" in email_data:
             email_data["body_spanish"] = self.clean_email_body(email_data["body_spanish"])
         
+        # Marcar como contactado tras éxito en la generación
+        self.update_status(e_id, 'contacted')
+
         return {
             "expert": expert_data,
             "email": email_data
