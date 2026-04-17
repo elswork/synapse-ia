@@ -1,4 +1,5 @@
-Traceback (most recent call last):
-  File "photos_api.py", line 9, in <module>
-    from google_auth_oauthlib.flow import Flow, InstalledAppFlow
-ModuleNotFoundError: No module named 'google_auth_oauthlib'
+M2 Photo Engine [Library-free] iniciado en puerto 5052
+ * Serving Flask app 'photos_api'
+ * Debug mode: off
+Address already in use
+Port 5052 is in use by another program. Either identify and stop that program, or start the server with a different port.
