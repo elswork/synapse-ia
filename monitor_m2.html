@@ -698,14 +698,21 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 1280px;
+            height: 800px;
             background: #000;
             z-index: 3000;
             display: none;
             flex-direction: column;
             padding: 0;
             overflow: hidden;
+        }
+
+        #gallery_view {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            z-index: 3005;
         }
 
         .gallery-container {
@@ -737,8 +744,45 @@
         }
 
         @keyframes kenBurns {
-            from { transform: scale(1) translate(0, 0); }
-            to { transform: scale(1.1) translate(-1%, -1%); }
+            from { transform: scale(1.0) translate(0, 0); }
+            to { transform: scale(1.3) translate(-2%, -2%); }
+        }
+
+        /* Slideshow Styles */
+        #slideshow_viewport {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 2999;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active {
+            opacity: 1;
+            animation: kenBurns 10s linear infinite alternate;
+        }
+
+        .photo-controls {
+            position: absolute;
+            bottom: 40px;
+            right: 400px;
+            display: flex;
+            gap: 20px;
+            z-index: 3100;
         }
 
         .photo-header {
@@ -806,15 +850,25 @@
 
     <!-- Photo Gallery View -->
     <div id="photo_view">
-        <div class="photo-header" onclick="closePhotoGallery()">
-            <div style="display: flex; align-items: baseline;">
-                <span id="photo_time" class="photo-header-time">--:--</span>
-                <span id="photo_date" class="photo-header-date">-- -- --</span>
-            </div>
-            <div id="photo_temp" class="photo-header-temp">--°</div>
+        <div id="slideshow_viewport">
+            <div id="slide1" class="slide"></div>
+            <div id="slide2" class="slide"></div>
         </div>
-        <div class="gallery-container" id="gallery_content">
-            <!-- Photos go here -->
+        <div id="gallery_view">
+            <div class="photo-header" onclick="closePhotoGallery()">
+                <div style="display: flex; align-items: baseline;">
+                    <span id="photo_time" class="photo-header-time">--:--</span>
+                    <span id="photo_date" class="photo-header-date">-- -- --</span>
+                </div>
+                <div id="photo_temp" class="photo-header-temp">--°</div>
+            </div>
+            <div class="gallery-container" id="gallery_content">
+                <!-- Photos go here -->
+            </div>
+        </div>
+        <div class="photo-controls">
+            <button class="btn" id="btn_slideshow" onclick="toggleSlideshow()">▶ PLAY SLIDESHOW</button>
+            <button class="btn" style="background: rgba(255,255,255,0.2); color: white;" onclick="closePhotoGallery()">CERRAR</button>
         </div>
     </div>
 
@@ -1492,20 +1546,20 @@
             });
         }
 
-        const mockPhotos = [
-            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
-        ];
-
         let currentPhotos = [];
+        let slideshowIndex = -1;
+        let slideshowTimer = null;
+        let isSlideshowActive = false;
+        let activeSlideEl = null;
+        let nextSlideEl = null;
 
         async function openPhotoGallery(event) {
             if (event) event.stopPropagation();
             document.getElementById('photo_view').style.display = 'flex';
+            document.getElementById('gallery_view').style.display = 'flex';
+            document.getElementById('slideshow_viewport').style.display = 'none';
+            document.getElementById('btn_slideshow').style.display = 'block';
+
             const container = document.getElementById('gallery_content');
             container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px; font-size: 2rem; color: #888;">Cargando recuerdos...</div>';
             
@@ -1514,13 +1568,14 @@
                 const data = await response.json();
                 
                 if (data.status === 'authorized') {
-                    loadRealPhotos();
+                    await loadRealPhotos();
+                    startSlideshow(); // Automáticamente al entrar
                 } else {
                     showAuthScreen(data.auth_url);
                 }
             } catch (error) {
                 console.error('Error de conexión con Photos API:', error);
-                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px;">Error al conectar con el servidor de fotos [v3 - RED]. Asegúrate de que m2-photos-api esté corriendo.</div>';
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px;">Error al conectar con el servidor de fotos. Asegúrate de que el API de Drive esté activo.</div>';
             }
             updateGalleryMeta();
         }
@@ -1558,39 +1613,31 @@
             `;
         }
 
-        async function startAuthFlow() {
-            // Ya no usamos window.open para evitar bloqueos en modo kiosco
-            alert("Usa el código QR que aparece en pantalla para completar la autorización en tu móvil.");
-        }
-
         async function loadRealPhotos() {
             const container = document.getElementById('gallery_content');
             try {
                 const response = await fetch(`http://${API_HOST}:5052/photos/list?t=${Date.now()}`);
                 const data = await response.json();
                 if (data.status === 'ok') {
-                    // Mapear URLs para incluir el host de la API
                     currentPhotos = data.photos.map(p => ({
                         ...p,
                         url: `http://${API_HOST}:5052${p.url}`
                     }));
                     renderPhotos();
                 } else {
-                    console.error('Error de API:', data.message);
                     container.innerHTML = `
                         <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: rgba(255,0,0,0.1); border-radius: 20px;">
-                            <h3 style="color: #ff4444; font-size: 2rem;">Error de Permisos [v2.1]</h3>
-                            <p style="margin: 20px 0; font-size: 1.2rem;">Google ha denegado el acceso (403). Esto suele deberse a Scopes insuficientes.</p>
+                            <h3 style="color: #ff4444; font-size: 2rem;">Error: ${data.message}</h3>
+                            <p style="margin: 20px 0; font-size: 1.2rem;">${data.details || ''}</p>
                             <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
-                                <button class="btn" style="background: var(--accent); color: black;" onclick="resetPhotosToken()">RE-AUTORIZAR (BORRAR TOKEN)</button>
+                                <button class="btn" style="background: var(--accent); color: black;" onclick="resetPhotosToken()">RE-AUTORIZAR</button>
                                 <button class="btn" style="background: #444;" onclick="closePhotoGallery()">CERRAR</button>
                             </div>
                         </div>
                     `;
                 }
             } catch (error) {
-                console.error('Error listando fotos:', error);
-                container.innerHTML = '<div style="text-align:center; padding:50px;">Fallo crítico de conexión con Photos API.</div>';
+                container.innerHTML = '<div style="text-align:center; padding:50px;">Fallo de conexión con M2 Photos API.</div>';
             }
         }
 
@@ -1613,22 +1660,73 @@
         function renderPhotos() {
             const container = document.getElementById('gallery_content');
             if (currentPhotos.length === 0) {
-                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px;">No se encontraron fotos en tu librería.</div>';
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px;">Sube fotos a la carpeta "Kiosco_M2" en tu Drive.</div>';
                 return;
             }
             container.innerHTML = currentPhotos.map(p => `
-                <div class="gallery-item" onclick="viewPhoto('${p.url}')">
+                <div class="gallery-item" onclick="startSlideshowFrom('${p.id}')">
                     <img src="${p.url}" alt="${p.filename}">
                 </div>
             `).join('');
         }
 
-        function viewPhoto(url) {
-            // Ampliar foto o simplemente disfrutar de la cuadrícula
-            console.log("Visualizando:", url);
+        function toggleSlideshow() {
+            if (isSlideshowActive) stopSlideshow();
+            else startSlideshow();
+        }
+
+        function startSlideshow() {
+            if (currentPhotos.length === 0) return;
+            isSlideshowActive = true;
+            document.getElementById('gallery_view').style.display = 'none';
+            document.getElementById('slideshow_viewport').style.display = 'block';
+            document.getElementById('btn_slideshow').innerText = '⏸ STOP SLIDESHOW';
+            
+            activeSlideEl = document.getElementById('slide1');
+            nextSlideEl = document.getElementById('slide2');
+            
+            slideshowIndex = -1;
+            nextSlide();
+            slideshowTimer = setInterval(nextSlide, 5000);
+        }
+
+        function startSlideshowFrom(id) {
+            const idx = currentPhotos.findIndex(p => p.id === id);
+            startSlideshow();
+            if (idx !== -1) {
+                slideshowIndex = idx - 1;
+                nextSlide();
+            }
+        }
+
+        async function nextSlide() {
+            if (!isSlideshowActive) return;
+            slideshowIndex = (slideshowIndex + 1) % currentPhotos.length;
+            const photo = currentPhotos[slideshowIndex];
+
+            // Preload next image
+            const img = new Image();
+            img.src = photo.url;
+            await new Promise(r => { img.onload = r; img.onerror = r; });
+
+            nextSlideEl.style.backgroundImage = `url(${photo.url})`;
+            nextSlideEl.classList.add('active');
+            activeSlideEl.classList.remove('active');
+
+            // Swap
+            [activeSlideEl, nextSlideEl] = [nextSlideEl, activeSlideEl];
+        }
+
+        function stopSlideshow() {
+            isSlideshowActive = false;
+            clearInterval(slideshowTimer);
+            document.getElementById('gallery_view').style.display = 'flex';
+            document.getElementById('slideshow_viewport').style.display = 'none';
+            document.getElementById('btn_slideshow').innerText = '▶ PLAY SLIDESHOW';
         }
 
         function closePhotoGallery() {
+            stopSlideshow();
             document.getElementById('photo_view').style.display = 'none';
         }
 
