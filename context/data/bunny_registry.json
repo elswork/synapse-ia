@@ -922,7 +922,7 @@
         "country": "Estonia",
         "role": "Law & Technology",
         "profile_url": "https://taltech.ee/en/contacts/tanel-kerikmae",
-        "status": "pending",
+        "status": "contacted",
         "email": "tanel.kerikmae@taltech.ee",
         "notes": "Director of the Department of Law at TalTech. Specialist in digital sovereignty and e-governance law."
     },
@@ -940,7 +940,7 @@
         "country": "Lithuania",
         "role": "LegalTech & AI Regulation",
         "profile_url": "https://www.mruni.eu/en/personal-information/paulius-pakutinskas/",
-        "status": "pending",
+        "status": "contacted",
         "email": "p.pakutinskas@mruni.eu",
         "notes": "Leading Lithuanian expert in AI law and digital transformation policies."
     },
@@ -958,7 +958,7 @@
         "country": "Denmark",
         "role": "AI Ethics & Global Risks",
         "profile_url": "https://jura.ku.dk/english/staff/research/?pure=en/persons/432049",
-        "status": "pending",
+        "status": "contacted",
         "email": "hin-yan.liu@jur.ku.dk",
         "notes": "Professor at the University of Copenhagen. Focus on the systemic risks and ethics of AI."
     },
@@ -994,7 +994,7 @@
         "country": "Italy",
         "role": "Professor at Scuola Normale Superiore, Leader in Ethical Data Science",
         "profile_url": "https://kdd.isti.cnr.it/people/giannotti-fosca",
-        "status": "pending",
+        "status": "contacted",
         "email": "fosca.giannotti@sns.it",
         "notes": "Pioneer in mobility data mining and explainable AI. Strategic for the ethical pillar of Anticitera."
     },
@@ -1003,7 +1003,7 @@
         "country": "Italy",
         "role": "Professor at University of Pisa, Social AI Expert",
         "profile_url": "https://www.unipi.it/ateneo/organizzazione/persone/dino-pedreschi-6070/",
-        "status": "pending",
+        "status": "contacted",
         "email": "dino.pedreschi@unipi.it",
         "notes": "Focus on big data analytics and its social impact. Key for the nation of nodes concept."
     },
@@ -1021,7 +1021,7 @@
         "country": "Germany",
         "role": "Professor of Medical Ethics at TUM",
         "profile_url": "https://www.professoren.tum.de/en/buyx-alena",
-        "status": "pending",
+        "status": "contacted",
         "email": "alena.buyx@tum.de",
         "notes": "Former Chair of the German Ethics Council. Critical for institutional validation."
     },
@@ -1093,7 +1093,7 @@
         "country": "Slovenia",
         "role": "Professor at University of Maribor",
         "profile_url": "https://geos.um.si/en/personal-pages/niko-lukac/",
-        "status": "pending",
+        "status": "contacted",
         "email": "niko.lukac@um.si",
         "notes": "Expert in geospatial algorithms and AI in Slovenia."
     },
@@ -1111,7 +1111,7 @@
         "country": "Estonia",
         "role": "Executive Director of ENISA",
         "profile_url": "https://www.enisa.europa.eu/about-enisa/structure-and-organisation/executive-director",
-        "status": "pending",
+        "status": "contacted",
         "email": "juhan.lepassaar@enisa.europa.eu",
         "notes": "Ultimate European cybersecurity authority. High-level strategic alliance."
     },
