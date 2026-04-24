@@ -1,0 +1,23 @@
+{
+    "tigreton_1": {
+        "name": "Jonas Andrulis",
+        "country": "Germany",
+        "role": "CEO Aleph Alpha",
+        "email": "jonas.andrulis@aleph-alpha.com",
+        "status": "pending"
+    },
+    "tigreton_2": {
+        "name": "Francesca Bria",
+        "country": "Italy",
+        "role": "President of the Italian National Innovation Fund",
+        "email": "fbria@innovation.it",
+        "status": "pending"
+    },
+    "tigreton_3": {
+        "name": "Arthur Mensch",
+        "country": "France",
+        "role": "CEO Mistral AI",
+        "email": "arthur@mistral.ai",
+        "status": "pending"
+    }
+}

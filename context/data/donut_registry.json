@@ -1,0 +1,23 @@
+{
+    "donut_1": {
+        "name": "Klaus Weber",
+        "country": "Germany",
+        "role": "Ciudadano - Especialista en IT",
+        "email": "klaus.weber.cyber@web.de",
+        "status": "pending"
+    },
+    "donut_2": {
+        "name": "Liis Tamm",
+        "country": "Estonia",
+        "role": "Ciudadana - Estudiante de e-Governance",
+        "email": "liis.tamm.eesti@online.ee",
+        "status": "pending"
+    },
+    "donut_3": {
+        "name": "Piotr Kowalski",
+        "country": "Poland",
+        "role": "Ciudadano - Emprendedor",
+        "email": "piotr.k.startup@wp.pl",
+        "status": "pending"
+    }
+}

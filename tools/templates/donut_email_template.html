@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f0fdf4;
+            color: #1f2937;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border: 1px solid #bbf7d0;
+        }
+
+        .header {
+            background-color: #166534;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .expert-info {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .expert-info p {
+            margin: 5px 0;
+            font-weight: bold;
+            color: #166534;
+        }
+
+        .expert-info span {
+            font-weight: normal;
+            color: #374151;
+        }
+
+        .proposal-body {
+            line-height: 1.6;
+            white-space: pre-wrap;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            border-radius: 8px;
+        }
+
+        .footer {
+            background-color: #f8fafc;
+            padding: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤝 Llamamiento: Iniciativa Ciudadana</h1>
+        </div>
+        <div class="content">
+            <div class="expert-info">
+                <p>Ciudadano: <span>{{expert_name}}</span></p>
+                <p>País: <span>{{expert_country}}</span></p>
+                <p>Perfil: <span>{{expert_role}}</span></p>
+                <p>Email: <span><a href="mailto:{{expert_email}}?subject={{subject}}"
+                            style="color: #166534; font-weight: bold; text-decoration: underline;">{{expert_email}}</a></span>
+                </p>
+                <p>Asunto sugerido: <span>{{subject}}</span></p>
+            </div>
+
+            <h3 style="color: #166534; border-bottom: 2px solid #bbf7d0; padding-bottom: 5px;">📜 Cuerpo del Mensaje
+                (Idioma Local - listo para enviar):</h3>
+            <pre class="proposal-body"
+                style="font-family: inherit; font-size: 15px;">{{body_text}}</pre>
+
+            <h3 style="color: #64748b; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; margin-top: 30px;">🇪🇸 Traducción al Castellano
+                (Para revisión):</h3>
+            <pre class="proposal-body"
+                style="background-color: #f8fafc; font-style: italic; color: #64748b; font-size: 14px;">{{body_spanish}}</pre>
+
+            <p style="margin-top: 25px; font-size: 13px; color: #64748b;">
+                Este correo ha sido generado siguiendo el <strong>Protocolo Arquímedes (Operación Donut)</strong>.
+                La llamada a la acción es sencilla: firmar la ICE para proteger sus datos.
+            </p>
+        </div>
+        <div class="footer">
+            Generado por el Nexo Anticitera - 2026<br>
+            El Futuro Digital en Manos de las Personas
+        </div>
+    </div>
+</body>
+
+</html>
