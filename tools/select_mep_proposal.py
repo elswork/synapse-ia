@@ -36,10 +36,22 @@ class MEPSelector:
 
     def extract_json(self, text):
         try:
-            # Reemplazo rudimentario actual por Regex robusto
-            match = re.search(r'\{.*\}', text, re.DOTALL)
+            # Limpieza de posibles bloques de markdown
+            text = text.strip()
+            if text.startswith("```json"):
+                text = text[7:]
+            if text.startswith("```"):
+                text = text[3:]
+            if text.endswith("```"):
+                text = text[:-3]
+            text = text.strip()
+
+            match = re.search(r"\{.*\}", text, re.DOTALL)
             if match:
                 return json.loads(match.group(0))
+            return None
+        except Exception as e:
+            print(f"Error parseando JSON: {e}")
             return None
         except Exception as e:
             print(f"Error parseando JSON: {e}")

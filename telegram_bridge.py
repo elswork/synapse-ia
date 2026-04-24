@@ -55,8 +55,8 @@ bot = telebot.TeleBot(BOT_TOKEN)
 class ArchimedesBrain(AthenaBrain):
     def __init__(self, base_path=None):
         base_path = base_path or os.environ.get("BASE_PATH", "/app")
-        # El cerebro principal para chat usa PRO
-        super().__init__(base_path, model_name="gemini-1.5-pro")
+        # El cerebro principal para chat usa un modelo estable de 2026
+        super().__init__(base_path, model_name="gemini-2.0-flash")
         self.prompt_path = os.path.join(self.base_path, "prompts/archimedes.md")
 
 brain = ArchimedesBrain()
@@ -637,24 +637,6 @@ def list_todos(message):
     except Exception as e:
         bot.reply_to(message, f"❌ Error al consultar la lista de tareas: {str(e)}")
 
-@bot.message_handler(func=lambda message: True)
-def handle_message(message):
-    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
-        print(f"🚫 Intento de mensaje no autorizado de ID: {message.from_user.id}")
-        return
-
-    # Si es una mención técnica o comando no reconocido, respondemos como Arquímedes
-    user_query = message.text
-    
-    bot.send_chat_action(message.chat.id, 'typing')
-    
-    try:
-        # Consultar al cerebro con el contexto de Arquímedes
-        response = brain.ask(user_query)
-        bot.reply_to(message, response)
-    except Exception as e:
-        bot.reply_to(message, f"❌ Error en la matriz de pensamiento: {str(e)}")
-
 
 @bot.message_handler(commands=['pasar_tigreton'])
 def pasar_tigreton(message):
@@ -678,7 +660,9 @@ def pasar_tigreton(message):
         expert = proposal['expert']
         email_data = proposal['email']
 
-        template_path = os.path.join(os.path.dirname(__file__), "tools/templates/tigreton_email_template.html")
+        current_dir = os.path.dirname(__file__)
+        template_rel_path = "templates/tigreton_email_template.html" if os.path.basename(current_dir) == "tools" else "tools/templates/tigreton_email_template.html"
+        template_path = os.path.join(current_dir, template_rel_path)
         with open(template_path, 'r', encoding='utf-8') as f:
             template_html = f.read()
 
@@ -707,27 +691,16 @@ def pasar_tigreton(message):
             InlineKeyboardButton("❌ Descartar", callback_data=f"reject_{proposal_id}")
         )
 
-        bot.send_message(message.chat.id, 
-                f"♟️ <b>Propuesta Lista para Contacto de Poder</b>
-
-"
-                f"<b>Nombre:</b> {html.escape(expert.get('name', 'N/A'))} ({html.escape(expert.get('country', 'N/A'))})
-"
-                f"<b>Email:</b> <code>{html.escape(expert.get('email', 'N/A'))}</code>
-
-"
-                f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}
-
-"
-                f"<b>Cuerpo (Castellano):</b>
-"
-                f"<i>{html.escape(email_data['body_spanish'])}</i>
-
-"
-                f"¿Autorizas el despliegue del correo?",
-                parse_mode='HTML',
-                reply_markup=markup
-            )
+        message_text = (
+            f"♟️ <b>Propuesta Lista para Contacto de Poder</b>\n\n"
+            f"<b>Nombre:</b> {html.escape(expert.get('name', 'N/A'))} ({html.escape(expert.get('country', 'N/A'))})\n"
+            f"<b>Email:</b> <code>{html.escape(expert.get('email', 'N/A'))}</code>\n\n"
+            f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}\n\n"
+            f"<b>Cuerpo (Castellano):</b>\n"
+            f"<i>{html.escape(email_data['body_spanish'])}</i>\n\n"
+            f"¿Autorizas el despliegue del correo?"
+        )
+        bot.send_message(message.chat.id, message_text, parse_mode='HTML', reply_markup=markup)
 
     except Exception as e:
         bot.send_message(message.chat.id, f"❌ Error crítico en la forja (Tigretones): {str(e)}")
@@ -808,7 +781,9 @@ def pasar_donut(message):
         expert = proposal['expert']
         email_data = proposal['email']
 
-        template_path = os.path.join(os.path.dirname(__file__), "tools/templates/donut_email_template.html")
+        current_dir = os.path.dirname(__file__)
+        template_rel_path = "templates/donut_email_template.html" if os.path.basename(current_dir) == "tools" else "tools/templates/donut_email_template.html"
+        template_path = os.path.join(current_dir, template_rel_path)
         with open(template_path, 'r', encoding='utf-8') as f:
             template_html = f.read()
 
@@ -837,27 +812,16 @@ def pasar_donut(message):
             InlineKeyboardButton("❌ Descartar", callback_data=f"reject_{proposal_id}")
         )
 
-        bot.send_message(message.chat.id, 
-                f"🤝 <b>Propuesta Lista para Ciudadano (ICE)</b>
-
-"
-                f"<b>Nombre:</b> {html.escape(expert.get('name', 'N/A'))} ({html.escape(expert.get('country', 'N/A'))})
-"
-                f"<b>Email:</b> <code>{html.escape(expert.get('email', 'N/A'))}</code>
-
-"
-                f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}
-
-"
-                f"<b>Cuerpo (Castellano):</b>
-"
-                f"<i>{html.escape(email_data['body_spanish'])}</i>
-
-"
-                f"¿Autorizas el despliegue del correo?",
-                parse_mode='HTML',
-                reply_markup=markup
-            )
+        message_text = (
+            f"🤝 <b>Propuesta Lista para Ciudadano (ICE)</b>\n\n"
+            f"<b>Nombre:</b> {html.escape(expert.get('name', 'N/A'))} ({html.escape(expert.get('country', 'N/A'))})\n"
+            f"<b>Email:</b> <code>{html.escape(expert.get('email', 'N/A'))}</code>\n\n"
+            f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}\n\n"
+            f"<b>Cuerpo (Castellano):</b>\n"
+            f"<i>{html.escape(email_data['body_spanish'])}</i>\n\n"
+            f"¿Autorizas el despliegue del correo?"
+        )
+        bot.send_message(message.chat.id, message_text, parse_mode='HTML', reply_markup=markup)
 
     except Exception as e:
         bot.send_message(message.chat.id, f"❌ Error crítico en la forja (Donuts): {str(e)}")
@@ -988,6 +952,26 @@ def scheduler_loop():
     while True:
         schedule.run_pending()
         time.sleep(30)
+
+
+@bot.message_handler(func=lambda message: True)
+def handle_message(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        print(f"🚫 Intento de mensaje no autorizado de ID: {message.from_user.id}")
+        return
+
+    # Si es una mención técnica o comando no reconocido, respondemos como Arquímedes
+    user_query = message.text
+    
+    bot.send_chat_action(message.chat.id, 'typing')
+    
+    try:
+        # Consultar al cerebro con el contexto de Arquímedes
+        response = brain.ask(user_query)
+        bot.reply_to(message, response)
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error en la matriz de pensamiento: {str(e)}")
+
 
 if __name__ == "__main__":
     # Ejecutar migración/limpieza inicial solicitada por el COO

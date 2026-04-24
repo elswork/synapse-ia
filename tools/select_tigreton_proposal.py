@@ -27,10 +27,19 @@ class TigretonSelector:
 
     def extract_json(self, text):
         try:
-            match = re.search(r'\{.*\}', text, re.DOTALL)
-            if match:
-                return json.loads(match.group(0))
-            return None
+            # Encontrar el primer { y el último }
+            start = text.find("{")
+            end = text.rfind("}")
+            if start == -1 or end == -1:
+                return None
+            
+            json_str = text[start:end+1]
+            
+            # Limpiar comas finales si existen (común en LLMs)
+            json_str = re.sub(r",\s*}", "}", json_str)
+            json_str = re.sub(r",\s*]", "]", json_str)
+            
+            return json.loads(json_str)
         except Exception as e:
             print(f"Error parseando JSON: {e}")
             return None
