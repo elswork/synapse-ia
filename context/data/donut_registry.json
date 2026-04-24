@@ -1,23 +1,30 @@
 {
-    "donut_1": {
-        "name": "Klaus Weber",
+    "vzbv_germany": {
+        "name": "vzbv (Verbraucherzentrale)",
         "country": "Germany",
-        "role": "Ciudadano - Especialista en IT",
-        "email": "klaus.weber.cyber@web.de",
+        "role": "Consumer Protection Federation",
+        "email": "info@vzbv.de",
         "status": "pending"
     },
-    "donut_2": {
-        "name": "Liis Tamm",
-        "country": "Estonia",
-        "role": "Ciudadana - Estudiante de e-Governance",
-        "email": "liis.tamm.eesti@online.ee",
-        "status": "pending"
-    },
-    "donut_3": {
-        "name": "Piotr Kowalski",
+    "federacja_poland": {
+        "name": "Grazyna Rokicka (Polish Consumers)",
         "country": "Poland",
-        "role": "Ciudadano - Emprendedor",
-        "email": "piotr.k.startup@wp.pl",
+        "role": "Consumer Advocacy",
+        "email": "g.rokicka@konsumenci.org",
+        "status": "pending"
+    },
+    "ttja_estonia": {
+        "name": "TTJA Estonia",
+        "country": "Estonia",
+        "role": "Consumer Protection Authority",
+        "email": "info@ttja.ee",
+        "status": "pending"
+    },
+    "ecc_estonia": {
+        "name": "ECC Estonia",
+        "country": "Estonia",
+        "role": "European Consumer Centre",
+        "email": "consumer@consumer.ee",
         "status": "pending"
     }
 }
