@@ -26,5 +26,89 @@
         "role": "Tech Advocacy Association",
         "email": "info@itl.ee",
         "status": "pending"
+    },
+    "bits_of_freedom": {
+        "name": "Bits of Freedom",
+        "country": "Netherlands",
+        "role": "Director / Policy Advisor",
+        "email": "info@bitsoffreedom.nl",
+        "status": "pending"
+    },
+    "privacy_first": {
+        "name": "Privacy First",
+        "country": "Netherlands",
+        "role": "Director",
+        "email": "info@privacyfirst.nl",
+        "status": "pending"
+    },
+    "pilp_netherlands": {
+        "name": "Public Interest Litigation Project (PILP)",
+        "country": "Netherlands",
+        "role": "Litigation Director",
+        "email": "info@pilp.nl",
+        "status": "pending"
+    },
+    "hermes_italy": {
+        "name": "Hermes Center",
+        "country": "Italy",
+        "role": "President",
+        "email": "info@hermescenter.org",
+        "status": "pending"
+    },
+    "cild_italy": {
+        "name": "CILD",
+        "country": "Italy",
+        "role": "Director",
+        "email": "info@cild.eu",
+        "status": "pending"
+    },
+    "infonodes_italy": {
+        "name": "Info.nodes",
+        "country": "Italy",
+        "role": "Coordinator",
+        "email": "info@infonodes.org",
+        "status": "pending"
+    },
+    "d3_portugal": {
+        "name": "D3 - Defesa dos Direitos Digitais",
+        "country": "Portugal",
+        "role": "President",
+        "email": "direccao@direitosdigitais.pt",
+        "status": "pending"
+    },
+    "ansol_portugal": {
+        "name": "ANSOL",
+        "country": "Portugal",
+        "role": "President",
+        "email": "contacto@ansol.org",
+        "status": "pending"
+    },
+    "apdsi_portugal": {
+        "name": "APDSI",
+        "country": "Portugal",
+        "role": "Board / General Secretar",
+        "email": "geral@apdsi.pt",
+        "status": "pending"
+    },
+    "dfri_sweden": {
+        "name": "DFRI",
+        "country": "Sweden",
+        "role": "Board",
+        "email": "info@dfri.se",
+        "status": "pending"
+    },
+    "crd_sweden": {
+        "name": "Civil Rights Defenders",
+        "country": "Sweden",
+        "role": "Director",
+        "email": "info@crd.org",
+        "status": "pending"
+    },
+    "centrum_sweden": {
+        "name": "Centrum för rättvisa",
+        "country": "Sweden",
+        "role": "Director",
+        "email": "info@centrumforrattvisa.se",
+        "status": "pending"
     }
 }

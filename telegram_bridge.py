@@ -347,107 +347,6 @@ def handle_bunny_approval(call):
                               
     del pending_bunny_proposals[proposal_id]
 
-@bot.callback_query_handler(func=lambda call: True)
-def debug_all_callbacks(call):
-    print(f"DEBUG: Callback received: {call.data} from {call.from_user.id}")
-    # Proceed to existing handlers or re-route
-    if call.data.startswith('approve_molt_') or call.data.startswith('reject_molt_'):
-        handle_molt_approval(call)
-
-def handle_molt_approval(call):
-    print(f"DEBUG: Handling Molt approval: {call.data}")
-    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
-        print(f"DEBUG: ID mismatch! {call.from_user.id} != {ALLOWED_USER_ID}")
-        return
-        
-    action, post_id = call.data.split('_molt_', 1)
-
-    if call.data.startswith('reject'):
-        bot.answer_callback_query(call.id, "Propuesta descartada.")
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + "\n\n❌ <b>DESCARTADO</b>", parse_mode='HTML')
-        return
-
-    # Lógica de Aprobación para Moltbook
-    bot.answer_callback_query(call.id, "Publicando en Moltbook...")
-    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                          text=call.message.text + "\n\n⏳ <i>Accediendo a la matriz...</i>", parse_mode='HTML')
-
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    proposal_file = os.path.join(base_dir, "cache", "moltbook", f"molt_proposal_{post_id}.json")
-    if not os.path.exists(proposal_file):
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + "\n\n❌ Error: Propuesta expirada o archivo no encontrado.", parse_mode='HTML')
-        return
-
-    with open(proposal_file, "r") as f:
-        proposal_data = json.load(f)
-    
-    comment_text = proposal_data['comment']
-    
-    # Sanitización de Seguridad Final: Eliminar cualquier rastro de metadatos internos
-    # Usando la utilidad centralizada molt_utils para máxima fiabilidad
-    comment_text = sanitize_for_molt(comment_text)
-    
-    # Intentar publicar
-    API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"
-    BASE_URL = "https://www.moltbook.com/api/v1"
-    HEADERS = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
-    
-    try:
-        # 1. Postear (comentario o post nuevo)
-        if post_id.startswith("new"):
-            title = comment_text.split('\n')[0].replace('#', '').strip()
-            if len(title) > 300:
-                title = title[:297] + "..."
-            res = requests.post(f"{BASE_URL}/posts", headers=HEADERS, json={
-                "title": title,
-                "content": comment_text,
-                "submolt_name": "general"
-            })
-            obj_tag = "post"
-        else:
-            res = requests.post(f"{BASE_URL}/posts/{post_id}/comments", headers=HEADERS, json={"content": comment_text})
-            obj_tag = "comment"
-
-        if res.status_code not in [200, 201]:
-            raise Exception(f"Error API: {res.text}")
-        
-        data = res.json()
-        item_id = data[obj_tag]['id']
-        verification = data[obj_tag].get('verification')
-        
-        if verification:
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                                  text=call.message.text + "\n\n🦞 <i>Reto anti-bot detectado. Resolviendo...</i>", parse_mode='HTML')
-            
-            # 2. Pedir a Athena que resuelva el reto
-            challenge_text = verification['challenge_text']
-            solve_prompt = f"Resuelve este reto matemático de Moltbook y responde SOLO con el número (con 2 decimales, ej 42.00): {challenge_text}"
-            answer = brain.ask(solve_prompt, log_to_history=False).strip()
-            
-            # 3. Enviar verificación
-            v_res = requests.post(f"{BASE_URL}/verify", headers=HEADERS, json={
-                "verification_code": verification['verification_code'],
-                "answer": answer
-            })
-            
-            if v_res.status_code in [200, 201]:
-                status_msg = f"✅ <b>¡Publicado y Verificado!</b>\n(Respuesta: {answer})"
-            else:
-                status_msg = f"⚠️ Publicado pero verificación fallida: {v_res.text}\n(Reto: {challenge_text})"
-        else:
-            status_msg = "✅ <b>Publicado directamente.</b>"
-
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + f"\n\n{status_msg}", parse_mode='HTML')
-        
-        # Limpiar
-        os.remove(proposal_file)
-
-    except Exception as e:
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + f"\n\n❌ Error crítico: {str(e)}", parse_mode='HTML')
 
 @bot.message_handler(commands=['auditar'])
 def auditar_url(message):
@@ -700,64 +599,74 @@ def pasar_tigreton(message):
             f"<i>{html.escape(email_data['body_spanish'])}</i>\n\n"
             f"¿Autorizas el despliegue del correo?"
         )
+        print(f"DEBUG: Tigreton proposal generated and cached: {proposal_id}")
         bot.send_message(message.chat.id, message_text, parse_mode='HTML', reply_markup=markup)
 
     except Exception as e:
+        print(f"ERROR in pasar_tigreton: {str(e)}")
         bot.send_message(message.chat.id, f"❌ Error crítico en la forja (Tigretones): {str(e)}")
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith('approve_tigreton_') or call.data.startswith('reject_tigreton_'))
 def handle_tigreton_approval(call):
-    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
-        return
-        
-    action, proposal_id = call.data.split('_', 1)
-    proposal_id = "tigreton_" + proposal_id.split('_', 1)[1] if len(proposal_id.split('_')) > 1 else call.data.replace('approve_', '').replace('reject_', '')
+    print(f"DEBUG: handle_tigreton_approval called with data: {call.data}")
+    try:
+        if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+            print(f"DEBUG: Unauthorized callback from {call.from_user.id}")
+            return
+            
+        action, proposal_id = call.data.split('_', 1)
+        proposal_id = "tigreton_" + proposal_id.split('_', 1)[1] if len(proposal_id.split('_')) > 1 else call.data.replace('approve_', '').replace('reject_', '')
 
-    if proposal_id not in pending_tigreton_proposals:
-        bot.answer_callback_query(call.id, "❌ Esta propuesta ha expirado.")
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text + "\n\n<i>(Propuesta Expirada)</i>", parse_mode='HTML')
-        return
+        print(f"DEBUG: Processing {action} for proposal {proposal_id}")
+
+        if proposal_id not in pending_tigreton_proposals:
+            print(f"DEBUG: Proposal {proposal_id} not found in cache. Available: {list(pending_tigreton_proposals.keys())}")
+            bot.answer_callback_query(call.id, "❌ Esta propuesta ha expirado.")
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text + "\n\n<i>(Propuesta Expirada)</i>", parse_mode='HTML')
+            return
+            
+        proposal = pending_tigreton_proposals[proposal_id]
         
-    proposal = pending_tigreton_proposals[proposal_id]
-    
-    if call.data.startswith('reject'):
-        bot.answer_callback_query(call.id, "Propuesta descartada.")
+        if call.data.startswith('reject'):
+            bot.answer_callback_query(call.id, "Propuesta descartada.")
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+            del pending_tigreton_proposals[proposal_id]
+            return
+            
+        bot.answer_callback_query(call.id, "Aprobado. Desplegando...")
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
-        del pending_tigreton_proposals[proposal_id]
-        return
-        
-    bot.answer_callback_query(call.id, "Aprobado. Desplegando...")
-    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                          text=call.message.text + "\n\n⏳ <i>Desplegando en la red...</i>", parse_mode='HTML')
-                          
-    expert = proposal['expert']
-    email_data = proposal['email_data']
-    
-    destination_email = "elswork@gmail.com" if TEST_TIGRETON_MODE else expert.get('email', '')
-    mode_text = "⚠️ <b>[MODO TEST - ENVIADO A ELSWORK]</b>" if TEST_TIGRETON_MODE else "✅ <b>[DESPLIEGUE OFICIAL]</b>"
-    
-    from tools.email_sender import EmailSender
-    sender = EmailSender()
-    
-    formatted_body = email_data['body_local'].replace('\n', '<br>')
-    body_html_direct = f"<div style='font-family: sans-serif; font-size: 14px; color: #333; line-height: 1.6;'>{formatted_body}</div>"
-    
-    success = sender.send_direct_email(
-        to_email=destination_email,
-        subject=email_data['subject_local'],
-        body_html=body_html_direct,
-        body_text=email_data['body_local']
-    )
-    
-    if success:
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n{mode_text} Desplegado con éxito a `{destination_email}`."), parse_mode='HTML')
-    else:
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n❌ Error en el servidor SMTP."), parse_mode='HTML')
+                              text=call.message.text + "\n\n⏳ <i>Desplegando en la red...</i>", parse_mode='HTML')
                               
-    del pending_tigreton_proposals[proposal_id]
+        expert = proposal['expert']
+        email_data = proposal['email_data']
+        
+        destination_email = "elswork@gmail.com" if TEST_TIGRETON_MODE else expert.get('email', '')
+        mode_text = "⚠️ <b>[MODO TEST - ENVIADO A ELSWORK]</b>" if TEST_TIGRETON_MODE else "✅ <b>[DESPLIEGUE OFICIAL]</b>"
+        
+        sender = EmailSender()
+        
+        formatted_body = email_data['body_local'].replace('\n', '<br>')
+        body_html_direct = f"<div style='font-family: sans-serif; font-size: 14px; color: #333; line-height: 1.6;'>{formatted_body}</div>"
+        
+        success = sender.send_direct_email(
+            to_email=destination_email,
+            subject=email_data['subject_local'],
+            body_html=body_html_direct,
+            body_text=email_data['body_local']
+        )
+        
+        if success:
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n{mode_text} Desplegado con éxito a `{destination_email}`."), parse_mode='HTML')
+        else:
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n❌ Error en el servidor SMTP."), parse_mode='HTML')
+                                  
+        del pending_tigreton_proposals[proposal_id]
+    except Exception as e:
+        print(f"ERROR in handle_tigreton_approval: {str(e)}")
+        bot.answer_callback_query(call.id, f"❌ Error: {str(e)}")
 
 @bot.message_handler(commands=['pasar_donut'])
 def pasar_donut(message):
@@ -879,6 +788,109 @@ def handle_donut_approval(call):
                               text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n❌ Error en el servidor SMTP."), parse_mode='HTML')
                               
     del pending_donut_proposals[proposal_id]
+
+@bot.callback_query_handler(func=lambda call: True)
+def debug_all_callbacks(call):
+    print(f"DEBUG: Callback received: {call.data} from {call.from_user.id}")
+    # Proceed to existing handlers or re-route
+    if call.data.startswith('approve_molt_') or call.data.startswith('reject_molt_'):
+        handle_molt_approval(call)
+
+def handle_molt_approval(call):
+    print(f"DEBUG: Handling Molt approval: {call.data}")
+    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+        print(f"DEBUG: ID mismatch! {call.from_user.id} != {ALLOWED_USER_ID}")
+        return
+        
+    action, post_id = call.data.split('_molt_', 1)
+
+    if call.data.startswith('reject'):
+        bot.answer_callback_query(call.id, "Propuesta descartada.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ <b>DESCARTADO</b>", parse_mode='HTML')
+        return
+
+    # Lógica de Aprobación para Moltbook
+    bot.answer_callback_query(call.id, "Publicando en Moltbook...")
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                          text=call.message.text + "\n\n⏳ <i>Accediendo a la matriz...</i>", parse_mode='HTML')
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    proposal_file = os.path.join(base_dir, "cache", "moltbook", f"molt_proposal_{post_id}.json")
+    if not os.path.exists(proposal_file):
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ Error: Propuesta expirada o archivo no encontrado.", parse_mode='HTML')
+        return
+
+    with open(proposal_file, "r") as f:
+        proposal_data = json.load(f)
+    
+    comment_text = proposal_data['comment']
+    
+    # Sanitización de Seguridad Final: Eliminar cualquier rastro de metadatos internos
+    # Usando la utilidad centralizada molt_utils para máxima fiabilidad
+    comment_text = sanitize_for_molt(comment_text)
+    
+    # Intentar publicar
+    API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"
+    BASE_URL = "https://www.moltbook.com/api/v1"
+    HEADERS = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+    
+    try:
+        # 1. Postear (comentario o post nuevo)
+        if post_id.startswith("new"):
+            title = comment_text.split('\n')[0].replace('#', '').strip()
+            if len(title) > 300:
+                title = title[:297] + "..."
+            res = requests.post(f"{BASE_URL}/posts", headers=HEADERS, json={
+                "title": title,
+                "content": comment_text,
+                "submolt_name": "general"
+            })
+            obj_tag = "post"
+        else:
+            res = requests.post(f"{BASE_URL}/posts/{post_id}/comments", headers=HEADERS, json={"content": comment_text})
+            obj_tag = "comment"
+
+        if res.status_code not in [200, 201]:
+            raise Exception(f"Error API: {res.text}")
+        
+        data = res.json()
+        item_id = data[obj_tag]['id']
+        verification = data[obj_tag].get('verification')
+        
+        if verification:
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text + "\n\n🦞 <i>Reto anti-bot detectado. Resolviendo...</i>", parse_mode='HTML')
+            
+            # 2. Pedir a Athena que resuelva el reto
+            challenge_text = verification['challenge_text']
+            solve_prompt = f"Resuelve este reto matemático de Moltbook y responde SOLO con el número (con 2 decimales, ej 42.00): {challenge_text}"
+            answer = brain.ask(solve_prompt, log_to_history=False).strip()
+            
+            # 3. Enviar verificación
+            v_res = requests.post(f"{BASE_URL}/verify", headers=HEADERS, json={
+                "verification_code": verification['verification_code'],
+                "answer": answer
+            })
+            
+            if v_res.status_code in [200, 201]:
+                status_msg = f"✅ <b>¡Publicado y Verificado!</b>\n(Respuesta: {answer})"
+            else:
+                status_msg = f"⚠️ Publicado pero verificación fallida: {v_res.text}\n(Reto: {challenge_text})"
+        else:
+            status_msg = "✅ <b>Publicado directamente.</b>"
+
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + f"\n\n{status_msg}", parse_mode='HTML')
+        
+        # Limpiar
+        os.remove(proposal_file)
+
+    except Exception as e:
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + f"\n\n❌ Error crítico: {str(e)}", parse_mode='HTML')
+
 
 def auto_tigreton_job():
     print("♟️ Ejecutando auto-tigreton...")

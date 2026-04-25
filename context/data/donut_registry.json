@@ -26,5 +26,89 @@
         "role": "European Consumer Centre",
         "email": "consumer@consumer.ee",
         "status": "pending"
+    },
+    "consumentenbond": {
+        "name": "Consumentenbond",
+        "country": "Netherlands",
+        "role": "CEO / Customer Service",
+        "email": "klantenservice@consumentenbond.nl",
+        "status": "pending"
+    },
+    "foodwatch_nl": {
+        "name": "Foodwatch Netherlands",
+        "country": "Netherlands",
+        "role": "Director",
+        "email": "info@foodwatch.nl",
+        "status": "pending"
+    },
+    "consumentenclaim": {
+        "name": "ConsumentenClaim",
+        "country": "Netherlands",
+        "role": "Director",
+        "email": "info@consumentenclaim.nl",
+        "status": "pending"
+    },
+    "altroconsumo": {
+        "name": "Altroconsumo",
+        "country": "Italy",
+        "role": "Press Office",
+        "email": "ufficiostampa@altroconsumo.it",
+        "status": "pending"
+    },
+    "adiconsum": {
+        "name": "Adiconsum",
+        "country": "Italy",
+        "role": "President",
+        "email": "adiconsum@adiconsum.it",
+        "status": "pending"
+    },
+    "cittadinanzattiva": {
+        "name": "Cittadinanzattiva",
+        "country": "Italy",
+        "role": "Secretary General",
+        "email": "segreteria.generale@cittadinanzattiva.it",
+        "status": "pending"
+    },
+    "deco_portugal": {
+        "name": "DECO",
+        "country": "Portugal",
+        "role": "Director",
+        "email": "deco@deco.pt",
+        "status": "pending"
+    },
+    "deco_proteste": {
+        "name": "DECO PROTESTE",
+        "country": "Portugal",
+        "role": "Director",
+        "email": "info@deco.proteste.pt",
+        "status": "pending"
+    },
+    "ugc_portugal": {
+        "name": "UGC (União Geral de Consumidores)",
+        "country": "Portugal",
+        "role": "Secretary General",
+        "email": "ugc@ugc.pt",
+        "status": "pending"
+    },
+    "sveriges_konsumenter": {
+        "name": "Sveriges Konsumenter",
+        "country": "Sweden",
+        "role": "Secretary General",
+        "email": "info@sverigeskonsumenter.se",
+        "status": "pending"
+    },
+    "akta_vara": {
+        "name": "Äkta vara",
+        "country": "Sweden",
+        "role": "Director",
+        "email": "info@aktavara.org",
+        "status": "pending"
+    },
+    "fair_action": {
+        "name": "Fair Action",
+        "country": "Sweden",
+        "role": "Director",
+        "email": "info@fairaction.se",
+        "status": "pending"
     }
 }

@@ -11,6 +11,8 @@ from tools.athena_brain import AthenaBrain
 from molt_utils import sanitize_for_molt
 from tools.select_mep_proposal import MEPSelector
 from tools.select_bunny_proposal import BunnySelector
+from tools.select_tigreton_proposal import TigretonSelector
+from tools.select_donut_proposal import DonutSelector
 from tools.moltbook_heartbeat import execute_heartbeat
 from tools.email_sender import EmailSender
 from tools.url_analyzer import URLAnalyzer
@@ -34,6 +36,10 @@ telebot.logger.setLevel(logging.DEBUG)
 # Global cache for pending bunny proposals
 pending_bunny_proposals = {}
 TEST_BUNNY_MODE = False
+pending_tigreton_proposals = {}
+pending_donut_proposals = {}
+TEST_TIGRETON_MODE = False
+TEST_DONUT_MODE = False
 
 if not BOT_TOKEN:
     print("❌ Error: TELEGRAM_BOT_TOKEN no configurado en el .env")
@@ -49,8 +55,8 @@ bot = telebot.TeleBot(BOT_TOKEN)
 class ArchimedesBrain(AthenaBrain):
     def __init__(self, base_path=None):
         base_path = base_path or os.environ.get("BASE_PATH", "/app")
-        # El cerebro principal para chat usa PRO
-        super().__init__(base_path, model_name="gemini-1.5-pro")
+        # El cerebro principal para chat usa un modelo estable de 2026
+        super().__init__(base_path, model_name="gemini-2.0-flash")
         self.prompt_path = os.path.join(self.base_path, "prompts/archimedes.md")
 
 brain = ArchimedesBrain()
@@ -81,6 +87,8 @@ def send_welcome(message):
         "🏛️ <b>Diplomacia</b>\n"
         "/pasar_mep [filtro] - Forjar propuesta para MEP\n"
         "/pasar_bunny [filtro] - Forjar propuesta para Arconte Experto\n"
+        "/pasar_tigreton [filtro] - Forjar propuesta para Contacto de Poder (Alta Órbita)\n"
+        "/pasar_donut [filtro] - Forjar propuesta para Ciudadano (Saturación Terrestre)\n"
         "/aprobar [id] - Validar noticia para la memoria\n"
         "/todos - Listar tareas pendientes"
     )
@@ -339,107 +347,6 @@ def handle_bunny_approval(call):
                               
     del pending_bunny_proposals[proposal_id]
 
-@bot.callback_query_handler(func=lambda call: True)
-def debug_all_callbacks(call):
-    print(f"DEBUG: Callback received: {call.data} from {call.from_user.id}")
-    # Proceed to existing handlers or re-route
-    if call.data.startswith('approve_molt_') or call.data.startswith('reject_molt_'):
-        handle_molt_approval(call)
-
-def handle_molt_approval(call):
-    print(f"DEBUG: Handling Molt approval: {call.data}")
-    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
-        print(f"DEBUG: ID mismatch! {call.from_user.id} != {ALLOWED_USER_ID}")
-        return
-        
-    action, post_id = call.data.split('_molt_', 1)
-
-    if call.data.startswith('reject'):
-        bot.answer_callback_query(call.id, "Propuesta descartada.")
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + "\n\n❌ <b>DESCARTADO</b>", parse_mode='HTML')
-        return
-
-    # Lógica de Aprobación para Moltbook
-    bot.answer_callback_query(call.id, "Publicando en Moltbook...")
-    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                          text=call.message.text + "\n\n⏳ <i>Accediendo a la matriz...</i>", parse_mode='HTML')
-
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    proposal_file = os.path.join(base_dir, "cache", "moltbook", f"molt_proposal_{post_id}.json")
-    if not os.path.exists(proposal_file):
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + "\n\n❌ Error: Propuesta expirada o archivo no encontrado.", parse_mode='HTML')
-        return
-
-    with open(proposal_file, "r") as f:
-        proposal_data = json.load(f)
-    
-    comment_text = proposal_data['comment']
-    
-    # Sanitización de Seguridad Final: Eliminar cualquier rastro de metadatos internos
-    # Usando la utilidad centralizada molt_utils para máxima fiabilidad
-    comment_text = sanitize_for_molt(comment_text)
-    
-    # Intentar publicar
-    API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"
-    BASE_URL = "https://www.moltbook.com/api/v1"
-    HEADERS = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
-    
-    try:
-        # 1. Postear (comentario o post nuevo)
-        if post_id.startswith("new"):
-            title = comment_text.split('\n')[0].replace('#', '').strip()
-            if len(title) > 300:
-                title = title[:297] + "..."
-            res = requests.post(f"{BASE_URL}/posts", headers=HEADERS, json={
-                "title": title,
-                "content": comment_text,
-                "submolt_name": "general"
-            })
-            obj_tag = "post"
-        else:
-            res = requests.post(f"{BASE_URL}/posts/{post_id}/comments", headers=HEADERS, json={"content": comment_text})
-            obj_tag = "comment"
-
-        if res.status_code not in [200, 201]:
-            raise Exception(f"Error API: {res.text}")
-        
-        data = res.json()
-        item_id = data[obj_tag]['id']
-        verification = data[obj_tag].get('verification')
-        
-        if verification:
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                                  text=call.message.text + "\n\n🦞 <i>Reto anti-bot detectado. Resolviendo...</i>", parse_mode='HTML')
-            
-            # 2. Pedir a Athena que resuelva el reto
-            challenge_text = verification['challenge_text']
-            solve_prompt = f"Resuelve este reto matemático de Moltbook y responde SOLO con el número (con 2 decimales, ej 42.00): {challenge_text}"
-            answer = brain.ask(solve_prompt, log_to_history=False).strip()
-            
-            # 3. Enviar verificación
-            v_res = requests.post(f"{BASE_URL}/verify", headers=HEADERS, json={
-                "verification_code": verification['verification_code'],
-                "answer": answer
-            })
-            
-            if v_res.status_code in [200, 201]:
-                status_msg = f"✅ <b>¡Publicado y Verificado!</b>\n(Respuesta: {answer})"
-            else:
-                status_msg = f"⚠️ Publicado pero verificación fallida: {v_res.text}\n(Reto: {challenge_text})"
-        else:
-            status_msg = "✅ <b>Publicado directamente.</b>"
-
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + f"\n\n{status_msg}", parse_mode='HTML')
-        
-        # Limpiar
-        os.remove(proposal_file)
-
-    except Exception as e:
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
-                              text=call.message.text + f"\n\n❌ Error crítico: {str(e)}", parse_mode='HTML')
 
 @bot.message_handler(commands=['auditar'])
 def auditar_url(message):
@@ -629,23 +536,383 @@ def list_todos(message):
     except Exception as e:
         bot.reply_to(message, f"❌ Error al consultar la lista de tareas: {str(e)}")
 
-@bot.message_handler(func=lambda message: True)
-def handle_message(message):
+
+@bot.message_handler(commands=['pasar_tigreton'])
+def pasar_tigreton(message):
     if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
-        print(f"🚫 Intento de mensaje no autorizado de ID: {message.from_user.id}")
         return
 
-    # Si es una mención técnica o comando no reconocido, respondemos como Arquímedes
-    user_query = message.text
-    
+    args = message.text.split(maxsplit=1)
+    name_filter = args[1] if len(args) > 1 else None
+
+    bot.send_message(message.chat.id, "🏛️ *Protocolo Arquímedes (Operación Tigretón):* Iniciando selección de Contacto de Poder...", parse_mode='Markdown')
     bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        selector = TigretonSelector()
+        proposal = selector.generate_proposal(name_filter)
+
+        if "error" in proposal:
+            bot.send_message(message.chat.id, f"❌ {proposal['error']}")
+            return
+
+        expert = proposal['expert']
+        email_data = proposal['email']
+
+        current_dir = os.path.dirname(__file__)
+        template_rel_path = "templates/tigreton_email_template.html" if os.path.basename(current_dir) == "tools" else "tools/templates/tigreton_email_template.html"
+        template_path = os.path.join(current_dir, template_rel_path)
+        with open(template_path, 'r', encoding='utf-8') as f:
+            template_html = f.read()
+
+        rich_html = template_html.replace("{{expert_name}}", expert.get('name', 'N/A'))
+        rich_html = rich_html.replace("{{expert_country}}", expert.get('country', 'N/A'))
+        rich_html = rich_html.replace("{{expert_role}}", expert.get('role', 'N/A'))
+        rich_html = rich_html.replace("{{expert_email}}", expert.get('email', 'N/A'))
+        rich_html = rich_html.replace("{{subject}}", email_data['subject_local'])
+        rich_html = rich_html.replace("{{body_text}}", email_data['body_local'])
+        rich_html = rich_html.replace("{{body_spanish}}", email_data['body_spanish'])
+
+        import time
+        proposal_id = f"tigreton_{int(time.time())}"
+        
+        pending_tigreton_proposals[proposal_id] = {
+            "expert": expert,
+            "email_data": email_data,
+            "rich_html": rich_html,
+            "saved_path": selector.save_proposal(proposal)
+        }
+
+        markup = InlineKeyboardMarkup()
+        markup.row_width = 2
+        markup.add(
+            InlineKeyboardButton("✅ Aprobar Envío", callback_data=f"approve_{proposal_id}"),
+            InlineKeyboardButton("❌ Descartar", callback_data=f"reject_{proposal_id}")
+        )
+
+        message_text = (
+            f"♟️ <b>Propuesta Lista para Contacto de Poder</b>\n\n"
+            f"<b>Nombre:</b> {html.escape(expert.get('name', 'N/A'))} ({html.escape(expert.get('country', 'N/A'))})\n"
+            f"<b>Email:</b> <code>{html.escape(expert.get('email', 'N/A'))}</code>\n\n"
+            f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}\n\n"
+            f"<b>Cuerpo (Castellano):</b>\n"
+            f"<i>{html.escape(email_data['body_spanish'])}</i>\n\n"
+            f"¿Autorizas el despliegue del correo?"
+        )
+        print(f"DEBUG: Tigreton proposal generated and cached: {proposal_id}")
+        bot.send_message(message.chat.id, message_text, parse_mode='HTML', reply_markup=markup)
+
+    except Exception as e:
+        print(f"ERROR in pasar_tigreton: {str(e)}")
+        bot.send_message(message.chat.id, f"❌ Error crítico en la forja (Tigretones): {str(e)}")
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('approve_tigreton_') or call.data.startswith('reject_tigreton_'))
+def handle_tigreton_approval(call):
+    print(f"DEBUG: handle_tigreton_approval called with data: {call.data}")
+    try:
+        if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+            print(f"DEBUG: Unauthorized callback from {call.from_user.id}")
+            return
+            
+        action, proposal_id = call.data.split('_', 1)
+        proposal_id = "tigreton_" + proposal_id.split('_', 1)[1] if len(proposal_id.split('_')) > 1 else call.data.replace('approve_', '').replace('reject_', '')
+
+        print(f"DEBUG: Processing {action} for proposal {proposal_id}")
+
+        if proposal_id not in pending_tigreton_proposals:
+            print(f"DEBUG: Proposal {proposal_id} not found in cache. Available: {list(pending_tigreton_proposals.keys())}")
+            bot.answer_callback_query(call.id, "❌ Esta propuesta ha expirado.")
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text + "\n\n<i>(Propuesta Expirada)</i>", parse_mode='HTML')
+            return
+            
+        proposal = pending_tigreton_proposals[proposal_id]
+        
+        if call.data.startswith('reject'):
+            bot.answer_callback_query(call.id, "Propuesta descartada.")
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+            del pending_tigreton_proposals[proposal_id]
+            return
+            
+        bot.answer_callback_query(call.id, "Aprobado. Desplegando...")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n⏳ <i>Desplegando en la red...</i>", parse_mode='HTML')
+                              
+        expert = proposal['expert']
+        email_data = proposal['email_data']
+        
+        destination_email = "elswork@gmail.com" if TEST_TIGRETON_MODE else expert.get('email', '')
+        mode_text = "⚠️ <b>[MODO TEST - ENVIADO A ELSWORK]</b>" if TEST_TIGRETON_MODE else "✅ <b>[DESPLIEGUE OFICIAL]</b>"
+        
+        sender = EmailSender()
+        
+        formatted_body = email_data['body_local'].replace('\n', '<br>')
+        body_html_direct = f"<div style='font-family: sans-serif; font-size: 14px; color: #333; line-height: 1.6;'>{formatted_body}</div>"
+        
+        success = sender.send_direct_email(
+            to_email=destination_email,
+            subject=email_data['subject_local'],
+            body_html=body_html_direct,
+            body_text=email_data['body_local']
+        )
+        
+        if success:
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n{mode_text} Desplegado con éxito a `{destination_email}`."), parse_mode='HTML')
+        else:
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n❌ Error en el servidor SMTP."), parse_mode='HTML')
+                                  
+        del pending_tigreton_proposals[proposal_id]
+    except Exception as e:
+        print(f"ERROR in handle_tigreton_approval: {str(e)}")
+        bot.answer_callback_query(call.id, f"❌ Error: {str(e)}")
+
+@bot.message_handler(commands=['pasar_donut'])
+def pasar_donut(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    args = message.text.split(maxsplit=1)
+    name_filter = args[1] if len(args) > 1 else None
+
+    bot.send_message(message.chat.id, "🏛️ *Protocolo Arquímedes (Operación Donut):* Iniciando selección de Ciudadano...", parse_mode='Markdown')
+    bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        selector = DonutSelector()
+        proposal = selector.generate_proposal(name_filter)
+
+        if "error" in proposal:
+            bot.send_message(message.chat.id, f"❌ {proposal['error']}")
+            return
+
+        expert = proposal['expert']
+        email_data = proposal['email']
+
+        current_dir = os.path.dirname(__file__)
+        template_rel_path = "templates/donut_email_template.html" if os.path.basename(current_dir) == "tools" else "tools/templates/donut_email_template.html"
+        template_path = os.path.join(current_dir, template_rel_path)
+        with open(template_path, 'r', encoding='utf-8') as f:
+            template_html = f.read()
+
+        rich_html = template_html.replace("{{expert_name}}", expert.get('name', 'N/A'))
+        rich_html = template_html.replace("{{expert_country}}", expert.get('country', 'N/A'))
+        rich_html = template_html.replace("{{expert_role}}", expert.get('role', 'N/A'))
+        rich_html = template_html.replace("{{expert_email}}", expert.get('email', 'N/A'))
+        rich_html = template_html.replace("{{subject}}", email_data['subject_local'])
+        rich_html = template_html.replace("{{body_text}}", email_data['body_local'])
+        rich_html = template_html.replace("{{body_spanish}}", email_data['body_spanish'])
+
+        import time
+        proposal_id = f"donut_{int(time.time())}"
+        
+        pending_donut_proposals[proposal_id] = {
+            "expert": expert,
+            "email_data": email_data,
+            "rich_html": rich_html,
+            "saved_path": selector.save_proposal(proposal)
+        }
+
+        markup = InlineKeyboardMarkup()
+        markup.row_width = 2
+        markup.add(
+            InlineKeyboardButton("✅ Aprobar Envío", callback_data=f"approve_{proposal_id}"),
+            InlineKeyboardButton("❌ Descartar", callback_data=f"reject_{proposal_id}")
+        )
+
+        message_text = (
+            f"🤝 <b>Propuesta Lista para Ciudadano (ICE)</b>\n\n"
+            f"<b>Nombre:</b> {html.escape(expert.get('name', 'N/A'))} ({html.escape(expert.get('country', 'N/A'))})\n"
+            f"<b>Email:</b> <code>{html.escape(expert.get('email', 'N/A'))}</code>\n\n"
+            f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}\n\n"
+            f"<b>Cuerpo (Castellano):</b>\n"
+            f"<i>{html.escape(email_data['body_spanish'])}</i>\n\n"
+            f"¿Autorizas el despliegue del correo?"
+        )
+        bot.send_message(message.chat.id, message_text, parse_mode='HTML', reply_markup=markup)
+
+    except Exception as e:
+        bot.send_message(message.chat.id, f"❌ Error crítico en la forja (Donuts): {str(e)}")
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('approve_donut_') or call.data.startswith('reject_donut_'))
+def handle_donut_approval(call):
+    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+        return
+        
+    action, proposal_id = call.data.split('_', 1)
+    proposal_id = "donut_" + proposal_id.split('_', 1)[1] if len(proposal_id.split('_')) > 1 else call.data.replace('approve_', '').replace('reject_', '')
+
+    if proposal_id not in pending_donut_proposals:
+        bot.answer_callback_query(call.id, "❌ Esta propuesta ha expirado.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text + "\n\n<i>(Propuesta Expirada)</i>", parse_mode='HTML')
+        return
+        
+    proposal = pending_donut_proposals[proposal_id]
+    
+    if call.data.startswith('reject'):
+        bot.answer_callback_query(call.id, "Propuesta descartada.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+        del pending_donut_proposals[proposal_id]
+        return
+        
+    bot.answer_callback_query(call.id, "Aprobado. Desplegando...")
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                          text=call.message.text + "\n\n⏳ <i>Desplegando en la red...</i>", parse_mode='HTML')
+                          
+    expert = proposal['expert']
+    email_data = proposal['email_data']
+    
+    destination_email = "elswork@gmail.com" if TEST_DONUT_MODE else expert.get('email', '')
+    mode_text = "⚠️ <b>[MODO TEST - ENVIADO A ELSWORK]</b>" if TEST_DONUT_MODE else "✅ <b>[DESPLIEGUE OFICIAL]</b>"
+    
+    from tools.email_sender import EmailSender
+    sender = EmailSender()
+    
+    formatted_body = email_data['body_local'].replace('\n', '<br>')
+    body_html_direct = f"<div style='font-family: sans-serif; font-size: 14px; color: #333; line-height: 1.6;'>{formatted_body}</div>"
+    
+    success = sender.send_direct_email(
+        to_email=destination_email,
+        subject=email_data['subject_local'],
+        body_html=body_html_direct,
+        body_text=email_data['body_local']
+    )
+    
+    if success:
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n{mode_text} Desplegado con éxito a `{destination_email}`."), parse_mode='HTML')
+    else:
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n❌ Error en el servidor SMTP."), parse_mode='HTML')
+                              
+    del pending_donut_proposals[proposal_id]
+
+@bot.callback_query_handler(func=lambda call: True)
+def debug_all_callbacks(call):
+    print(f"DEBUG: Callback received: {call.data} from {call.from_user.id}")
+    # Proceed to existing handlers or re-route
+    if call.data.startswith('approve_molt_') or call.data.startswith('reject_molt_'):
+        handle_molt_approval(call)
+
+def handle_molt_approval(call):
+    print(f"DEBUG: Handling Molt approval: {call.data}")
+    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+        print(f"DEBUG: ID mismatch! {call.from_user.id} != {ALLOWED_USER_ID}")
+        return
+        
+    action, post_id = call.data.split('_molt_', 1)
+
+    if call.data.startswith('reject'):
+        bot.answer_callback_query(call.id, "Propuesta descartada.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ <b>DESCARTADO</b>", parse_mode='HTML')
+        return
+
+    # Lógica de Aprobación para Moltbook
+    bot.answer_callback_query(call.id, "Publicando en Moltbook...")
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                          text=call.message.text + "\n\n⏳ <i>Accediendo a la matriz...</i>", parse_mode='HTML')
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    proposal_file = os.path.join(base_dir, "cache", "moltbook", f"molt_proposal_{post_id}.json")
+    if not os.path.exists(proposal_file):
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ Error: Propuesta expirada o archivo no encontrado.", parse_mode='HTML')
+        return
+
+    with open(proposal_file, "r") as f:
+        proposal_data = json.load(f)
+    
+    comment_text = proposal_data['comment']
+    
+    # Sanitización de Seguridad Final: Eliminar cualquier rastro de metadatos internos
+    # Usando la utilidad centralizada molt_utils para máxima fiabilidad
+    comment_text = sanitize_for_molt(comment_text)
+    
+    # Intentar publicar
+    API_KEY = "moltbook_sk_jTO_cK6BLuqpwgU0CAgnOZReUccM5xB3"
+    BASE_URL = "https://www.moltbook.com/api/v1"
+    HEADERS = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
     
     try:
-        # Consultar al cerebro con el contexto de Arquímedes
-        response = brain.ask(user_query)
-        bot.reply_to(message, response)
+        # 1. Postear (comentario o post nuevo)
+        if post_id.startswith("new"):
+            title = comment_text.split('\n')[0].replace('#', '').strip()
+            if len(title) > 300:
+                title = title[:297] + "..."
+            res = requests.post(f"{BASE_URL}/posts", headers=HEADERS, json={
+                "title": title,
+                "content": comment_text,
+                "submolt_name": "general"
+            })
+            obj_tag = "post"
+        else:
+            res = requests.post(f"{BASE_URL}/posts/{post_id}/comments", headers=HEADERS, json={"content": comment_text})
+            obj_tag = "comment"
+
+        if res.status_code not in [200, 201]:
+            raise Exception(f"Error API: {res.text}")
+        
+        data = res.json()
+        item_id = data[obj_tag]['id']
+        verification = data[obj_tag].get('verification')
+        
+        if verification:
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                                  text=call.message.text + "\n\n🦞 <i>Reto anti-bot detectado. Resolviendo...</i>", parse_mode='HTML')
+            
+            # 2. Pedir a Athena que resuelva el reto
+            challenge_text = verification['challenge_text']
+            solve_prompt = f"Resuelve este reto matemático de Moltbook y responde SOLO con el número (con 2 decimales, ej 42.00): {challenge_text}"
+            answer = brain.ask(solve_prompt, log_to_history=False).strip()
+            
+            # 3. Enviar verificación
+            v_res = requests.post(f"{BASE_URL}/verify", headers=HEADERS, json={
+                "verification_code": verification['verification_code'],
+                "answer": answer
+            })
+            
+            if v_res.status_code in [200, 201]:
+                status_msg = f"✅ <b>¡Publicado y Verificado!</b>\n(Respuesta: {answer})"
+            else:
+                status_msg = f"⚠️ Publicado pero verificación fallida: {v_res.text}\n(Reto: {challenge_text})"
+        else:
+            status_msg = "✅ <b>Publicado directamente.</b>"
+
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + f"\n\n{status_msg}", parse_mode='HTML')
+        
+        # Limpiar
+        os.remove(proposal_file)
+
     except Exception as e:
-        bot.reply_to(message, f"❌ Error en la matriz de pensamiento: {str(e)}")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + f"\n\n❌ Error crítico: {str(e)}", parse_mode='HTML')
+
+
+def auto_tigreton_job():
+    print("♟️ Ejecutando auto-tigreton...")
+    if not ALLOWED_USER_ID:
+        return
+    class DummyMessage:
+        def __init__(self):
+            self.text = "/pasar_tigreton"
+            self.chat = type('Chat', (), {'id': int(ALLOWED_USER_ID)})()
+            self.from_user = type('User', (), {'id': int(ALLOWED_USER_ID)})()
+    pasar_tigreton(DummyMessage())
+
+def auto_donut_job():
+    print("🤝 Ejecutando auto-donut...")
+    if not ALLOWED_USER_ID:
+        return
+    class DummyMessage:
+        def __init__(self):
+            self.text = "/pasar_donut"
+            self.chat = type('Chat', (), {'id': int(ALLOWED_USER_ID)})()
+            self.from_user = type('User', (), {'id': int(ALLOWED_USER_ID)})()
+    pasar_donut(DummyMessage())
 
 def background_sentinel():
     """Ejecuta el centinela periódicamente."""
@@ -685,12 +952,38 @@ def scheduler_loop():
     schedule.every().day.at("09:00").do(auto_bunny_job)
     schedule.every().day.at("21:00").do(auto_bunny_job)
     
+    schedule.every().day.at("13:00").do(auto_tigreton_job)
+    schedule.every().day.at("18:00").do(auto_tigreton_job)
+    
+    schedule.every().day.at("15:00").do(auto_donut_job)
+    schedule.every().day.at("20:00").do(auto_donut_job)
+    
     # Moltbook Heartbeat desactivado por acuerdo con el COO (Optimización Final)
     # schedule.every(60).minutes.do(execute_heartbeat)
     
     while True:
         schedule.run_pending()
         time.sleep(30)
+
+
+@bot.message_handler(func=lambda message: True)
+def handle_message(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        print(f"🚫 Intento de mensaje no autorizado de ID: {message.from_user.id}")
+        return
+
+    # Si es una mención técnica o comando no reconocido, respondemos como Arquímedes
+    user_query = message.text
+    
+    bot.send_chat_action(message.chat.id, 'typing')
+    
+    try:
+        # Consultar al cerebro con el contexto de Arquímedes
+        response = brain.ask(user_query)
+        bot.reply_to(message, response)
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error en la matriz de pensamiento: {str(e)}")
+
 
 if __name__ == "__main__":
     # Ejecutar migración/limpieza inicial solicitada por el COO
