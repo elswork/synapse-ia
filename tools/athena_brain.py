@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from nexus_sync import NexusSync
 
 class AthenaBrain:
-    def __init__(self, base_path=None, model_name="gemini-2.0-flash"):
+    def __init__(self, base_path=None, model_name="gemini-2.5-flash"):
         self.base_path = base_path or os.environ.get("BASE_PATH", "/app")
         load_dotenv(os.path.join(self.base_path, ".env"))
         
@@ -22,7 +22,7 @@ class AthenaBrain:
         with open(self.prompt_path, "r") as f:
             return f.read()
 
-    def ask(self, question, context_files=[], log_to_history=True, model_override=None):
+    def ask(self, question, context_files=[], log_to_history=True, model_override=None, is_json=False):
         """Envía una consulta a la 'Athena Real' usando RAG y contexto de archivos."""
         
         # Selección de modelo dinámica
@@ -70,7 +70,10 @@ PREGUNTA DEL USUARIO: {question}
 
         try:
             print(f"Consultando al Oráculo ({current_model.model_name}) con Memoria Semántica Activa...")
-            response = current_model.generate_content(full_prompt)
+            kwargs = {}
+            if is_json:
+                kwargs["generation_config"] = {"response_mime_type": "application/json"}
+            response = current_model.generate_content(full_prompt, **kwargs)
             athena_response = response.text
             
             # Registrar en el historial (opcional)

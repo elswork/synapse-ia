@@ -39,7 +39,7 @@ class DonutSelector:
             json_str = re.sub(r",\s*}", "}", json_str)
             json_str = re.sub(r",\s*]", "]", json_str)
             
-            return json.loads(json_str)
+            return json.loads(json_str, strict=False)
         except Exception as e:
             print(f"Error parseando JSON: {e}")
             return None
@@ -175,10 +175,10 @@ class DonutSelector:
         """
         
         try:
-            response_text = self.brain.ask(prompt)
+            response_text = self.brain.ask(prompt, is_json=True)
             email_data = self.extract_json(response_text)
             if not email_data:
-                raise ValueError("No JSON found in response")
+                raise ValueError(f"No JSON found in response. Text: {response_text}")
         except Exception as e:
             print(f"Fallback due to: {e}")
             email_data = {

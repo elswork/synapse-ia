@@ -35,7 +35,10 @@ class BunnySelector:
         try:
             match = re.search(r'\{.*\}', text, re.DOTALL)
             if match:
-                return json.loads(match.group(0))
+                json_str = match.group(0)
+                json_str = re.sub(r",\s*}", "}", json_str)
+                json_str = re.sub(r",\s*]", "]", json_str)
+                return json.loads(json_str, strict=False)
             return None
         except Exception as e:
             print(f"Error parseando JSON: {e}")

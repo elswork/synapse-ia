@@ -45,10 +45,10 @@ class BunnySelector:
 
             match = re.search(r"\{.*\}", text, re.DOTALL)
             if match:
-                return json.loads(match.group(0))
-            return None
-        except Exception as e:
-            print(f"Error parseando JSON: {e}")
+                json_str = match.group(0)
+                json_str = re.sub(r",\s*}", "}", json_str)
+                json_str = re.sub(r",\s*]", "]", json_str)
+                return json.loads(json_str, strict=False)
             return None
         except Exception as e:
             print(f"Error parseando JSON: {e}")
@@ -195,7 +195,7 @@ class BunnySelector:
         """
         
         try:
-            response_text = self.brain.ask(prompt)
+            response_text = self.brain.ask(prompt, is_json=True)
             email_data = self.extract_json(response_text)
             
             if not email_data:
