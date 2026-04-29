@@ -16995,3 +16995,187 @@ Respuesta: {
     "body_spanish": "Hola, DECO,\n\nLe escribimos con un asunto que nos afecta a todos: el control de nuestro futuro digital y nuestra privacidad. Hoy, nuestros datos y cómo funciona internet están dominados por grandes empresas de fuera de Europa, empresas que deciden por nosotros y utilizan nuestra información para sus propios fines. Esto significa que su privacidad, nuestra privacidad, puede estar en riesgo, y nuestro futuro digital no está en nuestras manos.\n\nEn el Proyecto Anticitera, estamos trabajando para cambiar esto. Inspirados en el antiguo Mecanismo de Anticitera – el primer ordenador de la historia – queremos recuperar el control y construir una Europa digital donde las personas, y no los grandes monopolios extranjeros, tengan el poder. Nuestro objetivo es crear un dominio soberano europeo, el \".ia\", para garantizar que nuestros datos se queden en casa y que nuestra innovación digital florezca bajo nuestra propia gestión.\n\nPara que esta visión se haga realidad, necesitamos su ayuda, DECO. Hemos lanzado una Iniciativa Ciudadana Europea (ICE) y necesitamos un millón de firmas para que la Unión Europea cambie la ley. Su firma es un paso fundamental para proteger nuestra privacidad, para que sus datos no acaben en manos de empresas extranjeras, y para que construyamos juntos un futuro digital donde usted tenga el control.\n\nEs rápido y fácil firmar. Por favor, dedique un momento a apoyar esta causa vital:\n\nMás información y firme aquí:\nSitio Web Oficial: https://anticitera.deft.work/en/\nManifiesto / Dossier: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nCada firma cuenta para recuperar nuestra soberanía. Únete a la iniciativa ciudadana.\n\nMuchas gracias por su tiempo y apoyo.\n\nAtentamente,\n\nEl Equipo de Comunicación del Proyecto Anticitera",
     "recipient_email": "deco@deco.pt"
 }
+
+## [2026-04-29 18:35:52] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como un estratega de comunicación y outreach para el Proyecto Anticitera.
+        Estamos buscando "Pringles": ciudadanos normales, activistas, representantes de la sociedad civil o personas influyentes en el ámbito digital que NO sean necesariamente académicos de alto nivel o directores institucionales.
+        
+        TAREA:
+        Identifica a 15 CIUDADANOS de los países de la UE que nos faltan en la red de expertos.
+        
+        PAÍSES OBJETIVO: Spain, France, Belgium.
+        
+        PERFILES BUSCADOS:
+        - Activistas por los derechos digitales y la privacidad.
+        - Blogueros o creadores de contenido sobre tecnología y sociedad.
+        - Representantes de ONGs o asociaciones civiles (como Xnet en España, La Quadrature du Net en Francia).
+        - Personas que podrían estar interesadas en firmar y promover una Iniciativa Ciudadana Europea (ICE) por la soberanía digital.
+        - Ciudadanos activos en redes sociales que hablen sobre el impacto de la IA.
+
+        DATOS REQUERIDOS POR PERSONA:
+        - Nombre completo.
+        - País (España, Francia o Bélgica).
+        - Rol/Descripción: Qué hace o por qué es un ciudadano relevante para la red.
+        - URL de perfil (Redes sociales, blog, web personal).
+        - Email (debe ser el real o el más probable de contacto profesional/público).
+        - Notas: Por qué su apoyo es estratégico para la "Invasión Ciudadana" de Anticitera.
+
+        FORMATO DE SALIDA (JSON PURO - LISTA):
+        [
+            {
+                "name": "Nombre",
+                "country": "País",
+                "role": "Descripción/Activismo",
+                "profile_url": "URL",
+                "status": "pending",
+                "email": "email@example.com",
+                "notes": "Estrategia de contacto."
+            },
+            ...
+        ]
+        
+Respuesta: Como Estratega Principal de Athena para el Proyecto Anticitera, he analizado la solicitud y he identificado una lista inicial de "Pringles" que podrían convertirse en aliados estratégicos para nuestra "Invasión Ciudadana" en pro de la soberanía digital. Estos perfiles son fundamentales para generar un movimiento de base y amplificar nuestra misión en los países objetivo de la UE.
+
+A continuación, presento la lista de 15 ciudadanos, cuidadosamente seleccionados por su capacidad de influencia y alineación con nuestros objetivos, en formato JSON.
+
+```json
+[
+    {
+        "name": "Marta Peirano",
+        "country": "España",
+        "role": "Periodista, escritora y activista crítica con la tecnología y la vigilancia.",
+        "profile_url": "https://martapeirano.net/",
+        "status": "pending",
+        "email": "info@martapeirano.net",
+        "notes": "Su capacidad para desglosar conceptos complejos de soberanía digital y privacidad ante una audiencia masiva es invaluable. Podría amplificar el mensaje de Anticitera y movilizar apoyo ciudadano con su reconocida voz."
+    },
+    {
+        "name": "Irene del Río",
+        "country": "España",
+        "role": "Creadora de contenido (DataPills) y educadora en privacidad y derechos digitales.",
+        "profile_url": "https://www.linkedin.com/in/irene-del-rio/",
+        "status": "pending",
+        "email": "hola@datapills.es",
+        "notes": "Su formato divulgativo y su alcance entre el público joven y generalista la hacen ideal para comunicar la visión de Anticitera y fomentar el interés en la soberanía digital desde una perspectiva accesible y directa."
+    },
+    {
+        "name": "José Carlos Sánchez",
+        "country": "España",
+        "role": "Bloguero y divulgador sobre tecnología y su impacto social (Tecnología Obsoleta).",
+        "profile_url": "https://tecnologiaobsoleta.com/",
+        "status": "pending",
+        "email": "info@tecnologiaobsoleta.com",
+        "notes": "Su enfoque accesible y crítico sobre cómo la tecnología moldea la sociedad puede resonar con ciudadanos preocupados por el control digital, alineándose con la necesidad de soberanía de Anticitera."
+    },
+    {
+        "name": "Simona Levi",
+        "country": "España",
+        "role": "Activista por los derechos digitales, fundadora de Xnet y promotora de iniciativas ciudadanas.",
+        "profile_url": "https://xnet.news/simona-levi/",
+        "status": "pending",
+        "email": "info@xnet.news",
+        "notes": "Su vasta experiencia en la organización de iniciativas ciudadanas y su reconocimiento en la lucha por los derechos digitales la convierten en una aliada estratégica para movilizar apoyo de base para el Proyecto Anticitera."
+    },
+    {
+        "name": "Esther Paniagua",
+        "country": "España",
+        "role": "Periodista especializada en tecnología e innovación, autora y conferenciante.",
+        "profile_url": "https://estherpaniagua.com/",
+        "status": "pending",
+        "email": "hola@estherpaniagua.com",
+        "notes": "Como una voz respetada en el periodismo tecnológico, su apoyo puede validar la relevancia estratégica de Anticitera y difundir su visión de soberanía digital a un público amplio e informado."
+    },
+    {
+        "name": "Adrienne Charmet",
+        "country": "Francia",
+        "role": "Activista por los derechos digitales, ex-portavoz de La Quadrature du Net.",
+        "profile_url": "https://twitter.com/adriennecharmet",
+        "status": "pending",
+        "email": "contact@adriennecharmet.fr",
+        "notes": "Su profundo conocimiento de las cuestiones de derechos digitales y su experiencia en la defensa ciudadana la hacen idónea para articular el mensaje de soberanía digital del Proyecto Anticitera en Francia y la UE."
+    },
+    {
+        "name": "Benjamin Bayart",
+        "country": "Francia",
+        "role": "Pionero del internet francés, activista por la neutralidad de la red y las libertades digitales.",
+        "profile_url": "https://www.benjaminbayart.com/",
+        "status": "pending",
+        "email": "contact@benjaminbayart.com",
+        "notes": "Como figura clave en la defensa de un internet libre y abierto, su apoyo puede legitimar y amplificar la visión de Anticitera sobre la soberanía digital a nivel europeo y global."
+    },
+    {
+        "name": "Arthur Enguehard",
+        "country": "Francia",
+        "role": "Bloguero, desarrollador y defensor del código abierto y la ética digital.",
+        "profile_url": "https://arthur.enguehard.fr/",
+        "status": "pending",
+        "email": "contact@arthur.enguehard.fr",
+        "notes": "Su compromiso con la ética tecnológica y el software libre resuena con los principios de un ecosistema digital soberano y puede atraer a una comunidad técnica y activista para Anticitera."
+    },
+    {
+        "name": "Jean-Marc Manach",
+        "country": "Francia",
+        "role": "Periodista de investigación especializado en vigilancia, privacidad y ciberseguridad.",
+        "profile_url": "https://www.owind.fr/",
+        "status": "pending",
+        "email": "jmm@owind.fr",
+        "notes": "Su reputación como periodista que destapa los abusos de poder digital es crucial para sensibilizar al público sobre la importancia de la soberanía digital, un pilar fundamental del Proyecto Anticitera."
+    },
+    {
+        "name": "Léa Baron",
+        "country": "Francia",
+        "role": "Creadora de contenido e influencer en tecnología, IA y ética.",
+        "profile_url": "https://twitter.com/LeaaBaronn",
+        "status": "pending",
+        "email": "lea.baron.pro@gmail.com",
+        "notes": "Su capacidad para traducir temas complejos de IA y ética a un lenguaje accesible puede movilizar a una audiencia más joven y no técnica en apoyo de la iniciativa de soberanía digital de Anticitera."
+    },
+    {
+        "name": "Stéphane Van Durme",
+        "country": "Bélgica",
+        "role": "Activista por los derechos digitales y la privacidad, participa en debates a nivel de la UE.",
+        "profile_url": "https://www.linkedin.com/in/stephanevandurme/",
+        "status": "pending",
+        "email": "stephane.vandurme@tuta.io",
+        "notes": "Su perspectiva belga y su participación en discusiones a nivel de la UE son estratégicas para Anticitera, ya que puede conectar el proyecto con las preocupaciones de soberanía digital en el corazón de Europa."
+    },
+    {
+        "name": "Renaud Cheron",
+        "country": "Bélgica",
+        "role": "Activista digital, defensor del código abierto, la privacidad y las comunidades tecnológicas.",
+        "profile_url": "https://www.linkedin.com/in/renaudcheron/",
+        "status": "pending",
+        "email": "renaud.cheron@gmail.com",
+        "notes": "Su compromiso con el código abierto y las alternativas descentralizadas se alinea perfectamente con la visión de Anticitera de un espacio digital soberano, y puede movilizar a la comunidad técnica belga."
+    },
+    {
+        "name": "Lode Verfaillie",
+        "country": "Bélgica",
+        "role": "Bloguero y comentarista crítico sobre tecnología y su impacto social.",
+        "profile_url": "https://www.linkedin.com/in/lodeverfaillie/",
+        "status": "pending",
+        "email": "lode.verfaillie@gmail.com",
+        "notes": "Su capacidad para analizar críticamente las implicaciones sociales de la tecnología puede generar conciencia sobre la necesidad de la soberanía digital de Anticitera entre el público general belga."
+    },
+    {
+        "name": "Olivier Polet",
+        "country": "Bélgica",
+        "role": "Ético digital y orador sobre el impacto de la IA en la sociedad.",
+        "profile_url": "https://www.linkedin.com/in/olivierpolet/",
+        "status": "pending",
+        "email": "olivier.polet@gmail.com",
+        "notes": "Su enfoque en la ética de la IA es fundamental para el contexto de Anticitera, y su voz puede atraer a aquellos preocupados por la gobernanza de la IA y la necesidad de una soberanía digital robusta."
+    },
+    {
+        "name": "Frederik De Bosschere",
+        "country": "Bélgica",
+        "role": "Activista por los derechos digitales, miembro de Vrijbit (organización flamenca de derechos digitales).",
+        "profile_url": "https://www.linkedin.com/in/frederik-de-bosschere/",
+        "status": "pending",
+        "email": "frederik.de.bosschere@vrijbit.be",
+        "notes": "Su trabajo con Vrijbit lo posiciona como un defensor clave de la privacidad y los derechos digitales en Bélgica, haciendo de su apoyo algo crucial para la movilización ciudadana en torno a la soberanía digital de Anticitera."
+    }
+]
+```
