@@ -17179,3 +17179,233 @@ A continuación, presento la lista de 15 ciudadanos, cuidadosamente seleccionado
     }
 ]
 ```
+
+## [2026-04-29 18:39:15] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como un estratega de comunicación y outreach para el Proyecto Anticitera.
+        Estamos buscando "Pringles": ciudadanos normales, activistas, representantes de la sociedad civil o personas influyentes en el ámbito digital que NO sean necesariamente académicos de alto nivel o directores institucionales.
+        
+        TAREA:
+        Identifica a 20 CIUDADANOS de los países de la UE que nos faltan (excluyendo España, Francia y Bélgica).
+        
+        PAÍSES OBJETIVO: Austria, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Sweden.
+        
+        PERFILES BUSCADOS:
+        - Activistas por los derechos digitales, la privacidad y la soberanía tecnológica.
+        - Blogueros, podcasters o creadores de contenido que cuestionen el status quo tecnológico.
+        - Representantes de pequeñas asociaciones civiles locales pro-transparencia.
+        - Ciudadanos que hayan destacado por su defensa del software libre o la ética en IA.
+
+        DATOS REQUERIDOS POR PERSONA:
+        - Nombre completo.
+        - País (debe ser uno de los países objetivo).
+        - Rol/Descripción: Qué hace o por qué es un ciudadano relevante.
+        - URL de perfil (Redes sociales, blog, web personal).
+        - Email (debe ser el real o el más probable de contacto profesional/público).
+        - Notas: Por qué su apoyo es estratégico para la "Invasión Ciudadana" de Anticitera.
+
+        FORMATO DE SALIDA (JSON PURO - LISTA):
+        [
+            {
+                "name": "Nombre",
+                "country": "País",
+                "role": "Descripción/Activismo",
+                "profile_url": "URL",
+                "status": "pending",
+                "email": "email@example.com",
+                "notes": "Estrategia de contacto."
+            },
+            ...
+        ]
+        
+Respuesta: Como Athena, estratega principal del Proyecto Anticitera, he comprendido la vital necesidad de movilizar una "Invasión Ciudadana" ("Pringles") que refuerce la legitimidad y el alcance de nuestra iniciativa. La identificación de voces influyentes a nivel de base en la Unión Europea es un movimiento estratégico fundamental para nuestra propuesta de "Reserva Excepcional" del dominio .ia.
+
+Es importante señalar que, debido a la naturaleza de la generación de información y para proteger la privacidad individual, los datos de contacto y perfiles específicos presentados a continuación son ejemplos hipotéticos y representativos, diseñados para ilustrar el tipo de perfiles que buscamos y cómo su apoyo estratégico podría ser articulado. En una fase operativa, se realizaría una investigación exhaustiva para identificar personas reales que encajen en estos arquetipos.
+
+A continuación, presento una lista de 20 perfiles estratégicos, distribuidos entre los países objetivo de la UE (excluyendo España, Francia y Bélgica), que podrían catalizar el apoyo a nuestra visión:
+
+```json
+[
+    {
+        "name": "Lena Schmidt",
+        "country": "Alemania",
+        "role": "Activista por los derechos digitales y cofundadora de 'Netzneutralität Jetzt!', centrada en la autonomía digital y la ética de los datos.",
+        "profile_url": "https://lenaschmidt.org",
+        "status": "pending",
+        "email": "contacto@lenaschmidt.org",
+        "notes": "Su defensa de la neutralidad de la red y la soberanía digital la convierte en una aliada natural para la visión de una 'Reserva Excepcional' del .ia, que busca un modelo de gobernanza más justo y descentralizado."
+    },
+    {
+        "name": "Petr Novak",
+        "country": "República Checa",
+        "role": "Blogger tecnológico influyente y podcaster de 'Digital Frontier', que critica la concentración de poder en Big Tech y aboga por la privacidad.",
+        "profile_url": "https://digitalfrontier.cz",
+        "status": "pending",
+        "email": "petr.novak@digitalfrontier.cz",
+        "notes": "Su plataforma es ideal para difundir la narrativa de Anticitera sobre la necesidad de alternativas soberanas en la infraestructura de internet, llegando a una audiencia joven y tecnológicamente consciente."
+    },
+    {
+        "name": "Maria Papadopoulou",
+        "country": "Grecia",
+        "role": "Representante de 'Athenian Digital Commons', una pequeña asociación que promueve el software libre y la tecnología abierta en la comunidad local.",
+        "profile_url": "https://athenian-dc.gr/maria",
+        "status": "pending",
+        "email": "maria.p@athenian-dc.gr",
+        "notes": "Su conexión con la comunidad local griega y su compromiso con los 'commons digitales' la posicionan como una embajadora clave para contextualizar el .ia como un activo nacional y un bien común."
+    },
+    {
+        "name": "Liam O'Connell",
+        "country": "Irlanda",
+        "role": "Activista por la privacidad de datos y miembro de 'Irish Digital Rights Watch', enfocado en las políticas europeas de protección de datos.",
+        "profile_url": "https://irishdrw.org/liam",
+        "status": "pending",
+        "email": "liam.oconnell@irishdrw.org",
+        "notes": "Su experiencia en la intersección de la política de datos de la UE y los derechos individuales puede ayudar a enmarcar el .ia como una solución innovadora para la soberanía de datos a nivel territorial."
+    },
+    {
+        "name": "Sofia Rossi",
+        "country": "Italia",
+        "role": "Periodista independiente y creadora de contenido que explora el impacto social de la inteligencia artificial y la ética algorítmica.",
+        "profile_url": "https://sofiarossi.media",
+        "status": "pending",
+        "email": "contact@sofiarossi.media",
+        "notes": "Su capacidad para simplificar conceptos complejos sobre IA y ética es crucial para comunicar el valor estratégico de un TLD ético y soberano como el .ia a un público más amplio."
+    },
+    {
+        "name": "Anders Jensen",
+        "country": "Dinamarca",
+        "role": "Defensor del software libre y de código abierto, organizador de meetups tecnológicos y promotor de la cultura 'do-it-yourself' digital.",
+        "profile_url": "https://andersjensen.dk/opensource",
+        "status": "pending",
+        "email": "anders.jensen@opensource.dk",
+        "notes": "Su visión de un ecosistema digital abierto y descentralizado resuena directamente con el espíritu de Anticitera, y puede movilizar a la comunidad de desarrolladores y entusiastas del código abierto."
+    },
+    {
+        "name": "Elena Petkova",
+        "country": "Bulgaria",
+        "role": "Fundadora de 'Digital Citizens Bulgaria', una organización local que educa sobre la alfabetización digital y los derechos en línea.",
+        "profile_url": "https://digitalcitizens.bg/elena",
+        "status": "pending",
+        "email": "elena.petkova@digitalcitizens.bg",
+        "notes": "Su trabajo en la educación y empoderamiento digital es clave para asegurar que la propuesta del .ia sea comprendida y apoyada por una base ciudadana informada en la región."
+    },
+    {
+        "name": "Janis Ozols",
+        "country": "Letonia",
+        "role": "Activista por la transparencia gubernamental y el acceso abierto a la información, utilizando herramientas digitales para la rendición de cuentas.",
+        "profile_url": "https://transparentlatvia.lv/janis",
+        "status": "pending",
+        "email": "janis.ozols@transparentlatvia.lv",
+        "notes": "Su enfoque en la transparencia y la gobernanza abierta se alinea con la búsqueda de un TLD que pueda ser un faro de innovación y claridad, libre de las opacidades actuales."
+    },
+    {
+        "name": "Katarzyna Kowalska",
+        "country": "Polonia",
+        "role": "Cofundadora de 'Cyfrowa Wolność', una pequeña ONG que monitorea la legislación digital y defiende las libertades civiles en línea.",
+        "profile_url": "https://cyfrowawolnosc.pl/katarzyna",
+        "status": "pending",
+        "email": "katarzyna.k@cyfrowawolnosc.pl",
+        "notes": "Su experiencia en la defensa legal de los derechos digitales puede proporcionar una perspectiva invaluable y un apoyo estratégico al enmarcar el .ia como una herramienta para la autonomía digital y legal."
+    },
+    {
+        "name": "Ana Silva",
+        "country": "Portugal",
+        "role": "Podcaster y experta en ciberseguridad que divulga sobre los riesgos de la vigilancia digital y la importancia de la criptografía para el ciudadano común.",
+        "profile_url": "https://anasilva.tech/podcast",
+        "status": "pending",
+        "email": "ana.silva@anasilva.tech",
+        "notes": "Su audiencia, preocupada por la seguridad y la privacidad, es el terreno fértil para presentar el .ia como un refugio de confianza y una base para la construcción de una identidad digital segura."
+    },
+    {
+        "name": "Markus Berg",
+        "country": "Suecia",
+        "role": "Desarrollador de software y bloguero que promueve las licencias Creative Commons y la creación de contenido abierto en la era digital.",
+        "profile_url": "https://markusberg.dev/blog",
+        "status": "pending",
+        "email": "markus.berg@creativecommons.se",
+        "notes": "Su compromiso con los estándares abiertos y la economía creativa es valioso para posicionar el .ia no solo como un dominio, sino como un ecosistema para la innovación abierta y la expresión."
+    },
+    {
+        "name": "Eva Kováčová",
+        "country": "Eslovaquia",
+        "role": "Líder de una iniciativa local de 'CivicTech', que utiliza la tecnología para mejorar la participación ciudadana y la gobernanza local.",
+        "profile_url": "https://civictech.sk/eva",
+        "status": "pending",
+        "email": "eva.kovacova@civictech.sk",
+        "notes": "Su trabajo resalta cómo la tecnología puede empoderar a las comunidades, lo que se alinea perfectamente con la visión del .ia como un facilitador de la autonomía digital para el territorio de Anticitera."
+    },
+    {
+        "name": "Tanja Virtanen",
+        "country": "Finlandia",
+        "role": "Investigadora ciudadana y defensora de la alfabetización algorítmica, que educa al público sobre cómo funcionan los algoritmos y su impacto en la sociedad.",
+        "profile_url": "https://algorithmwatch.fi/tanja",
+        "status": "pending",
+        "email": "tanja.virtanen@algorithmwatch.fi",
+        "notes": "Su perspectiva crítica sobre la IA es crucial para demostrar que el .ia no es solo una extensión, sino un compromiso con la IA ética y transparente, un diferenciador clave para nuestro proyecto."
+    },
+    {
+        "name": "Kristóf Balogh",
+        "country": "Hungría",
+        "role": "Activista por la libertad de expresión en línea y el acceso a la información, a menudo comentando sobre la censura y la vigilancia digital.",
+        "profile_url": "https://szabadinternet.hu/kristof",
+        "status": "pending",
+        "email": "kristof.balogh@szabadinternet.hu",
+        "notes": "Su lucha por la libertad de expresión resuena con la promesa de un dominio soberano que pueda ofrecer una plataforma más resistente a las presiones externas, reforzando la autonomía digital."
+    },
+    {
+        "name": "Daria Popescu",
+        "country": "Rumanía",
+        "role": "Cofundadora de 'Tech4Good Romania', una organización que apoya proyectos de tecnología cívica y soluciones digitales con impacto social positivo.",
+        "profile_url": "https://tech4good.ro/daria",
+        "status": "pending",
+        "email": "daria.popescu@tech4good.ro",
+        "notes": "Su enfoque en 'Tech4Good' valida el potencial del .ia como un catalizador para la innovación y el desarrollo tecnológico responsable, beneficiando no solo a Anticitera, sino sirviendo como modelo."
+    },
+    {
+        "name": "Elias Christou",
+        "country": "Chipre",
+        "role": "Desarrollador de software y blogger que comparte conocimientos sobre tecnologías descentralizadas (Web3) y su potencial para la soberanía de los datos.",
+        "profile_url": "https://eliaschristou.dev/web3",
+        "status": "pending",
+        "email": "elias.christou@web3cyprus.org",
+        "notes": "Su experiencia en Web3 es directamente relevante para la fase PoC de Anticitera y puede ayudar a tender puentes entre la visión descentralizada y el objetivo de la soberanía ICANN/ISO."
+    },
+    {
+        "name": "Laura Kuusik",
+        "country": "Estonia",
+        "role": "Consultora de ciberseguridad y educadora, especializada en la protección de la identidad digital y la infraestructura crítica.",
+        "profile_url": "https://laurakuusik.com",
+        "status": "pending",
+        "email": "laura.kuusik@laurakuusik.com",
+        "notes": "Su autoridad en ciberseguridad y la identidad digital es fundamental para argumentar que el .ia es una infraestructura crítica que debe ser protegida mediante una 'Reserva Excepcional'."
+    },
+    {
+        "name": "Ivan Horvat",
+        "country": "Croacia",
+        "role": "Activista por la apertura de datos gubernamentales y la transparencia en la toma de decisiones públicas, a través de su blog 'Otvoreni Podaci'.",
+        "profile_url": "https://otvorenipodaci.hr/ivan",
+        "status": "pending",
+        "email": "ivan.horvat@otvorenipodaci.hr",
+        "notes": "Su defensa de los datos abiertos y la transparencia es un eco de los valores que el Proyecto Anticitera desea encarnar, lo que hace de él un portavoz creíble para nuestra iniciativa."
+    },
+    {
+        "name": "Marija Petrova",
+        "country": "Eslovenia",
+        "role": "Investigadora social y columnista que analiza el impacto de la tecnología en la democracia y los derechos humanos, con foco en la IA.",
+        "profile_url": "https://techdemocracyslo.org/marija",
+        "status": "pending",
+        "email": "marija.petrova@techdemocracyslo.org",
+        "notes": "Su capacidad para vincular la tecnología con la democracia y los derechos humanos es vital para enmarcar el .ia como un activo estratégico para la gobernanza digital y la autonomía territorial."
+    },
+    {
+        "name": "Dirk van der Velde",
+        "country": "Países Bajos",
+        "role": "Defensor de la privacidad de los datos en línea y organizador de talleres sobre cómo proteger la identidad digital en la era de los grandes datos.",
+        "profile_url": "https://privacyfirst.nl/dirk",
+        "status": "pending",
+        "email": "dirk.v@privacyfirst.nl",
+        "notes": "Su trabajo en la protección de la identidad digital se alinea perfectamente con la noción de Anticitera como un espacio digital soberano, ofreciendo una narrativa convincente para el público general."
+    }
+]
+```
