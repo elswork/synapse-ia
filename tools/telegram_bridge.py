@@ -13,6 +13,7 @@ from tools.select_mep_proposal import MEPSelector
 from tools.select_bunny_proposal import BunnySelector
 from tools.select_tigreton_proposal import TigretonSelector
 from tools.select_donut_proposal import DonutSelector
+from tools.select_pringles_proposal import PringlesSelector
 from tools.moltbook_heartbeat import execute_heartbeat
 from tools.email_sender import EmailSender
 from tools.url_analyzer import URLAnalyzer
@@ -38,8 +39,10 @@ pending_bunny_proposals = {}
 TEST_BUNNY_MODE = False
 pending_tigreton_proposals = {}
 pending_donut_proposals = {}
+pending_pringles_proposals = {}
 TEST_TIGRETON_MODE = False
 TEST_DONUT_MODE = False
+TEST_PRINGLES_MODE = False
 
 if not BOT_TOKEN:
     print("❌ Error: TELEGRAM_BOT_TOKEN no configurado en el .env")
@@ -56,7 +59,8 @@ class ArchimedesBrain(AthenaBrain):
     def __init__(self, base_path=None):
         base_path = base_path or os.environ.get("BASE_PATH", "/app")
         # El cerebro principal para chat usa un modelo estable de 2026
-        super().__init__(base_path, model_name="gemini-2.0-flash")
+        # Actualizado a 2.5-flash para evitar errores de cuota 429
+        super().__init__(base_path, model_name="gemini-2.5-flash")
         self.prompt_path = os.path.join(self.base_path, "prompts/archimedes.md")
 
 brain = ArchimedesBrain()
@@ -88,7 +92,8 @@ def send_welcome(message):
         "/pasar_mep [filtro] - Forjar propuesta para MEP\n"
         "/pasar_bunny [filtro] - Forjar propuesta para Arconte Experto\n"
         "/pasar_tigreton [filtro] - Forjar propuesta para Contacto de Poder (Alta Órbita)\n"
-        "/pasar_donut [filtro] - Forjar propuesta para Ciudadano (Saturación Terrestre)\n"
+        "/pasar_donut [filtro] - Forjar propuesta para Ciudadano Consumidor (Saturación Terrestre)\n"
+        "/pasar_pringles [filtro] - Forjar propuesta para Ciudadano Normal (Invasión Pringles)\n"
         "/aprobar [id] - Validar noticia para la memoria\n"
         "/todos - Listar tareas pendientes"
     )
@@ -788,6 +793,132 @@ def handle_donut_approval(call):
                               text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n❌ Error en el servidor SMTP."), parse_mode='HTML')
                               
     del pending_donut_proposals[proposal_id]
+
+@bot.message_handler(commands=['pasar_pringles'])
+def pasar_pringles(message):
+    if ALLOWED_USER_ID and str(message.from_user.id) != str(ALLOWED_USER_ID):
+        return
+
+    args = message.text.split(maxsplit=1)
+    name_filter = args[1] if len(args) > 1 else None
+
+    bot.send_message(message.chat.id, "🏛️ *Protocolo Arquímedes (Operación Pringles):* Iniciando selección de Ciudadano Normal...", parse_mode='Markdown')
+    bot.send_chat_action(message.chat.id, 'typing')
+
+    try:
+        selector = PringlesSelector()
+        proposal = selector.generate_proposal(name_filter)
+
+        if "error" in proposal:
+            bot.send_message(message.chat.id, f"❌ {proposal['error']}")
+            return
+
+        expert = proposal['expert']
+        email_data = proposal['email']
+
+        current_dir = os.path.dirname(__file__)
+        template_rel_path = "templates/pringles_email_template.html" if os.path.basename(current_dir) == "tools" else "tools/templates/pringles_email_template.html"
+        template_path = os.path.join(current_dir, template_rel_path)
+        
+        # Fallback if pringles template doesn't exist yet, use donut template
+        if not os.path.exists(template_path):
+            template_path = template_path.replace("pringles", "donut")
+
+        with open(template_path, 'r', encoding='utf-8') as f:
+            template_html = f.read()
+
+        rich_html = template_html.replace("{{expert_name}}", expert.get('name', 'N/A'))
+        rich_html = rich_html.replace("{{expert_country}}", expert.get('country', 'N/A'))
+        rich_html = rich_html.replace("{{expert_role}}", expert.get('role', 'N/A'))
+        rich_html = rich_html.replace("{{expert_email}}", expert.get('email', 'N/A'))
+        rich_html = rich_html.replace("{{subject}}", email_data['subject_local'])
+        rich_html = rich_html.replace("{{body_text}}", email_data['body_local'])
+        rich_html = rich_html.replace("{{body_spanish}}", email_data['body_spanish'])
+
+        import time
+        proposal_id = f"pringles_{int(time.time())}"
+        
+        pending_pringles_proposals[proposal_id] = {
+            "expert": expert,
+            "email_data": email_data,
+            "rich_html": rich_html,
+            "saved_path": selector.save_proposal(proposal)
+        }
+
+        markup = InlineKeyboardMarkup()
+        markup.row_width = 2
+        markup.add(
+            InlineKeyboardButton("✅ Aprobar Envío", callback_data=f"approve_{proposal_id}"),
+            InlineKeyboardButton("❌ Descartar", callback_data=f"reject_{proposal_id}")
+        )
+
+        message_text = (
+            f"🥔 <b>Propuesta Lista para Ciudadano (Pringles)</b>\n\n"
+            f"<b>Nombre:</b> {html.escape(expert.get('name', 'N/A'))} ({html.escape(expert.get('country', 'N/A'))})\n"
+            f"<b>Email:</b> <code>{html.escape(expert.get('email', 'N/A'))}</code>\n\n"
+            f"<b>Asunto:</b> {html.escape(email_data['subject_local'])}\n\n"
+            f"<b>Cuerpo (Castellano):</b>\n"
+            f"<i>{html.escape(email_data['body_spanish'])}</i>\n\n"
+            f"¿Autorizas el despliegue del correo?"
+        )
+        bot.send_message(message.chat.id, message_text, parse_mode='HTML', reply_markup=markup)
+
+    except Exception as e:
+        bot.send_message(message.chat.id, f"❌ Error crítico en la forja (Pringles): {str(e)}")
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('approve_pringles_') or call.data.startswith('reject_pringles_'))
+def handle_pringles_approval(call):
+    if ALLOWED_USER_ID and str(call.from_user.id) != str(ALLOWED_USER_ID):
+        return
+        
+    action, proposal_id = call.data.split('_', 1)
+    proposal_id = "pringles_" + proposal_id.split('_', 1)[1] if len(proposal_id.split('_')) > 1 else call.data.replace('approve_', '').replace('reject_', '')
+
+    if proposal_id not in pending_pringles_proposals:
+        bot.answer_callback_query(call.id, "❌ Esta propuesta ha expirado.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=call.message.text + "\n\n<i>(Propuesta Expirada)</i>", parse_mode='HTML')
+        return
+        
+    proposal = pending_pringles_proposals[proposal_id]
+    
+    if call.data.startswith('reject'):
+        bot.answer_callback_query(call.id, "Propuesta descartada.")
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+        del pending_pringles_proposals[proposal_id]
+        return
+        
+    bot.answer_callback_query(call.id, "Aprobado. Desplegando...")
+    bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                          text=call.message.text + "\n\n⏳ <i>Desplegando en la red...</i>", parse_mode='HTML')
+                          
+    expert = proposal['expert']
+    email_data = proposal['email_data']
+    
+    destination_email = "elswork@gmail.com" if TEST_PRINGLES_MODE else expert.get('email', '')
+    mode_text = "⚠️ <b>[MODO TEST - ENVIADO A ELSWORK]</b>" if TEST_PRINGLES_MODE else "✅ <b>[DESPLIEGUE OFICIAL]</b>"
+    
+    from tools.email_sender import EmailSender
+    sender = EmailSender()
+    
+    formatted_body = email_data['body_local'].replace('\n', '<br>')
+    body_html_direct = f"<div style='font-family: sans-serif; font-size: 14px; color: #333; line-height: 1.6;'>{formatted_body}</div>"
+    
+    success = sender.send_direct_email(
+        to_email=destination_email,
+        subject=email_data['subject_local'],
+        body_html=body_html_direct,
+        body_text=email_data['body_local']
+    )
+    
+    if success:
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n{mode_text} Desplegado con éxito a `{destination_email}`."), parse_mode='HTML')
+    else:
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
+                              text=call.message.text.replace("⏳ <i>Desplegando en la red...</i>", f"\n\n❌ Error en el servidor SMTP."), parse_mode='HTML')
+                              
+    del pending_pringles_proposals[proposal_id]
 
 @bot.callback_query_handler(func=lambda call: True)
 def debug_all_callbacks(call):
