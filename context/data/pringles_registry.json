@@ -13,18 +13,18 @@
         "country": "República Checa",
         "role": "Blogger tecnológico influyente y podcaster de 'Digital Frontier', que critica la concentración de poder en Big Tech y aboga por la privacidad.",
         "profile_url": "https://digitalfrontier.cz",
-        "status": "pending",
+        "status": "contacted",
         "email": "petr.novak@digitalfrontier.cz",
-        "notes": "Su plataforma es ideal para difundir la narrativa de Anticitera sobre la necesidad de alternativas soberanas en la infraestructura de internet, llegando a una audiencia joven y tecnológicamente consciente."
+        "notes": "Su plataforma es ideal para difundir la narrativa de Anticitera sobre la necesidad de alternativas soberanas en la infraestructura de internet, llegando a una audiencia joven y tecnológicamente consciente. | Auto-contacted by Global Gmail Audit script."
     },
     "3": {
         "name": "Maria Papadopoulou",
         "country": "Grecia",
         "role": "Representante de 'Athenian Digital Commons', una pequeña asociación que promueve el software libre y la tecnología abierta en la comunidad local.",
         "profile_url": "https://athenian-dc.gr/maria",
-        "status": "pending",
+        "status": "contacted",
         "email": "maria.p@athenian-dc.gr",
-        "notes": "Su conexión con la comunidad local griega y su compromiso con los 'commons digitales' la posicionan como una embajadora clave para contextualizar el .ia como un activo nacional y un bien común."
+        "notes": "Su conexión con la comunidad local griega y su compromiso con los 'commons digitales' la posicionan como una embajadora clave para contextualizar el .ia como un activo nacional y un bien común. | Auto-contacted by Global Gmail Audit script."
     },
     "4": {
         "name": "Liam O'Connell",
@@ -40,9 +40,9 @@
         "country": "Italia",
         "role": "Periodista independiente y creadora de contenido que explora el impacto social de la inteligencia artificial y la ética algorítmica.",
         "profile_url": "https://sofiarossi.media",
-        "status": "pending",
+        "status": "contacted",
         "email": "contact@sofiarossi.media",
-        "notes": "Su capacidad para simplificar conceptos complejos sobre IA y ética es crucial para comunicar el valor estratégico de un TLD ético y soberano como el .ia a un público más amplio."
+        "notes": "Su capacidad para simplificar conceptos complejos sobre IA y ética es crucial para comunicar el valor estratégico de un TLD ético y soberano como el .ia a un público más amplio. | Auto-contacted by Global Gmail Audit script."
     },
     "6": {
         "name": "Anders Jensen",
@@ -58,9 +58,9 @@
         "country": "Bulgaria",
         "role": "Fundadora de 'Digital Citizens Bulgaria', una organización local que educa sobre la alfabetización digital y los derechos en línea.",
         "profile_url": "https://digitalcitizens.bg/elena",
-        "status": "pending",
+        "status": "contacted",
         "email": "elena.petkova@digitalcitizens.bg",
-        "notes": "Su trabajo en la educación y empoderamiento digital es clave para asegurar que la propuesta del .ia sea comprendida y apoyada por una base ciudadana informada en la región."
+        "notes": "Su trabajo en la educación y empoderamiento digital es clave para asegurar que la propuesta del .ia sea comprendida y apoyada por una base ciudadana informada en la región. | Auto-contacted by Global Gmail Audit script."
     },
     "8": {
         "name": "Janis Ozols",
@@ -94,9 +94,9 @@
         "country": "Suecia",
         "role": "Desarrollador de software y bloguero que promueve las licencias Creative Commons y la creación de contenido abierto en la era digital.",
         "profile_url": "https://markusberg.dev/blog",
-        "status": "pending",
+        "status": "contacted",
         "email": "markus.berg@creativecommons.se",
-        "notes": "Su compromiso con los estándares abiertos y la economía creativa es valioso para posicionar el .ia no solo como un dominio, sino como un ecosistema para la innovación abierta y la expresión."
+        "notes": "Su compromiso con los estándares abiertos y la economía creativa es valioso para posicionar el .ia no solo como un dominio, sino como un ecosistema para la innovación abierta y la expresión. | Auto-contacted by Global Gmail Audit script."
     },
     "12": {
         "name": "Eva Kováčová",
@@ -148,9 +148,9 @@
         "country": "Estonia",
         "role": "Consultora de ciberseguridad y educadora, especializada en la protección de la identidad digital y la infraestructura crítica.",
         "profile_url": "https://laurakuusik.com",
-        "status": "pending",
+        "status": "contacted",
         "email": "laura.kuusik@laurakuusik.com",
-        "notes": "Su autoridad en ciberseguridad y la identidad digital es fundamental para argumentar que el .ia es una infraestructura crítica que debe ser protegida mediante una 'Reserva Excepcional'."
+        "notes": "Su autoridad en ciberseguridad y la identidad digital es fundamental para argumentar que el .ia es una infraestructura crítica que debe ser protegida mediante una 'Reserva Excepcional'. | Auto-contacted by Global Gmail Audit script."
     },
     "18": {
         "name": "Ivan Horvat",
@@ -175,8 +175,8 @@
         "country": "Países Bajos",
         "role": "Defensor de la privacidad de los datos en línea y organizador de talleres sobre cómo proteger la identidad digital en la era de los grandes datos.",
         "profile_url": "https://privacyfirst.nl/dirk",
-        "status": "pending",
+        "status": "contacted",
         "email": "dirk.v@privacyfirst.nl",
-        "notes": "Su trabajo en la protección de la identidad digital se alinea perfectamente con la noción de Anticitera como un espacio digital soberano, ofreciendo una narrativa convincente para el público general."
+        "notes": "Su trabajo en la protección de la identidad digital se alinea perfectamente con la noción de Anticitera como un espacio digital soberano, ofreciendo una narrativa convincente para el público general. | Auto-contacted by Global Gmail Audit script."
     }
 }

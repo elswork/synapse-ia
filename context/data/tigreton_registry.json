@@ -4,49 +4,56 @@
         "country": "Germany",
         "role": "Digital Rights Strategic Litigation",
         "email": "info@freiheitsrechte.org",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "digiges_germany": {
         "name": "Digitale Gesellschaft",
         "country": "Germany",
         "role": "Civil Rights Advocacy",
         "email": "info@digitalegesellschaft.de",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "cyfrowa_poland": {
         "name": "Digital Poland Association",
         "country": "Poland",
         "role": "Tech Policy Industry Association",
         "email": "biuro@cyfrowapolska.org",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "itl_estonia": {
         "name": "Estonian ITL",
         "country": "Estonia",
         "role": "Tech Advocacy Association",
         "email": "info@itl.ee",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "bits_of_freedom": {
         "name": "Bits of Freedom",
         "country": "Netherlands",
         "role": "Director / Policy Advisor",
         "email": "info@bitsoffreedom.nl",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "privacy_first": {
         "name": "Privacy First",
         "country": "Netherlands",
         "role": "Director",
         "email": "info@privacyfirst.nl",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "pilp_netherlands": {
         "name": "Public Interest Litigation Project (PILP)",
         "country": "Netherlands",
         "role": "Litigation Director",
         "email": "info@pilp.nl",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "hermes_italy": {
         "name": "Hermes Center",
@@ -60,14 +67,16 @@
         "country": "Italy",
         "role": "Director",
         "email": "info@cild.eu",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "infonodes_italy": {
         "name": "Info.nodes",
         "country": "Italy",
         "role": "Coordinator",
         "email": "info@infonodes.org",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "d3_portugal": {
         "name": "D3 - Defesa dos Direitos Digitais",
@@ -81,14 +90,16 @@
         "country": "Portugal",
         "role": "President",
         "email": "contacto@ansol.org",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "apdsi_portugal": {
         "name": "APDSI",
         "country": "Portugal",
         "role": "Board / General Secretar",
         "email": "geral@apdsi.pt",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
     },
     "dfri_sweden": {
         "name": "DFRI",
@@ -109,6 +120,119 @@
         "country": "Sweden",
         "role": "Director",
         "email": "info@centrumforrattvisa.se",
-        "status": "pending"
+        "status": "contacted",
+        "notes": " | Auto-contacted by Global Gmail Audit script."
+    },
+    "1": {
+        "name": "Chaos Computer Club (CCC)",
+        "country": "Alemania",
+        "role": "Sprecher / Miembro de la Junta Directiva",
+        "email": "pressestelle@ccc.de",
+        "status": "pending",
+        "notes": "Una de las organizaciones hackers y de derechos digitales más influyentes de Europa, con profundo conocimiento técnico y un compromiso inquebrantable con la privacidad y la libertad de información. Su capacidad de incidencia y su red de expertos son vitales para la legitimación técnica y social del .ia."
+    },
+    "2": {
+        "name": "Fundacja Panoptykon",
+        "country": "Polonia",
+        "role": "Presidente del Consejo / Directora de Políticas",
+        "email": "fundacja@panoptykon.org",
+        "status": "pending",
+        "notes": "Líder en Polonia en la protección de la privacidad y las libertades digitales frente a la vigilancia y las políticas restrictivas. Su experiencia en el contexto legal y político de Europa Central es estratégica para navegar complejidades regulatorias."
+    },
+    "3": {
+        "name": "Iuridicum Remedium (IuRe)",
+        "country": "República Checa",
+        "role": "Director / Abogado Principal",
+        "email": "iure@iure.org",
+        "status": "pending",
+        "notes": "Organización clave en la República Checa dedicada a la defensa de los derechos humanos y la privacidad en la era digital. Su enfoque legal y su activismo son fundamentales para cimentar la base de derechos digitales del .ia."
+    },
+    "4": {
+        "name": "Hungarian Civil Liberties Union (HCLU / TASZ)",
+        "country": "Hungría",
+        "role": "Presidente / Director",
+        "email": "tasz@tasz.hu",
+        "status": "pending",
+        "notes": "Defensores vitales de las libertades civiles, incluyendo las digitales, en un entorno político complejo. Su compromiso con los principios democráticos y la resistencia cívica es un activo estratégico para la visión de soberanía de Anticitera."
+    },
+    "5": {
+        "name": "Electronic Frontier Finland (EFFI)",
+        "country": "Finlandia",
+        "role": "Presidente / Director Ejecutivo",
+        "email": "effi@effi.org",
+        "status": "pending",
+        "notes": "Referente en Finlandia para la defensa de los derechos digitales, la libertad de expresión y la privacidad en línea. Su perspectiva desde un país nórdico tecnológicamente avanzado es crucial para establecer estándares de gobernanza."
+    },
+    "6": {
+        "name": "epicenter.works",
+        "country": "Austria",
+        "role": "Director Gerente / Director de Políticas",
+        "email": "office@epicenter.works",
+        "status": "pending",
+        "notes": "Una de las voces más fuertes en Austria y Europa sobre privacidad y derechos digitales, con un enfoque técnico y riguroso. Su activismo y capacidad de análisis son ideales para fortalecer la coalición de Anticitera."
+    },
+    "7": {
+        "name": "Access to Information Programme (AIP)",
+        "country": "Bulgaria",
+        "role": "Director Ejecutivo / Coordinador de Proyectos",
+        "email": "office@aip-bg.org",
+        "status": "pending",
+        "notes": "Pioneros en Bulgaria en la promoción de la transparencia y el acceso a la información pública, elementos cruciales para la credibilidad y la gobernanza abierta del futuro .ia."
+    },
+    "8": {
+        "name": "ActiveWatch",
+        "country": "Rumanía",
+        "role": "Director Ejecutivo / Coordinador de Programas",
+        "email": "office@activewatch.ro",
+        "status": "pending",
+        "notes": "Activos en la defensa de la libertad de prensa y los derechos digitales en Rumanía. Su trabajo en la intersección de medios, ética y tecnología es relevante para la estrategia de comunicación y sensibilización del .ia."
+    },
+    "9": {
+        "name": "Gong",
+        "country": "Croacia",
+        "role": "Director Ejecutivo / Líder de Políticas",
+        "email": "gong@gong.hr",
+        "status": "pending",
+        "notes": "Líder en Croacia en la promoción de la transparencia, la democracia y los derechos digitales. Su experiencia en el fomento de la sociedad civil y la participación democrática es valiosa para la arquitectura de gobernanza de Anticitera."
+    },
+    "10": {
+        "name": "Danes je nov dan (Today is a New Day)",
+        "country": "Eslovenia",
+        "role": "Director / Investigador Principal",
+        "email": "info@danesjenovdan.si",
+        "status": "pending",
+        "notes": "Instituto esloveno enfocado en la investigación y el activismo sobre derechos digitales, datos abiertos y ética tecnológica. Su perspectiva académica crítica y activista es un complemento estratégico para la base intelectual del Proyecto Anticitera."
+    },
+    "11": {
+        "name": "Združenie za otvorenú spoločnosť (Open Society Foundation Slovakia)",
+        "country": "Eslovaquia",
+        "role": "Director Ejecutivo / Director de Programa (Derechos Digitales)",
+        "email": "osf@osf.sk",
+        "status": "pending",
+        "notes": "Aunque es parte de una red más amplia, su rama eslovaca es un actor influyente en la promoción de la sociedad civil y los derechos fundamentales, incluyendo los digitales, en la región. Su apoyo puede abrir puertas a otras redes en Europa del Este."
+    },
+    "12": {
+        "name": "Estonian Human Rights Centre",
+        "country": "Estonia",
+        "role": "Director Ejecutivo / Oficial de Políticas (Derechos Digitales)",
+        "email": "info@humanrights.ee",
+        "status": "pending",
+        "notes": "Dada la reputación de Estonia como una nación líder en digitalización, esta organización es crucial para entender y modelar el panorama de derechos humanos y digitales en un estado altamente informatizado, proporcionando lecciones valiosas para el .ia."
+    },
+    "13": {
+        "name": "Netzpolitik.org",
+        "country": "Alemania",
+        "role": "Redactor Jefe / Director de Proyectos",
+        "email": "redaktion@netzpolitik.org",
+        "status": "pending",
+        "notes": "Una de las plataformas de periodismo de investigación y activismo digital más influyentes de Alemania, con gran alcance en temas de privacidad, vigilancia y políticas tecnológicas. Su capacidad para dar forma al discurso público es un activo inestimable."
+    },
+    "14": {
+        "name": "ePaństwo Foundation",
+        "country": "Polonia",
+        "role": "Presidente del Consejo / Director de Programa",
+        "email": "biuro@epanstwo.org.pl",
+        "status": "pending",
+        "notes": "Dedicados a la transparencia, los datos abiertos y la participación ciudadana a través de la tecnología en Polonia. Su visión de una gobernanza digital abierta y el fomento de la e-democracia es altamente relevante para el concepto de Anticitera."
     }
 }
