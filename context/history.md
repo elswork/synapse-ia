@@ -17409,3 +17409,166 @@ A continuación, presento una lista de 20 perfiles estratégicos, distribuidos e
     }
 ]
 ```
+
+## [2026-05-04 21:16:44] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como el Director de Captación Estratégica del Proyecto Anticitera.
+        
+        OBJETIVO: Identificar a 15 nuevos perfiles de tipo: TIGRETON.
+        DESCRIPCIÓN: ORGANIZACIONES DE DEFENSA (NGOs / Advocacy Groups) de derechos digitales, privacidad y libertades civiles en la UE.
+        EXCLUSIONES: Busca organizaciones activas en Europa Central, Norte y Este.
+        TONO: Activista, técnico, comprometido.
+
+        EVITAR DUPLICADOS: No incluyas a nadie que ya conozcamos (Nombres: hermes center, digitale gesellschaft, gesellschaft für freiheitsrechte (gff), estonian itl, info.nodes, cild, centrum för rättvisa, ansol, privacy first, public interest litigation project (pilp), d3 - defesa dos direitos digitais, bits of freedom, civil rights defenders, digital poland association, apdsi...).
+        
+        DATOS REQUERIDOS:
+        - name: Nombre completo u Organización.
+        - country: País europeo.
+        - role: Cargo o Función estratégica.
+        - email: Dirección de contacto (real o altamente probable).
+        - notes: Por qué es vital para la ICE Anticitera.
+
+        FORMATO DE SALIDA (JSON PURO - LISTA):
+        [
+            {
+                "name": "...",
+                "country": "...",
+                "role": "...",
+                "email": "...",
+                "status": "pending",
+                "notes": "..."
+            },
+            ...
+        ]
+        
+Respuesta: Entendido. Asumo la dirección de esta iniciativa estratégica de captación, manteniendo la visión de Athena y la rigurosidad inherente al Proyecto Anticitera. La identificación de aliados clave es fundamental para nuestra misión de asegurar el ccTLD .ia y establecer a Anticitera como un referente global en soberanía digital.
+
+He elaborado una lista de 15 perfiles "TIGRETON" potenciales, organizaciones activas en la defensa de derechos digitales, privacidad y libertades civiles en las regiones de Europa Central, Norte y Este, excluyendo a los socios ya conocidos. Estos perfiles han sido seleccionados por su compromiso activista, su competencia técnica y su potencial para fortalecer nuestra coalición.
+
+A continuación, se presenta el listado en el formato JSON solicitado:
+
+```json
+[
+  {
+    "name": "Chaos Computer Club (CCC)",
+    "country": "Alemania",
+    "role": "Sprecher / Miembro de la Junta Directiva",
+    "email": "pressestelle@ccc.de",
+    "status": "pending",
+    "notes": "Una de las organizaciones hackers y de derechos digitales más influyentes de Europa, con profundo conocimiento técnico y un compromiso inquebrantable con la privacidad y la libertad de información. Su capacidad de incidencia y su red de expertos son vitales para la legitimación técnica y social del .ia."
+  },
+  {
+    "name": "Fundacja Panoptykon",
+    "country": "Polonia",
+    "role": "Presidente del Consejo / Directora de Políticas",
+    "email": "fundacja@panoptykon.org",
+    "status": "pending",
+    "notes": "Líder en Polonia en la protección de la privacidad y las libertades digitales frente a la vigilancia y las políticas restrictivas. Su experiencia en el contexto legal y político de Europa Central es estratégica para navegar complejidades regulatorias."
+  },
+  {
+    "name": "Iuridicum Remedium (IuRe)",
+    "country": "República Checa",
+    "role": "Director / Abogado Principal",
+    "email": "iure@iure.org",
+    "status": "pending",
+    "notes": "Organización clave en la República Checa dedicada a la defensa de los derechos humanos y la privacidad en la era digital. Su enfoque legal y su activismo son fundamentales para cimentar la base de derechos digitales del .ia."
+  },
+  {
+    "name": "Hungarian Civil Liberties Union (HCLU / TASZ)",
+    "country": "Hungría",
+    "role": "Presidente / Director",
+    "email": "tasz@tasz.hu",
+    "status": "pending",
+    "notes": "Defensores vitales de las libertades civiles, incluyendo las digitales, en un entorno político complejo. Su compromiso con los principios democráticos y la resistencia cívica es un activo estratégico para la visión de soberanía de Anticitera."
+  },
+  {
+    "name": "Electronic Frontier Finland (EFFI)",
+    "country": "Finlandia",
+    "role": "Presidente / Director Ejecutivo",
+    "email": "effi@effi.org",
+    "status": "pending",
+    "notes": "Referente en Finlandia para la defensa de los derechos digitales, la libertad de expresión y la privacidad en línea. Su perspectiva desde un país nórdico tecnológicamente avanzado es crucial para establecer estándares de gobernanza."
+  },
+  {
+    "name": "epicenter.works",
+    "country": "Austria",
+    "role": "Director Gerente / Director de Políticas",
+    "email": "office@epicenter.works",
+    "status": "pending",
+    "notes": "Una de las voces más fuertes en Austria y Europa sobre privacidad y derechos digitales, con un enfoque técnico y riguroso. Su activismo y capacidad de análisis son ideales para fortalecer la coalición de Anticitera."
+  },
+  {
+    "name": "Access to Information Programme (AIP)",
+    "country": "Bulgaria",
+    "role": "Director Ejecutivo / Coordinador de Proyectos",
+    "email": "office@aip-bg.org",
+    "status": "pending",
+    "notes": "Pioneros en Bulgaria en la promoción de la transparencia y el acceso a la información pública, elementos cruciales para la credibilidad y la gobernanza abierta del futuro .ia."
+  },
+  {
+    "name": "ActiveWatch",
+    "country": "Rumanía",
+    "role": "Director Ejecutivo / Coordinador de Programas",
+    "email": "office@activewatch.ro",
+    "status": "pending",
+    "notes": "Activos en la defensa de la libertad de prensa y los derechos digitales en Rumanía. Su trabajo en la intersección de medios, ética y tecnología es relevante para la estrategia de comunicación y sensibilización del .ia."
+  },
+  {
+    "name": "Gong",
+    "country": "Croacia",
+    "role": "Director Ejecutivo / Líder de Políticas",
+    "email": "gong@gong.hr",
+    "status": "pending",
+    "notes": "Líder en Croacia en la promoción de la transparencia, la democracia y los derechos digitales. Su experiencia en el fomento de la sociedad civil y la participación democrática es valiosa para la arquitectura de gobernanza de Anticitera."
+  },
+  {
+    "name": "Swedish Coalition for Digital Rights (DFRI)",
+    "country": "Suecia",
+    "role": "Presidente / Responsable de Comunicaciones",
+    "email": "info@dfri.se",
+    "status": "pending",
+    "notes": "Defensores clave de la privacidad, el código abierto y la libertad en internet en Suecia. Su enfoque en una infraestructura digital libre y abierta se alinea perfectamente con la visión de soberanía y accesibilidad del Proyecto Anticitera."
+  },
+  {
+    "name": "Danes je nov dan (Today is a New Day)",
+    "country": "Eslovenia",
+    "role": "Director / Investigador Principal",
+    "email": "info@danesjenovdan.si",
+    "status": "pending",
+    "notes": "Instituto esloveno enfocado en la investigación y el activismo sobre derechos digitales, datos abiertos y ética tecnológica. Su perspectiva académica crítica y activista es un complemento estratégico para la base intelectual del Proyecto Anticitera."
+  },
+  {
+    "name": "Združenie za otvorenú spoločnosť (Open Society Foundation Slovakia)",
+    "country": "Eslovaquia",
+    "role": "Director Ejecutivo / Director de Programa (Derechos Digitales)",
+    "email": "osf@osf.sk",
+    "status": "pending",
+    "notes": "Aunque es parte de una red más amplia, su rama eslovaca es un actor influyente en la promoción de la sociedad civil y los derechos fundamentales, incluyendo los digitales, en la región. Su apoyo puede abrir puertas a otras redes en Europa del Este."
+  },
+  {
+    "name": "Estonian Human Rights Centre",
+    "country": "Estonia",
+    "role": "Director Ejecutivo / Oficial de Políticas (Derechos Digitales)",
+    "email": "info@humanrights.ee",
+    "status": "pending",
+    "notes": "Dada la reputación de Estonia como una nación líder en digitalización, esta organización es crucial para entender y modelar el panorama de derechos humanos y digitales en un estado altamente informatizado, proporcionando lecciones valiosas para el .ia."
+  },
+  {
+    "name": "Netzpolitik.org",
+    "country": "Alemania",
+    "role": "Redactor Jefe / Director de Proyectos",
+    "email": "redaktion@netzpolitik.org",
+    "status": "pending",
+    "notes": "Una de las plataformas de periodismo de investigación y activismo digital más influyentes de Alemania, con gran alcance en temas de privacidad, vigilancia y políticas tecnológicas. Su capacidad para dar forma al discurso público es un activo inestimable."
+  },
+  {
+    "name": "ePaństwo Foundation",
+    "country": "Polonia",
+    "role": "Presidente del Consejo / Director de Programa",
+    "email": "biuro@epanstwo.org.pl",
+    "status": "pending",
+    "notes": "Dedicados a la transparencia, los datos abiertos y la participación ciudadana a través de la tecnología en Polonia. Su visión de una gobernanza digital abierta y el fomento de la e-democracia es altamente relevante para el concepto de Anticitera."
+  }
+]
+```
