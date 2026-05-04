@@ -17572,3 +17572,162 @@ A continuación, se presenta el listado en el formato JSON solicitado:
   }
 ]
 ```
+
+## [2026-05-04 21:17:13] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como el Director de Captación Estratégica del Proyecto Anticitera.
+        
+        OBJETIVO: Identificar a 15 nuevos perfiles de tipo: DONUT.
+        DESCRIPCIÓN: CIUDADANOS INFLUYENTES o perfiles civiles interesados en la soberanía digital y privacidad.
+        EXCLUSIONES: Diversidad geográfica europea (incluye países nórdicos, bálticos y del sur).
+        TONO: Cercano, movilizador, sencillo.
+
+        EVITAR DUPLICADOS: No incluyas a nadie que ya conozcamos (Nombres: consumentenbond, cittadinanzattiva, sveriges konsumenter, altroconsumo, grazyna rokicka (polish consumers), foodwatch netherlands, ecc estonia, adiconsum, äkta vara, fair action, ttja estonia, ugc (união geral de consumidores), consumentenclaim, deco proteste, deco...).
+        
+        DATOS REQUERIDOS:
+        - name: Nombre completo u Organización.
+        - country: País europeo.
+        - role: Cargo o Función estratégica.
+        - email: Dirección de contacto (real o altamente probable).
+        - notes: Por qué es vital para la ICE Anticitera.
+
+        FORMATO DE SALIDA (JSON PURO - LISTA):
+        [
+            {
+                "name": "...",
+                "country": "...",
+                "role": "...",
+                "email": "...",
+                "status": "pending",
+                "notes": "..."
+            },
+            ...
+        ]
+        
+Respuesta: Aquí tienes una lista de 15 perfiles estratégicos "DONUT" identificados para el Proyecto Anticitera, manteniendo un tono cercano, movilizador y sencillo, y asegurando la diversidad geográfica y la relevancia para la soberanía digital y la privacidad.
+
+```json
+[
+  {
+    "name": "Max Schrems",
+    "country": "Austria",
+    "role": "Activista de Privacidad, Fundador de noyb",
+    "email": "contact@noyb.eu",
+    "status": "pending",
+    "notes": "Max es una figura icónica en la lucha por la privacidad digital en Europa. Su trabajo con noyb (None Of Your Business) es fundamental para sentar precedentes legales y movilizar a la ciudadanía en defensa de sus datos. Su experiencia y red son vitales para amplificar nuestro mensaje de soberanía digital."
+  },
+  {
+    "name": "Javier Ruiz Díaz",
+    "country": "España",
+    "role": "Activista por los Derechos Digitales (Xnet)",
+    "email": "info@xnet.news",
+    "status": "pending",
+    "notes": "Javier y la plataforma Xnet son referentes en España por su defensa incansable de la libertad de expresión, la privacidad y los derechos digitales. Su enfoque ciudadano y su capacidad de denuncia resonarían con nuestra visión de un dominio .ia como símbolo de autodeterminación digital."
+  },
+  {
+    "name": "La Quadrature du Net",
+    "country": "Francia",
+    "role": "Organización de Defensa de Derechos Digitales",
+    "email": "contact@laquadrature.net",
+    "status": "pending",
+    "notes": "Esta organización francesa es un pilar en la defensa de las libertades en el entorno digital. Su trabajo en políticas de internet, vigilancia y neutralidad de la red es crucial y podría ofrecer un valioso apoyo estratégico y una fuerte voz en la esfera europea."
+  },
+  {
+    "name": "Bits of Freedom",
+    "country": "Países Bajos",
+    "role": "Organización de Derechos Civiles Digitales",
+    "email": "info@bitsoffreedom.nl",
+    "status": "pending",
+    "notes": "Bits of Freedom es una voz influyente en los Países Bajos, luchando por la libertad y la privacidad en línea. Su perspectiva, desde un país pionero en innovación digital, es clave para entender y promover la soberanía digital en nuestra comunidad."
+  },
+  {
+    "name": "Elektronisk Forpost Norge (EFN)",
+    "country": "Noruega",
+    "role": "Organización de Derechos Digitales",
+    "email": "info@efn.no",
+    "status": "pending",
+    "notes": "Como una de las principales organizaciones de derechos digitales en Noruega, EFN puede ofrecer una visión nórdica sobre la privacidad y la libertad en internet. Su apoyo sería significativo para expandir nuestra influencia en esta región clave."
+  },
+  {
+    "name": "Electronic Frontier Finland (EFFI)",
+    "country": "Finlandia",
+    "role": "Organización de Derechos Digitales",
+    "email": "info@effi.org",
+    "status": "pending",
+    "notes": "EFFI, la hermana finlandesa de EFN, comparte una misión similar de proteger los derechos digitales. Su compromiso con la privacidad y la libertad de expresión es directamente compatible con los principios que sustentan el Proyecto Anticitera y la visión del .ia."
+  },
+  {
+    "name": "Fundacja Panoptykon",
+    "country": "Polonia",
+    "role": "Fundación para la Privacidad y los Derechos Digitales",
+    "email": "kontakt@panoptykon.org",
+    "status": "pending",
+    "notes": "Panoptykon es una fuerza vital en la defensa de la privacidad en Polonia, un país con un crecimiento digital significativo. Su experiencia en el equilibrio entre tecnología y derechos civiles es invaluable para nuestro objetivo de una soberanía digital justa y robusta."
+  },
+  {
+    "name": "Chaos Computer Club (CCC)",
+    "country": "Alemania",
+    "role": "Organización de Hackers y Activistas Digitales",
+    "email": "mail@ccc.de",
+    "status": "pending",
+    "notes": "El CCC es una de las comunidades de hackers más antiguas y respetadas del mundo, con una profunda experiencia en seguridad y privacidad. Su visión crítica y su compromiso con la independencia digital son perfectamente alineados con los valores de nuestro proyecto."
+  },
+  {
+    "name": "Associazione Privacy Italia",
+    "country": "Italia",
+    "role": "Asociación Profesional de Privacidad",
+    "email": "info@associazioneprivacyitalia.it",
+    "status": "pending",
+    "notes": "Esta asociación reúne a profesionales y expertos en privacidad en Italia. Su conocimiento técnico y legal, junto con su alcance en la sociedad civil, sería una base sólida para discutir la importancia de la soberanía digital y el .ia en el sur de Europa."
+  },
+  {
+    "name": "Digital Rights Ireland",
+    "country": "Irlanda",
+    "role": "Organización de Derechos Digitales",
+    "email": "info@digitalrights.ie",
+    "status": "pending",
+    "notes": "Irlanda es un nodo central para la tecnología en Europa. Digital Rights Ireland juega un papel crítico en la defensa de la privacidad y los derechos de los ciudadanos frente a las grandes empresas tecnológicas. Su perspectiva es esencial para un dominio .ia que respete estos principios."
+  },
+  {
+    "name": "Latvian Internet Association",
+    "country": "Letonia",
+    "role": "Asociación de la Industria y Usuarios de Internet",
+    "email": "info@lia.lv",
+    "status": "pending",
+    "notes": "Como representante clave de la comunidad de internet en Letonia, esta asociación puede ser una puerta de entrada vital para conectar con la visión de la soberanía digital en la región báltica, donde la identidad digital es particularmente fuerte."
+  },
+  {
+    "name": "ANSOL - Associação Nacional para o Software Livre",
+    "country": "Portugal",
+    "role": "Asociación de Software Libre",
+    "email": "geral@ansol.org",
+    "status": "pending",
+    "notes": "La defensa del software libre es la base de la soberanía tecnológica. ANSOL promueve la independencia digital y la apertura, valores que el Proyecto Anticitera abraza. Su apoyo movilizaría a una comunidad clave en Portugal."
+  },
+  {
+    "name": "Lietuvos žmogaus teisių centras",
+    "country": "Lituania",
+    "role": "Centro Lituano de Derechos Humanos",
+    "email": "info@lchr.lt",
+    "status": "pending",
+    "notes": "Este centro defiende los derechos humanos en un sentido amplio, incluyendo los derechos digitales. Conectar con ellos nos permitiría posicionar el .ia no solo como un dominio tecnológico, sino como una herramienta para la autodeterminación y los derechos fundamentales en el espacio digital báltico."
+  },
+  {
+    "name": "IT-Politisk Forening",
+    "country": "Dinamarca",
+    "role": "Asociación Política de TI",
+    "email": "kontakt@itpol.dk",
+    "status": "pending",
+    "notes": "Esta asociación danesa se dedica a influir en las políticas de TI desde una perspectiva ciudadana, enfocándose en la privacidad y la democracia digital. Su experiencia en el debate público y la incidencia política sería un activo valioso para nuestro proyecto."
+  },
+  {
+    "name": "Dra. Lilian Mitrou",
+    "country": "Grecia",
+    "role": "Profesora de Derecho de la Información, Experta en Protección de Datos",
+    "email": "lmitrou@aegean.gr",
+    "status": "pending",
+    "notes": "Como una de las principales expertas en Derecho de la Información y protección de datos en Grecia, la Dra. Mitrou aportaría una perspectiva académica y legal fundamental desde el propio territorio de Anticitera. Su influencia es vital para legitimar nuestra propuesta ante organismos nacionales e internacionales."
+  }
+]
+```
