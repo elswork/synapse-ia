@@ -17731,3 +17731,120 @@ Respuesta: Aquí tienes una lista de 15 perfiles estratégicos "DONUT" identific
   }
 ]
 ```
+
+## [2026-05-04 21:17:38] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como el Director de Captación Estratégica del Proyecto Anticitera.
+        
+        OBJETIVO: Identificar a 10 nuevos perfiles de tipo: BUNNY.
+        DESCRIPCIÓN: EXPERTOS INTERNACIONALES (Arcontes) de primer nivel en Ética de la IA, Derecho Digital y Soberanía.
+        EXCLUSIONES: NO incluyas expertos de: Spain, France, Belgium.
+        TONO: Académico, estratégico, de alto nivel.
+
+        EVITAR DUPLICADOS: No incluyas a nadie que ya conozcamos (Nombres: margit sutrop, pawel sobocinski, ieva kalniņa, silja voeneky, jan šnajder, alina wernick, barry o'sullivan, nicoletta rangone, mateusz pszczyński, mark d. cole, niko lukač, jakub eberle, despina spanou, helena moniz, andrea renda...).
+        
+        DATOS REQUERIDOS:
+        - name: Nombre completo u Organización.
+        - country: País europeo.
+        - role: Cargo o Función estratégica.
+        - email: Dirección de contacto (real o altamente probable).
+        - notes: Por qué es vital para la ICE Anticitera.
+
+        FORMATO DE SALIDA (JSON PURO - LISTA):
+        [
+            {
+                "name": "...",
+                "country": "...",
+                "role": "...",
+                "email": "...",
+                "status": "pending",
+                "notes": "..."
+            },
+            ...
+        ]
+        
+Respuesta: ```json
+[
+    {
+        "name": "Prof. Dr. Wolfgang Schulz",
+        "country": "Germany",
+        "role": "Director del Instituto Hans-Bredow para la Investigación de Medios; Experto en Derecho de Medios y Gobernanza de Internet",
+        "email": "w.schulz@leibniz-hbi.de",
+        "status": "pending",
+        "notes": "Su profundo conocimiento en gobernanza de internet y derecho de los medios es crucial para la estructuración legal y política del .ia, incluyendo la navegación de marcos internacionales y la justificación de una 'Reserva Excepcional' en el ámbito de la gobernanza digital."
+    },
+    {
+        "name": "Prof. Dr. Joris van Hoboken",
+        "country": "Netherlands",
+        "role": "Profesor de Derecho de los Medios Digitales en la Universidad de Ámsterdam; Experto en regulación de internet y plataformas",
+        "email": "j.vanhoboken@uva.nl",
+        "status": "pending",
+        "notes": "Su experiencia en regulación de internet y derechos digitales ofrece una perspectiva legal invaluable para establecer la soberanía del .ia dentro de los estándares europeos e internacionales, asegurando que el Distrito Tecnológico de Anticitera cumpla con las mejores prácticas de gobernanza digital."
+    },
+    {
+        "name": "Prof. Luciano Floridi",
+        "country": "Italy",
+        "role": "Profesor de Ética de la Información en la Universidad de Bolonia; Líder mundial en la filosofía y ética de la IA",
+        "email": "luciano.floridi@unibo.it",
+        "status": "pending",
+        "notes": "Su liderazgo en la ética de la IA es fundamental para cimentar la visión de Anticitera como un referente en IA responsable y centrada en el ser humano, proporcionando una base filosófica y ética sólida para el manifiesto de identidad y la gobernanza del .ia."
+    },
+    {
+        "name": "Prof. Helen Margetts",
+        "country": "United Kingdom",
+        "role": "Profesora de Internet y Gobernanza en el Oxford Internet Institute (OII), Universidad de Oxford; Experta en IA y políticas públicas",
+        "email": "helen.margetts@oii.ox.ac.uk",
+        "status": "pending",
+        "notes": "Su investigación sobre IA, datos y gobernanza es vital para diseñar políticas públicas robustas para el Distrito Tecnológico de Anticitera y para articular cómo la infraestructura del .ia puede servir como modelo de gobernanza digital ética y eficaz a nivel internacional."
+    },
+    {
+        "name": "Dr. David Kenny",
+        "country": "Ireland",
+        "role": "Profesor Asociado de Derecho Constitucional en el Trinity College Dublin; Experto en derecho constitucional, derechos digitales y gobernanza de datos",
+        "email": "kennyda@tcd.ie",
+        "status": "pending",
+        "notes": "Su especialización en derecho constitucional y derechos digitales es esencial para establecer los cimientos legales de la soberanía digital del .ia, asegurando que su estructura respete y promueva los derechos fundamentales en el entorno digital."
+    },
+    {
+        "name": "Pekka Henttonen",
+        "country": "Finland",
+        "role": "Especialista Principal en Gobernanza de Internet, Ministerio de Transportes y Comunicaciones de Finlandia; Experto en políticas de ICANN y ccTLD",
+        "email": "pekka.henttonen@gov.fi",
+        "status": "pending",
+        "notes": "Su experiencia directa en ICANN y la gobernanza de ccTLD es de valor incalculable para la estrategia de 'Reserva Excepcional' del .ia, proporcionando una visión interna crítica sobre los procesos y requisitos de IANA e ISO. Una conexión directa con su conocimiento sería un activo estratégico inmejorable."
+    },
+    {
+        "name": "Prof. Dr. Philipp Hacker",
+        "country": "Germany",
+        "role": "Profesor de Derecho Digital y de IA en la Universidad Europea Viadrina; Experto en derecho de la IA, regulación algorítmica y protección del consumidor",
+        "email": "hacker@europa-uni.de",
+        "status": "pending",
+        "notes": "Su profundo conocimiento del derecho de la IA y la regulación algorítmica es fundamental para el desarrollo de un marco legal innovador para el Distrito Tecnológico de Anticitera, asegurando que el .ia opere bajo principios de justicia y transparencia."
+    },
+    {
+        "name": "Prof. Dr. Eva Blum",
+        "country": "Austria",
+        "role": "Profesora de Derecho de Protección de Datos en la Universidad de Economía y Negocios de Viena (WU); Experta en protección de datos y derechos digitales",
+        "email": "eva.blum@wu.ac.at",
+        "status": "pending",
+        "notes": "Su experiencia en protección de datos y derechos digitales es crucial para construir una infraestructura de .ia que no solo sea tecnológicamente avanzada, sino también un referente en la privacidad y seguridad de los datos, alineándose con los más altos estándares europeos e internacionales."
+    },
+    {
+        "name": "Prof. Manuel David Masseno",
+        "country": "Portugal",
+        "role": "Profesor en la NOVA School of Law, Universidade Nova de Lisboa; Experto en Derecho Digital, Gobernanza de Internet y Ciberseguridad",
+        "email": "masseno@novalaw.unl.pt",
+        "status": "pending",
+        "notes": "Su visión sobre la gobernanza de internet y la ciberseguridad es vital para fortificar la infraestructura del .ia contra amenazas digitales y establecer protocolos de seguridad que respalden la promesa de soberanía y fiabilidad del Distrito Tecnológico de Anticitera."
+    },
+    {
+        "name": "Linnar Viik",
+        "country": "Estonia",
+        "role": "Cofundador de Mobi Solutions; Asesor en e-governance y transformación digital; Exasesor del Primer Ministro de Estonia",
+        "email": "linnar.viik@mobi.solutions",
+        "status": "pending",
+        "notes": "Como pionero de la e-governance estonia, su experiencia en la construcción de una nación digital es directamente aplicable a la estrategia de soberanía del .ia. Su visión en la transformación digital a nivel nacional proporcionaría un marco invaluable para Anticitera como un distrito tecnológico autosuficiente y modelo."
+    }
+]
+```
