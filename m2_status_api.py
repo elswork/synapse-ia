@@ -517,7 +517,8 @@ def system_run():
 @app.route('/')
 def serve_index():
     base_path = os.path.dirname(os.path.abspath(__file__))
-    response = send_file(os.path.join(base_path, 'monitor_m2.html'))
+    # Forzamos v2 para saltar la caché del kiosk
+    response = send_file(os.path.join(base_path, 'monitor_v2.html'))
     response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
     return response
 
