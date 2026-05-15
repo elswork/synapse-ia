@@ -487,6 +487,13 @@ def system_cat():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/system/host-restart', methods=['POST'])
+def host_restart():
+    print("M2-API: Received Host API Restart Request")
+    # Usamos un comando que se ejecute en segundo plano para no bloquear la respuesta
+    os.system("sleep 2 && systemctl restart m2-status-api &")
+    return jsonify({"status": "ok", "message": "Host API restart scheduled in 2 seconds"})
+
 @app.route('/system/run', methods=['POST'])
 def system_run():
     try:
