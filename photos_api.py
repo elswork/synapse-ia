@@ -74,6 +74,6 @@ def debug():
     })
 
 if __name__ == '__main__':
-    print(f"M2 Photo Engine [LOCAL SOBERANO] iniciado en puerto 5052")
+    print(f"M2 Photo Engine [LOCAL SOBERANO] iniciado en puerto 5053")
     print(f"Sirviendo desde: {PHOTOS_DIR}")
-    app.run(host='0.0.0.0', port=5052)
+    app.run(host='0.0.0.0', port=5053)

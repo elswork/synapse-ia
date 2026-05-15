@@ -494,17 +494,17 @@ def system_cat():
 @app.route('/system/netstat', methods=['GET'])
 def system_netstat():
     try:
-        output = os.popen("netstat -tulnp | grep 5052").read()
+        output = os.popen("netstat -tulnp | grep 5053").read()
         return jsonify({"status": "ok", "output": output})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/system/kill-ghosts', methods=['POST'])
 def kill_ghosts():
-    print("M2-API: Purging port 5052 and host services...")
+    print("M2-API: Purging port 5053 and host services...")
     os.system("systemctl stop m2-photos-api && systemctl disable m2-photos-api")
-    os.system("fuser -k 5052/tcp &")
-    return jsonify({"status": "ok", "message": "Port 5052 liberated and services killed"})
+    os.system("fuser -k 5053/tcp &")
+    return jsonify({"status": "ok", "message": "Port 5053 liberated and services killed"})
 
 @app.route('/system/host-restart', methods=['POST'])
 def host_restart():

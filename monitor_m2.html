@@ -1121,7 +1121,7 @@
         const API_HOST = location.hostname || '192.168.1.75';
         const NODES = {
             m2: `http://${API_HOST}:5051/stats`,
-            legion: 'http://192.168.1.34:5052/stats',
+            legion: 'http://192.168.1.34:5053/stats',
             chromebook: 'http://chromebook.athena:5051/stats',
             odroid: 'http://odroid.athena:5051/stats'
         };
@@ -1590,15 +1590,15 @@
         async function loadRealPhotos() {
             const container = document.getElementById('gallery_content');
             try {
-                const response = await fetch(`http://${API_HOST}:5052/photos/list?t=${Date.now()}`);
+                const response = await fetch(`http://${API_HOST}:5053/photos/list?t=${Date.now()}`);
                 const data = await response.json();
                 console.log("Local Photos List Response:", data);
                 
                 if (data.status === 'ok') {
                     currentPhotos = data.photos.map(p => ({
                         ...p,
-                        url: `http://${API_HOST}:5052${p.url}`,
-                        thumbnail: `http://${API_HOST}:5052${p.thumbnail}`
+                        url: `http://${API_HOST}:5053${p.url}`,
+                        thumbnail: `http://${API_HOST}:5053${p.thumbnail}`
                     }));
                     
                     if (currentPhotos.length === 0) {
