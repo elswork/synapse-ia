@@ -10,6 +10,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app) # Permitir peticiones desde el dashboard local
 
+@app.route('/status')
+def get_status_soberano():
+    return jsonify({"status": "ok", "version": "Soberana_V9", "msg": "M2 Gateway Alive"})
+
 @app.route('/debug/routes')
 def list_routes():
     import urllib.parse
