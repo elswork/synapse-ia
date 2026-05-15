@@ -12,7 +12,13 @@ CORS(app) # Permitir peticiones desde el dashboard local
 
 @app.route('/status')
 def get_status_soberano():
-    return jsonify({"status": "ok", "version": "Soberana_V9", "msg": "M2 Gateway Alive"})
+    import socket
+    return jsonify({
+        "status": "ok", 
+        "version": "Soberana_V10", 
+        "hostname": socket.gethostname(),
+        "msg": "M2 Gateway Alive"
+    })
 
 @app.route('/debug/routes')
 def list_routes():
