@@ -509,12 +509,16 @@ def system_run():
 
 @app.route('/')
 def serve_index():
-    return send_file('/app/monitor_m2.html')
+    response = send_file('/app/monitor_m2.html')
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    return response
 
 @app.route('/<path:filename>')
 def serve_static(filename):
     # Fallback para recursos (imágenes, json)
-    return send_from_directory('/app', filename)
+    response = send_from_directory('/app', filename)
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    return response
 
 if __name__ == '__main__':
     # Correr en puerto 5051 para no interferir con el trigger de Athena (5050)
