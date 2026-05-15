@@ -491,6 +491,12 @@ def system_cat():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/system/kill-ghosts', methods=['POST'])
+def kill_ghosts():
+    print("M2-API: Killing legacy host services...")
+    os.system("systemctl stop m2-photos-api && systemctl disable m2-photos-api &")
+    return jsonify({"status": "ok", "message": "Ghost services marked for termination"})
+
 @app.route('/system/host-restart', methods=['POST'])
 def host_restart():
     print("M2-API: Received Host API Restart Request")
