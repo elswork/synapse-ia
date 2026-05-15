@@ -548,12 +548,16 @@ def serve_index():
 @app.route('/api/photos/<path:path>', methods=['GET'])
 def proxy_photos(path):
     try:
-        import requests
+        import urllib.request
         url = f"http://localhost:5053/photos/{path}"
-        resp = requests.get(url, params=request.args)
-        # Convertir cabeceras de respuesta a una lista de tuplas válida para Flask
-        headers = [(name, value) for name, value in resp.headers.items() if name.lower() != 'content-encoding']
-        return (resp.content, resp.status_code, headers)
+        if request.query_string:
+            url += "?" + request.query_string.decode('utf-8')
+        
+        with urllib.request.urlopen(url) as response:
+            content = response.read()
+            status = response.getcode()
+            headers = [(name, value) for name, value in response.getheaders()]
+            return (content, status, headers)
     except Exception as e:
         return jsonify({"status": "error", "message": f"Proxy error: {str(e)}"}), 500
 
