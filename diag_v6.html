@@ -19,7 +19,7 @@
     </div>
 
     <div class="box">
-        <h2>2. API Response (/api/photos/list)</h2>
+        <h2>2. API Response (/memory_vault/list)</h2>
         <pre id="api_res">Fetching...</pre>
     </div>
 
@@ -29,7 +29,7 @@
         async function runDiag() {
             const apiRes = document.getElementById('api_res');
             try {
-                const res = await fetch(`/api/photos/list?t=${Date.now()}`);
+                const res = await fetch(`/memory_vault/list?t=${Date.now()}`);
                 const text = await res.text();
                 let headersText = "";
                 res.headers.forEach((v, k) => { headersText += `${k}: ${v}\n`; });

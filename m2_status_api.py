@@ -20,7 +20,7 @@ def list_routes():
         output.append(line)
     return jsonify(output)
 
-@app.route('/api/photos/list', methods=['GET'])
+@app.route('/memory_vault/list', methods=['GET'])
 def proxy_photos_list():
     try:
         import urllib.request
@@ -32,7 +32,7 @@ def proxy_photos_list():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route('/api/photos/<path:path>', methods=['GET'])
+@app.route('/memory_vault/<path:path>', methods=['GET'])
 def proxy_photos(path):
     try:
         import urllib.request

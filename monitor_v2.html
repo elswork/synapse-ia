@@ -1591,15 +1591,15 @@
             const container = document.getElementById('gallery_content');
             try {
                 // Usamos el Proxy de 5051 para evitar problemas de CORS y red
-                const response = await fetch(`/api/photos/list?t=${Date.now()}`);
+                const response = await fetch(`/memory_vault/list?t=${Date.now()}`);
                 const data = await response.json();
                 console.log("Local Photos List Response:", data);
                 
                 if (data.status === 'ok') {
                     currentPhotos = data.photos.map(p => ({
                         ...p,
-                        url: `/api/photos/view/${p.id}`,
-                        thumbnail: `/api/photos/view/${p.id}`
+                        url: `/memory_vault/view/${p.id}`,
+                        thumbnail: `/memory_vault/view/${p.id}`
                     }));
                     
                     if (currentPhotos.length === 0) {
