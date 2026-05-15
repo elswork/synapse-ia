@@ -49,11 +49,14 @@ def status():
 @app.route('/photos/list', methods=['GET'])
 def list_photos():
     try:
+        import socket
         photos = get_local_photos()
         return jsonify({
             "status": "ok",
             "photos": photos,
-            "count": len(photos)
+            "count": len(photos),
+            "engine": "LOCAL_SOBERANO_V4",
+            "hostname": socket.gethostname()
         })
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
