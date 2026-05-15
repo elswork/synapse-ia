@@ -42,9 +42,23 @@ def get_credentials():
                 with open(TOKEN_FILE, 'w') as token:
                     token.write(creds.to_json())
             except Exception as e:
+                # Si el refresh falla, el token ya no sirve de nada
+                if os.path.exists(TOKEN_FILE): os.remove(TOKEN_FILE)
                 return None, f"Error refrescando token: {e}"
         else:
             return None, "Token no válido o inexistente"
+    
+    # Verificación extra: El token existe pero ¿realmente funciona?
+    # Hacemos una llamada ligera a userinfo
+    try:
+        r = http_requests.get('https://www.googleapis.com/oauth2/v3/userinfo', 
+                            headers={'Authorization': f'Bearer {creds.token}'}, timeout=5)
+        if r.status_code != 200:
+             if os.path.exists(TOKEN_FILE): os.remove(TOKEN_FILE)
+             return None, "Token expirado o revocado en Google"
+    except:
+        pass # Si falla por red, no borramos el token
+        
     return creds, None
 
 @app.route('/photos/status', methods=['GET'])
