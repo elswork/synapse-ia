@@ -1570,29 +1570,32 @@
                 event.stopPropagation();
                 event.preventDefault();
             }
+            const container = document.getElementById('gallery_content');
             document.getElementById('photo_view').style.display = 'flex';
             document.getElementById('gallery_view').style.display = 'flex';
             document.getElementById('slideshow_viewport').style.display = 'none';
             document.getElementById('btn_slideshow').style.display = 'block';
-
-            const container = document.getElementById('gallery_content');
-            container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px; font-size: 2rem; color: #888;">Cargando recuerdos...</div>';
             
+            container.innerHTML = '<div style="text-align:center; padding:50px;">Consultando estado de Drive...</div>';
+
             try {
                 const response = await fetch(`http://${API_HOST}:5052/photos/status?t=${Date.now()}`);
                 const data = await response.json();
+                console.log("Photos Status Response:", data);
                 
                 if (data.status === 'authorized') {
                     await loadRealPhotos();
-                    startSlideshow(); // Automáticamente al entrar
-                } else {
+                    startSlideshow(); 
+                } else if (data.auth_url) {
                     showAuthScreen(data.auth_url);
+                } else {
+                    console.error("Missing auth_url in response:", data);
+                    showAuthScreen('#');
                 }
             } catch (error) {
-                console.error('Error de conexión con Photos API:', error);
-                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 100px;">Error al conectar con el servidor de fotos. Asegúrate de que el API de Drive esté activo.</div>';
+                console.error("Fetch Error in openPhotoGallery:", error);
+                container.innerHTML = `<div style="text-align:center; padding:50px; color:var(--danger);">Fallo de conexión con M2 Photos API.<br><small>${error.message}</small></div>`;
             }
-            updateGalleryMeta();
         }
 
         function showAuthScreen(url) {
