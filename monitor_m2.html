@@ -1107,6 +1107,7 @@
     <audio id="audio_player" preload="none"></audio>
 
     <script src="stations_data.js?v=202605152056"></script>
+    <script src="qrcode.min.js"></script>
     <script>
         // CONFIG
         const API_HOST = location.hostname || '192.168.1.75';
@@ -1585,7 +1586,6 @@
 
         function showAuthScreen(url) {
             const container = document.getElementById('gallery_content');
-                const qrUrl = `http://${API_HOST}:5051/system/qr?url=${encodeURIComponent(url)}`;
             
             container.innerHTML = `
                 <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: rgba(0,0,0,0.4); border-radius: 30px; margin: 20px; border: 1px solid rgba(255,255,255,0.1);">
@@ -1601,7 +1601,7 @@
                     </p>
                     
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                        <img src="${qrUrl}" alt="QR Auth" style="border: 15px solid white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                        <div id="qrcode_container" style="padding: 15px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></div>
                         
                         <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; font-family: monospace; font-size: 0.9rem; color: #888; max-width: 90%; overflow: hidden; text-overflow: ellipsis;">
                             ${url}
@@ -1614,6 +1614,18 @@
                     </div>
                 </div>
             `;
+
+            // Generar el QR localmente
+            setTimeout(() => {
+                new QRCode(document.getElementById("qrcode_container"), {
+                    text: url,
+                    width: 256,
+                    height: 256,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            }, 100);
         }
 
         async function loadRealPhotos() {
