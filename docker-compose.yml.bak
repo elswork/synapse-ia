@@ -64,7 +64,7 @@ services:
     environment:
       - PULSE_SERVER=unix:/run/user/1001/pulse/native
     working_dir: /app
-    command: sh -c "apt-get update && apt-get install -y procps pulseaudio-utils && pip install flask flask-cors psutil docker && python3 m2_status_api.py"
+    command: sh -c "apt-get update && apt-get install -y procps pulseaudio-utils && pip install flask flask-cors psutil docker && python3 tools/m2_status_api.py"
     restart: unless-stopped
 
   photos-api:
@@ -72,10 +72,11 @@ services:
     container_name: m2-photos-api
     network_mode: host
     volumes:
-      - .:/app
-      - ./photos:/app/photos
+      - ./tools:/app/tools
+      - ./credentials.json:/app/credentials.json
+      - ./token_m2.json:/app/token_m2.json
     working_dir: /app
-    command: sh -c "pip install flask flask-cors && python3 photos_api.py"
+    command: sh -c "pip install flask flask-cors google-auth-oauthlib google-auth-httplib2 google-api-python-client && python3 tools/photos_api.py"
     restart: unless-stopped
 
   adminer:
