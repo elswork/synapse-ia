@@ -1590,15 +1590,15 @@
         async function loadRealPhotos() {
             const container = document.getElementById('gallery_content');
             try {
-                const response = await fetch(`http://${API_HOST}:5053/photos/list?t=${Date.now()}`);
+                const response = await fetch(`http://192.168.1.75:5053/photos/list?t=${Date.now()}`);
                 const data = await response.json();
                 console.log("Local Photos List Response:", data);
                 
                 if (data.status === 'ok') {
                     currentPhotos = data.photos.map(p => ({
                         ...p,
-                        url: `http://${API_HOST}:5053${p.url}`,
-                        thumbnail: `http://${API_HOST}:5053${p.thumbnail}`
+                        url: `http://192.168.1.75:5053${p.url}`,
+                        thumbnail: `http://192.168.1.75:5053${p.thumbnail}`
                     }));
                     
                     if (currentPhotos.length === 0) {
