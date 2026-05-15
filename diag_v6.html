@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sovereign Diag [V6]</title>
+    <style>
+        body { background: #001f3f; color: white; font-family: monospace; padding: 20px; }
+        .box { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        h2 { color: #00e5ff; }
+        pre { white-space: pre-wrap; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <h1>Sovereign Diagnostic V6</h1>
+    
+    <div class="box">
+        <h2>1. Network Context</h2>
+        <pre id="context">Loading...</pre>
+    </div>
+
+    <div class="box">
+        <h2>2. API Response (/api/photos/list)</h2>
+        <pre id="api_res">Fetching...</pre>
+    </div>
+
+    <script>
+        document.getElementById('context').innerText = `Location: ${window.location.href}\nHostname: ${window.location.hostname}\nDate: ${new Date().toISOString()}`;
+        
+        async function runDiag() {
+            const apiRes = document.getElementById('api_res');
+            try {
+                const res = await fetch(`/api/photos/list?t=${Date.now()}`);
+                const text = await res.text();
+                apiRes.innerText = `Status: ${res.status} ${res.statusText}\n\nRaw Content:\n${text}`;
+            } catch (e) {
+                apiRes.innerText = `FETCH ERROR: ${e.message}`;
+            }
+        }
+        runDiag();
+    </script>
+</body>
+</html>
