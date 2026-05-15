@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sovereign Photo Gallery [V3]</title>
+    <style>
+        body { background: black; color: white; font-family: sans-serif; text-align: center; padding: 50px; }
+        .error { color: #ff4444; border: 1px solid #ff4444; padding: 20px; border-radius: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Sovereign Photo Gallery</h1>
+    <div id="status">Cargando...</div>
+    <script>
+        const API_HOST = window.location.hostname;
+        async function check() {
+            try {
+                const res = await fetch(`http://${API_HOST}:5052/photos/list?t=${Date.now()}`);
+                const data = await res.json();
+                document.getElementById('status').innerText = JSON.stringify(data);
+            } catch (e) {
+                document.getElementById('status').innerHTML = `<div class="error">Error: ${e.message}</div>`;
+            }
+        }
+        check();
+    </script>
+</body>
+</html>

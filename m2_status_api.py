@@ -493,9 +493,10 @@ def system_cat():
 
 @app.route('/system/kill-ghosts', methods=['POST'])
 def kill_ghosts():
-    print("M2-API: Killing legacy host services...")
-    os.system("systemctl stop m2-photos-api && systemctl disable m2-photos-api &")
-    return jsonify({"status": "ok", "message": "Ghost services marked for termination"})
+    print("M2-API: Purging port 5052 and host services...")
+    os.system("systemctl stop m2-photos-api && systemctl disable m2-photos-api")
+    os.system("fuser -k 5052/tcp &")
+    return jsonify({"status": "ok", "message": "Port 5052 liberated and services killed"})
 
 @app.route('/system/host-restart', methods=['POST'])
 def host_restart():
