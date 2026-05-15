@@ -1590,15 +1590,16 @@
         async function loadRealPhotos() {
             const container = document.getElementById('gallery_content');
             try {
-                const response = await fetch(`http://192.168.1.75:5053/photos/list?t=${Date.now()}`);
+                // Usamos el Proxy de 5051 para evitar problemas de CORS y red
+                const response = await fetch(`/api/photos/list?t=${Date.now()}`);
                 const data = await response.json();
                 console.log("Local Photos List Response:", data);
                 
                 if (data.status === 'ok') {
                     currentPhotos = data.photos.map(p => ({
                         ...p,
-                        url: `http://192.168.1.75:5053${p.url}`,
-                        thumbnail: `http://192.168.1.75:5053${p.thumbnail}`
+                        url: `/api/photos/view/${p.id}`,
+                        thumbnail: `/api/photos/view/${p.id}`
                     }));
                     
                     if (currentPhotos.length === 0) {

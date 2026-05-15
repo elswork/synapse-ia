@@ -545,6 +545,18 @@ def serve_index():
     response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
     return response
 
+@app.route('/api/photos/<path:path>', methods=['GET'])
+def proxy_photos(path):
+    try:
+        import requests
+        url = f"http://localhost:5053/photos/{path}"
+        resp = requests.get(url, params=request.args)
+        # Convertir cabeceras de respuesta a una lista de tuplas válida para Flask
+        headers = [(name, value) for name, value in resp.headers.items() if name.lower() != 'content-encoding']
+        return (resp.content, resp.status_code, headers)
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"Proxy error: {str(e)}"}), 500
+
 @app.route('/<path:filename>')
 def serve_static(filename):
     base_path = os.path.dirname(os.path.abspath(__file__))
