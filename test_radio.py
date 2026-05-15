@@ -25,6 +25,18 @@ STATIONS = {
     "chill": [],
     "lofi": [
         {"name": "Lofi Girl Radio", "url": "http://play.sas-media.ru/play_256"}
+    ],
+    "jazz": [
+        {"name": "Jazz24", "url": "https://live.wpmudev.org/jazz24/jazz24.mp3"},
+        {"name": "Swiss Jazz", "url": "http://stream.srg-ssr.ch/m/rsj/mp3_128"}
+    ],
+    "clasica": [
+        {"name": "WQXR New York", "url": "http://stream.wqxr.org/wqxr"},
+        {"name": "Swiss Classic", "url": "http://stream.srg-ssr.ch/m/rsc_de/mp3_128"}
+    ],
+    "blues": [
+        {"name": "Blues Radio", "url": "http://ice.streamguys.com/blues"},
+        {"name": "GotRadio Blues", "url": "http://clt01.cdnstream.com/1458_128"}
     ]
 }
 
