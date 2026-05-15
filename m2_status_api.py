@@ -360,6 +360,10 @@ def reset_photos():
             
         # El volumen de photos está en synapse-ia/tools (físicamente en el host)
         # O podemos buscarlo vía inspección del contenedor
+        photos_path = os.path.join(base_path, 'photos')
+        if not os.path.exists(photos_path):
+            os.makedirs(photos_path)
+
         container = docker_client.containers.get("m2-photos-api")
         token_found = False
         for m in container.attrs['Mounts']:
