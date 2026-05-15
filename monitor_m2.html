@@ -1601,15 +1601,18 @@
                     </p>
                     
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                        <div id="qrcode_container" style="padding: 15px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></div>
+                        <a href="${url}" target="_blank" id="qr_link" style="text-decoration: none;">
+                            <div id="qrcode_container" style="padding: 15px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); cursor: pointer;"></div>
+                        </a>
                         
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; font-family: monospace; font-size: 0.9rem; color: #888; max-width: 90%; overflow: hidden; text-overflow: ellipsis;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; font-family: monospace; font-size: 0.9rem; color: #888; max-width: 90%; overflow: hidden; text-overflow: ellipsis; cursor: pointer;" onclick="window.open('${url}', '_blank')">
                             ${url}
                         </div>
                     </div>
 
                     <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
                         <button class="btn" style="background: var(--warning); padding: 15px 40px;" onclick="closePhotoGallery()">VOLVER</button>
+                        <a href="${url}" target="_blank" class="btn" style="background: var(--accent); color: black; padding: 15px 40px; text-decoration: none; display: flex; align-items: center;">ABRIR ENLACE</a>
                         <button class="btn" style="padding: 15px 40px;" onclick="loadRealPhotos()">YA HE AUTORIZADO</button>
                     </div>
                 </div>
@@ -1617,15 +1620,21 @@
 
             // Generar el QR localmente
             setTimeout(() => {
-                new QRCode(document.getElementById("qrcode_container"), {
-                    text: url,
-                    width: 256,
-                    height: 256,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.H
-                });
-            }, 100);
+                const container = document.getElementById("qrcode_container");
+                if (container && typeof QRCode !== 'undefined') {
+                    container.innerHTML = '';
+                    new QRCode(container, {
+                        text: url,
+                        width: 256,
+                        height: 256,
+                        colorDark : "#000000",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+                } else {
+                    console.error("QRCode library not loaded or container missing");
+                }
+            }, 200);
         }
 
         async function loadRealPhotos() {
