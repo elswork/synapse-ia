@@ -10,6 +10,16 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app) # Permitir peticiones desde el dashboard local
 
+@app.route('/debug/routes')
+def list_routes():
+    import urllib.parse
+    output = []
+    for rule in app.url_map.iter_rules():
+        methods = ','.join(rule.methods)
+        line = urllib.parse.unquote(f"{rule.endpoint:50s} {methods:20s} {rule}")
+        output.append(line)
+    return jsonify(output)
+
 @app.route('/api/photos/list', methods=['GET'])
 def proxy_photos_list():
     try:
