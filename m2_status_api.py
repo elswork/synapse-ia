@@ -10,6 +10,22 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app) # Permitir peticiones desde el dashboard local
 
+@app.route('/api/photos/<path:path>', methods=['GET'])
+def proxy_photos(path):
+    try:
+        import urllib.request
+        url = f"http://localhost:5053/photos/{path}"
+        if request.query_string:
+            url += "?" + request.query_string.decode('utf-8')
+        
+        with urllib.request.urlopen(url) as response:
+            content = response.read()
+            status = response.getcode()
+            headers = [(name, value) for name, value in response.getheaders()]
+            return (content, status, headers)
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"Proxy error: {str(e)}"}), 500
+
 # Initialize Docker client
 try:
     docker_client = docker.from_env()
@@ -545,21 +561,6 @@ def serve_index():
     response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
     return response
 
-@app.route('/api/photos/<path:path>', methods=['GET'])
-def proxy_photos(path):
-    try:
-        import urllib.request
-        url = f"http://localhost:5053/photos/{path}"
-        if request.query_string:
-            url += "?" + request.query_string.decode('utf-8')
-        
-        with urllib.request.urlopen(url) as response:
-            content = response.read()
-            status = response.getcode()
-            headers = [(name, value) for name, value in response.getheaders()]
-            return (content, status, headers)
-    except Exception as e:
-        return jsonify({"status": "error", "message": f"Proxy error: {str(e)}"}), 500
 
 @app.route('/<path:filename>')
 def serve_static(filename):
