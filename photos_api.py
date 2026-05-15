@@ -48,15 +48,17 @@ def get_credentials():
         else:
             return None, "Token no válido o inexistente"
     
-    # Verificación extra: El token existe pero ¿realmente funciona?
-    # Hacemos una llamada ligera a userinfo
+    # Verificación extra: El token existe pero ¿realmente funciona para FOTOS?
     try:
-        r = http_requests.get('https://www.googleapis.com/oauth2/v3/userinfo', 
+        # Ping ligero a la API de Fotos
+        r = http_requests.get('https://photoslibrary.googleapis.com/v1/albums?pageSize=1', 
                             headers={'Authorization': f'Bearer {creds.token}'}, timeout=5)
         if r.status_code != 200:
+             print(f"M2-Photos: Token failed validation (Status {r.status_code})")
              if os.path.exists(TOKEN_FILE): os.remove(TOKEN_FILE)
-             return None, "Token expirado o revocado en Google"
-    except:
+             return None, "Token expirado o revocado en Google Photos"
+    except Exception as e:
+        print(f"M2-Photos: Validation ping failed: {e}")
         pass # Si falla por red, no borramos el token
         
     return creds, None

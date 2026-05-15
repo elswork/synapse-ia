@@ -1660,8 +1660,8 @@
                             correctLevel : QRCode.CorrectLevel.H
                         });
                     }
-                } else {
-                    urlDisplay.innerText = "Error: No se pudo obtener la URL de autorización";
+                } else if (urlDisplay.innerText === '---') {
+                    urlDisplay.innerText = "Error: No se pudo generar la URL de autorización";
                     urlDisplay.style.color = "var(--danger)";
                 }
             }, 200);
