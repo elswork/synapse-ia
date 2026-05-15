@@ -491,6 +491,14 @@ def system_cat():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/system/netstat', methods=['GET'])
+def system_netstat():
+    try:
+        output = os.popen("netstat -tulnp | grep 5052").read()
+        return jsonify({"status": "ok", "output": output})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 @app.route('/system/kill-ghosts', methods=['POST'])
 def kill_ghosts():
     print("M2-API: Purging port 5052 and host services...")
