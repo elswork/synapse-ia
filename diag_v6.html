@@ -31,7 +31,9 @@
             try {
                 const res = await fetch(`/api/photos/list?t=${Date.now()}`);
                 const text = await res.text();
-                apiRes.innerText = `Status: ${res.status} ${res.statusText}\n\nRaw Content:\n${text}`;
+                let headersText = "";
+                res.headers.forEach((v, k) => { headersText += `${k}: ${v}\n`; });
+                apiRes.innerText = `Status: ${res.status} ${res.statusText}\n\nHeaders:\n${headersText}\nRaw Content:\n${text}`;
             } catch (e) {
                 apiRes.innerText = `FETCH ERROR: ${e.message}`;
             }
