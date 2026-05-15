@@ -198,5 +198,41 @@ window.STATIONS_DATA = {
             "url": "https://ice1.somafm.com/illstreet-128-mp3",
             "ok": true
         }
+    ],
+    "jazz": [
+        {
+            "name": "Jazz24",
+            "url": "https://live.wpmudev.org/jazz24/jazz24.mp3",
+            "ok": true
+        },
+        {
+            "name": "Swiss Jazz",
+            "url": "http://stream.srg-ssr.ch/m/rsj/mp3_128",
+            "ok": true
+        }
+    ],
+    "clasica": [
+        {
+            "name": "WQXR New York",
+            "url": "http://stream.wqxr.org/wqxr",
+            "ok": true
+        },
+        {
+            "name": "Swiss Classic",
+            "url": "http://stream.srg-ssr.ch/m/rsc_de/mp3_128",
+            "ok": true
+        }
+    ],
+    "blues": [
+        {
+            "name": "Blues Radio",
+            "url": "http://ice.streamguys.com/blues",
+            "ok": true
+        },
+        {
+            "name": "GotRadio Blues",
+            "url": "http://clt01.cdnstream.com/1458_128",
+            "ok": true
+        }
     ]
 };

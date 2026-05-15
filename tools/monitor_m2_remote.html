@@ -253,7 +253,7 @@
 
         .music-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             flex: 1;
             margin-top: 20px;
@@ -901,13 +901,15 @@
         </div>
 
         <div class="header-controls">
+            <button class="btn-music" onclick="openMusicModal()">MÚSICA</button>
+            <button class="btn" onclick="updateAllNodes()">ACTUALIZAR</button>
             <button class="btn" style="background:#444; color:#fff;" onclick="activateScreensaver()">REPOSO</button>
         </div>
 
         <div id="header_right"
             style="flex: 1.5; display: flex; align-items: center; justify-content: flex-end; gap: 15px;">
             <!-- Rotation & System Controls -->
-            <button class="btn-system" onclick="window.close()" title="Cerrar Panel" style="background: rgba(255, 68, 68, 0.2); color: #ff4444;">✖</button>
+            <button class="btn-system" onclick="closeDashboard()" title="Cerrar Panel" style="background: rgba(255, 68, 68, 0.2); color: #ff4444;">✖</button>
             <button class="btn-system" onclick="rotateScreen()" title="Rotar Pantalla">🔄</button>
             <button class="btn-system danger" onclick="showSystemMenu()" title="Apagar/Reiniciar">⏻</button>
 
@@ -1106,10 +1108,10 @@
     <!-- Audio Element -->
     <audio id="audio_player" preload="none"></audio>
 
-    <script src="stations_data.js?v=1778847682"></script>
+    <script src="stations_data.js"></script>
     <script>
         // CONFIG
-        const API_HOST = location.hostname || '192.168.1.75';
+        const API_HOST = location.hostname || 'localhost';
         const NODES = {
             m2: `http://${API_HOST}:5051/stats`,
             legion: 'http://192.168.1.34:5052/stats',
@@ -1296,7 +1298,7 @@
         let isRadioPaused = false;
         function playStation(name, url) {
             document.getElementById('np_name_header').innerText = name.toUpperCase();
-            fetch(`http://${API_HOST}:5051/system/radio/play`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: url}) });
+            fetch('http://${API_HOST}:5051/system/radio/play', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: url}) });
             isRadioPaused = false;
 
             // Toggle Header Visibility
@@ -1305,7 +1307,7 @@
             document.getElementById('play_btn_header').innerText = '⏸';
         }
         function togglePlay() {
-            fetch(`http://${API_HOST}:5051/system/radio/toggle`, { method: 'POST' });
+            fetch('http://${API_HOST}:5051/system/radio/toggle', { method: 'POST' });
             isRadioPaused = !isRadioPaused;
             if (isRadioPaused) {
                 document.getElementById('play_btn_header').innerText = '▶';
@@ -1314,7 +1316,7 @@
             }
         }
         function stopMusic() {
-            fetch(`http://${API_HOST}:5051/system/radio/stop`, { method: 'POST' });
+            fetch('http://${API_HOST}:5051/system/radio/stop', { method: 'POST' });
 
             // Revert Header
             document.getElementById('header_title').style.display = 'block';
@@ -1539,8 +1541,8 @@
         function closeDashboard() {
             // Quitamos el confirm para evitar bloqueos y usamos modo no-cors para una llamada de fuego y olvido
             const endpoints = [
-                `http://localhost:5051/system/gui/close`,
-                `http://${API_HOST}:5051/system/gui/close`
+                'http://localhost:5051/system/gui/close',
+                'http://${API_HOST}:5051/system/gui/close'
             ];
             
             endpoints.forEach(url => {

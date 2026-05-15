@@ -135,19 +135,34 @@ def get_radio():
 @app.route('/system/volume/up', methods=['POST'])
 def volume_up():
     print("M2-API: Received Volume Up Request")
-    sink = "alsa_output.platform-es8316-sound.stereo-fallback"
-    # Intentamos primero con el sink específico de los altavoces, luego con el default
-    cmd = f"pactl set-sink-volume {sink} +5% || pactl set-sink-volume @DEFAULT_SINK@ +5%"
-    res = os.system(cmd)
-    return jsonify({"status": "ok", "message": "Volume increased", "exit_code": res})
+    # Sinks: es8316 (interno) y SEEED ReSpeaker (USB)
+    sinks = [
+        "alsa_output.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.analog-stereo",
+        "alsa_output.platform-es8316-sound.stereo-fallback",
+        "@DEFAULT_SINK@"
+    ]
+    # Intentamos subir el volumen en todos los sinks relevantes
+    results = []
+    for sink in sinks:
+        cmd = f"pactl set-sink-volume {sink} +5%"
+        results.append(os.system(cmd))
+    
+    return jsonify({"status": "ok", "message": "Volume increased", "exit_codes": results})
 
 @app.route('/system/volume/down', methods=['POST'])
 def volume_down():
     print("M2-API: Received Volume Down Request")
-    sink = "alsa_output.platform-es8316-sound.stereo-fallback"
-    cmd = f"pactl set-sink-volume {sink} -5% || pactl set-sink-volume @DEFAULT_SINK@ -5%"
-    res = os.system(cmd)
-    return jsonify({"status": "ok", "message": "Volume decreased", "exit_code": res})
+    sinks = [
+        "alsa_output.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.analog-stereo",
+        "alsa_output.platform-es8316-sound.stereo-fallback",
+        "@DEFAULT_SINK@"
+    ]
+    results = []
+    for sink in sinks:
+        cmd = f"pactl set-sink-volume {sink} -5%"
+        results.append(os.system(cmd))
+        
+    return jsonify({"status": "ok", "message": "Volume decreased", "exit_codes": results})
 
 
 @app.route('/system/radio/play', methods=['POST'])

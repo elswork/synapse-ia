@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=chromium-browser --kiosk --app=file:///home/pirate/docker/synapse-ia/monitor_m2.html --window-size=1280,800 --user-data-dir=/tmp/m2-kiosk --no-first-run --simulate-outdated-no-au
+Exec=chromium-browser --kiosk --start-fullscreen --app=http://localhost:5051 --user-data-dir=/tmp/m2-kiosk --no-first-run --simulate-outdated-no-au --autoplay-policy=no-user-gesture-required
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
