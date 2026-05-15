@@ -516,9 +516,13 @@ def system_run():
 
 @app.route('/')
 def serve_index():
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    # Forzamos v2 para saltar la caché del kiosk
-    response = send_file(os.path.join(base_path, 'monitor_v2.html'))
+    path_v2 = '/home/pirate/docker/synapse-ia/monitor_v2.html'
+    path_m2 = '/home/pirate/docker/synapse-ia/monitor_m2.html'
+    
+    target = path_v2 if os.path.exists(path_v2) else path_m2
+    
+    print(f"M2-API: Serving index from {target}")
+    response = send_file(target)
     response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
     return response
 
