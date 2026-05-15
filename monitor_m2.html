@@ -1615,25 +1615,37 @@
                     </p>
                     
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                        <div id="qrcode_container" style="padding: 15px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); cursor: pointer;" onclick="if('${realUrl}' !== '#') window.open('${realUrl}', '_blank')"></div>
+                        <div id="qrcode_container" style="padding: 15px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); cursor: pointer;"></div>
                         
-                        <div id="url_display" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; font-family: monospace; font-size: 0.9rem; color: #888; max-width: 90%; overflow: hidden; text-overflow: ellipsis; cursor: pointer;">
-                            ${realUrl}
+                        <div id="url_display" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; font-family: monospace; font-size: 0.9rem; color: #00e5ff; max-width: 90%; overflow: hidden; text-overflow: ellipsis; cursor: pointer; border: 1px solid rgba(0,229,255,0.2);">
+                            ---
                         </div>
                     </div>
 
                     <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
                         <button class="btn" style="background: var(--warning); padding: 15px 40px;" onclick="closePhotoGallery()">VOLVER</button>
-                        <button class="btn" style="background: var(--accent); color: black; padding: 15px 40px;" onclick="if('${realUrl}' !== '#') window.open('${realUrl}', '_blank')">ABRIR ENLACE</button>
+                        <button id="btn_open_link" class="btn" style="background: var(--accent); color: black; padding: 15px 40px;">ABRIR ENLACE</button>
                         <button class="btn" style="padding: 15px 40px;" onclick="loadRealPhotos()">YA HE AUTORIZADO</button>
                     </div>
                 </div>
             `;
 
-            // Generar el QR localmente
-            if (realUrl !== '#') {
-                setTimeout(() => {
-                    const qrc = document.getElementById("qrcode_container");
+            // Configurar los enlaces y generar el QR localmente
+            setTimeout(() => {
+                const realUrl = url && url.startsWith('http') ? url.replace('localhost', '192.168.1.75') : '#';
+                console.log("Configuring Auth URL:", realUrl);
+                
+                const urlDisplay = document.getElementById('url_display');
+                const btnOpen = document.getElementById('btn_open_link');
+                const qrc = document.getElementById("qrcode_container");
+
+                if (realUrl !== '#') {
+                    urlDisplay.innerText = realUrl;
+                    const navigate = () => { window.location.href = realUrl; };
+                    urlDisplay.onclick = navigate;
+                    btnOpen.onclick = navigate;
+                    if (qrc) qrc.onclick = navigate;
+
                     if (qrc && typeof QRCode !== 'undefined') {
                         qrc.innerHTML = '';
                         new QRCode(qrc, {
@@ -1645,8 +1657,11 @@
                             correctLevel : QRCode.CorrectLevel.H
                         });
                     }
-                }, 200);
-            }
+                } else {
+                    urlDisplay.innerText = "Error: No se pudo obtener la URL de autorización";
+                    urlDisplay.style.color = "var(--danger)";
+                }
+            }, 200);
         }
 
         async function loadRealPhotos() {
