@@ -1672,6 +1672,29 @@
             try {
                 const response = await fetch(`http://${API_HOST}:5052/photos/list?t=${Date.now()}`);
                 const data = await response.json();
+                console.log("Photos List Response:", data);
+                
+                if (data.status === 'error' || data.needs_auth) {
+                    console.warn("Photos list requires re-auth or has error:", data);
+                    // Intentar obtener la URL de autorización fresquita
+                    try {
+                        const authRes = await fetch(`http://${API_HOST}:5052/photos/status?t=${Date.now()}`);
+                        const authData = await authRes.json();
+                        if (authData.auth_url) {
+                            showAuthScreen(authData.auth_url);
+                        } else {
+                            console.error("No auth_url after list error:", authData);
+                            const errMsg = data.message || authData.message || "Error desconocido en el API";
+                            showAuthScreen('#');
+                            document.getElementById('url_display').innerText = `Error: ${errMsg}`;
+                        }
+                    } catch (e) {
+                        console.error("Error fetching auth status during recovery:", e);
+                        showAuthScreen('#');
+                    }
+                    return;
+                }
+                
                 if (data.status === 'ok') {
                     currentPhotos = data.photos.map(p => ({
                         ...p,
