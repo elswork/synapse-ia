@@ -17906,3 +17906,63 @@ Respuesta: ```json
     "recipient_email": "s.tassis@tassis-law.gr"
 }
 ```
+
+## [2026-05-17 16:13:40] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como un estratega de comunicación digital para el Proyecto Anticitera.
+        
+        TAREA:
+        Redacta una invitación informal pero impactante, movilizadora y sincera para un CIUDADANO preocupado por la tecnología.
+        Debes generar DOS versiones del correo:
+        1. Una en el IDIOMA LOCAL del ciudadano: English.
+        2. Una TRADUCCIÓN al CASTELLANO (Spanish) para revisión interna.
+        
+        DATOS DEL CIUDADANO:
+        Nombre: Marija Petrova
+        País: Eslovenia (Language: English)
+        Rol/Activismo: Investigadora social y columnista que analiza el impacto de la tecnología en la democracia y los derechos humanos, con foco en la IA.
+        Email: marija.petrova@techdemocracyslo.org
+        
+        TONO: 
+        Cercano, activista, directo, llamando a la acción colectiva. Evita el tono excesivamente corporativo o institucional. Queremos que sienta que su participación es vital.
+        
+        REGLA DE ORO (PROHIBICIÓN):
+        - NUNCA uses la palabra "Pringles" en el asunto o cuerpo del correo. El destinatario no conoce este término interno.
+        - NO menciones el objetivo del "millón de firmas" en este momento. Es demasiado pronto.
+        
+        CONTEXTO ESTRATÉGICO ACTUAL:
+        - Proyecto Anticitera: busca crear el distrito digital soberano ".ia" en Grecia.
+        - OBJETIVO PRIORITARIO: Estamos buscando a los **7 MIEMBROS FUNDADORES** de diferentes países de la UE para formar el "Comité de Ciudadanos" oficial de la Iniciativa Ciudadana Europea (ICE) por la soberanía digital.
+        - Su rol sería ser uno de los co-organizadores oficiales que registran la iniciativa ante la Comisión Europea.
+        
+        ESTRUCTURA SUGERIDA:
+        1. Saludo cercano y personal.
+        2. Mención a su interés o labor en Investigadora social y columnista que analiza el impacto de la tecnología en la democracia y los derechos humanos, con foco en la IA..
+        3. El Mecanismo de Anticitera: símbolo de nuestra capacidad técnica histórica para recuperar el control.
+        4. LLAMADO A LA ACCIÓN: Invitación directa a ser uno de los 7 representantes europeos necesarios para lanzar la ICE.
+        5. Cierre inspirador.
+        
+        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN (Incluir al final del correo):
+        "Esperamos contar con tu energía para ser uno de los siete pilares de este cambio. Dinos qué te parece la propuesta."
+        
+        ENLACES OBLIGATORIOS:
+        1. Web: https://anticitera.deft.work/en/
+        2. Llamamiento: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/
+        
+        FORMATO DE SALIDA (JSON PURO):
+        {
+            "subject_local": "Subject in English",
+            "body_local": "Email body in English (Plain Text, use \n)",
+            "subject_spanish": "Asunto en Castellano",
+            "body_spanish": "Cuerpo del mensaje traducido al Castellano (Plain Text, use \n)",
+            "recipient_email": "marija.petrova@techdemocracyslo.org"
+        }
+        
+Respuesta: {
+    "subject_local": "Marija, Let's Build a Sovereign Digital Future Together",
+    "body_local": "Hello Marija,\n\nWe've been following your insightful work on the impact of technology, particularly AI, on democracy and human rights. Your columns and research resonate deeply with the core principles driving Project Antikythera.\n\nJust as the ancient Antikythera Mechanism demonstrated humanity's profound ingenuity, we believe we now have a historic opportunity to reassert our collective sovereignty over the digital realm. It's about empowering citizens, not just corporations or states, to shape our technological future.\n\nThis is where your unique perspective becomes crucial. We are launching a European Citizens' Initiative (ECI) to champion true digital sovereignty, ensuring a future where technology serves humanity. For this crucial step, we need seven committed citizens from different EU countries to officially register the initiative with the European Commission.\n\nWe see you as a natural leader and a powerful voice to be one of these seven founding members. Your role would be pivotal in co-organizing and formally launching this movement across Europe.\n\nThis isn't just about policy; it's about reclaiming our digital destiny. It's about building a movement from the ground up, with voices like yours at its heart.\n\nWe hope to count on your energy to be one of the seven pillars of this change. Let us know what you think of the proposal.\n\nFind out more:\nWeb: https://anticitera.deft.work/en/\nOur Call to Action: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nSincerely,\nThe Antikythera Project Team",
+    "subject_spanish": "Marija, Construyamos Juntos un Futuro Digital Soberano",
+    "body_spanish": "Hola Marija,\n\nHemos seguido con gran interés tu perspicaz trabajo sobre el impacto de la tecnología, especialmente la IA, en la democracia y los derechos humanos. Tus columnas y tu investigación resuenan profundamente con los principios fundamentales que impulsan el Proyecto Anticitera.\n\nAsí como el antiguo Mecanismo de Anticitera demostró la profunda ingeniosidad de la humanidad, creemos que ahora tenemos una oportunidad histórica para reafirmar nuestra soberanía colectiva sobre el ámbito digital. Se trata de empoderar a los ciudadanos, no solo a las corporaciones o los estados, para que den forma a nuestro futuro tecnológico.\n\nAquí es donde tu perspectiva única se vuelve crucial. Estamos lanzando una Iniciativa Ciudadana Europea (ICE) para defender la verdadera soberanía digital, asegurando un futuro donde la tecnología sirva a la humanidad. Para este paso fundamental, necesitamos siete ciudadanos comprometidos de diferentes países de la UE para registrar oficialmente la iniciativa ante la Comisión Europea.\n\nTe consideramos una líder natural y una voz poderosa para ser uno de estos siete miembros fundadores. Tu rol sería fundamental para co-organizar y lanzar formalmente este movimiento en toda Europa.\n\nEsto no es solo una cuestión de políticas; es sobre reclamar nuestro destino digital. Se trata de construir un movimiento desde la base, con voces como la tuya en su corazón.\n\nEsperamos contar con tu energía para ser uno de los siete pilares de este cambio. Dinos qué te parece la propuesta.\n\nDescubre más:\nWeb: https://anticitera.deft.work/en/\nNuestro Llamamiento: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nAtentamente,\nEl Equipo del Proyecto Anticitera",
+    "recipient_email": "marija.petrova@techdemocracyslo.org"
+}
