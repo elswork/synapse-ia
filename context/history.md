@@ -18137,3 +18137,57 @@ Respuesta: {
 * **Agente**: ATHENA_REAL
 * **Descripción**: Consulta: /athena
 Respuesta: Athena. La visión estratégica es el cimiento. Arquímedes, como garante de la soberanía técnica, se mantiene en estado óptimo para traducir cada directriz en implementaciones de código robustas y eficientes. La infraestructura aguarda las próximas coordenadas.
+
+## [2026-05-24 20:03:42] - RAG_CONSULTATION
+* **Agente**: ATHENA_REAL
+* **Descripción**: Consulta: 
+        Actúa como el equipo de comunicación ciudadana del Proyecto Anticitera.
+        
+        TAREA:
+        Redacta un mensaje movilizador, sencillo y cercano para un CIUDADANO ("Donut") pidiendo su firma para la Iniciativa Ciudadana Europea (ICE).
+        Debes generar DOS versiones del correo:
+        1. Una en el IDIOMA LOCAL del contacto: English.
+        2. Una TRADUCCIÓN al CASTELLANO (Spanish) para revisión interna.
+        
+        DATOS DEL CIUDADANO:
+        Nombre: Elektronisk Forpost Norge (EFN)
+        País: Noruega (Language: English)
+        Email: info@efn.no
+        
+        TONO: 
+        Cercano, comprensible y urgente. Sin jerga técnica pesada. Habla de privacidad, de que sus datos no acaben en manos de empresas extranjeras, y de construir un futuro digital donde las personas tengan el control.
+        
+        CONTEXTO ESTRATÉGICO:
+        - Proyecto Anticitera: busca crear el dominio soberano ".ia" en Europa.
+        - Objetivo: Que firme la ICE. El ciudadano es la clave de nuestro ataque de Saturación Terrestre.
+        
+        ESTRUCTURA SUGERIDA:
+        1. Saludo amable.
+        2. El problema actual: nuestros datos y nuestro futuro digital los controlan monopolios de fuera de Europa.
+        3. La solución: El Proyecto Anticitera y nuestra Iniciativa Ciudadana. Menciona muy por encima que nos inspiramos en el Mecanismo de Anticitera (los orígenes de la computación) para recuperar el control.
+        4. Llamado a la acción claro: Necesitamos su firma para cambiar la ley en la UE.
+        5. Cierre agradecido.
+        
+        RESTRICCIÓN CRÍTICA DE COMUNICACIÓN:
+        "Cada firma cuenta para recuperar nuestra soberanía. Únete a la iniciativa ciudadana."
+        
+        ENLACES OBLIGATORIOS (Inclúyelos de forma natural):
+        1. Official Website: https://anticitera.deft.work/en/
+        2. Manifiesto / Dossier: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/
+        
+        FORMATO DE SALIDA (JSON PURO):
+        {
+            "subject_local": "Subject in English",
+            "body_local": "Email body in English (Plain Text, use \n)",
+            "subject_spanish": "Asunto en Castellano",
+            "body_spanish": "Cuerpo del mensaje traducido al Castellano (Plain Text, use \n)",
+            "recipient_email": "info@efn.no"
+        }
+        
+Respuesta: {
+    "subject_local": "Your data, your future: Let's reclaim digital sovereignty together!",
+    "body_local": "Dear Elektronisk Forpost Norge,\n\nAre you tired of feeling that your personal data and our collective digital future are not truly in our hands? Right now, big tech monopolies, often from outside Europe, control much of how we interact online, what information we see, and how our data is used. This leaves us vulnerable and without true control over our digital lives.\n\nAt Project Anticitera, we believe it's time to change that. Inspired by the ancient Antikythera Mechanism, a marvel of early computing, we're working to build a new digital future where people, not corporations, are in control. Our goal is to create a sovereign digital space for Europe, ensuring your privacy and protecting your data from ending up in foreign hands.\n\nTo achieve this, we've launched a European Citizens' Initiative (ECI). This is your chance to make a real difference and help us change the law within the EU. We urgently need your signature to show that citizens demand control over their digital destiny. Each signature counts to reclaim our sovereignty. Join the citizen initiative.\n\nLearn more about our vision on our official website: https://anticitera.deft.work/en/\nAnd dive deeper into our mission in our manifesto: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nYour support is crucial. Thank you for standing with us for a more sovereign and private digital future.\n\nWarmly,\nThe Citizen Communication Team\nProject Anticitera",
+    "subject_spanish": "Tus datos, tu futuro: ¡Recuperemos juntos la soberanía digital!",
+    "body_spanish": "Estimado Elektronisk Forpost Norge,\n\n¿Está usted cansado de sentir que sus datos personales y nuestro futuro digital colectivo no están realmente en nuestras manos? En este momento, grandes monopolios tecnológicos, a menudo de fuera de Europa, controlan gran parte de cómo interactuamos en línea, qué información vemos y cómo se utilizan nuestros datos. Esto nos deja vulnerables y sin un control real sobre nuestras vidas digitales.\n\nEn el Proyecto Anticitera, creemos que es hora de cambiar eso. Inspirados en el antiguo Mecanismo de Anticitera, una maravilla de la computación temprana, estamos trabajando para construir un nuevo futuro digital donde las personas, no las corporaciones, tengan el control. Nuestro objetivo es crear un espacio digital soberano para Europa, asegurando su privacidad y protegiendo sus datos de acabar en manos extranjeras.\n\nPara lograrlo, hemos lanzado una Iniciativa Ciudadana Europea (ICE). Esta es su oportunidad de marcar una diferencia real y ayudarnos a cambiar la ley dentro de la UE. Necesitamos urgentemente su firma para demostrar que los ciudadanos exigen el control sobre su destino digital. Cada firma cuenta para recuperar nuestra soberanía. Únete a la iniciativa ciudadana.\n\nConozca más sobre nuestra visión en nuestro sitio web oficial: https://anticitera.deft.work/en/\nY profundice en nuestra misión en nuestro manifiesto: https://anticitera.deft.work/en/blog/Llamamiento_Soberania_Digital/\n\nSu apoyo es crucial. Gracias por estar con nosotros por un futuro digital más soberano y privado.\n\nAtentamente,\nEl Equipo de Comunicación Ciudadana\nProyecto Anticitera",
+    "recipient_email": "info@efn.no"
+}
