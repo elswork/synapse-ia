@@ -113,7 +113,7 @@
         "country": "Sweden",
         "role": "Director",
         "email": "info@crd.org",
-        "status": "pending"
+        "status": "contacted"
     },
     "centrum_sweden": {
         "name": "Centrum för rättvisa",
@@ -160,7 +160,7 @@
         "country": "Finlandia",
         "role": "Presidente / Director Ejecutivo",
         "email": "effi@effi.org",
-        "status": "pending",
+        "status": "contacted",
         "notes": "Referente en Finlandia para la defensa de los derechos digitales, la libertad de expresión y la privacidad en línea. Su perspectiva desde un país nórdico tecnológicamente avanzado es crucial para establecer estándares de gobernanza."
     },
     "6": {
