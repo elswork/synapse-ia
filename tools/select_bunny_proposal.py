@@ -222,7 +222,8 @@ class BunnySelector:
 
         return {
             "expert": expert_data,
-            "email": email_data
+            "email": email_data,
+            "e_id": e_id
         }
 
     def save_proposal(self, proposal):

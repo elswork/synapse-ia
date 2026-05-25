@@ -123,6 +123,12 @@ def handle_tigreton_approval(call):
         bot.answer_callback_query(call.id, "Propuesta descartada.")
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
                               text=call.message.text + "\\n\\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+        e_id = proposal.get('e_id')
+        if e_id:
+            from tools.select_tigreton_proposal import TigretonSelector
+            selector = TigretonSelector()
+            selector.load_data()
+            selector.update_status(e_id, 'pending')
         del pending_tigreton_proposals[proposal_id]
         return
         
@@ -243,6 +249,12 @@ def handle_donut_approval(call):
         bot.answer_callback_query(call.id, "Propuesta descartada.")
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
                               text=call.message.text + "\\n\\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+        e_id = proposal.get('e_id')
+        if e_id:
+            from tools.select_donut_proposal import DonutSelector
+            selector = DonutSelector()
+            selector.load_data()
+            selector.update_status(e_id, 'pending')
         del pending_donut_proposals[proposal_id]
         return
         

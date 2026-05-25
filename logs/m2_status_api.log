@@ -40,3 +40,55 @@
  * Running on http://127.0.0.1:5051
  * Running on http://100.115.92.199:5051
 [33mPress CTRL+C to quit[0m
+127.0.0.1 - - [24/May/2026 21:19:27] "GET /radio HTTP/1.1" 200 -
+ * Serving Flask app 'm2_status_api'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5051
+ * Running on http://100.115.92.199:5051
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [24/May/2026 21:20:30] "GET /radio HTTP/1.1" 200 -
+127.0.0.1 - - [24/May/2026 21:20:40] "GET /radio HTTP/1.1" 200 -
+ * Serving Flask app 'm2_status_api'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5051
+ * Running on http://100.115.92.199:5051
+[33mPress CTRL+C to quit[0m
+[2026-05-24 21:23:57,489] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/tools/m2_status_api.py", line 514, in serve_index
+    response = send_file('/app/monitor_m2.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/flask/helpers.py", line 518, in send_file
+    return werkzeug.utils.send_file(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pirate/docker/synapse-ia/venv/lib/python3.11/site-packages/werkzeug/utils.py", line 421, in send_file
+    stat = os.stat(path)
+           ^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/app/monitor_m2.html'
+127.0.0.1 - - [24/May/2026 21:23:57] "[35m[1mGET / HTTP/1.1[0m" 500 -
+ * Serving Flask app 'm2_status_api'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5051
+ * Running on http://100.115.92.199:5051
+[33mPress CTRL+C to quit[0m

@@ -16,6 +16,7 @@ __pycache__/
 # Bases de datos locales
 context/synapse_memory.db
 # context/*.db
+context/data/*_registry.json
 
 # Backups created during git conflict resolution
 _git_backups/

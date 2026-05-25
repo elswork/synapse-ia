@@ -265,7 +265,8 @@ def pasar_bunny(message):
             "expert": expert,
             "email_data": email_data,
             "rich_html": rich_html,
-            "saved_path": selector.save_proposal(proposal)
+            "saved_path": selector.save_proposal(proposal),
+            "e_id": proposal.get("e_id")
         }
 
         # Construir teclado interactivo de Telegram
@@ -311,6 +312,12 @@ def handle_bunny_approval(call):
         bot.answer_callback_query(call.id, "Propuesta descartada.")
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
                               text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+        e_id = proposal.get('e_id')
+        if e_id:
+            from tools.select_bunny_proposal import BunnySelector
+            selector = BunnySelector()
+            selector.load_data()
+            selector.update_status(e_id, 'pending')
         del pending_bunny_proposals[proposal_id]
         return
         
@@ -580,7 +587,8 @@ def pasar_tigreton(message):
             "expert": expert,
             "email_data": email_data,
             "rich_html": rich_html,
-            "saved_path": selector.save_proposal(proposal)
+            "saved_path": selector.save_proposal(proposal),
+            "e_id": proposal.get("e_id")
         }
 
         markup = InlineKeyboardMarkup()
@@ -631,6 +639,12 @@ def handle_tigreton_approval(call):
             bot.answer_callback_query(call.id, "Propuesta descartada.")
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
                                   text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+            e_id = proposal.get('e_id')
+            if e_id:
+                from tools.select_tigreton_proposal import TigretonSelector
+                selector = TigretonSelector()
+                selector.load_data()
+                selector.update_status(e_id, 'pending')
             del pending_tigreton_proposals[proposal_id]
             return
             
@@ -711,7 +725,8 @@ def pasar_donut(message):
             "expert": expert,
             "email_data": email_data,
             "rich_html": rich_html,
-            "saved_path": selector.save_proposal(proposal)
+            "saved_path": selector.save_proposal(proposal),
+            "e_id": proposal.get("e_id")
         }
 
         markup = InlineKeyboardMarkup()
@@ -754,6 +769,12 @@ def handle_donut_approval(call):
         bot.answer_callback_query(call.id, "Propuesta descartada.")
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, 
                               text=call.message.text + "\n\n❌ <b>DESCARTADO POR EL COO</b>", parse_mode='HTML')
+        e_id = proposal.get('e_id')
+        if e_id:
+            from tools.select_donut_proposal import DonutSelector
+            selector = DonutSelector()
+            selector.load_data()
+            selector.update_status(e_id, 'pending')
         del pending_donut_proposals[proposal_id]
         return
         

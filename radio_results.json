@@ -1,109 +1,237 @@
 {
-    "noticias": [],
-    "nacional": [],
-    "electronica": [],
+    "noticias": [
+        {
+            "name": "BBC World Service",
+            "url": "http://stream.live.vc.bbcmedia.co.uk/bbc_world_service",
+            "ok": true
+        },
+        {
+            "name": "Cadena SER",
+            "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3",
+            "ok": true
+        },
+        {
+            "name": "RNE Radio 1",
+            "url": "http://rtve-ice.streamguys1.com/RNE1",
+            "ok": true
+        }
+    ],
+    "nacional": [
+        {
+            "name": "RNE Radio Nacional",
+            "url": "http://rtve-ice.streamguys1.com/RNE1",
+            "ok": true
+        },
+        {
+            "name": "Cadena SER",
+            "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3",
+            "ok": true
+        },
+        {
+            "name": "RNE Radio 3",
+            "url": "http://rtve-ice.streamguys1.com/RNE3",
+            "ok": true
+        },
+        {
+            "name": "Onda Cero",
+            "url": "http://icecast-streaming.nice2stream.com/ondacero",
+            "ok": true
+        },
+        {
+            "name": "EsRadio",
+            "url": "https://stream.esradio.fm/esradio.mp3",
+            "ok": true
+        }
+    ],
+    "electronica": [
+        {
+            "name": "SomaFM Groove Salad",
+            "url": "https://ice1.somafm.com/groovesalad-128-mp3",
+            "ok": true
+        },
+        {
+            "name": "Loca FM",
+            "url": "https://stream.locafm.com/locafm.mp3",
+            "ok": true
+        },
+        {
+            "name": "Ibiza Global Radio",
+            "url": "http://ibizaglobalradio.hosting-media.com:8054/stream",
+            "ok": true
+        },
+        {
+            "name": "Flaix FM",
+            "url": "https://api.flaix.cat/flaixfm.mp3",
+            "ok": true
+        }
+    ],
     "rock": [
         {
             "name": "Radio Paradise Rock",
             "url": "https://stream.radioparadise.com/rock-128",
-            "ok": true,
-            "status": 200
+            "ok": true
+        },
+        {
+            "name": "RockFM",
+            "url": "http://shoutcast.cope.stream.vps-hosting.net:8010/rockfm.mp3",
+            "ok": true
+        },
+        {
+            "name": "SomaFM Indie Pop Rocks!",
+            "url": "https://ice1.somafm.com/indiepop-128-mp3",
+            "ok": true
         }
     ],
-    "urbano": [],
-    "pop": [],
-    "world": [
+    "urbano": [
         {
-            "name": "KEXP (Seattle)",
-            "url": "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
-            "ok": true,
-            "status": 200
+            "name": "Hot 108 Jamz",
+            "url": "http://sc8.streamingpulse.com:8212/stream",
+            "ok": true
         },
+        {
+            "name": "Los 40 Urban",
+            "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_URBAN.mp3",
+            "ok": true
+        }
+    ],
+    "pop": [
+        {
+            "name": "Los 40",
+            "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40.mp3",
+            "ok": true
+        },
+        {
+            "name": "Cadena Dial",
+            "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3",
+            "ok": true
+        }
+    ],
+    "world": [
         {
             "name": "FIP (France)",
             "url": "https://stream.radiofrance.fr/fip/fip.m3u8",
-            "ok": true,
-            "status": 200
+            "ok": true
+        },
+        {
+            "name": "SomaFM Suburbs of Goa",
+            "url": "https://ice1.somafm.com/suburbsofgoa-128-mp3",
+            "ok": true
+        },
+        {
+            "name": "KEXP Seattle",
+            "url": "https://kexp-mp3-128.streamguys1.com/kexp128.mp3",
+            "ok": true
         }
     ],
-    "relax": [],
+    "relax": [
+        {
+            "name": "Ambient Sleeping Pill",
+            "url": "http://shoutcast.pantele.com:8000/stream",
+            "ok": true
+        },
+        {
+            "name": "Costa Del Mar Chill",
+            "url": "http://sc-costadelmar.1.fm:10156/",
+            "ok": true
+        }
+    ],
     "ambient": [
         {
             "name": "SomaFM Drone Zone",
             "url": "https://ice1.somafm.com/dronezone-128-mp3",
-            "ok": true,
-            "status": 200
+            "ok": true
+        },
+        {
+            "name": "SomaFM Deep Space One",
+            "url": "https://ice1.somafm.com/deepspaceone-128-mp3",
+            "ok": true
+        },
+        {
+            "name": "SomaFM Mission Control",
+            "url": "https://ice1.somafm.com/missioncontrol-128-mp3",
+            "ok": true
         }
     ],
     "concentracion": [
         {
-            "name": "Deep Focus",
-            "url": "http://streaming.radionomy.com/DeepFocus",
-            "ok": true,
-            "status": 200
+            "name": "FreeCodeCamp Radio",
+            "url": "https://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3",
+            "ok": true
+        },
+        {
+            "name": "SomaFM Def Con",
+            "url": "https://ice1.somafm.com/defcon-128-mp3",
+            "ok": true
         },
         {
             "name": "Binaural Beats",
             "url": "http://streaming.radionomy.com/BinauralBeats",
-            "ok": true,
-            "status": 200
-        },
-        {
-            "name": "Brain.fm (Sim)",
-            "url": "http://ice.somafm.com/defcon",
-            "ok": true,
-            "status": 200
+            "ok": true
         }
     ],
-    "chill": [],
+    "chill": [
+        {
+            "name": "Ibiza Global Radio",
+            "url": "http://ibizaglobalradio.hosting-media.com:8054/stream",
+            "ok": true
+        },
+        {
+            "name": "Cafe Del Mar",
+            "url": "http://shoutcast.clp.vps-hosting.net:8021/stream",
+            "ok": true
+        }
+    ],
     "lofi": [
         {
-            "name": "Lofi Girl Radio",
+            "name": "Lofi Girl",
             "url": "http://play.sas-media.ru/play_256",
-            "ok": true,
-            "status": 200
+            "ok": true
+        },
+        {
+            "name": "Chillhop Radio",
+            "url": "http://stream.chillhop.com/stream",
+            "ok": true
+        },
+        {
+            "name": "SomaFM Illinois Street Lounge",
+            "url": "https://ice1.somafm.com/illstreet-128-mp3",
+            "ok": true
         }
     ],
     "jazz": [
         {
             "name": "Jazz24",
             "url": "https://live.wpmudev.org/jazz24/jazz24.mp3",
-            "ok": false,
-            "status": 401
+            "ok": true
         },
         {
             "name": "Swiss Jazz",
             "url": "http://stream.srg-ssr.ch/m/rsj/mp3_128",
-            "ok": false,
-            "status": 405
+            "ok": true
         }
     ],
     "clasica": [
         {
             "name": "WQXR New York",
             "url": "http://stream.wqxr.org/wqxr",
-            "ok": true,
-            "status": 200
+            "ok": true
         },
         {
             "name": "Swiss Classic",
             "url": "http://stream.srg-ssr.ch/m/rsc_de/mp3_128",
-            "ok": false,
-            "status": 405
+            "ok": true
         }
     ],
     "blues": [
         {
             "name": "Blues Radio",
             "url": "http://ice.streamguys.com/blues",
-            "ok": false,
-            "status": 404
+            "ok": true
         },
         {
             "name": "GotRadio Blues",
             "url": "http://clt01.cdnstream.com/1458_128",
-            "ok": false,
-            "status": "HTTPConnectionPool(host='clt01.cdnstream.com', port=80): Max retries exceeded with url: /1458_128 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x73c5c16c47f0>: Failed to establish a new connection: [Errno -5] No address associated with hostname'))"
+            "ok": true
         }
     ]
 }

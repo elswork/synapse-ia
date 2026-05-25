@@ -1,0 +1,17 @@
+import urllib.request
+import json
+
+with open('monitor_m2.html') as f:
+    content = f.read()
+
+data = json.dumps({
+    'path': '/home/pirate/docker/synapse-ia/monitor_m2.html',
+    'content': content
+}).encode('utf-8')
+
+req = urllib.request.Request('http://192.168.1.75:5051/system/write-config', data=data, headers={'Content-Type': 'application/json'})
+try:
+    res = urllib.request.urlopen(req)
+    print(res.read().decode())
+except Exception as e:
+    print(e)

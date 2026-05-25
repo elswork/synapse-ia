@@ -128,7 +128,9 @@ def get_radio():
              
         with open(json_path, 'r') as f:
             data = json.load(f)
-        return jsonify(data)
+        response = jsonify(data)
+        response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+        return response
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

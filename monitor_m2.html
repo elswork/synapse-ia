@@ -1242,7 +1242,7 @@
 
             // Priority 2: Try to refresh from API for real-time updates
             try {
-                const res = await fetch('http://localhost:5051/radio');
+                const res = await fetch(`http://${API_HOST}:5051/radio?t=${Date.now()}`);
                 if (res.ok) {
                     STATIONS = await res.json();
                     renderMusicGrid();
