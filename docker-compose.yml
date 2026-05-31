@@ -59,10 +59,10 @@ services:
       - /sys:/sys
       - /proc:/proc
       - /var/run/docker.sock:/var/run/docker.sock
-      - /run/user/1001/pulse/native:/run/user/1001/pulse/native
+      - /run/user/1000/pulse/native:/run/user/1000/pulse/native
       - /home/pirate/.config/pulse/cookie:/root/.config/pulse/cookie
     environment:
-      - PULSE_SERVER=unix:/run/user/1001/pulse/native
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
     working_dir: /app
     command: sh -c "apt-get update && apt-get install -y procps pulseaudio-utils && pip install flask flask-cors psutil docker && python3 m2_status_api.py"
     restart: unless-stopped

@@ -13,14 +13,14 @@ window.STATIONS_DATA = {
         },
         {
             "name": "RNE Radio 1",
-            "url": "http://rtve-ice.streamguys1.com/RNE1",
+            "url": "https://rtvelivestream.rtve.es/rtvesec/rne/rne_r1_main.m3u8",
             "ok": true
         }
     ],
     "nacional": [
         {
             "name": "RNE Radio Nacional",
-            "url": "http://rtve-ice.streamguys1.com/RNE1",
+            "url": "https://rtvelivestream.rtve.es/rtvesec/rne/rne_r1_main.m3u8",
             "ok": true
         },
         {
@@ -30,7 +30,7 @@ window.STATIONS_DATA = {
         },
         {
             "name": "RNE Radio 3",
-            "url": "http://rtve-ice.streamguys1.com/RNE3",
+            "url": "https://rtvelivestream.rtve.es/rtvesec/rne/rne_r3_main.m3u8",
             "ok": true
         },
         {
