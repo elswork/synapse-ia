@@ -1080,14 +1080,14 @@ def scheduler_loop():
     # Since the container runs in CET (UTC+1), to run at 09:00 local Madrid time, 
     # we just use "09:00" assuming the base system time is correct.
     # The previous timezone parameter caused a crash on older schedule library versions.
-    schedule.every().day.at("09:00").do(auto_bunny_job)
-    schedule.every().day.at("21:00").do(auto_bunny_job)
+    # schedule.every().day.at("09:00").do(auto_bunny_job)
+    # schedule.every().day.at("21:00").do(auto_bunny_job)
     
-    schedule.every().day.at("13:00").do(auto_tigreton_job)
-    schedule.every().day.at("18:00").do(auto_tigreton_job)
+    # schedule.every().day.at("13:00").do(auto_tigreton_job)
+    # schedule.every().day.at("18:00").do(auto_tigreton_job)
     
-    schedule.every().day.at("15:00").do(auto_donut_job)
-    schedule.every().day.at("20:00").do(auto_donut_job)
+    # schedule.every().day.at("15:00").do(auto_donut_job)
+    # schedule.every().day.at("20:00").do(auto_donut_job)
     
     # Moltbook Heartbeat desactivado por acuerdo con el COO (Optimización Final)
     # schedule.every(60).minutes.do(execute_heartbeat)
