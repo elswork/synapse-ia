@@ -1,9 +1,21 @@
+import os
 import requests
 import json
+from dotenv import load_dotenv
 
 def main():
-    api_key = "AIzaSyApBKxKkdLkgeQ4t0o_bKI7-SpGsJmpNPo"
-    doc_id = "11PH_Mj05oJtgStCXLTMDXxJtKyeC37ATPIvOtG226Kk"
+    # Load dotenv from workspace root
+    load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
+    
+    api_key = os.environ.get("GOOGLE_API_KEY")
+    if not api_key:
+        api_key = os.environ.get("GEMINI_API_KEY")
+        
+    doc_id = os.environ.get("GOOGLE_DOC_ID", "11PH_Mj05oJtgStCXLTMDXxJtKyeC37ATPIvOtG226Kk")
+    
+    if not api_key:
+        print("Error: GOOGLE_API_KEY or GEMINI_API_KEY not found in environment.")
+        return
     
     url = f"https://docs.googleapis.com/v1/documents/{doc_id}?key={api_key}"
     print(f"Fetching document {doc_id} using API Key...")
