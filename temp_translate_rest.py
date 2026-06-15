@@ -3,7 +3,10 @@ import sys
 import json
 import urllib.request
 
-api_key = "AIzaSyCv6JxzIKnOQwqxC9GaKFcsAkpk6PAcOzU"
+api_key = os.environ.get("GEMINI_API_KEY")
+if not api_key:
+    print("Error: GEMINI_API_KEY environment variable not set.")
+    sys.exit(1)
 
 source_path = "/home/pirate/anticitera.deft.work/content/blog/Boletin_Informativo_V_Proyecto_.IA_Isla_Anticitera.md"
 with open(source_path, "r", encoding="utf-8") as f:
