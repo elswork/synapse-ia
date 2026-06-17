@@ -27,8 +27,8 @@ else
     echo "[FAIL] Base de Datos (PostgreSQL): No responde o no está lista"
 fi
 
-# 3. Verificar n8n (Remoto M2 192.168.1.75)
-if curl -s -I --max-time 2 http://192.168.1.75:5678 &> /dev/null; then
+# 3. Verificar n8n (Remoto M2 127.0.0.1)
+if curl -s -I --max-time 2 http://127.0.0.1:5678 &> /dev/null; then
     echo "[OK] Servicio n8n (Remoto): Respondiendo"
 else
     echo "[FAIL] Servicio n8n (Remoto): No responde o no está accesible"

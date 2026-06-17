@@ -9,7 +9,7 @@ data = json.dumps({
     'content': content
 }).encode('utf-8')
 
-req = urllib.request.Request('http://192.168.1.75:5051/system/write-config', data=data, headers={'Content-Type': 'application/json'})
+req = urllib.request.Request('http://127.0.0.1:5051/system/write-config', data=data, headers={'Content-Type': 'application/json'})
 try:
     res = urllib.request.urlopen(req)
     print(res.read().decode())

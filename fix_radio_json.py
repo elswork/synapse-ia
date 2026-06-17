@@ -18,7 +18,7 @@ payload = json.dumps({
     'content': json.dumps(data, indent=4)
 }).encode('utf-8')
 
-req = urllib.request.Request('http://192.168.1.75:5051/system/write-config', data=payload, headers={'Content-Type': 'application/json'})
+req = urllib.request.Request('http://127.0.0.1:5051/system/write-config', data=payload, headers={'Content-Type': 'application/json'})
 try:
     res = urllib.request.urlopen(req)
     print("M2 response:", res.read().decode())
@@ -26,7 +26,7 @@ except Exception as e:
     print("M2 API error:", e)
 
 # Restart GUI on M2
-req2 = urllib.request.Request('http://192.168.1.75:5051/system/gui/close', data=b'', headers={'Content-Type': 'application/json'})
+req2 = urllib.request.Request('http://127.0.0.1:5051/system/gui/close', data=b'', headers={'Content-Type': 'application/json'})
 try:
     res2 = urllib.request.urlopen(req2)
     print("M2 restart response:", res2.read().decode())

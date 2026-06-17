@@ -38,9 +38,6 @@ class NexusSync:
         except Exception as e:
             print(f"Error al registrar en DB (PostgreSQL): {e}")
 
-        # Git Commit (Soberanía de Datos)
-        self._git_commit(self.history_path, f"Update history: {event_type} by {agent}")
-
         print(f"Evento registrado por {agent}")
 
     def _git_commit(self, file_path, message):
