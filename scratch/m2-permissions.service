@@ -1,0 +1,11 @@
+[Unit]
+Description=Fix permissions for M2 kiosk directory and create run path
+Before=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'mkdir -p /run/user/1001/pulse && chown -R pirate:pirate /run/user/1001'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
