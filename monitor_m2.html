@@ -1113,6 +1113,7 @@
 
     <!-- Audio Element -->
     <audio id="audio_player" preload="none"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 
     <script src="stations_data.js?v=202605152056"></script>
     <script src="qrcode.min.js"></script>
@@ -1303,9 +1304,38 @@
             });
         }
         let isRadioPaused = false;
+        let hls = null;
         function playStation(name, url) {
             document.getElementById('np_name_header').innerText = name.toUpperCase();
-            fetch(`http://${API_HOST}:5051/system/radio/play`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: url}) });
+            
+            const audioPlayer = document.getElementById('audio_player');
+            
+            if (hls) {
+                hls.destroy();
+                hls = null;
+            }
+            
+            audioPlayer.volume = 1.0;
+            if (url.endsWith('.m3u8')) {
+                if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+                    hls = new Hls();
+                    hls.loadSource(url);
+                    hls.attachMedia(audioPlayer);
+                    hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                        audioPlayer.play().catch(e => console.error("Error M3U8:", e));
+                    });
+                    hls.on(Hls.Events.ERROR, function(event, data) {
+                        if (data.fatal) console.error("Error HLS:", data.type);
+                    });
+                } else if (audioPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                    audioPlayer.src = url;
+                    audioPlayer.play().catch(e => console.error("Error M3U8 nativo:", e));
+                }
+            } else {
+                audioPlayer.src = url;
+                audioPlayer.play().catch(e => console.error("Error reproduciendo audio:", e));
+            }
+            
             isRadioPaused = false;
 
             // Toggle Header Visibility
@@ -1314,16 +1344,21 @@
             document.getElementById('play_btn_header').innerText = '⏸';
         }
         function togglePlay() {
-            fetch(`http://${API_HOST}:5051/system/radio/toggle`, { method: 'POST' });
-            isRadioPaused = !isRadioPaused;
-            if (isRadioPaused) {
-                document.getElementById('play_btn_header').innerText = '▶';
-            } else {
+            const audioPlayer = document.getElementById('audio_player');
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                isRadioPaused = false;
                 document.getElementById('play_btn_header').innerText = '⏸';
+            } else {
+                audioPlayer.pause();
+                isRadioPaused = true;
+                document.getElementById('play_btn_header').innerText = '▶';
             }
         }
         function stopMusic() {
-            fetch(`http://${API_HOST}:5051/system/radio/stop`, { method: 'POST' });
+            const audioPlayer = document.getElementById('audio_player');
+            audioPlayer.pause();
+            audioPlayer.src = '';
 
             // Revert Header
             document.getElementById('header_title').style.display = 'block';
@@ -1378,13 +1413,18 @@
 
         async function adjustVolume(direction) {
             try {
+                const audioPlayer = document.getElementById('audio_player');
+                if (audioPlayer) {
+                    if (direction === 'up') {
+                        audioPlayer.volume = Math.min(1.0, audioPlayer.volume + 0.1);
+                    } else {
+                        audioPlayer.volume = Math.max(0.0, audioPlayer.volume - 0.1);
+                    }
+                }
                 const endpoint = direction === 'up' ? '/system/volume/up' : '/system/volume/down';
                 const res = await fetch(`http://${API_HOST}:5051${endpoint}`, { method: 'POST' });
                 const data = await res.json();
-                console.log(`Volumen: ${data.message}`);
-
-                // Feedback visual breve en el botón si fuera necesario, 
-                // pero por ahora solo ejecutamos.
+                console.log(`Volumen remoto: ${data.message}, local: ${audioPlayer.volume}`);
             } catch (err) {
                 console.error("Error al ajustar volumen:", err);
             }
