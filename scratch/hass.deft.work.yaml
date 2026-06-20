@@ -1,0 +1,10 @@
+host: hass.deft.work
+htaccess:
+    mode: "off"
+proxy:
+    upstreams:
+        - address: http://localhost:8123
+    websocket: true
+ssl:
+    mode: auto
+type: proxy
