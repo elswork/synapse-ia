@@ -60,3 +60,16 @@
 [2026-04-17 20:00:01] 📅 [DAILY_SUMMARY] No hay propuestas pendientes para hoy.
 [2026-04-17 20:00:01] 📅 [DAILY_SUMMARY] Iniciando proceso de resumen diario...
 [2026-04-17 20:00:01] 📅 [DAILY_SUMMARY] No hay propuestas pendientes para hoy.
+/home/pirate/docker/synapse-ia/tools/athena_brain.py:2: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+[2026-07-10 16:44:30] 📅 [DAILY_SUMMARY] Iniciando proceso de resumen diario...
+[2026-07-10 16:44:30] 📅 [DAILY_SUMMARY] No hay propuestas pendientes para hoy.
+[2026-07-10 16:44:30] 📅 [DAILY_SUMMARY] Iniciando proceso de resumen diario...
+[2026-07-10 16:44:30] 📅 [DAILY_SUMMARY] No hay propuestas pendientes para hoy.

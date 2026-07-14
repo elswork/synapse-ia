@@ -944,9 +944,9 @@
             <div class="launcher-icon">🖼️</div>
             <div class="launcher-name">Recuerdos</div>
         </div>
-        <div class="launcher-card" onclick="openCams(event)">
-            <div class="launcher-icon">📹</div>
-            <div class="launcher-name">Cámaras</div>
+        <div class="launcher-card" id="btn_printer" onclick="togglePrinter()">
+            <div class="launcher-icon" id="icon_printer">🔌</div>
+            <div class="launcher-name" id="label_printer">Impresora 3D<small style="color:#888; display:block; font-size:0.75rem; margin-top:2px;">APAGADA</small></div>
         </div>
 
         <!-- Fila 2 -->
@@ -1440,6 +1440,67 @@
                 alert("Error al comunicar con la API para conmutar micrófono.");
             }
         }
+
+        async function updatePrinterStatus() {
+            try {
+                const res = await fetch(`http://${API_HOST}:5051/system/printer/status`);
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    const btnPrinter = document.getElementById('btn_printer');
+                    const iconPrinter = document.getElementById('icon_printer');
+                    const labelPrinter = document.getElementById('label_printer');
+                    
+                    if (data.state === 'on') {
+                        btnPrinter.style.borderColor = 'var(--success)';
+                        btnPrinter.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
+                        iconPrinter.innerText = '🖨️';
+                        labelPrinter.innerHTML = 'Impresora 3D<small style="color:var(--success); display:block; font-size:0.75rem; font-weight:600; margin-top:2px;">ENCENDIDA</small>';
+                    } else {
+                        btnPrinter.style.borderColor = 'rgba(0, 212, 255, 0.2)';
+                        btnPrinter.style.boxShadow = 'none';
+                        iconPrinter.innerText = '🔌';
+                        labelPrinter.innerHTML = 'Impresora 3D<small style="color:#888; display:block; font-size:0.75rem; margin-top:2px;">APAGADA</small>';
+                    }
+                }
+            } catch (err) {
+                console.error("Error updating printer status:", err);
+            }
+        }
+
+        async function togglePrinter() {
+            const btnPrinter = document.getElementById('btn_printer');
+            const labelPrinter = document.getElementById('label_printer');
+            const iconPrinter = document.getElementById('icon_printer');
+            
+            btnPrinter.style.borderColor = 'var(--warning)';
+            btnPrinter.style.boxShadow = '0 0 15px rgba(210, 153, 34, 0.4)';
+            labelPrinter.innerHTML = 'Impresora 3D<small style="color:var(--warning); display:block; font-size:0.75rem; margin-top:2px;">CONMUTANDO...</small>';
+            
+            try {
+                const res = await fetch(`http://${API_HOST}:5051/system/printer/toggle`, { method: 'POST' });
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    console.log(data.message);
+                    if (data.printer_active) {
+                        btnPrinter.style.borderColor = 'var(--success)';
+                        btnPrinter.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
+                        iconPrinter.innerText = '🖨️';
+                        labelPrinter.innerHTML = 'Impresora 3D<small style="color:var(--success); display:block; font-size:0.75rem; font-weight:600; margin-top:2px;">ENCENDIDA</small>';
+                    } else {
+                        btnPrinter.style.borderColor = 'rgba(0, 212, 255, 0.2)';
+                        btnPrinter.style.boxShadow = 'none';
+                        iconPrinter.innerText = '🔌';
+                        labelPrinter.innerHTML = 'Impresora 3D<small style="color:#888; display:block; font-size:0.75rem; margin-top:2px;">APAGADA</small>';
+                    }
+                } else {
+                    alert("Error: " + data.message);
+                    updatePrinterStatus();
+                }
+            } catch (err) {
+                alert("Error al comunicar con la API para conmutar la impresora 3D.");
+                updatePrinterStatus();
+            }
+        }
         function openSystem() { alert("Configuración de Nodos Anticitera..."); }
         function openSecurity() { alert("Sentinel Firewall: Operativo"); }
         function openCameras() { alert("Accediendo a stream de cámaras..."); }
@@ -1499,6 +1560,8 @@
         updateAllNodes();
         fetchWeather();
         fetchStations();
+        updatePrinterStatus();
+        setInterval(updatePrinterStatus, 15000);
         // --- WebMCP Soberanía de Herramientas ---
         // Este bloque permite que ATHENA exponga sus funciones a la Alianza Algorítmica.
         if (!navigator.modelContext) {

@@ -4,7 +4,7 @@
 # Diseñado para ser invocado por cron
 
 BASE_DIR="/home/pirate/docker/synapse-ia"
-PYTHON_EXEC="/usr/bin/python3"
+PYTHON_EXEC="/home/pirate/docker/synapse-ia/venv/bin/python3"
 
 cd $BASE_DIR
 

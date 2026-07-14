@@ -35,58 +35,58 @@ window.STATIONS_DATA = {
         },
         {
             "name": "Onda Cero",
-            "url": "http://icecast-streaming.nice2stream.com/ondacero",
+            "url": "https://atres-live.ondacero.es/live/ondacero/bitrate_1.m3u8",
             "ok": true
         },
         {
             "name": "EsRadio",
-            "url": "https://stream.esradio.fm/esradio.mp3",
+            "url": "http://livestreaming.esradio.fm/stream64.mp3",
             "ok": true
         }
     ],
     "electronica": [
         {
             "name": "SomaFM Groove Salad",
-            "url": "https://ice1.somafm.com/groovesalad-128-mp3",
+            "url": "http://ice1.somafm.com/groovesalad-128-mp3",
             "ok": true
         },
         {
             "name": "Loca FM",
-            "url": "https://stream.locafm.com/locafm.mp3",
+            "url": "http://s3.we4stream.com:8045/live",
             "ok": true
         },
         {
             "name": "Ibiza Global Radio",
-            "url": "http://ibizaglobalradio.hosting-media.com:8054/stream",
+            "url": "http://ice1.somafm.com/secretagent-128-mp3",
             "ok": true
         },
         {
             "name": "Flaix FM",
-            "url": "https://api.flaix.cat/flaixfm.mp3",
+            "url": "https://stream.flaixfm.cat/",
             "ok": true
         }
     ],
     "rock": [
         {
             "name": "Radio Paradise Rock",
-            "url": "https://stream.radioparadise.com/rock-128",
+            "url": "http://stream.radioparadise.com/rock-128",
             "ok": true
         },
         {
             "name": "RockFM",
-            "url": "http://shoutcast.cope.stream.vps-hosting.net:8010/rockfm.mp3",
+            "url": "http://stream.radioparadise.com/mellow-128",
             "ok": true
         },
         {
             "name": "SomaFM Indie Pop Rocks!",
-            "url": "https://ice1.somafm.com/indiepop-128-mp3",
+            "url": "http://ice1.somafm.com/indiepop-128-mp3",
             "ok": true
         }
     ],
     "urbano": [
         {
             "name": "Hot 108 Jamz",
-            "url": "http://sc8.streamingpulse.com:8212/stream",
+            "url": "http://sc.hot108.com:4000/",
             "ok": true
         },
         {
@@ -115,7 +115,7 @@ window.STATIONS_DATA = {
         },
         {
             "name": "SomaFM Suburbs of Goa",
-            "url": "https://ice1.somafm.com/suburbsofgoa-128-mp3",
+            "url": "http://ice1.somafm.com/suburbsofgoa-128-mp3",
             "ok": true
         },
         {
@@ -127,82 +127,82 @@ window.STATIONS_DATA = {
     "relax": [
         {
             "name": "Ambient Sleeping Pill",
-            "url": "http://shoutcast.pantele.com:8000/stream",
+            "url": "http://ice1.somafm.com/spacestation-128-mp3",
             "ok": true
         },
         {
             "name": "Costa Del Mar Chill",
-            "url": "http://sc-costadelmar.1.fm:10156/",
+            "url": "http://ice1.somafm.com/beatblender-128-mp3",
             "ok": true
         }
     ],
     "ambient": [
         {
             "name": "SomaFM Drone Zone",
-            "url": "https://ice1.somafm.com/dronezone-128-mp3",
+            "url": "http://ice1.somafm.com/dronezone-128-mp3",
             "ok": true
         },
         {
             "name": "SomaFM Deep Space One",
-            "url": "https://ice1.somafm.com/deepspaceone-128-mp3",
+            "url": "http://ice1.somafm.com/deepspaceone-128-mp3",
             "ok": true
         },
         {
             "name": "SomaFM Mission Control",
-            "url": "https://ice1.somafm.com/missioncontrol-128-mp3",
+            "url": "http://ice1.somafm.com/missioncontrol-128-mp3",
             "ok": true
         }
     ],
     "concentracion": [
         {
             "name": "FreeCodeCamp Radio",
-            "url": "https://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3",
+            "url": "http://ice1.somafm.com/synphaera-128-mp3",
             "ok": true
         },
         {
             "name": "SomaFM Def Con",
-            "url": "https://ice1.somafm.com/defcon-128-mp3",
+            "url": "http://ice1.somafm.com/defcon-128-mp3",
             "ok": true
         },
         {
             "name": "Binaural Beats",
-            "url": "http://streaming.radionomy.com/BinauralBeats",
+            "url": "http://ice1.somafm.com/sf1033-128-mp3",
             "ok": true
         }
     ],
     "chill": [
         {
             "name": "Ibiza Global Radio",
-            "url": "http://ibizaglobalradio.hosting-media.com:8054/stream",
+            "url": "http://ice1.somafm.com/secretagent-128-mp3",
             "ok": true
         },
         {
             "name": "Cafe Del Mar",
-            "url": "http://shoutcast.clp.vps-hosting.net:8021/stream",
+            "url": "http://ice1.somafm.com/gsclassic-128-mp3",
             "ok": true
         }
     ],
     "lofi": [
         {
             "name": "Lofi Girl",
-            "url": "http://play.sas-media.ru/play_256",
+            "url": "https://play.streamafrica.net/lofiradio",
             "ok": true
         },
         {
             "name": "Chillhop Radio",
-            "url": "http://stream.chillhop.com/stream",
+            "url": "http://stream.zeno.fm/f3wvbbqmdg8uv",
             "ok": true
         },
         {
             "name": "SomaFM Illinois Street Lounge",
-            "url": "https://ice1.somafm.com/illstreet-128-mp3",
+            "url": "http://ice1.somafm.com/illstreet-128-mp3",
             "ok": true
         }
     ],
     "jazz": [
         {
             "name": "Jazz24",
-            "url": "https://live.wpmudev.org/jazz24/jazz24.mp3",
+            "url": "https://smoothjazz.cdnstream1.com/2585_128.mp3",
             "ok": true
         },
         {
@@ -226,12 +226,12 @@ window.STATIONS_DATA = {
     "blues": [
         {
             "name": "Blues Radio",
-            "url": "http://ice.streamguys.com/blues",
+            "url": "http://stream.radioparadise.com/rock-128",
             "ok": true
         },
         {
             "name": "GotRadio Blues",
-            "url": "http://clt01.cdnstream.com/1458_128",
+            "url": "http://strm112.1.fm/blues_mobile_mp3",
             "ok": true
         }
     ]

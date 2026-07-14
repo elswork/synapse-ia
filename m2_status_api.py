@@ -581,6 +581,89 @@ def system_run():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+def get_hass_config():
+    hass_url = "http://127.0.0.1:8123"
+    hass_token = ""
+    try:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        env_paths = [
+            os.path.join(base_path, ".env"),
+            os.path.join(base_path, "../.env"),
+            "/app/.env",
+            "/home/pirate/docker/synapse-ia/.env"
+        ]
+        for env_path in env_paths:
+            if os.path.exists(env_path):
+                with open(env_path, 'r') as f:
+                    for line in f:
+                        if line.strip().startswith("HASS_URL="):
+                            hass_url = line.strip().split("=", 1)[1].strip()
+                        elif line.strip().startswith("HASS_TOKEN="):
+                            hass_token = line.strip().split("=", 1)[1].strip()
+                break
+    except Exception as e:
+        print(f"Error reading .env in M2 status API: {e}")
+    return hass_url, hass_token
+
+@app.route('/system/printer/status', methods=['GET'])
+def get_printer_status():
+    url, token = get_hass_config()
+    endpoint = f"{url}/api/states/switch.impresora_3d_segura"
+    import urllib.request
+    req = urllib.request.Request(endpoint)
+    req.add_header("Authorization", f"Bearer {token}")
+    req.add_header("Content-Type", "application/json")
+    try:
+        with urllib.request.urlopen(req, timeout=10) as response:
+            res = json.loads(response.read().decode())
+            return jsonify({"status": "ok", "state": res.get("state")})
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"Error querying printer status: {str(e)}"}), 500
+
+@app.route('/system/printer/toggle', methods=['POST'])
+def toggle_printer():
+    url, token = get_hass_config()
+    import urllib.request
+    
+    # 1. Get current state
+    endpoint_state = f"{url}/api/states/switch.impresora_3d_segura"
+    req_state = urllib.request.Request(endpoint_state)
+    req_state.add_header("Authorization", f"Bearer {token}")
+    req_state.add_header("Content-Type", "application/json")
+    
+    try:
+        current_state = "off"
+        try:
+            with urllib.request.urlopen(req_state, timeout=10) as response:
+                res = json.loads(response.read().decode())
+                current_state = res.get("state", "off")
+        except Exception as e_get:
+            return jsonify({"status": "error", "message": f"Could not read current status: {str(e_get)}"}), 500
+
+        # 2. Determine target state & service
+        new_state = "on" if current_state == "off" else "off"
+        service = "turn_on" if new_state == "on" else "turn_off"
+        
+        endpoint_service = f"{url}/api/services/switch/{service}"
+        payload = json.dumps({"entity_id": "switch.impresora_3d_segura"}).encode('utf-8')
+        req_service = urllib.request.Request(endpoint_service, data=payload, method="POST")
+        req_service.add_header("Authorization", f"Bearer {token}")
+        req_service.add_header("Content-Type", "application/json")
+        
+        try:
+            with urllib.request.urlopen(req_service, timeout=30) as response:
+                response.read()
+        except Exception as e_service:
+            if "timeout" in str(e_service).lower():
+                print(f"Service call timed out but likely executing: {e_service}")
+            else:
+                return jsonify({"status": "error", "message": f"Error calling HASS switch service: {str(e_service)}"}), 500
+        
+        msg = "Impresora 3D encendida" if new_state == "on" else "Impresora 3D apagándose de forma segura"
+        return jsonify({"status": "ok", "message": msg, "printer_active": (new_state == "on")})
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"Error toggling printer: {str(e)}"}), 500
+
 @app.route('/')
 def serve_index():
     path_v2 = '/home/pirate/docker/synapse-ia/monitor_v2.html'
