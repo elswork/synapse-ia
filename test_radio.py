@@ -5,7 +5,7 @@ STATIONS = {
     "nacional": [],
     "electronica": [],
     "rock": [
-        {"name": "Radio Paradise Rock", "url": "https://stream.radioparadise.com/rock-128"}
+        {"name": "Radio Paradise Rock", "url": "http://stream.radioparadise.com/rock-128"}
     ],
     "urbano": [],
     "pop": [],
@@ -15,19 +15,19 @@ STATIONS = {
     ],
     "relax": [],
     "ambient": [
-        {"name": "SomaFM Drone Zone", "url": "https://ice1.somafm.com/dronezone-128-mp3"}
+        {"name": "SomaFM Drone Zone", "url": "http://ice1.somafm.com/dronezone-128-mp3"}
     ],
     "concentracion": [
-        {"name": "Deep Focus", "url": "http://streaming.radionomy.com/DeepFocus"},
-        {"name": "Binaural Beats", "url": "http://streaming.radionomy.com/BinauralBeats"},
-        {"name": "Brain.fm (Sim)", "url": "http://ice.somafm.com/defcon"}
+        {"name": "FreeCodeCamp Radio", "url": "https://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3"},
+        {"name": "SomaFM Def Con", "url": "http://ice1.somafm.com/defcon-128-mp3"},
+        {"name": "Binaural Beats", "url": "https://stream.zeno.fm/4t9z2v7g128uv"}
     ],
     "chill": [],
     "lofi": [
-        {"name": "Lofi Girl Radio", "url": "http://play.sas-media.ru/play_256"}
+        {"name": "Lofi Girl Radio", "url": "https://stream.zeno.fm/0r0xa792kwyvv"}
     ],
     "jazz": [
-        {"name": "Jazz24", "url": "https://live.wpmudev.org/jazz24/jazz24.mp3"},
+        {"name": "Jazz24", "url": "https://live.jazz24.org/jazz24-mp3"},
         {"name": "Swiss Jazz", "url": "http://stream.srg-ssr.ch/m/rsj/mp3_128"}
     ],
     "clasica": [
@@ -35,8 +35,8 @@ STATIONS = {
         {"name": "Swiss Classic", "url": "http://stream.srg-ssr.ch/m/rsc_de/mp3_128"}
     ],
     "blues": [
-        {"name": "Blues Radio", "url": "http://ice.streamguys.com/blues"},
-        {"name": "GotRadio Blues", "url": "http://clt01.cdnstream.com/1458_128"}
+        {"name": "Blues Radio", "url": "http://pub1.streamguys.com:80/blues"},
+        {"name": "GotRadio Blues", "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/GOTRADIO_BLUES_BABE.mp3"}
     ]
 }
 
