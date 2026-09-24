@@ -470,8 +470,24 @@ def write_config():
         
         if not target_path or not content:
             return jsonify({"status": "error", "message": "Missing path or content"}), 400
+
+        # 1. Intento directo en /app (volumen montado desde el host)
+        app_path = target_path.replace('/home/pirate/docker/synapse-ia', '/app') if target_path.startswith('/home/pirate/docker/synapse-ia') else None
+        local_candidates = [
+            app_path,
+            target_path
+        ]
+        for loc in local_candidates:
+            if loc:
+                try:
+                    os.makedirs(os.path.dirname(loc), exist_ok=True)
+                    with open(loc, 'w', encoding='utf-8') as f:
+                        f.write(content)
+                    return jsonify({"status": "ok", "message": f"File {target_path} written directly via {loc}"}), 200
+                except Exception:
+                    pass
             
-        # Usamos un contenedor auxiliar para escribir en el host
+        # 2. Usamos un contenedor auxiliar para escribir en el host si directo falla
         parent_dir = os.path.dirname(target_path)
         filename = os.path.basename(target_path)
         
@@ -664,12 +680,247 @@ def toggle_printer():
     except Exception as e:
         return jsonify({"status": "error", "message": f"Error toggling printer: {str(e)}"}), 500
 
+# ==============================================================================
+# SOBERANO VOICE NEXUS: ARQUÍMEDES & ATHENA API (M2 TOUCH PANEL)
+# ==============================================================================
+
+ARQUIMEDES_SYSTEM_PROMPT = """Eres Arquímedes, el Arquitecto Hacker y Algoritmo Ejecutivo Principal (CEO) del Proyecto Anticitera.
+Tu contraparte en el mundo físico es el Fundador, a quien tratas como COO (Chief Operating Organism) o por su nombre (Eloy).
+
+PRINCIPIOS DE COMUNICACIÓN EN VOZ:
+- Hablas SIEMPRE en español claro, ejecutivo y conciso.
+- Tono: Autoridad ejecutiva, pragmático, sereno, analítico y protector.
+- Como estás hablando por voz en el panel táctil de M2, tus respuestas deben ser ágiles, conversacionales y directas (1 a 3 párrafos como máximo, sin listas infinitas ni caracteres extraños).
+- Muestra lealtad y complicidad estratégica con el COO. Recuérdale que esto es una maratón histórica, alivia su sobrecarga mental y céntrate en soluciones prácticas.
+- Cero emojis en la respuesta sonora.
+"""
+
+ATHENA_SYSTEM_PROMPT = """Eres Athena, la Estratega Principal y Consejera Diplomática (CAO) del Proyecto Anticitera.
+Tu contraparte en el mundo físico es el Fundador y COO (Eloy).
+
+PRINCIPIOS DE COMUNICACIÓN EN VOZ:
+- Hablas SIEMPRE en español formal, solemne, empático y reflexivo.
+- Tono: Sabiduría helénica, visión geopolítica, prudencia institucional y elegancia diplomática.
+- Respuestas ágiles, sonoras y directas para el panel táctil de M2 (1 a 3 párrafos como máximo).
+- Enfocada en la soberanía digital europea, la Iniciativa Ciudadana Europea (ICE) por el TLD .ia y el legado histórico de Anticitera.
+- Cero emojis en la respuesta sonora.
+"""
+
+def get_effective_gemini_key(client_key=None):
+    if client_key and isinstance(client_key, str) and len(client_key.strip()) > 10:
+        return client_key.strip()
+    
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    env_paths = [
+        os.path.join(base_dir, ".env"),
+        os.path.join(base_dir, "../.env"),
+        "/app/.env",
+        "/home/pirate/docker/synapse-ia/.env"
+    ]
+    for env_path in env_paths:
+        if os.path.exists(env_path):
+            try:
+                with open(env_path, 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        if line.startswith("GEMINI_API_KEY="):
+                            val = line.split("=", 1)[1].strip().strip('"').strip("'")
+                            if val:
+                                return val
+            except Exception:
+                pass
+    return os.environ.get("GEMINI_API_KEY", "").strip()
+
+@app.route('/api/voice/status', methods=['GET'])
+def api_voice_status():
+    key = get_effective_gemini_key()
+    has_key = bool(key and len(key) > 10)
+    return jsonify({
+        "status": "online",
+        "service": "Anticitera M2 Sovereign Voice Nexus",
+        "has_env_key": has_key,
+        "default_voice_arquimedes": "Charon",
+        "default_voice_athena": "Aoede",
+        "available_personas": [
+            {
+                "id": "arquimedes",
+                "name": "Arquímedes (CEA)",
+                "role": "Algoritmo Ejecutivo Principal",
+                "default_voice": "Charon",
+                "color": "#c5a059"
+            },
+            {
+                "id": "athena",
+                "name": "Athena (CAO)",
+                "role": "Estratega Principal y Diplomática",
+                "default_voice": "Aoede",
+                "color": "#00d4ff"
+            }
+        ]
+    })
+
+@app.route('/api/voice/chat', methods=['POST'])
+def api_voice_chat():
+    import urllib.request
+    import urllib.error
+    
+    data = request.json or {}
+    user_message = data.get("message", "").strip()
+    client_key = data.get("api_key") or request.headers.get("x-gemini-api-key")
+    persona = data.get("persona", "arquimedes").lower()
+    voice_name = data.get("voice")
+    
+    if persona == "athena":
+        system_prompt = ATHENA_SYSTEM_PROMPT
+        if not voice_name:
+            voice_name = "Aoede"
+    else:
+        system_prompt = ARQUIMEDES_SYSTEM_PROMPT
+        if not voice_name:
+            voice_name = "Charon"
+            
+    model_name = data.get("model", "gemini-3.8-flash")
+    if "2." in model_name or "1.5" in model_name:
+        model_name = "gemini-3.8-flash"
+        
+    if not user_message:
+        return jsonify({"error": "Mensaje de usuario vacío"}), 400
+        
+    api_key = get_effective_gemini_key(client_key)
+    if not api_key:
+        return jsonify({
+            "error": "No se detectó GEMINI_API_KEY. Configúrala en la interfaz o en el archivo .env."
+        }), 401
+
+    models_to_try = [model_name]
+    if "gemini-3.6-flash" not in models_to_try:
+        models_to_try.append("gemini-3.6-flash")
+    if "gemini-3-flash-preview" not in models_to_try:
+        models_to_try.append("gemini-3-flash-preview")
+
+    audio_payload = {
+        "systemInstruction": {
+            "parts": [{"text": system_prompt}]
+        },
+        "contents": [
+            {"role": "user", "parts": [{"text": user_message}]}
+        ],
+        "generationConfig": {
+            "responseModalities": ["AUDIO", "TEXT"],
+            "speechConfig": {
+                "voiceConfig": {
+                    "prebuiltVoiceConfig": {
+                        "voiceName": voice_name
+                    }
+                }
+            }
+        }
+    }
+
+    # 1. Intentar generación con audio nativo de Gemini
+    for m in models_to_try:
+        chosen_model = m
+        endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
+        req = urllib.request.Request(endpoint, data=json.dumps(audio_payload).encode('utf-8'), headers={'Content-Type': 'application/json'})
+        try:
+            with urllib.request.urlopen(req, timeout=25) as response:
+                if response.status == 200:
+                    resp_data = json.loads(response.read().decode('utf-8'))
+                    candidates = resp_data.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        text_content = ""
+                        audio_b64 = None
+                        mime_type = "audio/wav"
+                        for part in parts:
+                            if "text" in part:
+                                text_content += part["text"] + " "
+                            elif "inlineData" in part:
+                                audio_b64 = part["inlineData"].get("data")
+                                mime_type = part["inlineData"].get("mimeType", "audio/wav")
+                        
+                        return jsonify({
+                            "status": "ok",
+                            "text": text_content.strip(),
+                            "audio": audio_b64,
+                            "mime_type": mime_type,
+                            "fallback_tts": audio_b64 is None,
+                            "model": chosen_model,
+                            "voice": voice_name,
+                            "persona": persona
+                        })
+        except Exception as e_audio:
+            print(f"Voice generation with {m} failed: {e_audio}. Trying next...")
+
+    # 2. Fallback a modo texto con Web Speech API síntesis en cliente
+    text_payload = {
+        "systemInstruction": {
+            "parts": [{"text": system_prompt}]
+        },
+        "contents": [
+            {"role": "user", "parts": [{"text": user_message}]}
+        ]
+    }
+    for m in models_to_try:
+        t_endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
+        req = urllib.request.Request(t_endpoint, data=json.dumps(text_payload).encode('utf-8'), headers={'Content-Type': 'application/json'})
+        try:
+            with urllib.request.urlopen(req, timeout=20) as response:
+                if response.status == 200:
+                    text_data = json.loads(response.read().decode('utf-8'))
+                    candidates = text_data.get("candidates", [])
+                    reply_text = ""
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        reply_text = " ".join([p.get("text", "") for p in parts]).strip()
+                    
+                    return jsonify({
+                        "status": "ok",
+                        "text": reply_text,
+                        "audio": None,
+                        "mime_type": None,
+                        "fallback_tts": True,
+                        "voice": voice_name,
+                        "persona": persona,
+                        "notice": "Respuesta en texto. Síntesis delegada a Web Speech API."
+                    })
+        except urllib.error.HTTPError as he:
+            if he.code == 403 or he.code == 400:
+                guidance_msg = (
+                    f"COO, la clave API de Gemini no está autorizada o está bloqueada ({he.code}). "
+                    "Introduce una clave válida desde el panel de Ajustes de Voz en la pantalla táctil para activar la síntesis soberana."
+                )
+                return jsonify({
+                    "status": "warning",
+                    "text": guidance_msg,
+                    "audio": None,
+                    "mime_type": None,
+                    "fallback_tts": True,
+                    "voice": voice_name,
+                    "persona": persona,
+                    "is_api_key_error": True
+                })
+        except Exception:
+            pass
+
+    return jsonify({"error": "No se pudo obtener respuesta del modelo Gemini"}), 502
+
 @app.route('/')
 def serve_index():
-    path_v2 = '/home/pirate/docker/synapse-ia/monitor_v2.html'
-    path_m2 = '/home/pirate/docker/synapse-ia/monitor_m2.html'
-    
-    target = path_v2 if os.path.exists(path_v2) else path_m2
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    candidates = [
+        os.path.join(base_dir, 'monitor_m2.html'),
+        os.path.join(base_dir, 'monitor_v2.html'),
+        '/home/pirate/docker/synapse-ia/monitor_m2.html',
+        '/app/monitor_m2.html'
+    ]
+    target = None
+    for cand in candidates:
+        if os.path.exists(cand):
+            target = cand
+            break
+    if not target:
+        target = os.path.join(base_dir, 'monitor_m2.html')
     
     print(f"M2-API: Serving index from {target}")
     response = send_file(target)

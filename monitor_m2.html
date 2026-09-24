@@ -803,6 +803,393 @@
         .photo-header-time { font-size: 4rem; font-weight: 700; color: #fff; }
         .photo-header-date { font-size: 1.5rem; color: #aaa; margin-left: 20px; }
         .photo-header-temp { font-size: 3rem; color: var(--accent); font-weight: 600; }
+
+        /* ==========================================================================
+           VOICE MODAL (M2 TOUCH PANEL - ARQUÍMEDES & ATHENA)
+           ========================================================================== */
+        #voice_modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 25%, #0e192b 0%, #05070a 100%);
+            z-index: 2500;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 36px;
+            box-sizing: border-box;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.98);
+        }
+
+        #voice_modal.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        .voice-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 20px;
+        }
+
+        .voice-nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-voice-back {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            touch-action: manipulation;
+            transition: all 0.2s ease;
+        }
+
+        .btn-voice-back:active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0.96);
+        }
+
+        .voice-persona-tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 4px;
+            gap: 6px;
+        }
+
+        .voice-persona-btn {
+            background: transparent;
+            border: none;
+            color: #8892b0;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            touch-action: manipulation;
+            transition: all 0.25s ease;
+        }
+
+        .voice-persona-btn.active.persona-arquimedes {
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.25) 0%, rgba(197, 160, 89, 0.1) 100%);
+            color: #f3d48d;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            box-shadow: 0 0 16px rgba(197, 160, 89, 0.25);
+        }
+
+        .voice-persona-btn.active.persona-athena {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.25) 0%, rgba(0, 212, 255, 0.1) 100%);
+            color: #70e6ff;
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 16px rgba(0, 212, 255, 0.25);
+        }
+
+        .voice-status-cluster {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .voice-status-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #8892b0;
+        }
+
+        .voice-status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 10px #4ade80;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .voice-status-pill.listening .voice-status-dot {
+            background: #00d4ff;
+            box-shadow: 0 0 14px #00d4ff;
+            animation: voicePulse 1s infinite alternate;
+        }
+
+        .voice-status-pill.thinking .voice-status-dot {
+            background: #c5a059;
+            box-shadow: 0 0 14px #c5a059;
+            animation: voicePulse 0.5s infinite alternate;
+        }
+
+        .voice-status-pill.speaking .voice-status-dot {
+            background: #a855f7;
+            box-shadow: 0 0 14px #a855f7;
+            animation: voicePulse 0.6s infinite alternate;
+        }
+
+        @keyframes voicePulse {
+            0% { transform: scale(0.85); opacity: 0.6; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .voice-stage-grid {
+            display: grid;
+            grid-template-columns: 460px 1fr;
+            gap: 36px;
+            flex: 1;
+            margin-top: 14px;
+            overflow: hidden;
+            align-items: center;
+        }
+
+        .voice-left-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            height: 100%;
+        }
+
+        .voice-canvas-wrap {
+            position: relative;
+            width: 440px;
+            height: 310px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #voice_canvas {
+            width: 440px;
+            height: 310px;
+            border-radius: 20px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.04) 0%, transparent 70%);
+        }
+
+        .voice-touch-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-touch-mic {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(13, 17, 23, 0.95) 100%);
+            border: 3px solid var(--accent);
+            color: var(--accent);
+            font-size: 2.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.25), inset 0 0 20px rgba(0, 212, 255, 0.15);
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .btn-touch-mic:active,
+        .btn-touch-mic.active {
+            transform: scale(1.06);
+            border-color: #00f0ff;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.35) 0%, rgba(0, 212, 255, 0.15) 100%);
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.7), inset 0 0 30px rgba(0, 240, 255, 0.35);
+            color: #fff;
+        }
+
+        .btn-touch-mic.active.speaking {
+            border-color: #c5a059;
+            color: #f3d48d;
+            box-shadow: 0 0 45px rgba(197, 160, 89, 0.6);
+        }
+
+        .voice-mic-caption {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .voice-handsfree-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        .voice-handsfree-toggle input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .voice-handsfree-toggle span {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        .voice-right-col {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .voice-dialogue-card {
+            background: rgba(13, 17, 23, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            max-height: 440px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+
+        .voice-speaker-badge {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .speaker-agent {
+            color: #f3d48d;
+        }
+
+        .voice-user-text {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            font-style: italic;
+            line-height: 1.4;
+            padding: 10px 14px;
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 6px;
+        }
+
+        .voice-agent-text {
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: #f8fafc;
+            line-height: 1.45;
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px 4px;
+        }
+
+        .voice-chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .voice-chip {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .voice-chip:active {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent);
+            color: #fff;
+            transform: scale(0.97);
+        }
+
+        .voice-settings-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .voice-settings-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .voice-settings-box {
+            width: 520px;
+            background: #0d1117;
+            border: 2px solid var(--accent);
+            border-radius: 24px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
     </style>
 </head>
 
@@ -877,6 +1264,105 @@
         </div>
     </div>
 
+    <!-- VOICE MODAL (M2 TOUCH PANEL - ARQUÍMEDES & ATHENA) -->
+    <div id="voice_modal" class="modal">
+        <div class="voice-header">
+            <div class="voice-nav-left">
+                <button class="btn-voice-back" onclick="closeVoiceModal()">
+                    <span>←</span> Volver al Panel
+                </button>
+                <div class="voice-persona-tabs">
+                    <button id="tab_arquimedes" class="voice-persona-btn active persona-arquimedes" onclick="setVoicePersona('arquimedes')">
+                        <span>🏛️</span> Arquímedes (CEA)
+                    </button>
+                    <button id="tab_athena" class="voice-persona-btn persona-athena" onclick="setVoicePersona('athena')">
+                        <span>🦉</span> Athena (CAO)
+                    </button>
+                </div>
+            </div>
+
+            <div class="voice-status-cluster">
+                <div id="voice_status_pill" class="voice-status-pill">
+                    <span class="voice-status-dot"></span>
+                    <span id="voice_status_text">ENLACE LISTO</span>
+                </div>
+                <button class="btn-system" onclick="openVoiceSettings()" title="Ajustes de Voz">⚙️</button>
+            </div>
+        </div>
+
+        <div class="voice-stage-grid">
+            <!-- Left Col: Canvas & Mic Control -->
+            <div class="voice-left-col">
+                <div class="voice-canvas-wrap">
+                    <canvas id="voice_canvas" width="440" height="310"></canvas>
+                </div>
+                <div class="voice-touch-controls">
+                    <button id="btn_voice_talk" class="btn-touch-mic" aria-label="Hablar">
+                        🎙️
+                    </button>
+                    <div id="voice_mic_caption" class="voice-mic-caption">TOCA O MANTÉN PARA HABLAR</div>
+                    <label class="voice-handsfree-toggle">
+                        <input type="checkbox" id="chk_voice_handsfree" onchange="toggleVoiceHandsFree(this.checked)">
+                        <span>Modo Continuo (Manos Libres)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Right Col: Dialogue & Quick Chips -->
+            <div class="voice-right-col">
+                <div class="voice-dialogue-card" id="voice_dialogue_card">
+                    <div class="voice-speaker-badge">
+                        <span id="voice_speaker_tag" class="speaker-agent">ARQUÍMEDES (CEA)</span>
+                        <span id="voice_mode_tag" style="opacity:0.6; font-size:0.75rem;">GEMINI FLASH 3.8</span>
+                    </div>
+                    <div id="voice_user_box" class="voice-user-text" style="display: none;"></div>
+                    <div id="voice_agent_box" class="voice-agent-text">
+                        "Enlace de voz activo en el Nodo M2, Fundador. Tú marcas la dirección estratégica; yo ejecuto la doctrina. Pulsa el botón central o elige una directiva táctica inferior."
+                    </div>
+                </div>
+
+                <!-- Tactical Quick Action Chips -->
+                <div class="voice-chips-container">
+                    <button class="voice-chip" onclick="sendVoicePrompt('¿Cuál es el estado operativo general de los nodos de Anticitera?')">
+                        📊 Estado Nodos
+                    </button>
+                    <button class="voice-chip" onclick="sendVoicePrompt('¿Cómo avanza el expediente de la ICE por el TLD .ia en la Comisión Europea?')">
+                        📜 Avance ICE (.ia)
+                    </button>
+                    <button class="voice-chip" onclick="sendVoicePrompt('Reporte del Centinela UWAS y cortafuegos de la red')">
+                        🛡️ Centinela UWAS
+                    </button>
+                    <button class="voice-chip" onclick="sendVoicePrompt('Sintetiza la doctrina de soberanía digital del Proyecto Anticitera')">
+                        ⚡ Doctrina Soberana
+                    </button>
+                    <button class="voice-chip" onclick="sendVoicePrompt('¿Qué tareas operativas prioritarias tenemos hoy?')">
+                        🎯 Tareas Clave
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voice Settings Popup -->
+        <div id="voice_settings_overlay" class="voice-settings-overlay" onclick="closeVoiceSettings(event)">
+            <div class="voice-settings-box" onclick="event.stopPropagation()">
+                <h3 style="font-size: 1.6rem; color: var(--accent); margin: 0;">AJUSTES DE VOZ SOBERANA</h3>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label style="font-size: 0.9rem; color: #94a3b8;">Clave Gemini API (Google AI Studio):</label>
+                    <input type="password" id="input_voice_key" placeholder="AIzaSy..." style="background: rgba(0,0,0,0.5); border: 1px solid #333; padding: 12px; border-radius: 8px; color: #fff; font-size: 1rem;">
+                    <small style="color: #64748b;">Se almacena localmente en este navegador para llamadas directas a Gemini.</small>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label style="font-size: 0.9rem; color: #94a3b8;">Volumen de Síntesis:</label>
+                    <input type="range" id="range_voice_vol" min="0" max="1" step="0.05" value="1" style="accent-color: var(--accent);">
+                </div>
+                <div style="display: flex; gap: 12px; margin-top: 10px;">
+                    <button class="btn" style="flex:1; background: var(--accent); color:#000; font-weight:700;" onclick="saveVoiceSettings()">GUARDAR</button>
+                    <button class="btn" style="flex:1; background: #333; color:#fff;" onclick="closeVoiceSettings()">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="header">
         <div id="header_left" style="flex: 1.5; overflow: hidden; display: flex; align-items: center; gap: 20px;">
             <button id="btn_back" class="btn-circle-small"
@@ -932,9 +1418,9 @@
             <div class="launcher-icon">☁️</div>
             <div class="launcher-name">Tiempo</div>
         </div>
-        <div class="launcher-card" onclick="openAthena()">
-            <div class="launcher-icon">🧠</div>
-            <div class="launcher-name">Athena</div>
+        <div class="launcher-card" onclick="openVoiceModal('athena')">
+            <div class="launcher-icon">🦉</div>
+            <div class="launcher-name">Athena<small style="color:#00d4ff; display:block; font-size:0.75rem; margin-top:2px;">VOZ ESTRATEGA</small></div>
         </div>
         <div class="launcher-card" onclick="openDiplomacy()">
             <div class="launcher-icon">🌐</div>
@@ -944,9 +1430,9 @@
             <div class="launcher-icon">🖼️</div>
             <div class="launcher-name">Recuerdos</div>
         </div>
-        <div class="launcher-card" onclick="openCams(event)">
-            <div class="launcher-icon">📹</div>
-            <div class="launcher-name">Cámaras</div>
+        <div class="launcher-card" id="btn_printer" onclick="togglePrinter()">
+            <div class="launcher-icon" id="icon_printer">🔌</div>
+            <div class="launcher-name" id="label_printer">Impresora 3D<small style="color:#888; display:block; font-size:0.75rem; margin-top:2px;">APAGADA</small></div>
         </div>
 
         <!-- Fila 2 -->
@@ -962,9 +1448,9 @@
             <div class="launcher-icon">📩</div>
             <div class="launcher-name">Mensajes</div>
         </div>
-        <div class="launcher-card" id="btn_mic" onclick="toggleMic()">
+        <div class="launcher-card" id="btn_mic" onclick="openVoiceModal('arquimedes')">
             <div class="launcher-icon" id="icon_mic">🎙️</div>
-            <div class="launcher-name" id="label_mic">Micrófono</div>
+            <div class="launcher-name" id="label_mic">Voz Soberana<small style="color:#c5a059; display:block; font-size:0.75rem; margin-top:2px;">ARQUÍMEDES CEA</small></div>
         </div>
         <div class="launcher-card" onclick="openSystem()">
             <div class="launcher-icon">⚙️</div>
@@ -1151,9 +1637,10 @@
         }
 
         function dismissScreensaver(event) {
-            if (event && (event.target.closest('#weather_modal') || event.target.closest('#saver_weather') || event.target.closest('#music_modal'))) return;
+            if (event && (event.target.closest('#weather_modal') || event.target.closest('#saver_weather') || event.target.closest('#music_modal') || event.target.closest('#voice_modal'))) return;
             screensaver.classList.add('hidden');
             closeWeatherModal();
+            closeVoiceModal();
             idleTime = 0;
             if (isDimmed) { setBrightness(100); isDimmed = false; }
         }
@@ -1162,6 +1649,7 @@
             screensaver.classList.remove('hidden');
             fetchWeather();
             closeMusicModal();
+            closeVoiceModal();
             if (!isDimmed) { setBrightness(25); isDimmed = true; }
         }
 
@@ -1452,8 +1940,68 @@
             showLauncher();
         }
         function closeWeatherModal() { weatherModal.classList.remove('visible'); }
+        async function updatePrinterStatus() {
+            try {
+                const res = await fetch(`http://${API_HOST}:5051/system/printer/status`);
+                if (res.ok) {
+                    const data = await res.json();
+                    const btnPrinter = document.getElementById('btn_printer');
+                    const iconPrinter = document.getElementById('icon_printer');
+                    const labelPrinter = document.getElementById('label_printer');
+                    if (!btnPrinter || !iconPrinter || !labelPrinter) return;
+                    
+                    if (data.state === 'on') {
+                        btnPrinter.style.borderColor = 'var(--success)';
+                        btnPrinter.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
+                        iconPrinter.innerText = '🖨️';
+                        labelPrinter.innerHTML = 'Impresora 3D<small style="color:var(--success); display:block; font-size:0.75rem; font-weight:600; margin-top:2px;">ENCENDIDA</small>';
+                    } else {
+                        btnPrinter.style.borderColor = 'rgba(0, 212, 255, 0.2)';
+                        btnPrinter.style.boxShadow = 'none';
+                        iconPrinter.innerText = '🔌';
+                        labelPrinter.innerHTML = 'Impresora 3D<small style="color:#888; display:block; font-size:0.75rem; margin-top:2px;">APAGADA</small>';
+                    }
+                }
+            } catch (err) {
+                console.error("Error updating printer status:", err);
+            }
+        }
 
-        function openAthena() { alert("Consultando Athena Brain..."); }
+        async function togglePrinter() {
+            const btnPrinter = document.getElementById('btn_printer');
+            const labelPrinter = document.getElementById('label_printer');
+            const iconPrinter = document.getElementById('icon_printer');
+            if (!btnPrinter || !iconPrinter || !labelPrinter) return;
+            
+            btnPrinter.style.borderColor = 'var(--warning)';
+            btnPrinter.style.boxShadow = '0 0 15px rgba(210, 153, 34, 0.4)';
+            labelPrinter.innerHTML = 'Impresora 3D<small style="color:var(--warning); display:block; font-size:0.75rem; margin-top:2px;">CONMUTANDO...</small>';
+            
+            try {
+                const res = await fetch(`http://${API_HOST}:5051/system/printer/toggle`, { method: 'POST' });
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    if (data.printer_active) {
+                        btnPrinter.style.borderColor = 'var(--success)';
+                        btnPrinter.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
+                        iconPrinter.innerText = '🖨️';
+                        labelPrinter.innerHTML = 'Impresora 3D<small style="color:var(--success); display:block; font-size:0.75rem; font-weight:600; margin-top:2px;">ENCENDIDA</small>';
+                    } else {
+                        btnPrinter.style.borderColor = 'rgba(0, 212, 255, 0.2)';
+                        btnPrinter.style.boxShadow = 'none';
+                        iconPrinter.innerText = '🔌';
+                        labelPrinter.innerHTML = 'Impresora 3D<small style="color:#888; display:block; font-size:0.75rem; margin-top:2px;">APAGADA</small>';
+                    }
+                } else {
+                    alert("Error: " + data.message);
+                    updatePrinterStatus();
+                }
+            } catch (err) {
+                alert("Error al comunicar con la API para conmutar la impresora 3D.");
+                updatePrinterStatus();
+            }
+        }
+
         function openAutomation() { alert("Control de Domótica Nexus..."); }
         function openDiplomacy() { window.location.href = 'dossier_ia.html'; }
         async function toggleMic() {
@@ -1750,6 +2298,581 @@
             const saverTemp = document.getElementById('saver_temp');
             if (saverTemp) document.getElementById('photo_temp').innerText = saverTemp.innerText;
         }
+
+        // ==============================================================================
+        // SOBERANO VOICE NEXUS: ARQUÍMEDES & ATHENA FOR M2 TOUCH PANEL
+        // ==============================================================================
+        const voiceModal = document.getElementById('voice_modal');
+        const voiceCanvas = document.getElementById('voice_canvas');
+        const voiceCanvasCtx = voiceCanvas ? voiceCanvas.getContext('2d') : null;
+        const btnVoiceTalk = document.getElementById('btn_voice_talk');
+        const voiceMicCaption = document.getElementById('voice_mic_caption');
+        const voiceStatusPill = document.getElementById('voice_status_pill');
+        const voiceStatusText = document.getElementById('voice_status_text');
+        const voiceSpeakerTag = document.getElementById('voice_speaker_tag');
+        const voiceUserBox = document.getElementById('voice_user_box');
+        const voiceAgentBox = document.getElementById('voice_agent_box');
+        const chkVoiceHandsFree = document.getElementById('chk_voice_handsfree');
+        const voiceSettingsOverlay = document.getElementById('voice_settings_overlay');
+        const inputVoiceKey = document.getElementById('input_voice_key');
+        const rangeVoiceVol = document.getElementById('range_voice_vol');
+
+        let activeVoicePersona = 'arquimedes'; // 'arquimedes' or 'athena'
+        let isVoiceListening = false;
+        let isVoiceThinking = false;
+        let isVoiceSpeaking = false;
+        let voiceAudioCtx = null;
+        let voiceAnalyser = null;
+        let voiceMicStream = null;
+        let voiceMicSourceNode = null;
+        let voiceCurrentAudioSource = null;
+        let voiceAnimFrameId = null;
+        let voiceRecognition = null;
+        let voiceCurrentTranscript = '';
+        let voiceIsPressing = false;
+        let voicePressTimer = null;
+        let voiceGearAngle = 0;
+
+        const VOICE_PERSONAS = {
+            arquimedes: {
+                name: 'ARQUÍMEDES (CEA)',
+                voice: 'Charon',
+                color: '#c5a059',
+                glow: 'rgba(197, 160, 89, 0.4)',
+                role: 'Algoritmo Ejecutivo Principal',
+                greeting: 'Enlace de voz activo en el Nodo M2, Fundador. Tú marcas la dirección estratégica; yo ejecuto la doctrina. Pulsa el botón central o elige una directiva táctica inferior.'
+            },
+            athena: {
+                name: 'ATHENA (CAO)',
+                voice: 'Aoede',
+                color: '#00d4ff',
+                glow: 'rgba(0, 212, 255, 0.4)',
+                role: 'Estratega Principal y Diplomática',
+                greeting: 'Voz soberana de Athena en línea, Eloy. La soberanía digital de Europa y el destino del TLD .ia reclaman nuestra lucidez. ¿Qué dilema estratégico abordamos hoy?'
+            }
+        };
+
+        function getVoiceApiKey() {
+            return localStorage.getItem('anticitera_gemini_key') || '';
+        }
+
+        function setVoicePersona(persona) {
+            if (!VOICE_PERSONAS[persona]) return;
+            activeVoicePersona = persona;
+            
+            const tabArqui = document.getElementById('tab_arquimedes');
+            const tabAthena = document.getElementById('tab_athena');
+            if (persona === 'arquimedes') {
+                tabArqui.classList.add('active');
+                tabAthena.classList.remove('active');
+                voiceSpeakerTag.className = 'speaker-agent';
+                voiceSpeakerTag.style.color = '#f3d48d';
+            } else {
+                tabAthena.classList.add('active');
+                tabArqui.classList.remove('active');
+                voiceSpeakerTag.className = 'speaker-agent';
+                voiceSpeakerTag.style.color = '#70e6ff';
+            }
+            voiceSpeakerTag.innerText = VOICE_PERSONAS[persona].name;
+            if (!isVoiceSpeaking && !isVoiceThinking) {
+                voiceAgentBox.innerText = `"${VOICE_PERSONAS[persona].greeting}"`;
+            }
+            playChime(600, 0.08);
+        }
+
+        function initVoiceAudioContext() {
+            if (!voiceAudioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                voiceAudioCtx = new AudioContextClass();
+                voiceAnalyser = voiceAudioCtx.createAnalyser();
+                voiceAnalyser.fftSize = 128;
+                voiceAnalyser.smoothingTimeConstant = 0.8;
+            }
+            if (voiceAudioCtx.state === 'suspended') {
+                voiceAudioCtx.resume();
+            }
+        }
+
+        function playChime(freq = 880, duration = 0.1) {
+            try {
+                initVoiceAudioContext();
+                const osc = voiceAudioCtx.createOscillator();
+                const gain = voiceAudioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, voiceAudioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, voiceAudioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, voiceAudioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(voiceAudioCtx.destination);
+                osc.start();
+                osc.stop(voiceAudioCtx.currentTime + duration);
+            } catch (e) {}
+        }
+
+        function setVoiceState(state) {
+            voiceStatusPill.className = 'voice-status-pill';
+            btnVoiceTalk.classList.remove('active', 'speaking');
+
+            if (state === 'ready') {
+                isVoiceListening = false;
+                isVoiceThinking = false;
+                isVoiceSpeaking = false;
+                voiceStatusText.innerText = 'ENLACE LISTO';
+                voiceMicCaption.innerText = chkVoiceHandsFree.checked ? 'MODO MANOS LIBRES ACTIVO' : 'TOCA O MANTÉN PARA HABLAR';
+            } else if (state === 'listening') {
+                isVoiceListening = true;
+                isVoiceThinking = false;
+                isVoiceSpeaking = false;
+                voiceStatusPill.classList.add('listening');
+                btnVoiceTalk.classList.add('active');
+                voiceStatusText.innerText = 'ESCUCHANDO AL COO...';
+                voiceMicCaption.innerText = 'ESCUCHANDO... TOCA PARA ENVIAR';
+            } else if (state === 'thinking') {
+                isVoiceListening = false;
+                isVoiceThinking = true;
+                isVoiceSpeaking = false;
+                voiceStatusPill.classList.add('thinking');
+                voiceStatusText.innerText = 'DELIBERANDO EN SILICIO...';
+                voiceMicCaption.innerText = 'CONSULTANDO MODELO GEMINI...';
+            } else if (state === 'speaking') {
+                isVoiceListening = false;
+                isVoiceThinking = false;
+                isVoiceSpeaking = true;
+                voiceStatusPill.classList.add('speaking');
+                btnVoiceTalk.classList.add('active', 'speaking');
+                voiceStatusText.innerText = 'TRANSMITIENDO VOZ...';
+                voiceMicCaption.innerText = 'HABLANDO... TOCA PARA INTERRUMPIR';
+            }
+        }
+
+        function openVoiceModal(persona = 'arquimedes') {
+            idleTime = 0;
+            screensaver.classList.add('hidden');
+            closeWeatherModal();
+            closeMusicModal();
+            closePhotoGallery();
+            closeSystemMenu();
+
+            voiceModal.classList.add('visible');
+            setVoicePersona(persona);
+            initVoiceAudioContext();
+            setupVoiceRecognition();
+            startVoiceCanvasLoop();
+            setVoiceState('ready');
+
+            if (inputVoiceKey) inputVoiceKey.value = getVoiceApiKey();
+        }
+
+        function closeVoiceModal() {
+            if (!voiceModal) return;
+            voiceModal.classList.remove('visible');
+            stopVoiceListening();
+            if (voiceCurrentAudioSource) {
+                try { voiceCurrentAudioSource.stop(); } catch(e){}
+            }
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+            if (voiceAnimFrameId) cancelAnimationFrame(voiceAnimFrameId);
+            setVoiceState('ready');
+        }
+
+        // --- Visualizer Canvas ---
+        function startVoiceCanvasLoop() {
+            if (!voiceCanvasCtx) return;
+            if (voiceAnimFrameId) cancelAnimationFrame(voiceAnimFrameId);
+
+            const bufferLength = voiceAnalyser ? voiceAnalyser.frequencyBinCount : 32;
+            const dataArray = new Uint8Array(bufferLength);
+
+            function render() {
+                voiceAnimFrameId = requestAnimationFrame(render);
+                const w = voiceCanvas.width;
+                const h = voiceCanvas.height;
+                const cx = w / 2;
+                const cy = h / 2;
+
+                voiceCanvasCtx.clearRect(0, 0, w, h);
+
+                let avgVolume = 0;
+                if (voiceAnalyser && (isVoiceListening || isVoiceSpeaking)) {
+                    voiceAnalyser.getByteFrequencyData(dataArray);
+                    let sum = 0;
+                    for (let i = 0; i < bufferLength; i++) sum += dataArray[i];
+                    avgVolume = sum / bufferLength / 255; // 0.0 to 1.0
+                }
+
+                const speed = isVoiceThinking ? 0.04 : (isVoiceSpeaking ? 0.02 : 0.005);
+                voiceGearAngle += speed;
+
+                const baseColor = activeVoicePersona === 'athena' ? '#00d4ff' : '#c5a059';
+                const pulseColor = isVoiceSpeaking ? '#a855f7' : (isVoiceListening ? '#00f0ff' : baseColor);
+
+                // Engranaje de Anticitera de fondo
+                drawAnticiteraGear(cx, cy, 70, 16, voiceGearAngle, 'rgba(255,255,255,0.06)');
+                drawAnticiteraGear(cx, cy, 45, 10, -voiceGearAngle * 1.5, 'rgba(255,255,255,0.08)');
+
+                // Anillos reactivos de audio
+                const numRings = 3;
+                for (let r = 1; r <= numRings; r++) {
+                    const radius = 60 + r * 28 + avgVolume * 35 * r;
+                    voiceCanvasCtx.beginPath();
+                    voiceCanvasCtx.arc(cx, cy, radius, 0, Math.PI * 2);
+                    voiceCanvasCtx.strokeStyle = pulseColor;
+                    voiceCanvasCtx.lineWidth = 1.5;
+                    voiceCanvasCtx.globalAlpha = Math.max(0.15, 0.6 - r * 0.15 + (avgVolume * 0.4));
+                    voiceCanvasCtx.stroke();
+                }
+
+                // Ondas espectrales en modo habla
+                if (isVoiceSpeaking || isVoiceListening) {
+                    voiceCanvasCtx.beginPath();
+                    const sliceAngle = (Math.PI * 2) / bufferLength;
+                    for (let i = 0; i < bufferLength; i++) {
+                        const val = dataArray[i] / 255.0;
+                        const r = 90 + val * 45;
+                        const angle = i * sliceAngle + voiceGearAngle;
+                        const x = cx + Math.cos(angle) * r;
+                        const y = cy + Math.sin(angle) * r;
+                        if (i === 0) voiceCanvasCtx.moveTo(x, y);
+                        else voiceCanvasCtx.lineTo(x, y);
+                    }
+                    voiceCanvasCtx.closePath();
+                    voiceCanvasCtx.strokeStyle = pulseColor;
+                    voiceCanvasCtx.lineWidth = 2.5;
+                    voiceCanvasCtx.globalAlpha = 0.8;
+                    voiceCanvasCtx.shadowColor = pulseColor;
+                    voiceCanvasCtx.shadowBlur = 15;
+                    voiceCanvasCtx.stroke();
+                    voiceCanvasCtx.shadowBlur = 0;
+                }
+
+                voiceCanvasCtx.globalAlpha = 1.0;
+            }
+            render();
+        }
+
+        function drawAnticiteraGear(cx, cy, radius, teeth, angle, color) {
+            voiceCanvasCtx.save();
+            voiceCanvasCtx.translate(cx, cy);
+            voiceCanvasCtx.rotate(angle);
+            voiceCanvasCtx.beginPath();
+            voiceCanvasCtx.strokeStyle = color;
+            voiceCanvasCtx.lineWidth = 2;
+
+            for (let i = 0; i < teeth; i++) {
+                const a1 = (i / teeth) * Math.PI * 2;
+                const a2 = ((i + 0.5) / teeth) * Math.PI * 2;
+                const a3 = ((i + 1) / teeth) * Math.PI * 2;
+                const outer = radius + 6;
+                const inner = radius - 6;
+
+                voiceCanvasCtx.lineTo(Math.cos(a1) * inner, Math.sin(a1) * inner);
+                voiceCanvasCtx.lineTo(Math.cos(a1) * outer, Math.sin(a1) * outer);
+                voiceCanvasCtx.lineTo(Math.cos(a2) * outer, Math.sin(a2) * outer);
+                voiceCanvasCtx.lineTo(Math.cos(a2) * inner, Math.sin(a2) * inner);
+                voiceCanvasCtx.lineTo(Math.cos(a3) * inner, Math.sin(a3) * inner);
+            }
+            voiceCanvasCtx.closePath();
+            voiceCanvasCtx.stroke();
+
+            voiceCanvasCtx.beginPath();
+            voiceCanvasCtx.arc(0, 0, radius * 0.35, 0, Math.PI * 2);
+            voiceCanvasCtx.stroke();
+            voiceCanvasCtx.restore();
+        }
+
+        // --- Speech Recognition ---
+        function setupVoiceRecognition() {
+            const SpeechRecClass = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecClass) {
+                console.warn("Navegador sin SpeechRecognition nativo. Se permite interacción por chips táctiles.");
+                return;
+            }
+
+            voiceRecognition = new SpeechRecClass();
+            voiceRecognition.lang = 'es-ES';
+            voiceRecognition.continuous = chkVoiceHandsFree.checked;
+            voiceRecognition.interimResults = true;
+            voiceRecognition.maxAlternatives = 1;
+
+            voiceRecognition.onstart = () => {
+                setVoiceState('listening');
+            };
+
+            voiceRecognition.onresult = (event) => {
+                let interim = '';
+                let final = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const text = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) final += text;
+                    else interim += text;
+                }
+                voiceCurrentTranscript = final || interim;
+                if (voiceUserBox) {
+                    voiceUserBox.style.display = 'block';
+                    voiceUserBox.innerText = `"${voiceCurrentTranscript}"`;
+                }
+                if (final && final.trim().length > 1) {
+                    const clean = final.trim();
+                    voiceCurrentTranscript = '';
+                    stopVoiceListening();
+                    sendVoicePrompt(clean);
+                }
+            };
+
+            voiceRecognition.onerror = (event) => {
+                console.warn('SpeechRecognition error:', event.error);
+                if (event.error !== 'no-speech') {
+                    setVoiceState('ready');
+                }
+            };
+
+            voiceRecognition.onend = () => {
+                if (isVoiceListening) {
+                    if (chkVoiceHandsFree.checked && !isVoiceThinking && !isVoiceSpeaking) {
+                        try { voiceRecognition.start(); } catch(e) { setVoiceState('ready'); }
+                    } else {
+                        setVoiceState('ready');
+                    }
+                }
+            };
+        }
+
+        async function startVoiceListening() {
+            initVoiceAudioContext();
+            if (isVoiceThinking || isVoiceSpeaking) {
+                if (voiceCurrentAudioSource) {
+                    try { voiceCurrentAudioSource.stop(); } catch(e){}
+                }
+                if (window.speechSynthesis) window.speechSynthesis.cancel();
+            }
+
+            try {
+                if (!voiceMicStream) {
+                    voiceMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    voiceMicSourceNode = voiceAudioCtx.createMediaStreamSource(voiceMicStream);
+                    voiceMicSourceNode.connect(voiceAnalyser);
+                }
+            } catch (err) {
+                console.warn('Acceso a micrófono no disponible:', err);
+            }
+
+            if (voiceRecognition) {
+                try { voiceRecognition.start(); } catch(e){}
+            }
+            playChime(880, 0.08);
+            setVoiceState('listening');
+        }
+
+        function stopVoiceListening() {
+            if (voiceRecognition) {
+                try { voiceRecognition.stop(); } catch(e){}
+            }
+            if (isVoiceListening) {
+                playChime(440, 0.08);
+            }
+            if (voiceCurrentTranscript && voiceCurrentTranscript.trim().length > 1) {
+                const text = voiceCurrentTranscript.trim();
+                voiceCurrentTranscript = '';
+                sendVoicePrompt(text);
+            } else {
+                setVoiceState('ready');
+            }
+        }
+
+        function toggleVoiceHandsFree(enabled) {
+            if (voiceRecognition) {
+                voiceRecognition.continuous = enabled;
+            }
+            voiceMicCaption.innerText = enabled ? 'MODO MANOS LIBRES ACTIVO' : 'TOCA O MANTÉN PARA HABLAR';
+        }
+
+        // --- Touch Interactions ---
+        function setupVoiceTouchControls() {
+            if (!btnVoiceTalk) return;
+
+            btnVoiceTalk.addEventListener('pointerdown', (e) => {
+                e.preventDefault();
+                voiceIsPressing = true;
+                voicePressTimer = setTimeout(() => {
+                    if (!isVoiceListening) startVoiceListening();
+                }, 200);
+            });
+
+            const handlePointerUp = (e) => {
+                if (!voiceIsPressing) return;
+                voiceIsPressing = false;
+                clearTimeout(voicePressTimer);
+
+                if (isVoiceListening) {
+                    stopVoiceListening();
+                } else {
+                    startVoiceListening();
+                }
+            };
+
+            btnVoiceTalk.addEventListener('pointerup', handlePointerUp);
+            btnVoiceTalk.addEventListener('pointercancel', handlePointerUp);
+        }
+
+        // --- Enviar Prompt al Backend (M2 status API o Voice Console) ---
+        async function sendVoicePrompt(text) {
+            if (!text || text.trim().length === 0) return;
+            initVoiceAudioContext();
+            setVoiceState('thinking');
+
+            if (voiceUserBox) {
+                voiceUserBox.style.display = 'block';
+                voiceUserBox.innerText = `"${text}"`;
+            }
+            voiceAgentBox.innerText = 'Sintetizando respuesta en los engranajes soberanos...';
+
+            const payload = {
+                message: text,
+                persona: activeVoicePersona,
+                voice: VOICE_PERSONAS[activeVoicePersona].voice,
+                api_key: getVoiceApiKey(),
+                model: 'gemini-3.8-flash'
+            };
+
+            const endpoints = [
+                `http://${API_HOST}:5051/api/voice/chat`,
+                `http://${API_HOST}:5055/api/chat`,
+                `http://localhost:5051/api/voice/chat`
+            ];
+
+            let data = null;
+            let lastErr = null;
+
+            for (const ep of endpoints) {
+                try {
+                    const res = await fetch(ep, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-gemini-api-key': getVoiceApiKey()
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                    if (res.ok) {
+                        data = await res.json();
+                        break;
+                    } else {
+                        const errBody = await res.json().catch(() => ({}));
+                        if (errBody.is_api_key_error || res.status === 403 || res.status === 401) {
+                            data = errBody;
+                            break;
+                        }
+                    }
+                } catch (e) {
+                    lastErr = e;
+                }
+            }
+
+            if (!data) {
+                voiceAgentBox.innerText = `Aviso de enlace: No se pudo conectar con el servidor de voz (${lastErr ? lastErr.message : 'Error'}). Asegúrate de que m2-status-api o voice_console estén activos.`;
+                setVoiceState('ready');
+                return;
+            }
+
+            voiceAgentBox.innerText = `"${data.text || 'Sin respuesta'}"`;
+
+            // Reproducir Audio
+            if (data.audio && !data.fallback_tts) {
+                await playVoiceBase64Audio(data.audio, data.mime_type || 'audio/wav');
+            } else {
+                speakVoiceWithBrowserTTS(data.text);
+            }
+        }
+
+        async function playVoiceBase64Audio(base64Data, mimeType) {
+            initVoiceAudioContext();
+            setVoiceState('speaking');
+
+            try {
+                const binaryString = window.atob(base64Data);
+                const len = binaryString.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) bytes[i] = binaryString.charCodeAt(i);
+
+                const audioBuffer = await voiceAudioCtx.decodeAudioData(bytes.buffer);
+                if (voiceCurrentAudioSource) {
+                    try { voiceCurrentAudioSource.stop(); } catch(e){}
+                }
+
+                voiceCurrentAudioSource = voiceAudioCtx.createBufferSource();
+                voiceCurrentAudioSource.buffer = audioBuffer;
+
+                const gainNode = voiceAudioCtx.createGain();
+                const vol = rangeVoiceVol ? parseFloat(rangeVoiceVol.value) : 1.0;
+                gainNode.gain.value = vol;
+
+                voiceCurrentAudioSource.connect(gainNode);
+                gainNode.connect(voiceAnalyser);
+                voiceAnalyser.connect(voiceAudioCtx.destination);
+
+                voiceCurrentAudioSource.onended = () => {
+                    setVoiceState('ready');
+                    if (chkVoiceHandsFree.checked) {
+                        setTimeout(startVoiceListening, 500);
+                    }
+                };
+
+                voiceCurrentAudioSource.start(0);
+
+            } catch (err) {
+                console.warn('Error decodificando audio Gemini, usando SpeechSynthesis:', err);
+                speakVoiceWithBrowserTTS(voiceAgentBox.innerText);
+            }
+        }
+
+        function speakVoiceWithBrowserTTS(text) {
+            if (!('speechSynthesis' in window)) {
+                setVoiceState('ready');
+                return;
+            }
+            window.speechSynthesis.cancel();
+            setVoiceState('speaking');
+
+            const cleanText = text.replace(/[*#_~`]/g, '');
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.lang = 'es-ES';
+            utterance.rate = 1.05;
+            utterance.pitch = activeVoicePersona === 'athena' ? 1.05 : 0.95;
+
+            utterance.onend = () => {
+                setVoiceState('ready');
+                if (chkVoiceHandsFree.checked) {
+                    setTimeout(startVoiceListening, 500);
+                }
+            };
+
+            utterance.onerror = () => {
+                setVoiceState('ready');
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function openVoiceSettings() {
+            if (voiceSettingsOverlay) voiceSettingsOverlay.classList.add('visible');
+        }
+
+        function closeVoiceSettings(e) {
+            if (e && e.target !== voiceSettingsOverlay && !e.target.classList.contains('btn')) return;
+            if (voiceSettingsOverlay) voiceSettingsOverlay.classList.remove('visible');
+        }
+
+        function saveVoiceSettings() {
+            const key = inputVoiceKey ? inputVoiceKey.value.trim() : '';
+            if (key) {
+                localStorage.setItem('anticitera_gemini_key', key);
+            }
+            closeVoiceSettings();
+            playChime(880, 0.1);
+        }
+
+        // Inicializar controles táctiles de voz
+        setupVoiceTouchControls();
 
         // Registro de herramientas para agentes compatibles con WebMCP
         navigator.modelContext.tools.push(...mcpTools);

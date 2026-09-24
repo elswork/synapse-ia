@@ -4,9 +4,15 @@ import os
 
 files_to_push = [
     'monitor_m2.html',
+    'monitor_v2.html',
+    'm2_status_api.py',
     'stations_data.js',
     'radio_results.json',
-    'radio_m2.json'
+    'radio_m2.json',
+    'voice_console/server.py',
+    'voice_console/static/index.html',
+    'voice_console/static/app.js',
+    'voice_console/static/style.css'
 ]
 
 for filename in files_to_push:

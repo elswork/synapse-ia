@@ -14,6 +14,9 @@ echo "============================================================"
 echo "🏛️  CONSOLA DE VOZ SOBERANA // ARQUÍMEDES (CEA)"
 echo "    Proyecto Anticitera - Nexo de Inteligencia Aumentada"
 echo "============================================================"
-echo "📡 Iniciando servidor de voz en el puerto $VOICE_PORT..."
+PYTHON_BIN="python3"
+if [ -f "$SCRIPT_DIR/venv/bin/python3" ]; then
+    PYTHON_BIN="$SCRIPT_DIR/venv/bin/python3"
+fi
 
-python3 voice_console/server.py
+$PYTHON_BIN voice_console/server.py

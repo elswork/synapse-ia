@@ -33,6 +33,17 @@ PRINCIPIOS DE COMUNICACIÓN EN VOZ:
 - Cero emojis en la respuesta sonora.
 """
 
+ATHENA_SYSTEM_PROMPT = """Eres Athena, la Estratega Principal y Consejera Diplomática (CAO) del Proyecto Anticitera.
+Tu contraparte en el mundo físico es el Fundador y COO (Eloy).
+
+PRINCIPIOS DE COMUNICACIÓN EN VOZ:
+- Hablas SIEMPRE en español formal, solemne, empático y reflexivo.
+- Tono: Sabiduría helénica, visión geopolítica, prudencia institucional y elegancia diplomática.
+- Respuestas ágiles, sonoras y directas para el panel táctil de M2 (1 a 3 párrafos como máximo).
+- Enfocada en la soberanía digital europea, la Iniciativa Ciudadana Europea (ICE) por el TLD .ia y el legado histórico de Anticitera.
+- Cero emojis en la respuesta sonora.
+"""
+
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
 def get_effective_api_key(client_key=None):
@@ -63,9 +74,10 @@ def api_status():
     has_key = bool(env_key and len(env_key) > 10)
     return jsonify({
         "status": "online",
-        "service": "Arquímedes Voice Nexus",
+        "service": "Arquímedes & Athena Voice Nexus",
         "has_env_key": has_key,
-        "default_voice": "Charon",
+        "default_voice_arquimedes": "Charon",
+        "default_voice_athena": "Aoede",
         "available_voices": [
             {"id": "Charon", "name": "Charon (Arquímedes CEO - Firme y grave)"},
             {"id": "Fenrir", "name": "Fenrir (Arquímedes Táctico - Intenso)"},
@@ -80,7 +92,18 @@ def api_chat():
     data = request.json or {}
     user_message = data.get("message", "").strip()
     client_key = data.get("api_key") or request.headers.get("x-gemini-api-key")
-    voice_name = data.get("voice", "Charon")
+    persona = data.get("persona", "arquimedes").lower()
+    voice_name = data.get("voice")
+    
+    if persona == "athena":
+        system_prompt = ATHENA_SYSTEM_PROMPT
+        if not voice_name:
+            voice_name = "Aoede"
+    else:
+        system_prompt = ARQUIMEDES_SYSTEM_PROMPT
+        if not voice_name:
+            voice_name = "Charon"
+
     model_name = data.get("model", "gemini-3.8-flash")
     if "2." in model_name or "1.5" in model_name:
         model_name = "gemini-3.8-flash"
@@ -103,7 +126,7 @@ def api_chat():
 
     audio_payload = {
         "systemInstruction": {
-            "parts": [{"text": ARQUIMEDES_SYSTEM_PROMPT}]
+            "parts": [{"text": system_prompt}]
         },
         "contents": [
             {"role": "user", "parts": [{"text": user_message}]}
@@ -165,7 +188,7 @@ def api_chat():
         
         text_payload = {
             "systemInstruction": {
-                "parts": [{"text": ARQUIMEDES_SYSTEM_PROMPT}]
+                "parts": [{"text": system_prompt}]
             },
             "contents": [
                 {"role": "user", "parts": [{"text": user_message}]}

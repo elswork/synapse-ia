@@ -349,6 +349,7 @@
         },
         body: JSON.stringify({
           message: text,
+          persona: settings.persona || 'arquimedes',
           api_key: settings.apiKey,
           voice: settings.voice,
           model: settings.model
@@ -362,8 +363,9 @@
       }
 
       // Display response in bitácora
-      logMessage('Arquímedes (CEA)', data.text, 'agent');
-      liveSpeakerTag.innerHTML = '<span class="badge-agent" style="color:var(--accent-gold);">Arquímedes CEA</span><span class="live-tag">EMISIÓN</span>';
+      const agentDisplayName = data.persona === 'athena' ? 'Athena (CAO)' : 'Arquímedes (CEA)';
+      logMessage(agentDisplayName, data.text, 'agent');
+      liveSpeakerTag.innerHTML = `<span class="badge-agent" style="color:${data.persona === 'athena' ? 'var(--accent-cyan)' : 'var(--accent-gold)'};">${agentDisplayName}</span><span class="live-tag">EMISIÓN</span>`;
       liveSpeechText.textContent = `"${data.text}"`;
 
       // Si es un error de API Key bloqueada, abrir los ajustes automáticamente
