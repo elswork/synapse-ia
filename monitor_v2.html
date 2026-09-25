@@ -1014,7 +1014,9 @@
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.25), inset 0 0 20px rgba(0, 212, 255, 0.15);
-            touch-action: manipulation;
+            touch-action: none !important;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
             user-select: none;
             -webkit-user-select: none;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2330,7 +2332,11 @@
         let voiceRecognition = null;
         let voiceCurrentTranscript = '';
         let voiceIsPressing = false;
-        let voicePressTimer = null;
+        let voicePressStartTime = 0;
+        let wasListeningBeforePress = false;
+        let voiceHandsFreeTimer = null;
+        let voiceMediaRecorder = null;
+        let voiceAudioChunks = [];
         let voiceGearAngle = 0;
 
         const VOICE_PERSONAS = {
@@ -2459,6 +2465,7 @@
             setupVoiceRecognition();
             startVoiceCanvasLoop();
             setVoiceState('ready');
+            warmupVoiceMic();
 
             if (inputVoiceKey) inputVoiceKey.value = getVoiceApiKey();
         }
@@ -2580,17 +2587,51 @@
             voiceCanvasCtx.restore();
         }
 
-        // --- Speech Recognition ---
+        // --- Speech Recognition & Audio Pipeline ---
+        function blobToBase64(blob) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const res = reader.result;
+                    if (res && res.includes(',')) {
+                        resolve(res.split(',')[1]);
+                    } else {
+                        resolve(null);
+                    }
+                };
+                reader.onerror = () => resolve(null);
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        async function warmupVoiceMic() {
+            try {
+                if (!voiceMicStream) {
+                    voiceMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    if (voiceAudioCtx && !voiceMicSourceNode) {
+                        voiceMicSourceNode = voiceAudioCtx.createMediaStreamSource(voiceMicStream);
+                        voiceMicSourceNode.connect(voiceAnalyser);
+                    }
+                }
+            } catch (err) {
+                console.warn('Acceso a micrófono no disponible:', err);
+            }
+        }
+
         function setupVoiceRecognition() {
             const SpeechRecClass = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SpeechRecClass) {
-                console.warn("Navegador sin SpeechRecognition nativo. Se permite interacción por chips táctiles.");
+                console.warn("Navegador sin SpeechRecognition nativo. Se usará captura de audio directa.");
                 return;
+            }
+
+            if (voiceRecognition) {
+                try { voiceRecognition.abort(); } catch(e){}
             }
 
             voiceRecognition = new SpeechRecClass();
             voiceRecognition.lang = 'es-ES';
-            voiceRecognition.continuous = chkVoiceHandsFree.checked;
+            voiceRecognition.continuous = true;
             voiceRecognition.interimResults = true;
             voiceRecognition.maxAlternatives = 1;
 
@@ -2601,38 +2642,55 @@
             voiceRecognition.onresult = (event) => {
                 let interim = '';
                 let final = '';
-                for (let i = event.resultIndex; i < event.results.length; i++) {
+                for (let i = 0; i < event.results.length; i++) {
                     const text = event.results[i][0].transcript;
-                    if (event.results[i].isFinal) final += text;
+                    if (event.results[i].isFinal) final += text + ' ';
                     else interim += text;
                 }
-                voiceCurrentTranscript = final || interim;
-                if (voiceUserBox) {
-                    voiceUserBox.style.display = 'block';
-                    voiceUserBox.innerText = `"${voiceCurrentTranscript}"`;
+                const fullText = (final + interim).trim();
+                if (fullText) {
+                    voiceCurrentTranscript = fullText;
+                    if (voiceUserBox) {
+                        voiceUserBox.style.display = 'block';
+                        voiceUserBox.innerText = `"${voiceCurrentTranscript}"`;
+                    }
                 }
-                if (final && final.trim().length > 1) {
-                    const clean = final.trim();
-                    voiceCurrentTranscript = '';
-                    stopVoiceListening();
-                    sendVoicePrompt(clean);
+
+                // En modo Manos Libres y si el usuario NO está manteniendo el botón presionado
+                if (!voiceIsPressing && chkVoiceHandsFree && chkVoiceHandsFree.checked) {
+                    clearTimeout(voiceHandsFreeTimer);
+                    const lastResult = event.results[event.results.length - 1];
+                    if (lastResult.isFinal && voiceCurrentTranscript.length > 1) {
+                        voiceHandsFreeTimer = setTimeout(() => {
+                            if (!voiceIsPressing && isVoiceListening && chkVoiceHandsFree.checked) {
+                                const clean = voiceCurrentTranscript;
+                                voiceCurrentTranscript = '';
+                                stopVoiceListening();
+                                sendVoicePrompt(clean);
+                            }
+                        }, 1200);
+                    }
                 }
             };
 
             voiceRecognition.onerror = (event) => {
                 console.warn('SpeechRecognition error:', event.error);
-                if (event.error !== 'no-speech') {
+                if (event.error === 'no-speech' || event.error === 'aborted') {
+                    return;
+                }
+                if (!voiceIsPressing && (!chkVoiceHandsFree || !chkVoiceHandsFree.checked)) {
                     setVoiceState('ready');
                 }
             };
 
             voiceRecognition.onend = () => {
-                if (isVoiceListening) {
-                    if (chkVoiceHandsFree.checked && !isVoiceThinking && !isVoiceSpeaking) {
-                        try { voiceRecognition.start(); } catch(e) { setVoiceState('ready'); }
-                    } else {
-                        setVoiceState('ready');
-                    }
+                // Si el usuario sigue manteniendo el botón o estamos en manos libres, reconectar de inmediato
+                if (voiceIsPressing || (isVoiceListening && chkVoiceHandsFree && chkVoiceHandsFree.checked && !isVoiceThinking && !isVoiceSpeaking)) {
+                    try {
+                        voiceRecognition.start();
+                    } catch(e) {}
+                } else if (isVoiceListening && !voiceIsPressing) {
+                    setVoiceState('ready');
                 }
             };
         }
@@ -2646,11 +2704,30 @@
                 if (window.speechSynthesis) window.speechSynthesis.cancel();
             }
 
+            voiceCurrentTranscript = '';
+            voiceAudioChunks = [];
+
             try {
                 if (!voiceMicStream) {
                     voiceMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     voiceMicSourceNode = voiceAudioCtx.createMediaStreamSource(voiceMicStream);
                     voiceMicSourceNode.connect(voiceAnalyser);
+                }
+
+                // Iniciar MediaRecorder como respaldo de audio nativo
+                if (window.MediaRecorder && voiceMicStream) {
+                    try {
+                        let mime = 'audio/webm;codecs=opus';
+                        if (!MediaRecorder.isTypeSupported(mime)) mime = 'audio/webm';
+                        if (!MediaRecorder.isTypeSupported(mime)) mime = '';
+                        voiceMediaRecorder = mime ? new MediaRecorder(voiceMicStream, { mimeType: mime }) : new MediaRecorder(voiceMicStream);
+                        voiceMediaRecorder.ondataavailable = (e) => {
+                            if (e.data && e.data.size > 0) voiceAudioChunks.push(e.data);
+                        };
+                        voiceMediaRecorder.start(100);
+                    } catch (mErr) {
+                        console.warn('MediaRecorder warning:', mErr);
+                    }
                 }
             } catch (err) {
                 console.warn('Acceso a micrófono no disponible:', err);
@@ -2664,24 +2741,49 @@
         }
 
         function stopVoiceListening() {
+            if (!isVoiceListening) return;
+            isVoiceListening = false;
+            playChime(440, 0.08);
+
             if (voiceRecognition) {
                 try { voiceRecognition.stop(); } catch(e){}
             }
-            if (isVoiceListening) {
-                playChime(440, 0.08);
+
+            let audioBlobPromise = null;
+            if (voiceMediaRecorder && voiceMediaRecorder.state !== 'inactive') {
+                audioBlobPromise = new Promise((resolve) => {
+                    voiceMediaRecorder.onstop = () => {
+                        const mime = voiceMediaRecorder.mimeType || 'audio/webm';
+                        const blob = new Blob(voiceAudioChunks, { type: mime });
+                        voiceAudioChunks = [];
+                        resolve(blob);
+                    };
+                    try { voiceMediaRecorder.stop(); } catch(e) { resolve(null); }
+                });
             }
-            if (voiceCurrentTranscript && voiceCurrentTranscript.trim().length > 1) {
-                const text = voiceCurrentTranscript.trim();
+
+            // Ventana de 350ms para permitir que el speech recognition o el audio capture finalicen
+            setTimeout(async () => {
+                const text = (voiceCurrentTranscript || '').trim();
                 voiceCurrentTranscript = '';
-                sendVoicePrompt(text);
-            } else {
-                setVoiceState('ready');
-            }
+                const audioBlob = audioBlobPromise ? await audioBlobPromise : null;
+
+                if (text && text.length > 0) {
+                    sendVoicePrompt(text);
+                } else if (audioBlob && audioBlob.size > 1500) {
+                    sendVoicePrompt('', audioBlob);
+                } else {
+                    setVoiceState('ready');
+                    if (voiceMicCaption) {
+                        voiceMicCaption.innerText = chkVoiceHandsFree && chkVoiceHandsFree.checked ? 'MODO MANOS LIBRES ACTIVO' : 'TOCA O MANTÉN PARA HABLAR';
+                    }
+                }
+            }, 350);
         }
 
         function toggleVoiceHandsFree(enabled) {
             if (voiceRecognition) {
-                voiceRecognition.continuous = enabled;
+                voiceRecognition.continuous = true;
             }
             voiceMicCaption.innerText = enabled ? 'MODO MANOS LIBRES ACTIVO' : 'TOCA O MANTÉN PARA HABLAR';
         }
@@ -2692,47 +2794,87 @@
 
             btnVoiceTalk.addEventListener('pointerdown', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
+                try { btnVoiceTalk.setPointerCapture(e.pointerId); } catch(err){}
+
                 voiceIsPressing = true;
-                voicePressTimer = setTimeout(() => {
-                    if (!isVoiceListening) startVoiceListening();
-                }, 200);
+                voicePressStartTime = Date.now();
+                wasListeningBeforePress = isVoiceListening;
+
+                // Interrumpir agente si está hablando
+                if (isVoiceSpeaking || isVoiceThinking) {
+                    if (voiceCurrentAudioSource) {
+                        try { voiceCurrentAudioSource.stop(); } catch(e){}
+                    }
+                    if (window.speechSynthesis) window.speechSynthesis.cancel();
+                    setVoiceState('ready');
+                    wasListeningBeforePress = false;
+                }
+
+                if (!wasListeningBeforePress) {
+                    startVoiceListening();
+                    if (voiceMicCaption) {
+                        voiceMicCaption.innerText = 'GRABANDO... SUELTA AL TERMINAR';
+                    }
+                }
             });
 
-            const handlePointerUp = (e) => {
+            const handlePointerRelease = (e) => {
                 if (!voiceIsPressing) return;
                 voiceIsPressing = false;
-                clearTimeout(voicePressTimer);
+                try { btnVoiceTalk.releasePointerCapture(e.pointerId); } catch(err){}
 
-                if (isVoiceListening) {
+                const duration = Date.now() - voicePressStartTime;
+
+                // Modo Push-to-Talk (mantuvo pulsado más de 250ms): al soltar, enviar
+                if (duration >= 250) {
                     stopVoiceListening();
                 } else {
-                    startVoiceListening();
+                    // Modo Tap (toque corto de <250ms):
+                    if (wasListeningBeforePress) {
+                        // Ya estaba escuchando, el toque lo detiene y envía
+                        stopVoiceListening();
+                    } else {
+                        // Se inició con el toque, se mantiene escuchando
+                        if (voiceMicCaption) {
+                            voiceMicCaption.innerText = 'ESCUCHANDO... TOCA PARA ENVIAR';
+                        }
+                    }
                 }
             };
 
-            btnVoiceTalk.addEventListener('pointerup', handlePointerUp);
-            btnVoiceTalk.addEventListener('pointercancel', handlePointerUp);
+            btnVoiceTalk.addEventListener('pointerup', handlePointerRelease);
+            btnVoiceTalk.addEventListener('pointercancel', handlePointerRelease);
         }
 
         // --- Enviar Prompt al Backend (M2 status API o Voice Console) ---
-        async function sendVoicePrompt(text) {
-            if (!text || text.trim().length === 0) return;
+        async function sendVoicePrompt(text, audioBlob = null) {
+            if ((!text || text.trim().length === 0) && !audioBlob) return;
             initVoiceAudioContext();
             setVoiceState('thinking');
 
             if (voiceUserBox) {
                 voiceUserBox.style.display = 'block';
-                voiceUserBox.innerText = `"${text}"`;
+                voiceUserBox.innerText = text ? `"${text}"` : '"[Voz capturada por micrófono...]"';
             }
             voiceAgentBox.innerText = 'Sintetizando respuesta en los engranajes soberanos...';
 
             const payload = {
-                message: text,
+                message: text || '',
                 persona: activeVoicePersona,
                 voice: VOICE_PERSONAS[activeVoicePersona].voice,
                 api_key: getVoiceApiKey(),
-                model: 'gemini-3.8-flash'
+                model: 'gemini-3.6-flash'
             };
+
+            // Si no hay texto transcrito por Web Speech API, enviar el audio capturado
+            if (!text && audioBlob) {
+                const b64 = await blobToBase64(audioBlob);
+                if (b64) {
+                    payload.audio = b64;
+                    payload.mime_type = 'audio/webm';
+                }
+            }
 
             const endpoints = [
                 `http://${API_HOST}:5051/api/voice/chat`,

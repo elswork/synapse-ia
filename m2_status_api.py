@@ -766,6 +766,8 @@ def api_voice_chat():
     
     data = request.json or {}
     user_message = data.get("message", "").strip()
+    audio_b64 = data.get("audio")
+    audio_mime = data.get("mime_type", "audio/webm")
     client_key = data.get("api_key") or request.headers.get("x-gemini-api-key")
     persona = data.get("persona", "arquimedes").lower()
     voice_name = data.get("voice")
@@ -783,8 +785,8 @@ def api_voice_chat():
     if "2." in model_name or "1.5" in model_name:
         model_name = "gemini-3.8-flash"
         
-    if not user_message:
-        return jsonify({"error": "Mensaje de usuario vacío"}), 400
+    if not user_message and not audio_b64:
+        return jsonify({"error": "Mensaje o audio de usuario vacío"}), 400
         
     api_key = get_effective_gemini_key(client_key)
     if not api_key:
@@ -792,18 +794,28 @@ def api_voice_chat():
             "error": "No se detectó GEMINI_API_KEY. Configúrala en la interfaz o en el archivo .env."
         }), 401
 
-    models_to_try = [model_name]
-    if "gemini-3.6-flash" not in models_to_try:
-        models_to_try.append("gemini-3.6-flash")
-    if "gemini-3-flash-preview" not in models_to_try:
-        models_to_try.append("gemini-3-flash-preview")
+    models_to_try = ["gemini-3.6-flash", "gemini-flash-latest", "gemini-3.7-flash", "gemini-3.8-flash"]
+    if model_name and model_name not in models_to_try:
+        models_to_try.append(model_name)
+
+    user_parts = []
+    if user_message:
+        user_parts.append({"text": user_message})
+    elif audio_b64:
+        clean_mime = audio_mime.split(";")[0].strip() if audio_mime else "audio/webm"
+        user_parts.append({
+            "inlineData": {
+                "mimeType": clean_mime,
+                "data": audio_b64
+            }
+        })
 
     audio_payload = {
         "systemInstruction": {
             "parts": [{"text": system_prompt}]
         },
         "contents": [
-            {"role": "user", "parts": [{"text": user_message}]}
+            {"role": "user", "parts": user_parts}
         ],
         "generationConfig": {
             "responseModalities": ["AUDIO", "TEXT"],
@@ -823,7 +835,7 @@ def api_voice_chat():
         endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
         req = urllib.request.Request(endpoint, data=json.dumps(audio_payload).encode('utf-8'), headers={'Content-Type': 'application/json'})
         try:
-            with urllib.request.urlopen(req, timeout=25) as response:
+            with urllib.request.urlopen(req, timeout=20) as response:
                 if response.status == 200:
                     resp_data = json.loads(response.read().decode('utf-8'))
                     candidates = resp_data.get("candidates", [])
@@ -858,14 +870,15 @@ def api_voice_chat():
             "parts": [{"text": system_prompt}]
         },
         "contents": [
-            {"role": "user", "parts": [{"text": user_message}]}
+            {"role": "user", "parts": user_parts}
         ]
     }
+    last_http_code = None
     for m in models_to_try:
         t_endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
         req = urllib.request.Request(t_endpoint, data=json.dumps(text_payload).encode('utf-8'), headers={'Content-Type': 'application/json'})
         try:
-            with urllib.request.urlopen(req, timeout=20) as response:
+            with urllib.request.urlopen(req, timeout=15) as response:
                 if response.status == 200:
                     text_data = json.loads(response.read().decode('utf-8'))
                     candidates = text_data.get("candidates", [])
@@ -885,25 +898,28 @@ def api_voice_chat():
                         "notice": "Respuesta en texto. Síntesis delegada a Web Speech API."
                     })
         except urllib.error.HTTPError as he:
-            if he.code == 403 or he.code == 400:
-                guidance_msg = (
-                    f"COO, la clave API de Gemini no está autorizada o está bloqueada ({he.code}). "
-                    "Introduce una clave válida desde el panel de Ajustes de Voz en la pantalla táctil para activar la síntesis soberana."
-                )
-                return jsonify({
-                    "status": "warning",
-                    "text": guidance_msg,
-                    "audio": None,
-                    "mime_type": None,
-                    "fallback_tts": True,
-                    "voice": voice_name,
-                    "persona": persona,
-                    "is_api_key_error": True
-                })
-        except Exception:
-            pass
+            last_http_code = he.code
+            print(f"Text generation with {m} HTTPError: {he.code}. Trying next...")
+        except Exception as e_text:
+            print(f"Text generation with {m} failed: {e_text}. Trying next...")
 
-    return jsonify({"error": "No se pudo obtener respuesta del modelo Gemini"}), 502
+    if last_http_code in (401, 403):
+        guidance_msg = (
+            f"COO, la clave API de Gemini no está autorizada o está bloqueada ({last_http_code}). "
+            "Introduce una clave válida desde el panel de Ajustes de Voz en la pantalla táctil para activar la síntesis soberana."
+        )
+        return jsonify({
+            "status": "warning",
+            "text": guidance_msg,
+            "audio": None,
+            "mime_type": None,
+            "fallback_tts": True,
+            "voice": voice_name,
+            "persona": persona,
+            "is_api_key_error": True
+        })
+
+    return jsonify({"error": "No se pudo obtener respuesta de los modelos Gemini de respaldo"}), 502
 
 @app.route('/')
 def serve_index():

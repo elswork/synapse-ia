@@ -35,6 +35,8 @@ chromium-browser \
 	--password-store=basic \
 	--ozone-platform-hint=auto \
 	--autoplay-policy=no-user-gesture-required \
+	--use-fake-ui-for-media-stream \
+	--remote-debugging-port=9222 \
 	--user-data-dir=/home/pirate/snap/chromium/common/m2-kiosk-profile \
 	"http://localhost:5051/monitor_m2.html" &
 CHROMIUM_PID=$!
