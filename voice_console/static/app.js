@@ -58,12 +58,12 @@
   // Settings object
   const settings = {
     apiKey: localStorage.getItem('anticitera_gemini_key') || '',
-    voice: localStorage.getItem('anticitera_voice') || 'Charon',
+    voice: localStorage.getItem('anticitera_voice') || 'Fenrir',
     model: (function() {
       const stored = localStorage.getItem('anticitera_model');
-      if (!stored || stored.includes('2.') || stored.includes('1.5')) {
-        localStorage.setItem('anticitera_model', 'gemini-3.8-flash');
-        return 'gemini-3.8-flash';
+      if (!stored || stored.includes('2.') || stored.includes('1.5') || stored === 'gemini-3.8-flash' || stored === 'gemini-3.6-flash') {
+        localStorage.setItem('anticitera_model', 'gemini-3.8-flash-tts');
+        return 'gemini-3.8-flash-tts';
       }
       return stored;
     })(),
@@ -415,14 +415,20 @@
       currentAudioSource = audioCtx.createBufferSource();
       currentAudioSource.buffer = audioBuffer;
 
+      if ((settings.persona || 'arquimedes') === 'arquimedes') {
+        currentAudioSource.playbackRate.value = 0.95;
+      }
+
       // Gain Node for Volume Control
       const gainNode = audioCtx.createGain();
       gainNode.gain.value = settings.volume;
 
-      // Connect: Buffer -> Gain -> Analyser -> Speakers
+      // Connect: Buffer -> Gain -> Destination (Speakers)
+      //          Gain -> Analyser (Visualizer)
+      // NEVER connect analyser to destination to avoid microphone feedback leakage
       currentAudioSource.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
       gainNode.connect(analyser);
-      analyser.connect(audioCtx.destination);
 
       currentAudioSource.onended = () => {
         setInterfaceState('ready');

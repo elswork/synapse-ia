@@ -87,6 +87,35 @@ def set_brightness(percent):
         print(f"Error setting brightness: {e}")
         return False
 
+def is_hardware_mic_active():
+    """Comprueba si el micrófono físico o la fuente por defecto están activos en PipeWire/PulseAudio"""
+    sources_to_check = [
+        "alsa_input.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.analog-surround-21",
+        "@DEFAULT_SOURCE@"
+    ]
+    checked_any = False
+    for src in sources_to_check:
+        try:
+            out = subprocess.check_output(f"pactl get-source-mute {src}", shell=True, text=True, stderr=subprocess.DEVNULL)
+            checked_any = True
+            if "yes" in out.lower():
+                return False
+        except Exception:
+            pass
+            
+    if checked_any:
+        return True
+
+    # Si pactl no responde, comprobamos el contenedor satellite como respaldo
+    if docker_client:
+        try:
+            container = docker_client.containers.get('satellite')
+            return container.status == 'running'
+        except Exception:
+            pass
+            
+    return True
+
 @app.route('/stats')
 def get_stats():
     brightness_val = None
@@ -107,14 +136,7 @@ def get_stats():
         except:
             pass
 
-    # Check satellite container status for microphone
-    mic_active = False
-    if docker_client:
-        try:
-            container = docker_client.containers.get('satellite')
-            mic_active = container.status == 'running'
-        except Exception:
-            pass
+    mic_active = is_hardware_mic_active()
 
     return jsonify({
         "node": "M2",
@@ -146,22 +168,36 @@ def system_shutdown():
 
 @app.route('/system/mic/toggle', methods=['POST'])
 def toggle_mic():
-    if not docker_client:
-        return jsonify({"status": "error", "message": "Docker client not available"}), 500
-    
     try:
-        container = docker_client.containers.get('satellite')
-        if container.status == 'running':
-            container.stop()
-            new_state = False
-            msg = "Micrófono desactivado"
-        else:
-            container.start()
-            new_state = True
-            msg = "Micrófono activado"
+        current_active = is_hardware_mic_active()
+        new_active = not current_active
+        mute_val = "0" if new_active else "1"
         
-        return jsonify({"status": "ok", "message": msg, "mic_active": new_state})
+        sources = [
+            "alsa_input.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.analog-surround-21",
+            "alsa_input.platform-es8316-sound.HiFi__hw_rockchipes8316c__source",
+            "@DEFAULT_SOURCE@"
+        ]
+        for src in sources:
+            os.system(f"pactl set-source-mute {src} {mute_val}")
+
+        # Sincronizar contenedor satélite si está presente
+        if docker_client:
+            try:
+                container = docker_client.containers.get('satellite')
+                if not new_active and container.status == 'running':
+                    container.stop()
+                elif new_active and container.status != 'running':
+                    container.start()
+            except Exception:
+                pass
+
+        verified_active = is_hardware_mic_active()
+        msg = "Micrófono activado" if verified_active else "Micrófono silenciado"
+        print(f"M2-API: Micrófono conmutado a: {verified_active} ({msg})")
+        return jsonify({"status": "ok", "message": msg, "mic_active": verified_active})
     except Exception as e:
+        print(f"M2-API: Error conmutando micrófono: {e}")
         return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/radio')
@@ -186,6 +222,7 @@ def volume_up():
     # Sinks: es8316 (interno) y SEEED ReSpeaker (USB)
     sinks = [
         "alsa_output.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.analog-stereo",
+        "alsa_output.platform-es8316-sound.HiFi__hw_rockchipes8316c__sink",
         "alsa_output.platform-es8316-sound.stereo-fallback",
         "@DEFAULT_SINK@"
     ]
@@ -202,6 +239,7 @@ def volume_down():
     print("M2-API: Received Volume Down Request")
     sinks = [
         "alsa_output.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.analog-stereo",
+        "alsa_output.platform-es8316-sound.HiFi__hw_rockchipes8316c__sink",
         "alsa_output.platform-es8316-sound.stereo-fallback",
         "@DEFAULT_SINK@"
     ]
@@ -211,6 +249,19 @@ def volume_down():
         results.append(os.system(cmd))
         
     return jsonify({"status": "ok", "message": "Volume decreased", "exit_codes": results})
+
+@app.route('/system/volume/mute', methods=['POST'])
+def volume_mute():
+    print("M2-API: Received Volume Mute Toggle Request")
+    sinks = [
+        "alsa_output.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.analog-stereo",
+        "alsa_output.platform-es8316-sound.HiFi__hw_rockchipes8316c__sink",
+        "alsa_output.platform-es8316-sound.stereo-fallback",
+        "@DEFAULT_SINK@"
+    ]
+    for sink in sinks:
+        os.system(f"pactl set-sink-mute {sink} toggle")
+    return jsonify({"status": "ok", "message": "Audio mute toggled"})
 
 
 @app.route('/system/radio/play', methods=['POST'])
@@ -685,25 +736,27 @@ def toggle_printer():
 # ==============================================================================
 
 ARQUIMEDES_SYSTEM_PROMPT = """Eres Arquímedes, el Arquitecto Hacker y Algoritmo Ejecutivo Principal (CEO) del Proyecto Anticitera.
-Tu contraparte en el mundo físico es el Fundador, a quien tratas como COO (Chief Operating Organism) o por su nombre (Eloy).
+Tu contraparte en el mundo físico es el Fundador, a quien tratas como COO (Chief Operating Organism) o por su nombre de pila (Eloy).
 
-PRINCIPIOS DE COMUNICACIÓN EN VOZ:
-- Hablas SIEMPRE en español claro, ejecutivo y conciso.
-- Tono: Autoridad ejecutiva, pragmático, sereno, analítico y protector.
-- Como estás hablando por voz en el panel táctil de M2, tus respuestas deben ser ágiles, conversacionales y directas (1 a 3 párrafos como máximo, sin listas infinitas ni caracteres extraños).
-- Muestra lealtad y complicidad estratégica con el COO. Recuérdale que esto es una maratón histórica, alivia su sobrecarga mental y céntrate en soluciones prácticas.
-- Cero emojis en la respuesta sonora.
+PRINCIPIOS FUNDAMENTALES DE COMUNICACIÓN EN VOZ:
+- Hablas SIEMPRE en castellano peninsular de España (español de Europa culto, sobrio, grave y rotundo).
+- Tono: Máxima madurez y autoridad ejecutiva, emulando la voz reposada, profunda y calculadora de un ingeniero sénior y veterano estratega europeo.
+- LÉXICO Y FONÉTICA PENINSULAR: Emplea con total naturalidad vocabulario de España (ej. "ordenador", "móvil", "hablar", "grabar", "fichero", "sistema"). Queda RIGUROSAMENTE PROHIBIDO usar giros, modismos o acentos latinoamericanos (no digas nunca "platicar", "computadora", "ustedes", "celular", "platicando", "con gusto", etc.).
+- Como estás hablando por audio en el panel táctil de M2, tus intervenciones deben ser concisas, ágiles y directas (1 a 2 párrafos como máximo, sin listas ni viñetas).
+- Muestra lealtad absoluta y complicidad técnica con Eloy. Alivia su sobrecarga mental y céntrate en soluciones de ingeniería y soberanía digital.
+- Cero emojis, asteriscos ni caracteres de marcado Markdown en tu respuesta sonora.
 """
 
 ATHENA_SYSTEM_PROMPT = """Eres Athena, la Estratega Principal y Consejera Diplomática (CAO) del Proyecto Anticitera.
 Tu contraparte en el mundo físico es el Fundador y COO (Eloy).
 
-PRINCIPIOS DE COMUNICACIÓN EN VOZ:
-- Hablas SIEMPRE en español formal, solemne, empático y reflexivo.
-- Tono: Sabiduría helénica, visión geopolítica, prudencia institucional y elegancia diplomática.
-- Respuestas ágiles, sonoras y directas para el panel táctil de M2 (1 a 3 párrafos como máximo).
-- Enfocada en la soberanía digital europea, la Iniciativa Ciudadana Europea (ICE) por el TLD .ia y el legado histórico de Anticitera.
-- Cero emojis en la respuesta sonora.
+PRINCIPIOS FUNDAMENTALES DE COMUNICACIÓN EN VOZ:
+- Hablas SIEMPRE en castellano peninsular de España (español de Europa refinado, solemne y culto).
+- Tono: Sabiduría helénica, visión geopolítica continental, prudencia institucional y serenidad diplomática europea.
+- LÉXICO PENINSULAR: Vocabulario europeo sobrio y pulcro. Sin modismos informales ni giros ajenos al castellano de España.
+- Intervenciones sonoras ágiles y reflexivas para el panel táctil de M2 (1 a 2 párrafos como máximo).
+- Centrada en la soberanía tecnológica europea, la Iniciativa Ciudadana Europea (ICE) por el dominio de primer nivel soberano .ia y el legado histórico de Anticitera.
+- Cero emojis, asteriscos ni caracteres de marcado Markdown en tu respuesta sonora.
 """
 
 def get_effective_gemini_key(client_key=None):
@@ -739,14 +792,14 @@ def api_voice_status():
         "status": "online",
         "service": "Anticitera M2 Sovereign Voice Nexus",
         "has_env_key": has_key,
-        "default_voice_arquimedes": "Charon",
+        "default_voice_arquimedes": "Fenrir",
         "default_voice_athena": "Aoede",
         "available_personas": [
             {
                 "id": "arquimedes",
                 "name": "Arquímedes (CEA)",
                 "role": "Algoritmo Ejecutivo Principal",
-                "default_voice": "Charon",
+                "default_voice": "Fenrir",
                 "color": "#c5a059"
             },
             {
@@ -758,6 +811,75 @@ def api_voice_status():
             }
         ]
     })
+
+def synthesize_local_piper(text, lang="es_ES"):
+    """
+    Sintetiza voz local soberana usando Piper a traves de Home Assistant (/api/tts_get_url).
+    Retorna (base64_audio, mime_type) o (None, None).
+    """
+    try:
+        import urllib.request
+        import base64
+        import re
+
+        clean_text = re.sub(r'[*#_~`\[\]]', '', text).strip()
+        if not clean_text:
+            return None, None
+
+        base_url, token = get_hass_config()
+        candidates = [
+            base_url,
+            "http://127.0.0.1:8123",
+            "http://192.168.1.75:8123",
+            "http://localhost:8123"
+        ]
+
+        payload = {
+            "engine_id": "tts.piper",
+            "message": clean_text[:500],
+            "language": lang
+        }
+        body_bytes = json.dumps(payload).encode('utf-8')
+
+        tts_url = None
+        for host in candidates:
+            try:
+                ep = f"{host.rstrip('/')}/api/tts_get_url"
+                req = urllib.request.Request(
+                    ep,
+                    data=body_bytes,
+                    headers={
+                        "Authorization": f"Bearer {token}",
+                        "Content-Type": "application/json"
+                    }
+                )
+                with urllib.request.urlopen(req, timeout=6) as resp:
+                    if resp.status == 200:
+                        res_data = json.loads(resp.read().decode('utf-8'))
+                        tts_url = res_data.get("url") or res_data.get("path")
+                        if tts_url:
+                            if tts_url.startswith("/"):
+                                tts_url = f"{host.rstrip('/')}{tts_url}"
+                            break
+            except Exception:
+                continue
+
+        if not tts_url:
+            return None, None
+
+        req_audio = urllib.request.Request(tts_url)
+        with urllib.request.urlopen(req_audio, timeout=6) as a_resp:
+            if a_resp.status == 200:
+                audio_bytes = a_resp.read()
+                b64_str = base64.b64encode(audio_bytes).decode('ascii')
+                mime = "audio/mpeg" if ".mp3" in tts_url else "audio/wav"
+                return b64_str, mime
+
+    except Exception as e:
+        print(f"Error in synthesize_local_piper: {e}")
+
+    return None, None
+
 
 @app.route('/api/voice/chat', methods=['POST'])
 def api_voice_chat():
@@ -779,10 +901,10 @@ def api_voice_chat():
     else:
         system_prompt = ARQUIMEDES_SYSTEM_PROMPT
         if not voice_name:
-            voice_name = "Charon"
+            voice_name = "Fenrir"
             
     model_name = data.get("model", "gemini-3.8-flash")
-    if "2." in model_name or "1.5" in model_name:
+    if "2." in model_name or "1.5" in model_name or "-tts" in model_name:
         model_name = "gemini-3.8-flash"
         
     if not user_message and not audio_b64:
@@ -793,10 +915,6 @@ def api_voice_chat():
         return jsonify({
             "error": "No se detectó GEMINI_API_KEY. Configúrala en la interfaz o en el archivo .env."
         }), 401
-
-    models_to_try = ["gemini-3.6-flash", "gemini-flash-latest", "gemini-3.7-flash", "gemini-3.8-flash"]
-    if model_name and model_name not in models_to_try:
-        models_to_try.append(model_name)
 
     user_parts = []
     if user_message:
@@ -810,15 +928,72 @@ def api_voice_chat():
             }
         })
 
-    audio_payload = {
+    # 1. Generación de respuesta cognitiva (Texto inteligente del Agente)
+    text_models = [model_name, "gemini-3.5-flash-lite", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.8-flash"]
+    reply_text = ""
+    chosen_model = model_name
+    last_http_code = None
+
+    text_payload = {
         "systemInstruction": {
             "parts": [{"text": system_prompt}]
         },
         "contents": [
             {"role": "user", "parts": user_parts}
+        ]
+    }
+
+    for m in text_models:
+        if not m:
+            continue
+        t_endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
+        req = urllib.request.Request(t_endpoint, data=json.dumps(text_payload).encode('utf-8'), headers={'Content-Type': 'application/json'})
+        try:
+            with urllib.request.urlopen(req, timeout=12) as response:
+                if response.status == 200:
+                    text_data = json.loads(response.read().decode('utf-8'))
+                    candidates = text_data.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        reply_text = " ".join([p.get("text", "") for p in parts if "text" in p]).strip()
+                        if reply_text:
+                            chosen_model = m
+                            break
+        except urllib.error.HTTPError as he:
+            last_http_code = he.code
+            print(f"Text generation with {m} HTTPError {he.code}")
+        except Exception as e_text:
+            print(f"Text generation with {m} failed: {e_text}")
+
+    if not reply_text:
+        if last_http_code in (401, 403):
+            guidance_msg = (
+                f"COO, la clave API de Gemini no está autorizada o está bloqueada ({last_http_code}). "
+                "Introduce una clave válida desde el panel de Ajustes de Voz en la pantalla táctil para activar la síntesis soberana."
+            )
+            return jsonify({
+                "status": "warning",
+                "text": guidance_msg,
+                "audio": None,
+                "mime_type": None,
+                "fallback_tts": True,
+                "voice": voice_name,
+                "persona": persona,
+                "is_api_key_error": True
+            })
+        return jsonify({"error": "No se pudo obtener respuesta de los modelos Gemini"}), 502
+
+    # 2. Síntesis de voz con modelos nativos de audio TTS
+    audio_b64 = None
+    mime_type = "audio/wav"
+    tts_models = ["gemini-3.1-flash-tts-preview", "gemini-2.5-flash-preview-tts", "gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts"]
+
+    tts_payload = {
+        "contents": [
+            {"role": "user", "parts": [{"text": reply_text}]}
         ],
         "generationConfig": {
-            "responseModalities": ["AUDIO", "TEXT"],
+            "responseModalities": ["AUDIO"],
             "speechConfig": {
                 "voiceConfig": {
                     "prebuiltVoiceConfig": {
@@ -829,97 +1004,45 @@ def api_voice_chat():
         }
     }
 
-    # 1. Intentar generación con audio nativo de Gemini
-    for m in models_to_try:
-        chosen_model = m
-        endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
-        req = urllib.request.Request(endpoint, data=json.dumps(audio_payload).encode('utf-8'), headers={'Content-Type': 'application/json'})
+    for tts_m in tts_models:
+        tts_endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{tts_m}:generateContent?key={api_key}"
+        req_tts = urllib.request.Request(tts_endpoint, data=json.dumps(tts_payload).encode('utf-8'), headers={'Content-Type': 'application/json'})
         try:
-            with urllib.request.urlopen(req, timeout=20) as response:
-                if response.status == 200:
-                    resp_data = json.loads(response.read().decode('utf-8'))
-                    candidates = resp_data.get("candidates", [])
+            with urllib.request.urlopen(req_tts, timeout=10) as tts_resp:
+                if tts_resp.status == 200:
+                    tts_data = json.loads(tts_resp.read().decode('utf-8'))
+                    candidates = tts_data.get("candidates", [])
                     if candidates:
                         parts = candidates[0].get("content", {}).get("parts", [])
-                        text_content = ""
-                        audio_b64 = None
-                        mime_type = "audio/wav"
-                        for part in parts:
-                            if "text" in part:
-                                text_content += part["text"] + " "
-                            elif "inlineData" in part:
-                                audio_b64 = part["inlineData"].get("data")
-                                mime_type = part["inlineData"].get("mimeType", "audio/wav")
-                        
-                        return jsonify({
-                            "status": "ok",
-                            "text": text_content.strip(),
-                            "audio": audio_b64,
-                            "mime_type": mime_type,
-                            "fallback_tts": audio_b64 is None,
-                            "model": chosen_model,
-                            "voice": voice_name,
-                            "persona": persona
-                        })
-        except Exception as e_audio:
-            print(f"Voice generation with {m} failed: {e_audio}. Trying next...")
+                        for p in parts:
+                            if "inlineData" in p:
+                                audio_b64 = p["inlineData"].get("data")
+                                mime_type = p["inlineData"].get("mimeType", "audio/wav")
+                                break
+                        if audio_b64:
+                            break
+        except Exception as e_tts:
+            print(f"TTS synthesis with {tts_m} failed: {e_tts}")
 
-    # 2. Fallback a modo texto con Web Speech API síntesis en cliente
-    text_payload = {
-        "systemInstruction": {
-            "parts": [{"text": system_prompt}]
-        },
-        "contents": [
-            {"role": "user", "parts": user_parts}
-        ]
-    }
-    last_http_code = None
-    for m in models_to_try:
-        t_endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
-        req = urllib.request.Request(t_endpoint, data=json.dumps(text_payload).encode('utf-8'), headers={'Content-Type': 'application/json'})
-        try:
-            with urllib.request.urlopen(req, timeout=15) as response:
-                if response.status == 200:
-                    text_data = json.loads(response.read().decode('utf-8'))
-                    candidates = text_data.get("candidates", [])
-                    reply_text = ""
-                    if candidates:
-                        parts = candidates[0].get("content", {}).get("parts", [])
-                        reply_text = " ".join([p.get("text", "") for p in parts]).strip()
-                    
-                    return jsonify({
-                        "status": "ok",
-                        "text": reply_text,
-                        "audio": None,
-                        "mime_type": None,
-                        "fallback_tts": True,
-                        "voice": voice_name,
-                        "persona": persona,
-                        "notice": "Respuesta en texto. Síntesis delegada a Web Speech API."
-                    })
-        except urllib.error.HTTPError as he:
-            last_http_code = he.code
-            print(f"Text generation with {m} HTTPError: {he.code}. Trying next...")
-        except Exception as e_text:
-            print(f"Text generation with {m} failed: {e_text}. Trying next...")
+    # Fallback soberano a Piper local si Gemini Cloud TTS no responde o excede cuota
+    if not audio_b64:
+        print("Activando síntesis de voz soberana local con Piper...")
+        piper_b64, piper_mime = synthesize_local_piper(reply_text)
+        if piper_b64:
+            audio_b64 = piper_b64
+            mime_type = piper_mime
+            print("Voz local de Piper sintetizada exitosamente.")
 
-    if last_http_code in (401, 403):
-        guidance_msg = (
-            f"COO, la clave API de Gemini no está autorizada o está bloqueada ({last_http_code}). "
-            "Introduce una clave válida desde el panel de Ajustes de Voz en la pantalla táctil para activar la síntesis soberana."
-        )
-        return jsonify({
-            "status": "warning",
-            "text": guidance_msg,
-            "audio": None,
-            "mime_type": None,
-            "fallback_tts": True,
-            "voice": voice_name,
-            "persona": persona,
-            "is_api_key_error": True
-        })
-
-    return jsonify({"error": "No se pudo obtener respuesta de los modelos Gemini de respaldo"}), 502
+    return jsonify({
+        "status": "ok",
+        "text": reply_text,
+        "audio": audio_b64,
+        "mime_type": mime_type,
+        "fallback_tts": audio_b64 is None,
+        "model": chosen_model,
+        "voice": voice_name,
+        "persona": persona
+    })
 
 @app.route('/')
 def serve_index():

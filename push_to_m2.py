@@ -7,6 +7,7 @@ files_to_push = [
     'monitor_v2.html',
     'm2_status_api.py',
     'stations_data.js',
+    'm2_kiosk_chromium.sh',
     'radio_results.json',
     'radio_m2.json',
     'voice_console/server.py',

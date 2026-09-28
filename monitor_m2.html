@@ -201,6 +201,226 @@
             pointer-events: auto;
         }
 
+        /* Equalizer Modal */
+        #equalizer_modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 22, 0.96);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 2500;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 40px;
+            box-sizing: border-box;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #equalizer_modal.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .eq-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+        }
+
+        .eq-title {
+            font-size: 2.2rem;
+            margin: 0;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .eq-badge {
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .eq-presets-scroll {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+            scrollbar-width: none;
+        }
+        .eq-presets-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .eq-preset-chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
+            padding: 9px 18px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+
+        .eq-preset-chip:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .eq-preset-chip.active {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.35);
+        }
+
+        .eq-main-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 18px 24px;
+            box-sizing: border-box;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .eq-visualizer-container {
+            height: 75px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            position: relative;
+        }
+
+        #eq_spectrum_canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .eq-sliders-grid {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 5px 0;
+            gap: 12px;
+        }
+
+        .eq-band-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .eq-gain-val {
+            font-size: 0.9rem;
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--accent);
+            min-height: 20px;
+            margin-bottom: 6px;
+        }
+
+        .eq-slider-wrapper {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+        }
+
+        .eq-slider-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .eq-slider-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            top: 50%;
+            z-index: 2;
+        }
+
+        input[type="range"].eq-slider {
+            -webkit-appearance: slider-vertical;
+            appearance: slider-vertical;
+            writing-mode: bt-lr;
+            width: 40px;
+            height: 100%;
+            background: transparent;
+            cursor: pointer;
+            z-index: 3;
+            outline: none;
+            margin: 0;
+        }
+
+        .eq-band-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 8px;
+        }
+
+        .eq-band-sub {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .eq-footer-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 5px;
+        }
+
         /* System Modal */
         #system_modal {
             position: absolute;
@@ -414,9 +634,9 @@
         .launcher-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 15px;
-            padding: 20px 30px;
+            grid-template-rows: repeat(4, 1fr);
+            gap: 12px;
+            padding: 15px 25px;
             flex: 1;
             box-sizing: border-box;
             overflow: hidden;
@@ -1229,7 +1449,12 @@
     <!-- Music Modal -->
     <div id="music_modal">
         <button class="btn-close" style="background: rgba(255,0,0,0.3);" onclick="closeMusicModal()">✕</button>
-        <h2 id="radio_title" style="font-size: 3rem; margin-top:0;">Música & Radio</h2>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; padding-right: 60px;">
+            <h2 id="radio_title" style="font-size: 3rem; margin:0;">Música & Radio</h2>
+            <button class="btn" style="background: rgba(0, 212, 255, 0.15); color: var(--accent); border: 1px solid var(--accent); font-weight: 700; padding: 12px 24px; border-radius: 12px; display: flex; align-items: center; gap: 8px;" onclick="openEqualizerModal()">
+                <span>🎚️</span> <span id="btn_eq_music_label">ECUALIZADOR (DANCE)</span>
+            </button>
+        </div>
         <div class="music-grid" id="genre_view">
             <!-- Populated via JS -->
         </div>
@@ -1238,6 +1463,52 @@
                 Volver</button>
             <div id="stations_container"
                 style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:15px; width: 100%;">
+            </div>
+        </div>
+    </div>
+
+    <!-- EQUALIZER MODAL (7-BAND DSP WITH PRESETS) -->
+    <div id="equalizer_modal" class="modal">
+        <div class="eq-header">
+            <div style="display:flex; align-items:center; gap: 15px;">
+                <h2 class="eq-title">🎚️ Ecualizador Maestro</h2>
+                <span class="eq-badge" id="eq_current_badge">DANCE</span>
+            </div>
+            <button class="btn-close" style="background: rgba(255,0,0,0.3);" onclick="closeEqualizerModal()">✕</button>
+        </div>
+
+        <!-- Presets Selection Bar -->
+        <div class="eq-presets-scroll" id="eq_presets_container">
+            <!-- Populated via JS -->
+        </div>
+
+        <div class="eq-main-panel">
+            <!-- Real-time Spectrum Visualizer -->
+            <div class="eq-visualizer-container">
+                <canvas id="eq_spectrum_canvas" width="600" height="75"></canvas>
+            </div>
+
+            <!-- 7-Band Graphic Equalizer Sliders -->
+            <div class="eq-sliders-grid" id="eq_sliders_container">
+                <!-- 7 vertical slider columns generated by JS -->
+            </div>
+        </div>
+
+        <!-- Equalizer Footer Controls -->
+        <div class="eq-footer-controls">
+            <div style="display:flex; gap: 12px; align-items:center;">
+                <button class="btn" id="btn_eq_bypass" style="background: rgba(255,255,255,0.08); color: #fff; font-weight:600; padding: 10px 20px; border-radius: 12px;" onclick="toggleEqBypass()">
+                    ⚡ BYPASS (DESACTIVADO)
+                </button>
+                <button class="btn" style="background: rgba(255,255,255,0.08); color: #94a3b8; font-weight:600; padding: 10px 20px; border-radius: 12px;" onclick="resetEqToFlat()">
+                    ↺ PLANO
+                </button>
+            </div>
+            <div style="display:flex; gap: 12px; align-items:center;">
+                <span id="eq_status_desc" style="color: #64748b; font-size: 0.9rem;">Graves profundos y agudos enérgicos para música de club</span>
+                <button class="btn" style="background: var(--accent); color: #000; font-weight: 700; padding: 10px 24px; border-radius: 12px;" onclick="closeEqualizerModal()">
+                    APLICAR Y CERRAR
+                </button>
             </div>
         </div>
     </div>
@@ -1379,6 +1650,8 @@
                     <button class="btn-circle-small" onclick="togglePlay()" id="play_btn_header">▶</button>
                     <button class="btn-circle-small" style="background: #2a2a2a; color: white;"
                         onclick="stopMusic()">⏹</button>
+                    <button class="btn-circle-small" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.4);"
+                        onclick="openEqualizerModal()" title="Ecualizador">🎚️</button>
                 </div>
                 <div class="np-icon-large">🎵</div>
                 <div class="np-text-stack">
@@ -1407,7 +1680,7 @@
 
     <!-- LAUNCHER GRID: 12 App Modules (3x4) -->
     <div id="launcher_grid" class="launcher-grid">
-        <!-- Fila 1 -->
+        <!-- Fila 1: Núcleo y Agentes IA -->
         <div class="launcher-card" onclick="showTelemetry()">
             <div class="launcher-icon">📊</div>
             <div class="launcher-name">Telemetría</div>
@@ -1420,10 +1693,16 @@
             <div class="launcher-icon">☁️</div>
             <div class="launcher-name">Tiempo</div>
         </div>
-        <div class="launcher-card" onclick="openVoiceModal('athena')">
+        <div class="launcher-card" id="btn_athena" onclick="openVoiceModal('athena')">
             <div class="launcher-icon">🦉</div>
             <div class="launcher-name">Athena<small style="color:#00d4ff; display:block; font-size:0.75rem; margin-top:2px;">VOZ ESTRATEGA</small></div>
         </div>
+        <div class="launcher-card" id="btn_arquimedes" onclick="openVoiceModal('arquimedes')">
+            <div class="launcher-icon">🏛️</div>
+            <div class="launcher-name">Arquímedes<small style="color:#c5a059; display:block; font-size:0.75rem; margin-top:2px;">VOZ SOBERANA</small></div>
+        </div>
+
+        <!-- Fila 2: Aplicaciones y Dispositivos -->
         <div class="launcher-card" onclick="openDiplomacy()">
             <div class="launcher-icon">🌐</div>
             <div class="launcher-name">Diplomacia</div>
@@ -1436,8 +1715,6 @@
             <div class="launcher-icon" id="icon_printer">🔌</div>
             <div class="launcher-name" id="label_printer">Impresora 3D<small style="color:#888; display:block; font-size:0.75rem; margin-top:2px;">APAGADA</small></div>
         </div>
-
-        <!-- Fila 2 -->
         <div class="launcher-card" onclick="openCameras()">
             <div class="launcher-icon">🎥</div>
             <div class="launcher-name">Cámaras</div>
@@ -1446,20 +1723,20 @@
             <div class="launcher-icon">🏠</div>
             <div class="launcher-name">Domótica</div>
         </div>
+
+        <!-- Fila 3: Comunicación, Control de Hardware y Seguridad -->
         <div class="launcher-card" onclick="openMessages()">
             <div class="launcher-icon">📩</div>
             <div class="launcher-name">Mensajes</div>
         </div>
-        <div class="launcher-card" id="btn_mic" onclick="openVoiceModal('arquimedes')">
+        <div class="launcher-card" id="btn_mic" onclick="toggleMic()">
             <div class="launcher-icon" id="icon_mic">🎙️</div>
-            <div class="launcher-name" id="label_mic">Voz Soberana<small style="color:#c5a059; display:block; font-size:0.75rem; margin-top:2px;">ARQUÍMEDES CEA</small></div>
+            <div class="launcher-name" id="label_mic">Micrófono</div>
         </div>
         <div class="launcher-card" onclick="openSystem()">
             <div class="launcher-icon">⚙️</div>
             <div class="launcher-name">Sistema</div>
         </div>
-
-        <!-- Fila 3 -->
         <div class="launcher-card" onclick="openPower()">
             <div class="launcher-icon">🔋</div>
             <div class="launcher-name">Energía</div>
@@ -1468,7 +1745,16 @@
             <div class="launcher-icon">🛡️</div>
             <div class="launcher-name">Seguridad</div>
         </div>
-        <div class="launcher-divider" style="grid-column: span 1;"></div> <!-- Spacer -->
+
+        <!-- Fila 4: Controles de Audio y Reposo -->
+        <div class="launcher-card" id="btn_equalizer" onclick="openEqualizerModal()" style="border-color: rgba(0, 212, 255, 0.4);">
+            <div class="launcher-icon">🎚️</div>
+            <div class="launcher-name" id="label_equalizer">Ecualizador<small style="color:var(--accent); display:block; font-size:0.7rem; margin-top:2px;">DANCE</small></div>
+        </div>
+        <div class="launcher-card" id="btn_audio_mute" onclick="toggleAudioMute()">
+            <div class="launcher-icon" id="icon_audio_mute">🔊</div>
+            <div class="launcher-name" id="label_audio_mute">Audio<small style="color:var(--success); display:block; font-size:0.7rem; margin-top:2px;">ACTIVO</small></div>
+        </div>
         <div class="launcher-card" onclick="adjustVolume('up')" style="border-color: var(--accent);">
             <div class="launcher-icon">🔊</div>
             <div class="launcher-name">Vol +</div>
@@ -1476,6 +1762,10 @@
         <div class="launcher-card" onclick="adjustVolume('down')" style="border-color: var(--accent);">
             <div class="launcher-icon">🔉</div>
             <div class="launcher-name">Vol -</div>
+        </div>
+        <div class="launcher-card" onclick="activateScreensaver()">
+            <div class="launcher-icon">🌙</div>
+            <div class="launcher-name">Reposo</div>
         </div>
     </div>
 
@@ -1681,14 +1971,24 @@
                 if (id === 'm2' && data.mic_active !== undefined) {
                     const btnMic = document.getElementById('btn_mic');
                     const iconMic = document.getElementById('icon_mic');
-                    if (data.mic_active) {
-                        btnMic.style.borderColor = 'var(--success)';
-                        btnMic.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
-                        iconMic.innerText = '🎙️';
-                    } else {
-                        btnMic.style.borderColor = 'var(--danger)';
-                        btnMic.style.boxShadow = '0 0 15px rgba(255, 68, 68, 0.4)';
-                        iconMic.innerText = '🔇';
+                    const labelMic = document.getElementById('label_mic');
+                    if (btnMic) {
+                        if (data.mic_active) {
+                            btnMic.style.borderColor = 'var(--success)';
+                            btnMic.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
+                            if (iconMic) iconMic.innerText = '🎙️';
+                            if (labelMic) labelMic.innerHTML = 'Micrófono<small style="color:var(--success); display:block; font-size:0.7rem; margin-top:2px;">ACTIVO</small>';
+                        } else {
+                            btnMic.style.borderColor = 'var(--danger)';
+                            btnMic.style.boxShadow = '0 0 15px rgba(255, 68, 68, 0.4)';
+                            if (iconMic) iconMic.innerText = '🔇';
+                            if (labelMic) labelMic.innerHTML = 'Micrófono<small style="color:var(--danger); display:block; font-size:0.7rem; margin-top:2px;">SILENCIADO</small>';
+                        }
+                    }
+                    if (voiceMicStream) {
+                        voiceMicStream.getAudioTracks().forEach(track => {
+                            track.enabled = !!data.mic_active;
+                        });
                     }
                 }
 
@@ -1795,31 +2095,46 @@
         }
         let isRadioPaused = false;
         let hls = null;
-        function playStation(name, url) {
-            document.getElementById('np_name_header').innerText = name.toUpperCase();
+        function playStation(param1, param2) {
+            let name = param1;
+            let url = param2;
+            if (typeof param1 === 'string' && (param1.startsWith('http://') || param1.startsWith('https://'))) {
+                url = param1;
+                name = param2 || "Radio";
+            }
+            if (!url) return;
+
+            document.getElementById('np_name_header').innerText = (name || "RADIO").toUpperCase();
             
             const audioPlayer = document.getElementById('audio_player');
             
             if (hls) {
-                hls.destroy();
+                try { hls.destroy(); } catch(e){}
                 hls = null;
             }
             
             audioPlayer.volume = 1.0;
-            if (url.endsWith('.m3u8')) {
+            if (url.includes('.m3u8')) {
                 if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-                    hls = new Hls();
+                    hls = new Hls({ enableWorker: true, lowLatencyMode: true });
                     hls.loadSource(url);
                     hls.attachMedia(audioPlayer);
                     hls.on(Hls.Events.MANIFEST_PARSED, function() {
                         audioPlayer.play().catch(e => console.error("Error M3U8:", e));
                     });
                     hls.on(Hls.Events.ERROR, function(event, data) {
-                        if (data.fatal) console.error("Error HLS:", data.type);
+                        if (data && data.fatal) {
+                            console.error("Error HLS:", data.type);
+                            audioPlayer.src = url;
+                            audioPlayer.play().catch(e => console.error("Fallback M3U8 error:", e));
+                        }
                     });
                 } else if (audioPlayer.canPlayType('application/vnd.apple.mpegurl')) {
                     audioPlayer.src = url;
                     audioPlayer.play().catch(e => console.error("Error M3U8 nativo:", e));
+                } else {
+                    audioPlayer.src = url;
+                    audioPlayer.play().catch(e => console.error("Error reproduciendo audio M3U8:", e));
                 }
             } else {
                 audioPlayer.src = url;
@@ -1920,6 +2235,32 @@
             }
         }
 
+        let isAudioMuted = false;
+        async function toggleAudioMute() {
+            try {
+                isAudioMuted = !isAudioMuted;
+                const audioPlayer = document.getElementById('audio_player');
+                if (audioPlayer) {
+                    audioPlayer.muted = isAudioMuted;
+                }
+                const btnMute = document.getElementById('btn_audio_mute');
+                const iconMute = document.getElementById('icon_audio_mute');
+                const labelMute = document.getElementById('label_audio_mute');
+                if (isAudioMuted) {
+                    if (btnMute) btnMute.style.borderColor = 'var(--danger)';
+                    if (iconMute) iconMute.innerText = '🔇';
+                    if (labelMute) labelMute.innerHTML = 'Audio<small style="color:var(--danger); display:block; font-size:0.7rem; margin-top:2px;">MUTED</small>';
+                } else {
+                    if (btnMute) btnMute.style.borderColor = 'var(--accent)';
+                    if (iconMute) iconMute.innerText = '🔊';
+                    if (labelMute) labelMute.innerHTML = 'Audio<small style="color:var(--success); display:block; font-size:0.7rem; margin-top:2px;">ACTIVO</small>';
+                }
+                await fetch(`http://${API_HOST}:5051/system/volume/mute`, { method: 'POST' }).catch(() => {});
+            } catch (err) {
+                console.error("Error toggling audio mute:", err);
+            }
+        }
+
         async function confirmSystemAction(action) {
             const confirmed = confirm(`¿Estás seguro de que deseas ${action.toUpperCase()} el sistema M2?`);
             if (!confirmed) return;
@@ -2008,20 +2349,36 @@
         function openDiplomacy() { window.location.href = 'dossier_ia.html'; }
         async function toggleMic() {
             try {
-                // Usamos la IP directamente como en confirmSystemAction
                 const res = await fetch(`http://${API_HOST}:5051/system/mic/toggle`, { method: 'POST' });
                 const data = await res.json();
                 if (data.status === 'ok') {
                     const btnMic = document.getElementById('btn_mic');
                     const iconMic = document.getElementById('icon_mic');
+                    const labelMic = document.getElementById('label_mic');
                     if (data.mic_active) {
-                        btnMic.style.borderColor = 'var(--success)';
-                        btnMic.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
-                        iconMic.innerText = '🎙️';
+                        if (btnMic) {
+                            btnMic.style.borderColor = 'var(--success)';
+                            btnMic.style.boxShadow = '0 0 15px rgba(46, 160, 67, 0.4)';
+                        }
+                        if (iconMic) iconMic.innerText = '🎙️';
+                        if (labelMic) labelMic.innerHTML = 'Micrófono<small style="color:var(--success); display:block; font-size:0.7rem; margin-top:2px;">ACTIVO</small>';
                     } else {
-                        btnMic.style.borderColor = 'var(--danger)';
-                        btnMic.style.boxShadow = '0 0 15px rgba(255, 68, 68, 0.4)';
-                        iconMic.innerText = '🔇';
+                        if (btnMic) {
+                            btnMic.style.borderColor = 'var(--danger)';
+                            btnMic.style.boxShadow = '0 0 15px rgba(255, 68, 68, 0.4)';
+                        }
+                        if (iconMic) iconMic.innerText = '🔇';
+                        if (labelMic) labelMic.innerHTML = 'Micrófono<small style="color:var(--danger); display:block; font-size:0.7rem; margin-top:2px;">SILENCIADO</small>';
+                    }
+
+                    // Sincronizar pistas del navegador para silenciar captura local
+                    if (voiceMicStream) {
+                        voiceMicStream.getAudioTracks().forEach(track => {
+                            track.enabled = !!data.mic_active;
+                        });
+                    }
+                    if (!data.mic_active && isVoiceListening) {
+                        stopVoiceListening();
                     }
                 } else {
                     alert("Error: " + data.message);
@@ -2124,13 +2481,24 @@
                     station_name: { type: "string", description: "Nombre de la emisora" }
                 },
                 execute: async (args) => {
-                    const stations = Object.values(categories).flat();
-                    const station = stations.find(s => s.name.toLowerCase().includes(args.station_name.toLowerCase()));
+                    const stations = Object.values(STATIONS).flat();
+                    const station = stations.find(s => s.name && s.name.toLowerCase().includes((args.station_name || "").toLowerCase()));
                     if (station) {
-                        playStation(station.url, station.name);
+                        playStation(station.name, station.url);
                         return `Reproduciendo ${station.name}`;
                     }
                     return "Emisora no encontrada.";
+                }
+            },
+            {
+                name: "set_equalizer_preset",
+                description: "Ajusta el perfil del ecualizador maestro de audio (dance, pop, rock, electro, jazz, clasica, vocal, bass, treble, flat).",
+                parameters: {
+                    preset: { type: "string", description: "Nombre del preset: dance, pop, rock, electro, jazz, clasica, vocal, bass, treble o flat" }
+                },
+                execute: async (args) => {
+                    const ok = applyEqPreset(args.preset.toLowerCase());
+                    return ok ? `Ecualizador ajustado al modo ${args.preset}` : `Preset no reconocido. Disponibles: dance, pop, rock, electro, jazz, clasica, vocal, bass, treble, flat`;
                 }
             }
         ];
@@ -2342,11 +2710,11 @@
         const VOICE_PERSONAS = {
             arquimedes: {
                 name: 'ARQUÍMEDES (CEA)',
-                voice: 'Charon',
+                voice: 'Fenrir',
                 color: '#c5a059',
                 glow: 'rgba(197, 160, 89, 0.4)',
                 role: 'Algoritmo Ejecutivo Principal',
-                greeting: 'Enlace de voz activo en el Nodo M2, Fundador. Tú marcas la dirección estratégica; yo ejecuto la doctrina. Pulsa el botón central o elige una directiva táctica inferior.'
+                greeting: 'Enlace de voz soberano activo en el Nodo M2, Eloy. Soy Arquímedes. Tú marcas la dirección estratégica; yo ejecuto la doctrina. Pulsa el botón central o elige una directiva táctica inferior.'
             },
             athena: {
                 name: 'ATHENA (CAO)',
@@ -2704,6 +3072,12 @@
                 if (window.speechSynthesis) window.speechSynthesis.cancel();
             }
 
+            // Si el micrófono estaba silenciado en la interfaz, solicitar su reactivación
+            const iconMic = document.getElementById('icon_mic');
+            if (iconMic && iconMic.innerText === '🔇') {
+                toggleMic();
+            }
+
             voiceCurrentTranscript = '';
             voiceAudioChunks = [];
 
@@ -2864,7 +3238,7 @@
                 persona: activeVoicePersona,
                 voice: VOICE_PERSONAS[activeVoicePersona].voice,
                 api_key: getVoiceApiKey(),
-                model: 'gemini-3.6-flash'
+                model: 'gemini-3.8-flash-tts'
             };
 
             // Si no hay texto transcrito por Web Speech API, enviar el audio capturado
@@ -2944,13 +3318,22 @@
                 voiceCurrentAudioSource = voiceAudioCtx.createBufferSource();
                 voiceCurrentAudioSource.buffer = audioBuffer;
 
+                if (activeVoicePersona === 'arquimedes') {
+                    // Cadencia y tono ligeramente más pausado y barítono para mayor madurez y profundidad
+                    voiceCurrentAudioSource.playbackRate.value = 0.95;
+                }
+
                 const gainNode = voiceAudioCtx.createGain();
                 const vol = rangeVoiceVol ? parseFloat(rangeVoiceVol.value) : 1.0;
                 gainNode.gain.value = vol;
 
+                // Conectar: Buffer -> Gain -> Altavoces (Destination)
+                //          Gain -> Analyser (Para visualizador reactivo de ondas)
+                // IMPORTANTE: NO conectar voiceAnalyser a destination para evitar que el micrófono
+                // se filtre a los altavoces en bucle de retroalimentación acústica.
                 voiceCurrentAudioSource.connect(gainNode);
+                gainNode.connect(voiceAudioCtx.destination);
                 gainNode.connect(voiceAnalyser);
-                voiceAnalyser.connect(voiceAudioCtx.destination);
 
                 voiceCurrentAudioSource.onended = () => {
                     setVoiceState('ready');
@@ -2978,8 +3361,8 @@
             const cleanText = text.replace(/[*#_~`]/g, '');
             const utterance = new SpeechSynthesisUtterance(cleanText);
             utterance.lang = 'es-ES';
-            utterance.rate = 1.05;
-            utterance.pitch = activeVoicePersona === 'athena' ? 1.05 : 0.95;
+            utterance.rate = activeVoicePersona === 'athena' ? 1.05 : 0.95;
+            utterance.pitch = activeVoicePersona === 'athena' ? 1.05 : 0.85;
 
             utterance.onend = () => {
                 setVoiceState('ready');
@@ -3013,8 +3396,271 @@
             playChime(880, 0.1);
         }
 
+        // =========================================================================
+        // EQUALIZER 7-BAND AUDIO DSP & PRESETS
+        // =========================================================================
+        const EQ_BANDS = [
+            { freq: 60, type: 'lowshelf', label: '60 Hz', sub: 'Sub-Bass' },
+            { freq: 170, type: 'peaking', label: '170 Hz', sub: 'Graves' },
+            { freq: 350, type: 'peaking', label: '350 Hz', sub: 'Medios-Bajos' },
+            { freq: 1000, type: 'peaking', label: '1 kHz', sub: 'Vocales' },
+            { freq: 3000, type: 'peaking', label: '3 kHz', sub: 'Presencia' },
+            { freq: 8000, type: 'peaking', label: '8 kHz', sub: 'Agudos' },
+            { freq: 14000, type: 'highshelf', label: '14 kHz', sub: 'Brillo' }
+        ];
+
+        const EQ_PRESETS = {
+            dance: { name: 'Dance', icon: '🪩', desc: 'Graves potentes y agudos dinámicos para música electrónica y club', gains: [6, 5, 2, 0, 2, 5, 4] },
+            pop: { name: 'Pop', icon: '🎤', desc: 'Realce vocal y balance melódico cálido', gains: [-1, 2, 5, 5, 3, -1, -2] },
+            rock: { name: 'Rock', icon: '🎸', desc: 'Curva en V con punch en guitarras y batería', gains: [5, 4, -1, -2, 2, 4, 5] },
+            electro: { name: 'Electro', icon: '⚡', desc: 'Subgraves quirúrgicos y sintetizadores nítidos', gains: [7, 6, 1, 0, 2, 6, 6] },
+            jazz: { name: 'Jazz', icon: '🎷', desc: 'Graves cálidos y detalle acústico orgánico', gains: [3, 2, 1, 2, -1, 2, 3] },
+            clasica: { name: 'Clásica', icon: '🎻', desc: 'Gran dinámica orquestal y neutralidad sonora', gains: [4, 3, 2, 0, 2, 3, 4] },
+            vocal: { name: 'Voz / Diálogo', icon: '🗣️', desc: 'Claridad en palabra hablada y podcasts', gains: [-3, -1, 4, 6, 4, 0, -2] },
+            bass: { name: 'Bass Boost', icon: '🔊', desc: 'Máximo refuerzo de frecuencias bajas', gains: [8, 6, 4, 1, 0, 0, 0] },
+            treble: { name: 'Treble Boost', icon: '✨', desc: 'Claridad cristalina y brillo en agudos', gains: [0, 0, 0, 1, 4, 7, 8] },
+            flat: { name: 'Plano (Flat)', icon: '➖', desc: 'Respuesta neutral de monitorización', gains: [0, 0, 0, 0, 0, 0, 0] }
+        };
+
+        let eqAudioCtx = null;
+        let eqMediaSource = null;
+        let eqFilters = [];
+        let eqGainNode = null;
+        let eqAnalyser = null;
+        let eqAnimFrameId = null;
+        let eqBypass = false;
+        let activeEqPresetKey = localStorage.getItem('anticitera_eq_preset') || 'dance';
+
+        function initEqualizer() {
+            if (eqAudioCtx) return;
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) return;
+
+            try {
+                eqAudioCtx = new AudioContextClass();
+                const player = document.getElementById('audio_player');
+                if (!player) return;
+
+                // Evitar conectar createMediaElementSource directamente sobre audioPlayer para streams
+                // de radio remotos sin cabeceras CORS, ya que el navegador silenciaría el audio a 0.
+                renderEqSliders();
+                renderEqPresets();
+                applyEqPreset(activeEqPresetKey);
+            } catch (err) {
+                console.warn("Inicialización de Ecualizador Web Audio:", err);
+            }
+        }
+
+        function renderEqPresets() {
+            const container = document.getElementById('eq_presets_container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            Object.keys(EQ_PRESETS).forEach(key => {
+                const p = EQ_PRESETS[key];
+                const chip = document.createElement('div');
+                chip.className = `eq-preset-chip ${key === activeEqPresetKey ? 'active' : ''}`;
+                chip.id = `eq_chip_${key}`;
+                chip.innerHTML = `<span>${p.icon}</span> <span>${p.name}</span>`;
+                chip.onclick = () => applyEqPreset(key);
+                container.appendChild(chip);
+            });
+        }
+
+        function renderEqSliders() {
+            const container = document.getElementById('eq_sliders_container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            EQ_BANDS.forEach((band, idx) => {
+                const col = document.createElement('div');
+                col.className = 'eq-band-col';
+                col.innerHTML = `
+                    <div class="eq-gain-val" id="eq_val_${idx}">0.0 dB</div>
+                    <div class="eq-slider-wrapper">
+                        <input type="range" class="eq-slider" id="eq_slider_${idx}" orient="vertical" min="-12" max="12" step="0.5" value="0" oninput="onEqSliderChange(${idx}, this.value)">
+                    </div>
+                    <div class="eq-band-label">${band.label}</div>
+                    <div class="eq-band-sub">${band.sub}</div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function applyEqPreset(key) {
+            initEqualizer();
+            const preset = EQ_PRESETS[key];
+            if (!preset) return false;
+
+            activeEqPresetKey = key;
+            localStorage.setItem('anticitera_eq_preset', key);
+
+            // Actualizar chips de preset
+            document.querySelectorAll('.eq-preset-chip').forEach(c => c.classList.remove('active'));
+            const activeChip = document.getElementById(`eq_chip_${key}`);
+            if (activeChip) activeChip.classList.add('active');
+
+            // Actualizar filtros y sliders
+            preset.gains.forEach((gain, idx) => {
+                if (eqFilters[idx]) {
+                    if (eqAudioCtx && !eqBypass) {
+                        eqFilters[idx].gain.setValueAtTime(gain, eqAudioCtx.currentTime);
+                    }
+                }
+                const slider = document.getElementById(`eq_slider_${idx}`);
+                if (slider) slider.value = gain;
+                const valLabel = document.getElementById(`eq_val_${idx}`);
+                if (valLabel) valLabel.innerText = `${gain > 0 ? '+' : ''}${gain.toFixed(1)} dB`;
+            });
+
+            // Actualizar badges e indicadores
+            const badge = document.getElementById('eq_current_badge');
+            if (badge) badge.innerText = preset.name.toUpperCase();
+            const desc = document.getElementById('eq_status_desc');
+            if (desc) desc.innerText = preset.desc;
+
+            // Actualizar etiquetas en lanzador y reproductor
+            const lblLauncher = document.getElementById('label_equalizer');
+            if (lblLauncher) {
+                lblLauncher.innerHTML = `Ecualizador<small style="color:var(--accent); display:block; font-size:0.7rem; margin-top:2px;">${preset.name.toUpperCase()}</small>`;
+            }
+            const lblMusic = document.getElementById('btn_eq_music_label');
+            if (lblMusic) {
+                lblMusic.innerText = `ECUALIZADOR (${preset.name.toUpperCase()})`;
+            }
+
+            return true;
+        }
+
+        function onEqSliderChange(idx, val) {
+            initEqualizer();
+            const gain = parseFloat(val);
+            if (eqFilters[idx] && eqAudioCtx && !eqBypass) {
+                eqFilters[idx].gain.setValueAtTime(gain, eqAudioCtx.currentTime);
+            }
+            const valLabel = document.getElementById(`eq_val_${idx}`);
+            if (valLabel) valLabel.innerText = `${gain > 0 ? '+' : ''}${gain.toFixed(1)} dB`;
+
+            // Marcar como perfil personalizado
+            document.querySelectorAll('.eq-preset-chip').forEach(c => c.classList.remove('active'));
+            const badge = document.getElementById('eq_current_badge');
+            if (badge) badge.innerText = 'PERSONALIZADO';
+            const desc = document.getElementById('eq_status_desc');
+            if (desc) desc.innerText = 'Curva acústica ajustada a medida manualmente';
+            activeEqPresetKey = 'custom';
+            const lblLauncher = document.getElementById('label_equalizer');
+            if (lblLauncher) {
+                lblLauncher.innerHTML = `Ecualizador<small style="color:var(--accent); display:block; font-size:0.7rem; margin-top:2px;">PERSONALIZADO</small>`;
+            }
+        }
+
+        function toggleEqBypass() {
+            initEqualizer();
+            eqBypass = !eqBypass;
+            const btn = document.getElementById('btn_eq_bypass');
+
+            if (eqBypass) {
+                // Poner ganancias a 0 en tiempo real
+                eqFilters.forEach(f => {
+                    if (f && eqAudioCtx) f.gain.setValueAtTime(0, eqAudioCtx.currentTime);
+                });
+                if (btn) {
+                    btn.style.background = 'rgba(255, 68, 68, 0.25)';
+                    btn.style.borderColor = 'var(--danger)';
+                    btn.style.color = '#ff6b6b';
+                    btn.innerText = '⚡ BYPASS ACTIVO (DESACTIVADO)';
+                }
+            } else {
+                if (btn) {
+                    btn.style.background = 'rgba(255,255,255,0.08)';
+                    btn.style.borderColor = '';
+                    btn.style.color = '#fff';
+                    btn.innerText = '⚡ BYPASS (DESACTIVADO)';
+                }
+                applyEqPreset(activeEqPresetKey);
+            }
+        }
+
+        function resetEqToFlat() {
+            applyEqPreset('flat');
+        }
+
+        function openEqualizerModal() {
+            initEqualizer();
+            const modal = document.getElementById('equalizer_modal');
+            if (modal) modal.classList.add('visible');
+            if (eqAudioCtx && eqAudioCtx.state === 'suspended') {
+                eqAudioCtx.resume();
+            }
+            startEqSpectrum();
+        }
+
+        function closeEqualizerModal() {
+            const modal = document.getElementById('equalizer_modal');
+            if (modal) modal.classList.remove('visible');
+            if (eqAnimFrameId) {
+                cancelAnimationFrame(eqAnimFrameId);
+                eqAnimFrameId = null;
+            }
+        }
+
+        function startEqSpectrum() {
+            if (eqAnimFrameId) cancelAnimationFrame(eqAnimFrameId);
+            drawEqSpectrum();
+        }
+
+        function drawEqSpectrum() {
+            const modal = document.getElementById('equalizer_modal');
+            if (!modal || !modal.classList.contains('visible')) return;
+
+            eqAnimFrameId = requestAnimationFrame(drawEqSpectrum);
+            const canvas = document.getElementById('eq_spectrum_canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            ctx.clearRect(0, 0, width, height);
+
+            if (!eqAnalyser) {
+                ctx.strokeStyle = 'rgba(0, 212, 255, 0.2)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(0, height / 2);
+                ctx.lineTo(width, height / 2);
+                ctx.stroke();
+                return;
+            }
+
+            const bufferLength = eqAnalyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            eqAnalyser.getByteFrequencyData(dataArray);
+
+            const barWidth = (width / bufferLength) * 1.5;
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+                const val = dataArray[i] / 255.0;
+                const barHeight = Math.max(3, val * height);
+
+                const grad = ctx.createLinearGradient(0, height, 0, height - barHeight);
+                grad.addColorStop(0, 'rgba(0, 212, 255, 0.2)');
+                grad.addColorStop(0.7, 'rgba(0, 212, 255, 0.85)');
+                grad.addColorStop(1, '#c5a059');
+
+                ctx.fillStyle = grad;
+                ctx.fillRect(x, height - barHeight, barWidth - 3, barHeight);
+                x += barWidth;
+            }
+        }
+
         // Inicializar controles táctiles de voz
         setupVoiceTouchControls();
+
+        // Inicializar Ecualizador Maestro
+        renderEqSliders();
+        renderEqPresets();
+        applyEqPreset(activeEqPresetKey);
 
         // Registro de herramientas para agentes compatibles con WebMCP
         navigator.modelContext.tools.push(...mcpTools);

@@ -20,7 +20,11 @@ for PREFS in "$PREFS_DEFAULT" "$PREFS_KIOSK"; do
 done
 
 # Esperar a que el entorno gráfico y el gestor de ventanas estén completamente listos
-sleep 25
+if ! xset q >/dev/null 2>&1; then
+	sleep 20
+else
+	sleep 2
+fi
 
 # Lanzar Chromium con flags de bypass y optimización
 # --password-store=basic evita el bloqueo del llavero de GNOME
@@ -37,6 +41,8 @@ chromium-browser \
 	--autoplay-policy=no-user-gesture-required \
 	--use-fake-ui-for-media-stream \
 	--remote-debugging-port=9222 \
+	--remote-allow-origins=* \
+	--disable-web-security \
 	--user-data-dir=/home/pirate/snap/chromium/common/m2-kiosk-profile \
 	"http://localhost:5051/monitor_m2.html" &
 CHROMIUM_PID=$!
