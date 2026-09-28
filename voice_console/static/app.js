@@ -61,9 +61,9 @@
     voice: localStorage.getItem('anticitera_voice') || 'Fenrir',
     model: (function() {
       const stored = localStorage.getItem('anticitera_model');
-      if (!stored || stored.includes('2.') || stored.includes('1.5') || stored === 'gemini-3.8-flash' || stored === 'gemini-3.6-flash') {
-        localStorage.setItem('anticitera_model', 'gemini-3.8-flash-tts');
-        return 'gemini-3.8-flash-tts';
+      if (!stored || stored.includes('2.') || stored.includes('1.5') || stored.includes('3.8') || stored.includes('3.5') || stored.includes('-tts')) {
+        localStorage.setItem('anticitera_model', 'gemini-3.1-flash-lite');
+        return 'gemini-3.1-flash-lite';
       }
       return stored;
     })(),
@@ -459,13 +459,36 @@
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'es-ES';
     utterance.rate = settings.speechRate;
-    utterance.pitch = settings.voice === 'Aoede' ? 1.05 : 0.88; // Deep voice for Archimedes
+    utterance.pitch = (settings.voice === 'Aoede' || settings.voice === 'Kore') ? 1.15 : 0.88;
     utterance.volume = settings.volume;
 
-    // Pick best available Spanish voice
+    // Pick best available Spanish voice respecting gender
     const voices = window.speechSynthesis.getVoices();
-    const esVoice = voices.find(v => v.lang.startsWith('es') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Jorge') || v.name.includes('Pablo'))) ||
-                    voices.find(v => v.lang.startsWith('es'));
+    const isFemale = (settings.voice === 'Aoede' || settings.voice === 'Kore' || settings.persona === 'athena');
+    let esVoice = null;
+    if (isFemale) {
+      esVoice = voices.find(v => v.lang.startsWith('es') && (
+        v.name.toLowerCase().includes('monica') ||
+        v.name.toLowerCase().includes('paulina') ||
+        v.name.toLowerCase().includes('helena') ||
+        v.name.toLowerCase().includes('laura') ||
+        v.name.toLowerCase().includes('lucia') ||
+        v.name.toLowerCase().includes('elvira') ||
+        v.name.toLowerCase().includes('ximena') ||
+        v.name.toLowerCase().includes('dalia') ||
+        v.name.toLowerCase().includes('female') ||
+        v.name.toLowerCase().includes('mujer')
+      )) || voices.find(v => v.lang.startsWith('es') && !v.name.toLowerCase().includes('jorge') && !v.name.toLowerCase().includes('pablo') && !v.name.toLowerCase().includes('male'));
+    } else {
+      esVoice = voices.find(v => v.lang.startsWith('es') && (
+        v.name.toLowerCase().includes('jorge') ||
+        v.name.toLowerCase().includes('pablo') ||
+        v.name.toLowerCase().includes('alvaro') ||
+        v.name.toLowerCase().includes('manuel') ||
+        v.name.toLowerCase().includes('male') ||
+        v.name.toLowerCase().includes('hombre')
+      )) || voices.find(v => v.lang.startsWith('es'));
+    }
     if (esVoice) {
       utterance.voice = esVoice;
     }

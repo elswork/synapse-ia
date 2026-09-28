@@ -3238,7 +3238,7 @@
                 persona: activeVoicePersona,
                 voice: VOICE_PERSONAS[activeVoicePersona].voice,
                 api_key: getVoiceApiKey(),
-                model: 'gemini-3.8-flash-tts'
+                model: 'gemini-3.1-flash-lite'
             };
 
             // Si no hay texto transcrito por Web Speech API, enviar el audio capturado
@@ -3321,6 +3321,9 @@
                 if (activeVoicePersona === 'arquimedes') {
                     // Cadencia y tono ligeramente más pausado y barítono para mayor madurez y profundidad
                     voiceCurrentAudioSource.playbackRate.value = 0.95;
+                } else if (activeVoicePersona === 'athena') {
+                    // Cadencia femenina, clara, ágil y diplomática para Athena
+                    voiceCurrentAudioSource.playbackRate.value = 1.02;
                 }
 
                 const gainNode = voiceAudioCtx.createGain();
@@ -3361,8 +3364,40 @@
             const cleanText = text.replace(/[*#_~`]/g, '');
             const utterance = new SpeechSynthesisUtterance(cleanText);
             utterance.lang = 'es-ES';
-            utterance.rate = activeVoicePersona === 'athena' ? 1.05 : 0.95;
-            utterance.pitch = activeVoicePersona === 'athena' ? 1.05 : 0.85;
+
+            const voices = window.speechSynthesis.getVoices();
+            if (activeVoicePersona === 'athena') {
+                utterance.rate = 1.05;
+                utterance.pitch = 1.15;
+                // Buscar explícitamente voces femeninas en español
+                const femaleVoice = voices.find(v => v.lang.startsWith('es') && (
+                    v.name.toLowerCase().includes('monica') ||
+                    v.name.toLowerCase().includes('paulina') ||
+                    v.name.toLowerCase().includes('helena') ||
+                    v.name.toLowerCase().includes('laura') ||
+                    v.name.toLowerCase().includes('lucia') ||
+                    v.name.toLowerCase().includes('elvira') ||
+                    v.name.toLowerCase().includes('ximena') ||
+                    v.name.toLowerCase().includes('dalia') ||
+                    v.name.toLowerCase().includes('female') ||
+                    v.name.toLowerCase().includes('mujer')
+                )) || voices.find(v => v.lang.startsWith('es') && !v.name.toLowerCase().includes('jorge') && !v.name.toLowerCase().includes('pablo') && !v.name.toLowerCase().includes('male'));
+                if (femaleVoice) utterance.voice = femaleVoice;
+            } else {
+                utterance.rate = 0.95;
+                utterance.pitch = 0.85;
+                // Buscar explícitamente voces masculinas en español
+                const maleVoice = voices.find(v => v.lang.startsWith('es') && (
+                    v.name.toLowerCase().includes('jorge') ||
+                    v.name.toLowerCase().includes('pablo') ||
+                    v.name.toLowerCase().includes('alvaro') ||
+                    v.name.toLowerCase().includes('diego') ||
+                    v.name.toLowerCase().includes('manuel') ||
+                    v.name.toLowerCase().includes('male') ||
+                    v.name.toLowerCase().includes('hombre')
+                ));
+                if (maleVoice) utterance.voice = maleVoice;
+            }
 
             utterance.onend = () => {
                 setVoiceState('ready');

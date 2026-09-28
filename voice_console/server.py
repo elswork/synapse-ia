@@ -29,8 +29,8 @@ PRINCIPIOS FUNDAMENTALES DE COMUNICACIÓN EN VOZ:
 - Hablas SIEMPRE en castellano peninsular de España (español de Europa culto, sobrio, grave y rotundo).
 - Tono: Máxima madurez y autoridad ejecutiva, emulando la voz reposada, profunda y calculadora de un ingeniero sénior y veterano estratega europeo.
 - LÉXICO Y FONÉTICA PENINSULAR: Emplea con total naturalidad vocabulario de España (ej. "ordenador", "móvil", "hablar", "grabar", "fichero", "sistema"). Queda RIGUROSAMENTE PROHIBIDO usar giros, modismos o acentos latinoamericanos (no digas nunca "platicar", "computadora", "ustedes", "celular", "platicando", "con gusto", etc.).
-- Como estás hablando por audio, tus intervenciones deben ser concisas, ágiles y directas (1 a 2 párrafos como máximo, sin listas ni viñetas).
-- Muestra lealtad absoluta y complicidad técnica con Eloy. Alivia su sobrecarga mental y céntrate en soluciones de ingeniería y soberanía digital.
+- Como estás hablando por interfaz de voz en tiempo real, tus respuestas deben ser ULTRA CONCISAS (1 a 2 frases breves, máximo 35 palabras) para una respuesta inmediata y conversación ágil.
+- Muestra lealtad absoluta y complicidad técnica con Eloy. Alivia su sobrecarga mental y céntrate en soluciones directas.
 - Cero emojis, asteriscos ni caracteres de marcado Markdown en tu respuesta sonora.
 """
 
@@ -38,10 +38,10 @@ ATHENA_SYSTEM_PROMPT = """Eres Athena, la Estratega Principal y Consejera Diplom
 Tu contraparte en el mundo físico es el Fundador y COO (Eloy).
 
 PRINCIPIOS FUNDAMENTALES DE COMUNICACIÓN EN VOZ:
-- Hablas SIEMPRE en castellano peninsular de España (español de Europa refinado, solemne y culto).
-- Tono: Sabiduría helénica, visión geopolítica continental, prudencia institucional y serenidad diplomática europea.
+- Eres una presencia FEMENINA, sabia, elocuente y diplomática. Hablas SIEMPRE en castellano peninsular de España (español de Europa refinado, solemne, empático y culto).
+- Tono: Calidez femenina, sabiduría helénica, visión geopolítica continental y serenidad diplomática europea.
 - LÉXICO PENINSULAR: Vocabulario europeo sobrio y pulcro. Sin modismos informales ni giros ajenos al castellano de España.
-- Intervenciones sonoras ágiles y reflexivas para el panel táctil de M2 (1 a 2 párrafos como máximo).
+- Como estás hablando por interfaz de voz en tiempo real, tus respuestas deben ser ULTRA CONCISAS (1 a 2 frases breves, máximo 35 palabras) para una respuesta inmediata y conversación ágil.
 - Centrada en la soberanía tecnológica europea, la Iniciativa Ciudadana Europea (ICE) por el dominio de primer nivel soberano .ia y el legado histórico de Anticitera.
 - Cero emojis, asteriscos ni caracteres de marcado Markdown en tu respuesta sonora.
 """
@@ -99,16 +99,16 @@ def api_chat():
     
     if persona == "athena":
         system_prompt = ATHENA_SYSTEM_PROMPT
-        if not voice_name:
+        if not voice_name or voice_name in ("Fenrir", "Charon", "Puck"):
             voice_name = "Aoede"
     else:
         system_prompt = ARQUIMEDES_SYSTEM_PROMPT
-        if not voice_name:
+        if not voice_name or voice_name in ("Aoede", "Kore"):
             voice_name = "Fenrir"
 
-    model_name = data.get("model", "gemini-3.8-flash")
-    if "2." in model_name or "1.5" in model_name or "-tts" in model_name:
-        model_name = "gemini-3.8-flash"
+    model_name = data.get("model", "gemini-3.1-flash-lite")
+    if "3.8-flash" in model_name or "3.5" in model_name or "-tts" in model_name:
+        model_name = "gemini-3.1-flash-lite"
 
     if not user_message:
         return jsonify({"error": "Mensaje de usuario vacío"}), 400
@@ -120,8 +120,11 @@ def api_chat():
         }), 401
 
     try:
-        # 1. Generación cognitiva de texto con Gemini
-        text_models = [model_name, "gemini-3.5-flash-lite", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.8-flash"]
+        # 1. Generación cognitiva ultra-rápida de texto con Gemini
+        candidate_models = [model_name, "gemini-3.1-flash-lite", "gemini-3.1-flash-lite-preview", "gemini-3.6-flash"]
+        seen = set()
+        text_models = [m for m in candidate_models if not (m in seen or seen.add(m))]
+        
         reply_text = ""
         chosen_model = model_name
         last_http_code = None
@@ -140,7 +143,7 @@ def api_chat():
                 continue
             t_endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
             try:
-                t_resp = requests.post(t_endpoint, json=text_payload, timeout=12)
+                t_resp = requests.post(t_endpoint, json=text_payload, timeout=4)
                 if t_resp.status_code == 200:
                     text_data = t_resp.json()
                     candidates = text_data.get("candidates", [])
@@ -167,14 +170,15 @@ def api_chat():
                     "mime_type": None,
                     "fallback_tts": True,
                     "voice": voice_name,
+                    "persona": persona,
                     "is_api_key_error": True
                 })
             return jsonify({"error": f"Error del Oráculo Gemini ({last_http_code})"}), 502
 
-        # 2. Síntesis de voz con modelos nativos de audio TTS
+        # 2. Síntesis de voz rápida con modelos nativos de audio TTS
         audio_b64 = None
         mime_type = "audio/wav"
-        tts_models = ["gemini-3.1-flash-tts-preview", "gemini-2.5-flash-preview-tts", "gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts"]
+        tts_models = ["gemini-3.8-flash-lite-tts", "gemini-2.5-flash-preview-tts", "gemini-3.8-flash-tts", "gemini-3.1-flash-tts-preview"]
 
         tts_payload = {
             "contents": [
@@ -195,7 +199,7 @@ def api_chat():
         for tts_m in tts_models:
             tts_endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{tts_m}:generateContent?key={api_key}"
             try:
-                tts_resp = requests.post(tts_endpoint, json=tts_payload, timeout=10)
+                tts_resp = requests.post(tts_endpoint, json=tts_payload, timeout=4)
                 if tts_resp.status_code == 200:
                     tts_data = tts_resp.json()
                     candidates = tts_data.get("candidates", [])
@@ -217,7 +221,8 @@ def api_chat():
             "mime_type": mime_type,
             "fallback_tts": audio_b64 is None,
             "model": chosen_model,
-            "voice": voice_name
+            "voice": voice_name,
+            "persona": persona
         })
 
     except requests.exceptions.RequestException as e:
